@@ -539,6 +539,11 @@ Citizen.CreateThread( function()
                  -- SetEntityAsMissionEntity(curveh,false,true)
                   TriggerEvent("keys:addNew",curveh,plate1)
                   TriggerEvent("timer:stolenvehicle",plate1)
+                  
+                  SetVehicleHasBeenOwnedByPlayer(curveh,true)
+                  SetVehicleIsStolen(curveh, true)
+                  SetVehicleIsWanted(curveh, true)
+                  SetVehRadioStation(curveh, 'OFF')
                 else
                   ClearPedTasksImmediately(PlayerPedId())
                 end
@@ -560,6 +565,11 @@ Citizen.CreateThread( function()
                       if finished == 100 then
                        -- SetEntityAsMissionEntity(curveh,false,true)
                         TriggerEvent("keys:addNew",curveh,plate1)
+                        
+                        SetVehicleHasBeenOwnedByPlayer(curveh,true)
+                        SetVehicleIsStolen(curveh, true)
+                        SetVehicleIsWanted(curveh, true)
+                        SetVehRadioStation(curveh, 'OFF')
                       else
                         ClearPedTasksImmediately(PlayerPedId())
                       end
