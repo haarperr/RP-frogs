@@ -250,6 +250,13 @@ AddEventHandler("ls:startCarBoost", function(modelName)
   end
   StartedBoost = true
   local vehicle = CreateVehicle(vehHash, x, y, z, h, true, false)
+
+  SetVehicleHasBeenOwnedByPlayer(vehicle, true)
+  SetEntityAsMissionEntity(vehicle, true, true)
+  SetVehicleIsStolen(vehicle, true)
+  SetVehicleIsWanted(vehicle, true)
+  SetVehRadioStation(vehicle, 'OFF')
+
   SetVehicleDoorsLocked(vehicle, 2)
   spawnedVeh = GetClosestVehicle(x, y, z, 3.5, 0, 70)
 
