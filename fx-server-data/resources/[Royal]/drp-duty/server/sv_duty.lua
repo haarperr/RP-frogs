@@ -53,22 +53,7 @@ AddEventHandler('drp-duty:AttemptDuty', function(pJobType)
 	end)
 end)
 
-RegisterCommand('dutyon', function()
-	if src == nil or src == 0 then src = source end
-	local user = exports["drp-base"]:getModule("Player"):GetUser(src)
-	local character = user:getCurrentCharacter()
-	local jobs = exports["drp-base"]:getModule("JobManager")
-	exports.ghmattimysql:execute('SELECT job FROM jobs_whitelist WHERE cid = ? AND job = ?', {character.id, 'police'}, function(result)
-		if result[1] ~= nil then
-			jobs:SetJob(user, 'police', false, function()
-				TriggerClientEvent("DoLongHudText", src,"Clock On!", 1)
-				TriggerClientEvent('drp-duty:PDSuccess', src)
-			end)
-		else
-			TriggerClientEvent("DoLongHudText", src,"You are not whitelisted for this job!", 2)
-		end
-	end)
-end)
+
 
 RegisterServerEvent('drp-duty:AttemptDutyEMS')
 AddEventHandler('drp-duty:AttemptDutyEMS', function(src, pJobType)
