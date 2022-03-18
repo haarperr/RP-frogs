@@ -49,11 +49,18 @@ function SpawnVehicle(vehicle, pGarage, Fuel, customized, plate, IsViewing)
         end
 
         veh = CreateVehicle(car, ParkingSpot.x, ParkingSpot.y, ParkingSpot.z, ParkingSpot.h, true, false)
-                  
+        
+
+        SetVehicleNeedsToBeHotwired(veh, false)
+        SetVehicleIsStolen(veh, false)
+        SetVehicleIsWanted(veh, false)
+        SetVehRadioStation(veh, 'OFF')
+
         SetModelAsNoLongerNeeded(car)
     
         DecorSetInt(veh, "CurrentFuel", Fuel)
-        
+        SetEntityAsMissionEntity(veh, true, true)
+
         DecorSetBool(veh, "PlayerVehicle", true)
         SetVehicleOnGroundProperly(veh)
         SetEntityInvincible(veh, false) 

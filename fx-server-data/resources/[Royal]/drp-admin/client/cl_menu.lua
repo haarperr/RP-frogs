@@ -748,6 +748,13 @@ AddEventHandler("drp-admin:runSpawnCommand", function(model, livery)
 
         local heading = GetEntityHeading(localped)
         local vehicle = CreateVehicle(hash, coords, heading, true, false)
+        
+        SetVehicleHasBeenOwnedByPlayer(vehicle, true)
+        SetEntityAsMissionEntity(vehicle, true, true)
+        SetVehicleIsStolen(vehicle, false)
+        SetVehicleIsWanted(vehicle, false)
+        SetVehRadioStation(vehicle, 'OFF')
+
 
         SetVehicleModKit(vehicle, 0)
         SetVehicleMod(vehicle, 11, 3, false)
