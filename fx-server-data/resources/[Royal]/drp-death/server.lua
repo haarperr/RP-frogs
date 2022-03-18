@@ -1,0 +1,11 @@
+RegisterServerEvent('drp-death:reviveSV')
+AddEventHandler('drp-death:reviveSV', function(t)
+	TriggerClientEvent('drp-death:revive', t)
+    TriggerClientEvent('drp-hospital:client:RemoveBleed', t) 
+    TriggerClientEvent('drp-hospital:client:ResetLimbs', t)
+end)
+
+RegisterServerEvent('drp-death:reviveSV2')
+AddEventHandler('drp-death:reviveSV2', function()
+	TriggerClientEvent('drp-death:revive', source)
+end)

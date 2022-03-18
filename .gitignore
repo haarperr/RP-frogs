@@ -1,0 +1,9 @@
+fx-server/
+
+! fx-server-data/
+**/fx-server-data/*
+!**/fx-server-data/resources
+
+
+**/fx-server-data/resources/*
+!**/fx-server-data/resources/\[Royal\]
