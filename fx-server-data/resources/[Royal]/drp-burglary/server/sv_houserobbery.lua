@@ -18,7 +18,7 @@ local robbableItems = {
     [17] = {chance = 10, id = 'safecrackingkit', quantity = math.random(1)},
     [18] = {chance = 10, id = 'rolexwatch', quantity = math.random(1)},
     [19] = {chance = 11, id = 'steel', quantity = 1},
-    [20] = {chance = 10, id = 'safecrackingkit', quantity = math.random(1)},
+    [20] = {chance = 10, id = 'lockpick', quantity = math.random(1)},
 }
 
 RegisterServerEvent('houseRobberies:removeLockpick')
