@@ -54,7 +54,6 @@ AddEventHandler('drp-duty:AttemptDuty', function(pJobType)
 end)
 
 
-
 RegisterServerEvent('drp-duty:AttemptDutyEMS')
 AddEventHandler('drp-duty:AttemptDutyEMS', function(src, pJobType)
 	if src == nil or src == 0 then src = source end
