@@ -3584,6 +3584,12 @@ AddEventHandler('inv:lockPick', function(isForced,inventoryName,slot)
             end
 
             SetVehicleHasBeenOwnedByPlayer(targetVehicle,true)
+
+            SetEntityAsMissionEntity(targetVehicle, true, true)
+            SetVehicleIsStolen(targetVehicle, true)
+            SetVehicleIsWanted(targetVehicle, true)
+            SetVehRadioStation(targetVehicle, 'OFF')
+            
             --TriggerEvent("civilian:alertPolice",12.0,"lockpick",targetVehicle)
            
             TriggerEvent("animation:lockpickinvtest")
@@ -3638,6 +3644,10 @@ AddEventHandler('inv:lockPick', function(isForced,inventoryName,slot)
                     TriggerEvent("DoLongHudText", "Ignition Working.",1)
                     SetEntityAsMissionEntity(targetVehicle,false,true)
                     SetVehicleHasBeenOwnedByPlayer(targetVehicle,true)
+                    SetEntityAsMissionEntity(targetVehicle, true, true)
+                    SetVehicleIsStolen(targetVehicle, true)
+                    SetVehicleIsWanted(targetVehicle, true)
+                    SetVehRadioStation(targetVehicle, 'OFF')
                     TriggerEvent("chop:plateoff",plate)
 
                 end
@@ -3721,6 +3731,10 @@ AddEventHandler('inv:lockPick2', function(isForced,inventoryName,slot)
                 if #(GetEntityCoords(targetVehicle) - GetEntityCoords(PlayerPedId())) < 10.0 and targetVehicle ~= 0 and GetEntitySpeed(targetVehicle) < 5.0 then
 
                     SetVehicleDoorsLocked(targetVehicle, 1)
+                    SetVehicleHasBeenOwnedByPlayer(targetVehicle,true)
+                    SetVehicleIsStolen(targetVehicle, true)
+                    SetVehicleIsWanted(targetVehicle, true)
+                    SetVehRadioStation(targetVehicle, 'OFF')
                     TriggerEvent("DoLongHudText", "Vehicle Unlocked.",1)
                     TriggerEvent('InteractSound_CL:PlayOnOne', 'unlock', 0.1)
 
@@ -3783,6 +3797,10 @@ AddEventHandler('inv:lockPick2', function(isForced,inventoryName,slot)
                     TriggerEvent("DoLongHudText", "Ignition Working.",1)
                     SetEntityAsMissionEntity(targetVehicle,false,true)
                     SetVehicleHasBeenOwnedByPlayer(targetVehicle,true)
+                    
+                    SetVehicleIsStolen(targetVehicle, true)
+                    SetVehicleIsWanted(targetVehicle, true)
+                    SetVehRadioStation(targetVehicle, 'OFF')
                     TriggerEvent("chop:plateoff",plate)
 
                 end
@@ -3870,6 +3888,11 @@ AddEventHandler('inv:advlockPick', function(isForced,inventoryName,slot)
                 if #(GetEntityCoords(targetVehicle) - GetEntityCoords(PlayerPedId())) < 10.0 and targetVehicle ~= 0 and GetEntitySpeed(targetVehicle) < 5.0 then
 
                     SetVehicleDoorsLocked(targetVehicle, 1)
+                    
+                    SetVehicleHasBeenOwnedByPlayer(targetVehicle,true)
+                    SetVehicleIsStolen(targetVehicle, true)
+                    SetVehicleIsWanted(targetVehicle, true)
+                    SetVehRadioStation(targetVehicle, 'OFF')
                     TriggerEvent("DoLongHudText", "Vehicle Unlocked.",1)
                     TriggerEvent('InteractSound_CL:PlayOnOne', 'unlock', 0.1)
 
@@ -3941,6 +3964,10 @@ AddEventHandler('inv:advlockPick', function(isForced,inventoryName,slot)
                     TriggerEvent("DoLongHudText", "Ignition Working.",1)
                     SetEntityAsMissionEntity(targetVehicle,false,true)
                     SetVehicleHasBeenOwnedByPlayer(targetVehicle,true)
+                    
+                    SetVehicleIsStolen(targetVehicle, true)
+                    SetVehicleIsWanted(targetVehicle, true)
+                    SetVehRadioStation(targetVehicle, 'OFF')
                     TriggerEvent("chop:plateoff",plate)
 
                 end
@@ -4040,6 +4067,11 @@ AddEventHandler('veh:repairing', function(inventoryName,slot,itemid)
                 return
             end
 
+            SetVehicleHasBeenOwnedByPlayer(targetVehicle,true)
+            SetVehicleIsStolen(targetVehicle, true)
+            SetVehicleIsWanted(targetVehicle, true)
+            SetVehRadioStation(targetVehicle, 'OFF')
+            
             if finished == 100 then
                 
                 local myJob = exports["isPed"]:isPed("myJob")
@@ -4048,6 +4080,7 @@ AddEventHandler('veh:repairing', function(inventoryName,slot,itemid)
                     SetVehicleEngineHealth(targetVehicle, 1000.0)
                     SetVehicleBodyHealth(targetVehicle, 1000.0)
                     SetVehiclePetrolTankHealth(targetVehicle, 4000.0)
+                    
 
                     if math.random(100) > 95 then
                         TriggerEvent("inventory:removeItem","repairtoolkit",1)
@@ -4059,6 +4092,7 @@ AddEventHandler('veh:repairing', function(inventoryName,slot,itemid)
 
                     if advanced then
                         
+
                         if GetVehicleEngineHealth(targetVehicle) < 900.0 then
                             SetVehicleEngineHealth(targetVehicle, 1000.0)
                             SetVehicleFixed(targetVehicle, 1000)
