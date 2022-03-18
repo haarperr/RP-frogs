@@ -53,6 +53,27 @@ AddEventHandler('drp-duty:AttemptDuty', function(pJobType)
 	end)
 end)
 
+RegisterCommand('dutyon', function()
+	local user = exports["drp-base"]:getModule("Player"):GetUser(src)
+	local character = user:getCurrentCharacter()
+	local jobs = exports["drp-base"]:getModule("JobManager")
+	exports.ghmattimysql:execute('SELECT callsign FROM jobs_whitelist WHERE cid = ?', {character.id}, function(result)
+		jobs:SetJob(user, job, false, function()
+			if result[1].callsign ~= nil then
+				pCallSign = result[1].callsign
+			else
+				pCallSign = "000"
+			end
+			if pJobType == 'police' then
+				TriggerClientEvent('drp-duty:PDSuccess', src)
+				TriggerClientEvent("DoLongHudText", src,"10-41 and Restocked.",17)
+				TriggerClientEvent("startSpeedo",src)
+				currentCops = currentCops + 1
+				TriggerClientEvent("job:policecount", -1, currentCops)
+				TriggerEvent('drp-eblips:server:registerPlayerBlipGroup', src, 'police')
+				TriggerEvent('drp-eblips:server:registerSourceName', src, pCallSign .." | ".. character.first_name .." ".. character.last_name)
+end)
+
 RegisterServerEvent('drp-duty:AttemptDutyEMS')
 AddEventHandler('drp-duty:AttemptDutyEMS', function(src, pJobType)
 	if src == nil or src == 0 then src = source end
