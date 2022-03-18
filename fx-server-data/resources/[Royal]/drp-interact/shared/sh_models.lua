@@ -9,6 +9,7 @@ ModelFlags = {
   [`prop_vend_soda_02`] = { 'isVendingMachine', 'isVendingMachineBeverage'},
   [`prop_vend_fridge01`] = { 'isVendingMachine', 'isVendingMachineBeverage'},
   [`prop_vend_water_01`] = { 'isVendingMachine', 'isVendingMachineBeverage'},
+  [`v_ret_ml_tablea`] = {'isMethtable'},
   [`prop_atm_01`] = {'isATM'},
   [`prop_atm_02`] = {'isATM'},
   [`prop_atm_03`] = {'isATM'},

@@ -867,11 +867,12 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
             end
 
             if itemid == "joint" then
-                TriggerEvent("drp-hud:updateStress",false,30)
+                TriggerEvent("drp-hud:updateStress",false,50)
             end
 
             TriggerEvent("animation:PlayAnimation","weed")
             TriggerEvent("Evidence:StateSet",3,600)
+            SetPedArmour( player, 100 )
             TriggerEvent("Evidence:StateSet",4,600)
             TriggerEvent("drp-hud:updateStress",false,20)
             TriggerEvent(
@@ -1278,7 +1279,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
         local finished = exports["drp-taskbar"]:taskBar(5000,"Armor",true,false,playerVeh)
         if (finished == 100) then
             SetPlayerMaxArmour(PlayerId(), 100 )
-            SetPedArmour( player, 100 )
+            SetPedArmour( player, 20 )
             TriggerEvent("UseBodyArmor")
             remove = true
         end
@@ -1637,6 +1638,12 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
             end
         end
     end
+
+    if (itemid == "methtable") then
+   
+        TriggerEvent("methjob_place")
+    remove = true
+end
 
     if (itemid == "lockpick") then
         TriggerEvent('drp-heists:distcheckpower')
@@ -3384,7 +3391,7 @@ local burgies = 0
 RegisterNetEvent('inv:wellfed')
 AddEventHandler('inv:wellfed', function()
     TriggerEvent("Evidence:StateSet",25,3600)
-    TriggerEvent("drp-hud:updateStress",false,50)
+    TriggerEvent("drp-hud:updateStress",false,30)
     TriggerEvent("drp-hud:ChangeHunger", 60)
     TriggerEvent("drp-hud:ChangeThirst", 60)
     burgies = 0
@@ -3394,7 +3401,7 @@ local burgies2 = 0
 RegisterNetEvent('inv:fed')
 AddEventHandler('inv:fed', function()
     TriggerEvent("Evidence:StateSet",25,3600)
-     TriggerEvent("drp-hud:updateStress",false,50)
+     TriggerEvent("drp-hud:updateStress",false,30)
     TriggerEvent("drp-hud:ChangeHunger", 60)
     TriggerEvent("drp-hud:ChangeThirst", 30)
     processStressBlock()
@@ -3405,7 +3412,7 @@ local burgies3 = 0
 RegisterNetEvent('inv:fed2')
 AddEventHandler('inv:fed2', function()
     TriggerEvent("Evidence:StateSet",25,3600)
-     TriggerEvent("drp-hud:updateStress",false,50)
+     TriggerEvent("drp-hud:updateStress",false,30)
     TriggerEvent("drp-hud:ChangeHunger", 30)
     TriggerEvent("drp-hud:ChangeThirst", 70)
     processStressBlock()
@@ -3415,7 +3422,7 @@ end)
 local burgies4 = 0
 RegisterNetEvent('inv:well')
 AddEventHandler('inv:well', function()
-    TriggerEvent("drp-hud:updateStress",false,50)
+    TriggerEvent("drp-hud:updateStress",false,30)
     TriggerEvent("drp-hud:ChangeHunger", 20)
     TriggerEvent("drp-hud:ChangeThirst", 30)
     burgies4 = 0

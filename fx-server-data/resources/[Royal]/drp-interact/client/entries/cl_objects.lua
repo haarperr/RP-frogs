@@ -523,3 +523,29 @@ Entries[#Entries + 1] = {
     }
 }
 
+
+Entries[#Entries + 1] = {
+    type = 'flag',
+  group = { 'isMethtable' },
+    data = {
+        {
+            id = 'methtablemenu',
+            label = "Use Table",
+            icon = "circle",
+            event = "methtablemenu",
+            parameters = {}
+        },
+        {
+            id = 'methtablemenu2',
+            label = "Collapse Table",
+            icon = "circle",
+            event = "methjob_remove",
+            parameters = {}
+        }
+    },
+    options = {
+        distance = { radius = 1.5 },
+    }
+}
+
+

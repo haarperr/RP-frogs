@@ -150,7 +150,7 @@ function BurgerShotStore() {
         { item_id: "tomato", id: 0, name: "Shop", information: "{}", slot: 6, amount: 15 },
         { item_id: "cheese", id: 0, name: "Shop", information: "{}", slot: 7, amount: 15 },
         { item_id: "water", id: 0, name: "Shop", information: "{}", slot: 8, amount: 15 },
-        { item_id: "potato", id: 0, name: "Shop", information: "{}", slot: 8, amount: 15 },
+        { item_id: "potato", id: 0, name: "Shop", information: "{}", slot: 9, amount: 15 },
         
         
 
@@ -202,7 +202,7 @@ function ConvenienceStore() {
         { item_id: "mobilephone", id: 0, name: "Shop", information: "{}", slot: 11, amount: 50 },
         { item_id: "emptybaggies", id: 0, name: "Shop", information: "{}", slot: 12, amount: 50 },
         { item_id: "rollingpaper", id: 0, name: "Shop", information: "{}", slot: 13, amount: 50 },
-        { item_id: "bakingsoda", id: 0, name: "Shop", information: "{}", slot: 14, amount: 10 },
+        { item_id: "methlabbaggy", id: 0, name: "Shop", information: "{}", slot: 14, amount: 10 },
         { item_id: "glucose", id: 0, name: "Shop", information: "{}", slot: 15, amount: 50 },
         { item_id: "cigar", id: 0, name: "Shop", information: "{}", slot: 16, amount: 50 },
         { item_id: "hairtie", id: 0, name: "Shop", information: "{}", slot: 17, amount: 1 },
@@ -248,7 +248,7 @@ function HardwareStore() {
         { item_id: "drill", id: 0, name: "Shop", information: "{}", slot: 4, amount: 50 },
         { item_id: "nitrous", id: 0, name: "Shop", information: "{}", slot: 5, amount: 50 },
         { item_id: "armor", id: 0, name: "Shop", information: "{}", slot: 6, amount: 50 },
-        { item_id: "scanner", id: 0, name: "Shop", information: "{}", slot: 7, amount: 50 },
+        { item_id: "antifreeze", id: 0, name: "Shop", information: "{}", slot: 7, amount: 50 },
         { item_id: "lockpick", id: 0, name: "Shop", information: "{}", slot: 8, amount: 50 },
 
         { item_id: "repairtoolkit", id: 0, name: "Shop", information: "{}", slot: 9, amount: 50 },
@@ -256,13 +256,13 @@ function HardwareStore() {
         { item_id: "umbrella", id: 0, name: "Shop", information: "{}", slot: 11, amount: 50 },
         { item_id: "smallscales", id: 0, name: "Shop", information: "{}", slot: 12, amount: 50 },
         { item_id: "qualityscales", id: 0, name: "Shop", information: "{}", slot: 13, amount: 50 },
-        { item_id: "heavydutydrill", id: 0, name: "Shop", information: "{}", slot: 14, amount: 50 },
+        { item_id: "farmhoe", id: 0, name: "Shop", information: "{}", slot: 14, amount: 50 },
         { item_id: "fertilizer", id: 0, name: "Shop", information: "{}", slot: 15, amount: 50 },
 
         { item_id: "fishingrod", id: 0, name: "Shop", information: "{}", slot: 16, amount: 50 },
         { item_id: "wateringcan", id: 0, name: "Shop", information: "{}", slot: 17, amount: 50 },
         { item_id: "miningpickaxe", id: 0, name: "Shop", information: "{}", slot: 18, amount: 50 },
-        { item_id: "DuffelBag", id: 0, name: "Shop", information: "{}", slot: 19, amount: 50 },
+        { item_id: "acetone", id: 0, name: "Shop", information: "{}", slot: 19, amount: 50 },
         { item_id: "MedicalBag", id: 0, name: "Shop", information: "{}", slot: 20, amount: 50 },
         { item_id: "miningpickaxe", id: 0, name: "Shop", information: "{}", slot: 21, amount: 50 },
 

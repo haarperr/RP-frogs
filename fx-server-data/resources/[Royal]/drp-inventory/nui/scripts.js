@@ -54,7 +54,6 @@ let customImageItems = [
     "newstape",
     "summonablepet",
     "tcgcard",
-    "book",
     "petaccessory",
     "resfooditem",
     "ressideitem",
@@ -74,7 +73,6 @@ let customNameItems = [
     "tcgcard",
     "tcgpromobooster",
     "tcgbinder",
-    "book",
     "petaccessory",
     "resfooditem",
     "ressideitem",
@@ -90,7 +88,6 @@ let customNameItemsDescriptions = {
     "custommerchitem": "(FM) ",
     "customciggyitem": "(FM) ",
     "custombandageitem": "(FM) ",
-    "book": "(B) ",
 };
 let customDescriptionItems = [
     "customfooditem",
@@ -216,36 +213,6 @@ exluded['2343591895'] = true;
 exluded['2484171525'] = true;
 exluded['419712736'] = true;
 exluded['-1810795771'] = true;
-exluded['-120179019'] = true;
-exluded['1834241177'] = true;
-exluded['218362403'] = true;
-exluded['148457251'] = true;
-exluded['-2012211169'] = true;
-exluded['-1746263880'] = true;
-exluded['453432689'] = true;
-exluded['-1075685676'] = true;
-exluded['1593441988'] = true;
-exluded['-134995899'] = true;
-exluded['-1716589765'] = true;
-exluded['584646201'] = true;
-exluded['-942620673'] = true;
-exluded['736523883'] = true;
-exluded['1192676223'] = true;
-exluded['-176814556'] = true;
-exluded['-1719357158'] = true;
-exluded['100416529'] = true;
-exluded['-1536150836'] = true;
-exluded['-90637530'] = true;
-exluded['-1074790547'] = true;
-exluded['497969164'] = true;
-exluded['-275439685'] = true;
-exluded['487013001'] = true;
-exluded['1432025498'] = true;
-exluded['171789620'] = true;
-exluded['1649403952 '] = true;
-exluded['-1472189665'] = true;
-exluded['-820634585'] = true;
-exluded['-2009644972'] = true;
 
 $(document).ready(function () {
     $('.save-settings').click(() => {
@@ -454,7 +421,7 @@ $(document).ready(function () {
             UpdateSetWeights(item.invName);
         } else if (item.response == 'cashUpdate') {
             userCash = item.amount;
-            userWeaponLicense = true
+            userWeaponLicense = true;
             brought = item.brought;
             isCop = item.cop;
         } else if (item.response == 'DisableMouse') {
@@ -909,8 +876,8 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
     let displayName = 'Storage';
 
     if (targetinvName.indexOf('Drop') > -1) {
-        secondaryMaxWeight = 500;
-        slotLimitTarget = 20;
+        secondaryMaxWeight = 1000.0;
+        slotLimitTarget = 30;
         displayName = 'Ground';
     } else if (targetinvName.indexOf('PlayerStore') > -1) {
         secondaryMaxWeight = 1000.0;

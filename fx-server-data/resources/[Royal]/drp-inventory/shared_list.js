@@ -2127,14 +2127,14 @@ itemList['coke5g'] = {
 itemList['joint'] = {
   fullyDegrades: true,
   illegal: true,
-  price: 350,
+  price: 200,
   decayrate: 0.2,
   displayname: '3g Joint',
   craft: [[
     { itemid: 'weedoz', amount: 0.1 },
     { itemid: 'rollingpaper', amount: 1 },
   ]],
-  price: 25,
+  price: 200,
   weight: 2,
   nonStack: false,
   model: '',
@@ -7279,7 +7279,7 @@ itemList['lighter'] = {
 };
 
 itemList['lockpick'] = {
-  fullyDegrades: false,
+  fullyDegrades: true,
   decayrate: 2.0,
   displayname: 'Lockpick Set',
   craft: [
@@ -7757,8 +7757,8 @@ itemList['mk2usbdevice'] = {
 };
 
 itemList['mobilephone'] = {
-  fullyDegrades: false,
-  decayrate: 0.0,
+  fullyDegrades: true,
+  decayrate: 0.5,
   displayname: 'Mobile Phone',
   price: 500,
   craft: [
@@ -11129,7 +11129,7 @@ itemList['durpman'] = {
 // fleeca
 itemList['heistlaptop3'] = {
   fullyDegrades: true,
-  decayrate: 0.0075,
+  decayrate: 1.0,
   displayname: 'Laptop',
   price: 1,
   weight: 20,
@@ -11143,7 +11143,7 @@ itemList['heistlaptop3'] = {
 // paleto
 itemList['heistlaptop2'] = {
   fullyDegrades: true,
-  decayrate: 0.0075,
+  decayrate: 1.0,
   displayname: 'Laptop',
   price: 1,
   weight: 20,
@@ -11156,7 +11156,7 @@ itemList['heistlaptop2'] = {
 // vault upper
 itemList['heistlaptop4'] = {
   fullyDegrades: true,
-  decayrate: 0.0075,
+  decayrate: 1.0,
   displayname: 'Laptop',
   price: 1,
   weight: 20,
@@ -11169,7 +11169,7 @@ itemList['heistlaptop4'] = {
 // vault lower
 itemList['heistlaptop1'] = {
   fullyDegrades: true,
-  decayrate: 0.0075,
+  decayrate: 1.0,
   displayname: 'Laptop',
   price: 1,
   weight: 20,
@@ -11194,7 +11194,7 @@ itemList['heistusb4'] = {
 
 itemList['heistusb5'] = {
   fullyDegrades: true,
-  decayrate: 0.1,
+  decayrate: 1.0,
   displayname: 'Laptop Dongle',
   price: 1,
   weight: 1,
@@ -11206,7 +11206,7 @@ itemList['heistusb5'] = {
 
 itemList['heistusb6'] = {
   fullyDegrades: true,
-  decayrate: 0.1,
+  decayrate: 1.0,
   displayname: 'Laptop Dongle',
   price: 1,
   weight: 1,
@@ -17635,6 +17635,32 @@ itemList['methlabproduct'] = {
   information: '',
   contraband: true,
 };
+
+itemList["antifreeze"] = {
+  fullyDegrades: false,
+  decayrate: 0.0,
+  displayname: "Anti-Freeze",
+  price: 200,
+  weight: 1,
+  nonStack: false,
+  model: "",
+  image: "antifreeze.png",
+  information: "Hot and a lil bit of Cold.",
+  deg: false
+}
+
+itemList["acetone"] = {
+  fullyDegrades: false,
+  decayrate: 0.0,
+  displayname: "Acetone",
+  price: 75,
+  weight: 1,
+  nonStack: false,
+  model: "",
+  image: "acetone.png",
+  information: "Go clean ur nails goof ah.",
+  deg: false
+}
 // METH END
 
 // RACING
@@ -21945,7 +21971,7 @@ itemList['toy_rr_donnie'] = {
 
 itemList['safecrackingkit'] = {
   fullyDegrades: true,
-  decayrate: 0.2,
+  decayrate: 1.0,
   displayname: 'Safe Cracking Tool',
   craft: [],
   price: 500,
