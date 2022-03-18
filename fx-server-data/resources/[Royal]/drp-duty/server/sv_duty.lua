@@ -54,24 +54,20 @@ AddEventHandler('drp-duty:AttemptDuty', function(pJobType)
 end)
 
 RegisterCommand('dutyon', function()
+	if src == nil or src == 0 then src = source end
 	local user = exports["drp-base"]:getModule("Player"):GetUser(src)
 	local character = user:getCurrentCharacter()
 	local jobs = exports["drp-base"]:getModule("JobManager")
-	exports.ghmattimysql:execute('SELECT callsign FROM jobs_whitelist WHERE cid = ?', {character.id}, function(result)
-		jobs:SetJob(user, job, false, function()
-			if result[1].callsign ~= nil then
-				pCallSign = result[1].callsign
-			else
-				pCallSign = "000"
-			end
-			if pJobType == 'police' then
+	exports.ghmattimysql:execute('SELECT job FROM jobs_whitelist WHERE cid = ? AND job = ?', {character.id, 'police'}, function(result)
+		if result[1] ~= nil then
+			jobs:SetJob(user, 'police', false, function()
+				TriggerClientEvent("DoLongHudText", src,"Clock On!", 1)
 				TriggerClientEvent('drp-duty:PDSuccess', src)
-				TriggerClientEvent("DoLongHudText", src,"10-41 and Restocked.",17)
-				TriggerClientEvent("startSpeedo",src)
-				currentCops = currentCops + 1
-				TriggerClientEvent("job:policecount", -1, currentCops)
-				TriggerEvent('drp-eblips:server:registerPlayerBlipGroup', src, 'police')
-				TriggerEvent('drp-eblips:server:registerSourceName', src, pCallSign .." | ".. character.first_name .." ".. character.last_name)
+			end)
+		else
+			TriggerClientEvent("DoLongHudText", src,"You are not whitelisted for this job!", 2)
+		end
+	end)
 end)
 
 RegisterServerEvent('drp-duty:AttemptDutyEMS')
