@@ -181,7 +181,7 @@ end
 
 function carCrash()
     endNos()
-    local new_health = GetVehicleEngineHealth(currentVehicle) - math.random(75, 175) -- 200 / 300
+    local new_health = GetVehicleEngineHealth(currentVehicle) - math.random(50, 175)
     TriggerEvent('DoLongHudText', 'Your vehicle has stalled!', 2)
     SetVehicleEngineOn(currentVehicle, false, true, true)
     SetVehicleEngineHealth(currentVehicle, new_health)
@@ -445,11 +445,11 @@ RegisterNetEvent("carhud:ejection:client")
 AddEventHandler("carhud:ejection:client",function(value)
     veloc = value
     if seatbelt then
-        if math.random(100) > 80 then -- 20%
+        if math.random(100) > 83 then -- 17%
             ejectionLUL()
         end
     else
-        if math.random(100) > 50 then -- 50%
+        if math.random(100) > 45 then -- 55%
             ejectionLUL()
         end
     end
