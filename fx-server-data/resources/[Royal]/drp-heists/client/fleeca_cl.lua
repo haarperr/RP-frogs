@@ -1012,8 +1012,8 @@ AddEventHandler("drp-fleeca:startFleecaHeist", function()
     TriggerServerEvent('drp-fleeca:getTime2SV')
     TriggerServerEvent('drp-fleeca:getDoorAccessSV')
     Citizen.Wait(1000)
-    local countpolice = exports["isPed"]:isPed("countpolice")
-    if countpolice >= -1 then  -- Police changed for testing
+    local countpolice = exports["drp-duty"]:LawAmount() 
+    if countpolice >= 1 then  -- Police changed for testing
         if not fleecaStateAlready == true then
             if fleecaTimesHit2 > fleecaTimesHit then
                 if fleecaBanksTimes >= 1 then
@@ -1045,7 +1045,7 @@ AddEventHandler("drp-fleeca:startFleecaHeist", function()
             TriggerServerEvent('drp-fleeca:DoorAccessPoggers')
         end
     else
-        TriggerEvent('DoLongHudText', 'Not enough cops on duty!', 2)
+        TriggerEvent('DoLongHudText', 'No police on duty', 2)
         return
     end
 end)

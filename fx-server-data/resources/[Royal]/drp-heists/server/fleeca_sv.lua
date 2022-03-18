@@ -44,10 +44,10 @@ RegisterServerEvent("drp-fleeca:rewardCash")
 AddEventHandler("drp-fleeca:rewardCash", function()
     local src = source
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
-    local cash = math.random(1000, 8000) -- 1-8K Cash Reward
+    local cash = math.random(3000, 8000) -- 3-8K Cash Reward
     TriggerClientEvent('player:receiveItem',src, "markedbills", math.random(10,25))
     user:addMoney(cash)
-    if math.random(100) < 45 then -- Blue Dongle Chance 45%
+    if math.random(100) < 15 then -- Blue Dongle Chance 15%
         TriggerClientEvent('player:receiveItem',src, "heistusb1", 1)
         end
     if math.random(100) < 25 then -- Big Bag Chance 25%
