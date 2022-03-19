@@ -5,13 +5,6 @@ local carryAnimDictPlaying = ""
 local carryControlFlagPlaying = 0
 
 RegisterCommand("carry",function(source, args)
-	LogDebugInfo("pog")
-    Trace("pog")
-    Citizen.LogDebugInfo("pog")
-    Citizen.Trace("pog")
-
-	-- just debugging remove that ~ Nono
-
 	if not carryingBackInProgress then
 		local player = PlayerPedId()	
 		lib = 'missfinale_c2mcs_1'
