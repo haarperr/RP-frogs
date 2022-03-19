@@ -118,7 +118,7 @@ function RRP.Jobs.SetJob(self, user, job, notify, callback)
         local src = user:getVar("source")
         local oldJob = user:getVar("job")
         local hexId = user:getVar("hexid")
-        local characterId = user:getVar("character").id
+        local characterId = user:getVar("character" ).id
 
         if oldJob then
             RRP.Jobs.CurPlayerJobs[oldJob][src] = nil
