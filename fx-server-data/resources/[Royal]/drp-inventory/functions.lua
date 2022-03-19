@@ -883,6 +883,14 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
             )
             remove = true
         end
+
+        local finished = exports["drp-taskbar"]:taskBar(5000,"Armor",true,false,playerVeh)
+        if (finished == 100) then
+            SetPlayerMaxArmour(PlayerId(), 100 )
+            SetPedArmour(PlayerId(), GetPedArmour(PlayerId()) + 20)
+            TriggerEvent("UseBodyArmor")
+            remove = true
+        end
     end
 
     if (
@@ -1279,7 +1287,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
         local finished = exports["drp-taskbar"]:taskBar(5000,"Armor",true,false,playerVeh)
         if (finished == 100) then
             SetPlayerMaxArmour(PlayerId(), 100 )
-            SetPedArmour( player, 20 )
+            SetPedArmour( player, 100 )
             TriggerEvent("UseBodyArmor")
             remove = true
         end
@@ -4071,7 +4079,7 @@ AddEventHandler('veh:repairing', function(inventoryName,slot,itemid)
             SetVehicleIsStolen(targetVehicle, true)
             SetVehicleIsWanted(targetVehicle, true)
             SetVehRadioStation(targetVehicle, 'OFF')
-            
+
             if finished == 100 then
                 
                 local myJob = exports["isPed"]:isPed("myJob")
