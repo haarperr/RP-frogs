@@ -526,17 +526,8 @@ LoadRoyalVersion = function()
             
             CreateStuffLog("EditIncident", time, GetCharData(src).first_name..' '..GetCharData(src).last_name)
         else
-            Citizen.LogDebugInfo('INSERT INTO mdt_incidents (title, information, tags, officers, civilians, evidence, associated, time, author) VALUES (@title, @information, @tags, @officers, @civilians, @evidence, @associated, @time, @author)', {
-                ['@title'] = title, 
-                ['@information'] = information, 
-                ['@tags'] = json.encode(tags),
-                ['@officers'] = json.encode(officers),
-                ['@civilians'] = json.encode(civilians), 
-                ['@evidence'] = json.encode(evidence), 
-                ['@associated'] = json.encode(associated), 
-                ['@time'] = time,
-                ['@author'] = GetCharData(src).first_name..' '..GetCharData(src).last_name
-            })
+            Citizen.LogDebugInfo(title, information, json.encode(tags), json.encode(officers), json.encode(civilians), json.encode(evidence), json.encode(associated), time, GetCharData(src).first_name..' '..GetCharData(src).last_name)
+            Citizen.Trace(title, information, json.encode(tags), json.encode(officers), json.encode(civilians), json.encode(evidence), json.encode(associated), time, GetCharData(src).first_name..' '..GetCharData(src).last_name)
             SQL('INSERT INTO mdt_incidents (title, information, tags, officers, civilians, evidence, associated, time, author) VALUES (@title, @information, @tags, @officers, @civilians, @evidence, @associated, @time, @author)', {
                 ['@title'] = title, 
                 ['@information'] = information, 
