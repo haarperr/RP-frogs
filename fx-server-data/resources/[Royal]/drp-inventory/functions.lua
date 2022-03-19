@@ -872,7 +872,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
 
             TriggerEvent("animation:PlayAnimation","weed")
             TriggerEvent("Evidence:StateSet",3,600)
-            SetPedArmour( player, 100 )
+            SetPedArmour(player, GetPedArmour(player) + 20)
             TriggerEvent("Evidence:StateSet",4,600)
             TriggerEvent("drp-hud:updateStress",false,20)
             TriggerEvent(
