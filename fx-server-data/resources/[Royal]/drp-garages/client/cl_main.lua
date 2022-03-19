@@ -21,9 +21,21 @@ end)
 RegisterNetEvent("drp-garages:attempt:spawn", function(data, pRealSpawn)
     if not pRealSpawn then
         RPC.execute("drp-garages:attempt:sv", data)
-        SpawnVehicle(data.model, exports['drp-menu']:currentGarage(), data.fuel, data.customized, data.plate, true)
+      local vehicle = SpawnVehicle(data.model, exports['drp-menu']:currentGarage(), data.fuel, data.customized, data.plate, true)
+      SetVehicleNeedsToBeHotwired(vehicle, false)
+      SetVehicleHasBeenOwnedByPlayer(vehicle, true)
+      SetEntityAsMissionEntity(vehicle, true, true)
+      SetVehicleIsStolen(vehicle, false)
+      SetVehicleIsWanted(vehicle, false)
+      SetVehRadioStation(vehicle, 'OFF')
     else
-        SpawnVehicle(data.model, exports['drp-menu']:currentGarage(), data.fuel, data.customized, data.plate, false)
+     local vehicle = SpawnVehicle(data.model, exports['drp-menu']:currentGarage(), data.fuel, data.customized, data.plate, false)
+     SetVehicleNeedsToBeHotwired(vehicle, false)
+     SetVehicleHasBeenOwnedByPlayer(vehicle, true)
+     SetEntityAsMissionEntity(vehicle, true, true)
+     SetVehicleIsStolen(vehicle, false)
+     SetVehicleIsWanted(vehicle, false)
+     SetVehRadioStation(vehicle, 'OFF')
     end
 end)
 
