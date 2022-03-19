@@ -3,8 +3,8 @@ Config = {}
 --[[
     This Is How Damage Must Be Applied To Trigger The Limb Damage Aspect
 ]]
-Config.HealthDamage = 10
-Config.ArmorDamage = 5
+Config.HealthDamage = 35
+Config.ArmorDamage = 25
 
 --[[
     This Is The Timer For How Long The Player Will Be In The Bed When They Check-In To Be Healed Automatically, This Is In Seconds
