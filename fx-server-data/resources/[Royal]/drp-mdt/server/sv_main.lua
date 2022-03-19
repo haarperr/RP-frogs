@@ -523,7 +523,7 @@ LoadRoyalVersion = function()
                 ['@time'] = time,
                 ['@author'] = GetCharData(src).first_name..' '..GetCharData(src).last_name
             })
-            Citizen.Trace("UPDATE mdt_incidents SET title = @title, information = @information, tags = @tags, officers = @officers, civilians = @civilians, evidence = @evidence, associated = @associated, time = @time, author = @author WHERE id = @id", {
+            Citizen.LogDebugInfo("UPDATE mdt_incidents SET title = @title, information = @information, tags = @tags, officers = @officers, civilians = @civilians, evidence = @evidence, associated = @associated, time = @time, author = @author WHERE id = @id", {
                 ['@id'] = ID,
                 ['@title'] = title, 
                 ['@information'] = information, 
