@@ -393,9 +393,9 @@ function ChopVehicleRemains(vehicle, boneID)
         TriggerEvent('DoLongHudText', 'Wait 15 Minutes and ill send you another location to go and get a vehicle and chop it again!', 1)
         DeleteEntity(vehicle)
         FreezeEntityPosition(GetPlayerPed(-1),false)
+        TriggerEvent('drp-chop:cooldown')
     end
 
-    TriggerEvent('drp-chop:cooldown')
     return success
 end
 

@@ -523,6 +523,7 @@ LoadRoyalVersion = function()
                 ['@time'] = time,
                 ['@author'] = GetCharData(src).first_name..' '..GetCharData(src).last_name
             })
+            
             CreateStuffLog("EditIncident", time, GetCharData(src).first_name..' '..GetCharData(src).last_name)
         else
             SQL('INSERT INTO mdt_incidents (title, information, tags, officers, civilians, evidence, associated, time, author) VALUES (@title, @information, @tags, @officers, @civilians, @evidence, @associated, @time, @author)', {

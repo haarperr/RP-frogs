@@ -351,7 +351,7 @@ $(document).ready(() => {
                     recsentence: $(".sentence-recommended-amount").filter("[data-id='" + $(this).data("id") + "']").val(),
                 })
             })
-
+            console.log("before post");
             $.post('https://drp-mdt/saveIncident', JSON.stringify({
                 ID: dbid,
                 title: title,
@@ -363,7 +363,7 @@ $(document).ready(() => {
                 associated: associated,
                 time: time.getTime()
             }));
-
+            console.log("after post");
             setTimeout(() => {
                 if (canRefreshIncidents == true) {
                     canRefreshIncidents = false

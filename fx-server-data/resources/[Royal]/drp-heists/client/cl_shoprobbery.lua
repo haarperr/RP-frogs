@@ -175,6 +175,8 @@ AddEventHandler("store:dosafe", function()
 	local storeid = isStoreRobbery()
 	local breakchace = math.random(100)
 	if exports["drp-duty"]:LawAmount() >= 1 then
+		safeLocations[storeid].robbed = true
+
 		TriggerEvent("drp-dispatch:storerobbery2")
 		TriggerServerEvent("police:camrobbery",storeid)
 	    TriggerEvent("drp-hud:updateStress",true,15)

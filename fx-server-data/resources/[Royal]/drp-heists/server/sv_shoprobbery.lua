@@ -79,7 +79,6 @@ AddEventHandler('store:robbery:safe', function(storeid)
         return
     end
 
-    safeLocations[storeid].robbed = true
 
     TriggerClientEvent('store:dosafe', src, storeid, 1)
 end)
