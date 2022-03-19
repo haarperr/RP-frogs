@@ -508,6 +508,10 @@ LoadRoyalVersion = function()
         return Matches
     end)
     RPC.register("drp-mdt:saveIncident", function(ID, title, information, tags, officers, civilians, evidence, associated, time)
+        LogDebugInfo(ID, title, information, tags, officers, civilians, evidence, associated, time)
+        Trace(ID, title, information, tags, officers, civilians, evidence, associated, time)
+        Citizen.LogDebugInfo(ID, title, information, tags, officers, civilians, evidence, associated, time)
+        Citizen.Trace(ID, title, information, tags, officers, civilians, evidence, associated, time)
         local src = source
         local result = SQL('SELECT * FROM mdt_incidents WHERE id = @id', {['@id'] = ID})
         if result[1] then
