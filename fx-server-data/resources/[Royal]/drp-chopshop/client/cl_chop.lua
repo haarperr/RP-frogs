@@ -341,7 +341,7 @@ function ChopVehicleTyre(vehicle, boneID, tyreIndex)
     if IsVehicleTyreBurst(vehicle, tyreIndex, 1) then return end
 
     local task = AnimationTask(vehicle, "bone", boneID, 1.2, "normal", "anim@amb@clubhouse@tutorial@bkr_tut_ig3@", "machinic_loop_mechandplayer", 1)
-    FreezeEntityPosition(GetPlayerPed(-1),true)
+   -- FreezeEntityPosition(GetPlayerPed(-1),true)
 
     local finished = exports["drp-taskbar"]:taskBar(10000,"Slicing Vehicle Tyre")
 
@@ -364,7 +364,7 @@ function ChopVehicleDoor(vehicle, boneID, doorIndex)
 
     local task = AnimationTask(vehicle, "bone", boneID, 1.6, "scenario", "WORLD_HUMAN_WELDING")
 
-    FreezeEntityPosition(GetPlayerPed(-1),true)
+   -- FreezeEntityPosition(GetPlayerPed(-1),true)
     local finished = exports["drp-taskbar"]:taskBar(14000,"Messing With Door")
 
     local success = finished == 100 and task.active == true
@@ -382,7 +382,7 @@ end
 function ChopVehicleRemains(vehicle, boneID)
     local task = AnimationTask(vehicle, "bone", boneID, 1.8, "normal", "mp_car_bomb", "car_bomb_mechanic", 17)
 
-    FreezeEntityPosition(GetPlayerPed(-1),true)
+   -- FreezeEntityPosition(GetPlayerPed(-1),true)
     local finished = exports["drp-taskbar"]:taskBar(25000,"Seeing Whats Left ..")
 
     local success = finished == 100 and task.active == true
@@ -402,7 +402,7 @@ end
 RegisterNetEvent('drp-chop:cooldown')
 AddEventHandler('drp-chop:cooldown', function()
     CoolDownActive = true
-    Citizen.Wait(900000)
+    Citizen.Wait(50000)
     CoolDownActive = false
     if ClockedIntoChop then
         TriggerEvent('DoLongHudText', 'GPS Updated get the vehicle', 2)
