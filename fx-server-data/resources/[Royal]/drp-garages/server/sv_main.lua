@@ -255,7 +255,7 @@ RPC.register("drp-garages:spawned:get", function(pID)
 			customized = vehicles[1].data,
 			plate = vehicles[1].license_plate,
 		}
-	if vehicles[1].finance_time == "0" then 
+	if vehicles[1].finance_time == 0 then 
 		TriggerClientEvent('DoLongHudText', pSrc, "You must make a car payment to use valet.", 2)
 	else
 		if vehicles[1].current_garage == "Impound Lot" and vehicles[1].vehicle_state == 'Normal Impound' then
