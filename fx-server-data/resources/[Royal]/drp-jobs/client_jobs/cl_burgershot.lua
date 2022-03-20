@@ -296,7 +296,7 @@ RegisterNetEvent('drp-burgershot:store')
 AddEventHandler('drp-burgershot:store', function()
     local job = exports["isPed"]:GroupRank('burger_shot')
     if job >= 1 then
-        TriggerEvent("server-inventory-open", "150", "Shop")
+        TriggerEvent("server-inventory-open", "54", "Shop")
 		Wait(1000)
     else
         TriggerEvent('DoLongHudText', 'You do not work here !',2)
