@@ -2531,6 +2531,11 @@ end
         TriggerEvent("murdermeal:toys1")
     end
 
+    if itemid == "murdermeal" then
+        TriggerEvent("murdermeal")
+    end
+
+
     if itemid == "mask" then
         local parsedInfo = json.decode(passedItemInfo)
         --TriggerEvent("facewear:setWear", 4, parsedInfo.mask, parsedInfo.txd, parsedInfo.palette)
