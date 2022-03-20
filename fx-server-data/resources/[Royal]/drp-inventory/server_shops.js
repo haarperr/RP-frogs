@@ -151,7 +151,7 @@ function BurgerShotStore() {
         { item_id: "cheese", id: 0, name: "Shop", information: "{}", slot: 7, amount: 15 },
         { item_id: "water", id: 0, name: "Shop", information: "{}", slot: 8, amount: 15 },
         { item_id: "potato", id: 0, name: "Shop", information: "{}", slot: 9, amount: 15 },
-        
+        { item_id: "randomtoy", id: 0, name: "Shop", information: "{}", slot: 10, amount: 15 },
         
 
     ];
