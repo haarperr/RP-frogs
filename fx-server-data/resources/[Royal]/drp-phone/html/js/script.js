@@ -887,7 +887,7 @@ function addRacingHighScores(highScores) {
         <div class="collapsible-header">
             <i class="fad fa-trophy" style="font-size: 55px"> </i>
             <i class="name-car" style="font-size: 18px;">${score.map}</i>
-            <span  class="new-badge">Vencedor: ${score.fastestName}</span>
+            <span  class="new-badge">Lap Record: ${score.fastestLap}</span>
         </div>
         <div class="collapsible-body garage-body">
         <i class="fas fa-map-marker-alt fa-2x btn-contacts-send-message"  aria-label="${score.fastestName}" style="margin-top: 20px;margin-left: 47px;"></i>

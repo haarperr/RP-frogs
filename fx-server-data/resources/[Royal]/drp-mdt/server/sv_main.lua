@@ -506,12 +506,13 @@ LoadRoyalVersion = function()
             end
         end
         return Matches
-    end)
-    RPC.register("drp-mdt:saveIncident", function(ID, title, information, tags, officers, civilians, evidence, associated, time)
+        RegisterServerEvent("drp-mdt:saveIncident")
+        AddEventHandler("drp-mdt:saveIncident", function((ID, title, information, tags, officers, civilians, evidence, associated, time)
+    if info == 'add' then 
         local src = source
         local result = SQL('SELECT * FROM mdt_incidents WHERE id = @id', {['@id'] = ID})
         if result[1] then
-            SQL("UPDATE mdt_incidents SET title = @title, information = @information, tags = @tags, officers = @officers, civilians = @civilians, evidence = @evidence, associated = @associated, time = @time, author = @author WHERE id = @id", {
+            exports.ghmattimysql:execute("UPDATE mdt_incidents SET title = @title, information = @information, tags = @tags, officers = @officers, civilians = @civilians, evidence = @evidence, associated = @associated, time = @time, author = @author WHERE id = @id", {
                 ['@id'] = ID,
                 ['@title'] = title, 
                 ['@information'] = information, 
@@ -526,7 +527,7 @@ LoadRoyalVersion = function()
             
             CreateStuffLog("EditIncident", time, GetCharData(src).first_name..' '..GetCharData(src).last_name)
         else
-            SQL('INSERT INTO mdt_incidents (title, information, tags, officers, civilians, evidence, associated, time, author) VALUES (@title, @information, @tags, @officers, @civilians, @evidence, @associated, @time, @author)', {
+            exports.ghmattimysql:execute('INSERT INTO mdt_incidents (title, information, tags, officers, civilians, evidence, associated, time, author) VALUES (@title, @information, @tags, @officers, @civilians, @evidence, @associated, @time, @author)', {
                 ['@title'] = title, 
                 ['@information'] = information, 
                 ['@tags'] = json.encode(tags),
