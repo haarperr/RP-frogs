@@ -2528,7 +2528,7 @@ end
     end
 
     if itemid == "randomtoy" then
-        TriggerEvent("murdermeal")
+        TriggerEvent("murdermeal:toys1")
     end
 
     if itemid == "mask" then
