@@ -215,6 +215,9 @@ RPC.register("drp-garages:attempt:sv", function(data)
 
     local enginePercent = data.engine_damage / 10
 	local bodyPercent = data.body_damage / 10
+	if vehicles[1].finance_time == 0 then 
+		TriggerClientEvent('DoLongHudText', pSrc, "Must make a payment to access this vehicle at the valet.", 2)
+	else
 	TriggerClientEvent('drp-context:sendMenu', pSrc, {
 		{
 			id = 1,
@@ -242,6 +245,7 @@ RPC.register("drp-garages:attempt:sv", function(data)
 			txt = "Garage: "..data.current_garage.." | Engine: "..enginePercent.."% | Body: "..bodyPercent.."%"
 		},
 	})
+end
 end)
 
 RPC.register("drp-garages:spawned:get", function(pID)
@@ -255,9 +259,7 @@ RPC.register("drp-garages:spawned:get", function(pID)
 			customized = vehicles[1].data,
 			plate = vehicles[1].license_plate,
 		}
-	if vehicles[1].finance_time == 0 then 
-		TriggerClientEvent('DoLongHudText', pSrc, "You must make a car payment to use valet.", 2)
-	else
+	
 		if vehicles[1].current_garage == "Impound Lot" and vehicles[1].vehicle_state == 'Normal Impound' then
 			if user:getCash() >= 100 then
 				user:removeMoney(100)
@@ -269,7 +271,7 @@ RPC.register("drp-garages:spawned:get", function(pID)
 		else
 			TriggerClientEvent("drp-garages:attempt:spawn", pSrc, args, true)
 		end
-	end
+	
 	end)
 end)
 
