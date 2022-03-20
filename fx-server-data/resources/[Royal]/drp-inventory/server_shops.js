@@ -472,6 +472,7 @@ function UwUCafeFridge() {
         { item_id: "water", id: 0, name: "Shop", information: "{}", slot: 8, amount: 15 },
         { item_id: "potato", id: 0, name: "Shop", information: "{}", slot: 9, amount: 15 },
         { item_id: "randomtoy", id: 0, name: "Shop", information: "{}", slot: 10, amount: 15 },
+        { item_id: "murdermeal", id: 0, name: "Shop", information: "{}", slot: 11, amount: 15 },
         
 
     ];
