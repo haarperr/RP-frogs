@@ -997,15 +997,15 @@ AddEventHandler('drp-duty:in-n-out:successful', function()
 	end
 end)
 
-currentCops = 0
+policeonline = 0
 
 RegisterNetEvent('job:policecount')
 AddEventHandler('job:policecount', function(currentCops)
-	currentCops = currentCops
+	policeonline = currentCops
 end)
 
 function LawAmount()
-	return currentCops
+	return policeonline
 end
 
 
