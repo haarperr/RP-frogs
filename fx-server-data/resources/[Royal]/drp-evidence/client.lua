@@ -565,7 +565,7 @@ AddEventHandler('evidence:clear', function()
     local DeleteIds = {}
     for k, v in pairs(scannedEvidence) do
       local evidenceDistance = Vdist(v.x, v.y, v.z, playerCoords)
-      if evidenceDistance < 10.0 then
+      if evidenceDistance < 12.5 then
         DeleteIds[#DeleteIds + 1] = k
       end
     end
@@ -729,7 +729,7 @@ Citizen.CreateThread(
         end
         if IsControlJustReleased(0,38) and minScan < 2.0 then
           local myjob = exports["isPed"]:isPed("myjob")
-          local finished = exports['drp-taskbar']:taskBar(5000,"Picking Up Evidence",false)
+          local finished = exports['drp-taskbar']:taskBar(3000,"Picking Up Evidence",false)
           if (finished) then  
             if myjob ~= "police" or myjob ~= "state" or myjob ~= "sheriff" then
               TriggerServerEvent("evidence:removal",closestID)
