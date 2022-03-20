@@ -268,6 +268,9 @@ RPC.register("drp-garages:spawned:get", function(pID)
 		else
 			if vehicles[1].finance_time == 0 then 
 				TriggerClientEvent('DoLongHudText', pSrc, "You must make a car payment to use valet.", 2)
+				
+				Citizen.Wait(100)
+				TriggerClientEvent('drp-garages:store')
 				return
 			else
 			TriggerClientEvent("drp-garages:attempt:spawn", pSrc, args, true)
