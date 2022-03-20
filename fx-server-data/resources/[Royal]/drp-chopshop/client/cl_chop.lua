@@ -402,7 +402,7 @@ end
 RegisterNetEvent('drp-chop:cooldown')
 AddEventHandler('drp-chop:cooldown', function()
     CoolDownActive = true
-    Citizen.Wait(50000)
+    Citizen.Wait(500000)
     CoolDownActive = false
     if ClockedIntoChop then
         TriggerEvent('DoLongHudText', 'GPS Updated get the vehicle', 2)
