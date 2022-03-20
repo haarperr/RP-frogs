@@ -2143,6 +2143,97 @@ end
         TriggerEvent('drp-pokemon:openPack', itemid)
     end
 
+    if (itemid == "randomtoy") then ---------------- DONE 
+        local finished = exports["drp-taskbar"]:taskBar(2000,"Opening Toy")
+        if (finished == 100) then
+            local randomtoy = math.random(1,28)
+             if randomtoy = 1 then
+                TriggerEvent("player:receiveItem", "toy_shelly", 1)
+            
+            else if randomtoy = 2 then
+                TriggerEvent("player:receiveItem", "toy_ken", 1)
+            
+            else if randomtoy = 3 then
+                TriggerEvent("player:receiveItem", "toy_rob", 1)
+            
+            else if randomtoy = 4 then
+                TriggerEvent("player:receiveItem", "toy_sheldon", 1)
+            
+            else if randomtoy = 5 then
+                TriggerEvent("player:receiveItem", "toy_kevin", 1)
+            
+            else if randomtoy = 6 then
+                TriggerEvent("player:receiveItem", "toy_dean", 1)
+            
+            else if randomtoy = 7 then
+                TriggerEvent("player:receiveItem", "toy_pilbis", 1)
+            
+            else if randomtoy = 8 then
+                TriggerEvent("player:receiveItem", "toy_betch", 1)
+            
+            else if randomtoy = 9 then
+                TriggerEvent("player:receiveItem", "toy_bradley", 1)
+            
+            else if randomtoy = 10 then
+                TriggerEvent("player:receiveItem", "toy_barry", 1)
+            
+            else if randomtoy = 11 then
+                TriggerEvent("player:receiveItem", "toy_lenny", 1)
+            
+            else if randomtoy = 12 then
+                TriggerEvent("player:receiveItem", "toy_ott", 1)
+            
+            else if randomtoy = 13 then
+                TriggerEvent("player:receiveItem", "toy_slim", 1)
+            
+            else if randomtoy = 14 then
+                TriggerEvent("player:receiveItem", "toy_tony", 1)
+            
+            else if randomtoy = 15 then
+                TriggerEvent("player:receiveItem", "toy_cassie", 1)
+            
+            else if randomtoy = 16 then
+                TriggerEvent("player:receiveItem", "toy_clayvon", 1)
+            
+            else if randomtoy = 17 then
+                TriggerEvent("player:receiveItem", "toy_jackie", 1)
+            
+            else if randomtoy = 18 then
+                TriggerEvent("player:receiveItem", "toy_eugene", 1)
+            
+            else if randomtoy = 19 then
+                TriggerEvent("player:receiveItem", "toy_jordan", 1)
+            
+            else if randomtoy = 20 then
+                TriggerEvent("player:receiveItem", "toy_kiki", 1)
+            
+            else if randomtoy = 21 then
+                TriggerEvent("player:receiveItem", "toy_steven", 1)
+            
+            else if randomtoy = 22 then
+                TriggerEvent("player:receiveItem", "toy_kyle", 1)
+            
+            else if randomtoy = 23 then
+                TriggerEvent("player:receiveItem", "toy_oki", 1)
+            
+            else if randomtoy = 24 then
+                TriggerEvent("player:receiveItem", "toy_kitty", 1)
+            
+            else if randomtoy = 25 then
+                TriggerEvent("player:receiveItem", "toy_molly", 1)
+            
+            else if randomtoy = 26 then
+                TriggerEvent("player:receiveItem", "toy_sherry", 1)
+            
+            else if randomtoy = 27 then
+                TriggerEvent("player:receiveItem", "toy_x", 1)
+            
+            else if randomtoy = 28 then
+                TriggerEvent("player:receiveItem", "toy_frank", 1)
+
+            end
+        end
+
 
   
     end
