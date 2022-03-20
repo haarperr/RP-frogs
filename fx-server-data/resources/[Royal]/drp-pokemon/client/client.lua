@@ -341,7 +341,7 @@ end
 -- ONE simple setting to allow other players to ride on other players IF they are animals
 -- NOTE: you CAN NOT control the other player though!
 --===========================================================================================================================
-local AllowRidingAnimalPlayers = false
+local AllowRidingAnimalPlayers = true
 
 --===========================================================================================================================
 -- Here you can set if you used certain mods to replace animal in the game
