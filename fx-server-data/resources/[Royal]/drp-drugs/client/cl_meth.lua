@@ -152,7 +152,7 @@ AddEventHandler("meth:finish", function()
 		local finished = exports["drp-taskbar"]:taskBar(32000,"Packing Crystals!")
 		if (finished == 100) then
 			FreezeEntityPosition(PlayerPedId(),false)
-			TriggerEvent("inventory:removeItem","methlabcured1", 2)
+			TriggerEvent("inventory:removeItem","methlabcured", 2)
 			TriggerEvent("inventory:removeItem","methlabbaggy", 1)
 			ongoing = true
 			scaling = true
