@@ -8714,7 +8714,7 @@ DOOR_CONFIG = {
     {
       info = "oaks front gate 2",
       active = true,
-      id = 529,
+      id = 530,
       coords = vector3(1598.57, 2208.48, 78.51),
       model = 1930237257,
       lock = true,
