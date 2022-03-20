@@ -8660,6 +8660,61 @@ DOOR_CONFIG = {
         }
       }
     },
+    {
+      info = "oaks barn door 1 ",
+      active = true,
+      id = 527,
+      coords = vector3(1553.0, 2189.6, 78.84),
+      model = -218858073,
+      lock = true,
+      keyFob = true,
+      desc = "",
+      access = {
+        job = {},
+        cid = {
+          [1] = true,
+		[8] = true
+        }
+      }
+    },
+    {
+      info = "oaks barn door 2",
+      active = true,
+      id = 528,
+      coords = vector3(1551.2, 2189.29, 78.89),
+      model = -218858073,
+      lock = true,
+      keyFob = true,
+      desc = "",
+      access = {
+        job = {},
+        cid = {
+          [1] = true,
+		[8] = true
+        }
+      }
+    },
+    {
+      info = "oaks front gate",
+      active = true,
+      id = 529,
+      coords = vector3(1497.52, 2201.84, 81.1935),
+      model = 1930237257,
+      lock = true,
+      keyFob = true,
+      desc = "",
+      access = {
+        job = {},
+        cid = {
+          [1] = true,
+		[8] = true
+        }
+      }
+    },
+
+
+
+
 
 
     
