@@ -1342,7 +1342,7 @@ function addVehicles(vehicleData, showCarPayments) {
     <h3>
     `
         if (vehicleData[vehicle].canSpawn)
-            // vehicleElement += `<button id="hovercorridas" class=" garage-spawn" aria-label="Spawn" data-plate="${vehicleData[vehicle].plate}"><i class="fas fa-magic"></i> </button> `
+         vehicleElement += `<button id="hovercorridas" class=" garage-spawn" aria-label="Spawn" data-plate="${vehicleData[vehicle].plate}"><i class="fas fa-magic"></i> </button> `
             vehicleElement += `<button id="hovercorridas" class="" aria-label=""><i class=""></i> </button>
         
         <button style="margin-left: 15px" id="hovercorridas" class="" aria-label="Garage - ${vehicleData[vehicle].garage}" data-balloon-pos="up"><i  class="fas fa-oil-can"></i> </button>
@@ -1379,10 +1379,10 @@ function addVehicles(vehicleData, showCarPayments) {
                 </div>
                 <div class="row">
                     <div class="col s12 center-align">`
-                    if (vehicleData[vehicle].canSpawn)
+               
                         vehicleElement += `<button class="waves-effect waves-light btn-small garage-spawn" data-plate="${vehicleData[vehicle].plate}"><i class="fas fa-magic"></i> Spawn</button> `
 
-                    if (vehicleData[vehicle].payments > 0 && vehicleData[vehicle].amountDue > 0)
+                   
                         vehicleElement += `<button class="waves-effect waves-light btn-small red garage-pay" data-plate="${vehicleData[vehicle].plate}"><i class="fas fa-hand-holding-usd"></i> Pay</button> `
 
                         vehicleElement += `<button class="waves-effect waves-light btn-small garage-track" data-plate="${vehicleData[vehicle].plate}"><i class="fas fa-map-marker-alt"></i> Track</button>
