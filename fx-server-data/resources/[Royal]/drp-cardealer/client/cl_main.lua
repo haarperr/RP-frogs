@@ -354,8 +354,7 @@ end
 
 RegisterNetEvent("pdm:payment")
 AddEventHandler("pdm:payment", function(CurrentPayment)
-	local pdmpayment = math.ceil(CurrentPayment / 10)
-    TriggerServerEvent("server:GroupPayment","pdm", pdmpayment)
+    TriggerServerEvent("server:GroupPayment","pdm", CurrentPayment)
 end)
 
 function purchaseVeh(model, price, financed)
