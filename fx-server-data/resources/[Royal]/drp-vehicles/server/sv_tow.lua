@@ -130,7 +130,7 @@ AddEventHandler("drp-vehicles:repo3", function(plate)
                 exports.ghmattimysql:execute("UPDATE characters_cars SET current_garage = @current_garage, vehicle_state = @vehicle_state WHERE license_plate = @license_plate", {
                     ['@license_plate'] = plate,
                     ['@repoed'] = "0",
-                    ['@current_garage'] = result3[13],
+                    ['@current_garage'] = result3[14],
                     ['@vehicle_state'] = "In"
                 })
                 TriggerClientEvent("drp-vehicles:repo:success2", src)
