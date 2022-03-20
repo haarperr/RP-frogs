@@ -510,7 +510,7 @@ onNet("server-inventory-open", async(coords, player, secondInventory, targetName
 
             var targetinvname = targetName;
             var shopArray = ConvenienceStore();
-            var shopAmount = 12;
+            var shopAmount = 17;
             emitNet("inventory-open-target", src, [invArray, arrayCount, playerinvname, shopArray, shopAmount, targetinvname, 500, false]);
 
         } else if (secondInventory == "4") {
