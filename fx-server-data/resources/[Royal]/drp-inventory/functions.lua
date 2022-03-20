@@ -2527,7 +2527,7 @@ end
         TriggerEvent("inventory-open-container", data.inventoryId, data.slots, data.weight)
     end
 
-    if itemid == "murdermeal" then
+    if itemid == "randomtoy" then
         TriggerEvent("murdermeal")
     end
 
