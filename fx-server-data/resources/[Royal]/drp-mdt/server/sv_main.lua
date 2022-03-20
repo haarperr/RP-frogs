@@ -526,7 +526,7 @@ LoadRoyalVersion = function()
             
             CreateStuffLog("EditIncident", time, GetCharData(src).first_name..' '..GetCharData(src).last_name)
         else
-            SQL('INSERT INTO mdt_incidents (title, information, tags, officers, civilians, evidence, associated, time, author) VALUES (@title, @information, @tags, @officers, @civilians, @evidence, @associated, @time, @author)', {
+            exports.ghmattimysql:execute('INSERT INTO mdt_incidents (title, information, tags, officers, civilians, evidence, associated, time, author) VALUES (@title, @information, @tags, @officers, @civilians, @evidence, @associated, @time, @author)', {
                 ['@title'] = title, 
                 ['@information'] = information, 
                 ['@tags'] = json.encode(tags),
