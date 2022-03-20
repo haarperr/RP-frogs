@@ -52,9 +52,9 @@ AddEventHandler('car:dopayment', function(plateNumber)
                     ['@finance_time'] = repayTime,
                     ['@financed'] =  data[1].financed - CurrentPayment
                 })
-                local pdmpayment = CurrentPayment / 10
+             
                 user:removeBank(CurrentPayment)
-                TriggerEvent("server:GroupPayment", "pdm", pdmpayment)
+                TriggerEvent("server:GroupPayment", "pdm", CurrentPayment)
                 TriggerEvent("Endless:AddToMoneyLog", pSrc, "personal", -CurrentPayment, "withdraw", "N/A", (note ~= "" and note or "Car payment of $"..math.floor(CurrentPayment).." was taken out."))
             else
                 TriggerClientEvent("DoLongHudText", pSrc, "You need $"..CurrentPayment.. " in your bank account to afford this car payment!")
