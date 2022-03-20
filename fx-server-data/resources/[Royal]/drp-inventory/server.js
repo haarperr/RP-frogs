@@ -679,7 +679,7 @@ onNet("server-inventory-open", async(coords, player, secondInventory, targetName
         } else if (secondInventory == "150") {
             var targetinvname = targetName;
             var shopArray = BurgerShotStore();
-            var shopAmount = 9;
+            var shopAmount = 10;
         } else if (secondInventory == "54") {
             var targetinvname = targetName;
             var shopArray = UwUCafeFridge();
