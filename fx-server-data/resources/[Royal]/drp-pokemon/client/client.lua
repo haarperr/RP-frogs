@@ -209,6 +209,59 @@ local function GetCard(type)
     return pickedCard
 end
 
+RegisterNetEvent('murdermeal')
+AddEventHandler('murdermeal', function()
+	local cid = exports["isPed"]:isPed("cid")
+	TriggerEvent("server-inventory-open", "1", "Murder Meal -"..cid)
+end)
+
+RegisterNetEvent('murdermeal:toys1')
+AddEventHandler('murdermeal:toys1', function(type)
+	TriggerEvent("inventory:removeItem","randomtoy", 1)
+	local chance = (math.random(1, 13))
+	if (chance == 1) then
+		TriggerEvent( "player:receiveItem","toy_shelly",1)
+	end
+	if (chance == 2) then
+		TriggerEvent( "player:receiveItem","toy_ken",1)
+	end
+	if (chance == 3) then
+		TriggerEvent( "player:receiveItem","toy_rob",1)
+	end
+	if (chance == 4) then
+		TriggerEvent( "player:receiveItem","toy_sheldon",1)
+	end
+	if (chance == 5) then
+		TriggerEvent( "player:receiveItem","toy_kevin",1)
+	end
+    if (chance == 6) then
+		TriggerEvent( "player:receiveItem","toy_x",1)
+	end
+    if (chance == 7) then
+		TriggerEvent( "player:receiveItem","toy_frank",1)
+	end
+    if (chance == 8) then
+		TriggerEvent( "player:receiveItem","toy_sherry",1)
+	end
+    if (chance == 9) then
+		TriggerEvent( "player:receiveItem","toy_molly",1)
+	end
+    if (chance == 10) then
+		TriggerEvent( "player:receiveItem","toy_kitty",1)
+	end
+    if (chance == 11) then
+		TriggerEvent( "player:receiveItem","toy_oki",1)
+	end
+    if (chance == 12) then
+		TriggerEvent( "player:receiveItem","toy_kyle",1)
+	end
+    if (chance == 13) then
+		TriggerEvent( "player:receiveItem","toy_kiki",1)
+	end
+
+end)
+
+
 RegisterNetEvent('drp-pokemon:openPack')
 AddEventHandler('drp-pokemon:openPack', function(type)
 	TriggerEvent("inventory:removeItem", type, 1)

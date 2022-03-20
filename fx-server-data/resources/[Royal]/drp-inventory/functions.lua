@@ -2527,6 +2527,10 @@ end
         TriggerEvent("inventory-open-container", data.inventoryId, data.slots, data.weight)
     end
 
+    if itemid == "murdermeal" then
+        TriggerEvent("murdermeal")
+    end
+
     if itemid == "mask" then
         local parsedInfo = json.decode(passedItemInfo)
         --TriggerEvent("facewear:setWear", 4, parsedInfo.mask, parsedInfo.txd, parsedInfo.palette)
