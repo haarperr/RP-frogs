@@ -776,7 +776,8 @@ RegisterNUICallback('carpaymentsowed', function()
 end)
 
 RegisterNUICallback('vehspawn', function(data)
-  RPC.execute("phone:attempt:sv", data.vehplate)
+  --RPC.execute("phone:attempt:sv", data.vehplate)
+  TriggerEvent("phone:carspawn", data,coords,state)
 end)
 
 RegisterNUICallback('vehtrack', function(data)
@@ -796,10 +797,10 @@ RegisterNetEvent("phone:carspawn", function(data,coords,state)
         trackVehicle = false
         SpawnVehicle(value.model, coords[1],coords[2],coords[3], value.fuel, value.data, value.license_plate, true,value.engine_damage,value.body_damage)
       else
-        TriggerEvent("DoLongHudText","Nao podes tirar o veiculo de tao longe.", 2)
+        TriggerEvent("DoLongHudText","Cannot spawn", 2)
       end
     else
-      TriggerEvent("DoLongHudText","Veiculo esta numa garagem.", 2)
+      TriggerEvent("DoLongHudText","Vehicle is in garage", 2)
     end
   end
 end)
