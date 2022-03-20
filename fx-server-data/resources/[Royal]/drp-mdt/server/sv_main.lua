@@ -511,7 +511,7 @@ LoadRoyalVersion = function()
         AddEventHandler("drp-mdt:saveIncident", function(ID, title, information, tags, officers, civilians, evidence, associated, time)
     if info == 'add' then 
         local src = source
-        local result = exports.ghmattimysql:execute('SELECT * FROM mdt_incidents WHERE id = @id', {['@id'] = ID})
+        local result = SQL('SELECT * FROM mdt_incidents WHERE id = @id', {['@id'] = ID})
         if result[1] then
             exports.ghmattimysql:execute("UPDATE mdt_incidents SET title = @title, information = @information, tags = @tags, officers = @officers, civilians = @civilians, evidence = @evidence, associated = @associated, time = @time, author = @author WHERE id = @id", {
                 ['@id'] = ID,
