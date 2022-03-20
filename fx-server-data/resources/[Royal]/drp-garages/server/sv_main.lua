@@ -272,7 +272,7 @@ RPC.register("drp-garages:spawned:get", function(pID)
 				Citizen.Wait(100)
 				TriggerClientEvent('drp-garages:store')
 				return
-			else
+			else 
 			TriggerClientEvent("drp-garages:attempt:spawn", pSrc, args, true)
 			end
 		end
