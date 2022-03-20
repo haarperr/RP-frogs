@@ -352,6 +352,12 @@ function setCategory(type)
     })
 end
 
+RegisterNetEvent("pdm:payment")
+AddEventHandler("pdm:payment", function(CurrentPayment)
+	local pdmpayment = math.ceil(CurrentPayment / 10)
+    TriggerServerEvent("server:GroupPayment","pdm", pdmpayment)
+end)
+
 function purchaseVeh(model, price, financed)
     local model, price = model, price
     local HasEnoughBread = remoteCalls.execute("drp-cardealer:hasEnough", price, financed)
