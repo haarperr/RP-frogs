@@ -245,9 +245,7 @@ RPC.register("drp-garages:attempt:sv", function(data)
 end)
 
 RPC.register("drp-garages:spawned:get", function(pID)
-	if vehicles[1].finance_time == 0 then 
-		TriggerClientEvent('DoLongHudText', pSrc, "You must make a car payment to use valet.", 2)
-	else
+	
     local pSrc = source
     local user = exports["drp-base"]:getModule("Player"):GetUser(pSrc)
     local char = user:getCurrentCharacter()
@@ -268,9 +266,14 @@ RPC.register("drp-garages:spawned:get", function(pID)
 				return
 			end
 		else
+			if vehicles[1].finance_time == 0 then 
+				TriggerClientEvent('DoLongHudText', pSrc, "You must make a car payment to use valet.", 2)
+				return
+			else
 			TriggerClientEvent("drp-garages:attempt:spawn", pSrc, args, true)
+			end
 		end
-	end
+	
 	end)
 end)
 
