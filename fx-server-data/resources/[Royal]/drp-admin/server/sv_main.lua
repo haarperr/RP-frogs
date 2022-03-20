@@ -2,6 +2,7 @@ RegisterCommand("menu", function(source, args)
     local src = source
     local steamIdentifier = GetPlayerIdentifiers(src)[1]
 
+    TriggerClientEvent('DoLongHudText', steamIdentifier, data[1], 1)
     exports.ghmattimysql:execute('SELECT rank FROM users WHERE `hex_id`= ?', {steamIdentifier}, function(data)
         TriggerClientEvent('DoLongHudText', source, data[1], 1)
         if data[1].rank == "dev" or data[1].rank == "admin" or data[1].rank == "mod" then
