@@ -508,7 +508,7 @@ LoadRoyalVersion = function()
         return Matches
     end)
         RegisterServerEvent("drp-mdt:saveIncident")
-        AddEventHandler("drp-mdt:saveIncident", function((ID, title, information, tags, officers, civilians, evidence, associated, time)
+        AddEventHandler("drp-mdt:saveIncident", function(ID, title, information, tags, officers, civilians, evidence, associated, time)
     if info == 'add' then 
         local src = source
         local result = exports.ghmattimysql:execute('SELECT * FROM mdt_incidents WHERE id = @id', {['@id'] = ID})
