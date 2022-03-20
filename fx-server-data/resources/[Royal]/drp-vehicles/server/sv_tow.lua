@@ -119,6 +119,28 @@ AddEventHandler("drp-vehicles:repo2", function(plate)
 end)
 
 
+RegisterServerEvent("drp-vehicles:repo3")
+AddEventHandler("drp-vehicles:repo3", function(plate)
+    local src = source
+	local user = exports["drp-base"]:getModule("Player"):GetUser(src)
+    local char = user:getCurrentCharacter()
+    exports.ghmattimysql:execute("SELECT * FROM characters WHERE id = @cid", {['cid'] = char.id}, function(result3)
+        if result3[1].job == 'towunion' or result3[1].job == 'police' or result3[1].job == 'sheriff' then
+            if result3[1] then
+                exports.ghmattimysql:execute("UPDATE characters_cars SET current_garage = @current_garage, vehicle_state = @vehicle_state WHERE license_plate = @license_plate", {
+                    ['@license_plate'] = plate,
+                    ['@repoed'] = "0",
+                    ['@current_garage'] = result3[14],
+                    ['@vehicle_state'] = "In"
+                })
+                TriggerClientEvent("drp-vehicles:repo:success2", src)
+            else
+                TriggerClientEvent('DoLongHudText', SrcID, 'You cannot do this.', 2)
+            end
+        end
+    end)
+end)
+
 RegisterServerEvent("drp-vehicles:release:vehicle")
 AddEventHandler("drp-vehicles:release:vehicle", function(ServerID, plate)
     local SrcID = tonumber(ServerID)

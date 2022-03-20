@@ -3,7 +3,7 @@
 RegisterNetEvent('drp-dispatch:gunShot')
 AddEventHandler('drp-dispatch:gunShot', function(targetCoords)
 	if exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' or exports["isPed"]:isPed("myJob") == "ems" then
-		local alpha = 250
+		local alpha = 360
 		local gunshotBlip = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
 
 		SetBlipScale(gunshotBlip, 1.3)
@@ -37,7 +37,7 @@ end)
 
 RegisterCommand("riot", function()
     if exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' or exports["isPed"]:isPed("myJob") == "ems" then
-		local alpha = 250
+		local alpha = 360
 		local Blip = AddBlipForCoord(1690.576, 2534.541, 61.3709)
 
 		SetBlipScale(Blip, 1.3)
@@ -78,7 +78,7 @@ end)
 -- AddEventHandler('vrp-outlawalert:combatInProgress', function(targetCoords)
 -- 	if PlayerData.job.name == 'police' then	
 -- 		if Config.gunAlert then
--- 			local alpha = 250
+-- 			local alpha = 360
 -- 			local knife = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
 
 -- 			SetBlipScale(knife, 1.3)
@@ -117,7 +117,7 @@ end)
 RegisterNetEvent('drp-dispatch:policealertA')
 AddEventHandler('drp-dispatch:policealertA', function(targetCoords)
   if exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' or exports["isPed"]:isPed("myJob") == "ems" then	
-		local alpha = 250
+		local alpha = 360
 		local policedown = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
 
 		SetBlipSprite(policedown,  489)
@@ -150,7 +150,7 @@ end)
 RegisterNetEvent('drp-dispatch:policealertB')
 AddEventHandler('drp-dispatch:policealertB', function(targetCoords)
 	if exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' or exports["isPed"]:isPed("myJob") == "ems" then	
-		local alpha = 250
+		local alpha = 360
 		local policedown2 = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
 
 		SetBlipSprite(policedown2,  489)
@@ -184,7 +184,7 @@ end)
 RegisterNetEvent('drp-dispatch:panic')
 AddEventHandler('drp-dispatch:panic', function(targetCoords)
 if exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' or exports["isPed"]:isPed("myJob") == "ems" then	
-		local alpha = 250
+		local alpha = 360
 		local panic = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
 
 		SetBlipSprite(panic,  126)
@@ -218,7 +218,7 @@ end)
 RegisterNetEvent('drp-dispatch:epanic')
 AddEventHandler('drp-dispatch:epanic', function(targetCoords)
 if exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' or exports["isPed"]:isPed("myJob") == "ems" then	
-		local alpha = 250
+		local alpha = 360
 		local panic = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
 
 		SetBlipSprite(panic,  126)
@@ -253,7 +253,7 @@ end)
 RegisterNetEvent('drp-dispatch:gexplosion')
 AddEventHandler('drp-dispatch:gexplosion', function(targetCoords)
 if exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' or exports["isPed"]:isPed("myJob") == "ems" then	
-		local alpha = 250
+		local alpha = 360
 		local explosion = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
 
 		SetBlipSprite(explosion,  361)
@@ -290,7 +290,7 @@ end)
 RegisterNetEvent('drp-dispatch:tenForteenA')
 AddEventHandler('drp-dispatch:tenForteenA', function(targetCoords)
 	if exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' or exports["isPed"]:isPed("myJob") == "ems" then	
-		local alpha = 250
+		local alpha = 360
 		local medicDown = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
 
 		SetBlipSprite(medicDown,  489)
@@ -324,7 +324,7 @@ end)
 RegisterNetEvent('drp-dispatch:tenForteenB')
 AddEventHandler('drp-dispatch:tenForteenB', function(targetCoords)
 	if exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' or exports["isPed"]:isPed("myJob") == "ems" then	
-		local alpha = 250
+		local alpha = 360
 		local medicDown2 = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
 
 		SetBlipSprite(medicDown2,  489)
@@ -359,7 +359,7 @@ end)
 RegisterNetEvent('drp-dispatch:downalert')
 AddEventHandler('drp-dispatch:downalert', function(targetCoords)
 	if exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' or exports["isPed"]:isPed("myJob") == "ems" then	
-		local alpha = 250
+		local alpha = 360
 		local injured = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
 
 		SetBlipSprite(injured,  126)
@@ -393,7 +393,7 @@ end)
 -- RegisterNetEvent('drp-dispatch:assistance')
 -- AddEventHandler('drp-dispatch:assistance', function(targetCoords)
 -- if PlayerData.job.name == 'police' or PlayerData.job.name == 'ambulance' then	
--- 		local alpha = 250
+-- 		local alpha = 360
 -- 		local assistance = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
 
 -- 		SetBlipSprite(assistance,  126)
@@ -428,7 +428,7 @@ end)
 -- RegisterNetEvent('drp-dispatch:vehiclecrash')
 -- AddEventHandler('drp-dispatch:vehiclecrash', function()
 -- if PlayerData.job.name == 'police' or PlayerData.job.name == 'ambulance' then	
--- 		local alpha = 250
+-- 		local alpha = 360
 -- 		local targetCoords = GetEntityCoords(PlayerPedId(), true)
 -- 		local recket = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
 
@@ -464,7 +464,7 @@ end)
 RegisterNetEvent("drp-dispatch:carBoostBlip")
 AddEventHandler("drp-dispatch:carBoostBlip", function(targetCoords)
 	if exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' then	
-		local alpha = 250
+		local alpha = 360
 		local thiefBlip = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
 
 		SetBlipSprite(thiefBlip,  488)
@@ -499,7 +499,7 @@ end)
 RegisterNetEvent("drp-dispatch:carBoostBlipTracker")
 AddEventHandler("drp-dispatch:carBoostBlipTracker", function(targetCoords)
 	if exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' then	
-		local alpha = 250
+		local alpha = 360
 		local thiefBlip = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
 
 		SetBlipSprite(thiefBlip,  326)
@@ -531,7 +531,7 @@ end)
 RegisterNetEvent('drp-dispatch:vehiclesteal')
 AddEventHandler('drp-dispatch:vehiclesteal', function(targetCoords)
 	if exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' then	
-		local alpha = 250
+		local alpha = 360
 		local thiefBlip = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
 
 		SetBlipSprite(thiefBlip,  488)
@@ -568,7 +568,7 @@ end)
 RegisterNetEvent('drp-dispatch:storerobbery')
 AddEventHandler('drp-dispatch:storerobbery', function(targetCoords)
 	if exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' then	
-		local alpha = 250
+		local alpha = 360
 		local store = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
 
 		SetBlipHighDetail(store, true)
@@ -604,7 +604,7 @@ end)
 RegisterNetEvent('drp-dispatch:houserobbery2')
 AddEventHandler('drp-dispatch:houserobbery2', function(targetCoords)
 	if exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' then	
-		local alpha = 250
+		local alpha = 360
 		local burglary = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
 
 		SetBlipHighDetail(burglary, true)
@@ -640,7 +640,7 @@ end)
 RegisterNetEvent('drp-dispatch:banktruck')
 AddEventHandler('drp-dispatch:banktruck', function(targetCoords)
 	if exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' then	
-		local alpha = 250
+		local alpha = 360
 		local truck = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
 
 		SetBlipSprite(truck,  477)
@@ -675,7 +675,7 @@ end)
 RegisterNetEvent('drp-dispatch:jewelrobbey')
 AddEventHandler('drp-dispatch:jewelrobbey', function()
 	if exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' then	
-		local alpha = 250
+		local alpha = 360
 		local jew = AddBlipForCoord(-634.02, -239.49, 38)
 
 		SetBlipSprite(jew,  487)
@@ -709,7 +709,7 @@ end)
 -- RegisterNetEvent('drp-dispatch:jailbreak')
 -- AddEventHandler('drp-dispatch:jailbreak', function()
 -- 	if PlayerData.job.name == 'police' then	
--- 		local alpha = 250
+-- 		local alpha = 360
 -- 		local jail = AddBlipForCoord(1779.65, 2590.39, 50.49)
 
 -- 		SetBlipSprite(jail,  487)
@@ -742,7 +742,7 @@ end)
 RegisterNetEvent('drp-dispatch:bankrob')
 AddEventHandler('drp-dispatch:bankrob', function(targetCoords)
 	if exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' then	
-		local alpha = 250
+		local alpha = 360
 		local jew = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
 
 		SetBlipSprite(jew,  487)
@@ -776,7 +776,7 @@ end)
 RegisterNetEvent('drp-dispatch:drugdealreport')
 AddEventHandler('drp-dispatch:drugdealreport', function(targetCoords)
 	if exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' then	
-		local alpha = 250
+		local alpha = 360
 		local jew = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
 
 		SetBlipSprite(jew,  4)
@@ -813,7 +813,7 @@ end)
 RegisterNetEvent('drp-dispatch:bobcatreport')
 AddEventHandler('drp-dispatch:bobcatreport', function(targetCoords)
 	if exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' then	
-		local alpha = 250
+		local alpha = 360
 		local jew = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
 
 		SetBlipSprite(jew,  500)
@@ -851,7 +851,7 @@ end)
 RegisterNetEvent('drp-dispatch:vaultreport')
 AddEventHandler('drp-dispatch:vaultreport', function(targetCoords)
 	if exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' then	
-		local alpha = 250
+		local alpha = 360
 		local jew = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
 
 		SetBlipSprite(jew,  500)

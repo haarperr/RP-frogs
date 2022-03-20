@@ -1427,7 +1427,7 @@ AddEventHandler('impoundsc', function()
     coordB = GetOffsetFromEntityInWorldCoords(playerped, 0.0, 100.0, 0.0)
     targetVehicle = getVehicleInDirection(coordA, coordB)
 	licensePlate = GetVehicleNumberPlateText(targetVehicle)
-	TriggerServerEvent("drp-vehicles:repo2",licensePlate)
+	TriggerServerEvent("drp-vehicles:repo3",licensePlate)
 	deleteVeh(targetVehicle)
 end)
 

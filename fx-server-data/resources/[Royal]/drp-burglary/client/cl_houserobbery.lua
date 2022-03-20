@@ -782,7 +782,7 @@ Citizen.CreateThread(function()
 
       TriggerEvent("animation:PlayAnimation","search")
       FreezeEntityPosition(PlayerPedId(), true)
-      local finished = exports["drp-taskbar"]:taskBar(20000,"Searching "..myRobbableItems[i]['name'])
+      local finished = exports["drp-taskbar"]:taskBar(15000,"Searching "..myRobbableItems[i]['name'])
       if (finished == 100) then
       FreezeEntityPosition(PlayerPedId(), false)
       
