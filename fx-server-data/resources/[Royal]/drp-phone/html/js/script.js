@@ -1344,7 +1344,7 @@ function addVehicles(vehicleData, showCarPayments) {
         if (vehicleData[vehicle].canSpawn)
          vehicleElement += `<button id="hovercorridas" class=" garage-spawn" aria-label="Spawn" data-plate="${vehicleData[vehicle].plate}"><i class="fas fa-magic"></i> </button> `
             vehicleElement += `<button id="hovercorridas" class="" aria-label=""><i class=""></i> </button>
-        
+            <button class="waves-effect waves-light btn-small red garage-pay" data-plate="${vehicleData[vehicle].plate}"><i class="fas fa-hand-holding-usd"></i> Pay</button>
         <button style="margin-left: 15px" id="hovercorridas" class="" aria-label="Garage - ${vehicleData[vehicle].garage}" data-balloon-pos="up"><i  class="fas fa-oil-can"></i> </button>
         <button id="hovercorridas" class="" aria-label=" Car Plate - ${vehicleData[vehicle].plate}" data-balloon-pos="up"><i  class="fas fa-closed-captioning"></i> </button>
         <button id="hovercorridas" class="" aria-label="Engine Health - ${vehicleData[vehicle].enginePercent}" data-balloon-pos="up"><i  class="fas fa-oil-can"></i> </button>
