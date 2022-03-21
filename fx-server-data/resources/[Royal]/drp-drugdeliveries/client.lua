@@ -872,7 +872,7 @@ AddEventHandler("drugdelivery:client", function()
 		Citizen.Wait(1)
 		local plycoords = GetEntityCoords(PlayerPedId())
 		local dstcheck = #(plycoords - vector3(dropoffpoints[rnd]["x"],dropoffpoints[rnd]["y"],dropoffpoints[rnd]["z"])) 
-		if dstcheck =< 40.0 and not pedCreated then
+		if dstcheck <= 40.0 and not pedCreated then
 			pedCreated = true
 			DeleteCreatedPed()
 			CreateDrugPed()
