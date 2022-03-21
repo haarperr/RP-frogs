@@ -475,7 +475,7 @@ AddEventHandler("ls:spawnPed", function(x, y, z, h, weapon)
 end)
 
 
-function setBoostingPed()
+function setFishingPed()
   modelHash = GetHashKey("g_m_y_famfor_01")
   RequestModel(modelHash)
   while not HasModelLoaded(modelHash) do
@@ -488,12 +488,17 @@ function setBoostingPed()
   SetBlockingOfNonTemporaryEvents(created_ped, true)
   TaskStartScenarioInPlace(created_ped, "WORLD_HUMAN_CLIPBOARD", 0, true)
 
+  modelHash = GetHashKey("g_m_y_famfor_01")
+  RequestModel(modelHash)
+  while not HasModelLoaded(modelHash) do
+      Wait(1)
+  end
+  created_ped = CreatePed(0, modelHash , 731.24, -1065.41  22.168  -1, true)
+  FreezeEntityPosition(created_ped, true)
+  SetEntityHeading(created_ped, 138.031494140625)
+  SetEntityInvincible(created_ped, true)
+  SetBlockingOfNonTemporaryEvents(created_ped, true)
 end
-
-
-Citizen.CreateThread(function()
-  setBoostingPed()
-end)
 
 RegisterNetEvent("ls:boostDropOff")
 AddEventHandler("ls:boostDropOff", function()
