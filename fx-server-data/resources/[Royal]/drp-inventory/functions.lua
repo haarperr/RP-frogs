@@ -3100,7 +3100,33 @@ end
 
 exports("getItemsOfType", getItemsOfType)
 
+function getAmountOfItem(itemid, checkQuality, metaInformation)
+  local amount = 0
+  for i,v in pairs(clientInventory) do
+      local qCheck = not checkQuality or v.quality > 0
+      if v.item_id == itemid and qCheck then
+          if metaInformation then
+              local totalMetaKeys = 0
+              local metaFoundCount = 0
+              local itemMeta = json.decode(v.information)
+              for metaKey, metaValue in pairs(metaInformation) do
+                  totalMetaKeys = totalMetaKeys + 1
+                  if itemMeta[metaKey] and itemMeta[metaKey] == metaValue then
+                      metaFoundCount = metaFoundCount + 1
+                  end
+              end
+              if totalMetaKeys <= metaFoundCount then
+                  amount = amount + v.amount
+              end
+          else
+              amount = amount + v.amount
+          end
+      end
+  end
+  return amount
+end
 
+exports("getAmountOfItem", getAmountOfItem)
 
 RegisterNetEvent('inventory:DegenItemType')
 AddEventHandler('inventory:DegenItemType', function(percent,itemid)

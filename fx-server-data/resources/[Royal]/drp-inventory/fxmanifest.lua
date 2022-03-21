@@ -65,6 +65,7 @@ exports{
   'GetItemInfo',
   'GetInfoForFirstItemOfName',
   'getFullItemList',
+  'getAmountOfItem',
 }
 
 -- dependency 'drp-lib'
