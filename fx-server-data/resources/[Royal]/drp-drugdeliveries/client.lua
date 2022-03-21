@@ -557,7 +557,7 @@ function DoDropOff(requestMoney)
 				
 				list = [["inkedmoneybag", 1, inkedmoneybagprice], ["rollcash", math.random(3,10), rollcashprice], ["markedbills", math.random(3,10), markedbillsprice], ["band", math.random(3,10), bandprice]]
 				yesno = false
-				while yesno = false do
+				while yesno is false do
 					rnd = math.random(1,#list)
 					if exports["drp-inventory"]:hasEnoughOfItem(list[rnd][1],list[rnd][2],false) then	
 						TriggerServerEvent('mission:completed', list[rnd][3] * list[rnd][2])
@@ -1653,7 +1653,7 @@ AddEventHandler("drugdelivery:startDealing", function()
 	PlayAmbientSpeech1(NearNPC, "Chat_Resp", "SPEECH_PARAMS_FORCE", 1)
 	TriggerEvent("DoLongHudText","Your pager will be updated with locations soon.")
 	TriggerEvent( "player:receiveItem", "darkmarketdeliveries", 1 )
-	
+
 	salecount = 0
 	drugdealer = true
 	firstdeal = true
