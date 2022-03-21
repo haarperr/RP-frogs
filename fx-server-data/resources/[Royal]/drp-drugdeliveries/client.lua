@@ -556,10 +556,10 @@ function DoDropOff(requestMoney)
 
 				cashPayment = math.random(150,550)
 				
-				band = {"name": "band", "amount": math.random(3, 10), "price": bandprice}
-				rollcash = {"name": "rollcash", "amount": math.random(3, 10), "price": rollcashprice}
-				inkedmoneybag = {"name": "inkedmoneybag", "amount": 1, "price": inkedmoneybagprice}
-				markedbills = {"name": "markedbills", "amount": math.random(3, 10), "price": markedbillsprice}
+				band = {"name": "band", "amount": math.random(3, 10), "price": bandprice,}
+				rollcash = {"name": "rollcash", "amount": math.random(3, 10), "price": rollcashprice,}
+				inkedmoneybag = {"name": "inkedmoneybag", "amount": 1, "price": inkedmoneybagprice,}
+				markedbills = {"name": "markedbills", "amount": math.random(3, 10), "price": markedbillsprice,}
 
 				sold = false
 				count = 0
