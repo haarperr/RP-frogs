@@ -144,7 +144,7 @@ RegisterServerEvent('drp-civjobs:sell-diamond-cash')
 AddEventHandler('drp-civjobs:sell-diamond-cash', function(amount)
     local src = tonumber(source)
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
-    local cash = math.random1(5, 25) * amount
+    local cash = math.random(5, 25) * amount
     user:addMoney(cash)
     TriggerEvent('drp-base:miningLog', src, cash)
     TriggerClientEvent('DoLongHudText', src, 'You were paid $'..cash, 1)
