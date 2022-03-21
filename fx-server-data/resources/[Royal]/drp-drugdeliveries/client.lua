@@ -806,9 +806,10 @@ AddEventHandler("oxydelivery:client", function()
 				Citizen.Wait(1500)
 				PlayAmbientSpeech1(deliveryPed, "Generic_Hi", "Speech_Params_Force")
 				DoDropOff()
-				local pdping = math.random(1,5)
-				if pdping == 1 then
+				--local pdping = math.random(1,5)
+				--if pdping == 1 then
 					TriggerEvent("drp-dispatch:oxyping")
+				--end
 				tasking = false
 			end
 
@@ -821,6 +822,7 @@ AddEventHandler("oxydelivery:client", function()
 	DeleteBlip()
 
 end)
+
 RegisterNetEvent("drugdelivery:client")
 AddEventHandler("drugdelivery:client", function()
 
