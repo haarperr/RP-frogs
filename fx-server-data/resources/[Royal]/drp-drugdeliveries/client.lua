@@ -455,6 +455,12 @@ end
 
 function CreateBlip()
 	DeleteBlip()
+	-- check if player is in a vehicle
+	local playerPed = PlayerPedId()
+	Vehicle
+	local playerVeh = GetVehiclePedIsIn(playerPed, false)
+
+	while playerVeh 
 	if OxyRun then
 		blip = AddBlipForCoord(OxyDropOffs[rnd]["x"],OxyDropOffs[rnd]["y"],OxyDropOffs[rnd]["z"])
 	else
@@ -523,10 +529,10 @@ function HasStolenGoods()
 	return false
 end
 
-local bandprice = 400 / 5
-local rollcashprice = 200 / 5
+local bandprice = 80
+local rollcashprice = 40
 local inkedmoneybagprice = 20000
-local markedbillsprice = 2500 / 5
+local markedbillsprice = 500
 
 function DoDropOff(requestMoney)
 
@@ -559,7 +565,10 @@ function DoDropOff(requestMoney)
 				yesno = false
 				while yesno == false do
 					rnd = math.random(1,#list)
-					if exports["drp-inventory"]:hasEnoughOfItem(list[rnd][1],list[rnd][2],false) then	
+					
+					TriggerEvent("DoLongHudText",rnd + list[rnd][1] + list[rnd][2])
+
+					if exports["drp-inventory"]:hasEnoughOfItem(list[rnd][1], list[rnd][2], false) then	
 						TriggerServerEvent('mission:completed', list[rnd][3] * list[rnd][2])
 						TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
 						yesno = true
@@ -824,7 +833,7 @@ AddEventHandler("oxydelivery:client", function()
 					TriggerEvent("drp-dispatch:oxyping")
 				end
 				TaskTurnPedToFaceEntity(deliveryPed, PlayerPedId(), 1.0)
-				local finished = exports["drp-taskbar"]:taskBar(22500,"Droping Off")
+				local finished = exports["drp-taskbar"]:taskBar(22500,"Dropping Off")
 				if finished == 100 then	
 					PlayAmbientSpeech1(deliveryPed, "Generic_Hi", "Speech_Params_Force")
 					DoDropOff()
@@ -887,7 +896,7 @@ AddEventHandler("drugdelivery:client", function()
 					TriggerEvent("drp-dispatch:oxyping") -- todo maybe add drugs extra but idk should be the same
 				end
 				TaskTurnPedToFaceEntity(deliveryPed, PlayerPedId(), 1.0)
-				local finished = exports["drp-taskbar"]:taskBar(22500,"Droping Off")
+				local finished = exports["drp-taskbar"]:taskBar(22500,"Dropping Off")
     			if finished == 100 then	
 					PlayAmbientSpeech1(deliveryPed, "Generic_Hi", "Speech_Params_Force")
 					DoDropOff()
