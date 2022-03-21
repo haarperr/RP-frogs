@@ -11,7 +11,7 @@ local blips = {
     {title="In N Out", colour=3, id=364, scale=0.6, x = 80.901100158691, y = 273.75823974609, z = 110.19262695312},
     {title="Red Circle", colour=1, id=394, scale=0.6, x = -310.27252197266, y = 219.13845825195, z = 87.86669921875},
     -- {title="Cosmic Cannabis", colour=25, id=140, scale=0.7, x = 201.82418823242, y = -238.48352050781, z = 53.96484375},
-    {title="Drift School", colour=0, id=227, scale=0.6, x = -126.40878295898, y = -2535.0461425781, z = 5.993408203125},
+    --{title="Drift School", colour=0, id=227, scale=0.6, x = -126.40878295898, y = -2535.0461425781, z = 5.993408203125},
    -- {title="Tuner Shop", colour=3, id=669, scale=0.6, x = 144.19779968262, y = -3050.6638183594, z = 7.0380859375},
     {title="Hayes Autos", colour=46, id=428, scale=0.6, x = -1425.8110351562, y = -442.58901977539, z = 35.885009765625},
     {title="Harmony Repairs", colour=0, id=566, scale=0.6, x = 1180.8791503906, y = 2645.0900878906, z = 37.738403320312},

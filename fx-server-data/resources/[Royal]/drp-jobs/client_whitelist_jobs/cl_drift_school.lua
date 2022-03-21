@@ -1,6 +1,6 @@
 
 
-function DriftSchoolGetVeh()
+function DriftSchoolGetVeh() -- BOOSTING PED LOL
     modelHash = GetHashKey("g_m_y_famfor_01")
     RequestModel(modelHash)
     while not HasModelLoaded(modelHash) do

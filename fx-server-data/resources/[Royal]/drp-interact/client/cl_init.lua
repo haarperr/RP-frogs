@@ -3906,6 +3906,38 @@ Citizen.CreateThread(function()
     });
 
 
+ -- PALETO 
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("pCash1", {
+        {
+            event = "plootCash1",
+            id = "cash",
+            icon = "fas fa-hand-holding",
+            label = "Grab it!",
+        },
+    }, {
+        distance = { radius = 1.05 },
+    });
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("pCash2", {
+        {
+            event = "plootCash2",
+            id = "cash",
+            icon = "fas fa-hand-holding",
+            label = "Grab it!",
+        },
+    }, {
+        distance = { radius = 1.05 },
+    });
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("pCash3", {
+        {
+            event = "plootCash3",
+            id = "cash",
+            icon = "fas fa-hand-holding",
+            label = "Grab it!",
+        },
+    }, {
+        distance = { radius = 1.05 },
+    });
+
     
     
 

@@ -350,17 +350,20 @@ function SpawnTrolleys2(data, name)
     RequestModel("hei_prop_hei_cash_trolly_01")
     while not HasModelLoaded("hei_prop_hei_cash_trolly_01") do
         Citizen.Wait(1)
-    end
-    Trolley1 = CreateObject(GetHashKey("hei_prop_hei_cash_trolly_01"), data.trolley1.x, data.trolley1.y, data.trolley1.z, 1, 1, 0)
-    Trolley2 = CreateObject(GetHashKey("hei_prop_hei_cash_trolly_01"), data.trolley2.x, data.trolley2.y, data.trolley2.z, 1, 1, 0)
-    Trolley3 = CreateObject(GetHashKey("hei_prop_hei_cash_trolly_01"), data.trolley3.x, data.trolley3.y, data.trolley3.z, 1, 1, 0)
-    local h1 = GetEntityHeading(Trolley1)
-    local h2 = GetEntityHeading(Trolley2)
-    local h3 = GetEntityHeading(Trolley3)
+    end 
+    --     trolley1 = {x = -107.36703491211, y = 6473.9604492188, z = 30.621948242188, h = 311.81103515625},
+   -- trolley2 = {x = -102.81758117676, y = 6476.782226562, z = 30.621948242188, h = 138.89762878418},
+   -- trolley3 = {x = -104.72966766357, y = 6478.5493164062, z = 30.621948242188, h = 136.06298828125},
+    Trolley1 = CreateObject(GetHashKey("hei_prop_hei_cash_trolly_01"), -107.36703491211, 6473.9604492188, 30.621948242188, 1, 1, 0)
+    Trolley2 = CreateObject(GetHashKey("hei_prop_hei_cash_trolly_01"), -102.81758117676, 6476.782226562, 30.621948242188, 1, 1, 0)
+    Trolley3 = CreateObject(GetHashKey("hei_prop_hei_cash_trolly_01"), -104.72966766357, 6478.5493164062, 30.621948242188, 1, 1, 0)
+    local h1 = 311.81103515625
+    local h2 = 138.89762878418
+    local h3 = 136.06298828125
 
-    SetEntityHeading(Trolley1, h1 + paleto.Banks[name].trolley1.h)
-    SetEntityHeading(Trolley2, h2 + paleto.Banks[name].trolley2.h)
-    SetEntityHeading(Trolley3, h3 + paleto.Banks[name].trolley3.h)
+    SetEntityHeading(Trolley1, h1)
+    SetEntityHeading(Trolley2, h2)
+    SetEntityHeading(Trolley3, h3)
     TriggerServerEvent("drp-paleto:startLoot", data, name)
     done = false
 end
