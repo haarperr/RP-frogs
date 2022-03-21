@@ -556,40 +556,26 @@ function DoDropOff(requestMoney)
 
 				cashPayment = math.random(150,550)
 				
-				band = {"name": "band", "amount": math.random(3, 10), "price": bandprice,}
-				rollcash = {"name": "rollcash", "amount": math.random(3, 10), "price": rollcashprice,}
-				inkedmoneybag = {"name": "inkedmoneybag", "amount": 1, "price": inkedmoneybagprice,}
-				markedbills = {"name": "markedbills", "amount": math.random(3, 10), "price": markedbillsprice,}
+				if exports["drp-inventory"]:hasEnoughOfItem("inkedmoneybag",1,false) then     
+					-- RepPlus()
+					TriggerEvent("inventory:removeItem","inkedmoneybag", 1)   
+					TriggerServerEvent('mission:completed', inkedmoneybagprice)
 
-				sold = false
-				count = 0
-
-				while sold == false do 
-					local rnd = math.random(1,4)
-					local item = {}
-					if rnd == 1 then
-						item = band
-					elseif rnd == 2 then
-						item = rollcash
-					elseif rnd == 3 then
-						item = inkedmoneybag
-					elseif rnd == 4 then
-						item = markedbills
-					end
-					
-					
-					count = count + 1
-					if exports["drp-inventory"]:hasEnoughOfItem(item["name"],item["amount"], false) then
-						TriggerServerEvent('mission:completed', item["price"] * item["amount"])
-						TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
-						sold = true
-					end
-
-					if count == 4 then
-						TriggerEvent("DoLongHudText","No Sauce?!?!")
-						sold = true
-					end
-				end
+		        elseif exports["drp-inventory"]:hasEnoughOfItem("rollcash",5,false) then     
+		            TriggerEvent("inventory:removeItem","rollcash", 5)   
+					TriggerServerEvent('mission:completed', rollcashprice)             
+		            TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
+		        elseif exports["drp-inventory"]:hasEnoughOfItem("markedbills",5,false) then     
+		            TriggerEvent("inventory:removeItem","markedbills", 5)   
+					TriggerServerEvent('mission:completed', markedbillsprice)           
+		            TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
+				elseif exports["drp-inventory"]:hasEnoughOfItem("band",5,false) then     
+					TriggerEvent("inventory:removeItem","band", 5)   
+					TriggerServerEvent('mission:completed', bandprice)          
+					TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
+				else
+		            TriggerEvent("DoLongHudText","Thanks, no extra sauce though?!")
+		        end
 
 				if math.random(100) > 45 then
 					TriggerEvent( "player:receiveItem", "oxy", math.random(5) )
