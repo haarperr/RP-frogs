@@ -1303,7 +1303,7 @@ function addStocks(stocksData) {
             <li style="background-color: #31455E;">
             <div class="collapsible-header" style="background-color: #31455E; color: white">
                      <i class="${stockEntry.icon}"></i> <span class="new badge" data-badge-caption="">${stockEntry.identifier}</span><br>
-                    Wallet: ${stockEntry.clientStockValue}
+                   <span class="new badge" data-badge-caption=""> Wallet: ${stockEntry.clientStockValue}</span>
                 </div>
                 <div class="collapsible-body garage-body" style="background-color: #31455E; color: white">
                     <ul class="collection" style="background-color: #31455E;">
@@ -1311,7 +1311,7 @@ function addStocks(stocksData) {
                         <li class="collection-item" style="background-color: #31455E;">Wallet: ${stockEntry.clientStockValue}</li>
                        
                         <li class="collection-item center-align" style="background-color: #31455E;">
-                        <button class="waves-effect waves-light btn-small garage-spawn teal darken-1 stocks-exchange" data-stock-id="${stockEntry.identifier}"><i class="fas fa-exchange-alt"></i> Exchange</button> <button class="waves-effect waves-light btn-small garage-spawn teal darken-1 stocks-purchase" data-stock-id="${stockEntry.identifier}"><i class="fas fa-dollar-sign icon"></i> Purchase</button>
+                        <button class="waves-effect waves-light btn-small garage-spawn teal darken-1 stocks-exchange" data-stock-id="${stockEntry.identifier}"><i class="fas fa-exchange-alt"></i> Exchange</button> <br><button class="waves-effect waves-light btn-small garage-spawn teal darken-1 stocks-purchase" data-stock-id="${stockEntry.identifier}"><i class="fas fa-dollar-sign icon"></i> Purchase</button>
                         </li>
                     </ul>
                 </div>
