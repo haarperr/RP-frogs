@@ -4,7 +4,7 @@ AddEventHandler(('on%sResourceStart'):format(IsDuplicityVersion() and 'Server' o
         exports.hypnonema:play("Hypnonema Example Screen", "https://twitch.tv/xqcow")
         exports.hypnonema:play("PD Monitor", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReULWfKHC4vFgFZ37Ew2O7Pej3vILuMaofZQ&usqp=CAU")
         while true do
-            exports.hypnonema:play("Hypnonema Example Screen", "https://twitch.tv/xqcow")
+            exports.hypnonema:play("Hypnonema Example Screen", "https://i.imgur.com/cj8mmeM.gif")
             Citizen.Wait(5500)
         end
       end)
