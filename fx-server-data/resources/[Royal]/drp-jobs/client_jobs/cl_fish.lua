@@ -575,7 +575,7 @@ RegisterNetEvent("fishing:sell3")
 AddEventHandler("fishing:sell3", function()
     if exports["drp-inventory"]:getQuantity("fishingmackerel") >= 1 then
 		playerAnim()
-        local fishToSell = exports["drp-inventory"]:getAmountOfItem("fishingsockeyesalmon")
+        local fishToSell = exports["drp-inventory"]:getAmountOfItem("fishingmackerel")
 		local finished = exports["drp-taskbar"]:taskBar(1500*fishToSell, "Selling Mackerel",true,false,playerVeh)
 		if finished == 100 then
 			if exports["drp-inventory"]:getQuantity("fishingmackerel") >= 1 then
