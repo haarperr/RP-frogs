@@ -332,29 +332,25 @@ end)
 
 RegisterNetEvent("drp-chickens:sell")
 AddEventHandler("drp-chickens:sell", function()
-	if exports["drp-inventory"]:hasEnoughOfItem("lqprotein",2,false) then 
-		local x,y,z = table.unpack(GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0.0, 0.9, -0.98))
-		local prop = CreateObject(GetHashKey('hei_prop_heist_box'), x, y, z,  true,  false, false)
-		SetEntityHeading(prop, GetEntityHeading(GetPlayerPed(-1)))
-		LoadDict('amb@medic@standing@tendtodead@idle_a')
-		TaskPlayAnim(GetPlayerPed(-1), 'amb@medic@standing@tendtodead@idle_a', 'idle_a', 8.0, -8.0, -1, 1, 0.0, 0, 0, 0)
-		local finished = exports['drp-taskbar']:taskBar(10000, 'Selling Protein')
-		LoadDict('amb@medic@standing@tendtodead@exit')
-		TaskPlayAnim(GetPlayerPed(-1), 'amb@medic@standing@tendtodead@exit', 'exit', 8.0, -8.0, -1, 1, 0.0, 0, 0, 0)
-		if (finished == 100) then
-			if exports["drp-inventory"]:hasEnoughOfItem("lqprotein",10,false) then 
-				local chicken = math.random(200, 300)
-				TriggerServerEvent('chickenpayment:pay', chicken)
-				ClearPedTasksImmediately(PlayerPedId())
-				TriggerEvent('inventory:removeItem', "lqprotein", 10)
-			else
-				TriggerEvent('DoLongHudText', 'You have nothing or not enough to sell!', 2)
-			end
-		end
-		DeleteEntity(prop)
-	else
-		TriggerEvent('DoLongHudText', 'You have nothing to sell!', 2)
+	local x,y,z = table.unpack(GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0.0, 0.9, -0.98))
+	local prop = CreateObject(GetHashKey('hei_prop_heist_box'), x, y, z,  true,  false, false)
+	SetEntityHeading(prop, GetEntityHeading(GetPlayerPed(-1)))
+	LoadDict('amb@medic@standing@tendtodead@idle_a')
+	TaskPlayAnim(GetPlayerPed(-1), 'amb@medic@standing@tendtodead@idle_a', 'idle_a', 8.0, -8.0, -1, 1, 0.0, 0, 0, 0)
+	local finished = exports['drp-taskbar']:taskBar(10000, 'Selling Protein')
+	LoadDict('amb@medic@standing@tendtodead@exit')
+	TaskPlayAnim(GetPlayerPed(-1), 'amb@medic@standing@tendtodead@exit', 'exit', 8.0, -8.0, -1, 1, 0.0, 0, 0, 0)
+	if (finished == 100) then
+		local toSell = exports["drp-inventory"]:getAmountOfItem("lqprotein")
+		TriggerEvent('inventory:removeItem', 'lqprotein', toSell)
+		TriggerServerEvent('chickenpayment:pay', math.random(200, 325) * toSell)
+		ClearPedTasksImmediately(PlayerPedId())
 	end
+	
+	else
+		TriggerEvent('DoLongHudText', 'You have nothing or not enough to sell!', 2)
+	end
+	DeleteEntity(prop)
 end)
 
 --// Proccess Stations
