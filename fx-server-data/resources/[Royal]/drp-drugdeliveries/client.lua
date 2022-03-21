@@ -1482,9 +1482,7 @@ end)
 local firstdeal = false
 Citizen.CreateThread(function()
 
-	timeout = 1500000
     while true do
-		tiemout = timeout - 1
 
         if drugdealer then
 
@@ -1523,11 +1521,6 @@ Citizen.CreateThread(function()
 				    	Citizen.Wait(1200000) -- 20 minutes
 				    	OxyRun = false
 					end
-					if timeout < 0 then
-						TriggerEvent("chatMessage", "EMAIL - Oxy Deliveries", 8, "You are no longer selling oxy.")
-						Citizen.Wait(600000) -- 10 minutes
-						OxyRun = false
-				    end
 				end
 			end
 
