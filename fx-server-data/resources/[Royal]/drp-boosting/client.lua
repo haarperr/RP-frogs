@@ -481,7 +481,7 @@ function setFishingPed()
   while not HasModelLoaded(modelHash) do
       Wait(1)
   end
-  created_ped = CreatePed(0, modelHash , 731.24, -1065.41  22.168, true)
+  created_ped = CreatePed(0, modelHash , 731.24, -1065.41  22.168,  -1 true)
   FreezeEntityPosition(created_ped, true)
   SetEntityHeading(created_ped, 138.77166748047)
   SetEntityInvincible(created_ped, true)
