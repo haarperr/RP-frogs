@@ -509,7 +509,7 @@ AddEventHandler("drp-dispatch:carBoostBlipTracker", function(targetCoords)
 		BeginTextCommandSetBlipName("STRING")
 		AddTextComponentString('Car Tracker')
 		EndTextCommandSetBlipName(thiefBlip)
-		TriggerEvent('InteractSound_CL:PlayOnOne', 'polalert', 1.0)
+		TriggerEvent('InteractSound_CL:PlayOnOne', 'dispatch', 1.0)
 
 		while alpha ~= 0 do
 			Citizen.Wait(100)
