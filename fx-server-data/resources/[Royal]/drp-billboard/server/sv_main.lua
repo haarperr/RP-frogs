@@ -1,4 +1,4 @@
-AddEventHandler(('on%sResourceStart'):format(IsDuplicityVersion() and 'Server' or 'Client'), function(resource)
+AddEventHandler(('onResourceStart'):format(IsDuplicityVersion() and 'Server' or 'Client'), function(resource)
     if resource == GetCurrentResourceName() then
       Citizen.CreateThread(function()
         exports.hypnonema:play("Hypnonema Example Screen", "https://twitch.tv/xqcow")
