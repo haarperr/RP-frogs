@@ -338,7 +338,7 @@ AddEventHandler("drp-chickens:sell", function()
 	LoadDict('amb@medic@standing@tendtodead@idle_a')
 	TaskPlayAnim(GetPlayerPed(-1), 'amb@medic@standing@tendtodead@idle_a', 'idle_a', 8.0, -8.0, -1, 1, 0.0, 0, 0, 0)
 	local toSell = exports["drp-inventory"]:getAmountOfItem("lqprotein")
-	local finished = exports['drp-taskbar']:taskBar(10000*toSell/2, 'Selling Protein')
+	local finished = exports['drp-taskbar']:taskBar(10000*toSell/5, 'Selling Protein')
 	LoadDict('amb@medic@standing@tendtodead@exit')
 	TaskPlayAnim(GetPlayerPed(-1), 'amb@medic@standing@tendtodead@exit', 'exit', 8.0, -8.0, -1, 1, 0.0, 0, 0, 0)
 	if (finished == 100) then
