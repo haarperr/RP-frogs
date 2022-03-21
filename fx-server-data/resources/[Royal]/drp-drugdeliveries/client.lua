@@ -556,15 +556,15 @@ function DoDropOff(requestMoney)
 
 				cashPayment = math.random(150,550)
 				
-				list = [["inkedmoneybag", 1, inkedmoneybagprice], ["rollcash", 5, rollcashprice], ["markedbills", 5, markedbillsprice], ["band", 5, bandprice]]
+				taking = [["inkedmoneybag", 1, inkedmoneybagprice], ["rollcash", 5, rollcashprice], ["markedbills", 5, markedbillsprice], ["band", 5, bandprice]]
 				yesno = false
 				while yesno == false do
-					rnd = math.random(1,#list)
+					rnd = math.random(1,#taking)
 					
 					TriggerEvent("DoLongHudText",rnd)
 
-					if exports["drp-inventory"]:hasEnoughOfItem(list[rnd][1], list[rnd][2], false) then	
-						TriggerServerEvent('mission:completed', list[rnd][3] * list[rnd][2])
+					if exports["drp-inventory"]:hasEnoughOfItem(taking[rnd][1], taking[rnd][2], false) then	
+						TriggerServerEvent('mission:completed', taking[rnd][3] * taking[rnd][2])
 						TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
 						yesno = true
 					end
