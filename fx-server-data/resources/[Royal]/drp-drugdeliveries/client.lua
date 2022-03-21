@@ -583,16 +583,16 @@ function DoDropOff(requestMoney)
 
 				
 				if math.random(100) >= 7 then
-					cashPayment = cashPayment += math.random(250,1000)
+					cashPayment = cashPayment + math.random(250,1000)
 				end
 
 				
 				if math.random(100) >= 1 then
-					cashPayment = cashPayment += math.random(1000,1500)
+					cashPayment = cashPayment + math.random(1000,1500)
 				end
 				
 				if math.random(1000) >= 1 then
-					cashPayment = cashPayment += math.random(10000,15000)
+					cashPayment = cashPayment + math.random(10000,15000)
 				end 
 
 			else
