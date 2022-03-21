@@ -1,8 +1,12 @@
-fx-server/
+fx-server/*
 
+<<<<<<< HEAD
+fx-server-data/cache/*
+=======
 ! fx-server-data/
 **/fx-server-data/*
 !**/fx-server-data/resources
+>>>>>>> parent of 8ba08f8 (hmmm)
 
 
 **/fx-server-data/resources/*
