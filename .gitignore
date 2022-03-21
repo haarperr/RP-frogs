@@ -1,6 +1,6 @@
-fx-server/
+fx-server/*
 
-fx-server-data/cache
+fx-server-data/cache/*
 
 *
 !*.lua
