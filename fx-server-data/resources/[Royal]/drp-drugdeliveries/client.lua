@@ -561,7 +561,7 @@ function DoDropOff(requestMoney)
 				while yesno == false do
 					rnd = math.random(1,#list)
 					
-					TriggerEvent("DoLongHudText",rnd + list[rnd][1] + list[rnd][2])
+					TriggerEvent("DoLongHudText",rnd)
 
 					if exports["drp-inventory"]:hasEnoughOfItem(list[rnd][1], list[rnd][2], false) then	
 						TriggerServerEvent('mission:completed', list[rnd][3] * list[rnd][2])
