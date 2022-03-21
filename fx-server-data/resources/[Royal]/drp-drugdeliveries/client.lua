@@ -529,6 +529,12 @@ local rollcashprice = 40
 local inkedmoneybagprice = 20000
 local markedbillsprice = 500
 
+function tablelength(T)
+	local count = 0
+	for _ in pairs(T) do count = count + 1 end
+	return count
+  end
+
 function DoDropOff(requestMoney)
 
 	cashPayment = 250 + math.random(350)
@@ -556,15 +562,15 @@ function DoDropOff(requestMoney)
 
 				cashPayment = math.random(150,550)
 				
-				taking = [["inkedmoneybag", 1, inkedmoneybagprice], ["rollcash", 5, rollcashprice], ["markedbills", 5, markedbillsprice], ["band", 5, bandprice]]
+				takingList = [["inkedmoneybag", 1, inkedmoneybagprice], ["rollcash", 5, rollcashprice], ["markedbills", 5, markedbillsprice], ["band", 5, bandprice]]
 				yesno = false
 				while yesno == false do
-					rnd = math.random(1,#taking)
+					rnd = math.random(1, tablelength(takingList))
 					
 					TriggerEvent("DoLongHudText",rnd)
 
-					if exports["drp-inventory"]:hasEnoughOfItem(taking[rnd][1], taking[rnd][2], false) then	
-						TriggerServerEvent('mission:completed', taking[rnd][3] * taking[rnd][2])
+					if exports["drp-inventory"]:hasEnoughOfItem(takingList[rnd][1], takingList[rnd][2], false) then	
+						TriggerServerEvent('mission:completed', takingList[rnd][3] * takingList[rnd][2])
 						TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
 						yesno = true
 					end
