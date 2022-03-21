@@ -903,3 +903,19 @@ input#last_name {
 input#first_name {
   font-size: 1.6vh;
 }
+
+@media screen and (min-width: 2440px) and (height: 1440px) {
+  body {
+      max-width: 2440px;
+      max-height: 1440px;
+      position: relative;
+      margin-left: calc((100% - 2440px)/2);
+  }
+}
+@media screen and (min-width: 2440px) and (height: 1080px) {
+  body {
+      max-width: 1920px;
+      max-height: 1080px;
+      position: relative;
+      margin-left: calc((100% - 1920px)/2);
+  }

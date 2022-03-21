@@ -12,6 +12,22 @@
 
 }
 
+@media screen and (min-width: 2440px) and (height: 1440px) {
+    body {
+        max-width: 2440px;
+        max-height: 1440px;
+        position: relative;
+        margin-left: calc((100% - 2440px)/2);
+    }
+  }
+  @media screen and (min-width: 2440px) and (height: 1080px) {
+    body {
+        max-width: 1920px;
+        max-height: 1080px;
+        position: relative;
+        margin-left: calc((100% - 1920px)/2);
+    }
+
 @font-face {
   font-family: Arial, Helvetica, sans-serif;
     src: url('gta-ui.ttf');
