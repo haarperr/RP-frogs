@@ -681,9 +681,6 @@ LoadRoyalVersion = function()
         TriggerServerEvent('drp-mdt:setCallsign', data.cid, data.newcallsign)
     end)
     RegisterNUICallback("saveIncident", function(data, cb)
-        local src = source
-        local string = data.ID, data.title, data.information, data.tags, data.officers, data.civilians, data.evidence, data.associated, data.time
-        TriggerClientEvent('DoLongHudText', src, string, 1)
         RPC.execute("drp-mdt:saveIncident", data.ID, data.title, data.information, data.tags, data.officers, data.civilians, data.evidence, data.associated, data.time)
     end)
     RegisterNUICallback("removeIncidentCriminal", function(data, cb)
