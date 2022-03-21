@@ -1046,6 +1046,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
 
     if (itemid == "heistlaptop2") then
         TriggerEvent("drp-paleto:distcheck")
+        
     end
 
     if (itemid == "miningpickaxe") then

@@ -1019,6 +1019,7 @@ AddEventHandler("drp-fleeca:startFleecaHeist", function()
                     if exports['drp-inventory']:hasEnoughOfItem('heistlaptop3', 1, false) then
                         TriggerEvent('drp-dispatch:bankrobbery')
                         TriggerEvent('drp-robberies:hackinganim', true)
+                        TriggerEvent("inventory:removeItem","heistlaptop3", 1) -- delete laptop on use
                         Citizen.Wait(7000)
                         exports["hacking"]:hacking(
                             function() -- success
