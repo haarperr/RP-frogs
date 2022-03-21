@@ -529,6 +529,12 @@ local rollcashprice = 40
 local inkedmoneybagprice = 20000
 local markedbillsprice = 500
 
+function tablelength(T)
+	local count = 0
+	for _ in pairs(T) do count = count + 1 end
+	return count
+  end
+
 function DoDropOff(requestMoney)
 
 	cashPayment = 250 + math.random(350)
@@ -559,13 +565,7 @@ function DoDropOff(requestMoney)
 				takingList = [["inkedmoneybag", 1, inkedmoneybagprice], ["rollcash", math.random(3,10), rollcashprice], ["markedbills", math.random(3,10), markedbillsprice], ["band", math.random(3,10), bandprice]]
 				yesno = false
 				while yesno == false do
-					
-					counter = 0
-					for index in pairs(takingList) do
-						counter = counter + 1
-					end
-
-					rnd = math.random(1, counter)
+					rnd = math.random(1, tablelength(takingList))
 					
 					TriggerEvent("DoLongHudText",rnd)
 
