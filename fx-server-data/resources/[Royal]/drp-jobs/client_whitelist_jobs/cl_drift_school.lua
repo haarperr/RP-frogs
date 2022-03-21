@@ -1,7 +1,7 @@
 
 
 function DriftSchoolGetVeh()
-    modelHash = GetHashKey("ig_benny")
+    modelHash = GetHashKey("g_m_y_famfor_01")
     RequestModel(modelHash)
     while not HasModelLoaded(modelHash) do
         Wait(1)
@@ -11,7 +11,7 @@ function DriftSchoolGetVeh()
     SetEntityHeading(created_ped, 238.11022949219)
     SetEntityInvincible(created_ped, true)
     SetBlockingOfNonTemporaryEvents(created_ped, true)
-    TaskStartScenarioInPlace(created_ped, "WORLD_HUMAN_AA_SMOKE", 0, true)
+    TaskStartScenarioInPlace(created_ped, "WORLD_HUMAN_CLIPBOARD", 0, true)
 end
 
 Citizen.CreateThread(function()
