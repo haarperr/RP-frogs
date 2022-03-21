@@ -490,6 +490,7 @@ end
 
 Citizen.CreateThread(function()
   setBoostPed()
+  return
 end)
 
 RegisterNetEvent("ls:boostDropOff")
