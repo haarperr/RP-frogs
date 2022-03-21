@@ -542,11 +542,11 @@ AddEventHandler("fishing:sell1", function()
 				TriggerEvent('inventory:removeItem', 'fishingbass', 1)
 				TriggerServerEvent('drp-fishing:PayPlayer', 25)
 			else
-                
+                TriggerEvent('DoLongHudText', 'Might want to try again you do not have a bass in your pockets', 2)
 			end
 		end
 	else
-        TriggerEvent('DoLongHudText', 'Might want to try again you do not have a bass in your pockets', 2)
+        TriggerEvent('DoLongHudText', 'You do not have enough bass to sell!', 2)
 	end
 end)
 
