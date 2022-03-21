@@ -809,6 +809,7 @@ AddEventHandler("oxydelivery:client", function()
 				local pdping = math.random(1,5)
 				if pdping == 1 then
 					TriggerEvent("drp-dispatch:oxyping")
+				end
 				tasking = false
 			end
 
@@ -821,6 +822,7 @@ AddEventHandler("oxydelivery:client", function()
 	DeleteBlip()
 
 end)
+
 RegisterNetEvent("drugdelivery:client")
 AddEventHandler("drugdelivery:client", function()
 
