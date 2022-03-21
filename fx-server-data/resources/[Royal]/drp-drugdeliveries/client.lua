@@ -273,7 +273,7 @@ local oxyPeds = {
 }
 
 function CreateDrugStorePed()
-
+	
 	if DoesEntityExist(drugStorePed) then
 		return
 	end
@@ -1653,6 +1653,7 @@ AddEventHandler("drugdelivery:startDealing", function()
 	PlayAmbientSpeech1(NearNPC, "Chat_Resp", "SPEECH_PARAMS_FORCE", 1)
 	TriggerEvent("DoLongHudText","Your pager will be updated with locations soon.")
 	TriggerEvent( "player:receiveItem", "darkmarketdeliveries", 1 )
+	
 	salecount = 0
 	drugdealer = true
 	firstdeal = true
@@ -1663,7 +1664,8 @@ AddEventHandler("oxydelivery:startDealing", function()
 	local NearNPC = exports["isPed"]:GetClosestNPC()
 	PlayAmbientSpeech1(NearNPC, "Chat_Resp", "SPEECH_PARAMS_FORCE", 1)
 	TriggerEvent("DoLongHudText","Your pager will be updated with locations soon.")
-	
+	TriggerEvent( "player:receiveItem", "darkmarketdeliveries", 1 )
+
 	salecount = 0	
 	firstdeal = true
 	OxyRun = true
