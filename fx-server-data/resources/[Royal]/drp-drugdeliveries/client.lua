@@ -1484,7 +1484,7 @@ Citizen.CreateThread(function()
 
 	timeout = 1500000
     while true do
-		timeout - 1
+		tiemout = timeout - 1
 
         if drugdealer then
 
