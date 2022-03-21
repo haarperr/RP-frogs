@@ -346,10 +346,6 @@ AddEventHandler("drp-chickens:sell", function()
 		TriggerServerEvent('chickenpayment:pay', math.random(200, 325) * toSell)
 		ClearPedTasksImmediately(PlayerPedId())
 	end
-	
-	else
-		TriggerEvent('DoLongHudText', 'You have nothing or not enough to sell!', 2)
-	end
 	DeleteEntity(prop)
 end)
 
