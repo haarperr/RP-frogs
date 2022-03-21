@@ -455,12 +455,7 @@ end
 
 function CreateBlip()
 	DeleteBlip()
-	-- check if player is in a vehicle
-	local playerPed = PlayerPedId()
-	Vehicle
-	local playerVeh = GetVehiclePedIsIn(playerPed, false)
-
-	while playerVeh 
+	
 	if OxyRun then
 		blip = AddBlipForCoord(OxyDropOffs[rnd]["x"],OxyDropOffs[rnd]["y"],OxyDropOffs[rnd]["z"])
 	else
