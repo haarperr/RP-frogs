@@ -22290,7 +22290,7 @@ itemList['disabler'] = {
 itemList['pixellaptop'] = {
   fullyDegrades: true,
   decayrate: 0.46,
-  displayname: 'Durpbook Pro',
+  displayname: 'Slambook Pro',
   craft: [[
     { itemid: 'electronics', amount: 92 },
   ]],
@@ -22299,7 +22299,7 @@ itemList['pixellaptop'] = {
   nonStack: true,
   model: '',
   image: 'np_pixellaptop.png',
-  information: 'Powered by Durple (os) 3.0.69',
+  information: 'Powered by Chungus (os) 4.20.69',
 };
 
 itemList['tempcertificate'] = {

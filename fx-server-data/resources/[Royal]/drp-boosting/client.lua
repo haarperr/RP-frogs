@@ -373,7 +373,7 @@ AddEventHandler("ls:boostLockPick", function()
           -- print(vehClass.. 'Boost started Wait timer :' ..DispatchDelayTimer)
         end
 
-        TriggerEvent('phone:addnotification', 'Anonymous Car Company', "Looks like you've found the car, keep an eye on your GPS, i'll ping you a drop location soon. This one has a tracker by the way!")
+        TriggerEvent('phone:addnotification', 'DarkNet', "Looks like you've found the car, keep an eye on your GPS, I'll ping you a drop location soon. This one has a tracker by the way!")
         Wait(120000)
         pedsSpawned = false
         TriggerEvent("ls:boostDropOff") 
@@ -500,7 +500,7 @@ AddEventHandler("ls:boostDropOff", function()
           isCarAtDropOff = true
         end
         if dist < 2.5 and isCarAtDropOff and not sentEmail then
-          TriggerEvent('phone:addnotification', 'Anonymous Car Company', "Good shit, leave the car there, payment will be transferred shortly")
+          TriggerEvent('phone:addnotification', 'DarkNet', "Good shit, leave the car there, payment will be transferred shortly")
           BoostStarted = false
           isCarAtDropOff = false
           sentEmail = true
@@ -537,12 +537,12 @@ AddEventHandler("ls:boostComplete", function()
     payment = 30
   end
 
-  TriggerEvent('drp-crypto:cl:receive', payment)
+  TriggerEvent('Crypto:GiveGNE', payment)
   DeleteEntity(spawnedVeh)
   DeleteBlip(blipDropOff)
   TriggerServerEvent("ls:updateBoostLevel", vehClass)
   sentEmail = false
-  TriggerEvent('phone:addnotification', 'Anonymous Car Company', "Good shit, you successfully completed the Boost, hope to see you again sometime")
+  TriggerEvent('phone:addnotification', 'DarkNet', "Boost completed! Hope to do business again soon.")
   StartedBoost = false
   SpawnedPed = false
 end)

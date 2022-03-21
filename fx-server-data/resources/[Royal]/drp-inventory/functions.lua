@@ -1656,7 +1656,7 @@ end
 
     if (itemid == "lockpick") then
         TriggerEvent('drp-heists:distcheckpower')
-        -- TriggerEvent("inv:advancedLockpick")
+        TriggerEvent("dummie-check:boosting") -- checks if boosting car, then progresses in boosting script
         TriggerEvent('drp-robberies:HitRegister')
         local myJob = exports["isPed"]:isPed("myJob")
         if myJob ~= "news" then
