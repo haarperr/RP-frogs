@@ -1518,10 +1518,14 @@ Citizen.CreateThread(function()
 			    else
 			        TriggerEvent("oxydelivery:client")  
 				    salecount = salecount + 1
-				    if salecount == 6 or timeout < 0 then
+				    if salecount == 6 then
 						TriggerEvent("chatMessage", "EMAIL - Oxy Deliveries", 8, "You are no longer selling oxy.")
-				    	Citizen.Wait(1200000)
+				    	Citizen.Wait(1200000) -- 20 minutes
 				    	OxyRun = false
+					elif timeout < 0 then
+						TriggerEvent("chatMessage", "EMAIL - Oxy Deliveries", 8, "You are no longer selling oxy.")
+						Citizen.Wait(600000) -- 10 minutes
+						OxyRun = false
 				    end
 				end
 			end
