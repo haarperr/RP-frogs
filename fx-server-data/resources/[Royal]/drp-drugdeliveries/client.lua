@@ -434,6 +434,7 @@ end
 
 function DeleteCreatedPed()
 	if DoesEntityExist(deliveryPed) then 
+		FreezeEntityPosition(deliveryPed, false)
 		SetPedKeepTask(deliveryPed, false)
 		TaskSetBlockingOfNonTemporaryEvents(deliveryPed, false)
 		ClearPedTasks(deliveryPed)
