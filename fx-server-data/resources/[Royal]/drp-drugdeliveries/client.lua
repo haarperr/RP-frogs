@@ -1522,7 +1522,7 @@ Citizen.CreateThread(function()
 						TriggerEvent("chatMessage", "EMAIL - Oxy Deliveries", 8, "You are no longer selling oxy.")
 				    	Citizen.Wait(1200000) -- 20 minutes
 				    	OxyRun = false
-					elif timeout < 0 then
+					if timeout < 0 then
 						TriggerEvent("chatMessage", "EMAIL - Oxy Deliveries", 8, "You are no longer selling oxy.")
 						Citizen.Wait(600000) -- 10 minutes
 						OxyRun = false
