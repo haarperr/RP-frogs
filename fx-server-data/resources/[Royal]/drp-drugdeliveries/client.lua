@@ -556,7 +556,7 @@ function DoDropOff(requestMoney)
 
 				cashPayment = math.random(150,550)
 				
-				takingList = {["inkedmoneybag", 1, inkedmoneybagprice], ["rollcash", math.random(3,10), rollcashprice], ["markedbills", math.random(3,10), markedbillsprice], ["band", math.random(3,10), bandprice],}
+				takingList = [{"item": "band", "count": math.random(3,10), "price": bandprice}, {"item": "rollcash", "count": math.random(3,10), "price": rollcashprice}, {"item": "inkedmoneybag", "count": 1, "price": inkedmoneybagprice}, {"item": "markedbills", "count": math.random(3,10), "price": markedbillsprice}]
 				yesno = false
 				while yesno == false do
 					rnd = math.random(1, table.getn(takingList))
