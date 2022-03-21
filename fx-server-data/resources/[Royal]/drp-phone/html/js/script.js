@@ -1302,7 +1302,8 @@ function addStocks(stocksData) {
             <li>
             <li style="background-color: #31455E;">
             <div class="collapsible-header" style="background-color: #31455E; color: white">
-                     <i class="${stockEntry.icon}"></i> <span class="new badge" data-badge-caption="">${stockEntry.identifier}</span>
+                     <i class="${stockEntry.icon}"></i> <span class="new badge" data-badge-caption="">${stockEntry.identifier}</span><br>
+                    Wallet: ${stockEntry.clientStockValue}
                 </div>
                 <div class="collapsible-body garage-body" style="background-color: #31455E; color: white">
                     <ul class="collection" style="background-color: #31455E;">
