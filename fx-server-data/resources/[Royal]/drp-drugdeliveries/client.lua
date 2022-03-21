@@ -566,7 +566,7 @@ function DoDropOff(requestMoney)
 					end
 				end
 
-				if yesno is false then
+				if yesno == false then
 		            TriggerEvent("DoLongHudText","Thanks, no extra sauce though?!")
 				end
 
