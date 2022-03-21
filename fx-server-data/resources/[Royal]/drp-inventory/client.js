@@ -832,7 +832,6 @@ on('__cfx_nui:stack', (data, cb) => {
 
 RegisterNuiCallbackType('move');
 on('__cfx_nui:move', (data, cb) => {
-    console.log(JSON.stringify(data))
     emitNet('server-inventory-move', cid, data, GetEntityCoords(PlayerPedId()));
 });
 

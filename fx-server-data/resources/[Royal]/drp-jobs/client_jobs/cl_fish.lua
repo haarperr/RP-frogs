@@ -535,12 +535,13 @@ RegisterNetEvent("fishing:sell1")
 AddEventHandler("fishing:sell1", function()
 	if exports["drp-inventory"]:getQuantity("fishingbass") >= 1 then
 		playerAnim()
-		local finished = exports["drp-taskbar"]:taskBar(1000,"Selling Bass",true,false,playerVeh)
+        local fishToSell = exports["drp-inventory"]:getAmountOfItem("fishingbass")
+		local finished = exports["drp-taskbar"]:taskBar(1000*fishToSell,"Selling Bass",true,false,playerVeh)
 		if finished == 100 then
 			if exports["drp-inventory"]:getQuantity("fishingbass") >= 1 then
 				ClearPedTasksImmediately(PlayerPedId())
-				TriggerEvent('inventory:removeItem', 'fishingbass', 1)
-				TriggerServerEvent('drp-fishing:PayPlayer', 25)
+				TriggerEvent('inventory:removeItem', 'fishingbass', fishToSell)
+				TriggerServerEvent('drp-fishing:PayPlayer', 25*fishToSell)
 			else
                 TriggerEvent('DoLongHudText', 'Might want to try again you do not have a bass in your pockets', 2)
 			end

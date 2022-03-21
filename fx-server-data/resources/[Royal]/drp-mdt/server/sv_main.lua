@@ -529,6 +529,7 @@ LoadRoyalVersion = function()
             
             CreateStuffLog("EditIncident", time, GetCharData(src).first_name..' '..GetCharData(src).last_name)
         else
+            TriggerClientEvent('DoLongHudText', "before  mysql request", string, 1)
             exports.ghmattimysql:execute('INSERT INTO mdt_incidents (title, information, tags, officers, civilians, evidence, associated, time, author) VALUES (@title, @information, @tags, @officers, @civilians, @evidence, @associated, @time, @author)', {
                 ['@id'] = ID,
                 ['@title'] = title, 

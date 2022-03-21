@@ -93,14 +93,14 @@ local OxyDropOffs = {
 	[7] =  { ['x'] = -26.96,['y'] = -368.45,['z'] = 39.69,['h'] = 251.12, ['info'] = ' 7' },
 	[8] =  { ['x'] = -155.88,['y'] = -751.76,['z'] = 33.76,['h'] = 251.82, ['info'] = ' 8' },
 
-	[9] =  { ['x'] = -305.02,['y'] = -226.17,['z'] = 36.29,['h'] = 306.04, ['info'] = ' penis1' },
-	[10] =  { ['x'] = -347.19,['y'] = -791.04,['z'] = 33.97,['h'] = 3.06, ['info'] = ' penis2' },
-	[11] =  { ['x'] = -703.75,['y'] = -932.93,['z'] = 19.22,['h'] = 87.86, ['info'] = ' penis3' },
-	[12] =  { ['x'] = -659.35,['y'] = -256.83,['z'] = 36.23,['h'] = 118.92, ['info'] = ' penis4' },
-	[13] =  { ['x'] = -934.18,['y'] = -124.28,['z'] = 37.77,['h'] = 205.79, ['info'] = ' penis5' },
-	[14] =  { ['x'] = -1214.3,['y'] = -317.57,['z'] = 37.75,['h'] = 18.39, ['info'] = ' penis6' },
-	[15] =  { ['x'] = -822.83,['y'] = -636.97,['z'] = 27.9,['h'] = 160.23, ['info'] = ' penis7' },
-	[16] =  { ['x'] = 308.04,['y'] = -1386.09,['z'] = 31.79,['h'] = 47.23, ['info'] = ' penis8' },
+	[9] =  { ['x'] = -305.02,['y'] = -226.17,['z'] = 36.29,['h'] = 306.04, ['info'] = ' 9' },
+	[10] =  { ['x'] = -347.19,['y'] = -791.04,['z'] = 33.97,['h'] = 3.06, ['info'] = ' 10' },
+	[11] =  { ['x'] = -703.75,['y'] = -932.93,['z'] = 19.22,['h'] = 87.86, ['info'] = ' 11' },
+	[12] =  { ['x'] = -659.35,['y'] = -256.83,['z'] = 36.23,['h'] = 118.92, ['info'] = ' 12' },
+	[13] =  { ['x'] = -934.18,['y'] = -124.28,['z'] = 37.77,['h'] = 205.79, ['info'] = ' 13' },
+	[14] =  { ['x'] = -1214.3,['y'] = -317.57,['z'] = 37.75,['h'] = 18.39, ['info'] = ' 14' },
+	[15] =  { ['x'] = -822.83,['y'] = -636.97,['z'] = 27.9,['h'] = 160.23, ['info'] = ' 15' },
+	[16] =  { ['x'] = 308.04,['y'] = -1386.09,['z'] = 31.79,['h'] = 47.23, ['info'] = ' 16' }, -- what the fuck lmao
 
 }
 
@@ -127,52 +127,52 @@ function buildDrugShop()
 	local building = CreateObject(`traphouse_shell`,generator.x-0.31811000,generator.y+1.79183500,generator.z+2.56171400,false,false,false)
 	FreezeEntityPosition(building, true)
 	local coordsofbuilding = GetEntityCoords(building, true)
-	 CreateObject(`V_38_C_Barbers_Det`,coordsofbuilding.x+0.36036100,coordsofbuilding.y-0.35528500,coordsofbuilding.z+1.54137200,false,false,false)
-	 CreateObject(`V_38_C_CABINET02`,coordsofbuilding.x+0.37338400,coordsofbuilding.y-3.67517500,coordsofbuilding.z+1.48056600,false,false,false)
+	CreateObject(`V_38_C_Barbers_Det`,coordsofbuilding.x+0.36036100,coordsofbuilding.y-0.35528500,coordsofbuilding.z+1.54137200,false,false,false)
+	CreateObject(`V_38_C_CABINET02`,coordsofbuilding.x+0.37338400,coordsofbuilding.y-3.67517500,coordsofbuilding.z+1.48056600,false,false,false)
 
-	 CreateObject(`V_38_FAN`,coordsofbuilding.x+0.18863910,coordsofbuilding.y-1.78123200,coordsofbuilding.z+1.49853700,false,false,false)
-	 CreateObject(`V_38_SHELVES`,coordsofbuilding.x+0.38722500,coordsofbuilding.y-0.21649000,coordsofbuilding.z+2.34309200,false,false,false)
-	 CreateObject(`V_38_Pictures`,coordsofbuilding.x+0.36021210,coordsofbuilding.y+0.34026300,coordsofbuilding.z+1.82029300,false,false,false)
-	 CreateObject(`V_38_LIGHTS`,coordsofbuilding.x+0.95295510,coordsofbuilding.y-0.34358800,coordsofbuilding.z+4.50438800,false,false,false)
-	
-	 local plant = CreateObject(`V_38_BARB_PLANT02`,coordsofbuilding.x+3.01122600,coordsofbuilding.y-4.98704700,coordsofbuilding.z+2.91572800,false,false,false)
-	 SetEntityRotation(plant,0.0,0.0,170.0,2,1)
+	CreateObject(`V_38_FAN`,coordsofbuilding.x+0.18863910,coordsofbuilding.y-1.78123200,coordsofbuilding.z+1.49853700,false,false,false)
+	CreateObject(`V_38_SHELVES`,coordsofbuilding.x+0.38722500,coordsofbuilding.y-0.21649000,coordsofbuilding.z+2.34309200,false,false,false)
+	CreateObject(`V_38_Pictures`,coordsofbuilding.x+0.36021210,coordsofbuilding.y+0.34026300,coordsofbuilding.z+1.82029300,false,false,false)
+	CreateObject(`V_38_LIGHTS`,coordsofbuilding.x+0.95295510,coordsofbuilding.y-0.34358800,coordsofbuilding.z+4.50438800,false,false,false)
 
-	 local chair1 = CreateObject(`Prop_chair_01b`,coordsofbuilding.x+2.92626000,coordsofbuilding.y+0.70815100,coordsofbuilding.z+1.54303900,false,false,false)
-	 local chair2 = CreateObject(`prop_chair_04a`,coordsofbuilding.x+2.92626000,coordsofbuilding.y+2.21829500,coordsofbuilding.z+1.54303900,false,false,false)
-	 local chair3 = CreateObject(`prop_chair_02`,coordsofbuilding.x+2.92626000,coordsofbuilding.y+1.44866100,coordsofbuilding.z+1.54303900,false,false,false)
-	 local chair4 = CreateObject(`prop_chair_02`,coordsofbuilding.x+2.92626000,coordsofbuilding.y+0.00554299,coordsofbuilding.z+1.54303900,false,false,false)
+	local plant = CreateObject(`V_38_BARB_PLANT02`,coordsofbuilding.x+3.01122600,coordsofbuilding.y-4.98704700,coordsofbuilding.z+2.91572800,false,false,false)
+	SetEntityRotation(plant,0.0,0.0,170.0,2,1)
 
-	 SetEntityRotation(chair1,0.0,0.0,-90.0,2,1)
-	 SetEntityRotation(chair2,0.0,0.0,-80.0,2,1)
-	 SetEntityRotation(chair3,0.0,0.0,-85.0,2,1)
-	 SetEntityRotation(chair4,0.0,0.0,-95.0,2,1)
+	local chair1 = CreateObject(`Prop_chair_01b`,coordsofbuilding.x+2.92626000,coordsofbuilding.y+0.70815100,coordsofbuilding.z+1.54303900,false,false,false)
+	local chair2 = CreateObject(`prop_chair_04a`,coordsofbuilding.x+2.92626000,coordsofbuilding.y+2.21829500,coordsofbuilding.z+1.54303900,false,false,false)
+	local chair3 = CreateObject(`prop_chair_02`,coordsofbuilding.x+2.92626000,coordsofbuilding.y+1.44866100,coordsofbuilding.z+1.54303900,false,false,false)
+	local chair4 = CreateObject(`prop_chair_02`,coordsofbuilding.x+2.92626000,coordsofbuilding.y+0.00554299,coordsofbuilding.z+1.54303900,false,false,false)
 
-	 CreateObject(`prop_tv_05`,coordsofbuilding.x+2.97058500,coordsofbuilding.y+4.72485000,coordsofbuilding.z+3.96126500,false,false,false)
-	 local tv = CreateObject(`prop_tv_05`,coordsofbuilding.x-2.20064500,coordsofbuilding.y-4.56200100,coordsofbuilding.z+3.96016800,false,false,false)
-	 SetEntityRotation(tv,0.0,0.0,190.0,2,1)
-	
-	 local til = CreateObject(`prop_till_01`,coordsofbuilding.x-2.18592300,coordsofbuilding.y-1.87080100,coordsofbuilding.z+2.51398500,false,false,false)
-	 SetEntityRotation(til,0.0,0.0,180.0,2,1)
-	 CreateObject(`v_ret_gc_fan`,coordsofbuilding.x+2.94997000,coordsofbuilding.y+3.27074200,coordsofbuilding.z+1.49715400,false,false,false)
-	
-	 CreateObject(`prop_cctv_cam_06a`,coordsofbuilding.x-2.35117100,coordsofbuilding.y+4.86646700,coordsofbuilding.z+4.18179800,false,false,false)
-	 CreateObject(`prop_game_clock_01`,coordsofbuilding.x-0.54486800,coordsofbuilding.y+5.01194300,coordsofbuilding.z+3.67846000,false,false,false)
-	 CreateObject(`prop_radio_01`,coordsofbuilding.x+3.07343200,coordsofbuilding.y+3.16888200,coordsofbuilding.z+3.37168900,false,false,false)
-	
-	 CreateObject(`prop_speaker_05`,coordsofbuilding.x-2.40189600,coordsofbuilding.y+0.54597100,coordsofbuilding.z+3.89755000,false,false,false)
-	 CreateObject(`prop_speaker_05`,coordsofbuilding.x-2.40189600,coordsofbuilding.y+3.19824400,coordsofbuilding.z+3.16581200,false,false,false)
-	 CreateObject(`prop_rub_stool`,coordsofbuilding.x-2.20233000,coordsofbuilding.y+4.06275700,coordsofbuilding.z+1.52316500,false,false,false)
-	 CreateObject(`prop_watercooler`,coordsofbuilding.x-2.26554100,coordsofbuilding.y+2.82748200,coordsofbuilding.z+1.41562700,false,false,false)
-	 CreateObject(`V_38_C_SHADOWMAP`,coordsofbuilding.x-0.31811000,coordsofbuilding.y+1.79183500,coordsofbuilding.z+1.54171400,false,false,false)
+	SetEntityRotation(chair1,0.0,0.0,-90.0,2,1)
+	SetEntityRotation(chair2,0.0,0.0,-80.0,2,1)
+	SetEntityRotation(chair3,0.0,0.0,-85.0,2,1)
+	SetEntityRotation(chair4,0.0,0.0,-95.0,2,1)
 
-	
-	 CreateObject(`V_38_BARB_PLANT003`,coordsofbuilding.x-2.30056400,coordsofbuilding.y+1.66849900,coordsofbuilding.z+2.38898200,false,false,false)
-	 CreateObject(`V_38_C_Pictures3`,coordsofbuilding.x+3.20509200,coordsofbuilding.y-0.40208200,coordsofbuilding.z+1.91242400,false,false,false)
-	 CreateObject(`V_38_C_Sink`,coordsofbuilding.x-0.62845000,coordsofbuilding.y+4.84067900,coordsofbuilding.z+1.41538000,false,false,false)
+	CreateObject(`prop_tv_05`,coordsofbuilding.x+2.97058500,coordsofbuilding.y+4.72485000,coordsofbuilding.z+3.96126500,false,false,false)
+	local tv = CreateObject(`prop_tv_05`,coordsofbuilding.x-2.20064500,coordsofbuilding.y-4.56200100,coordsofbuilding.z+3.96016800,false,false,false)
+	SetEntityRotation(tv,0.0,0.0,190.0,2,1)
 
-	 FreezeEntityPosition(coordsofbuilding,true)
-	 Citizen.Wait(500)
+	local til = CreateObject(`prop_till_01`,coordsofbuilding.x-2.18592300,coordsofbuilding.y-1.87080100,coordsofbuilding.z+2.51398500,false,false,false)
+	SetEntityRotation(til,0.0,0.0,180.0,2,1)
+	CreateObject(`v_ret_gc_fan`,coordsofbuilding.x+2.94997000,coordsofbuilding.y+3.27074200,coordsofbuilding.z+1.49715400,false,false,false)
+
+	CreateObject(`prop_cctv_cam_06a`,coordsofbuilding.x-2.35117100,coordsofbuilding.y+4.86646700,coordsofbuilding.z+4.18179800,false,false,false)
+	CreateObject(`prop_game_clock_01`,coordsofbuilding.x-0.54486800,coordsofbuilding.y+5.01194300,coordsofbuilding.z+3.67846000,false,false,false)
+	CreateObject(`prop_radio_01`,coordsofbuilding.x+3.07343200,coordsofbuilding.y+3.16888200,coordsofbuilding.z+3.37168900,false,false,false)
+
+	CreateObject(`prop_speaker_05`,coordsofbuilding.x-2.40189600,coordsofbuilding.y+0.54597100,coordsofbuilding.z+3.89755000,false,false,false)
+	CreateObject(`prop_speaker_05`,coordsofbuilding.x-2.40189600,coordsofbuilding.y+3.19824400,coordsofbuilding.z+3.16581200,false,false,false)
+	CreateObject(`prop_rub_stool`,coordsofbuilding.x-2.20233000,coordsofbuilding.y+4.06275700,coordsofbuilding.z+1.52316500,false,false,false)
+	CreateObject(`prop_watercooler`,coordsofbuilding.x-2.26554100,coordsofbuilding.y+2.82748200,coordsofbuilding.z+1.41562700,false,false,false)
+	CreateObject(`V_38_C_SHADOWMAP`,coordsofbuilding.x-0.31811000,coordsofbuilding.y+1.79183500,coordsofbuilding.z+1.54171400,false,false,false)
+
+
+	CreateObject(`V_38_BARB_PLANT003`,coordsofbuilding.x-2.30056400,coordsofbuilding.y+1.66849900,coordsofbuilding.z+2.38898200,false,false,false)
+	CreateObject(`V_38_C_Pictures3`,coordsofbuilding.x+3.20509200,coordsofbuilding.y-0.40208200,coordsofbuilding.z+1.91242400,false,false,false)
+	CreateObject(`V_38_C_Sink`,coordsofbuilding.x-0.62845000,coordsofbuilding.y+4.84067900,coordsofbuilding.z+1.41538000,false,false,false)
+
+	FreezeEntityPosition(coordsofbuilding,true)
+	Citizen.Wait(500)
 	SetEntityCoords(PlayerPedId(), 592.26, 2745.01, 15.22)
 	Citizen.Wait(500)
 	
@@ -273,7 +273,7 @@ local oxyPeds = {
 }
 
 function CreateDrugStorePed()
-
+	
 	if DoesEntityExist(drugStorePed) then
 		return
 	end
@@ -284,19 +284,23 @@ function CreateDrugStorePed()
         RequestModel(hashKey)
         Citizen.Wait(100)
     end
-	drugStorePed = CreatePed(pedType, hashKey, pillWorker["x"],pillWorker["y"],pillWorker["z"], 270.0, 1, 1)
-	SetEntityHeading(drugStorePed, 180.24)
-	DecorSetBool(drugStorePed, 'ScriptedPed', true)
-    ClearPedTasks(drugStorePed)
-    ClearPedSecondaryTask(drugStorePed)
-    TaskSetBlockingOfNonTemporaryEvents(drugStorePed, true)
-    SetPedFleeAttributes(drugStorePed, 0, 0)
-    SetPedCombatAttributes(drugStorePed, 17, 1)
+	ped = CreatePed(pedType, hashKey, pillWorker["x"],pillWorker["y"],pillWorker["z"], 270.0, 1, 1)
+	SetEntityHeading(ped, 180.24)
+	DecorSetBool(ped, 'ScriptedPed', true)
+    ClearPedTasks(ped)
+    ClearPedSecondaryTask(ped)
+    TaskSetBlockingOfNonTemporaryEvents(ped, true)
+    SetPedFleeAttributes(ped, 0, 0)
+    SetPedCombatAttributes(ped, 17, 1)
+	FreezeEntityPosition(ped, true)
+	SetEntityInvincible(ped, true)
+	SetEntityAsMissionEntity(ped, true, true)
+    SetPedSeeingRange(ped, 0.0)
+    SetPedHearingRange(ped, 0.0)
+    SetPedAlertness(ped, 0)
+    SetPedKeepTask(ped, true)
 
-    SetPedSeeingRange(drugStorePed, 0.0)
-    SetPedHearingRange(drugStorePed, 0.0)
-    SetPedAlertness(drugStorePed, 0)
-    SetPedKeepTask(drugStorePed, true)
+	drugStorePed = ped
 end
 
 local carpick = {
@@ -348,15 +352,20 @@ function CreateOxyVehicle()
 	local plt = GetVehicleNumberPlateText(oxyVehicle)
 	DecorSetInt(oxyVehicle,"GamemodeCar",955)
 	SetVehicleHasBeenOwnedByPlayer(oxyVehicle,true)
+	SetVehicleNeedsToBeHotwired(oxyVehicle, false)
+	SetEntityAsMissionEntity(oxyVehicle, true, true)
+	SetVehicleIsStolen(vehioxyVehiclecle, false)
+	SetVehicleIsWanted(oxyVehicle, true)
+	SetVehRadioStation(oxyVehicle, 'OFF')
 	TriggerEvent("keys:received",plt)
 
 
     while true do
     	Citizen.Wait(1)
-    	 DrawText3Ds(carspawns[spawnpoint]["x"], carspawns[spawnpoint]["y"], carspawns[spawnpoint]["z"], "Your Delivery Car (Stolen).")
-    	 if #(GetEntityCoords(PlayerPedId()) - vector3(carspawns[spawnpoint]["x"], carspawns[spawnpoint]["y"], carspawns[spawnpoint]["z"])) < 8.0 then
-    	 	return
-    	 end
+		DrawText3Ds(carspawns[spawnpoint]["x"], carspawns[spawnpoint]["y"], carspawns[spawnpoint]["z"], "Your Delivery Car (Stolen).")
+		if #(GetEntityCoords(PlayerPedId()) - vector3(carspawns[spawnpoint]["x"], carspawns[spawnpoint]["y"], carspawns[spawnpoint]["z"])) < 8.0 then
+		return
+		end
     end
 
 end
@@ -403,6 +412,7 @@ function CreateDrugPed()
     RequestModel(hashKey)
     while not HasModelLoaded(hashKey) do
         RequestModel(hashKey)
+			
         Citizen.Wait(100)
     end
 
@@ -414,7 +424,7 @@ function CreateDrugPed()
     TaskSetBlockingOfNonTemporaryEvents(deliveryPed, true)
     SetPedFleeAttributes(deliveryPed, 0, 0)
     SetPedCombatAttributes(deliveryPed, 17, 1)
-
+	FreezeEntityPosition(deliveryPed, true)
     SetPedSeeingRange(deliveryPed, 0.0)
     SetPedHearingRange(deliveryPed, 0.0)
     SetPedAlertness(deliveryPed, 0)
@@ -424,6 +434,7 @@ end
 
 function DeleteCreatedPed()
 	if DoesEntityExist(deliveryPed) then 
+		FreezeEntityPosition(deliveryPed, false)
 		SetPedKeepTask(deliveryPed, false)
 		TaskSetBlockingOfNonTemporaryEvents(deliveryPed, false)
 		ClearPedTasks(deliveryPed)
@@ -444,6 +455,7 @@ end
 
 function CreateBlip()
 	DeleteBlip()
+	
 	if OxyRun then
 		blip = AddBlipForCoord(OxyDropOffs[rnd]["x"],OxyDropOffs[rnd]["y"],OxyDropOffs[rnd]["z"])
 	else
@@ -512,14 +524,14 @@ function HasStolenGoods()
 	return false
 end
 
-local bandprice = 400
-local rollcashprice = 200
+local bandprice = 80
+local rollcashprice = 40
 local inkedmoneybagprice = 20000
-local markedbillsprice = 2500
+local markedbillsprice = 500
 
 function DoDropOff(requestMoney)
 
-	cashPayment = 420 + math.random(150)
+	cashPayment = 250 + math.random(350)
 	local success = true
 
 	searchPockets()
@@ -534,7 +546,6 @@ function DoDropOff(requestMoney)
 
 			if math.random(10) == 1 then
 				TriggerEvent( "player:receiveItem", "safecrackingkit", 1 )
-				TriggerEvent( "player:receiveItem", "joint", math.random(1,4) )
 			end
 			
 			if math.random(49) == 49 then
@@ -543,7 +554,7 @@ function DoDropOff(requestMoney)
 
 			if OxyRun then
 
-				cashPayment = math.random(250,500)
+				cashPayment = math.random(150,550)
 				
 				if exports["drp-inventory"]:hasEnoughOfItem("inkedmoneybag",1,false) then     
 					-- RepPlus()
@@ -569,6 +580,20 @@ function DoDropOff(requestMoney)
 				if math.random(100) > 45 then
 					TriggerEvent( "player:receiveItem", "oxy", math.random(5) )
 				end
+
+				
+				if math.random(100) >= 7 then
+					cashPayment = cashPayment + math.random(250,1000)
+				end
+
+				
+				if math.random(100) >= 1 then
+					cashPayment = cashPayment + math.random(1000,1500)
+				end
+				
+				if math.random(1000) >= 1 then
+					cashPayment = cashPayment + math.random(10000,15000)
+				end 
 
 			else
 
@@ -773,7 +798,7 @@ AddEventHandler("oxydelivery:client", function()
 	tasking = true
 	local toolong = 600000
 	while tasking do
-
+		toolong = toolong - 1
 		Citizen.Wait(1)
 		local plycoords = GetEntityCoords(PlayerPedId())
 		local dstcheck = #(plycoords - vector3(OxyDropOffs[rnd]["x"],OxyDropOffs[rnd]["y"],OxyDropOffs[rnd]["z"])) 
@@ -787,14 +812,13 @@ AddEventHandler("oxydelivery:client", function()
 			CreateOxyPed()
 			TriggerEvent("DoLongHudText","You are close to the drop off.")
 		end
-		toolong = toolong - 1
 		if toolong < 0 then
 
 		    SetVehicleHasBeenOwnedByPlayer(oxyVehicle,false)
 			SetEntityAsNoLongerNeeded(oxyVehicle)
 			tasking = false
 			OxyRun = false
-			TriggerEvent("DoLongHudText","You are no longer selling oxy")
+			TriggerEvent("chatMessage", "EMAIL - Oxy Deliveries", 8, "You are no longer selling oxy.")
 		end
 		if dstcheck < 2.0 and pedCreated then
 
@@ -802,14 +826,16 @@ AddEventHandler("oxydelivery:client", function()
 			DrawText3Ds(crds["x"],crds["y"],crds["z"], "[E]")  
 
 			if IsControlJustReleased(0,38) then
-				--local pdping = math.random(1,5)
-				--if pdping == 1 then
-				TriggerEvent("drp-dispatch:oxyping")
-				--end
+				local pdping = math.random(0,100)
+				if pdping <= 18 then
+					TriggerEvent("drp-dispatch:oxyping")
+				end
 				TaskTurnPedToFaceEntity(deliveryPed, PlayerPedId(), 1.0)
-				Citizen.Wait(1500)
-				PlayAmbientSpeech1(deliveryPed, "Generic_Hi", "Speech_Params_Force")
-				DoDropOff()
+				local finished = exports["drp-taskbar"]:taskBar(22500,"Dropping Off")
+				if finished == 100 then	
+					PlayAmbientSpeech1(deliveryPed, "Generic_Hi", "Speech_Params_Force")
+					DoDropOff()
+				end
 				
 				tasking = false
 			end
@@ -850,7 +876,7 @@ AddEventHandler("drugdelivery:client", function()
 		Citizen.Wait(1)
 		local plycoords = GetEntityCoords(PlayerPedId())
 		local dstcheck = #(plycoords - vector3(dropoffpoints[rnd]["x"],dropoffpoints[rnd]["y"],dropoffpoints[rnd]["z"])) 
-		if dstcheck < 40.0 and not pedCreated then
+		if dstcheck <= 40.0 and not pedCreated then
 			pedCreated = true
 			DeleteCreatedPed()
 			CreateDrugPed()
@@ -863,11 +889,17 @@ AddEventHandler("drugdelivery:client", function()
 			DrawText3Ds(crds["x"],crds["y"],crds["z"], "[E]")  
 
 			if IsControlJustReleased(0,38) then
+				local pdping = math.random(0,100)
+				if pdping <= 18 then
+					TriggerEvent("drp-dispatch:oxyping") -- todo maybe add drugs extra but idk should be the same
+				end
 				TaskTurnPedToFaceEntity(deliveryPed, PlayerPedId(), 1.0)
-				Citizen.Wait(1500)
-				PlayAmbientSpeech1(deliveryPed, "Generic_Hi", "Speech_Params_Force")
-				DoDropOff()
-				tasking = false
+				local finished = exports["drp-taskbar"]:taskBar(22500,"Dropping Off")
+    			if finished == 100 then	
+					PlayAmbientSpeech1(deliveryPed, "Generic_Hi", "Speech_Params_Force")
+					DoDropOff()
+					tasking = false
+				end
 			end
 
 		end
@@ -1457,7 +1489,6 @@ end)
 local firstdeal = false
 Citizen.CreateThread(function()
 
-
     while true do
 
         if drugdealer then
@@ -1482,9 +1513,10 @@ Citizen.CreateThread(function()
 		elseif OxyRun then
 
 			if (not DoesEntityExist(oxyVehicle) or GetVehicleEngineHealth(oxyVehicle) < 100.0) and vehspawn then
-				OxyRun = false
 				tasking = false
 				TriggerEvent("chatMessage", "EMAIL - Drug Deliveries", 8, "Dude! You fucked the car up, I canceled your run, asshole! ")
+				Citizen.Wait(1200000)
+				OxyRun = false
 			else
 				if tasking then
 			        Citizen.Wait(30000)
@@ -1492,9 +1524,10 @@ Citizen.CreateThread(function()
 			        TriggerEvent("oxydelivery:client")  
 				    salecount = salecount + 1
 				    if salecount == 6 then
-				    	Citizen.Wait(1200000)
+						TriggerEvent("chatMessage", "EMAIL - Oxy Deliveries", 8, "You are no longer selling oxy.")
+				    	Citizen.Wait(1200000) -- 20 minutes
 				    	OxyRun = false
-				    end
+					end
 				end
 			end
 
@@ -1620,6 +1653,8 @@ AddEventHandler("drugdelivery:startDealing", function()
 	local NearNPC = exports["isPed"]:GetClosestNPC()
 	PlayAmbientSpeech1(NearNPC, "Chat_Resp", "SPEECH_PARAMS_FORCE", 1)
 	TriggerEvent("DoLongHudText","Your pager will be updated with locations soon.")
+	TriggerEvent( "player:receiveItem", "darkmarketdeliveries", 1 )
+
 	salecount = 0
 	drugdealer = true
 	firstdeal = true
@@ -1630,6 +1665,8 @@ AddEventHandler("oxydelivery:startDealing", function()
 	local NearNPC = exports["isPed"]:GetClosestNPC()
 	PlayAmbientSpeech1(NearNPC, "Chat_Resp", "SPEECH_PARAMS_FORCE", 1)
 	TriggerEvent("DoLongHudText","Your pager will be updated with locations soon.")
+	TriggerEvent( "player:receiveItem", "darkmarketdeliveries", 1 )
+
 	salecount = 0	
 	firstdeal = true
 	OxyRun = true
