@@ -184,61 +184,43 @@ end)
 --// Sell Mining Items
 
 RegisterNetEvent('drp-civjobs:sell-mininggem')
-AddEventHandler('drp-civjobs:sell-mininggem', function()
-    if exports['drp-inventory']:hasEnoughOfItem('jadeite', 1) then
-        TriggerEvent('inventory:removeItem', 'jadeite', 1)
-        TriggerServerEvent('drp-civjobs:sell-gem-cash')
-    else
-        TriggerEvent('DoLongHudText', 'Not enough to sell.', 2)
-    end
+AddEventHandler('drp-civjobs:sell-mininggem', function()    
+    local toSell = exports["drp-inventory"]:getAmountOfItem("jadeite")
+    TriggerEvent('inventory:removeItem', 'jadeite', toSell)
+    TriggerServerEvent('drp-civjobs:sell-gem-cash', toSell)
 end)
 
 RegisterNetEvent('drp-civjobs:sell-stone')
 AddEventHandler('drp-civjobs:sell-stone', function()
-    if exports['drp-inventory']:hasEnoughOfItem('ruby', 1) then
-        TriggerEvent('inventory:removeItem', 'ruby', 1)
-        TriggerServerEvent('drp-civjobs:sell-stone-cash')
-    else
-        TriggerEvent('DoLongHudText', 'Not enough to sell.', 2)
-    end
+    local toSell = exports["drp-inventory"]:getAmountOfItem("ruby")
+    TriggerEvent('inventory:removeItem', 'ruby', toSell)
+    TriggerServerEvent('drp-civjobs:sell-stone-cash', toSell)
 end)
 
 RegisterNetEvent('drp-civjobs:sell-coal')
 AddEventHandler('drp-civjobs:sell-coal', function()
-    if exports['drp-inventory']:hasEnoughOfItem('steel', 1) then
-        TriggerEvent('inventory:removeItem', 'steel', 1)
-        TriggerServerEvent('drp-civjobs:sell-coal-cash')
-    else
-        TriggerEvent('DoLongHudText', 'Not enough to sell.', 2)
-     end
+    local toSell = exports["drp-inventory"]:getAmountOfItem("steel")
+    TriggerEvent('inventory:removeItem', 'steel', toSell)
+    TriggerServerEvent('drp-civjobs:sell-coal-cash', toSell)
 end)
 
 RegisterNetEvent('drp-civjobs:sell-diamonds')
 AddEventHandler('drp-civjobs:sell-diamonds', function()
-    if exports['drp-inventory']:hasEnoughOfItem('aluminium', 1) then
-        TriggerEvent('inventory:removeItem', 'aluminium', 1)
-        TriggerServerEvent('drp-civjobs:sell-diamond-cash')
-    else
-        TriggerEvent('DoLongHudText', 'Not enough to sell.', 2)
-    end
+    local toSell = exports["drp-inventory"]:getAmountOfItem("aluminium")
+    TriggerEvent('inventory:removeItem', 'aluminium', toSell)
+    TriggerServerEvent('drp-civjobs:sell-diamond-cash', toSell)
 end)
 
 RegisterNetEvent('drp-civjobs:sell-sapphire')
 AddEventHandler('drp-civjobs:sell-sapphire', function()
-    if exports['drp-inventory']:hasEnoughOfItem('copper', 1) then
-        TriggerEvent('inventory:removeItem', 'copper', 1)
-        TriggerServerEvent('drp-civjobs:sell-sapphire-cash')
-    else
-        TriggerEvent('DoLongHudText', 'Not enough to sell.', 2)
-    end
+    local toSell = exports["drp-inventory"]:getAmountOfItem("copper")
+    TriggerEvent('inventory:removeItem', 'copper', toSell)
+    TriggerServerEvent('drp-civjobs:sell-sapphire-cash', toSell)
 end)
 
 RegisterNetEvent('drp-civjobs:sell-ruby')
 AddEventHandler('drp-civjobs:sell-ruby', function()
-    if exports['drp-inventory']:hasEnoughOfItem('uwuore', 1) then
-        TriggerEvent('inventory:removeItem', 'uwuore', 1)
-        TriggerServerEvent('drp-civjobs:sell-ruby-cash')
-    else
-        TriggerEvent('DoLongHudText', 'Not enough to sell.', 2)
-    end
+    local toSell = exports["drp-inventory"]:getAmountOfItem("uwuore")
+    TriggerEvent('inventory:removeItem', 'uwuore', toSell)
+    TriggerServerEvent('drp-civjobs:sell-ruby-cash', toSell)
 end)
