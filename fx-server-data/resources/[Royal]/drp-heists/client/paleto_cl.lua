@@ -630,7 +630,7 @@ AddEventHandler("drp-paleto:startPaletoHeist", function()
                         TriggerEvent('drp-paleto:policenotify')
                         TriggerEvent('drp-robberies:hackinganim', true)
                         Citizen.Wait(7000)
-                        exports["hacking"]:hacking(
+                        exports["hacking2"]:hacking2(
                             function() -- success
                                 TriggerEvent('drp-paleto:addPlease')
                                 
