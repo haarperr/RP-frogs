@@ -556,22 +556,40 @@ function DoDropOff(requestMoney)
 
 				cashPayment = math.random(150,550)
 				
-				takingList = [{"item": "band", "count": math.random(3,10), "price": bandprice}, {"item": "rollcash", "count": math.random(3,10), "price": rollcashprice}, {"item": "inkedmoneybag", "count": 1, "price": inkedmoneybagprice}, {"item": "markedbills", "count": math.random(3,10), "price": markedbillsprice}]
-				yesno = false
-				while yesno == false do
-					rnd = math.random(1, table.getn(takingList))
-					
-					TriggerEvent("DoLongHudText",rnd)
+				
+				band = ["band", math.random(3,10), bandprice]
+				rollcash = ["rollcash", math.random(3,10), rollcashprice]
+				inkedmoneybag = ["inkedmoneybag", 1, inkedmoneybagprice]
+				markedbills = ["markedbills", math.random(3, 10), markedbillsprice]
 
-					if exports["drp-inventory"]:hasEnoughOfItem(takingList[rnd][1], takingList[rnd][2], false) then	
-						TriggerServerEvent('mission:completed', takingList[rnd][3] * takingList[rnd][2])
+				yesno = false
+				count = 0
+
+				while yesno == false do 
+					local rnd = math.random(1,4)
+					local item = {}
+					if rnd == 1 then
+						item = band
+					elseif rnd == 2 then
+						item = rollcash
+					elseif rnd == 3 then
+						item = inkedmoneybag
+					elseif rnd == 4 then
+						item = markedbills
+					end
+					
+					
+					count = count + 1
+					if exports["drp-inventory"]:hasEnoughOfItem(item[1],item[2],false) then
+						TriggerServerEvent('mission:completed', takingList[2] * takingList[3])
 						TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
 						yesno = true
 					end
-				end
 
-				if yesno == false then
-		            TriggerEvent("DoLongHudText","Thanks, no extra sauce though?!")
+					if count == 4 then
+						TriggerEvent("DoLongHudText","No Sauce?!?!")
+						yesno = true
+					end
 				end
 
 				if math.random(100) > 45 then
