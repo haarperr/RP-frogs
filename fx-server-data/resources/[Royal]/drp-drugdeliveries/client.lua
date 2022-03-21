@@ -826,8 +826,8 @@ AddEventHandler("oxydelivery:client", function()
 			DrawText3Ds(crds["x"],crds["y"],crds["z"], "[E]")  
 
 			if IsControlJustReleased(0,38) then
-				local pdping = math.random(15,100)
-				if pdping <= 15 then
+				local pdping = math.random(0,100)
+				if pdping <= 18 then
 					TriggerEvent("drp-dispatch:oxyping")
 				end
 				TaskTurnPedToFaceEntity(deliveryPed, PlayerPedId(), 1.0)
@@ -889,8 +889,8 @@ AddEventHandler("drugdelivery:client", function()
 			DrawText3Ds(crds["x"],crds["y"],crds["z"], "[E]")  
 
 			if IsControlJustReleased(0,38) then
-				local pdping = math.random(15,100)
-				if pdping <= 15 then
+				local pdping = math.random(0,100)
+				if pdping <= 18 then
 					TriggerEvent("drp-dispatch:oxyping") -- todo maybe add drugs extra but idk should be the same
 				end
 				TaskTurnPedToFaceEntity(deliveryPed, PlayerPedId(), 1.0)
