@@ -867,6 +867,56 @@ function AlertFleecaRobbery()
     end
 end
 
+
+function OxyPing()
+    local locationInfo = GetStreetAndZone()
+    local gender = IsPedMale(playerPed)
+    local currentPos = GetEntityCoords(playerPed)
+    local isInVehicle = IsPedInAnyVehicle(PlayerPedId())
+    local currentVeh = GetVehiclePedIsIn(PlayerPedId(), false)
+    local dispatchCode = "10-26"
+    TriggerServerEvent('drp-dispatch:bankwobbewy', currentPos)
+    TriggerServerEvent('dispatch:svNotify', {
+        dispatchCode = dispatchCode,
+        firstStreet = locationInfo,
+        gender = gender,
+        priority = 1,
+        origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
+        dispatchMessage = "Suspicious Activity"
+    })
+    if math.random(10) > 2 and not isInVehicle then
+        CreateThread(function()
+            Wait(math.random(17500, 25000))
+            if IsPedInAnyVehicle(PlayerPedId()) then
+                local vehicleData = GetVehicleDescription() or {}
+                local newPos = GetEntityCoords(PlayerPedId())
+                local locationInfo = GetStreetAndZone()
+                TriggerServerEvent('dispatch:svNotify', {
+                    dispatchCode = 'CarEvading',
+                    relatedCode = dispatchCode,
+                    firstStreet = locationInfo,
+                    gender = gender,
+                    model = vehicleData.model,
+                    plate = vehicleData.plate,
+                    priority = 1,
+                    firstColor = vehicleData.firstColor,
+                    secondColor = vehicleData.secondColor,
+                    heading = vehicleData.heading,
+                    origin = {x = newPos.x, y = newPos.y, z = newPos.z},
+                    dispatchMessage = "Evading 10-90"
+                })
+                TriggerServerEvent('drp-dispatch:bankwobbewy', newPos)
+            end
+            return
+        end)
+    end
+end
+
+RegisterNetEvent('drp-dispatch:oxyping')
+AddEventHandler("drp-dispatch:oxyping",function()
+    OxyPing()
+end)
+
 RegisterNetEvent('drp-dispatch:bankrobbery')
 AddEventHandler("drp-dispatch:bankrobbery",function()
     AlertFleecaRobbery()

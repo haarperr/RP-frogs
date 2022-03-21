@@ -806,6 +806,9 @@ AddEventHandler("oxydelivery:client", function()
 				Citizen.Wait(1500)
 				PlayAmbientSpeech1(deliveryPed, "Generic_Hi", "Speech_Params_Force")
 				DoDropOff()
+				local pdping = math.random(1,5)
+				if pdping == 1 then
+					TriggerEvent("drp-dispatch:oxyping")
 				tasking = false
 			end
 
