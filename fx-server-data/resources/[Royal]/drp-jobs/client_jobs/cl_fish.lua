@@ -536,7 +536,7 @@ AddEventHandler("fishing:sell1", function()
 	if exports["drp-inventory"]:getQuantity("fishingbass") >= 1 then
 		playerAnim()
         local fishToSell = exports["drp-inventory"]:getAmountOfItem("fishingbass")
-		local finished = exports["drp-taskbar"]:taskBar(1000*fishToSell, "Selling "+ fishToSell + " Bass",true,false,playerVeh)
+		local finished = exports["drp-taskbar"]:taskBar(1000*fishToSell, "Selling "+ fishToSell + " Bass",true,false)
 		if finished == 100 then
 			if exports["drp-inventory"]:getQuantity("fishingbass") >= 1 then
 				ClearPedTasksImmediately(PlayerPedId())
@@ -556,12 +556,12 @@ AddEventHandler("fishing:sell2", function()
     if exports["drp-inventory"]:getQuantity("fishingsockeyesalmon") >= 1 then
 		playerAnim()
         local fishToSell = exports["drp-inventory"]:getAmountOfItem("fishingsockeyesalmon")
-		local finished = exports["drp-taskbar"]:taskBar(1000*fishToSell, "Selling "+ fishToSell + " Salmon",true,false,playerVeh)
+		local finished = exports["drp-taskbar"]:taskBar(1000*fishToSell, "Selling "+ fishToSell + " Salmon",true,false)
 		if finished == 100 then
 			if exports["drp-inventory"]:getQuantity("fishingsockeyesalmon") >= 1 then
 				ClearPedTasksImmediately(PlayerPedId())
 				TriggerEvent('inventory:removeItem', 'fishingsockeyesalmon', fishToSell)
-				TriggerServerEvent('drp-fishing:PayPlayer', 35*fishToSell)
+				TriggerServerEvent('drp-fishing:PayPlayer', 40*fishToSell)
 			else
                 TriggerEvent('DoLongHudText', 'Might want to try again you do not have a salmon in your pockets', 2)
 			end
@@ -576,7 +576,7 @@ AddEventHandler("fishing:sell3", function()
     if exports["drp-inventory"]:getQuantity("fishingmackerel") >= 1 then
 		playerAnim()
         local fishToSell = exports["drp-inventory"]:getAmountOfItem("fishingsockeyesalmon")
-		local finished = exports["drp-taskbar"]:taskBar(1500*fishToSell, "Selling "+ fishToSell + " Mackerel",true,false,playerVeh)
+		local finished = exports["drp-taskbar"]:taskBar(1500*fishToSell, "Selling "+ fishToSell + " Mackerel",true,false)
 		if finished == 100 then
 			if exports["drp-inventory"]:getQuantity("fishingmackerel") >= 1 then
 				ClearPedTasksImmediately(PlayerPedId())
@@ -596,7 +596,7 @@ AddEventHandler("fishing:sell4", function()
     if exports["drp-inventory"]:getQuantity("fishingshark") >= 1 then
 		playerAnim()
         local fishToSell = exports["drp-inventory"]:getAmountOfItem("fishingshark")
-		local finished = exports["drp-taskbar"]:taskBar(10000*fishToSell, "Selling "+ fishToSell + " Shark",true,false,playerVeh)
+		local finished = exports["drp-taskbar"]:taskBar(10000*fishToSell, "Selling "+ fishToSell + " Shark",true,false)
 		if finished == 100 then
 			if exports["drp-inventory"]:getQuantity("fishingshark") >= 1 then
 				ClearPedTasksImmediately(PlayerPedId())
@@ -616,7 +616,7 @@ AddEventHandler("fishing:sell5", function()
     if exports["drp-inventory"]:getQuantity("fishingdolphin") >= 1 then
 		playerAnim()
         local fishToSell = exports["drp-inventory"]:getAmountOfItem("fishingdolphin")
-		local finished = exports["drp-taskbar"]:taskBar(10000*fishToSell, "Selling "+ fishToSell + " Dolphin",true,false,playerVeh)
+		local finished = exports["drp-taskbar"]:taskBar(10000*fishToSell, "Selling "+ fishToSell + " Dolphin",true,false)
 		if finished == 100 then
 			if exports["drp-inventory"]:getQuantity("fishingdolphin") >= 1 then
 				ClearPedTasksImmediately(PlayerPedId())
@@ -636,7 +636,7 @@ AddEventHandler("fishing:sell6", function()
     if exports["drp-inventory"]:getQuantity("fishingwhale") >= 1 then
 		playerAnim()
         local fishToSell = exports["drp-inventory"]:getAmountOfItem("fishingwhale")
-		local finished = exports["drp-taskbar"]:taskBar(10000*fishToSell, "Selling "+ fishToSell + " Whale",true,false,playerVeh)
+		local finished = exports["drp-taskbar"]:taskBar(10000*fishToSell, "Selling "+ fishToSell + " Whale",true,false)
 		if finished == 100 then
 			if exports["drp-inventory"]:getQuantity("fishingwhale") >= 1 then
 				ClearPedTasksImmediately(PlayerPedId())
