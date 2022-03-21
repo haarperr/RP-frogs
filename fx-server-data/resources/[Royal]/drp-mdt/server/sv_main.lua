@@ -509,7 +509,7 @@ LoadRoyalVersion = function()
     end)
     RPC.register("drp-mdt:saveIncident", function(ID, title, information, tags, officers, civilians, evidence, associated, time)
         local src = source
-        local string = data.ID, data.title, data.information, data.tags, data.officers, data.civilians, data.evidence, data.associated, data.time
+        local string = ID, title, information, tags, officers, civilians, evidence, associated, time
         TriggerClientEvent('DoLongHudText', src, string, 1)
         local result = SQL('SELECT * FROM mdt_incidents WHERE id = @id', {['@id'] = ID})
         if result[1] then
