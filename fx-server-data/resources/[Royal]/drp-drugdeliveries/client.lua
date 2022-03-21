@@ -93,14 +93,14 @@ local OxyDropOffs = {
 	[7] =  { ['x'] = -26.96,['y'] = -368.45,['z'] = 39.69,['h'] = 251.12, ['info'] = ' 7' },
 	[8] =  { ['x'] = -155.88,['y'] = -751.76,['z'] = 33.76,['h'] = 251.82, ['info'] = ' 8' },
 
-	[9] =  { ['x'] = -305.02,['y'] = -226.17,['z'] = 36.29,['h'] = 306.04, ['info'] = ' penis1' },
-	[10] =  { ['x'] = -347.19,['y'] = -791.04,['z'] = 33.97,['h'] = 3.06, ['info'] = ' penis2' },
-	[11] =  { ['x'] = -703.75,['y'] = -932.93,['z'] = 19.22,['h'] = 87.86, ['info'] = ' penis3' },
-	[12] =  { ['x'] = -659.35,['y'] = -256.83,['z'] = 36.23,['h'] = 118.92, ['info'] = ' penis4' },
-	[13] =  { ['x'] = -934.18,['y'] = -124.28,['z'] = 37.77,['h'] = 205.79, ['info'] = ' penis5' },
-	[14] =  { ['x'] = -1214.3,['y'] = -317.57,['z'] = 37.75,['h'] = 18.39, ['info'] = ' penis6' },
-	[15] =  { ['x'] = -822.83,['y'] = -636.97,['z'] = 27.9,['h'] = 160.23, ['info'] = ' penis7' },
-	[16] =  { ['x'] = 308.04,['y'] = -1386.09,['z'] = 31.79,['h'] = 47.23, ['info'] = ' penis8' },
+	[9] =  { ['x'] = -305.02,['y'] = -226.17,['z'] = 36.29,['h'] = 306.04, ['info'] = ' 9' },
+	[10] =  { ['x'] = -347.19,['y'] = -791.04,['z'] = 33.97,['h'] = 3.06, ['info'] = ' 10' },
+	[11] =  { ['x'] = -703.75,['y'] = -932.93,['z'] = 19.22,['h'] = 87.86, ['info'] = ' 11' },
+	[12] =  { ['x'] = -659.35,['y'] = -256.83,['z'] = 36.23,['h'] = 118.92, ['info'] = ' 12' },
+	[13] =  { ['x'] = -934.18,['y'] = -124.28,['z'] = 37.77,['h'] = 205.79, ['info'] = ' 13' },
+	[14] =  { ['x'] = -1214.3,['y'] = -317.57,['z'] = 37.75,['h'] = 18.39, ['info'] = ' 14' },
+	[15] =  { ['x'] = -822.83,['y'] = -636.97,['z'] = 27.9,['h'] = 160.23, ['info'] = ' 15' },
+	[16] =  { ['x'] = 308.04,['y'] = -1386.09,['z'] = 31.79,['h'] = 47.23, ['info'] = ' 16' }, -- what the fuck lmao
 
 }
 
@@ -523,10 +523,10 @@ function HasStolenGoods()
 	return false
 end
 
-local bandprice = 400
-local rollcashprice = 200
+local bandprice = 400 / 5
+local rollcashprice = 200 / 5
 local inkedmoneybagprice = 20000
-local markedbillsprice = 2500
+local markedbillsprice = 2500 / 5
 
 function DoDropOff(requestMoney)
 
@@ -555,26 +555,20 @@ function DoDropOff(requestMoney)
 
 				cashPayment = math.random(150,550)
 				
-				if exports["drp-inventory"]:hasEnoughOfItem("inkedmoneybag",1,false) then     
-					-- RepPlus()
-					TriggerEvent("inventory:removeItem","inkedmoneybag", 1)   
-					TriggerServerEvent('mission:completed', inkedmoneybagprice)
-					TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
-		        elseif exports["drp-inventory"]:hasEnoughOfItem("rollcash",5,false) then     
-		            TriggerEvent("inventory:removeItem","rollcash", 5)   
-					TriggerServerEvent('mission:completed', rollcashprice)             
-		            TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
-		        elseif exports["drp-inventory"]:hasEnoughOfItem("markedbills",5,false) then     
-		            TriggerEvent("inventory:removeItem","markedbills", 5)   
-					TriggerServerEvent('mission:completed', markedbillsprice)           
-		            TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
-				elseif exports["drp-inventory"]:hasEnoughOfItem("band",5,false) then     
-					TriggerEvent("inventory:removeItem","band", 5)   
-					TriggerServerEvent('mission:completed', bandprice)          
-					TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
-				else
+				list = [["inkedmoneybag", 1, inkedmoneybagprice], ["rollcash", math.random(3,10), rollcashprice], ["markedbills", math.random(3,10), markedbillsprice], ["band", math.random(3,10), bandprice]]
+				yesno = false
+				while yesno = false do
+					rnd = math.random(1,#list)
+					if exports["drp-inventory"]:hasEnoughOfItem(list[rnd][1],list[rnd][2],false) then	
+						TriggerServerEvent('mission:completed', list[rnd][3] * list[rnd][2])
+						TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
+						yesno = true
+					end
+				end
+
+				if yesno is false then
 		            TriggerEvent("DoLongHudText","Thanks, no extra sauce though?!")
-		        end
+				end
 
 				if math.random(100) > 45 then
 					TriggerEvent( "player:receiveItem", "oxy", math.random(5) )
@@ -811,13 +805,13 @@ AddEventHandler("oxydelivery:client", function()
 			CreateOxyPed()
 			TriggerEvent("DoLongHudText","You are close to the drop off.")
 		end
-		if toolong <= 0 then
+		if toolong < 0 then
 
 		    SetVehicleHasBeenOwnedByPlayer(oxyVehicle,false)
 			SetEntityAsNoLongerNeeded(oxyVehicle)
 			tasking = false
 			OxyRun = false
-			TriggerEvent("chatMessage", "EMAIL - Drug Deliveries", 8, "You no longer selling oxy.")
+			TriggerEvent("chatMessage", "EMAIL - Oxy Deliveries", 8, "You are no longer selling oxy.")
 		end
 		if dstcheck < 2.0 and pedCreated then
 
@@ -830,9 +824,11 @@ AddEventHandler("oxydelivery:client", function()
 					TriggerEvent("drp-dispatch:oxyping")
 				end
 				TaskTurnPedToFaceEntity(deliveryPed, PlayerPedId(), 1.0)
-				Citizen.Wait(1500)
-				PlayAmbientSpeech1(deliveryPed, "Generic_Hi", "Speech_Params_Force")
-				DoDropOff()
+				local finished = exports["drp-taskbar"]:taskBar(22500,"Droping Off")
+				if finished == 100 then	
+					PlayAmbientSpeech1(deliveryPed, "Generic_Hi", "Speech_Params_Force")
+					DoDropOff()
+				end
 				
 				tasking = false
 			end
@@ -886,8 +882,12 @@ AddEventHandler("drugdelivery:client", function()
 			DrawText3Ds(crds["x"],crds["y"],crds["z"], "[E]")  
 
 			if IsControlJustReleased(0,38) then
+				local pdping = math.random(15,100)
+				if pdping <= 15 then
+					TriggerEvent("drp-dispatch:oxyping") -- todo maybe add drugs extra but idk should be the same
+				end
 				TaskTurnPedToFaceEntity(deliveryPed, PlayerPedId(), 1.0)
-				local finished = exports["drp-taskbar"]:taskBar(22500,"Gathering Information")
+				local finished = exports["drp-taskbar"]:taskBar(22500,"Droping Off")
     			if finished == 100 then	
 					PlayAmbientSpeech1(deliveryPed, "Generic_Hi", "Speech_Params_Force")
 					DoDropOff()
@@ -1482,8 +1482,9 @@ end)
 local firstdeal = false
 Citizen.CreateThread(function()
 
-
+	timeout = 1500000
     while true do
+		timeout - 1
 
         if drugdealer then
 
@@ -1507,16 +1508,18 @@ Citizen.CreateThread(function()
 		elseif OxyRun then
 
 			if (not DoesEntityExist(oxyVehicle) or GetVehicleEngineHealth(oxyVehicle) < 100.0) and vehspawn then
-				OxyRun = false
 				tasking = false
 				TriggerEvent("chatMessage", "EMAIL - Drug Deliveries", 8, "Dude! You fucked the car up, I canceled your run, asshole! ")
+				Citizen.Wait(1200000)
+				OxyRun = false
 			else
 				if tasking then
 			        Citizen.Wait(30000)
 			    else
 			        TriggerEvent("oxydelivery:client")  
 				    salecount = salecount + 1
-				    if salecount == 6 then
+				    if salecount == 6 or timeout < 0 then
+						TriggerEvent("chatMessage", "EMAIL - Oxy Deliveries", 8, "You are no longer selling oxy.")
 				    	Citizen.Wait(1200000)
 				    	OxyRun = false
 				    end
