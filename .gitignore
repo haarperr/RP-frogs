@@ -1,18 +1,13 @@
 fx-server/*
 
+<<<<<<< HEAD
 fx-server-data/cache/*
+=======
+! fx-server-data/
+**/fx-server-data/*
+!**/fx-server-data/resources
+>>>>>>> parent of 8ba08f8 (hmmm)
 
-*
-!*.lua
-!*.md
-!*.txt
-!*.gitignore
-!*.git
-!*.html
-!*.css
-!*.js
-!*.png
-!*.jpg
-!*.jpeg
-!*.gif
-!*.meta
+
+**/fx-server-data/resources/*
+!**/fx-server-data/resources/\[Royal\]
