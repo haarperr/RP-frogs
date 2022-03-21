@@ -557,7 +557,7 @@ function DoDropOff(requestMoney)
 				
 				list = [["inkedmoneybag", 1, inkedmoneybagprice], ["rollcash", math.random(3,10), rollcashprice], ["markedbills", math.random(3,10), markedbillsprice], ["band", math.random(3,10), bandprice]]
 				yesno = false
-				while yesno is false do
+				while yesno == false do
 					rnd = math.random(1,#list)
 					if exports["drp-inventory"]:hasEnoughOfItem(list[rnd][1],list[rnd][2],false) then	
 						TriggerServerEvent('mission:completed', list[rnd][3] * list[rnd][2])
