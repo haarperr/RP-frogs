@@ -556,16 +556,15 @@ function DoDropOff(requestMoney)
 
 				cashPayment = math.random(150,550)
 				
-				
-				band = ["band", math.random(3,10), bandprice]
-				rollcash = ["rollcash", math.random(3,10), rollcashprice]
-				inkedmoneybag = ["inkedmoneybag", 1, inkedmoneybagprice]
-				markedbills = ["markedbills", math.random(3, 10), markedbillsprice]
+				band = {"name": "band", "amount": math.random(3, 10), "price": bandprice}
+				rollcash = {"name": "rollcash", "amount": math.random(3, 10), "price": rollcashprice}
+				inkedmoneybag = {"name": "inkedmoneybag", "amount": 1, "price": inkedmoneybagprice}
+				markedbills = {"name": "markedbills", "amount": math.random(3, 10), "price": markedbillsprice}
 
-				yesno = false
+				sold = false
 				count = 0
 
-				while yesno == false do 
+				while sold == false do 
 					local rnd = math.random(1,4)
 					local item = {}
 					if rnd == 1 then
@@ -580,15 +579,15 @@ function DoDropOff(requestMoney)
 					
 					
 					count = count + 1
-					if exports["drp-inventory"]:hasEnoughOfItem(item[1],item[2],false) then
-						TriggerServerEvent('mission:completed', takingList[2] * takingList[3])
+					if exports["drp-inventory"]:hasEnoughOfItem(item["name"],item["amount"], false) then
+						TriggerServerEvent('mission:completed', item["price"] * item["amount"])
 						TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
-						yesno = true
+						sold = true
 					end
 
 					if count == 4 then
 						TriggerEvent("DoLongHudText","No Sauce?!?!")
-						yesno = true
+						sold = true
 					end
 				end
 
@@ -598,17 +597,17 @@ function DoDropOff(requestMoney)
 
 				
 				if math.random(100) >= 7 then
-					cashPayment = math.random(250,1000)
+					cashPayment = cashPayment += math.random(250,1000)
 				end
 
 				
 				if math.random(100) >= 1 then
-					cashPayment = math.random(1000,1500)
+					cashPayment = cashPayment += math.random(1000,1500)
 				end
 				
 				if math.random(1000) >= 1 then
-					cashPayment = math.random(10000,15000)
-				end
+					cashPayment = cashPayment += math.random(10000,15000)
+				end 
 
 			else
 
