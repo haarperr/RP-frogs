@@ -1391,7 +1391,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     if (itemid == "disabler") then
         local finished = exports["drp-taskbar"]:taskBar(500,"Powering UP",false,false,playerVeh)
         if (finished == 100) then
-            TriggerEvent("boosting:DisablerUsed")
+            TriggerEvent("drp-boosting:delayTracker")
         end
     end
 
