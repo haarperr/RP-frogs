@@ -810,7 +810,7 @@ AddEventHandler("oxydelivery:client", function()
 			CreateOxyPed()
 			TriggerEvent("DoLongHudText","You are close to the drop off.")
 		end
-		if toolong =< 0 then
+		if toolong <= 0 then
 
 		    SetVehicleHasBeenOwnedByPlayer(oxyVehicle,false)
 			SetEntityAsNoLongerNeeded(oxyVehicle)
