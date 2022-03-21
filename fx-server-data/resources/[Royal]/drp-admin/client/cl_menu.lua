@@ -175,10 +175,13 @@ RegisterNUICallback('buttonpress', function(data, cb)
             GodMode = not GodMode
             if GodMode then
                 TriggerEvent('DoLongHudText', 'Godmode Enabled!', 1)
+                SetPlayerInvincible(PlayerId(), true)
+                SetEntityInvincible(PlayerPedId(), true)
             else
                 TriggerEvent('DoLongHudText', 'Godmode Disabled!', 2)
+                SetPlayerInvincible(PlayerId(), false)
+                SetEntityInvincible(PlayerPedId(), false)
             end
-            SetPlayerInvincible(PlayerId(), GodMode)
         end
 
     elseif data.id == 8 then
