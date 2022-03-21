@@ -263,7 +263,7 @@ function HardwareStore() {
         { item_id: "wateringcan", id: 0, name: "Shop", information: "{}", slot: 17, amount: 50 },
         { item_id: "miningpickaxe", id: 0, name: "Shop", information: "{}", slot: 18, amount: 50 },
         { item_id: "acetone", id: 0, name: "Shop", information: "{}", slot: 19, amount: 50 },
-        { item_id: "MedicalBag", id: 0, name: "Shop", information: "{}", slot: 20, amount: 50 },
+        { item_id: "camera", id: 0, name: "Shop", information: "{}", slot: 20, amount: 50 },
         { item_id: "miningpickaxe", id: 0, name: "Shop", information: "{}", slot: 21, amount: 50 },
 
         { item_id: "watch", id: 0, name: "Shop", information: "{}", slot: 22, amount: 1 },
