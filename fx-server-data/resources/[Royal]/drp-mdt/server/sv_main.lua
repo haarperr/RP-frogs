@@ -509,10 +509,10 @@ LoadRoyalVersion = function()
     end)
     RPC.register("drp-mdt:saveIncident", function(ID, title, information, tags, officers, civilians, evidence, associated, time)
         local src = source
-        local string = string.gsub(ID + title + information + tags + officers + civilians + evidence + associated + time)
+        local string = title
         TriggerClientEvent('DoLongHudText', src, string, 1)
         local result = SQL('SELECT * FROM mdt_incidents WHERE id = @id', {['@id'] = ID})
-        TriggerClientEvent('DoLongHudText', result, string, 1)
+        TriggerClientEvent('DoLongHudText', src, result, 1)
         if result[1] then
             SQL("UPDATE mdt_incidents SET title = @title, information = @information, tags = @tags, officers = @officers, civilians = @civilians, evidence = @evidence, associated = @associated, time = @time, author = @author WHERE id = @id", {
                 ['@id'] = ID,
