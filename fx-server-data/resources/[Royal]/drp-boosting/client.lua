@@ -578,6 +578,7 @@ local tabletObject = nil
 RegisterNetEvent("drp-boosting:openLaptop")
 AddEventHandler("drp-boosting:openLaptop", function()
   local playerPed = PlayerPedId()
+  if exports["drp-inventory"]:hasEnoughOfItem("vpnxj",1,false) then 
   if not isVisible then
       local dict = "amb@world_human_seat_wall_tablet@female@base"
       RequestAnimDict(dict)
@@ -595,6 +596,9 @@ AddEventHandler("drp-boosting:openLaptop", function()
       tabletObject = nil
   end
   SetDisplay(not display)
+else
+  TriggerEvent('DoLongHudText', 'Network Encrypted', 2)
+end
 end)
 
 function SetDisplay(bool)
