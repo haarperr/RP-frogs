@@ -757,7 +757,7 @@ AddEventHandler("tryTweet", function(tweetinfo,message,user)
 end)
 
 RegisterNUICallback('btnDecrypt', function()
-  TriggerEvent("secondaryjob:accepttask")
+  TriggerEvent("DoLongHudText","WORKS POGMAN", 1)
 end)
 
 
@@ -1529,7 +1529,7 @@ function hasTrucker()
 end
 
 function hasDecrypt()
-    if exports["drp-inventory"]:hasEnoughOfItem("decrypterenzo",1,false) or exports["drp-inventory"]:hasEnoughOfItem("decryptersess",1,false) or exports["drp-inventory"]:hasEnoughOfItem("decrypterfv2",1,false) and not exports["isPed"]:isPed("disabled") or exports["drp-inventory"]:hasEnoughOfItem(80,1,false) and not exports["isPed"]:isPed("disabled") then
+    if exports["drp-inventory"]:hasEnoughOfItem("vpnxj",1,false) and not exports["isPed"]:isPed("disabled") then
       return true
     else
       return false
@@ -1642,9 +1642,6 @@ RegisterNUICallback('newPostSubmit', function(data, cb)
     TriggerServerEvent('phone:updatePhoneJob', data.advert)
 end)
 
-RegisterNUICallback('btnDecrypt', function()
-  TriggerEvent("secondaryjob:accepttask")
-end)
 
 
 function miTrabajo()
