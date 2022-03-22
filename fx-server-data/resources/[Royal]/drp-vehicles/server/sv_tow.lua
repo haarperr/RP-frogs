@@ -127,13 +127,14 @@ AddEventHandler("drp-vehicles:repo3", function(plate)
     exports.ghmattimysql:execute("SELECT * FROM characters WHERE id = @cid", {['cid'] = char.id}, function(result3)
         if result3[1].job == 'towunion' or result3[1].job == 'police' or result3[1].job == 'sheriff' then
             if result3[1] then
-                exports.ghmattimysql:execute("UPDATE characters_cars SET current_garage = @current_garage, vehicle_state = @vehicle_state WHERE license_plate = @license_plate", {
-                    ['@license_plate'] = plate,
-                    ['@repoed'] = "0",
-                    ['@current_garage'] = result3[14],
-                    ['@vehicle_state'] = "In"
-                })
-                TriggerClientEvent("drp-vehicles:repo:success2", src)
+                exports.ghmattimysql:execute("SELECT * FROM characters_cars WHERE license_plate = @license_plate", {['license_plate'] = plate}, function(result4)
+                    exports.ghmattimysql:execute("UPDATE characters_cars SET current_garage = @current_garage, vehicle_state = @vehicle_state WHERE license_plate = @license_plate", {
+                        ['@license_plate'] = plate,
+                        ['@repoed'] = "0",
+                        ['@current_garage'] = result4[14],
+                        ['@vehicle_state'] = "In"
+                    })
+                    TriggerClientEvent("drp-vehicles:repo:success2", src)
             else
                 TriggerClientEvent('DoLongHudText', SrcID, 'You cannot do this.', 2)
             end

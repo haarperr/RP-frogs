@@ -42,6 +42,17 @@ end
 end)
 
 
+RegisterNetEvent('heists:buyvpn')
+AddEventHandler('heists:buyvpn', function()
+  local price = 5000
+  TriggerServerEvent('buy:buyitem', "vpnxj", price, 1)
+end)
+
+RegisterNetEvent('buy:success')
+AddEventHandler('buy:success', function(item, amount)
+  TriggerEvent( "player:receiveItem", item, amount )
+end)
+
 RegisterNetEvent('drp-polyzone:enter')
 AddEventHandler('drp-polyzone:enter', function(name)
     if name == "laptopexchange" then
@@ -184,7 +195,7 @@ end)
 
 RegisterNetEvent("buylaptop")
 AddEventHandler("buylaptop", function()
-  TriggerServerEvent("vpn:buylaptopsv")
+  TriggerServerEvent("shops:buylaptopsv")
 end)
 
 

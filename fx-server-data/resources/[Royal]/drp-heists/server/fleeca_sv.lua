@@ -2,7 +2,7 @@ cooldownglobal = 0
 
 -- VPN STUFF
 
-RegisterServerEvent('vpn:buylaptopsv')
+RegisterServerEvent('shops:buylaptopsv')
 AddEventHandler('shops:buylaptopsv', function()
 	local src = source
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
@@ -16,7 +16,7 @@ AddEventHandler('shops:buylaptopsv', function()
 end)
 
 RegisterServerEvent('vpn:buydisablersv')
-AddEventHandler('shops:buylaptopsv', function()
+AddEventHandler('vpn:buydisablersv', function()
 	local src = source
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()

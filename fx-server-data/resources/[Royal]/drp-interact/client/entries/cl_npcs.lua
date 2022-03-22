@@ -17,6 +17,7 @@ Entries[#Entries + 1] = {
     }
 }
 
+
 Entries[#Entries + 1] = {
     type = 'flag',
     group = { 'isCasinoEnter' },
