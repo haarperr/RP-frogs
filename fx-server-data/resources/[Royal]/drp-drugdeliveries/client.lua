@@ -545,7 +545,7 @@ function DoDropOff(requestMoney)
 
 		if HasStolenGoods() then
 
-			if math.random(10) == 1 then
+			if math.random(10) == 1 then -- 10% chance of getting a safe cracking kit 
 				TriggerEvent( "player:receiveItem", "safecrackingkit", 1 )
 			end
 			
