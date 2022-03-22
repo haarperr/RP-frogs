@@ -553,6 +553,11 @@ function DoDropOff(requestMoney)
 				TriggerEvent( "player:receiveItem", "heistusb4", 1 )
 			end
 
+			
+			if math.random(250) == 69 then
+				TriggerEvent( "player:receiveItem", "heistlaptop3", 1 )
+			end
+
 			if OxyRun then
 				
 
