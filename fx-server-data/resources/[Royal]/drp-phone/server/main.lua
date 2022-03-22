@@ -753,7 +753,7 @@ end)
          ['@cid'] = char.id
        }, function(data)
      end)
- end
+ end)
  RegisterServerEvent("stocks:retrieve")
  AddEventHandler("stocks:retrieve", function()
      local src = source
