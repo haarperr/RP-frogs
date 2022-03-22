@@ -117,6 +117,71 @@ end
 exports("StartHacking", StartHacking)
 
 
+RegisterNetEvent('vpnmenu')
+AddEventHandler('vpnmenu', function()
+	TriggerEvent('drp-context:sendMenu', {
+        {
+            id = 1,
+            header = " Welcome XXXXXXXXX ",
+            txt = ""
+        },
+        {
+            id = 2,
+            header = "Purchase Items",
+		      	txt = "View The Market",
+			      params = {
+                event = "drp-duty:OnDutyJudge"
+            }
+        },
+		{
+            id = 3,
+            header = "Log Off",
+		      	txt = "",
+		      	params = {
+                event = ""
+            }
+        },
+    })
+end)
+
+RegisterNetEvent('vpnitemmenu')
+AddEventHandler('vpnitemmenu', function()
+	TriggerEvent('drp-context:sendMenu', {
+        {
+            id = 1,
+            header = " Dark Net Market ",
+            txt = ""
+        },
+        {
+            id = 2,
+            header = "Purchase Slambook Pro",
+		      	txt = "Price: $7000",
+			      params = {
+                event = "drp-duty:OnDutyJudge"
+            }
+        },
+        {
+          id = 2,
+          header = "Purchase Tracker Disabler",
+          txt = "Price: $4000",
+          params = {
+              event = "drp-duty:OnDutyJudge"
+          }
+      },
+		{
+            id = 3,
+            header = "< Go Back",
+		      	txt = "",
+		      	params = {
+                event = "vpnmenu"
+            }
+        },
+    })
+end)
+
+
+
+
 RegisterNetEvent("drp-heists:distcheckpower")
 AddEventHandler("drp-heists:distcheckpower", function()
     local ped = GetPlayerPed(-1)

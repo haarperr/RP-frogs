@@ -765,7 +765,8 @@ RegisterNUICallback('btnDecrypt', function()
   if dist < 10 then
   
     TriggerEvent("DoLongHudText","Network Connected!", 1)
-  
+    TriggerEvent("DoLongHudText","vpnmenu", 1)
+    
   else
     TriggerEvent("DoLongHudText","No networks found", 2)
   end

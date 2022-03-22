@@ -1,5 +1,6 @@
 cooldownglobal = 0
 
+
 RegisterServerEvent("drp-fleeca:startcheck")
 AddEventHandler("drp-fleeca:startcheck", function(bank)
     local _source = source
