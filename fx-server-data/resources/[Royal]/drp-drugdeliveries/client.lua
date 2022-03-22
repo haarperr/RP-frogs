@@ -201,7 +201,7 @@ function CreateDrugStorePed()
         RequestModel(hashKey)
         Citizen.Wait(100)
     end
-	ped = CreatePed(pedType, hashKey, oxyStorePedLocation["x"],oxyStorePedLocation["y"],oxyStorePedLocation["z"], 270.0, 1, 1)
+	ped = CreatePed(pedType, hashKey, pillWorker["x"],pillWorker["y"],pillWorker["z"], 270.0, 1, 1)
 	SetEntityHeading(ped, 180.24)
 	DecorSetBool(ped, 'ScriptedPed', true)
     ClearPedTasks(ped)
@@ -619,7 +619,7 @@ end)
 Citizen.CreateThread(function()
     while true do
 	    Citizen.Wait(0)
-	  	local oxyCheckin = #(GetEntityCoords(PlayerPedId()) - vector3(oxyStorePedLocation["x"],oxyStorePedLocation["y"],oxyStorePedLocation["z"]))
+	  	local oxyCheckin = #(GetEntityCoords(PlayerPedId()) - vector3(oxyStoreLocation["x"],oxyStoreLocation["y"],oxyStoreLocation["z"]))
 		local oxyExit = #(GetEntityCoords(PlayerPedId()) - vector3(590.51, 2739.8, 15.86))
 		local oxyEnter = #(GetEntityCoords(PlayerPedId()) - vector3(oxyStoreLocation["x"],oxyStoreLocation["y"],oxyStoreLocation["z"]))
 
