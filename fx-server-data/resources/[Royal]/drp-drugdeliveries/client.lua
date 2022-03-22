@@ -1309,8 +1309,9 @@ Citizen.CreateThread(function()
 						if finished == 100 then
 							TriggerEvent("pixerium:check",5,"goldtrade",false)
 						end
-					end
 					Citizen.Wait(1000)
+					
+					end
 				end
 
 			else
@@ -1329,6 +1330,7 @@ Citizen.CreateThread(function()
 				Citizen.Wait(1000)
 			end
 		end
+
 		if dropOff5 < 1.5 then
 			DrawText3Ds(pillStore["x"],pillStore["y"],pillStore["z"], "[E] to Enter") 
 			TriggerServerEvent("kGetWeather")
@@ -1386,11 +1388,9 @@ Citizen.CreateThread(function()
     									message = message .. " | " .. vehicleList[currentVehicleList[i]["id"]]["name"]
     								end
 								end
-
-								
 							end
-						end
 						TriggerEvent("chatMessage", "EMAIL ", 8, message)
+						end
     				end
 	    		end
 	    	end
