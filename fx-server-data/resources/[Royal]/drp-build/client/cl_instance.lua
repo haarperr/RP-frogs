@@ -101,7 +101,7 @@ function Build.func.WipePrevInstances()
 		local distance = Build.func.getDistanceIgnoreZ(Build.plyCoords,targetCoords)
 
 		if distance > Build.InstanceDistance then
-			print("Making src "..i.." visiable due to out of range")
+			-- print("Making src "..i.." visiable due to out of range")
 			NetworkConcealPlayer(v,false,false)
 		end
 			
