@@ -760,12 +760,11 @@ Citizen.CreateThread(function()
     })
 
     -- Fence Guy
-
-    exports["drp-polytarget"]:AddBoxZone("fenceguy", vector3(331.15, 362.16, 106.65, 341.07), 1, 1.4, {
-        heading=22.3883,
-        minZ=27.28,
-        maxZ=31.28
+    
+    exports["drp-polytarget"]:AddCircleZone("fenceguy",  vector3(331.15, 362.16, 106.65, 341.07), 0.35, {
+        useZ = true
     })
+    
 
 
     -- Hospital
