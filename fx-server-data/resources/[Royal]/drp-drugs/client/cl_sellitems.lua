@@ -37,12 +37,12 @@ end)
 
 RegisterNetEvent('sell5ctchain')
 AddEventHandler('sell5ctchain', function()
-    doSell("stolen5ctchain", math.random(120,310))
+    doSell("stolen5ctchain", math.random(120,275))
 end)
 
 RegisterNetEvent('sell8ctchain')
 AddEventHandler('sell8ctchain', function()
-    doSell("stolen8ctchain", math.random(320,510))
+    doSell("stolen8ctchain", math.random(320,450))
 end)
 RegisterNetEvent('sellstolengameboy')
 AddEventHandler('sellstolengameboy', function()
@@ -61,12 +61,17 @@ end)
 
 RegisterNetEvent('sellstolencasiowatch')
 AddEventHandler('sellstolencasiowatch', function()
-    doSell("stolencasiowatch", math.random(25,150))
+    doSell("stolencasiowatch", math.random(25,125))
 end)
 
 RegisterNetEvent('sellrolex')
 AddEventHandler('sellrolex', function()
-    doSell("rolexwatch", math.random(300,400))
+    doSell("rolexwatch", math.random(250,450))
+end)
+
+RegisterNetEvent('selloxy')
+AddEventHandler('sellrolex', function()
+    doSell("oxy", math.random(40, 55))
 end)
 
 --#########--
@@ -144,6 +149,14 @@ AddEventHandler("fenceguy:menu", function()
 			txt = "",
 			params = {
 				event = "sellrolex",
+			}
+		},
+        {
+			id = "10",
+			header = "Sell Oxy",
+			txt = "",
+			params = {
+				event = "selloxy",
 			}
 		},
 	})
