@@ -742,42 +742,41 @@ AddEventHandler('phone:deleteYP', function(number)
   end)
 end)
 
--- RegisterServerEvent("stocks:clientvalueupdate")
--- AddEventHandler("stocks:clientvalueupdate", function(table)
---     local src = source
---     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
---     local char = user:getCurrentCharacter()
---     local tableinsert =  json.encode(table)
---     exports.ghmattimysql:execute("UPDATE characters SET stocks = @stock WHERE id = @cid",{
---         ['@stock'] = tableinsert,
---         ['@cid'] = char.id
---       }, function(data)
---     end)
--- end)
+ RegisterServerEvent("stocks:clientvalueupdate")
+ AddEventHandler("stocks:clientvalueupdate", function(table)
+     local src = source
+     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
+     local char = user:getCurrentCharacter()
+     local tableinsert =  json.encode(table)
+     exports.ghmattimysql:execute("UPDATE characters SET stocks = @stock WHERE id = @cid",{
+         ['@stock'] = tableinsert,
+         ['@cid'] = char.id
+       }, function(data)
+     end)
+ end
+ RegisterServerEvent("stocks:retrieve")
+ AddEventHandler("stocks:retrieve", function()
+     local src = source
+     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
+     local char = user:getCurrentCharacter()
 
--- RegisterServerEvent("stocks:retrieve")
--- AddEventHandler("stocks:retrieve", function()
---     local src = source
---     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
---     local char = user:getCurrentCharacter()
+     exports.ghmattimysql:execute("SELECT stocks FROM characters WHERE id = @id", {['id'] = char.id}, function(result)
+         if result[1].stocks then
+         TriggerClientEvent("stocks:clientvalueupdate", src, json.decode(result[1].stocks))
+         end
+     end)
+ end)
 
---     exports.ghmattimysql:execute("SELECT stocks FROM characters WHERE id = @id", {['id'] = char.id}, function(result)
---         if result[1].stocks then
---         TriggerClientEvent("stocks:clientvalueupdate", src, json.decode(result[1].stocks))
---         end
---     end)
--- end)
+ RegisterServerEvent("phone:stockTradeAttempt")
+ AddEventHandler("phone:stockTradeAttempt", function(index, id, sending)
+     local src = source
+     local user = exports["drp-base"]:getModule("Player"):GetUser(tonumber(id))
+    local char = user:getCurrentCharacter()
 
--- RegisterServerEvent("phone:stockTradeAttempt")
--- AddEventHandler("phone:stockTradeAttempt", function(index, id, sending)
---     local src = source
---     local user = exports["drp-base"]:getModule("Player"):GetUser(tonumber(id))
---     local char = user:getCurrentCharacter()
-
---     if user ~= nil then
---         TriggerClientEvent("Crypto:GivePixerium", id, sending)
---     end
--- end)
+     if user ~= nil then
+         TriggerClientEvent("'Crypto:GiveGNE", id, sending)
+     end
+ end)
 
 RegisterServerEvent('phone:triggerPager')
 AddEventHandler('phone:triggerPager', function()
