@@ -777,23 +777,23 @@ RegisterNetEvent('drp-dispatch:drugdealreport')
 AddEventHandler('drp-dispatch:drugdealreport', function(targetCoords)
 	if exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' then	
 		local alpha = 360
-		local jew = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
+		local oxy = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
 
-		SetBlipSprite(jew,  4)
-		SetBlipColour(jew,  4)
-		SetBlipScale(jew, 0.5)
+		SetBlipSprite(oxy,  4)
+		SetBlipColour(oxy,  4)
+		SetBlipScale(oxy, 0.5)
 		SetBlipAsShortRange(Blip, false)
 		BeginTextCommandSetBlipName("STRING")
 		AddTextComponentString('Suspicious Activity Reported')
-		EndTextCommandSetBlipName(jew)
+		EndTextCommandSetBlipName(oxy)
 
 		while alpha ~= 0 do
-			Citizen.Wait(120 * 4)
+			Citizen.Wait(60000)
 			alpha = alpha - 1
-			SetBlipAlpha(jew, alpha)
+			SetBlipAlpha(oxy, alpha)
 
 		if alpha == 0 then
-			RemoveBlip(jew)
+			RemoveBlip(oxy)
 		return
       end
     end
