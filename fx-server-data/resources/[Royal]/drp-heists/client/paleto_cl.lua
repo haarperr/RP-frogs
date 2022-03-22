@@ -311,7 +311,7 @@ AddEventHandler("drp-paleto:startheist", function(data, name)
 
     TriggerEvent("chatMessage", "Encrypted", 8, "Bank security captcha bypassed successfully. Standby while I get that door open. ")
 
-    Citizen.Wait(100) -- set to 180000 when finish testing
+    Citizen.Wait(180000) -- set to 180000 when finish testing
 
     TriggerServerEvent('drp-paleto:openDoor')
     startdstcheck = true
