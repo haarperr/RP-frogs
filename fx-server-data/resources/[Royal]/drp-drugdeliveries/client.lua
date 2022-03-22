@@ -858,88 +858,6 @@ function listedVehicle(veh)
 end
 
 
-local recentpix = false
-function CompleteScrapping(vehicle, originalVehicleLocation)
-
-	TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 2.0, 'impactdrill', 0.5)
-
-	RequestAnimDict('mp_car_bomb')
-	while not HasAnimDictLoaded("mp_car_bomb") do
-		Citizen.Wait(0)
-	end
-
-	TaskPlayAnim(PlayerPedId(), "mp_car_bomb", "car_bomb_mechanic", 8.0, -8, -1, 49, 0, 0, 0, 0)
-
-	local finished = exports["drp-taskbar"]:taskBar(20000,"Scrapping Car")
-	local currentLocation = GetEntityCoords(vehicle)
-	if finished == 100 then
-	    local vehicleDifference = #(currentLocation - originalVehicleLocation)
-		if not IsPedInVehicle(PlayerPedId(),vehicle,false) then
-			if vehicleDifference <= 1 then
-				local vehResponse = listedVehicle(veh)
-				local plate = GetVehicleNumberPlateText(veh)
-				TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 2.0, 'impactdrill', 0.5)
-				TriggerServerEvent("chopshop:removevehicle",vehResponse,plate,50)
-				Citizen.Wait(2500)
-				TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 2.0, 'impactdrill', 0.5)
-				SetEntityAsNoLongerNeeded(veh,true)
-				DeleteEntity(veh)
-			else
-				TriggerEvent("DoLongHudText","Don't move your vehicle while we're trying to chop it, idiot.",2)
-			end
-		else
-			TriggerEvent("DoLongHudText","You can't stay inside the vehicle while we're trying to chop it, idiot.",2)
-		end
-	end
-end
-
-function CleanUpArea()
-    local playerped = PlayerPedId()
-    local plycoords = GetEntityCoords(playerped)
-    local handle, ObjectFound = FindFirstObject()
-    local success
-    repeat
-        local pos = GetEntityCoords(ObjectFound)
-        local distance = #(plycoords - pos)
-        if distance < 10.0 and ObjectFound ~= playerped then
-        	if IsEntityAPed(ObjectFound) then
-        		if IsPedAPlayer(ObjectFound) then
-        		else
-        			DeleteObject(ObjectFound)
-        		end
-        	else
-        		if not IsEntityAVehicle(ObjectFound) and not IsEntityAttached(ObjectFound) then
-	        		DeleteObject(ObjectFound)
-	        	end
-        	end            
-        end
-        success, ObjectFound = FindNextObject(handle)
-    until not success
-
-    SetEntityAsNoLongerNeeded(drugStorePed)
-    DeleteEntity(drugStorePed)
-
-    EndFindObject(handle)
-end
-function buyDrugs()
-	TriggerEvent( "player:receiveItem", "oxy", 1)
-end
-
-local GoldBarTime = false
-
-RegisterNetEvent('cracktime')
-AddEventHandler('cracktime', function(sentinfo)
-	GoldBarTime = sentinfo
-end)
-
-RegisterNetEvent('goldtrade')
-AddEventHandler('goldtrade', function()
-	if exports["drp-inventory"]:hasEnoughOfItem("goldbar",70,true) then
-		TriggerEvent("inventory:removeItem", "goldbar", 70)
-		TriggerServerEvent('mission:completed', 35000)
-	end
-end)
-
 
 Citizen.CreateThread(function()
 
@@ -950,7 +868,7 @@ Citizen.CreateThread(function()
 
 		if oxyCheckin < 1.6 and not OxyRun then
 
-			DrawText3Ds(oxyStorePedLocation["x"], oxyStorePedLocation["y"], oxyStorePedLocation["z"], "[E] $1500 - Oxy Delivery Job) 
+			DrawText3Ds(oxyStorePedLocation["x"], oxyStorePedLocation["y"], oxyStorePedLocation["z"], "[E] $1500 - Oxy Delivery Job") 
 			if IsControlJustReleased(0,38) then
 				TriggerServerEvent("oxydelivery:server",1500)
 				Citizen.Wait(1000)
