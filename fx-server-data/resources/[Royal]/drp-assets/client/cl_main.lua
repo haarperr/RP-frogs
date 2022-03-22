@@ -19,26 +19,6 @@ end)
 
 
 
-local onlinePlayers = 0
-RegisterNetEvent('rich:TakePlayers')
-AddEventHandler('rich:TakePlayers', function(count)
-    onlinePlayers = count
-    if SetDiscordRichPresenceAction then
-        SetDiscordRichPresenceAction(0, 'Discord', 'https://discord.gg/rpfrog')
-    end
-end)
-
-Citizen.CreateThread(function()
-    TriggerServerEvent('rich:GetPlayers')
-    SetDiscordAppId(876182611150643210)
- 	SetDiscordRichPresenceAsset('1000x1000')
-    while true do
-        Citizen.Wait(2000)
-        SetDiscordRichPresenceAssetText("https://discord.gg/rpfrog")
-        SetRichPresence(onlinePlayers.."/64 | Roleplaying Erotically")
-        SetBlipAlpha(GetNorthRadarBlip(), 0)
-    end
-end)
 
 ----- Disable Pistol Whip
 ---Citizen.CreateThread(function()
