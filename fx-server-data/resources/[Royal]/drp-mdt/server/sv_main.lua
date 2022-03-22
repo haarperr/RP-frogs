@@ -232,7 +232,7 @@ LoadRoyalVersion = function()
     end)
     RPC.register("drp-mdt:getWarrants", function()
         local WarrantData = {}
-        local data = SQL("SELECT * FROM mdt_incidents", {})
+        local data = SQL("SELECT * FROM ___mdw_incidents", {})
         for index = 1, #data, 1 do
             local associatedData = json.decode(data[index].associated)
             for _, value in pairs(associatedData) do
@@ -301,7 +301,7 @@ LoadRoyalVersion = function()
     end	    
     GetProfileConvictions = function(cid)
         local Convictions = {}
-        local data = SQL("SELECT * FROM mdt_incidents", {})
+        local data = SQL("SELECT * FROM ___mdw_incidents", {})
         for index = 1, #data, 1 do
             local associatedData = json.decode(data[index].associated)
             for index, value in pairs(associatedData) do
@@ -499,7 +499,7 @@ LoadRoyalVersion = function()
     end)
     RPC.register("drp-mdt:searchIncidents", function(incident)
         local Matches = {}
-        local incidents = SQL('SELECT * FROM mdt_incidents', {})
+        local incidents = SQL('SELECT * FROM ___mdw_incidents', {})
         for index = 1, #incidents, 1 do 
             if string.find(string.lower(incidents[index].title), string.lower(incident)) or string.find(string.lower(incidents[index].id), string.lower(incident)) then
                 table.insert(Matches, incidents[index])
@@ -511,10 +511,10 @@ LoadRoyalVersion = function()
         local src = source
         local string = title
         TriggerClientEvent('DoLongHudText', src, string, 1)
-        local result = SQL('SELECT * FROM mdt_incidents WHERE id = @id', {['@id'] = ID})
+        local result = SQL('SELECT * FROM ___mdw_incidents WHERE id = @id', {['@id'] = ID})
         TriggerClientEvent('DoLongHudText', src, result, 1)
         if result[1] then
-            SQL("UPDATE mdt_incidents SET title = @title, information = @information, tags = @tags, officers = @officers, civilians = @civilians, evidence = @evidence, associated = @associated, time = @time, author = @author WHERE id = @id", {
+            SQL("UPDATE ___mdw_incidents SET title = @title, information = @information, tags = @tags, officers = @officers, civilians = @civilians, evidence = @evidence, associated = @associated, time = @time, author = @author WHERE id = @id", {
                 ['@id'] = ID,
                 ['@title'] = title, 
                 ['@information'] = information, 
@@ -530,7 +530,7 @@ LoadRoyalVersion = function()
             CreateStuffLog("EditIncident", time, GetCharData(src).first_name..' '..GetCharData(src).last_name)
         else
             TriggerClientEvent('DoLongHudText', "before  mysql request", string, 1)
-            exports.ghmattimysql:execute('INSERT INTO mdt_incidents (title, information, tags, officers, civilians, evidence, associated, time, author) VALUES (@title, @information, @tags, @officers, @civilians, @evidence, @associated, @time, @author)', {
+            exports.ghmattimysql:execute('INSERT INTO ___mdw_incidents (title, information, tags, officers, civilians, evidence, associated, time, author) VALUES (@title, @information, @tags, @officers, @civilians, @evidence, @associated, @time, @author)', {
                 ['@id'] = ID,
                 ['@title'] = title, 
                 ['@information'] = information, 
@@ -548,14 +548,14 @@ LoadRoyalVersion = function()
     end)
     RPC.register("drp-mdt:getAllIncidents", function()
         local Tables = {}
-        local results = SQL('SELECT * FROM mdt_incidents', {})
+        local results = SQL('SELECT * FROM ___mdw_incidents', {})
         for index, data in pairs(results) do
             table.insert(Tables, data)
         end
         return Tables
     end)
     RPC.register("drp-mdt:getIncidentData", function(id)
-        local result = SQL('SELECT * FROM mdt_incidents WHERE id = @id', {['@id'] = id})
+        local result = SQL('SELECT * FROM ___mdw_incidents WHERE id = @id', {['@id'] = id})
         local convictions = {}
         local associatedData = json.decode(result[1].associated)
         for index, data in pairs(associatedData) do
@@ -594,7 +594,7 @@ LoadRoyalVersion = function()
         return Matches
     end)
     RPC.register("drp-mdt:removeIncidentCriminal", function(cid, incidentId)
-        local result = SQL('SELECT * FROM mdt_incidents WHERE id = @id', {['@id'] = incidentId})
+        local result = SQL('SELECT * FROM ___mdw_incidents WHERE id = @id', {['@id'] = incidentId})
         if result[1] then
             local Table = {}
             for index, data in pairs(json.decode(result[1].associated)) do
@@ -602,7 +602,7 @@ LoadRoyalVersion = function()
                     table.insert(Table, data)
                 end
             end
-            SQL("UPDATE mdt_incidents SET associated = @associated WHERE id = @id", {
+            SQL("UPDATE ___mdw_incidents SET associated = @associated WHERE id = @id", {
                 ['@associated'] = json.encode(Table),
                 ['@id'] = incidentId
             })
