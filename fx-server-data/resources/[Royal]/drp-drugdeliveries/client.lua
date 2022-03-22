@@ -879,7 +879,6 @@ Citizen.CreateThread(function()
 			TriggerEvent("DoLongHudText", "I dont have any work for you right now.", 2)
 		end
 
-
 		if oxyCheckin > 2.0 then
 			Citizen.Wait(1000)
 		end
@@ -913,8 +912,7 @@ Citizen.CreateThread(function()
 				end
 			end
 			
-			if not close then
-				Citizen.Wait(2000)
+			Citizen.Wait(2000)
 			end
 
 	    end
