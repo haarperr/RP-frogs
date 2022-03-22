@@ -1,6 +1,5 @@
 function doSell(itemname, price)
     if exports["drp-inventory"]:getQuantity(itemname) >= 1 then
-		playerAnim()
         local toSell = exports["drp-inventory"]:getAmountOfItem(itemname)
 		local finished = exports["drp-taskbar"]:taskBar(1000*toSell, "Selling")
 		if finished == 100 then
