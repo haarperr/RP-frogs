@@ -1350,7 +1350,7 @@ Citizen.CreateThread(function()
 		EndTextCommandClearPrint
 		
 		if OxyRun then
-			TriggerEvent("DoLongHudText", "I dont have any work for you right now.")
+			TriggerEvent("DoLongHudText", "I dont have any work for you right now.", 2)
 		end
 
 
@@ -1395,7 +1395,6 @@ Citizen.CreateThread(function()
 	    		end
 	    	end
 	    else
-
 	    	if dropOff2 > 2.0 and dropOff4 > 2.0 and dropOff5 > 2.0 and dropOff6 > 2.0 and GoldBars > 2.0 then
 		    	Citizen.Wait(1000)
 		    end
