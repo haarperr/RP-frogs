@@ -8,7 +8,7 @@ end)
 
 
     AddEventHandler('entityCreating', function(entity)
-        if GetConvarInt('logs_enabled', 0) == 1 then
+       -- if GetConvarInt('logs_enabled', 0) == 1 then
             local model = GetEntityModel(entity)
             local pOwner = NetworkGetEntityOwner(entity)
             for i=1, #blockedItems do 
@@ -21,30 +21,30 @@ end)
                     break
                 end
             end
-        end
+      --  end
     end)
 
     -- Send message when Player disconnects from the server
     AddEventHandler('playerDropped', function(reason)
-        if GetConvarInt('logs_enabled', 0) == 1 then
+     --   if GetConvarInt('logs_enabled', 0) == 1 then
             local pSrc = source
             local pName = GetPlayerName(pSrc)
             local LogInfo =  pName.. " Disconnected | Reason: " .. reason
             exports['drp-base']:DiscordLog("https://discord.com/api/webhooks/953469481785651230/txg6toVI0ehnp7moZ-9kkL9CqG0by8XSe5LE6BxYOpSD4ORRuYiOQMcJ6F1WXLClF9cs", pSrc, "Player Disconnected", "", LogInfo)
-        end
+      --  end
     end)
 
 
     RegisterServerEvent('player:dead')
     AddEventHandler('player:dead',function(killer, DeathReason)
-        if GetConvarInt('logs_enabled', 0) == 1 then
+      --  if GetConvarInt('logs_enabled', 0) == 1 then
             local pSrc = source
             local pName = GetPlayerName(pSrc)
             local tName = GetPlayerName(killer)
 
             local LogInfo = pName .. " was killed by " .. tName .. "  | Type: " ..DeathReason
             exports['drp-base']:DiscordLog("https://discord.com/api/webhooks/953469481785651230/txg6toVI0ehnp7moZ-9kkL9CqG0by8XSe5LE6BxYOpSD4ORRuYiOQMcJ6F1WXLClF9cs", killer, "Combat Encounter", "", LogInfo)
-        end
+       -- end
     end)
 
 

@@ -266,8 +266,7 @@ function HardwareStore() {
         { item_id: "acetone", id: 0, name: "Shop", information: "{}", slot: 19, amount: 50 },
         { item_id: "fishingrod", id: 0, name: "Shop", information: "{}", slot: 20, amount: 1 },
 
-        -- { item_id: "huntingknife", id: 0, name: "Shop", information: "{}", slot: 21, amount: 50 },
-        -- { item_id: "huntingbait", id: 0, name: "Shop", information: "{}", slot: 22, amount: 50 },
+    
     ];
     return JSON.stringify(shopItems);
 }
