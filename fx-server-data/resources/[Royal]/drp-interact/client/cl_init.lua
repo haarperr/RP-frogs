@@ -765,6 +765,11 @@ Citizen.CreateThread(function()
         heading=103
     })
 
+    
+    exports["drp-polytarget"]:AddCircleZone("fenceguy", vector3(411.5179, 315.5490, 103.0211), 1, 1.4, {
+        heading=103
+    })
+
     -- Hospital
 
     exports["drp-polytarget"]:AddBoxZone("hospitalroof1", vector3(332.35, -597.32, 43.28), 0.2, 1, {
