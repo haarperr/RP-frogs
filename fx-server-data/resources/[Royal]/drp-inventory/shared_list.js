@@ -22279,7 +22279,7 @@ itemList['disabler'] = {
     { itemid: 'electronics', amount: 150 },
     { itemid: 'aluminium', amount: 150 },
   ]],
-  price: 1,
+  price: 4000,
   weight: 0,
   nonStack: true,
   model: '',
