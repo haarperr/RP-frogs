@@ -838,22 +838,27 @@ AddEventHandler("oxydelivery:client", function()
 			DrawText3Ds(crds["x"],crds["y"],crds["z"], "[E]")  
 
 			if IsControlJustReleased(0,38) then
-				local pdping = math.random(0,100)
-				if pdping <= 18 then
-					TriggerEvent("drp-dispatch:oxyping")
+				-- check if player is in the vehicle
+				if GetVehiclePedIsIn(PlayerPedId(),false) == oxyVehicle then
+					
+
+					local pdping = math.random(0,100)
+					if pdping <= 33 then
+						TriggerEvent("drp-dispatch:oxyping")
+					end
+					TaskTurnPedToFaceEntity(deliveryPed, PlayerPedId(), 1.0)
+					local finished = exports["drp-taskbar"]:taskBar(22500,"Dropping Off")
+					if finished == 100 then	
+						PlayAmbientSpeech1(deliveryPed, "Generic_Hi", "Speech_Params_Force")
+						DoDropOff()
+					end
+					
+					tasking = false
+				else 
+					TriggerEvent("DoLongHudText","You cannot sell out of your Car Bozo")
 				end
-				TaskTurnPedToFaceEntity(deliveryPed, PlayerPedId(), 1.0)
-				local finished = exports["drp-taskbar"]:taskBar(22500,"Dropping Off")
-				if finished == 100 then	
-					PlayAmbientSpeech1(deliveryPed, "Generic_Hi", "Speech_Params_Force")
-					DoDropOff()
-				end
-				
-				tasking = false
 			end
-
 		end
-
 	end
 	
 
