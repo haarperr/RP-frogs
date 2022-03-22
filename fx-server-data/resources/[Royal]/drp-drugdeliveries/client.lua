@@ -638,6 +638,7 @@ Citizen.CreateThread(function()
 			if IsControlJustReleased(0,38) then
 				buildDrugShop()
 				CreateDrugStorePed()
+				Citizen.Wait(1000)
 			end
 		end		
 
