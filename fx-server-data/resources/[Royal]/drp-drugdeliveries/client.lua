@@ -1349,7 +1349,7 @@ Citizen.CreateThread(function()
 			end
 		end
 		
-		if OxyRun then
+		if OxyRun and dropOff6 < 1.6 then
 			TriggerEvent("DoLongHudText", "I dont have any work for you right now.", 2)
 		end
 
