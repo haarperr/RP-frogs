@@ -1351,10 +1351,6 @@ Citizen.CreateThread(function()
 			TriggerEvent("DoLongHudText", "I dont have any work for you right now.")
 		end
 
-		end
-
-		end		
-
 
 	    if dropOff2 < 20.0 then
 	    	local isInVehicle = IsPedInAnyVehicle(PlayerPedId(), false)
