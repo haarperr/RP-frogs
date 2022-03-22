@@ -574,7 +574,7 @@ function DoDropOff(requestMoney)
 					
 					if exports["drp-inventory"]:hasEnoughOfItem(sellableItems[i].name,sellableItems[i].amount,false) then
 						TriggerEvent("inventory:removeItem",sellableItems[i].name,sellableItems[i].amount)
-						TriggerServerEvent('mission:completed', sellableItems[i].price * sellableItems[i].amount)))
+						TriggerServerEvent('mission:completed', sellableItems[i].price * sellableItems[i].amount)
 						pog = true
 						break
 					end
