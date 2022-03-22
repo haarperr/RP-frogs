@@ -44,18 +44,8 @@ end)
 
 RegisterNetEvent('heists:buyvpn')
 AddEventHandler('heists:buyvpn', function()
-  local src = source
-  local user = exports["drp-base"]:getModule("Player"):GetUser(src)
-  local cash = user:getCash()
   local price = 5000
-
-  if tonumber(cash) >= price then
-    user:removeMoney(price)
-    TriggerEvent('player:receiveItem', 'vpnxj', 1)
-  else
-    TriggerEvent('DoLongHudText', 'You dont seem to have enough money.', 2)
-  end
-  
+  TriggerServerEvent('buy:buyitem', "vpnxj", price, 1)
 end)
 
 RegisterNetEvent('drp-polyzone:enter')
