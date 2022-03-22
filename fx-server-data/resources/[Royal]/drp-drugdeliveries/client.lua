@@ -628,7 +628,6 @@ Citizen.CreateThread(function()
 				SetEntityCoords(PlayerPedId(),oxyStoreLocation["x"],oxyStoreLocation["y"],oxyStoreLocation["z"])
 				Citizen.Wait(1000)
 			end
-			
 		end
 
 		if oxyEnter < 2 then
@@ -652,13 +651,7 @@ Citizen.CreateThread(function()
 		if cooldown and oxyCheckin < 1.6 then
 			TriggerEvent("DoLongHudText", "I dont have any work for you right now.", 2)
 		end
-
-		if oxyCheckin > 2.0 then
-			Citizen.Wait(1000)
-		end
-
     end
-
 end)
 
 Citizen.CreateThread(function()
