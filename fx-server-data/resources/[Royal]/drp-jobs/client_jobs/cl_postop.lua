@@ -149,7 +149,7 @@ function setPostOPped()
     SetBlockingOfNonTemporaryEvents(created_ped, true)
     TaskStartScenarioInPlace(created_ped, "WORLD_HUMAN_CLIPBOARD", 0, true)
 
-    modelHash = GetHashKey("ig_floyd")
+    modelHash = GetHashKey("ig_vincent")
     RequestModel(modelHash)
     while not HasModelLoaded(modelHash) do
         Wait(1)
