@@ -1,5 +1,33 @@
 cooldownglobal = 0
 
+-- VPN STUFF
+
+RegisterServerEvent('vpn:buylaptopsv')
+AddEventHandler('shops:buylaptopsv', function()
+	local src = source
+    local user = exports["drp-base"]:getModule("Player"):GetUser(src)
+    local char = user:getCurrentCharacter()
+	if (user:getCash() >= 7000) then
+		user:removeMoney(7000)
+		TriggerClientEvent("player:receiveItem", src, 'pixellaptop', 1)
+	else
+		TriggerClientEvent('drp-notification:client:Alert', src, {style = 'error', duration = 3000, message = "Not enough money!"})
+	end
+end)
+
+RegisterServerEvent('vpn:buydisablersv')
+AddEventHandler('shops:buylaptopsv', function()
+	local src = source
+    local user = exports["drp-base"]:getModule("Player"):GetUser(src)
+    local char = user:getCurrentCharacter()
+	if (user:getCash() >= 4000) then
+		user:removeMoney(4000)
+		TriggerClientEvent("player:receiveItem", src, 'disabler', 1)
+	else
+		TriggerClientEvent('drp-notification:client:Alert', src, {style = 'error', duration = 3000, message = "Not enough money!"})
+	end
+end)
+
 
 RegisterServerEvent("drp-fleeca:startcheck")
 AddEventHandler("drp-fleeca:startcheck", function(bank)

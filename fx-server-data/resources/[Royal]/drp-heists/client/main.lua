@@ -157,7 +157,7 @@ AddEventHandler('vpnitemmenu', function()
             header = "Purchase Slambook Pro",
 		      	txt = "Price: $7000",
 			      params = {
-                event = "drp-duty:OnDutyJudge"
+                event = "buylaptop"
             }
         },
         {
@@ -165,7 +165,7 @@ AddEventHandler('vpnitemmenu', function()
           header = "Purchase Tracker Disabler",
           txt = "Price: $4000",
           params = {
-              event = "drp-duty:OnDutyJudge"
+              event = "buydisabler"
           }
       },
 		{
@@ -180,6 +180,20 @@ AddEventHandler('vpnitemmenu', function()
 end)
 
 
+
+
+RegisterNetEvent("buylaptop")
+AddEventHandler("buylaptop", function()
+  TriggerServerEvent("vpn:buylaptopsv")
+end)
+
+
+
+
+RegisterNetEvent("buydisabler")
+AddEventHandler("buydisabler", function()
+  TriggerServerEvent("vpn:buydisablersv")
+end)
 
 
 RegisterNetEvent("drp-heists:distcheckpower")
