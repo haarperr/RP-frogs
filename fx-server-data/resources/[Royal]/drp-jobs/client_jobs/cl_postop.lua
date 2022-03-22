@@ -148,6 +148,18 @@ function setPostOPped()
     SetEntityInvincible(created_ped, true)
     SetBlockingOfNonTemporaryEvents(created_ped, true)
     TaskStartScenarioInPlace(created_ped, "WORLD_HUMAN_CLIPBOARD", 0, true)
+
+    modelHash = GetHashKey("ig_floyd")
+    RequestModel(modelHash)
+    while not HasModelLoaded(modelHash) do
+        Wait(1)
+    end
+    created_ped = CreatePed(0, modelHash , -1362.021, -755.8926, 22.305,  -1, true)
+    FreezeEntityPosition(created_ped, true)
+    SetEntityHeading(created_ped, 257.77166748047)
+    SetEntityInvincible(created_ped, true)
+    SetBlockingOfNonTemporaryEvents(created_ped, true)
+    TaskStartScenarioInPlace(created_ped, "WORLD_HUMAN_CLIPBOARD", 0, true)
 end
 
 Citizen.CreateThread(function()
