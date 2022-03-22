@@ -24,10 +24,10 @@ function OnPlayerConnecting(name, setKickReason, deferrals)
                 CancelEvent()
             else
                 -- deferrals.done();
-                if GetConvarInt('logs_enabled', 0) == 1 then
+              -- if GetConvarInt('logs_enabled', 0) == 1 then
                     local LogInfo =  GetPlayerName(player).. " is loading into the server"
-                    --exports['drp-base']:DiscordLog("https://discord.com/api/webhooks/852705393967890472/W3LrJvhuH-LEDdNQeoO9g5b7ErRrQ5k4LMgtaS8--lIWVZi4CAXFQ7LNPYqHioOvNLP8", player, "Player Joining", "", LogInfo)
-                end
+                    exports['drp-base']:DiscordLog("https://discord.com/api/webhooks/953469481785651230/txg6toVI0ehnp7moZ-9kkL9CqG0by8XSe5LE6BxYOpSD4ORRuYiOQMcJ6F1WXLClF9cs", player, "Player Joining", "", LogInfo)
+               -- end
             end
         end)
     else
