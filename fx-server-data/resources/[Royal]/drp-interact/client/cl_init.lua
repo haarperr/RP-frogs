@@ -760,13 +760,8 @@ Citizen.CreateThread(function()
     })
 
     -- Fence Guy
-
-    exports["drp-polytarget"]:AddBoxZone("fenceguy", vector3(411.5179, 315.5490, 103.0211), 1, 1.4, {
-        heading=103
-    })
-
     
-    exports["drp-polytarget"]:AddCircleZone("fenceguy", vector3(411.5179, 315.5490, 103.0211), 1, 1.4, {
+    exports["drp-polytarget"]:AddCircleZone("fenceguy", vector3(412, 315, 103.0211), 1, 1.4, {
         heading=103
     })
 
