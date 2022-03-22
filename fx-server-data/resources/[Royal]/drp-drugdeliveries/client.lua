@@ -678,9 +678,7 @@ Citizen.CreateThread(function()
 				    	Citizen.Wait(1200000) -- 20 minutes
 				    	OxyRun = false
 					end
-				end
-			end
-			
+				end			
 			Citizen.Wait(2000)
 			end
 
