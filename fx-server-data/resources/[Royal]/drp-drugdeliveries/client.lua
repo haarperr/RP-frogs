@@ -615,7 +615,6 @@ AddEventHandler("oxydelivery:client", function()
 	DeleteBlip()
 end)
 
-
 Citizen.CreateThread(function()
     while true do
 	    Citizen.Wait(0)
@@ -626,7 +625,6 @@ Citizen.CreateThread(function()
 		if oxyExit < 2 then
 			DrawText3Ds(590.51, 2739.8, 15.86, "[E] to Leave") 
 			if IsControlJustReleased(0,38) then
-				CleanUpArea()
 				SetEntityCoords(PlayerPedId(),oxyStoreLocation["x"],oxyStoreLocation["y"],oxyStoreLocation["z"])
 				Citizen.Wait(1000)
 			end
