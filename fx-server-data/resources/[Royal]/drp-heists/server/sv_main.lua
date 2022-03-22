@@ -1,4 +1,4 @@
-RegisterServerEvent('vpn:pay')
+RegisterServerEvent('buy:buyitem')
 AddEventHandler('buy:buyitem', function(item, price, amount)
     local src = source
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
