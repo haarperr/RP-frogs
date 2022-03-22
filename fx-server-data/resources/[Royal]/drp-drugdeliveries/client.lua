@@ -672,7 +672,6 @@ function DoDropOff(requestMoney)
 
 	DeleteCreatedPed()
 end
-end
 
 local fighting = 0
 function startAiFight()
