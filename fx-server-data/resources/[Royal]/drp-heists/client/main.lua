@@ -195,7 +195,7 @@ end)
 
 RegisterNetEvent("buylaptop")
 AddEventHandler("buylaptop", function()
-  TriggerServerEvent("vpn:buylaptopsv")
+  TriggerServerEvent("shops:buylaptopsv")
 end)
 
 
