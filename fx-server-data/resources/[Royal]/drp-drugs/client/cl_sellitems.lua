@@ -70,7 +70,7 @@ AddEventHandler('sellrolex', function()
 end)
 
 RegisterNetEvent('selloxy')
-AddEventHandler('sellrolex', function()
+AddEventHandler('selloxy', function()
     doSell("oxy", math.random(40, 55))
 end)
 
