@@ -618,7 +618,7 @@ end)
 Citizen.CreateThread(function()
     while true do
 	    Citizen.Wait(0)
-	  	local oxyCheckin = #(GetEntityCoords(PlayerPedId()) - vector3(oxyStoreLocation["x"],oxyStoreLocation["y"],oxyStoreLocation["z"]))
+	  	local oxyCheckin = #(GetEntityCoords(PlayerPedId()) - vector3(oxyStorePedLocation["x"],oxyStorePedLocation["y"],oxyStorePedLocation["z"]))
 		local oxyExit = #(GetEntityCoords(PlayerPedId()) - vector3(590.51, 2739.8, 15.86))
 		local oxyEnter = #(GetEntityCoords(PlayerPedId()) - vector3(oxyStoreLocation["x"],oxyStoreLocation["y"],oxyStoreLocation["z"]))
 
@@ -639,7 +639,7 @@ Citizen.CreateThread(function()
 			end
 		end		
 
-		if oxyCheckin < 2 then
+		if oxyCheckin < 3 then
 			DrawText3Ds(oxyStorePedLocation["x"], oxyStorePedLocation["y"], oxyStorePedLocation["z"], "[E] $1500 - Oxy Delivery Job") 
 			if IsControlJustReleased(0,38) then
 				TriggerServerEvent("oxydelivery:server",1500)
