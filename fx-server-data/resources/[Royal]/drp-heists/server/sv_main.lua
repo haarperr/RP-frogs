@@ -6,7 +6,7 @@ AddEventHandler('buy:buyitem', function(item, price, amount)
 
     if tonumber(cash) >= price then
         user:removeMoney(price)
-        TriggerEvent('player:receiveItem', item, amount)
+        TriggerClientEvent('buy:success', src, item, amount)
     else
     TriggerEvent('DoLongHudText', 'You dont seem to have enough money.', 2)
     end        
