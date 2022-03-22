@@ -9598,7 +9598,7 @@ itemList['vpapers'] = {
 
 itemList['vpnxj'] = {
   fullyDegrades: true,
-  decayrate: 0.5,
+  decayrate: 1.5,
   displayname: 'VPN',
   price: 300,
 
@@ -9618,7 +9618,7 @@ itemList['vpnxj'] = {
 
 itemList['vpnxja'] = {
   fullyDegrades: true,
-  decayrate: 0.5,
+  decayrate: 1,
   displayname: 'Advanced VPN',
   price: 300,
   weight: 5,
