@@ -134,8 +134,8 @@ end)
 
 --#########--
 
-RegisterNetEvent("fencemenu")
-AddEventHandler("fencemenu", function()
+RegisterNetEvent("fenceguy:menu")
+AddEventHandler("fenceguy:menu", function()
 	TriggerEvent('drp-context:sendMenu', {
         {
 			id = "1",
@@ -151,7 +151,7 @@ AddEventHandler("fencemenu", function()
 			}
 		},
         {
-			id = "2",
+			id = "3",
 			header = "Sell 5ct Chain",
 			txt = "",
 			params = {
@@ -159,7 +159,7 @@ AddEventHandler("fencemenu", function()
 			}
 		},
         {
-			id = "2",
+			id = "4",
 			header = "Sell 8ct Chain",
 			txt = "",
 			params = {
@@ -167,7 +167,7 @@ AddEventHandler("fencemenu", function()
 			}
 		},
         {
-			id = "2",
+			id = "5",
 			header = "Sell Gameboy",
 			txt = "",
 			params = {
@@ -175,7 +175,7 @@ AddEventHandler("fencemenu", function()
 			}
 		},
         {
-			id = "2",
+			id = "6",
 			header = "Sell Oakleys",
 			txt = "",
 			params = {
@@ -183,7 +183,7 @@ AddEventHandler("fencemenu", function()
 			}
 		},
         {
-			id = "2",
+			id = "7",
 			header = "Sell PSP",
 			txt = "",
 			params = {
@@ -191,7 +191,7 @@ AddEventHandler("fencemenu", function()
 			}
 		},
         {
-			id = "2",
+			id = "8",
 			header = "Sell Casio Watch",
 			txt = "",
 			params = {
@@ -199,7 +199,7 @@ AddEventHandler("fencemenu", function()
 			}
 		},
         {
-			id = "2",
+			id = "9",
 			header = "Sell Rolex",
 			txt = "",
 			params = {
