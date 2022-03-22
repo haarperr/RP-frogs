@@ -761,8 +761,8 @@ Citizen.CreateThread(function()
 
     -- Fence Guy
     
-    exports["drp-polytarget"]:AddBoxZone("fenceguy", vector3(332.35, -597.32, 43.28), 0.2, 1, {
-        heading=340,
+    exports["drp-polytarget"]:AddCircleZone("fenceguy",  vector3(331.15, 362.16, 106.65, 341.07), 0.35, {
+        useZ = true
     })
 
 
@@ -2222,8 +2222,8 @@ Citizen.CreateThread(function()
     exports["drp-interact"]:AddPeekEntryByPolyTarget("fenceguy", {{
         event = "fenceguy:menu",
         id = "fenceguy",
-        icon = "circle",
-        label = "Sell your shit",
+        icon = "arrow-alt-circle-up",
+        label = "Sell your Shit",
         parameters = {},
     }}, {
         distance = { radius = 7 },
