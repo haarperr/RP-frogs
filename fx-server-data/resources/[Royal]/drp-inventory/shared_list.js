@@ -5006,7 +5006,7 @@ itemList['aluminiumoxide'] = {
 
 itemList['advrepairkit'] = {
   fullyDegrades: false,
-  decayrate: 0.0,
+  decayrate: 3,
   displayname: 'Adv Repair Kit',
   craft: [[{ itemid: 'electronics', amount: 10 }]],
   price: 100,
@@ -5014,7 +5014,7 @@ itemList['advrepairkit'] = {
   nonStack: false,
   model: '',
   image: 'np_repair-toolkit.png',
-  information: '1 Time use - degrades engine parts more than basic tool kits, repairs engine to full.',
+  information: 'Degrades engine parts more than basic tool kits, repairs engine to full.',
 };
 
 itemList['tirerepairkit'] = {
