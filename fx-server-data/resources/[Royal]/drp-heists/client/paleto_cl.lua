@@ -311,7 +311,7 @@ AddEventHandler("drp-paleto:startheist", function(data, name)
 
     TriggerEvent("chatMessage", "Encrypted", 8, "Bank security captcha bypassed successfully. Standby while I get that door open. ")
 
-    Citizen.Wait(100) -- set to 180000 when finish testing
+    Citizen.Wait(180000) -- set to 180000 when finish testing
 
     TriggerServerEvent('drp-paleto:openDoor')
     startdstcheck = true
@@ -633,10 +633,14 @@ AddEventHandler("drp-paleto:startPaletoHeist", function()
                         exports["hacking2"]:hacking2(
                             function() -- success
                                 TriggerEvent('drp-paleto:addPlease')
-                                
+                                TriggerEvent("inventory:removeItem","heistlaptop2", 1) -- delete laptop 
                             end,
                             function() -- failure
                                 TriggerEvent('drp-paleto:removePlease')
+                                if breaklaptop == 1 then
+                                    TriggerEvent("inventory:removeItem","heistlaptop2", 1) -- delete laptop on use 33% chance
+                                    TriggerEvent('DoLongHudText', 'You broke the laptop', 2)
+                                end
                             end)
                     else
                         exports['drp-notification']:Alert({style = 'error', duration = 3000, message = 'You do not have the proper hacking equipment!'})
