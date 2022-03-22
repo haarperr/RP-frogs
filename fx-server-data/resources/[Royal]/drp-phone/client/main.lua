@@ -2060,6 +2060,11 @@ RegisterNUICallback('btnHangup', function()
     })
 end)
 
+RegisterNUICallback('wifi', function()
+  closeGui()
+  TriggerEvent("DoLongHudText","THIS IS WORKING PAGCHOMP", 1)
+end)
+
 RegisterNetEvent('phone:answercall')
 AddEventHandler('phone:answercall', function()
     if callStatus == isReceivingCall and not isDead then
