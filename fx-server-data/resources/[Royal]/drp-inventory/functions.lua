@@ -3757,10 +3757,7 @@ AddEventHandler('inv:lockPick2', function(isForced,inventoryName,slot)
             TriggerEvent("animation:lockpickinvtestoutside")
             TriggerEvent('InteractSound_CL:PlayOnOne', 'lockpick', 1.0)
 
-
-
- 
-            local finished = exports["drp-taskbar"]:taskBar(2000,"Picking")
+            local finished = exports["drp-taskbar"]:taskBar(5000,"Picking")
 
             if finished ~= 100 then
                  lockpicking = false

@@ -264,14 +264,10 @@ function HardwareStore() {
         { item_id: "wateringcan", id: 0, name: "Shop", information: "{}", slot: 17, amount: 50 },
         { item_id: "miningpickaxe", id: 0, name: "Shop", information: "{}", slot: 18, amount: 50 },
         { item_id: "acetone", id: 0, name: "Shop", information: "{}", slot: 19, amount: 50 },
-        { item_id: "camera", id: 0, name: "Shop", information: "{}", slot: 20, amount: 50 },
-        { item_id: "miningpickaxe", id: 0, name: "Shop", information: "{}", slot: 21, amount: 50 },
+        { item_id: "fishingrod", id: 0, name: "Shop", information: "{}", slot: 20, amount: 1 },
 
-        { item_id: "watch", id: 0, name: "Shop", information: "{}", slot: 22, amount: 1 },
-        { item_id: "fishingrod", id: 0, name: "Shop", information: "{}", slot: 23, amount: 1 },
-
-        { item_id: "huntingknife", id: 0, name: "Shop", information: "{}", slot: 24, amount: 50 },
-        { item_id: "huntingbait", id: 0, name: "Shop", information: "{}", slot: 25, amount: 50 },
+        -- { item_id: "huntingknife", id: 0, name: "Shop", information: "{}", slot: 21, amount: 50 },
+        -- { item_id: "huntingbait", id: 0, name: "Shop", information: "{}", slot: 22, amount: 50 },
     ];
     return JSON.stringify(shopItems);
 }
@@ -403,6 +399,7 @@ function HuntingShop() {
         { item_id: "huntingammo", id: 0, name: "Shop", information: "{}", slot: 2, amount: 15 },
         { item_id: "huntingknife", id: 0, name: "Shop", information: "{}", slot:3, amount: 5 },
         { item_id: "huntingbait", id: 0, name: "Shop", information: "{}", slot: 4, amount: 50 },
+        { item_id: "fishingrod", id: 0, name: "Shop", information: "{}", slot: 20, amount: 1 },
     ];
     return JSON.stringify(shopItems);
 };
