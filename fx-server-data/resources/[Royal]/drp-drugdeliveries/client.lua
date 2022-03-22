@@ -543,88 +543,87 @@ function DoDropOff(requestMoney)
 
 	if DoesEntityExist(deliveryPed) and not IsEntityDead(deliveryPed) then
 
-		if HasStolenGoods() then
 
-			if math.random(10) == 1 then -- 10% chance of getting a safe cracking kit 
-				TriggerEvent( "player:receiveItem", "safecrackingkit", 1 )
+		if math.random(10) == 1 then -- 10% chance of getting a safe cracking kit 
+			TriggerEvent( "player:receiveItem", "safecrackingkit", 1 )
+		end
+		
+		if math.random(49) == 49 then
+			TriggerEvent( "player:receiveItem", "heistusb4", 1 )
+		end
+
+		
+		if math.random(250) == 69 then
+			TriggerEvent( "player:receiveItem", "heistlaptop3", 1 )
+		end
+
+		if OxyRun then
+			
+
+			local sellableItems = {
+				[1] = {name = 'rollcash', amount = math.random(3,15), price=rollcashprice},
+				[2] = {name = 'inkedmoneybag', amount = 1, price=inkedmoneybagprice},
+				[3] = {name = 'markedbills', amount = math.random(3,10), price=markedbillsprice},
+				[4] = {name = 'band', amount = math.random(3,10), price=bandprice},
+			}
+
+			cashPayment = math.random(150,550)
+			
+			local pog = false
+
+			-- randomize the sellable items
+			for i = 1, #sellableItems do
+				local randomIndex = math.random(#sellableItems)
+				sellableItems[i] = sellableItems[randomIndex]
+				
+				if exports["drp-inventory"]:hasEnoughOfItem(sellableItems[i].name,sellableItems[i].amount,false) then
+					TriggerEvent("inventory:removeItem",sellableItems[i].name,sellableItems[i].amount)
+					TriggerServerEvent('mission:completed', sellableItems[i].price * sellableItems[i].amount)
+					pog = true
+					break
+				end
+			end
+
+			if pog == false then
+				TriggerEvent("DoLongHudText","Thanks, no extra sauce though?!")
+			end
+
+			if math.random(100) > 45 then
+				TriggerEvent( "player:receiveItem", "oxy", math.random(5) )
+			end
+
+			
+			if math.random(100) >= 7 then
+				cashPayment = cashPayment + math.random(250,1000)
+			end
+
+			
+			if math.random(100) >= 1 then
+				cashPayment = cashPayment + math.random(1000,1500)
 			end
 			
-			if math.random(49) == 49 then
-				TriggerEvent( "player:receiveItem", "heistusb4", 1 )
-			end
+			if math.random(1000) >= 1 then
+				cashPayment = cashPayment + math.random(10000,15000)
+			end 
 
-			
-			if math.random(250) == 69 then
-				TriggerEvent( "player:receiveItem", "heistlaptop3", 1 )
-			end
-
-			if OxyRun then
-				
-
-				local sellableItems = {
-					[1] = {name = 'rollcash', amount = math.random(3,15), price=rollcashprice},
-					[2] = {name = 'inkedmoneybag', amount = 1, price=inkedmoneybagprice},
-					[3] = {name = 'markedbills', amount = math.random(3,10), price=markedbillsprice},
-					[4] = {name = 'band', amount = math.random(3,10), price=bandprice},
-				}
-
-				cashPayment = math.random(150,550)
-				
-				local pog = false
-
-				-- randomize the sellable items
-				for i = 1, #sellableItems do
-					local randomIndex = math.random(#sellableItems)
-					sellableItems[i] = sellableItems[randomIndex]
-					
-					if exports["drp-inventory"]:hasEnoughOfItem(sellableItems[i].name,sellableItems[i].amount,false) then
-						TriggerEvent("inventory:removeItem",sellableItems[i].name,sellableItems[i].amount)
-						TriggerServerEvent('mission:completed', sellableItems[i].price * sellableItems[i].amount)
-						pog = true
-						break
-					end
-				end
-
-				if pog == false then
-		            TriggerEvent("DoLongHudText","Thanks, no extra sauce though?!")
-		        end
-
-				if math.random(100) > 45 then
-					TriggerEvent( "player:receiveItem", "oxy", math.random(5) )
-				end
-
-				
-				if math.random(100) >= 7 then
-					cashPayment = cashPayment + math.random(250,1000)
-				end
-
-				
-				if math.random(100) >= 1 then
-					cashPayment = cashPayment + math.random(1000,1500)
-				end
-				
-				if math.random(1000) >= 1 then
-					cashPayment = cashPayment + math.random(10000,15000)
-				end 
-
-			else
-
-				cashPayment = math.random(200,580)
-
-			end
-			
 		else
 
-			if not OxyRun then
-				TriggerEvent("DoLongHudText","The drop off failed - you need stolen items.",2)
-			else
-				TriggerEvent("DoLongHudText","The drop off failed - you need Oxy.",2)
-			end
-			
-			success = false
-			return
+			cashPayment = math.random(200,580)
 
 		end
+			
+	else
+
+		if not OxyRun then
+			TriggerEvent("DoLongHudText","The drop off failed - you need stolen items.",2)
+		else
+			TriggerEvent("DoLongHudText","The drop off failed - you need Oxy.",2)
+		end
+		
+		success = false
+		return
+
+	end
 
 	end
 
