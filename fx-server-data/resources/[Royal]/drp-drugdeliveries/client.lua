@@ -620,9 +620,28 @@ Citizen.CreateThread(function()
     while true do
 	    Citizen.Wait(100)
 	  	local oxyCheckin = #(GetEntityCoords(PlayerPedId()) - vector3(oxyStorePedLocation["x"],oxyStorePedLocation["y"],oxyStorePedLocation["z"]))
+		local oxyExit = #(GetEntityCoords(PlayerPedId()) - vector3(590.51, 2739.8, 15.86))
+		local oxyEnter = #(GetEntityCoords(PlayerPedId()) - vector3(pillStore["x"],pillStore["y"],pillStore["z"]))
 
-		if oxyCheckin < 1.6 then
+		if oxyExit < 2 then
+			DrawText3Ds(590.51, 2739.8, 15.86, "[E] to Leave") 
+			if IsControlJustReleased(0,38) then
+				CleanUpArea()
+				SetEntityCoords(PlayerPedId(),pillStore["x"],pillStore["y"],pillStore["z"])
+				Citizen.Wait(1000)
+			end
+		end
 
+		if oxyEnter < 2 then
+			DrawText3Ds(pillStore["x"],pillStore["y"],pillStore["z"], "[E] to Enter") 
+			TriggerServerEvent("kGetWeather")
+			if IsControlJustReleased(0,38) then
+				buildDrugShop()
+				CreateDrugStorePed()
+			end
+		end		
+
+		if oxyCheckin < 3 then
 			DrawText3Ds(oxyStorePedLocation["x"], oxyStorePedLocation["y"], oxyStorePedLocation["z"], "[E] $1500 - Oxy Delivery Job") 
 			if IsControlJustReleased(0,38) then
 				TriggerServerEvent("oxydelivery:server",1500)
