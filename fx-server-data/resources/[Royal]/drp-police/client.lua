@@ -1482,7 +1482,7 @@ AddEventHandler('police:stealrob', function()
 		while not HasAnimDictLoaded("random@shop_robbery") do
 			Citizen.Wait(0)
 		end
-
+	TriggerEvent("stealcommand:log")
 		local lPed = PlayerPedId()
 		ClearPedTasksImmediately(lPed)
 

@@ -223,7 +223,7 @@ AddEventHandler("drp-robberies:HitSafes", function()
 	local storeid = isStoreRobbery()
 	if storeid ~= 0 then
 		local safeCoords = safeLocations[storeid]
-
+		TriggerEvent("conviencesafe:log")
 		if #(vector3(safeCoords["x"],safeCoords["y"],safeCoords["z"]) - GetEntityCoords(PlayerPedId())) < 3.0 then
 			TriggerServerEvent("store:robbery:safe",storeid)
 			return
@@ -238,7 +238,7 @@ AddEventHandler("drp-robberies:HitRegister", function()
 	if storeid ~= 0 then
 		if isActive == true then
 		local curCoords = GetEntityCoords(PlayerPedId())
-
+		TriggerEvent("convienceregister:log")
 		local RegisterObject = GetClosestObjectOfType(curCoords, 2.0, 303280717, 0, 0, 0)
 		local GoodSpot = GetOffsetFromEntityInWorldCoords(RegisterObject, 0.0, -0.6, 0.0)
 
