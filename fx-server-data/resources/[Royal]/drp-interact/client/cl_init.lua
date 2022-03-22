@@ -2217,17 +2217,17 @@ Citizen.CreateThread(function()
     });
 
     -- Fence Guy
-
+    
     exports["drp-interact"]:AddPeekEntryByPolyTarget("fenceguy", {{
         event = "fenceguy:menu",
         id = "fenceguy",
-        icon = "arrow-alt-circle-up",
-        label = "Sell your Shit",
+        icon = "circle",
+        label = "Sell your shit",
         parameters = {},
     }}, {
-        distance = { radius = 7 },
+        distance = { radius = 5 },
     });
-    
+
 
     -- Pillbox
 
