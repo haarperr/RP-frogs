@@ -621,7 +621,7 @@ Citizen.CreateThread(function()
 	    Citizen.Wait(100)
 	  	local oxyCheckin = #(GetEntityCoords(PlayerPedId()) - vector3(oxyStorePedLocation["x"],oxyStorePedLocation["y"],oxyStorePedLocation["z"]))
 		local oxyExit = #(GetEntityCoords(PlayerPedId()) - vector3(590.51, 2739.8, 15.86))
-		local oxyEnter = #(GetEntityCoords(PlayerPedId()) - vector3(pillStore["x"],pillStore["y"],pillStore["z"]))
+		local oxyEnter = #(GetEntityCoords(PlayerPedId()) - vector3(oxyCheckin["x"],oxyCheckin["y"],oxyCheckin["z"]))
 
 		if oxyExit < 2 then
 			DrawText3Ds(590.51, 2739.8, 15.86, "[E] to Leave") 
