@@ -44,6 +44,7 @@ end)
 
 RegisterNetEvent('heists:buyvpn')
 AddEventHandler('heists:buyvpn', function()
+  local user = exports["drp-base"]:getModule("Player"):GetUser(src)
   local cash = user:getCash()
   local price = 5000
 
