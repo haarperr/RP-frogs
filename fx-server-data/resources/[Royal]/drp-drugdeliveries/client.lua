@@ -618,7 +618,7 @@ end)
 
 Citizen.CreateThread(function()
     while true do
-	    Citizen.Wait(100)
+	    Citizen.Wait(0)
 	  	local oxyCheckin = #(GetEntityCoords(PlayerPedId()) - vector3(oxyStorePedLocation["x"],oxyStorePedLocation["y"],oxyStorePedLocation["z"]))
 		local oxyExit = #(GetEntityCoords(PlayerPedId()) - vector3(590.51, 2739.8, 15.86))
 		local oxyEnter = #(GetEntityCoords(PlayerPedId()) - vector3(oxyStoreLocation["x"],oxyStoreLocation["y"],oxyStoreLocation["z"]))
