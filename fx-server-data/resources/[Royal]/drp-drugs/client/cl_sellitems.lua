@@ -42,7 +42,7 @@ end)
 
 RegisterNetEvent('sell8ctchain')
 AddEventHandler('sell8ctchain', function()
-    doSell("stolen8ctchain", math.random(320,450))
+    doSell("stolen8ctchain", math.random(220,350))
 end)
 RegisterNetEvent('sellstolengameboy')
 AddEventHandler('sellstolengameboy', function()
@@ -66,7 +66,7 @@ end)
 
 RegisterNetEvent('sellrolex')
 AddEventHandler('sellrolex', function()
-    doSell("rolexwatch", math.random(250,450))
+    doSell("rolexwatch", math.random(200,400))
 end)
 
 RegisterNetEvent('selloxy')
