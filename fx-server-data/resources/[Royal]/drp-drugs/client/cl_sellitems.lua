@@ -66,7 +66,7 @@ end)
 
 RegisterNetEvent('sellrolex')
 AddEventHandler('sellrolex', function()
-    doSell("rolexwatch", math.random(315,425))
+    doSell("rolexwatch", math.random(300,400))
 end)
 
 --#########--
