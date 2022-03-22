@@ -20,23 +20,6 @@ Entries[#Entries + 1] = {
 
 Entries[#Entries + 1] = {
     type = 'flag',
-    group = { 'isVpnGuy' },
-    data = {
-        {
-            id = "vpnguy",
-            label = "Buy a VPN (5k)",
-            icon = "circle",
-            event = "heists:buyvpn",
-            parameters = {}
-        }
-    },
-    options = {
-        distance = { radius = 5 }
-    }
-}
-
-Entries[#Entries + 1] = {
-    type = 'flag',
     group = { 'isCasinoEnter' },
     data = {
         {
