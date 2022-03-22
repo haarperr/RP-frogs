@@ -759,10 +759,10 @@ end)
 RegisterNUICallback('btnDecrypt', function()
   local ped = GetPlayerPed(-1)
   local pos = GetEntityCoords(ped) 
-  local dist = GetDistanceBetweenCoords(pos, 1359.52, -757.386, 22.304)
+  local dist = GetDistanceBetweenCoords(pos, -1359.52, -757.386, 22.304)
   TriggerEvent("DoLongHudText","Scanning for networks...", 1)
   Citizen.Wait(5000)
-  if dist < 10.5 then
+  if dist < 10 then
   
     TriggerEvent("DoLongHudText","Network Connected!", 1)
   
