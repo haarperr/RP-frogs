@@ -757,7 +757,20 @@ AddEventHandler("tryTweet", function(tweetinfo,message,user)
 end)
 
 RegisterNUICallback('btnDecrypt', function()
-  TriggerEvent("DoLongHudText","WORKS POGMAN", 1)
+  local ped = GetPlayerPed(-1)
+  local pos = GetEntityCoords(ped) 
+  local dist = GetDistanceBetweenCoords(pos, -1359.52, -757.386, 22.304)
+  TriggerEvent("DoLongHudText","Scanning for networks...", 1)
+  Citizen.Wait(5000)
+  if dist < 10 then
+  
+    TriggerEvent("DoLongHudText","Network Connected!", 1)
+  
+  else
+    TriggerEvent("DoLongHudText","No networks found", 2)
+  end
+  
+  
 end)
 
 
