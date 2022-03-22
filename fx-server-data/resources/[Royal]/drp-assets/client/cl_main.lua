@@ -24,7 +24,7 @@ RegisterNetEvent('rich:TakePlayers')
 AddEventHandler('rich:TakePlayers', function(count)
     onlinePlayers = count
     if SetDiscordRichPresenceAction then
-        SetDiscordRichPresenceAction(0, 'Discord', 'https://discord.gg/xqcowupdates')
+        SetDiscordRichPresenceAction(0, 'Discord', 'https://discord.gg/rpfrog')
     end
 end)
 
@@ -34,7 +34,7 @@ Citizen.CreateThread(function()
  	SetDiscordRichPresenceAsset('1000x1000')
     while true do
         Citizen.Wait(2000)
-        SetDiscordRichPresenceAssetText("https://discord.gg/xqcowupdates")
+        SetDiscordRichPresenceAssetText("https://discord.gg/rpfrog")
         SetRichPresence(onlinePlayers.."/64 | Roleplaying Erotically")
         SetBlipAlpha(GetNorthRadarBlip(), 0)
     end

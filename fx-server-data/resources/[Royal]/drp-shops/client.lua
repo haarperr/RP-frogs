@@ -561,11 +561,11 @@ end)
 
 RegisterNetEvent("drp-scoreboard:playerscount")
 AddEventHandler("drp-scoreboard:playerscount", function(a)
-    SetRichPresence(a .. "/30 | No Maidens?")
+    SetRichPresence(a .. "/50 | RIP BOZO 🚬 ")
     SetDiscordAppId(949909010386124840)
  	SetDiscordRichPresenceAsset('1000x1000')
     SetDiscordRichPresenceAsset('logo')
-    SetDiscordRichPresenceAction(0, 'xQcowUpdates Discord', 'https://discord.gg/xqcowupdates')
+    SetDiscordRichPresenceAction(0, 'RPFrogs Discord', 'https://discord.gg/rpfrog')
 end)
 
 RegisterNetEvent('bar:general')
