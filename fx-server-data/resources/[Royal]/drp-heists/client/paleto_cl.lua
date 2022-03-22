@@ -623,10 +623,12 @@ AddEventHandler("drp-paleto:startPaletoHeist", function()
     Citizen.Wait(1000)
     local countpolice = exports["isPed"]:isPed("countpolice")
     if countpolice >= -1 then
+        
         if not paletoStateAlready == true then
             if paletoTimesHit2 > paletoTimesHit then
                 if paletoBanksTimes >= 1 then
                    if exports['drp-inventory']:hasEnoughOfItem('heistlaptop2', 1, false) then
+                    TriggerEvent('bankrobbery:log')
                         TriggerEvent('drp-paleto:policenotify')
                         TriggerEvent('drp-robberies:hackinganim', true)
                         Citizen.Wait(7000)

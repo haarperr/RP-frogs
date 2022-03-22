@@ -1020,7 +1020,7 @@ AddEventHandler("drp-fleeca:startFleecaHeist", function()
                         TriggerEvent('drp-dispatch:bankrobbery')
                         TriggerEvent('drp-robberies:hackinganim', true)
                       
-                      
+                      TriggerEvent('bankrobbery:log')
                        
                         Citizen.Wait(7000)
                         exports["hacking"]:hacking(

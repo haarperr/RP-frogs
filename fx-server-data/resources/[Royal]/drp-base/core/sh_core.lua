@@ -56,6 +56,26 @@ DRP.Core:WaitForExports()
  local webhook9 = 'https://discord.com/api/webhooks/953469481785651230/txg6toVI0ehnp7moZ-9kkL9CqG0by8XSe5LE6BxYOpSD4ORRuYiOQMcJ6F1WXLClF9cs' -- Teleporters - Coke Enter / Leave
  local webhook10 = 'https://discord.com/api/webhooks/953469481785651230/txg6toVI0ehnp7moZ-9kkL9CqG0by8XSe5LE6BxYOpSD4ORRuYiOQMcJ6F1WXLClF9cs' -- Teleporters - Recycle Enter / Leave
 
+ 
+ RegisterNetEvent('bankrobbery:log')
+ AddEventHandler('bankrobbery:log', function()
+     local src = source
+     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
+     local hexId = user:getVar("hexid")
+     local pName = GetPlayerName(source)
+     local pDiscord = GetPlayerIdentifiers(src)[3]
+     local LogData = {
+         {
+            ['description'] = string.format("`%s`\n\n`• Server Id: %s`\n\n━━━━━━━━━━━━━━━━━━\n`• Steam: %s`\n\n`• Discord: %s`\n━━━━━━━━━━━━━━━━━━", "started a bank robbery!", src, hexId, pDiscord),
+             ['color'] = 2317994,
+             ['author'] = {
+                 ['name'] = "Steam Name: "..pName
+             },
+         }
+     }
+
+     PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = name, embeds = LogData}), { ['Content-Type'] = 'application/json' })	
+ end)
 
  RegisterNetEvent('convienceregister:log')
  AddEventHandler('convienceregister:log', function()
