@@ -130,7 +130,7 @@ AddEventHandler('vpnmenu', function()
             header = "Purchase Items",
 		      	txt = "View The Market",
 			      params = {
-                event = "drp-duty:OnDutyJudge"
+                event = "vpnitemmenu"
             }
         },
 		{
