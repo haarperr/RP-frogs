@@ -8,7 +8,7 @@ function doSell(itemname, price)
 				ClearPedTasksImmediately(PlayerPedId())
 				TriggerEvent('inventory:removeItem', itemname, toSell)
                 TriggerServerEvent( 'sk1c2:payout', price*toSell)
-                
+
                 lucky = math.random(1,100)
                 if lucky == 1 then
                     TriggerServerEvent( 'sk1c2:payout', math.random(750, 1500))
@@ -27,7 +27,7 @@ function doSell(itemname, price)
 	else
         TriggerEvent('DoLongHudText', 'You dont seem to have this item.', 2)
 	end
-end)
+end
     
 
 RegisterNetEvent('sell2ctchain')
