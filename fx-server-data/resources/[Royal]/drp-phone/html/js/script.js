@@ -330,8 +330,17 @@ $(document).ready(function () {
             $('.btn-decrypt').hide().fadeIn(150);
         }
 
-        if (item.hasDecrypt2 === true) {
-            $('.btn-vpn').hide().fadeIn(150);
+        if (item.hasDecrypt === false) {
+            $('.btn-decrypt').hide().fadeOut(150);
+        }
+
+
+        if (item.hasDecrypt === true) {
+            $('.btn-decrypt').hide().fadeIn(150);
+        }
+
+        if (item.hasDecrypt === false) {
+            $('.btn-decrypt').hide().fadeOut(150);
         }
 
         if (item.hasTrucker === true) {
