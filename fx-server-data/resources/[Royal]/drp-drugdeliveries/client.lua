@@ -5,6 +5,7 @@ local vehspawn = false
 
 local oxyVehicle = 0
 local PlayerData = {}
+local cooldown = false
 selling = false
 
 local OxyDropOffs = {
@@ -408,60 +409,51 @@ function DoDropOff(requestMoney)
 			TriggerEvent( "player:receiveItem", "heistlaptop3", 1 )
 		end
 
-		if OxyRun then
+		local sellableItems = {
+			[1] = {name = 'rollcash', amount = math.random(3,15), price=rollcashprice},
+			[2] = {name = 'inkedmoneybag', amount = 1, price=inkedmoneybagprice},
+			[3] = {name = 'markedbills', amount = math.random(3,10), price=markedbillsprice},
+			[4] = {name = 'band', amount = math.random(3,10), price=bandprice},
+		}
+
+		cashPayment = math.random(150,550)
+		
+		local pog = false
+
+		-- randomize the sellable items
+		for i = 1, #sellableItems do
+			local randomIndex = math.random(#sellableItems)
+			sellableItems[i] = sellableItems[randomIndex]
 			
-
-			local sellableItems = {
-				[1] = {name = 'rollcash', amount = math.random(3,15), price=rollcashprice},
-				[2] = {name = 'inkedmoneybag', amount = 1, price=inkedmoneybagprice},
-				[3] = {name = 'markedbills', amount = math.random(3,10), price=markedbillsprice},
-				[4] = {name = 'band', amount = math.random(3,10), price=bandprice},
-			}
-
-			cashPayment = math.random(150,550)
-			
-			local pog = false
-
-			-- randomize the sellable items
-			for i = 1, #sellableItems do
-				local randomIndex = math.random(#sellableItems)
-				sellableItems[i] = sellableItems[randomIndex]
-				
-				if exports["drp-inventory"]:hasEnoughOfItem(sellableItems[i].name,sellableItems[i].amount,false) then
-					TriggerEvent("inventory:removeItem",sellableItems[i].name,sellableItems[i].amount)
-					TriggerServerEvent('mission:completed', sellableItems[i].price * sellableItems[i].amount)
-					pog = true
-					break
-				end
+			if exports["drp-inventory"]:hasEnoughOfItem(sellableItems[i].name,sellableItems[i].amount,false) then
+				TriggerEvent("inventory:removeItem",sellableItems[i].name,sellableItems[i].amount)
+				TriggerServerEvent('mission:completed', sellableItems[i].price * sellableItems[i].amount)
+				pog = true
+				break
 			end
-
-			if pog == false then
-				TriggerEvent("DoLongHudText","Thanks, no extra sauce though?!")
-			end
-
-			if math.random(100) > 45 then
-				TriggerEvent( "player:receiveItem", "oxy", math.random(5) )
-			end
-
-			
-			if math.random(100) >= 7 then
-				cashPayment = cashPayment + math.random(250,1000)
-			end
-
-			
-			if math.random(100) >= 1 then
-				cashPayment = cashPayment + math.random(1000,1500)
-			end
-			
-			if math.random(1000) >= 1 then
-				cashPayment = cashPayment + math.random(10000,15000)
-			end 
-
-		else
-
-			cashPayment = math.random(200,580)
-
 		end
+
+		if pog == false then
+			TriggerEvent("DoLongHudText","Thanks, no extra sauce though?!")
+		end
+
+		if math.random(100) > 45 then
+			TriggerEvent( "player:receiveItem", "oxy", math.random(5) )
+		end
+
+		
+		if math.random(100) >= 7 then
+			cashPayment = cashPayment + math.random(250,1000)
+		end
+
+		
+		if math.random(100) >= 1 then
+			cashPayment = cashPayment + math.random(1000,1500)
+		end
+		
+		if math.random(1000) >= 1 then
+			cashPayment = cashPayment + math.random(10000,15000)
+		end 
 	end
 
 	local counter = math.random(50,200)
@@ -536,9 +528,8 @@ function startAiFight()
             Citizen.Wait(10000)
             fighting = 0
         end
-    end
-
     fighting = 0
+	end
 end
 
 function DrawText3Ds(x,y,z, text)
@@ -592,7 +583,6 @@ AddEventHandler("oxydelivery:client", function()
 		    SetVehicleHasBeenOwnedByPlayer(oxyVehicle,false)
 			SetEntityAsNoLongerNeeded(oxyVehicle)
 			tasking = false
-			OxyRun = false
 			TriggerEvent("chatMessage", "EMAIL - Oxy Deliveries", 8, "You are no longer selling oxy.")
 		end
 		if dstcheck < 2.0 and pedCreated then
@@ -620,31 +610,27 @@ AddEventHandler("oxydelivery:client", function()
 			end
 		end
 	end
-	
-
 	DeleteCreatedPed()
 	DeleteBlip()
-
 end)
 
 
 Citizen.CreateThread(function()
-
     while true do
-
 	    Citizen.Wait(100)
 	  	local oxyCheckin = #(GetEntityCoords(PlayerPedId()) - vector3(oxyStorePedLocation["x"],oxyStorePedLocation["y"],oxyStorePedLocation["z"]))
 
-		if oxyCheckin < 1.6 and not OxyRun then
+		if oxyCheckin < 1.6 then
 
 			DrawText3Ds(oxyStorePedLocation["x"], oxyStorePedLocation["y"], oxyStorePedLocation["z"], "[E] $1500 - Oxy Delivery Job") 
 			if IsControlJustReleased(0,38) then
 				TriggerServerEvent("oxydelivery:server",1500)
+				cooldown = true
 				Citizen.Wait(1000)
 			end
 		end
 		
-		if OxyRun and oxyCheckin < 1.6 then
+		if cooldown and oxyCheckin < 1.6 then
 			TriggerEvent("DoLongHudText", "I dont have any work for you right now.", 2)
 		end
 
@@ -656,36 +642,30 @@ Citizen.CreateThread(function()
 
 end)
 
-local firstdeal = false
 Citizen.CreateThread(function()
 
     while true do
+		Citizen.Wait(2000)
 
-        if OxyRun then
-			if (not DoesEntityExist(oxyVehicle) or GetVehicleEngineHealth(oxyVehicle) < 100.0) and vehspawn then
-				tasking = false
-				TriggerEvent("chatMessage", "EMAIL - Drug Deliveries", 8, "Dude! You fucked the car up, I canceled your run, asshole! ")
-				Citizen.Wait(1200000)
-				OxyRun = false
+		if (not DoesEntityExist(oxyVehicle) or GetVehicleEngineHealth(oxyVehicle) < 100.0) and vehspawn then
+			tasking = false
+			TriggerEvent("chatMessage", "EMAIL - Drug Deliveries", 8, "Dude! You fucked the car up, I canceled your run, asshole! ")
+			Citizen.Wait(1200000)
+			cooldown = false
+		else
+			if tasking then
+				Citizen.Wait(30000)
 			else
-				if tasking then
-			        Citizen.Wait(30000)
-			    else
-			        TriggerEvent("oxydelivery:client")  
-				    salecount = salecount + 1
-				    if salecount == 6 then
-						TriggerEvent("chatMessage", "EMAIL - Oxy Deliveries", 8, "You are no longer selling oxy.")
-				    	Citizen.Wait(1200000) -- 20 minutes
-				    	OxyRun = false
-					end
-				end			
-			Citizen.Wait(2000)
-			end
-
+				TriggerEvent("oxydelivery:client")  
+				salecount = salecount + 1
+				if salecount == 6 then
+					TriggerEvent("chatMessage", "EMAIL - Oxy Deliveries", 8, "You are no longer selling oxy.")
+					Citizen.Wait(1200000) -- 20 minutes
+					cooldown = false
+				end
+			end			
 	    end
-
     end
-
 end)
 
 
@@ -697,8 +677,6 @@ AddEventHandler("oxydelivery:startDealing", function()
 	TriggerEvent( "player:receiveItem", "darkmarketdeliveries", 1 )
 
 	salecount = 0	
-	firstdeal = true
-	OxyRun = true
 	vehspawn = false
 	CreateOxyVehicle()
 	vehspawn = true
