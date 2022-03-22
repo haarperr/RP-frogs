@@ -652,7 +652,7 @@ function DoDropOff(requestMoney)
 	if success then
 
 		PlayAmbientSpeech1(deliveryPed, "Generic_Thanks", "Speech_Params_Force_Shouted_Critical")
-		if math.random(7) == 5 then
+		-- if math.random(7) == 5 then
 		
 
 		-- ADD PD PING ON CHANCE / GAINING STRESS ON SALE
@@ -661,11 +661,12 @@ function DoDropOff(requestMoney)
 		--TriggerEvent("DoLongHudText","The drop off failed.",2)
 	end
 	
-	DeleteBlip()
 	if success then
 		Citizen.Wait(2000)
+		DeleteBlip()
 		TriggerEvent("DoLongHudText", "I got the call in, delivery was on point, go await the next one! ",1)
 	else
+		DeleteBlip()
 		TriggerEvent("DoLongHudText","The drop off failed - you need stolen items.",2)
 	end
 
