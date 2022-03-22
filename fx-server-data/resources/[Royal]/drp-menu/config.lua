@@ -549,6 +549,18 @@ rootMenuConfig =  {
         end,
         subMenus = {'radio:1', 'radio:2', 'radio:3', 'radio:4', 'radio:5'}
     },
+
+    {
+        id = "k9",
+        displayName = "K9",
+        icon="#k9",
+        enableMenu = function()
+            if not exports['drp-death']:GetDeathStatus() then
+                return (exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'ems' or exports["isPed"]:isPed("myJob") == 'state')
+            end
+        end,
+        subMenus = {'k9Summon', 'k9Dismiss', 'k9Follow', 'k9GetInout', 'k9Sit','k9Lay','k9Stand','k9Sniff','k9SniffVehicle','k9Hunt', }
+    },
     
     -- PD Vehicle
     {
@@ -1308,8 +1320,94 @@ newSubMenus = {
         functionName = "drp-radio:set_chan_5",
     },
 
-    ---------------------------------
+    --------------------------------- K9
 
+    ["k9Summon"] = {
+        title="Summon",
+        icon="#k9-spawn",
+        functionName = "K9:Create",
+    },
+    ["k9Dismiss"] = {
+        title="Dismiss",
+        icon="#k9-dismiss",
+        functionName = "K9:Delete",
+    },
+    
+    ["k9Summon"] = {
+        title="Summon",
+        icon="#k9-spawn",
+        functionName = "K9:Create",
+    },
+    
+    ["k9Follow"] = {
+        title="Follow",
+        icon="#k9-follow",
+        functionName = "K9:Follow",
+    },
+    
+    ["k9GetInout"] = {
+        title="Get in/out",
+        icon="#k9-vehicle",
+        functionName = "K9:Vehicle",
+    },
+    
+    ["k9Sit"] = {
+        title="Sit",
+        icon="#k9-sit",
+        functionName = "K9:Sit",
+    },
+
+    ["k9Lay"] = {
+        title="Lay",
+        icon="#k9-lay",
+        functionName = "K9:Lay",
+    },
+    
+    
+    ["k9Stand"] = {
+        title="Stand",
+        icon="#k9-stand",
+        functionName = "K9:Stand",
+    },
+    
+    ["k9Sniff"] = {
+        title="Sniff",
+        icon="#k9-sniff",
+        functionName = "K9:Sniff",
+    },
+    ["k9SniffVehicle"] = {
+        title="Sniff Vehicle",
+        icon="#k9-sniff-vehicle",
+        functionName = "sniffVehicle",
+    },
+    ["k9Hunt"] = {
+        title="Hunt nearest",
+        icon="#k9-huntfind",
+        functionName = "K9:Huntfind",
+    },
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    ----------------------------------
     ["license:grantWeapon"]  = {
         title="Grant Weapon License",
         icon="#judge-licenses-grant-weapon",
