@@ -97,11 +97,11 @@ AddEventHandler('checkLicensePlate', function(oof)
 							job = "EMS"
 						end
 						local phoneNumber = string.sub(data[1].phone_number, 0, 3) .. '-' .. string.sub(data[1].phone_number, 4, 6) .. '-' .. string.sub(data[1].phone_number, 7, 10)
-						TriggerClientEvent("chatMessage", source, "DISPATCH", 1, "10-60 (Negative) Name: " .. data[1].first_name .. " " .. data[1].last_name .. " Phone #: " .. phoneNumber .. ' Job: ' .. job)
-						TriggerClientEvent('InteractSound_CL:PlayOnOne', source, 'radioclick', 1.0)
+						--TriggerClientEvent("chatMessage", source, "DISPATCH", 1, "10-60 (Negative) Name: " .. data[1].first_name .. " " .. data[1].last_name .. " Phone #: " .. phoneNumber .. ' Job: ' .. job)
+						--TriggerClientEvent('InteractSound_CL:PlayOnOne', source, 'radioclick', 1.0)
 					else
-						TriggerClientEvent("chatMessage", source, "DISPATCH", 1, "10-60 (Flagged) Stolen Name: " .. data[1].first_name .. " " .. data[1].last_name .. " Phone #: " .. phoneNumber .. ' Job: ' .. job)
-						TriggerClientEvent('InteractSound_CL:PlayOnOne', source, 'radioclick', 1.0)
+						--TriggerClientEvent("chatMessage", source, "DISPATCH", 1, "10-60 (Flagged) Stolen Name: " .. data[1].first_name .. " " .. data[1].last_name .. " Phone #: " .. phoneNumber .. ' Job: ' .. job)
+						--TriggerClientEvent('InteractSound_CL:PlayOnOne', source, 'radioclick', 1.0)
 					end
 				end)
 			end)
