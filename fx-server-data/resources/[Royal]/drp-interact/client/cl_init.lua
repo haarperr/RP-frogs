@@ -765,6 +765,7 @@ Citizen.CreateThread(function()
         useZ = true
     })
 
+
     -- Hospital
 
     exports["drp-polytarget"]:AddBoxZone("hospitalroof1", vector3(332.35, -597.32, 43.28), 0.2, 1, {
@@ -2218,6 +2219,7 @@ Citizen.CreateThread(function()
 
     -- Fence Guy
     
+
     exports["drp-interact"]:AddPeekEntryByPolyTarget("fenceguy", {{
         event = "fenceguy:menu",
         id = "fenceguy",
@@ -2225,9 +2227,8 @@ Citizen.CreateThread(function()
         label = "Sell your shit",
         parameters = {},
     }}, {
-        distance = { radius = 5 },
+        distance = { radius = 1.5 },
     });
-
 
     -- Pillbox
 
