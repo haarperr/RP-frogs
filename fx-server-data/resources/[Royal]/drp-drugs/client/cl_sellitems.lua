@@ -1,132 +1,73 @@
+function doSell(itemname, price)
+    if exports["drp-inventory"]:getQuantity(itemname) >= 1 then
+		playerAnim()
+        local toSell = exports["drp-inventory"]:getAmountOfItem(itemname)
+		local finished = exports["drp-taskbar"]:taskBar(1000*toSell, "Selling")
+		if finished == 100 then
+			if exports["drp-inventory"]:getQuantity(itemname) >= 1 then
+				ClearPedTasksImmediately(PlayerPedId())
+				TriggerEvent('inventory:removeItem', itemname, toSell)
+                TriggerServerEvent( 'sk1c2:payout', price*toSell)
+                
+                lucky = math.random(1,100)
+                if lucky == 1 then
+                    TriggerServerEvent( 'sk1c2:payout', math.random(750, 1500))
+                    TriggerEvent('DoLongHudText', 'You are a loyal customer, here is some extra cash.', 2)
+                end
+
+                lucky = math.random(1,250)
+                if lucky == 1 then
+                    TriggerServerEvent( 'sk1c2:payout', math.random(5000, 12500))
+                    TriggerEvent('DoLongHudText', 'You are my best customer, here is some extra cash.', 2)
+                end
+			else
+                TriggerEvent('DoLongHudText', 'Might want to try again you do not have that in your pockets', 2)
+			end
+		end
+	else
+        TriggerEvent('DoLongHudText', 'You dont seem to have this item.', 2)
+	end
+end)
+    
+
 RegisterNetEvent('sell2ctchain')
 AddEventHandler('sell2ctchain', function()
-    if exports["drp-inventory"]:hasEnoughOfItem("stolen2ctchain",1,false) then
-        local finished = exports["drp-taskbar"]:taskBar(1000,"Selling 2CT Chain")
-        if finished == 100 then
-            TriggerEvent('inventory:removeItem', 'stolen2ctchain', 1)
-            TriggerServerEvent( 'sk1c2:payout', math.random(120,210))
-            TriggerEvent('DoLongHudText', 'You successfully sold a 2ct chain.', 1)
-        else
-            TriggerEvent('DoLongHudText', 'Cancelled', 2)
-        end
-
-    else
-        TriggerEvent('DoLongHudText', 'You dont seem to have this item.', 2)
-    end
+    doSell("stolen2ctchain", math.random(120,210))
 end)
+
+
 RegisterNetEvent('sell5ctchain')
 AddEventHandler('sell5ctchain', function()
-    if exports["drp-inventory"]:hasEnoughOfItem("stolen5ctchain",1,false) then
-        local finished = exports["drp-taskbar"]:taskBar(1000,"Selling 5CT Chain")
-        if finished == 100 then
-            TriggerEvent('inventory:removeItem', 'stolen5ctchain', 1)
-            TriggerServerEvent( 'sk1c2:payout', math.random(120,310))
-            TriggerEvent('DoLongHudText', 'You successfully sold a 5ct chain.', 1)
-        else
-            TriggerEvent('DoLongHudText', 'Cancelled', 2)
-        end
-
-    else
-        TriggerEvent('DoLongHudText', 'You dont seem to have this item.', 2)
-    end
+    doSell("stolen5ctchain", math.random(120,310))
 end)
+
 RegisterNetEvent('sell8ctchain')
 AddEventHandler('sell8ctchain', function()
-    if exports["drp-inventory"]:hasEnoughOfItem("stolen8ctchain",1,false) then
-        local finished = exports["drp-taskbar"]:taskBar(1000,"Selling 8CT Chain")
-        if finished == 100 then
-            TriggerEvent('inventory:removeItem', 'stolen8ctchain', 1)
-            TriggerServerEvent( 'sk1c2:payout', math.random(320,510))
-            TriggerEvent('DoLongHudText', 'You successfully sold a 8ct chain.', 1)
-        else
-            TriggerEvent('DoLongHudText', 'Cancelled', 2)
-        end
-
-    else
-        TriggerEvent('DoLongHudText', 'You dont seem to have this item.', 2)
-    end
+    doSell("stolen8ctchain", math.random(320,510))
 end)
 RegisterNetEvent('sellstolengameboy')
 AddEventHandler('sellstolengameboy', function()
-    if exports["drp-inventory"]:hasEnoughOfItem("stolengameboy",1,false) then
-        local finished = exports["drp-taskbar"]:taskBar(1000,"Selling Gameboy")
-        if finished == 100 then
-            TriggerEvent('inventory:removeItem', 'stolengameboy', 1)
-            TriggerServerEvent( 'sk1c2:payout', math.random(20,100))
-            TriggerEvent('DoLongHudText', 'You successfully sold a Gameboy', 1)
-        else
-            TriggerEvent('DoLongHudText', 'Cancelled', 2)
-        end
-
-    else
-        TriggerEvent('DoLongHudText', 'You dont seem to have this item.', 2)
-    end
+    doSell("stolengameboy", math.random(20,125))
 end)
+
 RegisterNetEvent('sellstolenoakleys')
 AddEventHandler('sellstolenoakleys', function()
-    if exports["drp-inventory"]:hasEnoughOfItem("stolenoakleys",1,false) then
-        local finished = exports["drp-taskbar"]:taskBar(1000,"Selling Oakleys")
-        if finished == 100 then
-            TriggerEvent('inventory:removeItem', 'stolenoakleys', 1)
-            TriggerServerEvent( 'sk1c2:payout', math.random(50,150))
-            TriggerEvent('DoLongHudText', 'You successfully sold some Oakleys', 1)
-        else
-            TriggerEvent('DoLongHudText', 'Cancelled', 2)
-        end
-
-    else
-        TriggerEvent('DoLongHudText', 'You dont seem to have this item.', 2)
-    end
+    doSell("stolenoakleys", math.random(50,150))
 end)
 
 RegisterNetEvent('sellstolenpsp')
 AddEventHandler('sellstolenpsp', function()
-    if exports["drp-inventory"]:hasEnoughOfItem("stolenpsp",1,false) then
-        local finished = exports["drp-taskbar"]:taskBar(1000,"Selling PSP")
-        if finished == 100 then
-            TriggerEvent('inventory:removeItem', 'stolenpsp', 1)
-            TriggerServerEvent( 'sk1c2:payout', math.random(10,150))
-            TriggerEvent('DoLongHudText', 'You successfully sold a PSP', 1)
-        else
-            TriggerEvent('DoLongHudText', 'Cancelled', 2)
-        end
-
-    else
-        TriggerEvent('DoLongHudText', 'You dont seem to have this item.', 2)
-    end
+    doSell("stolenpsp", math.random(100,175))
 end)
+
 RegisterNetEvent('sellstolencasiowatch')
 AddEventHandler('sellstolencasiowatch', function()
-    if exports["drp-inventory"]:hasEnoughOfItem("stolencasiowatch",1,false) then
-        local finished = exports["drp-taskbar"]:taskBar(1000,"Selling Casio Watch")
-        if finished == 100 then
-            TriggerEvent('inventory:removeItem', 'stolencasiowatch', 1)
-            TriggerServerEvent( 'sk1c2:payout', math.random(10,150))
-            TriggerEvent('DoLongHudText', 'You successfully sold a Casio Watch', 1)
-        else
-            TriggerEvent('DoLongHudText', 'Cancelled', 2)
-        end
-
-    else
-        TriggerEvent('DoLongHudText', 'You dont seem to have this item.', 2)
-    end
+    doSell("stolencasiowatch", math.random(25,150))
 end)
 
 RegisterNetEvent('sellrolex')
 AddEventHandler('sellrolex', function()
-    if exports["drp-inventory"]:hasEnoughOfItem("rolexwatch",1,false) then
-        local finished = exports["drp-taskbar"]:taskBar(5000,"Selling Rolex")
-        if finished == 100 then
-            TriggerEvent('inventory:removeItem', 'rolexwatch', 1)
-            TriggerServerEvent( 'sk1c2:payout', math.random(300,450))
-            TriggerEvent('DoLongHudText', 'You successfully sold a Rolex', 1)
-        else
-            TriggerEvent('DoLongHudText', 'Cancelled', 2)
-        end
-
-    else
-        TriggerEvent('DoLongHudText', 'You dont seem to have this item.', 2)
-    end
+    doSell("rolexwatch", math.random(315,425))
 end)
 
 --#########--
