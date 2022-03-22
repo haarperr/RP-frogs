@@ -557,7 +557,7 @@ function DoDropOff(requestMoney)
 				
 
 				local sellableItems = {
-					[1] = {name = 'rollcash', amount = math.random(3,10), price=rollcashprice},
+					[1] = {name = 'rollcash', amount = math.random(3,15), price=rollcashprice},
 					[2] = {name = 'inkedmoneybag', amount = 1, price=inkedmoneybagprice},
 					[3] = {name = 'markedbills', amount = math.random(3,10), price=markedbillsprice},
 					[4] = {name = 'band', amount = math.random(3,10), price=bandprice},
