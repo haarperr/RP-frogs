@@ -1294,6 +1294,10 @@ Citizen.CreateThread(function()
         maxZ=-36.0
     })
 
+    exports["drp-polytarget"]:AddBoxZone("vpnzone",  vector3(-1359.52, -757.3862, 22.30463), 3.0, 0.2, {
+        minZ=-21.8,
+        maxZ=-23.0
+    })
 
     exports["drp-polytarget"]:AddBoxZone("collect_courthouseshit",  vector3(244.98, -1075.11, 29.29), 0.8, 0.8, {
         minZ=-39.8,
@@ -3547,6 +3551,8 @@ Citizen.CreateThread(function()
     }}, {
         distance = { radius = 1.5 },
     });
+
+
         
     exports["drp-interact"]:AddPeekEntryByPolyTarget("recycle_outside", {{
         event = "recycle:InsideTP",
