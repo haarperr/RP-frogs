@@ -48,6 +48,11 @@ AddEventHandler('heists:buyvpn', function()
   TriggerServerEvent('buy:buyitem', "vpnxj", price, 1)
 end)
 
+RegisterNetEvent('buy:success')
+AddEventHandler('buy:success', function(item, amount)
+  TriggerEvent( "player:receiveItem", item, amount )
+end)
+
 RegisterNetEvent('drp-polyzone:enter')
 AddEventHandler('drp-polyzone:enter', function(name)
     if name == "laptopexchange" then
