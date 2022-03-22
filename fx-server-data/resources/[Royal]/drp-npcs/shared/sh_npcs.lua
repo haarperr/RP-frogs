@@ -228,7 +228,7 @@ Generic.NPCS[#Generic.NPCS + 1] = {
   networked = false,
   distance = 200.0,
   position = {
-    coords = vector3(331.3026, 362.8521, 106.6536),
+    coords = vector3(331.3026, 362.8521, 105.6536),
     heading = 340.6491,
     random = false
   },
@@ -254,7 +254,7 @@ Generic.NPCS[#Generic.NPCS + 1] = {
   networked = false,
   distance = 200.0,
   position = {
-    coords = vector3(944.7300, -1697.6277, 30.0850),
+    coords = vector3(944.7300, -1697.6277, 29.0850),
     heading = 263.1922,
     random = false
   },
