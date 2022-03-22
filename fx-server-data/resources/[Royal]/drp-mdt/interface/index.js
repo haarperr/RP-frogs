@@ -381,7 +381,7 @@ $(document).ready(() => {
         }
     });
     $(".manage-incidents-title-holder").on("click", ".manage-incidents-create", function () {
-        let tempalte = "Name:\nDescription:\n Arresting Officer: \n Officers Involved:\n Date & Time: \n\n-------------\n\n Date & Time:\n Charges:\n Plea (If applicable): \n\n (Narrative) \n\n\n\n --------- \n 💸 Fine:\n⌚ Sentence:\n-----"
+        let tempalte = "Name:\nDescription:\n Arresting Officer: \n Officers Involved:\n Date & Time: \n\n-------------\n\n Date & Time:\n Charges:\n Plea (If applicable): \n\n (Narrative) \n\n\n\n --------- \n  Fine:\n Sentence:\n-----"
         $("#manage-incidents-title-input").val("Name - Charge - " + $(".date").html());
         $(".manage-incidents-reports-content").val(tempalte);
 
