@@ -763,9 +763,9 @@ Citizen.CreateThread(function()
     
     exports["drp-polytarget"]:AddBoxZone("fenceguy", vector3(331.1994, 362.1967, 106.6535), 1, 1.4, {
         heading=340.6491,
-        minZ=27.28,
-        maxZ=31.28
     })
+
+    
 
     -- Hospital
 
