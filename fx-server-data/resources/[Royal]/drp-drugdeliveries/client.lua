@@ -6,6 +6,7 @@ local vehspawn = false
 local oxyVehicle = 0
 local PlayerData = {}
 local cooldown = false
+local salecount = 0
 selling = false
 
 local OxyDropOffs = {
@@ -674,7 +675,7 @@ AddEventHandler("oxydelivery:startDealing", function()
 	local NearNPC = exports["isPed"]:GetClosestNPC()
 	PlayAmbientSpeech1(NearNPC, "Chat_Resp", "SPEECH_PARAMS_FORCE", 1)
 	TriggerEvent("DoLongHudText","Your pager will be updated with locations soon.")
-	TriggerEvent( "player:receiveItem", "darkmarketdeliveries", 1 )
+	TriggerEvent("player:receiveItem", "darkmarketdeliveries", 1)
 
 	salecount = 0	
 	vehspawn = false
