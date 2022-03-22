@@ -762,7 +762,7 @@ RegisterNUICallback('btnDecrypt', function()
   local dist = GetDistanceBetweenCoords(pos, 1359.52, -757.386, 22.304)
   TriggerEvent("DoLongHudText","Scanning for networks...", 1)
   Citizen.Wait(5000)
-  if dist < 5 then
+  if dist < 20 then
   
       TriggerEvent("DoLongHudText","Network Connected!", 1)
   
