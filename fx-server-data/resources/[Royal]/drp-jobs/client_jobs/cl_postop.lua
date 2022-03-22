@@ -148,6 +148,8 @@ function setPostOPped()
     SetEntityInvincible(created_ped, true)
     SetBlockingOfNonTemporaryEvents(created_ped, true)
     TaskStartScenarioInPlace(created_ped, "WORLD_HUMAN_CLIPBOARD", 0, true)
+
+
 end
 
 Citizen.CreateThread(function()
