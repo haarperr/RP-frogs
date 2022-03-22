@@ -838,7 +838,7 @@ AddEventHandler("oxydelivery:client", function()
 			DrawText3Ds(crds["x"],crds["y"],crds["z"], "[E]")  
 
 			if IsControlJustReleased(0,38) then
-				if not IsPedInVehicle then
+				if not IsPedInVehicle(PlayerPedId(),oxyVehicle,false) then
 					local pdping = math.random(0,100)
 					if pdping <= 33 then
 						TriggerEvent("drp-dispatch:oxyping")
