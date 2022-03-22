@@ -49,14 +49,14 @@ Citizen.CreateThread(function()
     })
     
     -- Boat Station, Marina | 2020-11-18T17:48:01Z
-    --exports["drp-polytarget"]:AddBoxZone("gas_station", vector3(-799.81, -1512.77, 4.93), 3.2, 4.2, {
-    --  heading=20,
-    --  minZ=0.93,
-    --  maxZ=4.33,
-    --  data = {
-    --    vehicleClassRequirement = 14
-    --  }
-    --})
+    exports["drp-polytarget"]:AddBoxZone("gas_station", vector3(-799.81, -1512.77, 4.93), 3.2, 4.2, {
+      heading=20,
+      minZ=0.93,
+      maxZ=4.33,
+      data = {
+        vehicleClassRequirement = 14
+      }
+    })
   
     -- Paleto PD, Helicopter
     exports["drp-polytarget"]:AddBoxZone("gas_station", vector3(-475.14, 5988.95, 31.34), 28.4, 20.6, {
