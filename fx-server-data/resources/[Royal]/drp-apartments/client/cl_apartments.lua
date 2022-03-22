@@ -289,7 +289,8 @@ function Apart.logout()
     TriggerEvent("drp-base:clearStates")
     TriggerServerEvent("apartments:cleanUpRoom")
     exports["drp-base"]:getModule("SpawnManager"):Initialize()
-    TriggerEvent("hud:saveCurrentMeta")
+    TriggerServerEvent('police:setServerMeta')
+
     Citizen.Wait(1000)
 end
 

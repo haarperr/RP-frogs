@@ -530,6 +530,15 @@ end)
 
 
 
+
+Citizen.CreateThread(function()
+
+		Citizen.Wait(60000)
+		TriggerServerEvent('police:setServerMeta')
+-- Saves META once a minute to database - hopefully armor saving?
+end)
+
+
 local shotRecently = false
 
 Citizen.CreateThread(function()
