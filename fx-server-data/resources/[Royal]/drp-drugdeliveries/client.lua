@@ -1336,7 +1336,6 @@ Citizen.CreateThread(function()
 			TriggerServerEvent("kGetWeather")
 			if IsControlJustReleased(0,38) then
 				buildDrugShop()
-				
 				CreateDrugStorePed()
 			end
 		end		
@@ -1348,6 +1347,7 @@ Citizen.CreateThread(function()
 				TriggerServerEvent("oxydelivery:server",1500)
 				Citizen.Wait(1000)
 			end
+		EndTextCommandClearPrint
 		
 		if OxyRun then
 			TriggerEvent("DoLongHudText", "I dont have any work for you right now.")
