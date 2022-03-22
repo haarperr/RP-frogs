@@ -622,9 +622,6 @@ function DoDropOff(requestMoney)
 		
 		success = false
 		return
-
-	end
-
 	end
 
 	local counter = math.random(50,200)
@@ -660,9 +657,6 @@ function DoDropOff(requestMoney)
 		
 
 		-- ADD PD PING ON CHANCE / GAINING STRESS ON SALE
-
-	else
-		--TriggerEvent("DoLongHudText","The drop off failed.",2)
 	end
 	
 	if success then
