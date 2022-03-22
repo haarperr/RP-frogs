@@ -762,9 +762,7 @@ Citizen.CreateThread(function()
     -- Fence Guy
 
     exports["drp-polytarget"]:AddBoxZone("fenceguy", vector3(413.5179, 313.5490, 103.0211), 1, 1.4, {
-        heading=22.3883,
-        minZ=27.28,
-        maxZ=31.28
+        heading=103
     })
 
     -- Hospital
@@ -2223,7 +2221,7 @@ Citizen.CreateThread(function()
         label = "Sell your Shit",
         parameters = {},
     }}, {
-        distance = { radius = 2.5 },
+        distance = { radius = 7 },
     });
     
 
