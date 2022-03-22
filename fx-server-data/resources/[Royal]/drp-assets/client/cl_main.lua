@@ -729,7 +729,7 @@ Citizen.CreateThread(function()
 		
 		if GetVehiclePedIsIn(GetPlayerPed(-1), GetPlayersLastVehicle()) then
 
-			if IsPedShooting(GetPlayerPed(-1)) and shot == false and GetFollowPedCamViewMode() ~= 4then
+			if IsPedShooting(GetPlayerPed(-1)) and shot == false and GetFollowPedCamViewMode() ~= 4 then
 				check2 = true
 				shot = true
 				SetFollowPedCamViewMode(4)
