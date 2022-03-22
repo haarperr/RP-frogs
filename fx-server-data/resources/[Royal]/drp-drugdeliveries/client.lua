@@ -545,12 +545,17 @@ function DoDropOff(requestMoney)
 
 		if HasStolenGoods() then
 
-			if math.random(10) == 1 then
+			if math.random(10) == 1 then -- 10% chance of getting a safe cracking kit 
 				TriggerEvent( "player:receiveItem", "safecrackingkit", 1 )
 			end
 			
 			if math.random(49) == 49 then
 				TriggerEvent( "player:receiveItem", "heistusb4", 1 )
+			end
+
+			
+			if math.random(250) == 69 then
+				TriggerEvent( "player:receiveItem", "heistlaptop3", 1 )
 			end
 
 			if OxyRun then
@@ -652,7 +657,7 @@ function DoDropOff(requestMoney)
 	if success then
 
 		PlayAmbientSpeech1(deliveryPed, "Generic_Thanks", "Speech_Params_Force_Shouted_Critical")
-		if math.random(7) == 5 then
+		-- if math.random(7) == 5 then
 		
 
 		-- ADD PD PING ON CHANCE / GAINING STRESS ON SALE
@@ -661,16 +666,16 @@ function DoDropOff(requestMoney)
 		--TriggerEvent("DoLongHudText","The drop off failed.",2)
 	end
 	
-	DeleteBlip()
 	if success then
 		Citizen.Wait(2000)
+		DeleteBlip()
 		TriggerEvent("DoLongHudText", "I got the call in, delivery was on point, go await the next one! ",1)
 	else
+		DeleteBlip()
 		TriggerEvent("DoLongHudText","The drop off failed - you need stolen items.",2)
 	end
 
 	DeleteCreatedPed()
-end
 end
 
 local fighting = 0
@@ -833,22 +838,24 @@ AddEventHandler("oxydelivery:client", function()
 			DrawText3Ds(crds["x"],crds["y"],crds["z"], "[E]")  
 
 			if IsControlJustReleased(0,38) then
-				local pdping = math.random(0,100)
-				if pdping <= 18 then
-					TriggerEvent("drp-dispatch:oxyping")
+				if not IsPedInVehicle then
+					local pdping = math.random(0,100)
+					if pdping <= 33 then
+						TriggerEvent("drp-dispatch:oxyping")
+					end
+					TaskTurnPedToFaceEntity(deliveryPed, PlayerPedId(), 1.0)
+					local finished = exports["drp-taskbar"]:taskBar(22500,"Dropping Off")
+					if finished == 100 then	
+						PlayAmbientSpeech1(deliveryPed, "Generic_Hi", "Speech_Params_Force")
+						DoDropOff()
+					end
+					
+					tasking = false
+				else 
+					TriggerEvent("DoLongHudText","You cannot sell out of your Car Bozo")
 				end
-				TaskTurnPedToFaceEntity(deliveryPed, PlayerPedId(), 1.0)
-				local finished = exports["drp-taskbar"]:taskBar(22500,"Dropping Off")
-				if finished == 100 then	
-					PlayAmbientSpeech1(deliveryPed, "Generic_Hi", "Speech_Params_Force")
-					DoDropOff()
-				end
-				
-				tasking = false
 			end
-
 		end
-
 	end
 	
 
@@ -1309,8 +1316,9 @@ Citizen.CreateThread(function()
 						if finished == 100 then
 							TriggerEvent("pixerium:check",5,"goldtrade",false)
 						end
-					end
 					Citizen.Wait(1000)
+					
+					end
 				end
 
 			else
@@ -1329,26 +1337,28 @@ Citizen.CreateThread(function()
 				Citizen.Wait(1000)
 			end
 		end
+
 		if dropOff5 < 1.5 then
 			DrawText3Ds(pillStore["x"],pillStore["y"],pillStore["z"], "[E] to Enter") 
 			TriggerServerEvent("kGetWeather")
 			if IsControlJustReleased(0,38) then
 				buildDrugShop()
-				
 				CreateDrugStorePed()
 			end
 		end		
 
 		if dropOff6 < 1.6 and not OxyRun then
 
-			DrawText3Ds(pillWorker["x"],pillWorker["y"],pillWorker["z"], "[E] $1500 - Delivery Job (Payment Cash + Oxy)") 
+			DrawText3Ds(pillWorker["x"], pillWorker["y"], pillWorker["z"], "[E] $1500 - Delivery Job (Payment Cash + Oxy)") 
 			if IsControlJustReleased(0,38) then
 				TriggerServerEvent("oxydelivery:server",1500)
 				Citizen.Wait(1000)
 			end
-
-
-		end		
+		end
+		
+		if OxyRun and dropOff6 < 1.6 then
+			TriggerEvent("DoLongHudText", "I dont have any work for you right now.", 2)
+		end
 
 
 	    if dropOff2 < 20.0 then
@@ -1385,16 +1395,13 @@ Citizen.CreateThread(function()
     									message = message .. " | " .. vehicleList[currentVehicleList[i]["id"]]["name"]
     								end
 								end
-
-								
 							end
-						end
 						TriggerEvent("chatMessage", "EMAIL ", 8, message)
+						end
     				end
 	    		end
 	    	end
 	    else
-
 	    	if dropOff2 > 2.0 and dropOff4 > 2.0 and dropOff5 > 2.0 and dropOff6 > 2.0 and GoldBars > 2.0 then
 		    	Citizen.Wait(1000)
 		    end

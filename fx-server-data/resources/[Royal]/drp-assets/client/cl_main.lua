@@ -692,28 +692,80 @@ AddEventHandler('pickup:bike', function()
     end
 end)
 
----- No Driver Shooting
---local passengerDriveBy = true
---
---Citizen.CreateThread(function()
---	while true do
---		Wait(1)
---
---		playerPed = GetPlayerPed(-1)
---		car = GetVehiclePedIsIn(playerPed, false)
---		if car then
---			if GetPedInVehicleSeat(car, -1) == playerPed then
---				SetPlayerCanDoDriveBy(PlayerId(), false)
---			elseif passengerDriveBy then
---				SetPlayerCanDoDriveBy(PlayerId(), true)
---			else
---				SetPlayerCanDoDriveBy(PlayerId(), false)
---			end
---		end
---	end
---end)
---
---
+-- No Driver Shooting
+local passengerDriveBy = true
+
+Citizen.CreateThread(function()
+	while true do
+		Wait(1)
+
+		playerPed = GetPlayerPed(-1)
+		car = GetVehiclePedIsIn(playerPed, false)
+		if car then
+			if GetPedInVehicleSeat(car, -1) == playerPed then
+				SetPlayerCanDoDriveBy(PlayerId(), false)
+			elseif passengerDriveBy then
+				SetPlayerCanDoDriveBy(PlayerId(), true)
+			else
+				SetPlayerCanDoDriveBy(PlayerId(), false)
+			end
+		end
+	end
+end)
+
+-- No more flipping
+vehicle = GetVehiclePedIsIn(ped, false)
+local roll = GetEntityRoll(vehicle)
+if (roll > 75.0 or roll < -75.0) and GetEntitySpeed(vehicle) < 2 then
+	DisableControlAction(2,59,true) -- Disable left/right
+	DisableControlAction(2,60,true) -- Disable up/down
+end
+
+-- Force first person when shooting in car
+Citizen.CreateThread(function()
+	while true do
+		SetBlackout(false)
+		Citizen.Wait( 1 )
+		
+		if GetVehiclePedIsIn(GetPlayerPed(-1), GetPlayersLastVehicle()) then
+
+			if IsPedShooting(GetPlayerPed(-1)) and shot == false and GetFollowPedCamViewMode() ~= 4 then
+				check2 = true
+				shot = true
+				SetFollowPedCamViewMode(4)
+			end
+			
+			if IsPedShooting(GetPlayerPed(-1)) and shot == true and GetFollowPedCamViewMode() == 4 then
+				count = 0
+			end
+			
+			if not IsPedShooting(GetPlayerPed(-1)) and shot == true then
+				count = count + 1
+			end
+
+			if not IsPedShooting(GetPlayerPed(-1)) and shot == true then
+				if not IsPedShooting(GetPlayerPed(-1)) and shot == true and count > 20 then
+					if check2 == true then
+						check2 = false
+						shot = false
+						SetFollowPedCamViewMode(1)
+					end
+				end
+			end	    
+		else
+			if shot == true then
+				if check2 == true then
+					check2 = false
+					shot = false
+					SetFollowPedCamViewMode(1)
+				end
+			end
+		end
+	end
+end )
+
+-- 
+
 --WeaponCheckerFullList = {
 --    [`WEAPON_STUNGUN`] = "WEAPON_STUNGUN",
 -- 

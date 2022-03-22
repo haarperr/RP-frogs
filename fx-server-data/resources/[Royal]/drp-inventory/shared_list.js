@@ -4833,20 +4833,9 @@ itemList['advlockpick'] = {
 itemList['godlockpick'] = {
   fullyDegrades: true,
   decayrate: 1,
-  displayname: 'Lock Pick',
+  displayname: 'Lock Pick (PD)',
   price: 2500,
-  craft: [
-    [
-      { itemid: 'aluminium', amount: 50 },
-      { itemid: 'plastic', amount: 50 },
-      { itemid: 'rubber', amount: 50 },
-    ],
-    [
-      { itemid: 'refinedaluminium', amount: 15 },
-      { itemid: 'refinedplastic', amount: 12 },
-      { itemid: 'refinedrubber', amount: 15 },
-    ]
-  ],
+  craft: [],
   weight: 3,
   nonStack: false,
   model: '',
@@ -5006,7 +4995,7 @@ itemList['aluminiumoxide'] = {
 
 itemList['advrepairkit'] = {
   fullyDegrades: false,
-  decayrate: 0.0,
+  decayrate: 3.75,
   displayname: 'Adv Repair Kit',
   craft: [[{ itemid: 'electronics', amount: 10 }]],
   price: 100,
@@ -5014,7 +5003,7 @@ itemList['advrepairkit'] = {
   nonStack: false,
   model: '',
   image: 'np_repair-toolkit.png',
-  information: '1 Time use - degrades engine parts more than basic tool kits, repairs engine to full.',
+  information: 'Degrades engine parts more than basic tool kits, repairs engine to full.',
 };
 
 itemList['tirerepairkit'] = {
@@ -9598,7 +9587,7 @@ itemList['vpapers'] = {
 
 itemList['vpnxj'] = {
   fullyDegrades: true,
-  decayrate: 0.5,
+  decayrate: 1.5,
   displayname: 'VPN',
   price: 300,
 
@@ -9618,7 +9607,7 @@ itemList['vpnxj'] = {
 
 itemList['vpnxja'] = {
   fullyDegrades: true,
-  decayrate: 0.5,
+  decayrate: 1,
   displayname: 'Advanced VPN',
   price: 300,
   weight: 5,
