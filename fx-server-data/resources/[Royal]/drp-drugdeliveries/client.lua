@@ -1347,7 +1347,7 @@ Citizen.CreateThread(function()
 				TriggerServerEvent("oxydelivery:server",1500)
 				Citizen.Wait(1000)
 			end
-		EndTextCommandClearPrint
+		end
 		
 		if OxyRun then
 			TriggerEvent("DoLongHudText", "I dont have any work for you right now.", 2)
