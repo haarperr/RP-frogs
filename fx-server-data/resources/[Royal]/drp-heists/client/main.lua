@@ -172,15 +172,15 @@ AddEventHandler('vpnitemmenu', function()
             }
         },
         {
-          id = 2,
-          header = "Purchase Tracker Disabler",
-          txt = "Price: $4000",
-          params = {
-              event = "buydisabler"
-          }
+            id = 3,
+            header = "Purchase Tracker Disabler",
+            txt = "Price: $4000",
+            params = {
+                event = "buydisabler"
+            }
       },
 		{
-            id = 3,
+            id = 4,
             header = "< Go Back",
 		      	txt = "",
 		      	params = {
