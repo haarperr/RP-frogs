@@ -639,7 +639,7 @@ Citizen.CreateThread(function()
 			end
 		end		
 
-		if oxyCheckin < 3 then
+		if oxyCheckin < 3 and cooldown == false then
 			DrawText3Ds(oxyStorePedLocation["x"], oxyStorePedLocation["y"], oxyStorePedLocation["z"], "[E] $1500 - Oxy Delivery Job") 
 			if IsControlJustReleased(0,38) then
 				TriggerServerEvent("oxydelivery:server",1500)
@@ -648,7 +648,7 @@ Citizen.CreateThread(function()
 			end
 		end
 		
-		if cooldown and oxyCheckin < 1.6 then
+		if cooldown and oxyCheckin < 3 then
 			TriggerEvent("DoLongHudText", "I dont have any work for you right now.", 2)
 		end
     end
