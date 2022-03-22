@@ -761,8 +761,8 @@ Citizen.CreateThread(function()
 
     -- Fence Guy
     
-    exports["drp-polytarget"]:AddCircleZone("fenceguy", vector3(411.5179, 315.5490, 103.0211), 1, 1.4, {
-        heading=103
+    exports["drp-polytarget"]:AddCircleZone("fenceguy",  vector3(331.2844, 362.3285, 106.6535), 0.35, {
+        useZ = true
     })
 
     -- Hospital
@@ -2217,17 +2217,17 @@ Citizen.CreateThread(function()
     });
 
     -- Fence Guy
-
+    
     exports["drp-interact"]:AddPeekEntryByPolyTarget("fenceguy", {{
         event = "fenceguy:menu",
         id = "fenceguy",
-        icon = "arrow-alt-circle-up",
-        label = "Sell your Shit",
+        icon = "circle",
+        label = "Sell your shit",
         parameters = {},
     }}, {
-        distance = { radius = 7 },
+        distance = { radius = 5 },
     });
-    
+
 
     -- Pillbox
 
