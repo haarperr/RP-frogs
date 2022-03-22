@@ -474,6 +474,28 @@ AddEventHandler("ls:spawnPed", function(x, y, z, h, weapon)
 
 end)
 
+
+function setboostped()
+  modelHash = GetHashKey("ig_vincent")
+  RequestModel(modelHash)
+  while not HasModelLoaded(modelHash) do
+      Wait(1)
+  end
+  created_ped = CreatePed(0, modelHash , -1361.62, -755.74, 22.30  -1, true)
+  FreezeEntityPosition(created_ped, true)
+  SetEntityHeading(created_ped, 266.77166748047)
+  SetEntityInvincible(created_ped, true)
+  SetBlockingOfNonTemporaryEvents(created_ped, true)
+  TaskStartScenarioInPlace(created_ped, "WORLD_HUMAN_CLIPBOARD", 0, true)
+
+
+end
+
+Citizen.CreateThread(function()
+  setboostped()
+end)
+
+
 RegisterNetEvent("ls:boostDropOff")
 AddEventHandler("ls:boostDropOff", function()
   local dropRand = math.random(1, #dropPoint)
