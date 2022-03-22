@@ -19,26 +19,6 @@ end)
 
 
 
-local onlinePlayers = 0
-RegisterNetEvent('rich:TakePlayers')
-AddEventHandler('rich:TakePlayers', function(count)
-    onlinePlayers = count
-    if SetDiscordRichPresenceAction then
-        SetDiscordRichPresenceAction(0, 'Discord', 'https://discord.gg/rpfrog')
-    end
-end)
-
-Citizen.CreateThread(function()
-    TriggerServerEvent('rich:GetPlayers')
-    SetDiscordAppId(876182611150643210)
- 	SetDiscordRichPresenceAsset('1000x1000')
-    while true do
-        Citizen.Wait(2000)
-        SetDiscordRichPresenceAssetText("https://discord.gg/rpfrog")
-        SetRichPresence(onlinePlayers.."/64 | Roleplaying Erotically")
-        SetBlipAlpha(GetNorthRadarBlip(), 0)
-    end
-end)
 
 ----- Disable Pistol Whip
 ---Citizen.CreateThread(function()
@@ -1020,41 +1000,5 @@ AddEventHandler('firework:shotburst', function()
 	box = nil
 end)
 
-Citizen.CreateThread(function()
-	while true do
-        -- This is the Application ID (Replace this with you own)
-		SetDiscordAppId(949909010386124840)
 
-        -- Here you will have to put the image name for the "large" icon.
-		SetDiscordRichPresenceAsset('logo')
-        
-        -- (11-11-2018) New Natives:
-
-        -- Here you can add hover text for the "large" icon.
-        SetDiscordRichPresenceAssetText('Roleplaying Erotically')
-       
-        -- Here you will have to put the image name for the "small" icon.
-        SetDiscordRichPresenceAssetSmall('512')
-
-        -- Here you can add hover text for the "small" icon.
-        SetDiscordRichPresenceAssetSmallText('Roleplaying Erotically')
-
-        name = GetPlayerName(PlayerId())
-        id = GetPlayerServerId(PlayerId())
-
-
-        -- (26-02-2021) New Native:
-
-        --[[ 
-            Here you can add buttons that will display in your Discord Status,
-            First paramater is the button index (0 or 1), second is the title and 
-            last is the url (this has to start with "fivem://connect/" or "https://") 
-        ]]--
-        SetDiscordRichPresenceAction(0, "Join the FiveM server", "fivem://connect/95.217.202.62/localhost:30120")
-        SetDiscordRichPresenceAction(1, "Click to join the Discord", "https://discord.gg/y59qXpanTp")
-
-        -- It updates every minute just in case.
-		Citizen.Wait(60000)
-	end
-end)
 
