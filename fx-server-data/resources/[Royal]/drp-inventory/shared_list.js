@@ -22540,10 +22540,10 @@ itemList['miningprobe'] = {
 
 itemList['miningpickaxe'] = {
   fullyDegrades: true,
-  decayrate: 0.00277,
+  decayrate: 0.1,
   displayname: 'Mining Pickaxe',
   craft: [],
-  price: 0,
+  price: 150,
   weight: 20,
   nonStack: false,
   model: '',
