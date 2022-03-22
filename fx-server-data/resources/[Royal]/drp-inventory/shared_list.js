@@ -2192,7 +2192,7 @@ itemList['oxy'] = {
   nonStack: false,
   model: '',
   image: 'np_Oxy.png',
-  information: '',
+  information: 'Druuuugs peepoGlad - should be seized by police if suspected of use in crime',
   contraband: true,
 };
 
