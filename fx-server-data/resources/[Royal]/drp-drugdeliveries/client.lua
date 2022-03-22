@@ -627,13 +627,13 @@ Citizen.CreateThread(function()
 			DrawText3Ds(590.51, 2739.8, 15.86, "[E] to Leave") 
 			if IsControlJustReleased(0,38) then
 				CleanUpArea()
-				SetEntityCoords(PlayerPedId(),pillStore["x"],pillStore["y"],pillStore["z"])
+				SetEntityCoords(PlayerPedId(),oxyStoreLocation["x"],oxyStoreLocation["y"],oxyStoreLocation["z"])
 				Citizen.Wait(1000)
 			end
 		end
 
 		if oxyEnter < 2 then
-			DrawText3Ds(pillStore["x"],pillStore["y"],pillStore["z"], "[E] to Enter") 
+			DrawText3Ds(oxyStoreLocation["x"],oxyStoreLocation["y"],oxyStoreLocation["z"], "[E] to Enter") 
 			TriggerServerEvent("kGetWeather")
 			if IsControlJustReleased(0,38) then
 				buildDrugShop()
