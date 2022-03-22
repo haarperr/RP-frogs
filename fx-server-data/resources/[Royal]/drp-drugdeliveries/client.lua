@@ -529,6 +529,7 @@ local rollcashprice = 40
 local inkedmoneybagprice = 20000
 local markedbillsprice = 500
 
+
 function DoDropOff(requestMoney)
 
 	cashPayment = 250 + math.random(350)
@@ -553,27 +554,33 @@ function DoDropOff(requestMoney)
 			end
 
 			if OxyRun then
+				
+
+				local sellableItems = {
+					[1] = {name = 'rollcash', amount = math.random(3,10), price=rollcashprice},
+					[2] = {name = 'inkedmoneybag', amount = 1, price=inkedmoneybagprice},
+					[3] = {name = 'markedbills', amount = math.random(3,10), price=markedbillsprice},
+					[4] = {name = 'band', amount = math.random(3,10), price=bandprice},
+				}
 
 				cashPayment = math.random(150,550)
 				
-				if exports["drp-inventory"]:hasEnoughOfItem("inkedmoneybag",1,false) then     
-					-- RepPlus()
-					TriggerEvent("inventory:removeItem","inkedmoneybag", 1)   
-					TriggerServerEvent('mission:completed', inkedmoneybagprice)
+				local pog = false
 
-		        elseif exports["drp-inventory"]:hasEnoughOfItem("rollcash",5,false) then     
-		            TriggerEvent("inventory:removeItem","rollcash", 5)   
-					TriggerServerEvent('mission:completed', rollcashprice)             
-		            TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
-		        elseif exports["drp-inventory"]:hasEnoughOfItem("markedbills",5,false) then     
-		            TriggerEvent("inventory:removeItem","markedbills", 5)   
-					TriggerServerEvent('mission:completed', markedbillsprice)           
-		            TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
-				elseif exports["drp-inventory"]:hasEnoughOfItem("band",5,false) then     
-					TriggerEvent("inventory:removeItem","band", 5)   
-					TriggerServerEvent('mission:completed', bandprice)          
-					TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
-				else
+				-- randomize the sellable items
+				for i = 1, #sellableItems do
+					local randomIndex = math.random(#sellableItems)
+					sellableItems[i] = sellableItems[randomIndex]
+					
+					if exports["drp-inventory"]:hasEnoughOfItem(sellableItems[i].name,sellableItems[i].amount,false) then
+						TriggerEvent("inventory:removeItem",sellableItems[i].name,sellableItems[i].amount)
+						TriggerServerEvent('mission:completed', sellableItems[i].price * sellableItems[i].amount)
+						pog = true
+						break
+					end
+				end
+
+				if pog == false then
 		            TriggerEvent("DoLongHudText","Thanks, no extra sauce though?!")
 		        end
 
