@@ -1348,7 +1348,7 @@ Citizen.CreateThread(function()
 			end
 		
 		if OxyRun then
-			TriggerEvent("DoLongHudText", "I dont have any work for you right now."))	
+			TriggerEvent("DoLongHudText", "I dont have any work for you right now.")
 		end
 
 		end
