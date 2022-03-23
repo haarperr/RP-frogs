@@ -141,7 +141,7 @@ RRP.Jobs.ValidJobs = {
     },
     ["judge"] = {
         name = "Judge",
-        paycheck = 600,
+        paycheck = 5000,
     },
     ["public_defender"] = {
         name = "Public Defender",
@@ -149,6 +149,6 @@ RRP.Jobs.ValidJobs = {
     },
     ["district_attorney"] = {
         name = "District Attorney",
-        paycheck = 200,
+        paycheck = 2000,
     },
 }

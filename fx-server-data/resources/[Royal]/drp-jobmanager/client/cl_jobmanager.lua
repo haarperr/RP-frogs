@@ -47,3 +47,7 @@ RegisterNetEvent('drp-collect:paycheck')
 AddEventHandler('drp-collect:paycheck', function()
     TriggerServerEvent("paycheck:collect", exports["isPed"]:isPed("cid"))
 end)
+
+RegisterCommand("lawyers", function()
+  TriggerEvent(""yellowPages:retrieveLawyersOnline"")
+  end)
