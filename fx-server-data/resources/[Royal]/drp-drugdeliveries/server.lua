@@ -44,7 +44,7 @@ AddEventHandler('oxydelivery:deleteOxyPed', function(deliveryPed)
 end)
 
 RegisterServerEvent('oxydelivery:createOxyPed')
-AddEventHandler('oxydelivery:createOxyPed', function()
+AddEventHandler('oxydelivery:createOxyPed', function(OxyDropOffs, rnd)
     local hashKey = `a_m_y_stwhi_01`
 
     local pedType = 5

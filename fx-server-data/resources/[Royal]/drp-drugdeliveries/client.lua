@@ -479,7 +479,7 @@ AddEventHandler("oxydelivery:client", function()
 				Citizen.Wait(100)
 			end
 
-			TriggerServerEvent('oxydelivery:createOxyPed')
+			TriggerServerEvent('oxydelivery:createOxyPed', OxyDropOffs, rnd)
 			TriggerEvent("DoLongHudText", "You are close to the drop off.")
 		end
 		if toolong < 0 then
