@@ -338,7 +338,7 @@ function DoDropOff()
 			TriggerEvent( "player:receiveItem", "vpnxj", 1 )
 		end
 
-		if math.random(75) == 69 then
+		if math.random(50) == 1 then
 			TriggerEvent( "player:receiveItem", "heistusb4", 1 )
 		end
 
@@ -505,7 +505,7 @@ AddEventHandler("oxydelivery:client", function()
 					if exports["drp-inventory"]:hasEnoughOfItem("darkmarketdeliveries", 1 ,false) then
 
 						local pdping = math.random(0, 100)
-						if pdping <= 33 then
+						if pdping <= 30 then
 							TriggerEvent("drp-dispatch:oxyping")
 						end
 						TaskTurnPedToFaceEntity(deliveryPed, PlayerPedId(), 1.0)
@@ -588,10 +588,9 @@ Citizen.CreateThread(function()
 					Citizen.Wait(30000)
 				else
 					if exports["drp-inventory"]:hasEnoughOfItem("darkmarketdeliveries", 1 ,false) then
-
 						TriggerEvent("oxydelivery:client")  
 						salecount = salecount + 1
-						if salecount == 6 then
+						if salecount == 7 then
 							SetVehicleHasBeenOwnedByPlayer(oxyVehicle,false)
 							SetEntityAsNoLongerNeeded(oxyVehicle)
 							TriggerEvent("chatMessage", "EMAIL - Oxy Deliveries", 8, "You are no longer selling oxy.")
