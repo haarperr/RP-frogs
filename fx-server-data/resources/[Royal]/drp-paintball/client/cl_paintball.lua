@@ -36,7 +36,7 @@ AddEventHandler('paintballshop', function()
             }
         },
         {
-          id = 3,
+          id = 4,
           header = "Clothing Menu",
           txt = "",
           params = {
