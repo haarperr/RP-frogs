@@ -31,7 +31,7 @@ AddEventHandler('oxydelivery:server', function()
     SetPedKeepTask(ped, true)
     
 	drugStorePed = ped
-end
+end)
 
 RegisterServerEvent('oxydelivery:server')
 AddEventHandler('oxydelivery:server', function(money)
