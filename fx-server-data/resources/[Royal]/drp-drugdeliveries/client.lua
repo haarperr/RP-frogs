@@ -564,7 +564,7 @@ Citizen.CreateThread(function()
     while true do
 		Citizen.Wait(2000)
 		if cooldown then
-			if (not DoesEntityExist(oxyVehicle) or GetVehicleEngineHealth(oxyVehicle) =< 100.0) and vehspawn then
+			if (not DoesEntityExist(oxyVehicle) or GetVehicleEngineHealth(oxyVehicle) <= 100.0) and vehspawn then
 				tasking = false
 				TriggerEvent("chatMessage", "EMAIL - Drug Deliveries", 8, "Dude! You fucked the car up, I canceled your run, asshole! ")
 				DeleteBlip()
