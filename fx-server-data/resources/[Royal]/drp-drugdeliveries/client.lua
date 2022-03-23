@@ -2,7 +2,9 @@ local tasking = false
 local drugStorePed = 0
 local cashPayment = 420
 local vehspawn = false
-
+local rnd = 0
+local blip = 0
+local deliveryPed = 0
 local oxyVehicle = 0
 local PlayerData = {}
 local cooldown = false
@@ -92,20 +94,6 @@ function Draw3DText(x,y,z, text)
         _in(0x3A618A217E5154F0, _x,_y+0.0125, 0.015 + factor, 0.03, 41, 11, 41, 68) -- DrawRect
     end
 end
-
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(5)
-
-        local pedCoords = GetEntityCoords(PlayerPedId())
-        local objectId = GetClosestObjectOfType(pedCoords, 2.0, GetHashKey("bkr_prop_meth_table01a"), false)
-        if DoesEntityExist(objectId) and IsControlJustPressed(0, 38) then
-            print("Object Is Near: " .. objectId)
-			TriggerServerEvent("test:forcedelete", ObjToNet(objectId))
-        end
-        
-    end
-end)
 
 function deleteOxyPed()
 	if DoesEntityExist(deliveryPed) then 
@@ -246,10 +234,6 @@ function buildDrugStore()
 	DoScreenFadeIn(1)
 end
 
-
-local rnd = 0
-local blip = 0
-local deliveryPed = 0
 
 
 local carpick = {
@@ -478,6 +462,8 @@ AddEventHandler("oxydelivery:client", function()
 
 	tasking = true
 	local toolong = 600000
+
+
 	while tasking do
 		toolong = toolong - 1
 		Citizen.Wait(1)
@@ -487,12 +473,10 @@ AddEventHandler("oxydelivery:client", function()
 		local dstcheck2 = #(plycoords - oxyVehCoords) 
 
 		local veh = GetVehiclePedIsIn(PlayerPedId(),false)
-		if dstcheck < 40.0 and not pedCreated and (oxyVehicle == veh or dstcheck2 < 15.0) then
-			RequestModel(hashKey)
-			while not HasModelLoaded(hashKey) do
-				RequestModel(hashKey)
-				Citizen.Wait(100)
-			end
+		if dstcheck < 50.0 and not pedCreated and (oxyVehicle == veh or dstcheck2 < 15.0) then
+			
+			
+
 			createOxyPed(rnd)
 			pedCreated = true
 			TriggerEvent("DoLongHudText", "You are close to the drop off.")
@@ -580,9 +564,10 @@ Citizen.CreateThread(function()
     while true do
 		Citizen.Wait(2000)
 		if cooldown then
-			if (not DoesEntityExist(oxyVehicle) or GetVehicleEngineHealth(oxyVehicle) < 100.0) and vehspawn then
+			if (not DoesEntityExist(oxyVehicle) or GetVehicleEngineHealth(oxyVehicle) =< 100.0) and vehspawn then
 				tasking = false
 				TriggerEvent("chatMessage", "EMAIL - Drug Deliveries", 8, "Dude! You fucked the car up, I canceled your run, asshole! ")
+				DeleteBlip()
 				Citizen.Wait(1200000)
 				cooldown = false
 			else
