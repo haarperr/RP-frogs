@@ -59,24 +59,6 @@ end)
 
 
 
-function paintballguy()
-  modelHash = GetHashKey("a_m_m_eastsa_02")
-  RequestModel(modelHash)
-  while not HasModelLoaded(modelHash) do
-      Wait(1)
-  end
-  created_ped = CreatePed(0, modelHash , 2365.3, 2595.09, 58.818  -1, true)
-  FreezeEntityPosition(created_ped, true)
-  SetEntityHeading(created_ped, 65.77166748047)
-  SetEntityInvincible(created_ped, true)
-  SetBlockingOfNonTemporaryEvents(created_ped, true)
-  TaskStartScenarioInPlace(created_ped, "WORLD_HUMAN_CLIPBOARD", 0, true)
-
-end
-
-Citizen.CreateThread(function()
-  paintballguy()
-end)
 
 local function removeGuns()
   local qty = exports["drp-inventory"]:getQuantity("-2009644972")
@@ -89,6 +71,10 @@ local function removeGuns()
   local megaphoneQty = exports["drp-inventory"]:getQuantity("megaphone", true, { type = "paintball" })
   if megaphoneQty and megaphoneQty > 0 then
     TriggerEvent("inventory:removeItemByMetaKV", "megaphone", megaphoneQty, "type", "paintball")
+  end
+  local qty = exports["drp-inventory"]:getQuantity("paintballs")
+  if qty and qty > 0 then
+    TriggerEvent("inventory:removeItem", "paintballs", qty)
   end
   local smokeQty = exports["drp-inventory"]:getQuantity("smokegrenadenpa")
   if smokeQty and smokeQty > 0 then
