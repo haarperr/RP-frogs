@@ -164,5 +164,4 @@ AddEventHandler('oxydelivery:builddrugstore', function(oxyStoreLocation)
 	CreateObject(`V_38_C_Sink`,coordsofbuilding.x-0.62845000,coordsofbuilding.y+4.84067900,coordsofbuilding.z+1.41538000,false,false,false)
 
 	FreezeEntityPosition(coordsofbuilding,true)
-	TriggerClientEvent('oxydelivery:teleport')
 end
