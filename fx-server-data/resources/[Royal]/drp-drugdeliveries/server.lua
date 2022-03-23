@@ -111,7 +111,6 @@ end
 
 RegisterServerEvent('oxydelivery:builddrugstore')
 AddEventHandler('oxydelivery:builddrugstore', function(oxyStoreLocation)
-	DoScreenFadeOut(1)
 	
 	Citizen.Wait(1000)
 
