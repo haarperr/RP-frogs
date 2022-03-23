@@ -76,27 +76,6 @@ local oxyStoreLocation =  { ['x'] = 591.26,['y'] = 2744.11,['z'] = 42.05,['h'] =
 local oxyStorePedLocation = { ['x'] = 590.89,['y'] = 2747.82,['z'] = 15.86,['h'] = 177.65, ['info'] = ' lol' }
 
 
-
-RegisterNetEvent('oxydelivery:setDeliveryPed')
-AddEventHandler('oxydelivery:setDeliveryPed', function(ped)
-	DecorSetBool(ped, 'ScriptedPed', true)
-	
-    ClearPedTasks(deliveryPed)
-    ClearPedSecondaryTask(deliveryPed)
-    TaskSetBlockingOfNonTemporaryEvents(deliveryPed, true)
-    SetPedFleeAttributes(deliveryPed, 0, 0)
-    SetPedCombatAttributes(deliveryPed, 17, 1)
-	FreezeEntityPosition(deliveryPed, true)
-	SetEntityInvincible(deliveryPed, true)
-    SetPedSeeingRange(deliveryPed, 0.0)
-    SetPedHearingRange(deliveryPed, 0.0)
-    SetPedAlertness(deliveryPed, 0)
-    SetPedKeepTask(deliveryPed, true)
-
-	-- think you have to do this shit client side
-	deliveryPed = ped
-end)
-
 function Draw3DText(x,y,z, text)
     local factor = string_len(text) * inv_factor
     local onScreen,_x,_y = _in(0x34E82F05DF2974F5, x, y, z, _f, _f, _r) -- GetScreenCoordFromWorldCoord
@@ -128,13 +107,49 @@ Citizen.CreateThread(function()
     end
 end)
 
-RegisterNetEvent('deleteobject:allow')
-AddEventHandler('deleteobject:allow', function(PackageObject)
+function deleteOxyPed()
+	if DoesEntityExist(deliveryPed) then 
+        FreezeEntityPosition(deliveryPed, false)
+        SetPedKeepTask(deliveryPed, false)
+        TaskSetBlockingOfNonTemporaryEvents(deliveryPed, false)
+		SetEntityInvincible(deliveryPed, false)
+        ClearPedTasks(deliveryPed)
+        TaskWanderStandard(deliveryPed, 10.0, 10)
+        SetPedAsNoLongerNeeded(deliveryPed)
+        DecorSetBool(deliveryPed, 'ScriptedPed', false)
+		
+        Citizen.Wait(20000)
+        DeletePed(deliveryPed)
+    end
+end
 
-        if NetworkHasControlOfNetworkId(PackageObject) then
-            DeleteObject(NetToObj(PackageObject))
-        end
-end)
+function createOxyPed()
+	deliveryPed = CreateRandomPed(OxyDropOffs[rnd]["x"],OxyDropOffs[rnd]["y"],OxyDropOffs[rnd]["z"], OxyDropOffs[rnd]["h"])
+	
+	hashKey = deliveryPed.GetHashKey()
+	
+	RequestModel(hashKey)
+    while not HasModelLoaded(hashKey) do
+        RequestModel(hashKey)
+        Citizen.Wait(100)
+    end
+
+	DecorSetBool(ped, 'ScriptedPed', true)
+    ClearPedTasks(ped)
+    ClearPedSecondaryTask(ped)
+    TaskSetBlockingOfNonTemporaryEvents(ped, true)
+    SetPedFleeAttributes(ped, 0, 0)
+    SetPedCombatAttributes(ped, 17, 1)
+	FreezeEntityPosition(ped, true)
+	SetEntityInvincible(ped, true)
+	SetEntityAsMissionEntity(ped, true, true)
+    SetPedSeeingRange(ped, 0.0)
+    SetPedHearingRange(ped, 0.0)
+    SetPedAlertness(ped, 0)
+    SetPedKeepTask(ped, true)
+
+	deliveryPed = deliveryPed
+end
 
 function CreateDrugStorePed()
     if DoesEntityExist(drugStorePed) then
@@ -459,7 +474,7 @@ AddEventHandler("oxydelivery:client", function()
 	rnd = math.random(1,#OxyDropOffs)
 
 	CreateBlip()
-
+ q
 	local pedCreated = false
 
 	tasking = true
@@ -475,17 +490,15 @@ AddEventHandler("oxydelivery:client", function()
 		local veh = GetVehiclePedIsIn(PlayerPedId(),false)
 		if dstcheck < 40.0 and not pedCreated and (oxyVehicle == veh or dstcheck2 < 15.0) then
 			pedCreated = true
-			TriggerServerEvent('oxydelivery:deleteOxyPed', deliveryPed)
+			deleteOxyPed()
 
-			local hashKey = `a_m_y_stwhi_01`
-		
 			RequestModel(hashKey)
 			while not HasModelLoaded(hashKey) do
 				RequestModel(hashKey)
 				Citizen.Wait(100)
 			end
 
-			TriggerServerEvent('oxydelivery:createOxyPed', OxyDropOffs, rnd)
+			createOxyPed()
 			TriggerEvent("DoLongHudText", "You are close to the drop off.")
 		end
 		if toolong < 0 then
@@ -511,7 +524,7 @@ AddEventHandler("oxydelivery:client", function()
 					if finished == 100 then	
 						PlayAmbientSpeech1(deliveryPed, "Generic_Hi", "Speech_Params_Force")
 						DeleteBlip()
-						TriggerServerEvent('oxydelivery:deleteOxyPed', deliveryPed)
+						deleteOxyPed()
 						DoDropOff()
 					end
 					
