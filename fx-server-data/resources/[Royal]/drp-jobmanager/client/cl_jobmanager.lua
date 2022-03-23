@@ -49,5 +49,5 @@ AddEventHandler('drp-collect:paycheck', function()
 end)
 
 RegisterCommand("lawyers", function()
-  TriggerEvent(""yellowPages:retrieveLawyersOnline"")
+  TriggerEvent("yellowPages:retrieveLawyersOnline")
   end)
