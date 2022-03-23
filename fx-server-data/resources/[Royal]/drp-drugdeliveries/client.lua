@@ -105,9 +105,6 @@ function deleteOxyPed()
 		TaskWanderStandard(deliveryPed, 10.0, 10)
 		SetPedAsNoLongerNeeded(deliveryPed)
 		DecorSetBool(deliveryPed, 'ScriptedPed', false)
-
-		Citizen.Wait(30000)
-		DeletePed(deliveryPed)
 	end
 end
     
@@ -371,12 +368,20 @@ function DoDropOff()
 			end
 		end
 
+		if math.random(1,4) == 1 then
+			TriggerEvent( "player:receiveItem", "oxy", math.random(1,3) )
+		end
+
 		if pog == false then
-			TriggerEvent( "player:receiveItem", "oxy", math.random(5) )
+			TriggerEvent( "player:receiveItem", "oxy", math.random(3,6) )
 		end
 			
 		if math.random(100) >= 7 then
-			cashPayment = cashPayment + math.random(250,1000)
+			if math.random(1,2) == 1 then
+				cashPayment = cashPayment + math.random(250,1000)
+			else
+				TriggerEvent( "player:receiveItem", "oxy", math.random(6, 10))
+			end
 		end
 
 		
