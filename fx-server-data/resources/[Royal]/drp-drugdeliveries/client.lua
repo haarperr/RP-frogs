@@ -80,7 +80,20 @@ local oxyStorePedLocation = { ['x'] = 590.89,['y'] = 2747.82,['z'] = 15.86,['h']
 RegisterNetEvent('oxydelivery:setDeliveryPed')
 AddEventHandler('oxydelivery:setDeliveryPed', function(ped)
 	DecorSetBool(ped, 'ScriptedPed', true)
+	
+    ClearPedTasks(deliveryPed)
+    ClearPedSecondaryTask(deliveryPed)
+    TaskSetBlockingOfNonTemporaryEvents(deliveryPed, true)
+    SetPedFleeAttributes(deliveryPed, 0, 0)
+    SetPedCombatAttributes(deliveryPed, 17, 1)
+	FreezeEntityPosition(deliveryPed, true)
+	SetEntityInvincible(deliveryPed, true)
+    SetPedSeeingRange(deliveryPed, 0.0)
+    SetPedHearingRange(deliveryPed, 0.0)
+    SetPedAlertness(deliveryPed, 0)
+    SetPedKeepTask(deliveryPed, true)
 
+	-- think you have to do this shit client side
 	deliveryPed = ped
 end)
 
