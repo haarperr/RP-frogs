@@ -123,7 +123,7 @@ function deleteOxyPed()
     end
 end
 
-function createOxyPed()
+function createOxyPed(rnd)
 	local hashKey = `a_m_y_stwhi_01`
 
     local pedType = 5
@@ -490,6 +490,9 @@ AddEventHandler("oxydelivery:client", function()
 		local oxyVehCoords = GetEntityCoords(oxyVehicle)
 		local dstcheck2 = #(plycoords - oxyVehCoords) 
 
+		if DoesEntityExist(deliveryPed) == false then 
+			createOxyPed(rnd)
+
 
 		local veh = GetVehiclePedIsIn(PlayerPedId(),false)
 		if dstcheck < 40.0 and not pedCreated and (oxyVehicle == veh or dstcheck2 < 15.0) then
@@ -500,7 +503,7 @@ AddEventHandler("oxydelivery:client", function()
 				RequestModel(hashKey)
 				Citizen.Wait(100)
 			end
-			createOxyPed()
+			createOxyPed(rnd)
 			TriggerEvent("DoLongHudText", "You are close to the drop off.")
 		end
 		if toolong < 0 then
@@ -516,8 +519,8 @@ AddEventHandler("oxydelivery:client", function()
 			DrawText3Ds(crds["x"],crds["y"],crds["z"], "[E]")  
 
 			if IsControlJustReleased(0,38) then
-				if not IsPedInVehicle(PlayerPedId(),oxyVehicle,false) then
-					local pdping = math.random(0,100)
+				if not IsPedInVehicle(PlayerPedId(), oxyVehicle, false) then
+					local pdping = math.random(0, 100)
 					if pdping <= 33 then
 						TriggerEvent("drp-dispatch:oxyping")
 					end
