@@ -128,30 +128,31 @@ function createOxyPed(rnd)
 
     local pedType = 5
 
-	deliveryPed = CreatePed(pedType, hashKey, OxyDropOffs[rnd]["x"],OxyDropOffs[rnd]["y"],OxyDropOffs[rnd]["z"], OxyDropOffs[rnd]["h"], 0, 0)
-	
-	
-	RequestModel(hashKey)
+    RequestModel(hashKey)
     while not HasModelLoaded(hashKey) do
         RequestModel(hashKey)
         Citizen.Wait(100)
     end
 
-	DecorSetBool(ped, 'ScriptedPed', true)
-    ClearPedTasks(ped)
-    ClearPedSecondaryTask(ped)
-    TaskSetBlockingOfNonTemporaryEvents(ped, true)
-    SetPedFleeAttributes(ped, 0, 0)
-    SetPedCombatAttributes(ped, 17, 1)
-	FreezeEntityPosition(ped, true)
-	SetEntityInvincible(ped, true)
-	SetEntityAsMissionEntity(ped, true, true)
-    SetPedSeeingRange(ped, 0.0)
-    SetPedHearingRange(ped, 0.0)
-    SetPedAlertness(ped, 0)
-    SetPedKeepTask(ped, true)
+	deliveryPed = CreatePed(pedType, hashKey, OxyDropOffs[rnd]["x"],OxyDropOffs[rnd]["y"],OxyDropOffs[rnd]["z"], OxyDropOffs[rnd]["h"], 0, 0)
+	
+	DecorSetBool(deliveryPed, 'ScriptedPed', true)
+    ClearPedTasks(deliveryPed)
+    ClearPedSecondaryTask(deliveryPed)
+    TaskSetBlockingOfNonTemporaryEvents(deliveryPed, true)
+    SetPedFleeAttributes(deliveryPed, 0, 0)
+    SetPedCombatAttributes(deliveryPed, 17, 1)
+	FreezeEntityPosition(deliveryPed, true)
+	SetEntityInvincible(deliveryPed, true)
+	SetEntityAsMissionEntity(deliveryPed, true, true)
+    SetPedSeeingRange(deliveryPed, 0.0)
+    SetPedHearingRange(deliveryPed, 0.0)
+    SetPedAlertness(deliveryPed, 0)
+    SetPedKeepTask(deliveryPed, true)
+    
+    
+    
 
-	deliveryPed = deliveryPed
 end
 
 function CreateDrugStorePed()
