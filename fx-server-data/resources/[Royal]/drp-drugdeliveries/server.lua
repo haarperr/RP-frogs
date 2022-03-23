@@ -51,7 +51,6 @@ AddEventHandler('oxydelivery:createOxyPed', function(OxyDropOffs, rnd)
 
 	deliveryPed = CreatePed(pedType, hashKey, OxyDropOffs[rnd]["x"],OxyDropOffs[rnd]["y"],OxyDropOffs[rnd]["z"], OxyDropOffs[rnd]["h"], 0, 0)
 	
-	DecorSetBool(deliveryPed, 'ScriptedPed', true)
     ClearPedTasks(deliveryPed)
     ClearPedSecondaryTask(deliveryPed)
     TaskSetBlockingOfNonTemporaryEvents(deliveryPed, true)
