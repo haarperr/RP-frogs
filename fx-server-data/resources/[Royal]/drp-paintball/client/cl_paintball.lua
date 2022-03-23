@@ -74,7 +74,7 @@ end
   end)
 
   
-RegisterCommand("startpd", function()
+RegisterCommand("startpb", function()
   if inArena then
     TriggerEvent("DoLongHudText","Game Starts in 3",14)
     PlaySound(-1, "3_2_1", "HUD_MINI_GAME_SOUNDSET", 0, 0, 1)
