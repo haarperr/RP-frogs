@@ -79,6 +79,8 @@ local oxyStorePedLocation = { ['x'] = 590.89,['y'] = 2747.82,['z'] = 15.86,['h']
 
 RegisterNetEvent('oxydelivery:setDeliveryPed')
 AddEventHandler('oxydelivery:setDeliveryPed', function(ped)
+	DecorSetBool(ped, 'ScriptedPed', true)
+
 	deliveryPed = ped
 end)
 
