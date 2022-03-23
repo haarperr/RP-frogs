@@ -496,20 +496,25 @@ AddEventHandler("oxydelivery:client", function()
 
 			if IsControlJustReleased(0,38) then
 				if not IsPedInVehicle(PlayerPedId(), oxyVehicle, false) then
-					local pdping = math.random(0, 100)
-					if pdping <= 33 then
-						TriggerEvent("drp-dispatch:oxyping")
-					end
-					TaskTurnPedToFaceEntity(deliveryPed, PlayerPedId(), 1.0)
-					local finished = exports["drp-taskbar"]:taskBar(22500, "Dropping Off")
-					if finished == 100 then	
-						PlayAmbientSpeech1(deliveryPed, "Generic_Hi", "Speech_Params_Force")
-						DeleteBlip()
-						deleteOxyPed()
-						DoDropOff()
-					end
+					if exports["drp-inventory"]:hasEnoughOfItem("darkmarketdeliveries", 1 ,false) then
+
+						local pdping = math.random(0, 100)
+						if pdping <= 33 then
+							TriggerEvent("drp-dispatch:oxyping")
+						end
+						TaskTurnPedToFaceEntity(deliveryPed, PlayerPedId(), 1.0)
+						local finished = exports["drp-taskbar"]:taskBar(22500, "Dropping Off")
+						if finished == 100 then	
+							PlayAmbientSpeech1(deliveryPed, "Generic_Hi", "Speech_Params_Force")
+							DeleteBlip()
+							deleteOxyPed()
+							DoDropOff()
+						end
 					
-					tasking = false
+						tasking = false
+					else
+						TriggerEvent("DoLongHudText","You really lost your Delivery List I gave you?")
+					end
 				else 
 					TriggerEvent("DoLongHudText","You cannot sell out of your Car Bozo")
 				end
@@ -574,11 +579,18 @@ Citizen.CreateThread(function()
 				if tasking then
 					Citizen.Wait(30000)
 				else
-					TriggerEvent("oxydelivery:client")  
-					salecount = salecount + 1
-					if salecount == 6 then
-						TriggerEvent("chatMessage", "EMAIL - Oxy Deliveries", 8, "You are no longer selling oxy.")
-						Citizen.Wait(1200000) -- 20 minutes
+					if exports["drp-inventory"]:hasEnoughOfItem("darkmarketdeliveries", 1 ,false) then
+
+						TriggerEvent("oxydelivery:client")  
+						salecount = salecount + 1
+						if salecount == 6 then
+							TriggerEvent("chatMessage", "EMAIL - Oxy Deliveries", 8, "You are no longer selling oxy.")
+							Citizen.Wait(1200000) -- 20 minutes
+							cooldown = false
+						end
+					else
+						TriggerEvent("DoLongHudText","You really lost your Delivery List I gave you?")
+						Citizen.Wait(1200000)
 						cooldown = false
 					end
 				end			
