@@ -2,7 +2,7 @@ local drugStorePed = 0
 
 RegisterServerEvent('oxydelivery:CreateDrugStorePed')
 AddEventHandler('oxydelivery:server', function()
-    if DoesEntityExist(drugStorePed) then
+    if DoesEntityExist(drugStorePed) and drugStorePed != 0 then
 		return
 	end
 
