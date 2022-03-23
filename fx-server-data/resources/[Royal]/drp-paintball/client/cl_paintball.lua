@@ -62,6 +62,7 @@ RegisterCommand("paintballgear", function()
   TriggerEvent("paintballshop")
 else
   TriggerEvent('DoLongHudText', 'You are not in the arena!', 2)
+end
   end)
 
   
