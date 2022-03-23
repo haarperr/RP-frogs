@@ -500,6 +500,7 @@ Citizen.CreateThread(function()
 		if oxyEnter < 2 then
 			DrawText3Ds(oxyStoreLocation["x"],oxyStoreLocation["y"],oxyStoreLocation["z"], "[E] to Enter") 
 			if IsControlJustReleased(0,38) then
+				DoScreenFadeOut(1)
 				TriggerServerEvent('oxydelivery:builddrugstore')
 				TriggerServerEvent('oxydelivery:CreateDrugStorePed')
 				Citizen.Wait(1000)
