@@ -20396,7 +20396,7 @@ itemList['varmedkit'] = {
 
 itemList['darkmarketdeliveries'] = {
   fullyDegrades: false,
-  decayrate: 0.006,
+  decayrate: 0.002,
   displayname: 'Delivery List',
   price: 1,
   weight: 1,
