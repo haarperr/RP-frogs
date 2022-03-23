@@ -58,7 +58,7 @@ AddEventHandler('getpaintballs', function()
 end)
 
 RegisterCommand("paintballgear", function()
-  if inArena = true
+  if inArena = true then
   TriggerEvent("paintballshop")
 else
   TriggerEvent('DoLongHudText', 'You are not in the arena!', 2)
