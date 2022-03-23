@@ -3820,7 +3820,7 @@ $(document).ready(() => {
             let table = e.data
             $(".stafflogs-container").empty();
             $.each(table, function (index, value) {
-                $('.stafflogs-container').prepend(`<p style="margin : 0; padding-top:0.8vh;">• ${value.text} <span style="color: grey; float: right; padding-right: 1vh;">(${timeAgo(Number(value.time))})</span></p>`)
+                $('.stafflogs-container').prepend(`<p style="margin : 0; padding-top:0.8vh;">• ${value.log} <span style="color: grey; float: right; padding-right: 1vh;">(${timeAgo(Number(value.time))})</span></p>`)
             })
         } else if (e.type == "getActiveUnits") {
             var PoliceCount = 0
