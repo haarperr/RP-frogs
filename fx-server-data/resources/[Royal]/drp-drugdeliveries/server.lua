@@ -1,38 +1,3 @@
-local drugStorePed = 0
-
-RegisterServerEvent('oxydelivery:CreateDrugStorePed')
-AddEventHandler('oxydelivery:server', function()
-    if DoesEntityExist(drugStorePed) and drugStorePed != 0 then
-		return
-	end
-
-	local hashKey = `a_m_y_stwhi_02`
-	local pedType = GetPedType(hashKey)
-    RequestModel(hashKey)
-    while not HasModelLoaded(hashKey) do
-        RequestModel(hashKey)
-        Citizen.Wait(100)
-    end
-
-	ped = CreatePed(pedType, hashKey, oxyStorePedLocation["x"],oxyStorePedLocation["y"],oxyStorePedLocation["z"], 270.0, 1, 1)
-	SetEntityHeading(ped, 180.24)
-	DecorSetBool(ped, 'ScriptedPed', true)
-    ClearPedTasks(ped)
-    ClearPedSecondaryTask(ped)
-    TaskSetBlockingOfNonTemporaryEvents(ped, true)
-    SetPedFleeAttributes(ped, 0, 0)
-    SetPedCombatAttributes(ped, 17, 1)
-	FreezeEntityPosition(ped, true)
-	SetEntityInvincible(ped, true)
-	SetEntityAsMissionEntity(ped, true, true)
-    SetPedSeeingRange(ped, 0.0)
-    SetPedHearingRange(ped, 0.0)
-    SetPedAlertness(ped, 0)
-    SetPedKeepTask(ped, true)
-    
-	drugStorePed = ped
-end)
-
 RegisterServerEvent('oxydelivery:server')
 AddEventHandler('oxydelivery:server', function(money)
     local src = source
