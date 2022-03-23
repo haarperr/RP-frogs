@@ -375,6 +375,7 @@ function DoDropOff()
 			if math.random(1000) >= 1 then
 				cashPayment = cashPayment + math.random(10000,15000)
 			end 
+		end
 	end
 
 	local counter = math.random(50,200)
@@ -438,7 +439,7 @@ end
 
 
 RegisterNetEvent("oxydelivery:client")
-AddEventHandler("oxydelivery:client", function()
+AddEventHandler("oxydelivery:client", function(
 	if tasking then
 		return
 	end
@@ -504,11 +505,11 @@ AddEventHandler("oxydelivery:client", function()
 				else 
 					TriggerEvent("DoLongHudText","You cannot sell out of your Car Bozo")
 				end
-			end
+			end	
 		end
-	end
 	TriggerServerEvent("oxydelivery")
 	DeleteBlip()
+	end
 end)
 
 
@@ -552,8 +553,8 @@ Citizen.CreateThread(function()
 	end
 end)
 
-Citizen.CreateThread(function()
 
+Citizen.CreateThread(function()
     while true do
 		Citizen.Wait(2000)
 		if cooldown then
@@ -582,7 +583,7 @@ end)
 
 
 RegisterNetEvent("oxydelivery:startDealing")
-AddEventHandler("oxydelivery:startDealing", function()
+AddEventHandler("oxydelivery:startDealing", function(
 	cooldown = true
 	local NearNPC = exports["isPed"]:GetClosestNPC()
 	PlayAmbientSpeech1(NearNPC, "Chat_Resp", "SPEECH_PARAMS_FORCE", 1)
