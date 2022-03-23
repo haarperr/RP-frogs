@@ -71,4 +71,4 @@ AddEventHandler('oxydelivery:createOxyPed', function(ped)
     SetPedKeepTask(deliveryPed, true)
 
     TriggerClientEvent('oxydelivery:setDeliveryPed', deliveryPed)
-end
+end)
