@@ -18,6 +18,8 @@ local blips = {
     {title="Garbage Depo", colour=0, id=318, scale=0.6, x = -351.79779052734, y = -1544.2681884766, z = 27.712768554688},
     {title="Alta Street Apartments", colour=47, id=475, scale=0.6, x = -267.45495605469, y = -960.69891357422, z = 31.234375},
     {title="Hardoaks Ranch", colour=66, id=85, scale=0.6, x = 1520.1283, y = 2203.2603, z = 78.4779},
+    {title="Paintball Arena", colour=31, id=160, scale=0.6, x = 2363.848, y = 2595.608, z = 58.81829},
+
     {title="Sandy Shores PD", colour=0, id=60, scale=0.6, x = 1855.2, y = 3685.72, z = 34.272},
     {title="Sasha's Diving", colour=29, id=356, scale=0.6, x = -1613.079, y = 5262.372, z = 3.974097}
 }
