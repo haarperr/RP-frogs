@@ -439,7 +439,7 @@ end
 
 
 RegisterNetEvent("oxydelivery:client")
-AddEventHandler("oxydelivery:client", function(
+AddEventHandler("oxydelivery:client", function()
 	if tasking then
 		return
 	end
