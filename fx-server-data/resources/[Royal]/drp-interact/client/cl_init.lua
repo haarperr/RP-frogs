@@ -3553,7 +3553,7 @@ Citizen.CreateThread(function()
         label = "Get Gear",
         parameters = {},
     }}, {
-        distance = { radius = 1.5 },
+        distance = { radius = 3.5 },
     });
 
     
