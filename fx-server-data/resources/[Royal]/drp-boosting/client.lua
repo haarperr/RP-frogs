@@ -338,7 +338,7 @@ AddEventHandler("ls:boostLockPick", function()
           StartedBoost = true
         end  
         if vehClass == 'D' then
-          if math.random(1,4) == 1 then
+          if math.random(1,3) == 1 then
             TriggerEvent("drp-dispatch:initBoostAlert", spawnedVeh)
           end
         elseif vehClass == 'C' then
