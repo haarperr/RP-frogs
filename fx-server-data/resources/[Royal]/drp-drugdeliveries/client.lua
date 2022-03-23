@@ -476,10 +476,8 @@ AddEventHandler('oxydelivery:teleport', function(x,y,z)
 	Citizen.Wait(500)
 	SetEntityCoords(PlayerPedId(), 592.26, 2745.01, 15.22)
 	Citizen.Wait(500)
-	
 	SetEntityHeading(PlayerPedId(),0.0)
 	FreezeEntityPosition(PlayerPedId(),false)
-	DoScreenFadeIn(1)
 end)
 
 Citizen.CreateThread(function()
@@ -500,8 +498,10 @@ Citizen.CreateThread(function()
 		if oxyEnter < 2 then
 			DrawText3Ds(oxyStoreLocation["x"],oxyStoreLocation["y"],oxyStoreLocation["z"], "[E] to Enter") 
 			if IsControlJustReleased(0,38) then
+				
 				DoScreenFadeOut(1)
-				TriggerServerEvent('oxydelivery:builddrugstore')
+				TriggerServerEvent('oxydelivery:builddrugstore', oxyStoreLocation)
+				DoScreenFadeIn(1)
 				TriggerServerEvent('oxydelivery:CreateDrugStorePed')
 				Citizen.Wait(1000)
 			end
