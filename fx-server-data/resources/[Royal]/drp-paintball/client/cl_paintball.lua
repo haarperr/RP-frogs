@@ -16,7 +16,7 @@ AddEventHandler('paintballshop', function()
     TriggerEvent('drp-context:sendMenu', {
         {
             id = 1,
-            header = "Get Paintball Supplies",
+            header = "Paintball Supplies",
             txt = ""
         },
         {
@@ -57,7 +57,14 @@ AddEventHandler('getpaintballs', function()
     end
 end)
 
+RegisterCommand("paintballgear", function()
+  if inArena = true
+  TriggerEvent("paintballshop")
+else
+  TriggerEvent('DoLongHudText', 'You are not in the arena!', 2)
+  end)
 
+  
 
 function paintballguy()
   modelHash = GetHashKey("a_m_m_eastsa_02")
