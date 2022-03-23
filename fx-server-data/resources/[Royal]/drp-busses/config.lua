@@ -1,6 +1,6 @@
 Config = {}
 Config.WaitTimeAtBusStop = 10 -- In seconds
-Config.DriveStyle = 958 -- old 1076369724 If you want to change this go here https://www.vespura.com/fivem/drivingstyle/
+Config.DriveStyle = 1076369727 -- old 1076369724 If you want to change this go here https://www.vespura.com/fivem/drivingstyle/
 
 Config.Routes = {
 	{ 	-- Route: Central Garage -> First spawn point -> Vechileshop
