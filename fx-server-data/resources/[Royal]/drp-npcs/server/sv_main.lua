@@ -57,7 +57,7 @@ end
     
 for k,v in pairs(Generic.CasinoLocations) do
     table.insert( Generic.NPCS, #Generic.NPCS + 1, {
-        id = "MembershipGiver_"..k,
+        id = "CasinoMembershipGiver"..k,
         name = "Membership Giver_ "..k,
         pedType = 4,
         model = "s_f_y_casino_01",
