@@ -286,7 +286,7 @@ AddEventHandler("robbery:register", function()
 	end
 	TriggerEvent("DoLongHudText" ,'Register Opened!', 1)
 	TriggerServerEvent("store:robbery:register:success",fuck,you)
-	TriggerEvent("player:receiveItem","rollcash", math.random(2, 10))
+	TriggerEvent("player:receiveItem","rollcash", math.random(2, 15))
 else
 	TriggerEvent("DoLongHudText" ,"You left the store too early you don't get shit!", 1)
 end
@@ -304,7 +304,7 @@ AddEventHandler("robbery:safe", function()
 	Citizen.Wait(100000)
 	local safeCoords = safeLocations[storeid]
 	if #(vector3(safeCoords["x"],safeCoords["y"],safeCoords["z"]) - GetEntityCoords(PlayerPedId())) < 14.0 then
-	if mathfunc < 25 then
+	if mathfunc < 15 then
 		TriggerEvent("player:receiveItem","heistusb4",1)
 	end
 	TriggerEvent("DoLongHudText" ,'Safe Opened!', 1)

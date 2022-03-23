@@ -2,7 +2,9 @@ local tasking = false
 local drugStorePed = 0
 local cashPayment = 420
 local vehspawn = false
-
+local rnd = 0
+local blip = 0
+local deliveryPed = 0
 local oxyVehicle = 0
 local PlayerData = {}
 local cooldown = false
@@ -76,12 +78,6 @@ local oxyStoreLocation =  { ['x'] = 591.26,['y'] = 2744.11,['z'] = 42.05,['h'] =
 local oxyStorePedLocation = { ['x'] = 590.89,['y'] = 2747.82,['z'] = 15.86,['h'] = 177.65, ['info'] = ' lol' }
 
 
-
-RegisterNetEvent('oxydelivery:setDeliveryPed')
-AddEventHandler('oxydelivery:setDeliveryPed', function(ped)
-	deliveryPed = ped
-end)
-
 function Draw3DText(x,y,z, text)
     local factor = string_len(text) * inv_factor
     local onScreen,_x,_y = _in(0x34E82F05DF2974F5, x, y, z, _f, _f, _r) -- GetScreenCoordFromWorldCoord
@@ -99,28 +95,77 @@ function Draw3DText(x,y,z, text)
     end
 end
 
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(5)
+function deleteOxyPed()
+	if DoesEntityExist(deliveryPed) then 
+		FreezeEntityPosition(deliveryPed, false)
+		SetPedKeepTask(deliveryPed, false)
+		TaskSetBlockingOfNonTemporaryEvents(deliveryPed, false)
+		SetEntityInvincible(deliveryPed, false)
+		ClearPedTasks(deliveryPed)
+		TaskWanderStandard(deliveryPed, 10.0, 10)
+		SetPedAsNoLongerNeeded(deliveryPed)
+		DecorSetBool(deliveryPed, 'ScriptedPed', false)
+	end
+end
+    
+function createOxyPed(rnd)
 
-        local pedCoords = GetEntityCoords(PlayerPedId())
-        local objectId = GetClosestObjectOfType(pedCoords, 2.0, GetHashKey("bkr_prop_meth_table01a"), false)
-        if DoesEntityExist(objectId) and IsControlJustPressed(0, 38) then
-            print("Object Is Near: " .. objectId)
-			TriggerServerEvent("test:forcedelete", ObjToNet(objectId))
-        end
-        
+    local hashKey = `a_m_y_stwhi_01`
+
+    local pedType = 5
+
+    RequestModel(hashKey)
+    while not HasModelLoaded(hashKey) do
+        RequestModel(hashKey)
+        Citizen.Wait(100)
     end
-end)
+	
+	deliveryPed = CreatePed(pedType, hashKey, OxyDropOffs[rnd]["x"],OxyDropOffs[rnd]["y"],OxyDropOffs[rnd]["z"], OxyDropOffs[rnd]["h"], 0, 0)
+	
+	DecorSetBool(deliveryPed, 'ScriptedPed', true)
+    ClearPedTasks(deliveryPed)
+    ClearPedSecondaryTask(deliveryPed)
+    TaskSetBlockingOfNonTemporaryEvents(deliveryPed, true)
+    SetPedFleeAttributes(deliveryPed, 0, 0)
+    SetPedCombatAttributes(deliveryPed, 17, 1)
+	SetEntityInvincible(deliveryPed, true)
+	FreezeEntityPosition(deliveryPed, true)
+    SetPedSeeingRange(deliveryPed, 0.0)
+    SetPedHearingRange(deliveryPed, 0.0)
+    SetPedAlertness(deliveryPed, 0)
+    SetPedKeepTask(deliveryPed, true)
+end
 
-RegisterNetEvent('deleteobject:allow')
-AddEventHandler('deleteobject:allow', function(PackageObject)
+function CreateDrugStorePed()
+    if DoesEntityExist(drugStorePed) then
+		return
+	end
 
-        if NetworkHasControlOfNetworkId(PackageObject) then
-            DeleteObject(NetToObj(PackageObject))
-        end
-end)
+	local hashKey = `a_m_y_stwhi_02`
+	local pedType = GetPedType(hashKey)
+    RequestModel(hashKey)
+    while not HasModelLoaded(hashKey) do
+        RequestModel(hashKey)
+        Citizen.Wait(100)
+    end
 
+	ped = CreatePed(pedType, hashKey, oxyStorePedLocation["x"],oxyStorePedLocation["y"],oxyStorePedLocation["z"], 270.0, 1, 1)
+	SetEntityHeading(ped, 180.24)
+	DecorSetBool(ped, 'ScriptedPed', true)
+    ClearPedTasks(ped)
+    ClearPedSecondaryTask(ped)
+    TaskSetBlockingOfNonTemporaryEvents(ped, true)
+    SetPedFleeAttributes(ped, 0, 0)
+    SetPedCombatAttributes(ped, 17, 1)
+	FreezeEntityPosition(ped, true)
+	SetEntityInvincible(ped, true)
+	SetEntityAsMissionEntity(ped, true, true)
+    SetPedSeeingRange(ped, 0.0)
+    SetPedHearingRange(ped, 0.0)
+    SetPedAlertness(ped, 0)
+    SetPedKeepTask(ped, true)
+	drugStorePed = ped
+end
 
 function buildDrugStore()
 	DoScreenFadeOut(1)
@@ -187,10 +232,6 @@ function buildDrugStore()
 end
 
 
-local rnd = 0
-local blip = 0
-local deliveryPed = 0
-
 
 local carpick = {
     [1] = "felon",
@@ -215,7 +256,6 @@ local carspawns = {
 
 function CreateOxyVehicle()
 	if DoesEntityExist(oxyVehicle) then
-
 	    SetVehicleHasBeenOwnedByPlayer(oxyVehicle,false)
 		SetEntityAsNoLongerNeeded(oxyVehicle)
 		DeleteEntity(oxyVehicle)
@@ -275,31 +315,6 @@ function CreateBlip()
     EndTextCommandSetBlipName(blip)
 end
 
-function loadAnimDict( dict )
-    while ( not HasAnimDictLoaded( dict ) ) do
-        RequestAnimDict( dict )
-        Citizen.Wait( 5 )
-    end
-end 
-
-function searchPockets()
-    if ( DoesEntityExist( deliveryPed ) and not IsEntityDead( deliveryPed ) ) then 
-        loadAnimDict( "random@mugging4" )
-        TaskPlayAnim( deliveryPed, "random@mugging4", "agitated_loop_a", 8.0, 1.0, -1, 16, 0, 0, 0, 0 )
-    end
-end
-
-function giveAnim()
-    if ( DoesEntityExist( deliveryPed ) and not IsEntityDead( deliveryPed ) ) then 
-        loadAnimDict( "mp_safehouselost@" )
-        if ( IsEntityPlayingAnim( deliveryPed, "mp_safehouselost@", "package_dropoff", 3 ) ) then 
-            TaskPlayAnim( deliveryPed, "mp_safehouselost@", "package_dropoff", 8.0, 1.0, -1, 16, 0, 0, 0, 0 )
-        else
-            TaskPlayAnim( deliveryPed, "mp_safehouselost@", "package_dropoff", 8.0, 1.0, -1, 16, 0, 0, 0, 0 )
-        end     
-    end
-end
-
 
 local bandprice = 80
 local rollcashprice = 40
@@ -310,22 +325,23 @@ function DoDropOff()
 	cashPayment = 250 + math.random(350)
 	local success = true
 
-	searchPockets()
-
 	Wait(1500)
 
 	PlayAmbientSpeech1(deliveryPed, "Chat_State", "Speech_Params_Force")
 
 	if DoesEntityExist(deliveryPed) and not IsEntityDead(deliveryPed) then
-		if math.random(15) == 1 then 
+		if math.random(25) == 1 then 
 			TriggerEvent( "player:receiveItem", "safecrackingkit", 1 )
 		end
 		
-		if math.random(49) == 49 then
+		if math.random(50) == 1 then
+			TriggerEvent( "player:receiveItem", "vpnxj", 1 )
+		end
+
+		if math.random(50) == 1 then
 			TriggerEvent( "player:receiveItem", "heistusb4", 1 )
 		end
 
-		
 		if math.random(250) == 69 then
 			TriggerEvent( "player:receiveItem", "heistlaptop3", 1 )
 		end
@@ -354,17 +370,20 @@ function DoDropOff()
 			end
 		end
 
+		if math.random(1,4) == 1 then
+			TriggerEvent( "player:receiveItem", "oxy", math.random(1,3) )
+		end
+
 		if pog == false then
-			TriggerEvent("DoLongHudText","Thanks, no extra sauce though?!")
+			TriggerEvent( "player:receiveItem", "oxy", math.random(3,6) )
 		end
-
-		if math.random(100) > 45 then
-			TriggerEvent( "player:receiveItem", "oxy", math.random(5) )
-		end
-
-		
+			
 		if math.random(100) >= 7 then
-			cashPayment = cashPayment + math.random(250,1000)
+			if math.random(1,2) == 1 then
+				cashPayment = cashPayment + math.random(250,1000)
+			else
+				TriggerEvent( "player:receiveItem", "oxy", math.random(6, 10))
+			end
 		end
 
 		
@@ -385,14 +404,12 @@ function DoDropOff()
 	end
 
 	if success then
-		searchPockets()
 		local counter = math.random(100,300)
 		while counter > 0 do
 			local crds = GetEntityCoords(deliveryPed)
 			counter = counter - 1
 			Citizen.Wait(1)
 		end
-		giveAnim()
 	end
 
 	local crds = GetEntityCoords(deliveryPed)
@@ -415,43 +432,10 @@ function DoDropOff()
 	if success then
 		Citizen.Wait(2000)
 		DeleteBlip()
-		TriggerEvent("DoLongHudText", "I got the call in, delivery was on point, go await the next one! ",1)
-	else
-		DeleteBlip()
-		TriggerEvent("DoLongHudText","The drop off failed - you need stolen items.",2)
-	end
-
-	TriggerServerEvent('oxydelivery:deleteOxyPed', deliveryPed)
-end
-
-local fighting = 0
-function startAiFight()
-
-    if fighting > 0 then
-        return
-    end    
-    DeleteBlip()
-    local killerPed = deliveryPed  
-    fighting = 10000
-
-    TaskCombatPed(deliveryPed, PlayerPedId(), 0, 16) 
-    Citizen.Wait(700) 
-
-    while fighting > 0 do
-        Citizen.Wait(1)
-        fighting = fighting - 1
-        if IsEntityDead(killerPed) then          
-            SearchPockets(killerPed)
-            fighting = 0
-        end
-        if not DoesEntityExist(killerPed) or IsEntityDead(PlayerPedId()) or fighting < 10 then
-            ClearPedTasks(killerPed)
-            Citizen.Wait(10000)
-            fighting = 0
-        end
-    fighting = 0
+		TriggerEvent("DoLongHudText", "I got the call in, delivery was on point, go await the next one! ", 1)
 	end
 end
+
 
 function DrawText3Ds(x,y,z, text)
     local onScreen,_x,_y=World3dToScreen2d(x,y,z)
@@ -469,6 +453,7 @@ function DrawText3Ds(x,y,z, text)
 end
 
 
+
 RegisterNetEvent("oxydelivery:client")
 AddEventHandler("oxydelivery:client", function()
 	if tasking then
@@ -478,11 +463,13 @@ AddEventHandler("oxydelivery:client", function()
 	rnd = math.random(1,#OxyDropOffs)
 
 	CreateBlip()
-
+ 
 	local pedCreated = false
 
 	tasking = true
 	local toolong = 600000
+
+
 	while tasking do
 		toolong = toolong - 1
 		Citizen.Wait(1)
@@ -492,10 +479,12 @@ AddEventHandler("oxydelivery:client", function()
 		local dstcheck2 = #(plycoords - oxyVehCoords) 
 
 		local veh = GetVehiclePedIsIn(PlayerPedId(),false)
-		if dstcheck < 40.0 and not pedCreated and (oxyVehicle == veh or dstcheck2 < 15.0) then
+		if dstcheck < 50.0 and not pedCreated and (oxyVehicle == veh or dstcheck2 < 15.0) then
+			
+			
+
+			createOxyPed(rnd)
 			pedCreated = true
-			TriggerServerEvent('oxydelivery:deleteOxyPed', deliveryPed)
-			TriggerServerEvent('oxydelivery:createOxyPed')
 			TriggerEvent("DoLongHudText", "You are close to the drop off.")
 		end
 		if toolong < 0 then
@@ -505,34 +494,42 @@ AddEventHandler("oxydelivery:client", function()
 			tasking = false
 			TriggerEvent("chatMessage", "EMAIL - Oxy Deliveries", 8, "You are no longer selling oxy.")
 		end
-		if dstcheck < 2.0 and pedCreated then
 
+		if dstcheck < 2.0 and pedCreated then
+			
 			local crds = GetEntityCoords(deliveryPed)
 			DrawText3Ds(crds["x"],crds["y"],crds["z"], "[E]")  
 
 			if IsControlJustReleased(0,38) then
-				if not IsPedInVehicle(PlayerPedId(),oxyVehicle,false) then
-					local pdping = math.random(0,100)
-					if pdping <= 33 then
-						TriggerEvent("drp-dispatch:oxyping")
-					end
-					TaskTurnPedToFaceEntity(deliveryPed, PlayerPedId(), 1.0)
-					local finished = exports["drp-taskbar"]:taskBar(22500, "Dropping Off")
-					if finished == 100 then	
-						PlayAmbientSpeech1(deliveryPed, "Generic_Hi", "Speech_Params_Force")
-						DoDropOff()
-					end
+				if not IsPedInVehicle(PlayerPedId(), oxyVehicle, false) then
+					if exports["drp-inventory"]:hasEnoughOfItem("darkmarketdeliveries", 1 ,false) then
+
+						local pdping = math.random(0, 100)
+						if pdping <= 30 then
+							TriggerEvent("drp-dispatch:oxyping")
+						end
+						TaskTurnPedToFaceEntity(deliveryPed, PlayerPedId(), 1.0)
+						local finished = exports["drp-taskbar"]:taskBar(22500, "Dropping Off")
+						if finished == 100 then	
+							PlayAmbientSpeech1(deliveryPed, "Generic_Hi", "Speech_Params_Force")
+							DoDropOff()
+							DeleteBlip()
+							deleteOxyPed()
+						end
 					
-					tasking = false
+						tasking = false
+					else
+						TriggerEvent("DoLongHudText","You really lost your Delivery List I gave you?")
+					end
 				else 
 					TriggerEvent("DoLongHudText","You cannot sell out of your Car Bozo")
 				end
-			end
+			end	
 		end
 	end
-	DeleteCreatedPed()
-	DeleteBlip()
 end)
+
+
 
 Citizen.CreateThread(function()
     while true do
@@ -553,7 +550,7 @@ Citizen.CreateThread(function()
 			DrawText3Ds(oxyStoreLocation["x"],oxyStoreLocation["y"],oxyStoreLocation["z"], "[E] to Enter") 
 			if IsControlJustReleased(0,38) then
 				buildDrugStore() -- has to be clientside 
-				TriggerServerEvent('oxydelivery:CreateDrugStorePed')
+				CreateDrugStorePed()
 				Citizen.Wait(1000)
 			end
 		end		
@@ -564,35 +561,47 @@ Citizen.CreateThread(function()
 				TriggerServerEvent("oxydelivery:server",1500)
 				Citizen.Wait(1000)
 			end
-		end
-		
-		if cooldown and oxyCheckin < 2 then
+		elseif oxyCheckin < 2 and cooldown == true then
 			if IsControlJustReleased(0,38) then
 				TriggerEvent("DoLongHudText", "I dont have any work for you right now.", 2)
+				Citizen.Wait(1000)
 			end
-    	end
+		end
 	end
 end)
 
-Citizen.CreateThread(function()
 
+Citizen.CreateThread(function()
     while true do
 		Citizen.Wait(2000)
 		if cooldown then
-			if (not DoesEntityExist(oxyVehicle) or GetVehicleEngineHealth(oxyVehicle) < 100.0) and vehspawn then
+			if (not DoesEntityExist(oxyVehicle) or GetVehicleEngineHealth(oxyVehicle) <= 100.0) and vehspawn then
 				tasking = false
+				SetVehicleHasBeenOwnedByPlayer(oxyVehicle,false)
+				SetEntityAsNoLongerNeeded(oxyVehicle)
 				TriggerEvent("chatMessage", "EMAIL - Drug Deliveries", 8, "Dude! You fucked the car up, I canceled your run, asshole! ")
+				DeleteBlip()
 				Citizen.Wait(1200000)
 				cooldown = false
 			else
 				if tasking then
 					Citizen.Wait(30000)
 				else
-					TriggerEvent("oxydelivery:client")  
-					salecount = salecount + 1
-					if salecount == 6 then
-						TriggerEvent("chatMessage", "EMAIL - Oxy Deliveries", 8, "You are no longer selling oxy.")
-						Citizen.Wait(1200000) -- 20 minutes
+					if exports["drp-inventory"]:hasEnoughOfItem("darkmarketdeliveries", 1 ,false) then
+						TriggerEvent("oxydelivery:client")  
+						salecount = salecount + 1
+						if salecount == 7 then
+							SetVehicleHasBeenOwnedByPlayer(oxyVehicle,false)
+							SetEntityAsNoLongerNeeded(oxyVehicle)
+							TriggerEvent("chatMessage", "EMAIL - Oxy Deliveries", 8, "You are no longer selling oxy.")
+							Citizen.Wait(1200000) -- 20 minutes
+							cooldown = false
+						end
+					else
+						SetVehicleHasBeenOwnedByPlayer(oxyVehicle,false)
+						SetEntityAsNoLongerNeeded(oxyVehicle)
+						TriggerEvent("DoLongHudText","You really lost your Delivery List I gave you?")
+						Citizen.Wait(1200000)
 						cooldown = false
 					end
 				end			

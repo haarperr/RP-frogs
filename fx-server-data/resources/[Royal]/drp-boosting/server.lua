@@ -91,11 +91,29 @@ AddEventHandler("ls:updateBoostLevel", function(boostClass)
     if result[1] ~= nil then
       local xp = result[1].xp
       local level = result[1].level
-      xp = xp + math.random(5, 30)
-      if xp >= 100 and level < 5 then
+      xp = xp + math.random(3, 15)
+
+      if level == 2 then
+        xp = xp + math.random(1, 5)
+      end
+
+      if level == 3 then
+        xp = xp + math.random(5, 10)
+      end
+
+      if level == 4 then
+        xp = xp + math.random(10, 15)
+      end
+
+      if level == 5 then
+        xp = xp + math.random(15, 20)
+      end
+
+      if xp >= 200 and level < 5 then
         level = level + 1
         xp = 0
       end
+      
       exports.ghmattimysql:execute("UPDATE boost_levels SET xp = @xp WHERE id = @id", {
         ['xp'] = xp,
         ['id'] = cid

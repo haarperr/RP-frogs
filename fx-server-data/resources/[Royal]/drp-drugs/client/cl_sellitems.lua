@@ -6,7 +6,7 @@ function doSell(itemname, price)
 			if exports["drp-inventory"]:getQuantity(itemname) >= 1 then
 				ClearPedTasksImmediately(PlayerPedId())
 				TriggerEvent('inventory:removeItem', itemname, toSell)
-                TriggerServerEvent( 'sk1c2:payout', price*toSell)
+                TriggerServerEvent( 'sk1c2:payout', (price/100*90)*toSell)
 
                 lucky = math.random(1,100)
                 if lucky == 1 then
@@ -71,7 +71,7 @@ end)
 
 RegisterNetEvent('selloxy')
 AddEventHandler('selloxy', function()
-    doSell("oxy", math.random(40, 55))
+    doSell("oxy", math.random(60, 80))
 end)
 
 --#########--
