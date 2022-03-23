@@ -490,17 +490,16 @@ AddEventHandler("oxydelivery:client", function()
 		local oxyVehCoords = GetEntityCoords(oxyVehicle)
 		local dstcheck2 = #(plycoords - oxyVehCoords) 
 
+
 		local veh = GetVehiclePedIsIn(PlayerPedId(),false)
 		if dstcheck < 40.0 and not pedCreated and (oxyVehicle == veh or dstcheck2 < 15.0) then
 			pedCreated = true
-			deleteOxyPed()
 
 			RequestModel(hashKey)
 			while not HasModelLoaded(hashKey) do
 				RequestModel(hashKey)
 				Citizen.Wait(100)
 			end
-
 			createOxyPed()
 			TriggerEvent("DoLongHudText", "You are close to the drop off.")
 		end
