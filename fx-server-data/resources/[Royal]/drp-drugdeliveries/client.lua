@@ -331,15 +331,18 @@ function DoDropOff()
 	PlayAmbientSpeech1(deliveryPed, "Chat_State", "Speech_Params_Force")
 
 	if DoesEntityExist(deliveryPed) and not IsEntityDead(deliveryPed) then
-		if math.random(15) == 1 then 
+		if math.random(20) == 1 then 
 			TriggerEvent( "player:receiveItem", "safecrackingkit", 1 )
 		end
 		
-		if math.random(49) == 49 then
+		if math.random(50) == 1 then
+			TriggerEvent( "player:receiveItem", "vpnxj", 1 )
+		end
+
+		if math.random(75) == 69 then
 			TriggerEvent( "player:receiveItem", "heistusb4", 1 )
 		end
 
-		
 		if math.random(250) == 69 then
 			TriggerEvent( "player:receiveItem", "heistlaptop3", 1 )
 		end
