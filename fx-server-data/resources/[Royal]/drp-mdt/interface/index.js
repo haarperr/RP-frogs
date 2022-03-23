@@ -3817,11 +3817,11 @@ $(document).ready(() => {
         } else if (e.type == "callAttach") {
             $(".active-calls-item").filter("[data-id='" + e.callid + "']").children().children().find(".call-radio").html(e.data)
         } else if (e.type == "getAllLogs") {
-            let table = e.data
+            let table = e.value
             $(".stafflogs-container").empty();
             $.each(table, function (index, value) {
                 $('.stafflogs-container').prepend(`<p style="margin : 0; padding-top:0.8vh;">• ${value.log} <span style="color: grey; float: right; padding-right: 1vh;">(${timeAgo(Number(value.time))})</span></p>`)
-            })
+            }) 
         } else if (e.type == "getActiveUnits") {
             var PoliceCount = 0
             var EmsCount = 0
