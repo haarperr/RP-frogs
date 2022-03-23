@@ -1259,8 +1259,8 @@ Citizen.CreateThread(function()
         maxZ=26
     })
 
-    exports["drp-polytarget"]:AddBoxZone("paintball",  vector3(2365.3, 2595.09, 58.818), 0.8, 0.2, {
-        minZ=58,
+    exports["drp-polytarget"]:AddBoxZone("paintball",  vector3(2365.3, 2595.09, 58.818), 1.8, 1.2, {
+        minZ=57,
         maxZ=60
     })
 
@@ -3548,7 +3548,7 @@ Citizen.CreateThread(function()
 
     exports["drp-interact"]:AddPeekEntryByPolyTarget("paintball", {{
         event = "paintballshop",
-        id = "paintballshop",
+        id = "paintball",
         icon = "circle",
         label = "Get Gear",
         parameters = {},
