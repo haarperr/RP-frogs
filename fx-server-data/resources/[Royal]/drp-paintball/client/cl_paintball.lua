@@ -16,7 +16,7 @@ AddEventHandler('paintballshop', function()
     TriggerEvent('drp-context:sendMenu', {
         {
             id = 1,
-            header = "Paintball Supplies",
+            header = "Paintball Menu",
             txt = ""
         },
         {
@@ -35,10 +35,18 @@ AddEventHandler('paintballshop', function()
                 event = "getpaintballs"
             }
         },
+        {
+          id = 3,
+          header = "Clothing Menu",
+          txt = "",
+          params = {
+              event = "royal:clothing:admin"
+          }
+      },
         
     })
 end)
-
+ 
 RegisterNetEvent('getpaintballgun')
 AddEventHandler('getpaintballgun', function()
     if exports['drp-inventory']:hasEnoughOfItem('-2009644972', 1) then
@@ -57,7 +65,7 @@ AddEventHandler('getpaintballs', function()
     end
 end)
 
-RegisterCommand("paintballgear", function()
+RegisterCommand("pbmenu", function()
   if inArena then
   TriggerEvent("paintballshop")
 else
