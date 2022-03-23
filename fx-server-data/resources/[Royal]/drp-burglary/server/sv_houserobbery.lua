@@ -15,7 +15,7 @@ local robbableItems = {
     [14] = {chance = 5, id = 'stolenoakleys', quantity = math.random(1)},
     [15] = {chance = 5, id = 'stolenpsp', quantity = math.random(1)},
     [16] = {chance = 5, id = 'stolencasiowatch', quantity = math.random(1)},
-    [17] = {chance = 10, id = 'safecrackingkit', quantity = math.random(1)},
+    [17] = {chance = 15, id = 'safecrackingkit', quantity = math.random(1)},
     [18] = {chance = 10, id = 'rolexwatch', quantity = math.random(1)},
     [19] = {chance = 11, id = 'steel', quantity = 1},
     [20] = {chance = 10, id = 'lockpick', quantity = math.random(1)},
