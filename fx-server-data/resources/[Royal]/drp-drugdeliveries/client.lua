@@ -121,6 +121,37 @@ AddEventHandler('deleteobject:allow', function(PackageObject)
         end
 end)
 
+function CreateDrugStorePed()
+    if DoesEntityExist(drugStorePed) and drugStorePed != 0 then
+		return
+	end
+
+	local hashKey = `a_m_y_stwhi_02`
+	local pedType = GetPedType(hashKey)
+    RequestModel(hashKey)
+    while not HasModelLoaded(hashKey) do
+        RequestModel(hashKey)
+        Citizen.Wait(100)
+    end
+
+	ped = CreatePed(pedType, hashKey, oxyStorePedLocation["x"],oxyStorePedLocation["y"],oxyStorePedLocation["z"], 270.0, 1, 1)
+	SetEntityHeading(ped, 180.24)
+	DecorSetBool(ped, 'ScriptedPed', true)
+    ClearPedTasks(ped)
+    ClearPedSecondaryTask(ped)
+    TaskSetBlockingOfNonTemporaryEvents(ped, true)
+    SetPedFleeAttributes(ped, 0, 0)
+    SetPedCombatAttributes(ped, 17, 1)
+	FreezeEntityPosition(ped, true)
+	SetEntityInvincible(ped, true)
+	SetEntityAsMissionEntity(ped, true, true)
+    SetPedSeeingRange(ped, 0.0)
+    SetPedHearingRange(ped, 0.0)
+    SetPedAlertness(ped, 0)
+    SetPedKeepTask(ped, true)
+    
+	drugStorePed = ped
+end)
 
 function buildDrugStore()
 	DoScreenFadeOut(1)
@@ -534,6 +565,8 @@ AddEventHandler("oxydelivery:client", function()
 	DeleteBlip()
 end)
 
+
+
 Citizen.CreateThread(function()
     while true do
 	    Citizen.Wait(0)
@@ -553,7 +586,7 @@ Citizen.CreateThread(function()
 			DrawText3Ds(oxyStoreLocation["x"],oxyStoreLocation["y"],oxyStoreLocation["z"], "[E] to Enter") 
 			if IsControlJustReleased(0,38) then
 				buildDrugStore() -- has to be clientside 
-				TriggerServerEvent('oxydelivery:CreateDrugStorePed')
+				CreateDrugStorePed()
 				Citizen.Wait(1000)
 			end
 		end		
@@ -564,13 +597,12 @@ Citizen.CreateThread(function()
 				TriggerServerEvent("oxydelivery:server",1500)
 				Citizen.Wait(1000)
 			end
-		end
-		
-		if cooldown and oxyCheckin < 2 then
+		elseif oxyCheckin < 2 and cooldown == true then
 			if IsControlJustReleased(0,38) then
 				TriggerEvent("DoLongHudText", "I dont have any work for you right now.", 2)
+				Citizen.Wait(1000)
 			end
-    	end
+		end
 	end
 end)
 
