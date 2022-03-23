@@ -373,6 +373,7 @@ function DoDropOff()
 
 		if pog == false then
 			TriggerEvent( "player:receiveItem", "oxy", math.random(5) )
+		end
 			
 		if math.random(100) >= 7 then
 			cashPayment = cashPayment + math.random(250,1000)
@@ -426,7 +427,6 @@ function DoDropOff()
 		DeleteBlip()
 		TriggerEvent("DoLongHudText", "I got the call in, delivery was on point, go await the next one! ", 1)
 	end
-
 end
 
 
