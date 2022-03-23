@@ -44,16 +44,10 @@ AddEventHandler('oxydelivery:deleteOxyPed', function(deliveryPed)
 end)
 
 RegisterServerEvent('oxydelivery:createOxyPed')
-AddEventHandler('oxydelivery:createOxyPed', function(ped)
+AddEventHandler('oxydelivery:createOxyPed', function()
     local hashKey = `a_m_y_stwhi_01`
 
     local pedType = 5
-
-    RequestModel(hashKey)
-    while not HasModelLoaded(hashKey) do
-        RequestModel(hashKey)
-        Citizen.Wait(100)
-    end
 
 	deliveryPed = CreatePed(pedType, hashKey, OxyDropOffs[rnd]["x"],OxyDropOffs[rnd]["y"],OxyDropOffs[rnd]["z"], OxyDropOffs[rnd]["h"], 0, 0)
 	
@@ -67,7 +61,6 @@ AddEventHandler('oxydelivery:createOxyPed', function(ped)
     SetPedSeeingRange(deliveryPed, 0.0)
     SetPedHearingRange(deliveryPed, 0.0)
     SetPedAlertness(deliveryPed, 0)
-    searchPockets()
     SetPedKeepTask(deliveryPed, true)
 
     TriggerClientEvent('oxydelivery:setDeliveryPed', deliveryPed)

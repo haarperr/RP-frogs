@@ -306,31 +306,6 @@ function CreateBlip()
     EndTextCommandSetBlipName(blip)
 end
 
-function loadAnimDict( dict )
-    while ( not HasAnimDictLoaded( dict ) ) do
-        RequestAnimDict( dict )
-        Citizen.Wait( 5 )
-    end
-end 
-
-function searchPockets()
-    if ( DoesEntityExist( deliveryPed ) and not IsEntityDead( deliveryPed ) ) then 
-        loadAnimDict( "random@mugging4" )
-        TaskPlayAnim( deliveryPed, "random@mugging4", "agitated_loop_a", 8.0, 1.0, -1, 16, 0, 0, 0, 0 )
-    end
-end
-
-function giveAnim()
-    if ( DoesEntityExist( deliveryPed ) and not IsEntityDead( deliveryPed ) ) then 
-        loadAnimDict( "mp_safehouselost@" )
-        if ( IsEntityPlayingAnim( deliveryPed, "mp_safehouselost@", "package_dropoff", 3 ) ) then 
-            TaskPlayAnim( deliveryPed, "mp_safehouselost@", "package_dropoff", 8.0, 1.0, -1, 16, 0, 0, 0, 0 )
-        else
-            TaskPlayAnim( deliveryPed, "mp_safehouselost@", "package_dropoff", 8.0, 1.0, -1, 16, 0, 0, 0, 0 )
-        end     
-    end
-end
-
 
 local bandprice = 80
 local rollcashprice = 40
@@ -340,8 +315,6 @@ local markedbillsprice = 500
 function DoDropOff()
 	cashPayment = 250 + math.random(350)
 	local success = true
-
-	searchPockets()
 
 	Wait(1500)
 
@@ -416,14 +389,12 @@ function DoDropOff()
 	end
 
 	if success then
-		searchPockets()
 		local counter = math.random(100,300)
 		while counter > 0 do
 			local crds = GetEntityCoords(deliveryPed)
 			counter = counter - 1
 			Citizen.Wait(1)
 		end
-		giveAnim()
 	end
 
 	local crds = GetEntityCoords(deliveryPed)
@@ -455,34 +426,6 @@ function DoDropOff()
 	TriggerServerEvent('oxydelivery:deleteOxyPed', deliveryPed)
 end
 
-local fighting = 0
-function startAiFight()
-
-    if fighting > 0 then
-        return
-    end    
-    DeleteBlip()
-    local killerPed = deliveryPed  
-    fighting = 10000
-
-    TaskCombatPed(deliveryPed, PlayerPedId(), 0, 16) 
-    Citizen.Wait(700) 
-
-    while fighting > 0 do
-        Citizen.Wait(1)
-        fighting = fighting - 1
-        if IsEntityDead(killerPed) then          
-            SearchPockets(killerPed)
-            fighting = 0
-        end
-        if not DoesEntityExist(killerPed) or IsEntityDead(PlayerPedId()) or fighting < 10 then
-            ClearPedTasks(killerPed)
-            Citizen.Wait(10000)
-            fighting = 0
-        end
-    fighting = 0
-	end
-end
 
 function DrawText3Ds(x,y,z, text)
     local onScreen,_x,_y=World3dToScreen2d(x,y,z)
@@ -498,6 +441,7 @@ function DrawText3Ds(x,y,z, text)
     local factor = (string.len(text)) / 370
     DrawRect(_x,_y+0.0125, 0.015+ factor, 0.03, 41, 11, 41, 68)
 end
+
 
 
 RegisterNetEvent("oxydelivery:client")
@@ -526,6 +470,15 @@ AddEventHandler("oxydelivery:client", function()
 		if dstcheck < 40.0 and not pedCreated and (oxyVehicle == veh or dstcheck2 < 15.0) then
 			pedCreated = true
 			TriggerServerEvent('oxydelivery:deleteOxyPed', deliveryPed)
+
+			local hashKey = `a_m_y_stwhi_01`
+		
+			RequestModel(hashKey)
+			while not HasModelLoaded(hashKey) do
+				RequestModel(hashKey)
+				Citizen.Wait(100)
+			end
+
 			TriggerServerEvent('oxydelivery:createOxyPed')
 			TriggerEvent("DoLongHudText", "You are close to the drop off.")
 		end
