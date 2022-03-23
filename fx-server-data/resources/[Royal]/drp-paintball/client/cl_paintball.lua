@@ -286,6 +286,7 @@ end)
 
 
 
+
 -- Citizen.CreateThread(function()
 --   local cInteriorId = GetInteriorAtCoords(5505.03, 5397.68, 590.0)
 --   ActivateInteriorEntitySet(cInteriorId, "set_arena_dirt")
