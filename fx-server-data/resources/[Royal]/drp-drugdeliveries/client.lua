@@ -602,6 +602,7 @@ Citizen.CreateThread(function()
 end)
 
 
+
 RegisterNetEvent("oxydelivery:startDealing")
 AddEventHandler("oxydelivery:startDealing", function()
 	cooldown = true
