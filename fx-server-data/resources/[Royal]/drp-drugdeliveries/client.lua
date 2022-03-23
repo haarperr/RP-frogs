@@ -414,10 +414,9 @@ function DoDropOff()
 	if success then
 		Citizen.Wait(2000)
 		DeleteBlip()
-		TriggerEvent("DoLongHudText", "I got the call in, delivery was on point, go await the next one! ",1)
+		TriggerEvent("DoLongHudText", "I got the call in, delivery was on point, go await the next one! ", 1)
 	end
 
-	TriggerServerEvent('oxydelivery:deleteOxyPed', deliveryPed)
 end
 
 
@@ -498,6 +497,8 @@ AddEventHandler("oxydelivery:client", function()
 					local finished = exports["drp-taskbar"]:taskBar(22500, "Dropping Off")
 					if finished == 100 then	
 						PlayAmbientSpeech1(deliveryPed, "Generic_Hi", "Speech_Params_Force")
+						DeleteBlip()
+						TriggerServerEvent('oxydelivery:deleteOxyPed', deliveryPed)
 						DoDropOff()
 					end
 					
@@ -507,8 +508,6 @@ AddEventHandler("oxydelivery:client", function()
 				end
 			end	
 		end
-	TriggerServerEvent("oxydelivery")
-	DeleteBlip()
 	end
 end)
 
