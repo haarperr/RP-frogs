@@ -109,22 +109,23 @@ end)
 
 function deleteOxyPed()
 	if DoesEntityExist(deliveryPed) then 
-        FreezeEntityPosition(deliveryPed, false)
-        SetPedKeepTask(deliveryPed, false)
-        TaskSetBlockingOfNonTemporaryEvents(deliveryPed, false)
+		FreezeEntityPosition(deliveryPed, false)
+		SetPedKeepTask(deliveryPed, false)
+		TaskSetBlockingOfNonTemporaryEvents(deliveryPed, false)
 		SetEntityInvincible(deliveryPed, false)
-        ClearPedTasks(deliveryPed)
-        TaskWanderStandard(deliveryPed, 10.0, 10)
-        SetPedAsNoLongerNeeded(deliveryPed)
-        DecorSetBool(deliveryPed, 'ScriptedPed', false)
-		
-        Citizen.Wait(20000)
-        DeletePed(deliveryPed)
-    end
-end
+		ClearPedTasks(deliveryPed)
+		TaskWanderStandard(deliveryPed, 10.0, 10)
+		SetPedAsNoLongerNeeded(deliveryPed)
+		DecorSetBool(deliveryPed, 'ScriptedPed', false)
 
+		Citizen.Wait(30000)
+		DeletePed(deliveryPed)
+	end
+end
+    
 function createOxyPed(rnd)
-	local hashKey = `a_m_y_stwhi_01`
+
+    local hashKey = `a_m_y_stwhi_01`
 
     local pedType = 5
 
@@ -133,7 +134,7 @@ function createOxyPed(rnd)
         RequestModel(hashKey)
         Citizen.Wait(100)
     end
-
+	
 	deliveryPed = CreatePed(pedType, hashKey, OxyDropOffs[rnd]["x"],OxyDropOffs[rnd]["y"],OxyDropOffs[rnd]["z"], OxyDropOffs[rnd]["h"], 0, 0)
 	
 	DecorSetBool(deliveryPed, 'ScriptedPed', true)
@@ -142,17 +143,12 @@ function createOxyPed(rnd)
     TaskSetBlockingOfNonTemporaryEvents(deliveryPed, true)
     SetPedFleeAttributes(deliveryPed, 0, 0)
     SetPedCombatAttributes(deliveryPed, 17, 1)
-	FreezeEntityPosition(deliveryPed, true)
 	SetEntityInvincible(deliveryPed, true)
-	SetEntityAsMissionEntity(deliveryPed, true, true)
+	FreezeEntityPosition(deliveryPed, true)
     SetPedSeeingRange(deliveryPed, 0.0)
     SetPedHearingRange(deliveryPed, 0.0)
     SetPedAlertness(deliveryPed, 0)
     SetPedKeepTask(deliveryPed, true)
-    
-    
-    
-
 end
 
 function CreateDrugStorePed()
@@ -183,7 +179,6 @@ function CreateDrugStorePed()
     SetPedHearingRange(ped, 0.0)
     SetPedAlertness(ped, 0)
     SetPedKeepTask(ped, true)
-    
 	drugStorePed = ped
 end
 
@@ -491,20 +486,15 @@ AddEventHandler("oxydelivery:client", function()
 		local oxyVehCoords = GetEntityCoords(oxyVehicle)
 		local dstcheck2 = #(plycoords - oxyVehCoords) 
 
-		if DoesEntityExist(deliveryPed) == false then 
-			createOxyPed(rnd)
-		end
-
 		local veh = GetVehiclePedIsIn(PlayerPedId(),false)
 		if dstcheck < 40.0 and not pedCreated and (oxyVehicle == veh or dstcheck2 < 15.0) then
-			pedCreated = true
-
 			RequestModel(hashKey)
 			while not HasModelLoaded(hashKey) do
 				RequestModel(hashKey)
 				Citizen.Wait(100)
 			end
 			createOxyPed(rnd)
+			pedCreated = true
 			TriggerEvent("DoLongHudText", "You are close to the drop off.")
 		end
 		if toolong < 0 then
@@ -514,8 +504,9 @@ AddEventHandler("oxydelivery:client", function()
 			tasking = false
 			TriggerEvent("chatMessage", "EMAIL - Oxy Deliveries", 8, "You are no longer selling oxy.")
 		end
-		if dstcheck < 2.0 and pedCreated then
 
+		if dstcheck < 2.0 and pedCreated then
+			
 			local crds = GetEntityCoords(deliveryPed)
 			DrawText3Ds(crds["x"],crds["y"],crds["z"], "[E]")  
 
