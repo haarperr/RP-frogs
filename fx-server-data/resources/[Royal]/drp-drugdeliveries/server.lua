@@ -111,7 +111,6 @@ end
 
 RegisterServerEvent('oxydelivery:builddrugstore')
 AddEventHandler('oxydelivery:builddrugstore', function(oxyStoreLocation)
-	
 	Citizen.Wait(1000)
 
 	local generator = { x = oxyStoreLocation["x"] , y = oxyStoreLocation["y"], z = oxyStoreLocation["z"] - 35.0}
