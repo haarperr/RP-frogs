@@ -124,9 +124,12 @@ function deleteOxyPed()
 end
 
 function createOxyPed()
-	deliveryPed = CreateRandomPed(OxyDropOffs[rnd]["x"],OxyDropOffs[rnd]["y"],OxyDropOffs[rnd]["z"], OxyDropOffs[rnd]["h"])
+	local hashKey = `a_m_y_stwhi_01`
+
+    local pedType = 5
+
+	deliveryPed = CreatePed(pedType, hashKey, OxyDropOffs[rnd]["x"],OxyDropOffs[rnd]["y"],OxyDropOffs[rnd]["z"], OxyDropOffs[rnd]["h"], 0, 0)
 	
-	hashKey = deliveryPed.GetHashKey()
 	
 	RequestModel(hashKey)
     while not HasModelLoaded(hashKey) do
