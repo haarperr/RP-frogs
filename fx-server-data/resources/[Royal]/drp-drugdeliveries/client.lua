@@ -330,7 +330,7 @@ function DoDropOff()
 	PlayAmbientSpeech1(deliveryPed, "Chat_State", "Speech_Params_Force")
 
 	if DoesEntityExist(deliveryPed) and not IsEntityDead(deliveryPed) then
-		if math.random(20) == 1 then 
+		if math.random(25) == 1 then 
 			TriggerEvent( "player:receiveItem", "safecrackingkit", 1 )
 		end
 		
