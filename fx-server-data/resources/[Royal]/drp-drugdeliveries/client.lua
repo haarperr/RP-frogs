@@ -121,7 +121,7 @@ AddEventHandler('deleteobject:allow', function(PackageObject)
         end
 end)
 
-function CreateDrugStorePed()
+function CreateDrugStorePed(
     if DoesEntityExist(drugStorePed) then
 		return
 	end
