@@ -1259,8 +1259,8 @@ Citizen.CreateThread(function()
         maxZ=26
     })
 
-    exports["drp-polytarget"]:AddBoxZone("paintball",  vector3(2365.3, 2595.09, 57.818), 2.8, 2.2, {
-        minZ=55,
+    exports["drp-polytarget"]:AddBoxZone("paintball",  vector3(2365.3, 2595.09, 58.818), 2.8, 2.2, {
+        minZ=50,
         maxZ=70
     })
 
