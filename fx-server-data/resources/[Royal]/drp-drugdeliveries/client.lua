@@ -374,19 +374,18 @@ function DoDropOff()
 		if pog == false then
 			TriggerEvent( "player:receiveItem", "oxy", math.random(5) )
 			
-			if math.random(100) >= 7 then
-				cashPayment = cashPayment + math.random(250,1000)
-			end
-
-			
-			if math.random(100) >= 1 then
-				cashPayment = cashPayment + math.random(1000,1500)
-			end
-			
-			if math.random(1000) >= 1 then
-				cashPayment = cashPayment + math.random(10000,15000)
-			end 
+		if math.random(100) >= 7 then
+			cashPayment = cashPayment + math.random(250,1000)
 		end
+
+		
+		if math.random(100) >= 1 then
+			cashPayment = cashPayment + math.random(1000,1500)
+		end
+		
+		if math.random(1000) >= 1 then
+			cashPayment = cashPayment + math.random(10000,15000)
+		end 
 	end
 
 	local counter = math.random(50,200)
@@ -506,9 +505,9 @@ AddEventHandler("oxydelivery:client", function()
 						local finished = exports["drp-taskbar"]:taskBar(22500, "Dropping Off")
 						if finished == 100 then	
 							PlayAmbientSpeech1(deliveryPed, "Generic_Hi", "Speech_Params_Force")
+							DoDropOff()
 							DeleteBlip()
 							deleteOxyPed()
-							DoDropOff()
 						end
 					
 						tasking = false
