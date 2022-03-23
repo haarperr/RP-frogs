@@ -256,7 +256,6 @@ local carspawns = {
 
 function CreateOxyVehicle()
 	if DoesEntityExist(oxyVehicle) then
-
 	    SetVehicleHasBeenOwnedByPlayer(oxyVehicle,false)
 		SetEntityAsNoLongerNeeded(oxyVehicle)
 		DeleteEntity(oxyVehicle)
@@ -578,6 +577,8 @@ Citizen.CreateThread(function()
 		if cooldown then
 			if (not DoesEntityExist(oxyVehicle) or GetVehicleEngineHealth(oxyVehicle) <= 100.0) and vehspawn then
 				tasking = false
+				SetVehicleHasBeenOwnedByPlayer(oxyVehicle,false)
+				SetEntityAsNoLongerNeeded(oxyVehicle)
 				TriggerEvent("chatMessage", "EMAIL - Drug Deliveries", 8, "Dude! You fucked the car up, I canceled your run, asshole! ")
 				DeleteBlip()
 				Citizen.Wait(1200000)
@@ -591,11 +592,15 @@ Citizen.CreateThread(function()
 						TriggerEvent("oxydelivery:client")  
 						salecount = salecount + 1
 						if salecount == 6 then
+							SetVehicleHasBeenOwnedByPlayer(oxyVehicle,false)
+							SetEntityAsNoLongerNeeded(oxyVehicle)
 							TriggerEvent("chatMessage", "EMAIL - Oxy Deliveries", 8, "You are no longer selling oxy.")
 							Citizen.Wait(1200000) -- 20 minutes
 							cooldown = false
 						end
 					else
+						SetVehicleHasBeenOwnedByPlayer(oxyVehicle,false)
+						SetEntityAsNoLongerNeeded(oxyVehicle)
 						TriggerEvent("DoLongHudText","You really lost your Delivery List I gave you?")
 						Citizen.Wait(1200000)
 						cooldown = false
