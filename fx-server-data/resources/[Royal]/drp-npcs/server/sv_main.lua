@@ -53,6 +53,34 @@ AddEventHandler("drp-npcs:location:fetch",function()
         })
     end
 
+end
+    
+for k,v in pairs(Generic.CasinoLocations) do
+    table.insert( Generic.NPCS, #Generic.NPCS + 1, {
+        id = "MembershipGiver_"..k,
+        name = "Membership Giver_ "..k,
+        pedType = 4,
+        model = "s_f_y_casino_01",
+        networked = false,
+        distance = 25.0,
+        position = {
+            coords = vector3(v[1], v[2], v[3]),
+            heading = v[4],
+            random = false
+        },
+        appearance = nil,
+        settings = {
+            { mode = "invincible", active = true },
+            { mode = "ignore", active = true },
+            { mode = "freeze", active = true },
+        },
+        flags = {
+            ['isNPC'] = true,
+            ['isCasinoMembershipGiver'] = true
+        }
+    })
+end
+
     for k,v in pairs(Generic.ToolShopLocations) do
         table.insert( Generic.NPCS, #Generic.NPCS + 1, {
             id = "toolsShopKeeper_"..k,
