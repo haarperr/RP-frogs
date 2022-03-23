@@ -857,7 +857,7 @@ function drawRaceStats() {
     $('#Checkpoints').text(`${curCheckpoint} / ${maxCheckpoints}`);
     $('#Laptime').text(`${moment(moment.utc() - currentStartTime).format("mm:ss.SSS")}`);
     if (!isSprint)
-        $('#FastestLaptime').text(`${moment(fastestLapTime).format("mm:ss.SSS")}`)
+    $('#FastestLaptime').text(`${moment(fastestLapTime).format("mm:ss.SSS")}`)
     $('#OverallTime').text(`${moment(moment.utc() - startTime).format("mm:ss.SSS")}`)
 }
 
