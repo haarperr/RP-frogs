@@ -16,7 +16,7 @@ AddEventHandler('paintballshop', function()
     TriggerEvent('drp-context:sendMenu', {
         {
             id = 1,
-            header = "Paintball Supplies",
+            header = "Paintball Menu",
             txt = ""
         },
         {
@@ -35,10 +35,18 @@ AddEventHandler('paintballshop', function()
                 event = "getpaintballs"
             }
         },
+        {
+          id = 4,
+          header = "Clothing Menu",
+          txt = "",
+          params = {
+              event = "royal:clothing:admin"
+          }
+      },
         
     })
 end)
-
+ 
 RegisterNetEvent('getpaintballgun')
 AddEventHandler('getpaintballgun', function()
     if exports['drp-inventory']:hasEnoughOfItem('-2009644972', 1) then
@@ -57,7 +65,7 @@ AddEventHandler('getpaintballs', function()
     end
 end)
 
-RegisterCommand("paintballgear", function()
+RegisterCommand("pbmenu", function()
   if inArena then
   TriggerEvent("paintballshop")
 else
@@ -66,6 +74,26 @@ end
   end)
 
   
+RegisterCommand("startpb", function()
+  if inArena then
+    TriggerEvent("DoLongHudText","Game Starts in 3",14)
+    PlaySound(-1, "3_2_1", "HUD_MINI_GAME_SOUNDSET", 0, 0, 1)
+    Citizen.Wait(1000)
+    TriggerEvent("DoLongHudText","Game Starts in 2",14)
+    PlaySound(-1, "3_2_1", "HUD_MINI_GAME_SOUNDSET", 0, 0, 1)
+    Citizen.Wait(1000)
+    TriggerEvent("DoLongHudText","Game Starts in 1",14)
+    PlaySound(-1, "3_2_1", "HUD_MINI_GAME_SOUNDSET", 0, 0, 1)
+    Citizen.Wait(1000)
+    PlaySound(-1, "3_2_1", "HUD_MINI_GAME_SOUNDSET", 0, 0, 1)
+    TriggerEvent("DoLongHudText","GO!",14)
+   
+else
+  TriggerEvent('DoLongHudText', 'You are not in the arena!', 2)
+end
+  end)
+
+ 
 
 function paintballguy()
   modelHash = GetHashKey("a_m_m_eastsa_02")
