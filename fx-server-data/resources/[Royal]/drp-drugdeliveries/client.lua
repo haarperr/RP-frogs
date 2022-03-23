@@ -121,7 +121,7 @@ AddEventHandler('deleteobject:allow', function(PackageObject)
         end
 end)
 
-function CreateDrugStorePed(
+function CreateDrugStorePed()
     if DoesEntityExist(drugStorePed) then
 		return
 	end
@@ -151,7 +151,7 @@ function CreateDrugStorePed(
     SetPedKeepTask(ped, true)
     
 	drugStorePed = ped
-end)
+end
 
 function buildDrugStore()
 	DoScreenFadeOut(1)
