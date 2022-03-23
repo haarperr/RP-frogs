@@ -361,26 +361,20 @@ function DoDropOff()
 		end
 
 		if pog == false then
-			TriggerEvent("DoLongHudText","Thanks, no extra sauce though?!")
-		end
-
-		if math.random(100) > 45 then
 			TriggerEvent( "player:receiveItem", "oxy", math.random(5) )
-		end
+			
+			if math.random(100) >= 7 then
+				cashPayment = cashPayment + math.random(250,1000)
+			end
 
-		
-		if math.random(100) >= 7 then
-			cashPayment = cashPayment + math.random(250,1000)
-		end
-
-		
-		if math.random(100) >= 1 then
-			cashPayment = cashPayment + math.random(1000,1500)
-		end
-		
-		if math.random(1000) >= 1 then
-			cashPayment = cashPayment + math.random(10000,15000)
-		end 
+			
+			if math.random(100) >= 1 then
+				cashPayment = cashPayment + math.random(1000,1500)
+			end
+			
+			if math.random(1000) >= 1 then
+				cashPayment = cashPayment + math.random(10000,15000)
+			end 
 	end
 
 	local counter = math.random(50,200)
@@ -420,9 +414,6 @@ function DoDropOff()
 		Citizen.Wait(2000)
 		DeleteBlip()
 		TriggerEvent("DoLongHudText", "I got the call in, delivery was on point, go await the next one! ",1)
-	else
-		DeleteBlip()
-		TriggerEvent("DoLongHudText","The drop off failed - you need stolen items.",2)
 	end
 
 	TriggerServerEvent('oxydelivery:deleteOxyPed', deliveryPed)
@@ -516,7 +507,7 @@ AddEventHandler("oxydelivery:client", function()
 			end
 		end
 	end
-	DeleteCreatedPed()
+	TriggerServerEvent("oxydelivery")
 	DeleteBlip()
 end)
 

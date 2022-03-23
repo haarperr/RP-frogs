@@ -33,11 +33,12 @@ AddEventHandler('oxydelivery:deleteOxyPed', function(deliveryPed)
         FreezeEntityPosition(deliveryPed, false)
         SetPedKeepTask(deliveryPed, false)
         TaskSetBlockingOfNonTemporaryEvents(deliveryPed, false)
+		SetEntityInvincible(deliveryPed, false)
         ClearPedTasks(deliveryPed)
         TaskWanderStandard(deliveryPed, 10.0, 10)
         SetPedAsNoLongerNeeded(deliveryPed)
         DecorSetBool(deliveryPed, 'ScriptedPed', false)
-
+		
         Citizen.Wait(20000)
         DeletePed(deliveryPed)
     end
@@ -56,7 +57,8 @@ AddEventHandler('oxydelivery:createOxyPed', function(OxyDropOffs, rnd)
     TaskSetBlockingOfNonTemporaryEvents(deliveryPed, true)
     SetPedFleeAttributes(deliveryPed, 0, 0)
     SetPedCombatAttributes(deliveryPed, 17, 1)
-
+	FreezeEntityPosition(deliveryPed, true)
+	SetEntityInvincible(deliveryPed, true)
     SetPedSeeingRange(deliveryPed, 0.0)
     SetPedHearingRange(deliveryPed, 0.0)
     SetPedAlertness(deliveryPed, 0)
