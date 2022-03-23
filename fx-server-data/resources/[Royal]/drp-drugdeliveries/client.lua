@@ -474,7 +474,7 @@ AddEventHandler("oxydelivery:client", function()
 	rnd = math.random(1,#OxyDropOffs)
 
 	CreateBlip()
- q
+ 
 	local pedCreated = false
 
 	tasking = true
