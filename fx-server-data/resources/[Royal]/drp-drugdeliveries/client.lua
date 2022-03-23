@@ -317,7 +317,7 @@ function DoDropOff()
 	PlayAmbientSpeech1(deliveryPed, "Chat_State", "Speech_Params_Force")
 
 	if DoesEntityExist(deliveryPed) and not IsEntityDead(deliveryPed) then
-		if math.random(10) == 1 then -- 10% chance of getting a safe cracking kit 
+		if math.random(15) == 1 then 
 			TriggerEvent( "player:receiveItem", "safecrackingkit", 1 )
 		end
 		
@@ -562,7 +562,6 @@ Citizen.CreateThread(function()
 			DrawText3Ds(oxyStorePedLocation["x"], oxyStorePedLocation["y"], oxyStorePedLocation["z"], "[E] $1500 - Oxy Delivery Job") 
 			if IsControlJustReleased(0,38) then
 				TriggerServerEvent("oxydelivery:server",1500)
-				cooldown = true
 				Citizen.Wait(1000)
 			end
 		end
@@ -605,6 +604,7 @@ end)
 
 RegisterNetEvent("oxydelivery:startDealing")
 AddEventHandler("oxydelivery:startDealing", function()
+	cooldown = true
 	local NearNPC = exports["isPed"]:GetClosestNPC()
 	PlayAmbientSpeech1(NearNPC, "Chat_Resp", "SPEECH_PARAMS_FORCE", 1)
 	TriggerEvent("DoLongHudText","Your pager will be updated with locations soon.")
