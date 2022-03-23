@@ -471,6 +471,17 @@ AddEventHandler("oxydelivery:client", function()
 	DeleteBlip()
 end)
 
+RegisterNetEvent('oxydelivery:teleport')
+AddEventHandler('oxydelivery:teleport', function(x,y,z)
+	Citizen.Wait(500)
+	SetEntityCoords(PlayerPedId(), 592.26, 2745.01, 15.22)
+	Citizen.Wait(500)
+	
+	SetEntityHeading(PlayerPedId(),0.0)
+	FreezeEntityPosition(PlayerPedId(),false)
+	DoScreenFadeIn(1)
+end)
+
 Citizen.CreateThread(function()
     while true do
 	    Citizen.Wait(0)
