@@ -583,7 +583,7 @@ end)
 
 
 RegisterNetEvent("oxydelivery:startDealing")
-AddEventHandler("oxydelivery:startDealing", function(
+AddEventHandler("oxydelivery:startDealing", function()
 	cooldown = true
 	local NearNPC = exports["isPed"]:GetClosestNPC()
 	PlayAmbientSpeech1(NearNPC, "Chat_Resp", "SPEECH_PARAMS_FORCE", 1)
