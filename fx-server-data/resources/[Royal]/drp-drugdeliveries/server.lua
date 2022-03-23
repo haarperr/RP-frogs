@@ -28,7 +28,7 @@ end)
 
 
 RegisterServerEvent('oxydelivery:deleteOxyPed')
-AddEventHandler('oxydelivery:deleteOxyPed', function(deliveryPed))
+AddEventHandler('oxydelivery:deleteOxyPed', function(deliveryPed)
     if DoesEntityExist(deliveryPed) then 
         FreezeEntityPosition(deliveryPed, false)
         SetPedKeepTask(deliveryPed, false)
@@ -41,7 +41,7 @@ AddEventHandler('oxydelivery:deleteOxyPed', function(deliveryPed))
         Citizen.Wait(20000)
         DeletePed(deliveryPed)
     end
-end
+end)
 
 RegisterServerEvent('oxydelivery:createOxyPed')
 AddEventHandler('oxydelivery:createOxyPed', function(ped)
