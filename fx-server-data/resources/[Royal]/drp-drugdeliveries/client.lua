@@ -490,7 +490,7 @@ Citizen.CreateThread(function()
 			DrawText3Ds(oxyStoreLocation["x"],oxyStoreLocation["y"],oxyStoreLocation["z"], "[E] to Enter") 
 			if IsControlJustReleased(0,38) then
 				TriggerServerEvent('oxydelivery:builddrugstore')
-				CreateDrugStorePed()
+				TriggerServerEvent('oxydelivery:CreateDrugStorePed')
 				Citizen.Wait(1000)
 			end
 		end		
