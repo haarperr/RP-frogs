@@ -492,7 +492,7 @@ AddEventHandler("oxydelivery:client", function()
 
 		if DoesEntityExist(deliveryPed) == false then 
 			createOxyPed(rnd)
-
+		end
 
 		local veh = GetVehiclePedIsIn(PlayerPedId(),false)
 		if dstcheck < 40.0 and not pedCreated and (oxyVehicle == veh or dstcheck2 < 15.0) then
