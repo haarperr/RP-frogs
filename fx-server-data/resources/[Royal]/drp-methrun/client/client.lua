@@ -14,7 +14,7 @@ local totalDel = Config.DeliveryAmount + Config.DeliveryAmount2
 
 
 -- Spawn NPC if close by
-Citizen.CreateThread(function)()
+Citizen.CreateThread(function()
     while true do
         Wait(1000)
         if refreshJobPed then
