@@ -25906,3 +25906,16 @@ itemList['heistduffelbag'] = {
   image: 'np_duffel.png',
   information: '"We are just supposed to walk out of there with millions of dollars in cash on us without getting stopped?"',
 };
+
+
+itemList['chickenslammer'] = {
+  fullyDegrades: true,
+  decayrate: 0.0,
+  displayname: 'Chicken Slammer',
+  price: 0,
+  weight: 20,
+  nonStack: true,
+  model: '',
+  image: 'chicken-slammer.png',
+  information: 'Maddis Memory Axe',
+};
