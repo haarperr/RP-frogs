@@ -250,7 +250,7 @@ function HardwareStore() {
         { item_id: "nitrous", id: 0, name: "Shop", information: "{}", slot: 5, amount: 50 },
         { item_id: "armor", id: 0, name: "Shop", information: "{}", slot: 6, amount: 50 },
         { item_id: "antifreeze", id: 0, name: "Shop", information: "{}", slot: 7, amount: 50 },
-        { item_id: "repairtoolkit", id: 0, name: "Shop", information: "{}", slot: 8, amount: 50 },
+        { item_id: "hat", id: 0, name: "Shop", information: "{}", slot: 8, amount: 50 },
         { item_id: "radio", id: 0, name: "Shop", information: "{}", slot: 9, amount: 50 },
         { item_id: "umbrella", id: 0, name: "Shop", information: "{}", slot: 10, amount: 50 },
         { item_id: "smallscales", id: 0, name: "Shop", information: "{}", slot: 11, amount: 50 },
