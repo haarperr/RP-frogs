@@ -42,43 +42,7 @@ Citizen.CreateThread(function()
 	end
 end)
 
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(1000)
-        local pedCoords = GetEntityCoords(GetPlayerPed(-1))
-        local dst = #(Config.StartLocation - pedCoords)
-        if dst < 200 and jobSpawned = false then
-            TriggerEvent ('np-oxy:spawnJobPed',Config.StartLocation, 217.980
-            jobSpawned = true
-            refreshJobPed = true
-        end
-        if dst>= 201 then
-            if DoesEntityExist(jobPed) then
-                DeletePed(jobPed)
-            end
-            JobSpawned = false
 
-        end
-    end
-end)
-
--- Spawn the actual NPC
-RegisterNetEvent('np-oxy:spawnJobPed')
-AddEventHandler('np-oxy:spawnJobPed',function(coords, heading)
-    local hash = GetHashKey('a_m_y_stwhi_01')
-    if not HasModelLoaded(hash) then
-        RequestModel(hash)
-        Wait(10)
-    end
-    while not HasModelLoaded(hash) do
-        Wait(10)
-    end
-    jobPed = CreatePed(5, hash, coords, heading, false, false)
-    FreezeEntityPosition(jobPed, true)
-    SetEntityInvincible(jobPed, true)
-    SetBlockingOfNonTemporaryEvents(jobPed, true)
-    SetModelAsNoLongerNeeded(hash)
-end)      
 
 
 

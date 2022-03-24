@@ -516,12 +516,12 @@ onNet("server-inventory-open", async(coords, player, secondInventory, targetName
         } else if (secondInventory == "4") {
             var targetinvname = targetName;
             var shopArray = HardwareStore();
-            var shopAmount = 20;
+            var shopAmount = 19;
             emitNet("inventory-open-target", src, [invArray, arrayCount, playerinvname, shopArray, shopAmount, targetinvname, 500, false]);
         } else if (secondInventory == "5") {
             var targetinvname = targetName;
             var shopArray = GunStore();
-            var shopAmount = 8;
+            var shopAmount = 10;
             emitNet("inventory-open-target", src, [invArray, arrayCount, playerinvname, shopArray, shopAmount, targetinvname, 500, false]);
         } else if (secondInventory == "6") {
             var targetinvname = targetName;

@@ -11118,7 +11118,7 @@ itemList['durpman'] = {
 // fleeca
 itemList['heistlaptop3'] = {
   fullyDegrades: true,
-  decayrate: 1.0,
+  decayrate: 0.003,
   displayname: 'Laptop',
   price: 1,
   weight: 20,
@@ -11132,7 +11132,7 @@ itemList['heistlaptop3'] = {
 // paleto
 itemList['heistlaptop2'] = {
   fullyDegrades: true,
-  decayrate: 1.0,
+  decayrate: 0.003,
   displayname: 'Laptop',
   price: 1,
   weight: 20,
@@ -11145,7 +11145,7 @@ itemList['heistlaptop2'] = {
 // vault upper
 itemList['heistlaptop4'] = {
   fullyDegrades: true,
-  decayrate: 1.0,
+  decayrate: 0.005,
   displayname: 'Laptop',
   price: 1,
   weight: 20,
@@ -11158,7 +11158,7 @@ itemList['heistlaptop4'] = {
 // vault lower
 itemList['heistlaptop1'] = {
   fullyDegrades: true,
-  decayrate: 1.0,
+  decayrate: 0.008,
   displayname: 'Laptop',
   price: 1,
   weight: 20,
@@ -21201,7 +21201,7 @@ itemList['fruitslushy'] = {
 
 itemList['murdermeal'] = {
   fullyDegrades: true,
-  decayrate: 0.5,
+  decayrate: 0.001,
   displayname: 'Murder Meal',
   price: 0,
   weight: 11,
@@ -25905,4 +25905,17 @@ itemList['heistduffelbag'] = {
   model: '',
   image: 'np_duffel.png',
   information: '"We are just supposed to walk out of there with millions of dollars in cash on us without getting stopped?"',
+};
+
+
+itemList['chickenslammer'] = {
+  fullyDegrades: true,
+  decayrate: 0.0,
+  displayname: 'Chicken Slammer',
+  price: 0,
+  weight: 20,
+  nonStack: true,
+  model: '',
+  image: 'chicken-slammer.png',
+  information: 'Maddis Memory Axe',
 };
