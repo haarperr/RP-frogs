@@ -109,8 +109,8 @@ end)
  RegisterNetEvent('drp-civjobs:craft-pammo')
  AddEventHandler('drp-civjobs:craft-pammo', function()
      if exports['drp-inventory']:hasEnoughOfItem('aluminium', 5) and exports['drp-inventory']:hasEnoughOfItem('steel', 5) then
-    TriggerEvent('inventory:removeItem', 'aluminium', 5)
-    TriggerEvent('inventory:removeItem', 'steel', 5)
+    TriggerEvent('inventory:removeItem', 'aluminium', 4)
+    TriggerEvent('inventory:removeItem', 'steel', 4)
     TriggerEvent('player:receiveItem', 'pistolammo', 1)
     TriggerEvent('DoLongHudText', 'Successfully crafted Pistol Ammo', 2)
      else
@@ -119,9 +119,9 @@ end)
  end)
  RegisterNetEvent('drp-civjobs:craft-subammo')
  AddEventHandler('drp-civjobs:craft-subammo', function()
-    if exports['drp-inventory']:hasEnoughOfItem('aluminium', 5) and exports['drp-inventory']:hasEnoughOfItem('steel', 5) then
-        TriggerEvent('inventory:removeItem', 'aluminium', 5)
-        TriggerEvent('inventory:removeItem', 'steel', 5)
+    if exports['drp-inventory']:hasEnoughOfItem('aluminium', 7) and exports['drp-inventory']:hasEnoughOfItem('steel', 7) then
+        TriggerEvent('inventory:removeItem', 'aluminium', 7)
+        TriggerEvent('inventory:removeItem', 'steel', 7)
         TriggerEvent('player:receiveItem', 'subammo', 1)
         TriggerEvent('DoLongHudText', 'Successfully crafted Ass Lockpick', 2)
      else
@@ -156,8 +156,8 @@ end)
  RegisterNetEvent('drp-civjobs:craft-deagle')
  AddEventHandler('drp-civjobs:craft-deagle', function()
     if exports['drp-inventory']:hasEnoughOfItem('aluminium', 20) and exports['drp-inventory']:hasEnoughOfItem('steel', 20) then
-        TriggerEvent('inventory:removeItem', 'aluminium', 20)
-        TriggerEvent('inventory:removeItem', 'steel', 20)
+        TriggerEvent('inventory:removeItem', 'aluminium', 50)
+        TriggerEvent('inventory:removeItem', 'steel', 50)
         TriggerEvent('player:receiveItem', '-1716589765', 1)
         TriggerEvent('DoLongHudText', 'Successfully crafted a Dessert Deagle', 2)
      else
@@ -167,9 +167,9 @@ end)
 
  RegisterNetEvent('drp-civjobs:craft-mac10')
  AddEventHandler('drp-civjobs:craft-mac10', function()
-    if exports['drp-inventory']:hasEnoughOfItem('refinedaluminium', 20) and exports['drp-inventory']:hasEnoughOfItem('refinedsteel', 20) then
-        TriggerEvent('inventory:removeItem', 'refinedaluminium', 20)
-        TriggerEvent('inventory:removeItem', 'refinedsteel', 20)
+    if exports['drp-inventory']:hasEnoughOfItem('refinedaluminium', 50) and exports['drp-inventory']:hasEnoughOfItem('refinedsteel', 50) then
+        TriggerEvent('inventory:removeItem', 'refinedaluminium', 50)
+        TriggerEvent('inventory:removeItem', 'refinedsteel', 50)
         TriggerEvent('player:receiveItem', '-134995899', 1)
         TriggerEvent('DoLongHudText', 'Successfully crafted a Mac-10', 2)
      else
@@ -180,9 +180,9 @@ end)
  
  RegisterNetEvent('drp-civjobs:craft-uzi')
  AddEventHandler('drp-civjobs:craft-uzi', function()
-    if exports['drp-inventory']:hasEnoughOfItem('refinedaluminium', 20) and exports['drp-inventory']:hasEnoughOfItem('refinedsteel', 20) then
-        TriggerEvent('inventory:removeItem', 'refinedaluminium', 20)
-        TriggerEvent('inventory:removeItem', 'refinedsteel', 20)
+    if exports['drp-inventory']:hasEnoughOfItem('refinedaluminium', 50) and exports['drp-inventory']:hasEnoughOfItem('refinedsteel', 50) then
+        TriggerEvent('inventory:removeItem', 'refinedaluminium', 50)
+        TriggerEvent('inventory:removeItem', 'refinedsteel', 50)
         TriggerEvent('player:receiveItem', '-942620673', 1)
         TriggerEvent('DoLongHudText', 'Successfully crafted a Uzi', 2)
      else
@@ -218,7 +218,6 @@ end)
      end
  end)
 
- 
  
  RegisterNetEvent('drp-civjobs:craft-rpgammo')
  AddEventHandler('drp-civjobs:craft-rpgammo', function()
