@@ -1,7 +1,7 @@
 local alreadySigned = false
 
-RegisterNetEvent("drp_taxi:startJob")
-AddEventHandler("drp_taxi:startJob", function(
+RegisterNetEvent("drp_taxi:checkIfSigned")
+AddEventHandler("drp_taxi:checkIfSigned", function(
     if alreadySigned then
         TriggerEvent("DoLongHudText","You are already signed in!")
     else 
