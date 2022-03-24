@@ -10,4 +10,3 @@ AddEventHandler("drp_taxi:getDeposit", function(
         TriggerClientEvent("DoLongHudText", src, "Not Enough Money for deposit. (1k)", 2)
     end
 end)
-end)
