@@ -1298,12 +1298,9 @@ end)
 
 RegisterNetEvent('enter:benny:tunershop')
 AddEventHandler('enter:benny:tunershop', function()
-    local job = exports["isPed"]:GroupRank("tuner_shop")
-    if job > 1 then 
     TriggerEvent('event:control:bennys', 18)
     disabled = true
-    disableControls()
-    end 
+    disableControls() 
 end)
 
 RegisterNetEvent('enter:benny:hayes')
