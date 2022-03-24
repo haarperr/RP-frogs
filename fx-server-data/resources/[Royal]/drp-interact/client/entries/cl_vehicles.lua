@@ -269,7 +269,7 @@ Entries[#Entries + 1] = {
     options = {
         distance = { radius = 1.2, boneId = 'wheel_lr' },
         isEnabled = function(pEntity, pContext)
-            return HasWeaponEquipped(883325847) -- WEAPON_PetrolCan
+            return exports["drp-inventory"]:hasEnoughOfItem("883325847", 1, false, true)
         end
     }
 }

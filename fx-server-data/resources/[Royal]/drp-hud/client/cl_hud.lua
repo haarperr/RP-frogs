@@ -1302,6 +1302,6 @@ function removeAttachedProp2()
         end
         endanimation()
     else
-        TriggerEvent('DoLongHudText', 'Unsure how you managed this?', 2)
+        TriggerEvent('DoLongHudText', 'No way to fuel up vehicle!', 2)
     end
   end)
