@@ -25917,5 +25917,5 @@ itemList['chickenslammer'] = {
   nonStack: true,
   model: '',
   image: 'chicken-slammer.png',
-  information: 'Maddis Memory Axe',
+  information: 'Maddi Memory Axe',
 };
