@@ -2274,7 +2274,7 @@ Citizen.CreateThread(function()
     exports["drp-interact"]:AddPeekEntryByPolyTarget("taxiguy", {{
         event = "drp_taxi:startJob",
         id = "taxiguy",
-        icon = "arrow-alt-circle-up",
+        icon = "circle",
         label = "Sign in as a Taxi Driver",
         parameters = {},
     }}, {
