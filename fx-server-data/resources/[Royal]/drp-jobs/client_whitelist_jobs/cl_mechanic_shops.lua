@@ -359,7 +359,7 @@ end)
  RegisterNetEvent('racooncrafting')
  AddEventHandler('racooncrafting', function()
     local cid = exports["isPed"]:isPed("cid")
-    if cid == 110 or cid == 17 or cid == 74 then
+        if cid == 114 or cid == 74 then
         TriggerEvent('drp-context:sendMenu', {
             {
                 id = 1,
@@ -423,7 +423,7 @@ end)
  RegisterNetEvent('vagoscrafting')
  AddEventHandler('vagoscrafting', function()
     local cid = exports["isPed"]:isPed("cid")
-    if cid == 114 or cid == 74 then
+    if cid == 110 or cid == 17 or cid == 74 then
         TriggerEvent('drp-context:sendMenu', {
             {
                 id = 1,
