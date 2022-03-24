@@ -62,23 +62,7 @@ Citizen.CreateThread(function()
     end
 end)
 
--- Spawn the actual NPC
-RegisterNetEvent('np-oxy:spawnJobPed')
-AddEventHandler('np-oxy:spawnJobPed',function(coords, heading)
-    local hash = GetHashKey('a_m_y_stwhi_01')
-    if not HasModelLoaded(hash) then
-        RequestModel(hash)
-        Wait(10)
-    end
-    while not HasModelLoaded(hash) do
-        Wait(10)
-    end
-    jobPed = CreatePed(5, hash, coords, heading, false, false)
-    FreezeEntityPosition(jobPed, true)
-    SetEntityInvincible(jobPed, true)
-    SetBlockingOfNonTemporaryEvents(jobPed, true)
-    SetModelAsNoLongerNeeded(hash)
-end)      
+ 
 
 
 
