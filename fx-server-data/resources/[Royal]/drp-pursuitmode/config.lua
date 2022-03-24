@@ -1,13 +1,13 @@
 Veny = {}
 
-Veny.PursuitCar1 = 1663218586           -- Type your pursuit car model --
-Veny.PursuitCar2 = -1403128555           -- Type your pursuit car model --
-Veny.PursuitCar3 = 338562499           -- Type your pursuit car model --
-Veny.PursuitCar4 = 2067820283           -- Type your pursuit car model --
+Veny.PursuitCar1 = -1109563416           -- npolvette --
+Veny.PursuitCar2 = -1336796853        -- npolstang --
+Veny.PursuitCar3 = -994492850           -- EXP --
+Veny.PursuitCar4 = -901056903           -- CVPI --
 
-Veny.MultiplierAPlus = 0.495000 --- Fast
-Veny.MultiplierS = 1.595000 --- Pretty Fast
-Veny.MultiplierSPlus = 26.695000 --- Fastest
-Veny.MultiplierA = 0.395000 --- Slowest
+Veny.MultiplierAPlus = 0.2 --- Fast
+Veny.MultiplierS = 0.3 --- Pretty Fast
+Veny.MultiplierSPlus = 0.4 --- Fastest
+Veny.MultiplierA = 0.1 --- Slowest
 
 Veny.notify = "DoLongHudText" --- can be mythicnotify, notification(must use nopixel notification), qbcorenotify, esxshownotification ---
