@@ -328,21 +328,6 @@ function policeveding() {
 };
 
 
-function recycle() {
-    var shopItems = [
-        { item_id: "aluminium", id: 0, name: "craft", information: "{}", slot: 1, amount: 15 },
-        { item_id: "plastic", id: 0, name: "craft", information: "{}", slot: 2, amount: 15 },
-        { item_id: "copper", id: 0, name: "craft", information: "{}", slot: 3, amount: 15 },
-        { item_id: "electronics", id: 0, name: "craft", information: "{}", slot: 4, amount: 15 },
-        { item_id: "rubber", id: 0, name: "craft", information: "{}", slot: 5, amount: 15 },
-        { item_id: "scrapmetal", id: 0, name: "craft", information: "{}", slot: 6, amount: 15 },
-        { item_id: "steel", id: 0, name: "craft", information: "{}", slot: 7, amount: 15 },
-        { item_id: "glass", id: 0, name: "craft", information: "{}", slot: 8, amount: 15 },
-
-    ];
-    return JSON.stringify(shopItems);
-};
-
 function Tuner() {
     var shopItems = [
         { item_id: "advrepairkit", id: 0, name: "craft", information: "{}", slot: 1, amount: 50 },
