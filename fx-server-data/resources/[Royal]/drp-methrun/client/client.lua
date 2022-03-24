@@ -42,27 +42,7 @@ Citizen.CreateThread(function()
 	end
 end)
 
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(1000)
-        local pedCoords = GetEntityCoords(GetPlayerPed(-1))
-        local dst = #(Config.StartLocation - pedCoords)
-        if dst < 200 and jobSpawned = false then
-            TriggerEvent ('np-oxy:spawnJobPed',Config.StartLocation, 217.980
-            jobSpawned = true
-            refreshJobPed = true
-        end
-        if dst>= 201 then
-            if DoesEntityExist(jobPed) then
-                DeletePed(jobPed)
-            end
-            JobSpawned = false
 
-        end
-    end
-end)
-
- 
 
 
 
