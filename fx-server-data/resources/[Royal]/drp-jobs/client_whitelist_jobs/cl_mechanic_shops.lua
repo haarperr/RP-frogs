@@ -128,6 +128,19 @@ end)
         TriggerEvent('DoLongHudText', 'You dont have the required materials', 2)
      end
  end)
+
+ RegisterNetEvent('drp-civjobs:craft-knuckle')
+ AddEventHandler('drp-civjobs:craft-knuckle', function()
+    if exports['drp-inventory']:hasEnoughOfItem('aluminium', 15) and exports['drp-inventory']:hasEnoughOfItem('steel', 15) then
+        TriggerEvent('inventory:removeItem', 'aluminium', 15)
+        TriggerEvent('inventory:removeItem', 'steel', 15)
+        TriggerEvent('player:receiveItem', '3638508604', 1)
+        TriggerEvent('DoLongHudText', 'Successfully crafted Knuckle', 2)
+     else
+        TriggerEvent('DoLongHudText', 'You dont have the required materials', 2)
+     end
+ end)
+
  RegisterNetEvent('drp-civjobs:craft-browning')
  AddEventHandler('drp-civjobs:craft-browning', function()
     if exports['drp-inventory']:hasEnoughOfItem('aluminium', 20) and exports['drp-inventory']:hasEnoughOfItem('steel', 20) then
@@ -316,6 +329,14 @@ end)
             },
             {
                 id = 4,
+                header = "Craft Knuckle",
+                txt = "Requires: 15x Aluminium | 15x Steel",
+                params = {
+                    event = "drp-civjobs:craft-uzi"
+                }
+            },
+            {
+                id = 5,
                 header = "Craft Uzi",
                 txt = "Requires: 20x Refined Aluminium | 20x Refined Steel",
                 params = {
@@ -323,7 +344,7 @@ end)
                 }
             },
             {
-                id = 5,
+                id = 6,
                 header = "Craft Mac-10",
                 txt = "Requires: 20x Refined Aluminium | 20x Refined Steel",
                 params = {
@@ -331,7 +352,7 @@ end)
                 }
             },
             {
-                id = 6,
+                id = 7,
                 header = "Craft Dessert Eagle",
                 txt = "Requires: 20x Aluminium | 20x Steel",
                 params = {
@@ -339,7 +360,7 @@ end)
                 }
             },
             {
-                id = 7,
+                id = 8,
                 header = "Close",
                 txt = "Exit the bench",
                 params = {
