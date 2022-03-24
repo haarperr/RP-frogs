@@ -561,7 +561,7 @@ end)
 
 RegisterNetEvent("drp-scoreboard:playerscount")
 AddEventHandler("drp-scoreboard:playerscount", function(a)
-    SetRichPresence(a .. "/50 | RIP BOZO 🚬 ")
+    SetRichPresence(a .. "/50 | Simping For Pokimane ")
     SetDiscordAppId(949909010386124840)
  	SetDiscordRichPresenceAsset('1000x1000')
     SetDiscordRichPresenceAsset('logo')
