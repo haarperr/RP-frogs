@@ -285,11 +285,11 @@ AddEventHandler("drp-paleto:reset", function(name, data)
         LootCheck2[name][i] = false
     end
     Check2[name] = false
-    exports['drp-notification']:Alert({style = 'error', duration = 3000, message = 'VAULT DOOR WILL CLOSE IN 2 MINUTES!'})
-    Citizen.Wait(120000)
-    exports['drp-notification']:Alert({style = 'error', duration = 3000, message = 'VAULT DOOR CLOSING'})
-    TriggerEvent("drp-paleto:cleanUp", data, name)
-    TriggerServerEvent("drp-paleto:closeDoor")
+    --exports['drp-notification']:Alert({style = 'error', duration = 3000, message = 'VAULT DOOR WILL CLOSE IN 2 MINUTES!'})
+    --Citizen.Wait(120000)
+    --exports['drp-notification']:Alert({style = 'error', duration = 3000, message = 'VAULT DOOR CLOSING'})
+    --TriggerEvent("drp-paleto:cleanUp", data, name)
+    --TriggerServerEvent("drp-paleto:closeDoor") -- Disable Paleto Reset
 end)
 
 

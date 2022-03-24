@@ -650,13 +650,13 @@ end)
 
 
 
-RegisterNetEvent('cooldown:fixhopefully')
-AddEventHandler('cooldown:fixhopefully', function()
-print('V Cool Start')
-Citizen.Wait(3.6e+6) -- 60 Minute timer then reset all door states n shit for the vault
-print('V Cool End')
-TriggerEvent("vault:Reset") 
-canrobtrolly1 = true
-canrobtrolly2 = true
-canrobtrolly3 = true
-end)
+--RegisterNetEvent('cooldown:fixhopefully')
+--AddEventHandler('cooldown:fixhopefully', function()
+--print('V Cool Start')
+--Citizen.Wait(3.6e+6) -- 60 Minute timer then reset all door states n shit for the vault
+--print('V Cool End')
+--TriggerEvent("vault:Reset") 
+--canrobtrolly1 = true
+--canrobtrolly2 = true
+--canrobtrolly3 = true
+--end) -- Disabled - Once per Tsunami now
