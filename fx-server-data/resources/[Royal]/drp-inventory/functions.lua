@@ -2536,9 +2536,7 @@ end
          TriggerEvent("murdermeal")
     end
 
-    if itemid == "883325847" then
-        TriggerEvent("drp-hud:jerry_can:refuel")
-   end
+ 
 
     if itemid == "mask" then
         local parsedInfo = json.decode(passedItemInfo)
