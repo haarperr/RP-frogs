@@ -2,7 +2,7 @@ Veny = {}
 
 Veny.PursuitCar1 = -1109563416           -- npolvette --
 Veny.PursuitCar2 = -1336796853        -- npolstang --
-Veny.PursuitCar3 = -994492850           -- EXP --
+Veny.PursuitCar3 = 719025956         -- EXP --
 Veny.PursuitCar4 = -901056903           -- CVPI --
 
 Veny.MultiplierAPlus = 0.2 --- Fast
