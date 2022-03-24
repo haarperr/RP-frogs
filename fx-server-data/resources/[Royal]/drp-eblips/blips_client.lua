@@ -152,7 +152,7 @@ Citizen.CreateThread(function()
                         local new_blip_id = AddBlipForEntity(blips_cache[follow_id_key].player_ped)
                         blips_cache[follow_id_key].synced_blip_id = new_blip_id
                     else
-                        print('ERROR - Could not find networked player ped')
+                        -- print('ERROR - Could not find networked player ped')
                     end
                 end
 
