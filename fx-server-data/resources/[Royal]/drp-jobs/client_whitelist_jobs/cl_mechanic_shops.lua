@@ -143,9 +143,9 @@ end)
 
  RegisterNetEvent('drp-civjobs:craft-browning')
  AddEventHandler('drp-civjobs:craft-browning', function()
-    if exports['drp-inventory']:hasEnoughOfItem('aluminium', 20) and exports['drp-inventory']:hasEnoughOfItem('steel', 20) then
-        TriggerEvent('inventory:removeItem', 'aluminium', 20)
-        TriggerEvent('inventory:removeItem', 'steel', 20)
+    if exports['drp-inventory']:hasEnoughOfItem('aluminium', 50) and exports['drp-inventory']:hasEnoughOfItem('steel', 50) then
+        TriggerEvent('inventory:removeItem', 'aluminium', 50)
+        TriggerEvent('inventory:removeItem', 'steel', 50)
         TriggerEvent('player:receiveItem', '148457251', 1)
         TriggerEvent('DoLongHudText', 'Successfully crafted a Browning', 2)
      else
@@ -420,8 +420,8 @@ end)
     end
  end)
 
- RegisterNetEvent('vagoscrafting')
- AddEventHandler('vagoscrafting', function()
+ RegisterNetEvent('vagoscrafting-disabled') -- disabled
+ AddEventHandler('vagoscrafting-disabled', function()
     local cid = exports["isPed"]:isPed("cid")
     if cid == 110 or cid == 17 or cid == 74 then
         TriggerEvent('drp-context:sendMenu', {
