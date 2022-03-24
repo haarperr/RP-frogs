@@ -1,11 +1,14 @@
-fx_version "cerulean"
+fx_version 'cerulean'
+games { 'gta5' }
+author 'NonoDEV'
 
-games {"gta5"}
+version '1.0.0'
 
+-- What to run
 client_scripts {
-  "client.lua"
+    'client.lua',
 }
 
 server_scripts {
-  "server.lua"
+    'server.lua',
 }
