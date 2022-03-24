@@ -1,50 +1,56 @@
 local enabled = false
 local player = false
 local veh = 0
-local vehicle_fuel = 0
 
--- Main thread
+damageLevel, currPlate, currName, currFuel, currEngineStatus = nil
+
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
-
         if veh ~= 0 then
-            -- IsControlPressed(0, 21) and
             if enabled then
                 refreshUI()
+            else
+                Wait(100)
             end
         else
-            Wait(100)
+            Wait(250)
         end
     end
 end)
 
-
-RegisterNetEvent('veh:options')
-AddEventHandler('veh:options', function()
-    EnableGUI(true)
+RegisterCommand('engine', function()
+    local engine = not GetIsVehicleEngineRunning(veh)
+    if engine == true then
+        TriggerEvent('toggleit')
+        TriggerEvent('DoLongHudText', 'Engine On', 1)
+    else
+        TriggerEvent('toggleit')
+        Citizen.Wait(10)
+        TriggerEvent('DoLongHudText', 'Engine Off', 1)
+    end
 end)
-
 
 Citizen.CreateThread(function()
     while true do
-        player = GetPlayerPed(-1)
+        player = PlayerPedId()
         veh = GetVehiclePedIsIn(player, false)
         if veh ~= 0 then
-            local temp_veh_fuel = GetVehicleFuelLevel(veh)
-            if temp_veh_fuel > 0 then
-                vehicle_fuel = temp_veh_fuel
+            if enabled then
+                damageLevel = GetVehicleEngineHealth(veh)
+                currPlate = GetVehicleNumberPlateText(veh)
+                currName = GetDisplayNameFromVehicleModel(GetEntityModel(veh))
+                currFuel = GetVehicleFuelLevel(veh)
+                currEngineStatus = GetIsVehicleEngineRunning(veh)
             end
         end
-        Citizen.Wait(2000)
+        Wait(1000)
     end
 end)
 
 function EnableGUI(enable)
     enabled = enable
-
     SetNuiFocus(enable, enable)
-
     SendNUIMessage({
         type = "enablecarmenu",
         enable = enable
@@ -62,80 +68,41 @@ function checkSeat(player, veh, seatIndex)
     end
 end
 
--- Check vehicles doors etc and send to UI
 function refreshUI()
     local settings = {}
-    player = GetPlayerPed(-1)
-    veh = GetVehiclePedIsIn(player, false)
-    if veh ~= 0 then
+    if veh ~= 0 and damageLevel ~= nil then
         settings.seat1 = checkSeat(player, veh, -1)
         settings.seat2 = checkSeat(player, veh,  0)
         settings.seat3 = checkSeat(player, veh,  1)
         settings.seat4 = checkSeat(player, veh,  2)
+        settings.engineAccess = settings.seat1 == -1 and true or false
+        if GetVehicleDoorAngleRatio(veh, 0) ~= 0 then settings.door0 = true end
+        if GetVehicleDoorAngleRatio(veh, 1) ~= 0 then settings.door1 = true end
+        if GetVehicleDoorAngleRatio(veh, 2) ~= 0 then settings.door2 = true end
+        if GetVehicleDoorAngleRatio(veh, 3) ~= 0 then settings.door3 = true end
+        if GetVehicleDoorAngleRatio(veh, 4) ~= 0 then settings.hood = true end
+        if GetVehicleDoorAngleRatio(veh, 5) ~= 0 then settings.trunk = true end
 
-        settings.doorAccess = settings.seat1 == -1 and true or false
-        if GetVehicleDoorAngleRatio(veh, 0) ~= 0 then
-            settings.door0 = true
-        end
-        if GetVehicleDoorAngleRatio(veh, 1) ~= 0 then
-            settings.door1 = true
-        end
-        if GetVehicleDoorAngleRatio(veh, 2) ~= 0 then
-            settings.door2 = true
-        end
-        if GetVehicleDoorAngleRatio(veh, 3) ~= 0 then
-            settings.door3 = true
-        end
-        if GetVehicleDoorAngleRatio(veh, 4) ~= 0 then
-            settings.hood = true
-        end
-        if GetVehicleDoorAngleRatio(veh, 5) ~= 0 then
-            settings.trunk = true
-        end
+        if not IsVehicleWindowIntact(veh, 0) then settings.windowr1 = true end
+        if not IsVehicleWindowIntact(veh, 1) then settings.windowl1 = true end
+        if not IsVehicleWindowIntact(veh, 2) then settings.windowr2 = true end
+        if not IsVehicleWindowIntact(veh, 3) then settings.windowl2 = true end
 
-        if not IsVehicleWindowIntact(veh, 0) then
-            settings.windowr1 = true
-        end
-        if not IsVehicleWindowIntact(veh, 1) then
-            settings.windowl1 = true
-        end
-        if not IsVehicleWindowIntact(veh, 2) then
-            settings.windowr2 = true
-        end
-        if not IsVehicleWindowIntact(veh, 3) then
-            settings.windowl2 = true
-        end
+        if currEngineStatus then settings.engine = true else settings.engine = false end
+        settings.plate, settings.name, settings.fuel = currPlate, currName, currFuel
+        local overallDamage = damageLevel / 10
+        if overallDamage < 100 then settings.damage = overallDamage - 15 else settings.damage = 100 end
 
-        local engine = GetIsVehicleEngineRunning(veh);
-        -- local lockStatus = GetVehicleDoorLockStatus(veh)
-        -- if (lockStatus == 1 or lockStatus == 0) and settings.seat1 == -1 then
-        --     settings.engineAccess = true
-        -- end
-        if engine then
-            settings.engine = true
-        else
-            settings.engine = false
-        end
-
-        SendNUIMessage({
-            type = "refreshcarmenu",
-            settings = settings
-        })
-    else
-        SendNUIMessage({
-            type = "resetcarmenu"
-        })
-    end
+        SendNUIMessage({ type = "refreshcarmenu", settings = settings })
+    else SendNUIMessage({ type = "resetcarmenu" }) end
 end
 
 RegisterNUICallback('openDoor', function(data, cb)
     doorIndex = tonumber(data['doorIndex'])
-    player = GetPlayerPed(-1)
+    player = PlayerPedId()
     veh = GetVehiclePedIsIn(player, false)
 
     if veh ~= 0 then
-        -- if doors are unlocked?
-        -- if not GetVehicleDoorsLockedForPlayer(veh, player) then
         local lockStatus = GetVehicleDoorLockStatus(veh)
         if lockStatus == 1 or lockStatus == 0 then
             if (GetVehicleDoorAngleRatio(veh, doorIndex) == 0) then
@@ -150,18 +117,60 @@ end)
 
 RegisterNUICallback('switchSeat', function(data, cb)
     seatIndex = tonumber(data['seatIndex'])
-    player = GetPlayerPed(-1)
+    player = PlayerPedId()
     veh = GetVehiclePedIsIn(player, false)
     if veh ~= 0 then
-        -- May need to check if another player is in seat?
         SetPedIntoVehicle(player, veh, seatIndex)
     end
     cb('ok')
 end)
 
+
+RegisterCommand('seat', function(src, args)
+    local id = tonumber(args[1])
+    player = PlayerPedId()
+    veh = GetVehiclePedIsIn(player, false)
+    if veh ~= 0 then
+        SetPedIntoVehicle(player, veh, id)
+    end
+end)
+
+RegisterCommand('door', function(src, args)
+    local id = tonumber(args[1])
+    player = PlayerPedId()
+    veh = GetVehiclePedIsIn(player, false)
+
+    if veh ~= 0 then
+        local lockStatus = GetVehicleDoorLockStatus(veh)
+        if lockStatus == 1 or lockStatus == 0 then
+            if (GetVehicleDoorAngleRatio(veh, id) == 0) then
+                SetVehicleDoorOpen(veh, id, false, false)
+            else
+                SetVehicleDoorShut(veh, id, false)
+            end
+        end
+    end
+end)
+
+RegisterCommand('window', function(src, args)
+    local id = tonumber(args[1])
+    player = PlayerPedId()
+    veh = GetVehiclePedIsIn(player, false)
+    if veh ~= 0 then
+        if not IsVehicleWindowIntact(veh, id) then
+            RollUpWindow(veh, id)
+            if not IsVehicleWindowIntact(veh, id) then
+                RollDownWindow(veh, id)
+            end
+        else
+            RollDownWindow(veh, id)
+        end
+    end
+end)
+
 RegisterNUICallback('togglewindow', function(data, cb)
     windowIndex = tonumber(data['windowIndex'])
-    player = GetPlayerPed(-1)
+    player = PlayerPedId()
     veh = GetVehiclePedIsIn(player, false)
     if veh ~= 0 then
         if not IsVehicleWindowIntact(veh, windowIndex) then
@@ -171,6 +180,53 @@ RegisterNUICallback('togglewindow', function(data, cb)
             end
         else
             RollDownWindow(veh, windowIndex)
+        end
+    end
+    cb('ok')
+end)
+
+RegisterNUICallback('togglealldoor', function(data, cb)
+    player = PlayerPedId()
+    veh = GetVehiclePedIsIn(player, false)
+    if veh ~= 0 then
+        SetVehicleDoorShut(veh, 0, false)
+        SetVehicleDoorShut(veh, 1, false)
+        SetVehicleDoorShut(veh, 2, false)
+        SetVehicleDoorShut(veh, 3, false)
+        SetVehicleDoorShut(veh, 4, false)
+        SetVehicleDoorShut(veh, 5, false)
+        SetVehicleDoorShut(veh, 6, false)
+    end
+    cb('ok')
+end)
+
+RegisterNUICallback('lockdoors', function(data, cb)
+    player = PlayerPedId()
+    veh = GetVehiclePedIsIn(player, false)
+    if veh ~= 0 then
+        TriggerEvent('lockdoors')
+    end
+    cb('ok')
+end)
+
+RegisterNUICallback('givekeys', function(data, cb)
+    player = PlayerPedId()
+    veh = GetVehiclePedIsIn(player, false)
+    if veh ~= 0 then
+        TriggerEvent('garage:addKeys')
+    end
+    cb('ok')
+end)
+
+RegisterNUICallback('convertroof', function(data, cb)
+    player = PlayerPedId()
+    veh = GetVehiclePedIsIn(player, false)
+    if veh ~= 0 then
+        local roofState = GetConvertibleRoofState(veh)
+        if roofState == 0 then
+            LowerConvertibleRoof(veh)
+        elseif roofState == 2 then
+            RaiseConvertibleRoof(veh)
         end
     end
     cb('ok')
@@ -196,9 +252,32 @@ RegisterNUICallback('toggleengine', function(data, cb)
     cb('ok')
 end)
 
- RegisterNUICallback('escape', function(data, cb)
-    EnableGUI(false)
-    cb('ok')
+RegisterNUICallback('escape', function(data, cb) EnableGUI(false) cb('ok') end)
+
+RegisterNetEvent('toggleit')
+AddEventHandler('toggleit', function()
+    player = GetPlayerPed(-1)
+    veh = GetVehiclePedIsIn(player, false)
+    if veh ~= 0 then
+        local engine = not GetIsVehicleEngineRunning(veh)
+
+        if not IsPedInAnyHeli(player) then
+            SetVehicleEngineOn(veh, engine, false, true)
+            SetVehicleJetEngineOn(veh, engine)
+        else
+            if engine then
+                SetVehicleFuelLevel(veh, vehicle_fuel)
+            else
+                SetVehicleFuelLevel(veh, 0)
+            end
+        end
+    end
+end)
+
+RegisterNetEvent('veh:options')
+AddEventHandler('veh:options', function()
+    Citizen.Wait(5)
+    EnableGUI(true)
 end)
 
 local disableShuffle = true
