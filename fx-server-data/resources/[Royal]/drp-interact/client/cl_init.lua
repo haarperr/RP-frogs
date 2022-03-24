@@ -1269,6 +1269,12 @@ Citizen.CreateThread(function()
         maxZ=26
     })
 
+    
+    exports["drp-polytarget"]:AddBoxZone("vagoscrafting",  vector3(579.1924, -1870.4132, 25.2685), 0.8, 0.2, {
+        minZ=24,
+        maxZ=26
+    })
+
     exports["drp-polytarget"]:AddBoxZone("maze_elevator_up",  vector3(-86.96, -823.67, 36.03), 0.4, 0.2, {
         minZ=35.23,
         maxZ=37.63
@@ -3566,6 +3572,17 @@ Citizen.CreateThread(function()
     }}, {
         distance = { radius = 1.5 },
     });
+    
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("vagoscrafting", {{
+        event = "vagoscrafting",
+        id = "vagoscrafting",
+        icon = "circle",
+        label = "Use Vagos Bench",
+        parameters = {},
+    }}, {
+        distance = { radius = 1.5 },
+    });
+
     -- exports["drp-interact"]:AddPeekEntryByPolyTarget("zombie_santa", {{
     --     event = "drp-zombies:SellMenu",
     --     id = "zombie",

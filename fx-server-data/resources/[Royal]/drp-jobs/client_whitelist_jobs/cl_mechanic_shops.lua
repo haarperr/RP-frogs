@@ -209,6 +209,7 @@ end)
  end)
 
  
+ 
  RegisterNetEvent('civguncrafting')
  AddEventHandler('civguncrafting', function()
      TriggerEvent('drp-context:sendMenu', {
@@ -258,6 +259,62 @@ end)
              }
          },
      })
+ end)
+ 
+ RegisterNetEvent('vagoscrafting')
+ AddEventHandler('vagoscrafting', function()
+    local cid = exports["isPed"]:isPed("cid")
+    if cid == 110 or cid == 17 or cid == 74 then
+        TriggerEvent('drp-context:sendMenu', {
+            {
+                id = 1,
+                header = "Vagos Bench",
+                txt = ""
+            },
+            {
+                id = 2,
+                header = "Craft Pistol Ammo",
+                txt = "Requires: 5x Aluminium | 5x Steel",
+                params = {
+                    event = "drp-civjobs:craft-pammo"
+                }
+            },
+            {
+                id = 3,
+                header = "Craft Sub Ammo",
+                txt = "Requires: 5x Aluminium | 5x Steel",
+                params = {
+                    event = "drp-civjobs:craft-subammo"
+                }
+            },
+            {
+                id = 4,
+            header = "Craft Browning Hi-Power",
+                txt = "Requires: 20x Aluminium | 20x Steel",
+                params = {
+                    event = "drp-civjobs:craft-browning"
+                }
+            },
+            {
+                id = 5,
+                header = "Craft Mac-10",
+            txt = "Requires: 20x Refined Aluminium | 20x Refined Steel",
+                params = {
+                    event = "drp-civjobs:craft-mac10"
+                }
+            },
+            {
+                id = 6,
+                header = "Close",
+                txt = "Exit the bench",
+                params = {
+                    event = ""
+                }
+            },
+        })
+    else 
+        TriggerEvent('DoLongHudText', 'You are not Vagos Puto', 2)
+    end
  end)
 
 -----------------------------------------------------------------------------------------------------------------
