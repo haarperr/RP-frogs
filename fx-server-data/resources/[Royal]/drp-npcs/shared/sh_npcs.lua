@@ -225,7 +225,7 @@ Generic.NPCS[#Generic.NPCS + 1] = {
   name = "Fence Guy",
   pedType = 4,
   model = "s_m_y_ammucity_01",
-  networked = false,
+  networked = true,
   distance = 200.0,
   position = {
     coords = vector3(331.3026, 362.8521, 105.6536),
@@ -247,11 +247,36 @@ Generic.NPCS[#Generic.NPCS + 1] = {
 
 
 Generic.NPCS[#Generic.NPCS + 1] = {
+  id = "taxiguy",
+  name = "Taxi Guy",
+  pedType = 4,
+  model = "cs_jimmyboston",
+  networked = true,
+  distance = 200.0,
+  position = {
+    coords = vector3(3894.9174, -179.3615, 74.7003),
+    heading = 239.7525,
+    random = false
+  },
+  appearance = '{"eyebrow":{"params":[2,0,0.0],"mode":"overlay"},"skinproblem":{"params":[6,0,0.0],"mode":"overlay"},"freckles":{"params":[9,0,0.0],"mode":"overlay"},"badges":{"params":[10,0,0,1],"mode":"component"},"arms":{"params":[3,0,0,1],"mode":"component"},"hat":{"params":[0,-1,-1,1],"mode":"prop"},"beard_color":{"params":[2,0,0,0,0],"mode":"overlaycolor"},"kevlar":{"params":[9,0,0,1],"mode":"component"},"bag":{"params":[5,0,0,1],"mode":"component"},"undershirt":{"params":[8,0,0,1],"mode":"component"},"wrinkles":{"params":[3,0,0.0],"mode":"overlay"},"shoes":{"params":[6,0,0,1],"mode":"component"},"legs":{"params":[4,0,0,1],"mode":"component"},"watch":{"params":[6,-1,-1,1],"mode":"prop"},"haircolor":{"params":[-1,-1],"mode":"haircolor"},"bracelet":{"params":[7,-1,-1,1],"mode":"prop"},"torso":{"params":[11,0,0,1],"mode":"component"},"hair":{"params":[2,0,0,1],"mode":"component"},"glasses":{"params":[1,-1,-1,1],"mode":"prop"},"mask":{"params":[1,0,0,1],"mode":"component"},"beard":{"params":[1,0,0.0],"mode":"overlay"},"accesory":{"params":[7,0,0,1],"mode":"component"},"eyecolor":{"params":[-1],"mode":"eyecolor"},"face":{"params":[0,0,0,1],"mode":"component"},"ears":{"params":[2,-1,-1,1],"mode":"prop"}}',
+  settings = {
+      { mode = "invincible", active = true },
+      { mode = "ignore", active = true },
+      { mode = "freeze", active = true }
+  },
+  flags = {
+      ['isNPC'] = true,
+      ['isFenceGuy'] = true
+  }
+}
+
+
+Generic.NPCS[#Generic.NPCS + 1] = {
   id = "vpnguy",
   name = "Vpn Guy",
   pedType = 4,
   model = "ig_thornton",
-  networked = false,
+  networked = true,
   distance = 200.0,
   position = {
     coords = vector3(944.7300, -1697.6277, 29.0850),
@@ -276,7 +301,7 @@ Generic.NPCS[#Generic.NPCS + 1] = {
   name = "Recycle Exchange",
   pedType = 4,
   model = "s_m_y_garbage",
-  networked = false,
+  networked = true,
   distance = 150.0,
   position = {
     coords = vector3(-355.76, -1556.04, 24.18),
