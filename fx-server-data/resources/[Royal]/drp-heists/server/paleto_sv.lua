@@ -49,14 +49,18 @@ RegisterServerEvent("drp-paleto:rewardCash")
 AddEventHandler("drp-paleto:rewardCash", function()
     local src = source
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
-    local cash = math.random(15000, 35000) -- 15-35K Cash Reward
+    local cash = math.random(5000, 10000) -- 5-10K Cash Reward
     TriggerClientEvent('player:receiveItem',src, "markedbills", math.random(20,45))
     user:addMoney(cash)
     if math.random(100) < 20 then -- Red Dongle Chance 20%
         TriggerClientEvent('player:receiveItem',src, "heistusb2", 1)
         end
     if math.random(100) < 25 then -- Big Bag Chance 25%
-        TriggerClientEvent('player:receiveItem',src, "inkedmoneybag", math.random(2,4))  
+        TriggerClientEvent('player:receiveItem',src, "inkedmoneybag", math.random(1,2))  
+    end
+    
+    if math.random(100) < 5 then -- Big Bag Chance 25%
+        TriggerClientEvent('player:receiveItem',src, "inkedmoneybag", 1)  
     end
 end)
 

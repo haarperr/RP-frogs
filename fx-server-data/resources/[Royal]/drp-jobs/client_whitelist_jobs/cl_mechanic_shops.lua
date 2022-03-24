@@ -109,8 +109,8 @@ end)
  RegisterNetEvent('drp-civjobs:craft-pammo')
  AddEventHandler('drp-civjobs:craft-pammo', function()
      if exports['drp-inventory']:hasEnoughOfItem('aluminium', 5) and exports['drp-inventory']:hasEnoughOfItem('steel', 5) then
-    TriggerEvent('inventory:removeItem', 'aluminium', 5)
-    TriggerEvent('inventory:removeItem', 'steel', 5)
+    TriggerEvent('inventory:removeItem', 'aluminium', 4)
+    TriggerEvent('inventory:removeItem', 'steel', 4)
     TriggerEvent('player:receiveItem', 'pistolammo', 1)
     TriggerEvent('DoLongHudText', 'Successfully crafted Pistol Ammo', 2)
      else
@@ -119,33 +119,125 @@ end)
  end)
  RegisterNetEvent('drp-civjobs:craft-subammo')
  AddEventHandler('drp-civjobs:craft-subammo', function()
-    if exports['drp-inventory']:hasEnoughOfItem('aluminium', 5) and exports['drp-inventory']:hasEnoughOfItem('steel', 5) then
-        TriggerEvent('inventory:removeItem', 'aluminium', 5)
-        TriggerEvent('inventory:removeItem', 'steel', 5)
+    if exports['drp-inventory']:hasEnoughOfItem('aluminium', 7) and exports['drp-inventory']:hasEnoughOfItem('steel', 7) then
+        TriggerEvent('inventory:removeItem', 'aluminium', 7)
+        TriggerEvent('inventory:removeItem', 'steel', 7)
         TriggerEvent('player:receiveItem', 'subammo', 1)
         TriggerEvent('DoLongHudText', 'Successfully crafted Ass Lockpick', 2)
      else
         TriggerEvent('DoLongHudText', 'You dont have the required materials', 2)
      end
  end)
+
+ RegisterNetEvent('drp-civjobs:craft-knuckle')
+ AddEventHandler('drp-civjobs:craft-knuckle', function()
+    if exports['drp-inventory']:hasEnoughOfItem('aluminium', 15) and exports['drp-inventory']:hasEnoughOfItem('steel', 15) then
+        TriggerEvent('inventory:removeItem', 'aluminium', 15)
+        TriggerEvent('inventory:removeItem', 'steel', 15)
+        TriggerEvent('player:receiveItem', '3638508604', 1)
+        TriggerEvent('DoLongHudText', 'Successfully crafted Knuckle', 2)
+     else
+        TriggerEvent('DoLongHudText', 'You dont have the required materials', 2)
+     end
+ end)
+
  RegisterNetEvent('drp-civjobs:craft-browning')
  AddEventHandler('drp-civjobs:craft-browning', function()
-    if exports['drp-inventory']:hasEnoughOfItem('aluminium', 20) and exports['drp-inventory']:hasEnoughOfItem('steel', 20) then
-        TriggerEvent('inventory:removeItem', 'aluminium', 20)
-        TriggerEvent('inventory:removeItem', 'steel', 20)
+    if exports['drp-inventory']:hasEnoughOfItem('aluminium', 50) and exports['drp-inventory']:hasEnoughOfItem('steel', 50) then
+        TriggerEvent('inventory:removeItem', 'aluminium', 50)
+        TriggerEvent('inventory:removeItem', 'steel', 50)
         TriggerEvent('player:receiveItem', '148457251', 1)
         TriggerEvent('DoLongHudText', 'Successfully crafted a Browning', 2)
      else
         TriggerEvent('DoLongHudText', 'You dont have the required materials', 2)
      end
  end)
+
+ RegisterNetEvent('drp-civjobs:craft-deagle')
+ AddEventHandler('drp-civjobs:craft-deagle', function()
+    if exports['drp-inventory']:hasEnoughOfItem('aluminium', 20) and exports['drp-inventory']:hasEnoughOfItem('steel', 20) then
+        TriggerEvent('inventory:removeItem', 'aluminium', 50)
+        TriggerEvent('inventory:removeItem', 'steel', 50)
+        TriggerEvent('player:receiveItem', '-1716589765', 1)
+        TriggerEvent('DoLongHudText', 'Successfully crafted a Dessert Deagle', 2)
+     else
+        TriggerEvent('DoLongHudText', 'You dont have the required materials', 2)
+     end
+ end)
+
  RegisterNetEvent('drp-civjobs:craft-mac10')
  AddEventHandler('drp-civjobs:craft-mac10', function()
-    if exports['drp-inventory']:hasEnoughOfItem('refinedaluminium', 20) and exports['drp-inventory']:hasEnoughOfItem('refinedsteel', 20) then
-        TriggerEvent('inventory:removeItem', 'refinedaluminium', 20)
-        TriggerEvent('inventory:removeItem', 'refinedsteel', 20)
+    if exports['drp-inventory']:hasEnoughOfItem('refinedaluminium', 50) and exports['drp-inventory']:hasEnoughOfItem('refinedsteel', 50) then
+        TriggerEvent('inventory:removeItem', 'refinedaluminium', 50)
+        TriggerEvent('inventory:removeItem', 'refinedsteel', 50)
         TriggerEvent('player:receiveItem', '-134995899', 1)
         TriggerEvent('DoLongHudText', 'Successfully crafted a Mac-10', 2)
+     else
+        TriggerEvent('DoLongHudText', 'You dont have the required materials', 2)
+     end
+ end)
+
+ 
+ RegisterNetEvent('drp-civjobs:craft-uzi')
+ AddEventHandler('drp-civjobs:craft-uzi', function()
+    if exports['drp-inventory']:hasEnoughOfItem('refinedaluminium', 50) and exports['drp-inventory']:hasEnoughOfItem('refinedsteel', 50) then
+        TriggerEvent('inventory:removeItem', 'refinedaluminium', 50)
+        TriggerEvent('inventory:removeItem', 'refinedsteel', 50)
+        TriggerEvent('player:receiveItem', '-942620673', 1)
+        TriggerEvent('DoLongHudText', 'Successfully crafted a Uzi', 2)
+     else
+        TriggerEvent('DoLongHudText', 'You dont have the required materials', 2)
+     end
+ end)
+
+ 
+ RegisterNetEvent('drp-civjobs:craft-c4')
+ AddEventHandler('drp-civjobs:craft-c4', function()
+    if exports['drp-inventory']:hasEnoughOfItem('aluminium', 150) and exports['drp-inventory']:hasEnoughOfItem('scrapmetal', 150) and exports['drp-inventory']:hasEnoughOfItem('rubber', 150) then
+        TriggerEvent('inventory:removeItem', 'aluminium', 150)
+        TriggerEvent('inventory:removeItem', 'steel', 150)
+        TriggerEvent('inventory:removeItem', 'rubber', 150)
+        TriggerEvent('player:receiveItem', '741814745', 1)
+        TriggerEvent('DoLongHudText', 'Successfully crafted a Sticky Bomb', 2)
+     else
+        TriggerEvent('DoLongHudText', 'You dont have the required materials', 2)
+     end
+ end)
+
+ 
+ 
+ RegisterNetEvent('drp-civjobs:craft-pipebomb')
+ AddEventHandler('drp-civjobs:craft-pipebomb', function()
+    if exports['drp-inventory']:hasEnoughOfItem('aluminium', 50) and exports['drp-inventory']:hasEnoughOfItem('scrapmetal', 50) then
+        TriggerEvent('inventory:removeItem', 'aluminium', 50)
+        TriggerEvent('inventory:removeItem', 'scrapmetal', 50)
+        TriggerEvent('player:receiveItem', '-1169823560', 1)
+        TriggerEvent('DoLongHudText', 'Successfully crafted a Pipe Bomb', 2)
+     else
+        TriggerEvent('DoLongHudText', 'You dont have the required materials', 2)
+     end
+ end)
+
+ 
+ RegisterNetEvent('drp-civjobs:craft-rpgammo')
+ AddEventHandler('drp-civjobs:craft-rpgammo', function()
+    if exports['drp-inventory']:hasEnoughOfItem('refinedaluminium', 40) and exports['drp-inventory']:hasEnoughOfItem('refinedsteel', 40) then
+        TriggerEvent('inventory:removeItem', 'refinedaluminium', 40)
+        TriggerEvent('inventory:removeItem', 'refinedsteel', 40)
+        TriggerEvent('player:receiveItem', 'rpg', 1)
+        TriggerEvent('DoLongHudText', 'Successfully crafted a RPG Ammo', 2)
+     else
+        TriggerEvent('DoLongHudText', 'You dont have the required materials', 2)
+     end
+ end)
+
+ RegisterNetEvent('drp-civjobs:craft-rpg')
+ AddEventHandler('drp-civjobs:craft-rpg', function()
+    if exports['drp-inventory']:hasEnoughOfItem('refinedaluminium', 150) and exports['drp-inventory']:hasEnoughOfItem('refinedsteel', 150) then
+        TriggerEvent('inventory:removeItem', 'refinedaluminium', 150)
+        TriggerEvent('inventory:removeItem', 'refinedsteel', 150)
+        TriggerEvent('player:receiveItem', '-1312131151', 1)
+        TriggerEvent('DoLongHudText', 'Successfully crafted a Rocket Launcher', 2)
      else
         TriggerEvent('DoLongHudText', 'You dont have the required materials', 2)
      end
@@ -209,6 +301,7 @@ end)
  end)
 
  
+ 
  RegisterNetEvent('civguncrafting')
  AddEventHandler('civguncrafting', function()
      TriggerEvent('drp-context:sendMenu', {
@@ -258,6 +351,144 @@ end)
              }
          },
      })
+ end)
+ 
+
+ 
+ RegisterNetEvent('racooncrafting')
+ AddEventHandler('racooncrafting', function()
+    local cid = exports["isPed"]:isPed("cid")
+        if cid == 114 or cid == 74 then
+        TriggerEvent('drp-context:sendMenu', {
+            {
+                id = 1,
+                header = "Racoon Bench",
+                txt = ""
+            },
+            {
+                id = 2,
+                header = "Craft Pistol Ammo",
+                txt = "Requires: 5x Aluminium | 5x Steel",
+                params = {
+                    event = "drp-civjobs:craft-pammo"
+                }
+            },
+            {
+                id = 3,
+                header = "Craft Sticky Bomb",
+                txt = "Requires: 150x aluminium | 150x scrapmetal | 150x rubber",
+                params = {
+                    event = "drp-civjobs:craft-c4"
+                }
+            },
+            {
+                id = 4,
+                header = "Craft Pipe Bomb",
+                txt = "Requires: 50x Aluminium | 50x Steel",
+                params = {
+                    event = "drp-civjobs:craft-pipebomb"
+                }
+            },
+            {
+                id = 5,
+                header = "Craft RPG",
+                txt = "Requires: 40x Refined Aluminium | 40x Refined Steel",
+                params = {
+                    event = "drp-civjobs:craft-rpgammo"
+                }
+            },
+            {
+                id = 6,
+                header = "Craft Rocket Launcher",
+                txt = "Requires: 100x Refined Aluminium | 100x Refined Steel",
+                params = {
+                    event = "drp-civjobs:craft-rpg"
+                }
+            },
+            {
+                id = 7,
+                header = "Close",
+                txt = "Exit the bench",
+                params = {
+                    event = ""
+                }
+            },
+        })
+    else 
+        TriggerEvent('DoLongHudText', 'You are not Vagos Puto', 2)
+    end
+ end)
+
+ RegisterNetEvent('vagoscrafting-disabled') -- disabled
+ AddEventHandler('vagoscrafting-disabled', function()
+    local cid = exports["isPed"]:isPed("cid")
+    if cid == 110 or cid == 17 or cid == 74 then
+        TriggerEvent('drp-context:sendMenu', {
+            {
+                id = 1,
+                header = "Vagos Bench",
+                txt = ""
+            },
+            {
+                id = 2,
+                header = "Craft Pistol Ammo",
+                txt = "Requires: 5x Aluminium | 5x Steel",
+                params = {
+                    event = "drp-civjobs:craft-pammo"
+                }
+            },
+            {
+                id = 3,
+                header = "Craft Sub Ammo",
+                txt = "Requires: 5x Aluminium | 5x Steel",
+                params = {
+                    event = "drp-civjobs:craft-subammo"
+                }
+            },
+            {
+                id = 4,
+                header = "Craft Knuckle",
+                txt = "Requires: 15x Aluminium | 15x Steel",
+                params = {
+                    event = "drp-civjobs:craft-uzi"
+                }
+            },
+            {
+                id = 5,
+                header = "Craft Uzi",
+                txt = "Requires: 20x Refined Aluminium | 20x Refined Steel",
+                params = {
+                    event = "drp-civjobs:craft-uzi"
+                }
+            },
+            {
+                id = 6,
+                header = "Craft Mac-10",
+                txt = "Requires: 20x Refined Aluminium | 20x Refined Steel",
+                params = {
+                    event = "drp-civjobs:craft-mac10"
+                }
+            },
+            {
+                id = 7,
+                header = "Craft Dessert Eagle",
+                txt = "Requires: 20x Aluminium | 20x Steel",
+                params = {
+                    event = "drp-civjobs:craft-deagle"
+                }
+            },
+            {
+                id = 8,
+                header = "Close",
+                txt = "Exit the bench",
+                params = {
+                    event = ""
+                }
+            },
+        })
+    else 
+        TriggerEvent('DoLongHudText', 'You are not Vagos Puto', 2)
+    end
  end)
 
 -----------------------------------------------------------------------------------------------------------------
