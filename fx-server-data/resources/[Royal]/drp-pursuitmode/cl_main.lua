@@ -25,8 +25,8 @@ CreateThread(function()
                     if mode4 then
                         mode4 = false
                         mode1 = true
-                        if Veny.notify == "notification" then
-                            TriggerEvent('notification', "Pursuit Mode: A+" , 1)
+                        if Veny.notify == "DoLongHudText" then
+                            TriggerEvent('DoLongHudText', "Pursuit Mode: A+" , 1)
                         elseif Veny.notify == "mythicnotify" then
                             exports['mythic_notify']:SendAlert('success', "Pursuit Mode: A+")
                         elseif Veny.notify == "qbcorenotify" then
@@ -38,8 +38,8 @@ CreateThread(function()
                     elseif mode1 then
                         mode1 = false
                         mode2 = true
-                        if Veny.notify == "notification" then
-                            TriggerEvent('notification', "Pursuit Mode: S" , 1)
+                        if Veny.notify == "DoLongHudText" then
+                            TriggerEvent('DoLongHudText', "Pursuit Mode: S" , 1)
                         elseif Veny.notify == "mythicnotify" then
                             exports['mythic_notify']:SendAlert('success', "Pursuit Mode: S")
                         elseif Veny.notify == "qbcorenotify" then
@@ -51,8 +51,8 @@ CreateThread(function()
                     elseif mode2 then
                         mode2 = false
                         mode3 = true
-                        if Veny.notify == "notification" then
-                            TriggerEvent('notification', "Pursuit Mode: S+" , 1)
+                        if Veny.notify == "DoLongHudText" then
+                            TriggerEvent('DoLongHudText', "Pursuit Mode: S+" , 1)
                         elseif Veny.notify == "mythicnotify" then
                             exports['mythic_notify']:SendAlert('success', "Pursuit Mode: S+")
                         elseif Veny.notify == "qbcorenotify" then
@@ -64,8 +64,8 @@ CreateThread(function()
                     elseif mode3 then
                         mode3 = false
                         mode4 = true
-                        if Veny.notify == "notification" then
-                            TriggerEvent('notification', "Pursuit Mode: A" , 1)
+                        if Veny.notify == "DoLongHudText" then
+                            TriggerEvent('DoLongHudText', "Pursuit Mode: A" , 1)
                         elseif Veny.notify == "mythicnotify" then
                             exports['mythic_notify']:SendAlert('success', "Pursuit Mode: A")
                         elseif Veny.notify == "qbcorenotify" then
@@ -76,8 +76,8 @@ CreateThread(function()
                         SetVehicleHandlingField(vehicle, "CHandlingData", "fInitialDriveForce", defaultcarspeed+Veny.MultiplierA)
                     end
                 else
-                    if Veny.notify == "notification" then
-                        TriggerEvent('notification', "You are not in a pursuit car" , 2)
+                    if Veny.notify == "DoLongHudText" then
+                        TriggerEvent('DoLongHudText', "You are not in a pursuit car" , 2)
                     elseif Veny.notify == "mythicnotify" then
                         exports['mythic_notify']:SendAlert('error', "You are not in a pursuit car")
                     elseif Veny.notify == "qbcorenotify" then
@@ -87,8 +87,8 @@ CreateThread(function()
                     end
                 end
             else
-                if Veny.notify == "notification" then
-                    TriggerEvent('notification', "You are not in a car" , 2)
+                if Veny.notify == "DoLongHudText" then
+                    TriggerEvent('DoLongHudText', "You are not in a car" , 2)
                 elseif Veny.notify == "mythicnotify" then
                     exports['mythic_notify']:SendAlert('error', "You are not in a car")
                 elseif Veny.notify == "qbcorenotify" then
