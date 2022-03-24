@@ -266,7 +266,7 @@ Generic.NPCS[#Generic.NPCS + 1] = {
   },
   flags = {
       ['isNPC'] = true,
-      ['isFenceGuy'] = true
+      ['isTaxiGuy'] = true
   }
 }
 
