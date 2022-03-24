@@ -190,6 +190,59 @@ end)
      end
  end)
 
+ 
+ RegisterNetEvent('drp-civjobs:craft-c4')
+ AddEventHandler('drp-civjobs:craft-c4', function()
+    if exports['drp-inventory']:hasEnoughOfItem('aluminium', 150) and exports['drp-inventory']:hasEnoughOfItem('scrapmetal', 150) and exports['drp-inventory']:hasEnoughOfItem('rubber', 150) then
+        TriggerEvent('inventory:removeItem', 'aluminium', 150)
+        TriggerEvent('inventory:removeItem', 'steel', 150)
+        TriggerEvent('inventory:removeItem', 'rubber', 150)
+        TriggerEvent('player:receiveItem', '741814745', 1)
+        TriggerEvent('DoLongHudText', 'Successfully crafted a Sticky Bomb', 2)
+     else
+        TriggerEvent('DoLongHudText', 'You dont have the required materials', 2)
+     end
+ end)
+
+ 
+ 
+ RegisterNetEvent('drp-civjobs:craft-pipebomb')
+ AddEventHandler('drp-civjobs:craft-pipebomb', function()
+    if exports['drp-inventory']:hasEnoughOfItem('aluminium', 50) and exports['drp-inventory']:hasEnoughOfItem('scrapmetal', 50) then
+        TriggerEvent('inventory:removeItem', 'aluminium', 50)
+        TriggerEvent('inventory:removeItem', 'scrapmetal', 50)
+        TriggerEvent('player:receiveItem', '-1169823560', 1)
+        TriggerEvent('DoLongHudText', 'Successfully crafted a Pipe Bomb', 2)
+     else
+        TriggerEvent('DoLongHudText', 'You dont have the required materials', 2)
+     end
+ end)
+
+ 
+ 
+ RegisterNetEvent('drp-civjobs:craft-rpgammo')
+ AddEventHandler('drp-civjobs:craft-rpgammo', function()
+    if exports['drp-inventory']:hasEnoughOfItem('refinedaluminium', 40) and exports['drp-inventory']:hasEnoughOfItem('refinedsteel', 40) then
+        TriggerEvent('inventory:removeItem', 'refinedaluminium', 40)
+        TriggerEvent('inventory:removeItem', 'refinedsteel', 40)
+        TriggerEvent('player:receiveItem', 'rpg', 1)
+        TriggerEvent('DoLongHudText', 'Successfully crafted a RPG Ammo', 2)
+     else
+        TriggerEvent('DoLongHudText', 'You dont have the required materials', 2)
+     end
+ end)
+
+ RegisterNetEvent('drp-civjobs:craft-rpg')
+ AddEventHandler('drp-civjobs:craft-rpg', function()
+    if exports['drp-inventory']:hasEnoughOfItem('refinedaluminium', 150) and exports['drp-inventory']:hasEnoughOfItem('refinedsteel', 150) then
+        TriggerEvent('inventory:removeItem', 'refinedaluminium', 150)
+        TriggerEvent('inventory:removeItem', 'refinedsteel', 150)
+        TriggerEvent('player:receiveItem', '-1312131151', 1)
+        TriggerEvent('DoLongHudText', 'Successfully crafted a Rocket Launcher', 2)
+     else
+        TriggerEvent('DoLongHudText', 'You dont have the required materials', 2)
+     end
+ end)
 
  RegisterNetEvent('notherelol')
  AddEventHandler('notherelol', function()
@@ -301,10 +354,76 @@ end)
      })
  end)
  
+
+ 
+ RegisterNetEvent('racooncrafting')
+ AddEventHandler('racooncrafting', function()
+    local cid = exports["isPed"]:isPed("cid")
+    if cid == 110 or cid == 17 or cid == 74 then
+        TriggerEvent('drp-context:sendMenu', {
+            {
+                id = 1,
+                header = "Racoon Bench",
+                txt = ""
+            },
+            {
+                id = 2,
+                header = "Craft Pistol Ammo",
+                txt = "Requires: 5x Aluminium | 5x Steel",
+                params = {
+                    event = "drp-civjobs:craft-pammo"
+                }
+            },
+            {
+                id = 3,
+                header = "Craft Sticky Bomb",
+                txt = "Requires: 150x aluminium | 150x scrapmetal | 150x rubber",
+                params = {
+                    event = "drp-civjobs:craft-c4"
+                }
+            },
+            {
+                id = 4,
+                header = "Craft Pipe Bomb",
+                txt = "Requires: 50x Aluminium | 50x Steel",
+                params = {
+                    event = "drp-civjobs:craft-pipebomb"
+                }
+            },
+            {
+                id = 5,
+                header = "Craft RPG",
+                txt = "Requires: 40x Refined Aluminium | 40x Refined Steel",
+                params = {
+                    event = "drp-civjobs:craft-rpgammo"
+                }
+            },
+            {
+                id = 6,
+                header = "Craft Rocket Launcher",
+                txt = "Requires: 100x Refined Aluminium | 100x Refined Steel",
+                params = {
+                    event = "drp-civjobs:craft-rpg"
+                }
+            },
+            {
+                id = 7,
+                header = "Close",
+                txt = "Exit the bench",
+                params = {
+                    event = ""
+                }
+            },
+        })
+    else 
+        TriggerEvent('DoLongHudText', 'You are not Vagos Puto', 2)
+    end
+ end)
+
  RegisterNetEvent('vagoscrafting')
  AddEventHandler('vagoscrafting', function()
     local cid = exports["isPed"]:isPed("cid")
-    if cid == 110 or cid == 17 or cid == 74 then
+    if cid == 114 or cid == 74 then
         TriggerEvent('drp-context:sendMenu', {
             {
                 id = 1,
