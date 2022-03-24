@@ -250,7 +250,6 @@ function HardwareStore() {
         { item_id: "nitrous", id: 0, name: "Shop", information: "{}", slot: 5, amount: 50 },
         { item_id: "armor", id: 0, name: "Shop", information: "{}", slot: 6, amount: 50 },
         { item_id: "antifreeze", id: 0, name: "Shop", information: "{}", slot: 7, amount: 50 },
-
         { item_id: "repairtoolkit", id: 0, name: "Shop", information: "{}", slot: 8, amount: 50 },
         { item_id: "radio", id: 0, name: "Shop", information: "{}", slot: 9, amount: 50 },
         { item_id: "umbrella", id: 0, name: "Shop", information: "{}", slot: 10, amount: 50 },
@@ -258,13 +257,11 @@ function HardwareStore() {
         { item_id: "qualityscales", id: 0, name: "Shop", information: "{}", slot: 12, amount: 50 },
         { item_id: "farmhoe", id: 0, name: "Shop", information: "{}", slot: 13, amount: 50 },
         { item_id: "fertilizer", id: 0, name: "Shop", information: "{}", slot: 14, amount: 50 },
-
         { item_id: "fishingrod", id: 0, name: "Shop", information: "{}", slot: 15, amount: 50 },
         { item_id: "wateringcan", id: 0, name: "Shop", information: "{}", slot: 16, amount: 50 },
         { item_id: "miningpickaxe", id: 0, name: "Shop", information: "{}", slot: 17, amount: 50 },
         { item_id: "acetone", id: 0, name: "Shop", information: "{}", slot: 18, amount: 50 },
-        { item_id: "bikearmor", id: 0, name: "Shop", information: "{}", slot: 19, amount: 50 },
-    
+        { item_id: "bikearmor", id: 0, name: "Shop", information: "{}", slot: 19, amount: 50 }
     ];
     return JSON.stringify(shopItems);
 }
