@@ -250,21 +250,20 @@ function HardwareStore() {
         { item_id: "nitrous", id: 0, name: "Shop", information: "{}", slot: 5, amount: 50 },
         { item_id: "armor", id: 0, name: "Shop", information: "{}", slot: 6, amount: 50 },
         { item_id: "antifreeze", id: 0, name: "Shop", information: "{}", slot: 7, amount: 50 },
-        { item_id: "lockpick", id: 0, name: "Shop", information: "{}", slot: 8, amount: 50 },
 
-        { item_id: "repairtoolkit", id: 0, name: "Shop", information: "{}", slot: 9, amount: 50 },
-        { item_id: "radio", id: 0, name: "Shop", information: "{}", slot: 10, amount: 50 },
-        { item_id: "umbrella", id: 0, name: "Shop", information: "{}", slot: 11, amount: 50 },
-        { item_id: "smallscales", id: 0, name: "Shop", information: "{}", slot: 12, amount: 50 },
-        { item_id: "qualityscales", id: 0, name: "Shop", information: "{}", slot: 13, amount: 50 },
-        { item_id: "farmhoe", id: 0, name: "Shop", information: "{}", slot: 14, amount: 50 },
-        { item_id: "fertilizer", id: 0, name: "Shop", information: "{}", slot: 15, amount: 50 },
+        { item_id: "repairtoolkit", id: 0, name: "Shop", information: "{}", slot: 8, amount: 50 },
+        { item_id: "radio", id: 0, name: "Shop", information: "{}", slot: 9, amount: 50 },
+        { item_id: "umbrella", id: 0, name: "Shop", information: "{}", slot: 10, amount: 50 },
+        { item_id: "smallscales", id: 0, name: "Shop", information: "{}", slot: 11, amount: 50 },
+        { item_id: "qualityscales", id: 0, name: "Shop", information: "{}", slot: 12, amount: 50 },
+        { item_id: "farmhoe", id: 0, name: "Shop", information: "{}", slot: 13, amount: 50 },
+        { item_id: "fertilizer", id: 0, name: "Shop", information: "{}", slot: 14, amount: 50 },
 
-        { item_id: "fishingrod", id: 0, name: "Shop", information: "{}", slot: 16, amount: 50 },
-        { item_id: "wateringcan", id: 0, name: "Shop", information: "{}", slot: 17, amount: 50 },
-        { item_id: "miningpickaxe", id: 0, name: "Shop", information: "{}", slot: 18, amount: 50 },
-        { item_id: "acetone", id: 0, name: "Shop", information: "{}", slot: 19, amount: 50 },
-        { item_id: "fishingrod", id: 0, name: "Shop", information: "{}", slot: 20, amount: 1 },
+        { item_id: "fishingrod", id: 0, name: "Shop", information: "{}", slot: 15, amount: 50 },
+        { item_id: "wateringcan", id: 0, name: "Shop", information: "{}", slot: 16, amount: 50 },
+        { item_id: "miningpickaxe", id: 0, name: "Shop", information: "{}", slot: 17, amount: 50 },
+        { item_id: "acetone", id: 0, name: "Shop", information: "{}", slot: 18, amount: 50 },
+        { item_id: "fishingrod", id: 0, name: "Shop", information: "{}", slot: 19, amount: 1 },
 
     
     ];
@@ -327,21 +326,6 @@ function policeveding() {
     return JSON.stringify(shopItems);
 };
 
-
-function recycle() {
-    var shopItems = [
-        { item_id: "aluminium", id: 0, name: "craft", information: "{}", slot: 1, amount: 15 },
-        { item_id: "plastic", id: 0, name: "craft", information: "{}", slot: 2, amount: 15 },
-        { item_id: "copper", id: 0, name: "craft", information: "{}", slot: 3, amount: 15 },
-        { item_id: "electronics", id: 0, name: "craft", information: "{}", slot: 4, amount: 15 },
-        { item_id: "rubber", id: 0, name: "craft", information: "{}", slot: 5, amount: 15 },
-        { item_id: "scrapmetal", id: 0, name: "craft", information: "{}", slot: 6, amount: 15 },
-        { item_id: "steel", id: 0, name: "craft", information: "{}", slot: 7, amount: 15 },
-        { item_id: "glass", id: 0, name: "craft", information: "{}", slot: 8, amount: 15 },
-
-    ];
-    return JSON.stringify(shopItems);
-};
 
 function Tuner() {
     var shopItems = [

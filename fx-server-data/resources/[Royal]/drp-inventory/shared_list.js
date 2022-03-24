@@ -7273,9 +7273,9 @@ itemList['lockpick'] = {
   displayname: 'Lockpick Set',
   craft: [
     [
-      { itemid: 'aluminium', amount: 5 },
-      { itemid: 'plastic', amount: 3 },
-      { itemid: 'rubber', amount: 3 },
+      { itemid: 'aluminium', amount: 6 },
+      { itemid: 'plastic', amount: 4 },
+      { itemid: 'rubber', amount: 4 },
     ],
     [
       { itemid: 'refinedaluminium', amount: 2 },
