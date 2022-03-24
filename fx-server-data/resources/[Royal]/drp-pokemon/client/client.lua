@@ -747,7 +747,7 @@ end)
 RegisterNetEvent('murdermeal')
 AddEventHandler('murdermeal', function()
 	local cid = exports["isPed"]:isPed("cid")
-	TriggerEvent("server-inventory-open", "1", "Murder Meal -"..cid)
+	TriggerEvent("server-inventory-open", "1", "MurderMeal -"..cid)
 end)
 
 RegisterNetEvent('murdermeal:toys1')

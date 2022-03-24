@@ -2533,7 +2533,7 @@ end
     end
 
     if itemid == "murdermeal" then
-        -- TriggerEvent("murdermeal")
+         TriggerEvent("murdermeal")
     end
 
 

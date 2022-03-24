@@ -909,6 +909,10 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
         secondaryMaxWeight = 50.0;
         slotLimitTarget = 5;
         displayName = 'Glovebox';
+    } else if (targetinvName.indexOf('MurderMeal') > -1) {
+        secondaryMaxWeight = 50.0;
+        slotLimitTarget = 5;
+        displayName = 'MurderMeal';
     } else if (targetinvName.indexOf('Trunk') > -1) {
         secondaryMaxWeight = 650.0;
         slotLimitTarget = 65;
