@@ -11118,7 +11118,7 @@ itemList['durpman'] = {
 // fleeca
 itemList['heistlaptop3'] = {
   fullyDegrades: true,
-  decayrate: 1.0,
+  decayrate: 0.003,
   displayname: 'Laptop',
   price: 1,
   weight: 20,
@@ -11132,7 +11132,7 @@ itemList['heistlaptop3'] = {
 // paleto
 itemList['heistlaptop2'] = {
   fullyDegrades: true,
-  decayrate: 1.0,
+  decayrate: 0.003,
   displayname: 'Laptop',
   price: 1,
   weight: 20,
@@ -11145,7 +11145,7 @@ itemList['heistlaptop2'] = {
 // vault upper
 itemList['heistlaptop4'] = {
   fullyDegrades: true,
-  decayrate: 1.0,
+  decayrate: 0.005,
   displayname: 'Laptop',
   price: 1,
   weight: 20,
@@ -11158,7 +11158,7 @@ itemList['heistlaptop4'] = {
 // vault lower
 itemList['heistlaptop1'] = {
   fullyDegrades: true,
-  decayrate: 1.0,
+  decayrate: 0.008,
   displayname: 'Laptop',
   price: 1,
   weight: 20,
