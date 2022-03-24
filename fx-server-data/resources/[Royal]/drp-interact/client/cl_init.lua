@@ -1270,9 +1270,8 @@ Citizen.CreateThread(function()
     })
 
     
-    exports["drp-polytarget"]:AddBoxZone("vagoscrafting",  vector3(579.1924, -1870.4132, 25.2685), 0.8, 0.2, {
-        minZ=24,
-        maxZ=26
+    exports["drp-polytarget"]:AddBoxZone("vagoscrafting",  vector3(578.7003, -1870.0605, 25.2696), 0.8, 0.2, {
+        
     })
 
     exports["drp-polytarget"]:AddBoxZone("maze_elevator_up",  vector3(-86.96, -823.67, 36.03), 0.4, 0.2, {
