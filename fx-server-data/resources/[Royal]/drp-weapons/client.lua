@@ -571,7 +571,6 @@ weaponCheck = {
     -1951375401,
     -538741184 ,
     -1810795771 ,
-	-883325847 ,
     419712736 
 }
 
@@ -768,8 +767,6 @@ activeTesting = {
     [2227010557] =  {["name"] = "Crowbar",            ["price"] = 250,    ["weight"] = 11,["nonStack"] = true,["model"] = "", ["image"] = "np_crowbar.png", ["weapon"] = true, ["model"] = "w_me_crowbar" ,["rotate"] = 90.0},
     [1305664598] =  {["name"] = "GND Launcher SMK",   ["price"] = 250,    ["weight"] = 11,["nonStack"] = true,["model"] = "", ["image"] = "np_grenade-launcher.png", ["weapon"] = true, ["model"] = "w_lr_grenadelauncher" ,["rotate"] = 0.0},
 
-
-    [883325847] =   {["name"] = "Petrol Can",         ["price"] = 250,    ["weight"] = 11,["nonStack"] = true,["model"] = "", ["image"] = "np_petrol-can.png", ["weapon"] = true, ["model"] = "w_am_jerrycan" ,["rotate"] = 0.0},
 
     [3231910285] =  {["name"] = "Special Carbine",    ["price"] = 250,    ["weight"] = 11,["nonStack"] = true,["model"] = "", ["image"] = "np_special-carbine.png", ["weapon"] = true, ["model"] = "w_ar_assaultrifle" ,["rotate"] = 0.0},
 
