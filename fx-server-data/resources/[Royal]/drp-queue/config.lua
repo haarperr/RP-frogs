@@ -39,6 +39,7 @@ Config = {
 Config.Rankings = {
 	-- LOWER NUMBER === HIGHER PRIORITY 
 	-- ['roleID'] = {rolePriority, connectQueueMessage},
+	['956067351567159336'] = {30000, "Your position in queue [{QUEUE_NUM}/{QUEUE_MAX}]:"}, -- EMS
 	['956067344927576095'] = {300, "Your position in queue (EMS Queue) [{QUEUE_NUM}/{QUEUE_MAX}]:"}, -- EMS
 	['956067335268081694'] = {300, "Your position in queue (Police Queue) [{QUEUE_NUM}/{QUEUE_MAX}]:"}, -- PD 
 	['956067315072507935'] = {50, "Your position in queue (Staff Queue) [{QUEUE_NUM}/{QUEUE_MAX}]:"}, -- Staff
