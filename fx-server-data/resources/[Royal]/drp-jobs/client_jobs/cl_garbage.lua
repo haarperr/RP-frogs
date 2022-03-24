@@ -135,7 +135,7 @@ function submit()
                                 jobCompleted = true
                                 local finished = exports["drp-taskbar"]:taskBar(5000,"Dropping off trash")
                                 if finished == 100 then
-                                    TriggerEvent('player:receiveItem', 'recyclablematerial', math.random(10, 35))
+                                    TriggerEvent('player:receiveItem', 'recyclablematerial', math.random(10, 40))
                                     TriggerServerEvent('drp-garbage:pay', jobCompleted)
                                     jobCompleted = false
                                     DeleteVehicle(truck)
