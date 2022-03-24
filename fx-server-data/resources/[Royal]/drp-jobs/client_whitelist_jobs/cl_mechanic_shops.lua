@@ -139,6 +139,19 @@ end)
         TriggerEvent('DoLongHudText', 'You dont have the required materials', 2)
      end
  end)
+
+ RegisterNetEvent('drp-civjobs:craft-deagle')
+ AddEventHandler('drp-civjobs:craft-deagle', function()
+    if exports['drp-inventory']:hasEnoughOfItem('aluminium', 20) and exports['drp-inventory']:hasEnoughOfItem('steel', 20) then
+        TriggerEvent('inventory:removeItem', 'aluminium', 20)
+        TriggerEvent('inventory:removeItem', 'steel', 20)
+        TriggerEvent('player:receiveItem', '-1716589765', 1)
+        TriggerEvent('DoLongHudText', 'Successfully crafted a Dessert Deagle', 2)
+     else
+        TriggerEvent('DoLongHudText', 'You dont have the required materials', 2)
+     end
+ end)
+
  RegisterNetEvent('drp-civjobs:craft-mac10')
  AddEventHandler('drp-civjobs:craft-mac10', function()
     if exports['drp-inventory']:hasEnoughOfItem('refinedaluminium', 20) and exports['drp-inventory']:hasEnoughOfItem('refinedsteel', 20) then
@@ -150,6 +163,20 @@ end)
         TriggerEvent('DoLongHudText', 'You dont have the required materials', 2)
      end
  end)
+
+ 
+ RegisterNetEvent('drp-civjobs:craft-uzi')
+ AddEventHandler('drp-civjobs:craft-uzi', function()
+    if exports['drp-inventory']:hasEnoughOfItem('refinedaluminium', 20) and exports['drp-inventory']:hasEnoughOfItem('refinedsteel', 20) then
+        TriggerEvent('inventory:removeItem', 'refinedaluminium', 20)
+        TriggerEvent('inventory:removeItem', 'refinedsteel', 20)
+        TriggerEvent('player:receiveItem', '-942620673', 1)
+        TriggerEvent('DoLongHudText', 'Successfully crafted a Uzi', 2)
+     else
+        TriggerEvent('DoLongHudText', 'You dont have the required materials', 2)
+     end
+ end)
+
 
  RegisterNetEvent('notherelol')
  AddEventHandler('notherelol', function()
@@ -289,22 +316,30 @@ end)
             },
             {
                 id = 4,
-            header = "Craft Browning Hi-Power",
-                txt = "Requires: 20x Aluminium | 20x Steel",
+                header = "Craft Uzi",
+                txt = "Requires: 20x Refined Aluminium | 20x Refined Steel",
                 params = {
-                    event = "drp-civjobs:craft-browning"
+                    event = "drp-civjobs:craft-uzi"
                 }
             },
             {
                 id = 5,
                 header = "Craft Mac-10",
-            txt = "Requires: 20x Refined Aluminium | 20x Refined Steel",
+                txt = "Requires: 20x Refined Aluminium | 20x Refined Steel",
                 params = {
                     event = "drp-civjobs:craft-mac10"
                 }
             },
             {
                 id = 6,
+                header = "Craft Dessert Eagle",
+                txt = "Requires: 20x Aluminium | 20x Steel",
+                params = {
+                    event = "drp-civjobs:craft-deagle"
+                }
+            },
+            {
+                id = 7,
                 header = "Close",
                 txt = "Exit the bench",
                 params = {
