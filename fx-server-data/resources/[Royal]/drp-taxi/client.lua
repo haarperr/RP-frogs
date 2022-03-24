@@ -2,7 +2,7 @@ local alreadySigned = false
 
 RegisterNetEvent("drp_taxi:checkIfSigned")
 AddEventHandler("drp_taxi:checkIfSigned", function(
-    if alreadySigned then
+    if alreadySigned == true then
         TriggerEvent("DoLongHudText","You are already signed in!")
     else 
         TriggerServerEvent("drp_taxi:getDeposit")
