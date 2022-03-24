@@ -222,7 +222,7 @@ const endTask = (state = false) => // Ends the hack (if successful then its true
   clearInterval(refreshTimer);
   clearInterval(cdTimer);
   if(state !== 'dick') {
-    $.post('https://bropixel-minigame/endTask', JSON.stringify({
+    $.post('https://drp-minigame/endTask', JSON.stringify({
       success: state,
     }));
   }
