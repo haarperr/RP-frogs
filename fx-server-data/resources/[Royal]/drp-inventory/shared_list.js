@@ -21201,7 +21201,7 @@ itemList['fruitslushy'] = {
 
 itemList['murdermeal'] = {
   fullyDegrades: true,
-  decayrate: 0.5,
+  decayrate: 0.001,
   displayname: 'Murder Meal',
   price: 0,
   weight: 11,
