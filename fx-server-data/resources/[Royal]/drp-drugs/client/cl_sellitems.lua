@@ -6,17 +6,15 @@ function doSell(itemname, price)
 			if exports["drp-inventory"]:getQuantity(itemname) >= 1 then
 				ClearPedTasksImmediately(PlayerPedId())
 				TriggerEvent('inventory:removeItem', itemname, toSell)
-                TriggerServerEvent( 'sk1c2:payout', (price/100*90)*toSell)
+                TriggerServerEvent( 'sk1c2:payout', price*toSell)
 
-                lucky = math.random(1,100)
-                if lucky == 1 then
-                    TriggerServerEvent( 'sk1c2:payout', math.random(750, 1500))
+                if math.random(1,100) == 1 then
+                    TriggerServerEvent( 'sk1c2:payout', math.random(500, 750))
                     TriggerEvent('DoLongHudText', 'You are a loyal customer, here is some extra cash.', 2)
                 end
 
-                lucky = math.random(1,250)
-                if lucky == 1 then
-                    TriggerServerEvent( 'sk1c2:payout', math.random(5000, 12500))
+                if math.random(1,250) == 1 then
+                    TriggerServerEvent( 'sk1c2:payout', math.random(2500, 7500))
                     TriggerEvent('DoLongHudText', 'You are my best customer, here is some extra cash.', 2)
                 end
 			else
@@ -31,42 +29,42 @@ end
 
 RegisterNetEvent('sell2ctchain')
 AddEventHandler('sell2ctchain', function()
-    doSell("stolen2ctchain", math.random(120,210))
+    doSell("stolen2ctchain", math.random(115,200))
 end)
 
 
 RegisterNetEvent('sell5ctchain')
 AddEventHandler('sell5ctchain', function()
-    doSell("stolen5ctchain", math.random(120,275))
+    doSell("stolen5ctchain", math.random(100,250))
 end)
 
 RegisterNetEvent('sell8ctchain')
 AddEventHandler('sell8ctchain', function()
-    doSell("stolen8ctchain", math.random(220,350))
+    doSell("stolen8ctchain", math.random(200,300))
 end)
 RegisterNetEvent('sellstolengameboy')
 AddEventHandler('sellstolengameboy', function()
-    doSell("stolengameboy", math.random(20,125))
+    doSell("stolengameboy", math.random(20,75))
 end)
 
 RegisterNetEvent('sellstolenoakleys')
 AddEventHandler('sellstolenoakleys', function()
-    doSell("stolenoakleys", math.random(50,150))
+    doSell("stolenoakleys", math.random(50,125))
 end)
 
 RegisterNetEvent('sellstolenpsp')
 AddEventHandler('sellstolenpsp', function()
-    doSell("stolenpsp", math.random(100,175))
+    doSell("stolenpsp", math.random(75,125))
 end)
 
 RegisterNetEvent('sellstolencasiowatch')
 AddEventHandler('sellstolencasiowatch', function()
-    doSell("stolencasiowatch", math.random(25,125))
+    doSell("stolencasiowatch", math.random(25,75))
 end)
 
 RegisterNetEvent('sellrolex')
 AddEventHandler('sellrolex', function()
-    doSell("rolexwatch", math.random(200,400))
+    doSell("rolexwatch", math.random(175,300))
 end)
 
 RegisterNetEvent('selloxy')
