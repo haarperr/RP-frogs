@@ -69,7 +69,7 @@ end)
 
 RegisterNetEvent('selloxy')
 AddEventHandler('selloxy', function()
-    doSell("oxy", math.random(95, 125))
+    doSell("oxy", math.random(85, 115))
 end)
 
 --#########--
