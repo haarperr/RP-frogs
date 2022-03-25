@@ -21960,7 +21960,7 @@ itemList['toy_rr_donnie'] = {
 
 itemList['safecrackingkit'] = {
   fullyDegrades: true,
-  decayrate: 1.0,
+  decayrate: 0.75,
   displayname: 'Safe Cracking Tool',
   craft: [],
   price: 500,
