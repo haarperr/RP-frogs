@@ -772,6 +772,12 @@ Citizen.CreateThread(function()
         heading=263.1922,
     })
 
+    
+    exports["drp-polytarget"]:AddBoxZone("taxiguy", vector3(894.9174, -179.3615, 74.7003), 1, 1.4, {
+        heading=239.7525,
+    })
+
+
     -- Hospital
 
     exports["drp-polytarget"]:AddBoxZone("hospitalroof1", vector3(332.35, -597.32, 43.28), 0.2, 1, {
@@ -2258,6 +2264,18 @@ Citizen.CreateThread(function()
         id = "vpnguy",
         icon = "arrow-alt-circle-up",
         label = "Buy a VPN (5k)",
+        parameters = {},
+    }}, {
+        distance = { radius = 7 },
+    });
+
+    -- Taxi Guy
+    
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("taxiguy", {{
+        event = "drp_taxi:startJob",
+        id = "taxiguy",
+        icon = "circle",
+        label = "Sign in as a Taxi Driver",
         parameters = {},
     }}, {
         distance = { radius = 7 },

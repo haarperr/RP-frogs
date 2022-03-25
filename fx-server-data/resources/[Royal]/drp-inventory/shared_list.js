@@ -4583,7 +4583,7 @@ itemList['taco'] = {
 
 itemList['freshmeat'] = {
   fullyDegrades: true,
-  decayrate: 0.025,
+  decayrate: 0.004,
   displayname: 'Fresh Meat',
   craft: [[{ itemid: 'foodingredient', amount: 1 }]],
   price: 10,
@@ -11118,7 +11118,7 @@ itemList['durpman'] = {
 // fleeca
 itemList['heistlaptop3'] = {
   fullyDegrades: true,
-  decayrate: 0.003,
+  decayrate: 1.0,
   displayname: 'Laptop',
   price: 1,
   weight: 20,
@@ -11132,7 +11132,7 @@ itemList['heistlaptop3'] = {
 // paleto
 itemList['heistlaptop2'] = {
   fullyDegrades: true,
-  decayrate: 0.003,
+  decayrate: 1.0,
   displayname: 'Laptop',
   price: 1,
   weight: 20,
@@ -11145,7 +11145,7 @@ itemList['heistlaptop2'] = {
 // vault upper
 itemList['heistlaptop4'] = {
   fullyDegrades: true,
-  decayrate: 0.005,
+  decayrate: 1.0,
   displayname: 'Laptop',
   price: 1,
   weight: 20,
@@ -11158,7 +11158,7 @@ itemList['heistlaptop4'] = {
 // vault lower
 itemList['heistlaptop1'] = {
   fullyDegrades: true,
-  decayrate: 0.008,
+  decayrate: 1.0,
   displayname: 'Laptop',
   price: 1,
   weight: 20,
@@ -21960,7 +21960,7 @@ itemList['toy_rr_donnie'] = {
 
 itemList['safecrackingkit'] = {
   fullyDegrades: true,
-  decayrate: 1.0,
+  decayrate: 0.75,
   displayname: 'Safe Cracking Tool',
   craft: [],
   price: 500,
@@ -24647,7 +24647,7 @@ itemList['lqvegetables'] = {
 
 itemList['lqprotein'] = {
   fullyDegrades: true,
-  decayrate: 0.02,
+  decayrate: 0.004,
   displayname: '(LQ) Protein',
   price: 1,
   weight: 1.0,
@@ -25917,5 +25917,5 @@ itemList['chickenslammer'] = {
   nonStack: true,
   model: '',
   image: 'chicken-slammer.png',
-  information: 'Maddis Memory Axe',
+  information: 'Maddi Memory Axe',
 };
