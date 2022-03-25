@@ -24647,7 +24647,7 @@ itemList['lqvegetables'] = {
 
 itemList['lqprotein'] = {
   fullyDegrades: true,
-  decayrate: 0.02,
+  decayrate: 0.004,
   displayname: '(LQ) Protein',
   price: 1,
   weight: 1.0,
