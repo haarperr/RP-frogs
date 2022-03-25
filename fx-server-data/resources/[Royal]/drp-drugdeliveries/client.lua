@@ -338,11 +338,11 @@ function DoDropOff()
 			TriggerEvent( "player:receiveItem", "vpnxj", 1 )
 		end
 
-		if math.random(50) == 1 then
+		if math.random(75) == 69 then
 			TriggerEvent( "player:receiveItem", "heistusb4", 1 )
 		end
 
-		if math.random(250) == 69 then
+		if math.random(500) == 69 then
 			TriggerEvent( "player:receiveItem", "heistlaptop3", 1 )
 		end
 
