@@ -126,7 +126,7 @@ AddEventHandler("drp-civjobs:package-chicken", function(position)
 		if exports['drp-inventory']:hasEnoughOfItem('chickenslammer', 1, false) then
 			finishedpacking = exports['drp-taskbar']:taskBar(5000, 'Processing Meat (fast)')			
 		end
-		
+
 		if (finishedpacking == 100 )then 
 			if exports["drp-inventory"]:hasEnoughOfItem("freshmeat", 2) then
 				FreezeEntityPosition(GetPlayerPed(-1),false)
@@ -349,7 +349,7 @@ AddEventHandler("drp-chickens:sell", function()
 	if (finished == 100) then
 
 		TriggerEvent('inventory:removeItem', 'lqprotein', toSell)
-		TriggerServerEvent('chickenpayment:pay', math.random(50, 200) * toSell)
+		TriggerServerEvent('chickenpayment:pay', math.random(125, 225) * toSell)
 		ClearPedTasksImmediately(PlayerPedId())
 	end
 	DeleteEntity(prop)
