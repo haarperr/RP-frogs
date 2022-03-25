@@ -1956,7 +1956,7 @@ AddEventHandler("pass:coords:vehicle", function(coords)
   BeginTextCommandSetBlipName("STRING")
   AddTextComponentString("Carro Perdido")
   EndTextCommandSetBlipName(car)
-  TriggerEvent("DoLongHudText", "Veiculo marcado no mapa!")
+  TriggerEvent("DoLongHudText", "Vehicle GPS Location Updated")
   trackVehicle = true
   Citizen.CreateThread(function()
     while trackVehicle do
