@@ -2185,7 +2185,7 @@ itemList['highgrademaleseed'] = {
 itemList['oxy'] = {
   fullyDegrades: true,
   illegal: true,
-  decayrate: 0.75,
+  decayrate: 0.80,
   displayname: 'Oxy 100mg',
   price: 150,
   weight: 2,
