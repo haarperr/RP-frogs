@@ -789,7 +789,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "grapplegun" or itemid == "grapplegunpd") then
-        TriggerEvent('UseGrappleGun')
+        TriggerEvent('UseGrappleGun', itemid)
     end
 
     if (itemid == "pix1") then
