@@ -1351,7 +1351,7 @@ function addVehicles(vehicleData, showCarPayments) {
     <h3>
     `
         if (vehicleData[vehicle].canSpawn)
-         vehicleElement += `<button id="hovercorridas" class=" garage-spawn" aria-label="Spawn" data-plate="${vehicleData[vehicle].plate}"><i class="fas fa-magic"></i> </button>
+         vehicleElement += `<button id="hovercorridas" class=" garage-spawn" aria-label="Track" data-plate="${vehicleData[vehicle].plate}"><i class="fas fa-magic"></i> </button>
          <button id="hovercorridas" class=" garage-pay" aria-label="${vehicleData[vehicle].payments} payments remaining" data-plate="${vehicleData[vehicle].plate}"><i class="fas fa-hand-holding-usd"></i></button>  
         <button id="hovercorridas" class="" aria-label=" Car Plate - ${vehicleData[vehicle].plate}" data-balloon-pos="up"><i  class="fas fa-closed-captioning"></i> </button>
         <button id="hovercorridas" class="" aria-label="Engine Health - ${vehicleData[vehicle].enginePercent}" data-balloon-pos="up"><i  class="fas fa-oil-can"></i> </button>
@@ -2806,7 +2806,7 @@ $('.stocks-entries').on('click', '.stocks-exchange', function (e) {
 
 $('.garage-entries').on('click', '.garage-spawn', function (e) {
     e.preventDefault();
-    $.post('http://drp-phone/vehspawn', JSON.stringify({ vehplate: $(this).data('plate') }));
+    $.post('http://drp-phone/vehtrack', JSON.stringify({ vehplate: $(this).data('plate') }));
     $.post('http://drp-phone/btnGarage', JSON.stringify({}));
 });
 
