@@ -19,7 +19,7 @@ function PoliceArmory() {
         { item_id: "-820634585", id: 0, name: "Shop", information: "{}", slot: 10, amount: 1 },
         { item_id: "1737195953", id: 0, name: "Shop", information: "{}", slot: 11, amount: 5 },
         { item_id: "101631238", id: 0, name: "Shop", information: "{}", slot: 12, amount: 5 },
-        { item_id: "radio", id: 0, name: "Shop", information: "{}", slot: 13, amount: 1 },
+        { item_id: "civradio", id: 0, name: "Shop", information: "{}", slot: 13, amount: 1 },
         { item_id: "camera", id: 0, name: "Shop", information: "{}", slot: 14, amount: 1 },
         { item_id: "2343591895", id: 0, name: "Shop", information: "{}", slot: 15, amount: 1 },
         { item_id: "IFAK", id: 0, name: "Shop", information: "{}", slot: 16, amount: 5 },
@@ -259,7 +259,7 @@ function HardwareStore() {
         { item_id: "wateringcan", id: 0, name: "Shop", information: "{}", slot: 16, amount: 50 },
         { item_id: "miningpickaxe", id: 0, name: "Shop", information: "{}", slot: 17, amount: 50 },
         { item_id: "acetone", id: 0, name: "Shop", information: "{}", slot: 18, amount: 50 },
-        { item_id: "bikearmor", id: 0, name: "Shop", information: "{}", slot: 19, amount: 50 }
+        { item_id: "bikearmor", id: 0, name: "Shop", information: "{}", slot: 19, amount: 50 },
     ];
     return JSON.stringify(shopItems);
 }

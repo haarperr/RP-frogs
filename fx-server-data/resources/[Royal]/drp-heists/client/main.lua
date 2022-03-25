@@ -235,8 +235,8 @@ end)
 
 
     
-    RegisterNetEvent('Ghost:UseGrappleGun') 
-    AddEventHandler('Ghost:UseGrappleGun' , function(item)
+    RegisterNetEvent('UseGrappleGun') 
+    AddEventHandler('UseGrappleGun' , function(item)
         theGrappleGunIsEquiped = not theGrappleGunIsEquiped
         if theGrappleGunIsEquiped then
         Citizen.Trace('[Grapple] : Executing')
