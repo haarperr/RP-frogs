@@ -234,14 +234,14 @@ end)
     local shownGrappleButton = false
 
     local grappleCounter = 0
-    local maxGrapples = 4
+    local maxGrapples = 6
     
     RegisterNetEvent('UseGrappleGun') 
     AddEventHandler('UseGrappleGun' , function(item)
         if grappleCounter >= maxGrapples then
           RemoveWeaponFromPed(PlayerPedId(), grappleGunModelHash)
-          TriggerEvent("DoLongHudText","You only have 4 Shots")
-          exports["drp-inventory"]:removeItem("grapplegun", 1)
+          TriggerEvent("DoLongHudText","You only have 6 shots")
+          TriggerEvent('inventory:removeItem', "grapplegun", 1)
           grappleCounter = 0
           theGrappleGunIsEquiped = false
           return
@@ -249,8 +249,9 @@ end)
         theGrappleGunIsEquiped = not theGrappleGunIsEquiped
         if theGrappleGunIsEquiped then
         theGrappleGunIsEquiped = true
-        
-        grappleCounter = grappleCounter + 1
+        if item == "grapplegun" then
+          grappleCounter = grappleCounter + 1
+        end
         GiveWeaponToPed(PlayerPedId(), grappleGunModelHash, 0, 0, 1)
         GiveWeaponComponentToPed(PlayerPedId(), grappleGunModelHash, grappleGunSuppressor)
         SetPedWeaponTintIndex(PlayerPedId(), grappleGunModelHash, item ~= "grapplegun" and 5 or 2)
