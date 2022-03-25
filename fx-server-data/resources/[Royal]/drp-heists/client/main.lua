@@ -233,14 +233,24 @@ end)
     local theGrappleGunIsEquiped = false
     local shownGrappleButton = false
 
-
+    local grappleCounter = 0
+    local maxGrapples = 4
     
     RegisterNetEvent('UseGrappleGun') 
     AddEventHandler('UseGrappleGun' , function(item)
+        if grappleCounter >= maxGrapples then
+          RemoveWeaponFromPed(PlayerPedId(), grappleGunModelHash)
+          TriggerEvent("DoLongHudText","You only have 4 Shots")
+          exports["drp-inventory"]:removeItem("grapplegun", 1)
+          grappleCounter = 0
+          theGrappleGunIsEquiped = false
+          return
+        end
         theGrappleGunIsEquiped = not theGrappleGunIsEquiped
         if theGrappleGunIsEquiped then
-        Citizen.Trace('[Grapple] : Executing')
         theGrappleGunIsEquiped = true
+        
+        grappleCounter = grappleCounter + 1
         GiveWeaponToPed(PlayerPedId(), grappleGunModelHash, 0, 0, 1)
         GiveWeaponComponentToPed(PlayerPedId(), grappleGunModelHash, grappleGunSuppressor)
         SetPedWeaponTintIndex(PlayerPedId(), grappleGunModelHash, item ~= "grapplegun" and 5 or 2)
