@@ -4583,7 +4583,7 @@ itemList['taco'] = {
 
 itemList['freshmeat'] = {
   fullyDegrades: true,
-  decayrate: 0.025,
+  decayrate: 0.004,
   displayname: 'Fresh Meat',
   craft: [[{ itemid: 'foodingredient', amount: 1 }]],
   price: 10,
