@@ -240,7 +240,7 @@ end)
     AddEventHandler('UseGrappleGun' , function(item)
         if grappleCounter >= maxGrapples then
           RemoveWeaponFromPed(PlayerPedId(), grappleGunModelHash)
-          TriggerEvent("DoLongHudText","You only have" .. maxGrapples .. shots")
+          TriggerEvent("DoLongHudText","You only have" .. maxGrapples .. "shots")
           TriggerEvent('inventory:removeItem', "grapplegun", 1)
           grappleCounter = 0
           theGrappleGunIsEquiped = false
