@@ -234,13 +234,13 @@ end)
     local shownGrappleButton = false
 
     local grappleCounter = 0
-    local maxGrapples = 6
+    local maxGrapples = 4 -- Max amount of Grapple you can have as a crim | pd unlimited
     
     RegisterNetEvent('UseGrappleGun') 
     AddEventHandler('UseGrappleGun' , function(item)
         if grappleCounter >= maxGrapples then
           RemoveWeaponFromPed(PlayerPedId(), grappleGunModelHash)
-          TriggerEvent("DoLongHudText","You only have 6 shots")
+          TriggerEvent("DoLongHudText","You only have" .. maxGrapples .. shots")
           TriggerEvent('inventory:removeItem', "grapplegun", 1)
           grappleCounter = 0
           theGrappleGunIsEquiped = false
@@ -248,18 +248,18 @@ end)
         end
         theGrappleGunIsEquiped = not theGrappleGunIsEquiped
         if theGrappleGunIsEquiped then
-        theGrappleGunIsEquiped = true
-        if item == "grapplegun" then
-          grappleCounter = grappleCounter + 1
-        end
-        GiveWeaponToPed(PlayerPedId(), grappleGunModelHash, 0, 0, 1)
-        GiveWeaponComponentToPed(PlayerPedId(), grappleGunModelHash, grappleGunSuppressor)
-        SetPedWeaponTintIndex(PlayerPedId(), grappleGunModelHash, item ~= "grapplegun" and 5 or 2)
-        SetPedAmmo(PlayerPedId(), grappleGunModelHash, 0)
-        SetAmmoInClip(PlayerPedId(), grappleGunModelHash, 0)
-    else
-        RemoveWeaponFromPed(PlayerPedId(), grappleGunModelHash)
-      end
+          theGrappleGunIsEquiped = true
+          if item == "grapplegun" then
+            grappleCounter = grappleCounter + 1
+          end
+          GiveWeaponToPed(PlayerPedId(), grappleGunModelHash, 0, 0, 1)
+          GiveWeaponComponentToPed(PlayerPedId(), grappleGunModelHash, grappleGunSuppressor)
+          SetPedWeaponTintIndex(PlayerPedId(), grappleGunModelHash, item ~= "grapplegun" and 5 or 2)
+          SetPedAmmo(PlayerPedId(), grappleGunModelHash, 0)
+          SetAmmoInClip(PlayerPedId(), grappleGunModelHash, 0)
+        else
+            RemoveWeaponFromPed(PlayerPedId(), grappleGunModelHash)
+          end
     
       local ply = PlayerId()
       Citizen.CreateThread(function()
