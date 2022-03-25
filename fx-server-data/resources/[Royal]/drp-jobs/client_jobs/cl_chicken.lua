@@ -121,11 +121,12 @@ AddEventHandler("drp-civjobs:package-chicken", function(position)
 		LoadDict("anim@heists@ornate_bank@grab_cash_heels")
 		TaskPlayAnim(PlayerPedId(), "anim@heists@ornate_bank@grab_cash_heels", "grab", 8.0, -8.0, -1, 1, 0, false, false, false)
 		--FreezeEntityPosition(GetPlayerPed(-1), true)
+
+		local finishedpacking = exports['drp-taskbar']:taskBar(7500, 'Processing Meat')
 		if exports['drp-inventory']:hasEnoughOfItem('chickenslammer', 1, false) then
-			local finishedpacking = exports['drp-taskbar']:taskBar(5000, 'Processing Meat (fast)')
-		else
-			local finishedpacking = exports['drp-taskbar']:taskBar(7500, 'Processing Meat')
+			finishedpacking = exports['drp-taskbar']:taskBar(5000, 'Processing Meat (fast)')			
 		end
+		
 		if (finishedpacking == 100 )then 
 			if exports["drp-inventory"]:hasEnoughOfItem("freshmeat", 2) then
 				FreezeEntityPosition(GetPlayerPed(-1),false)
