@@ -370,19 +370,15 @@ function DoDropOff()
 			end
 		end
 
-		if math.random(1,4) == 1 then
-			TriggerEvent( "player:receiveItem", "oxy", math.random(1,2) )
-		end
-
 		if pog == false then
-			TriggerEvent( "player:receiveItem", "oxy", math.random(1,4) )
+			TriggerEvent( "player:receiveItem", "oxy", math.random(1,5) )
 		end
 			
 		if math.random(100) >= 7 then
 			if math.random(1,2) == 1 then
 				cashPayment = cashPayment + math.random(250,1000)
 			else
-				TriggerEvent( "player:receiveItem", "oxy", math.random(4, 5))
+				TriggerEvent( "player:receiveItem", "oxy", math.random(3, 4))
 			end
 		end
 
