@@ -387,11 +387,11 @@ function DoDropOff()
 		end
 
 		
-		if math.random(100) = 69 then
+		if math.random(100) == 69 then
 			cashPayment = cashPayment + math.random(1000,1500)
 		end
 		
-		if math.random(1000) = 69 then
+		if math.random(1000) == 69 then
 			cashPayment = cashPayment + math.random(10000,15000)
 		end 
 	end

@@ -4879,8 +4879,8 @@ itemList['bikearmor'] = {
   fullyDegrades: true,
   decayrate: 0.5,
   displayname: 'Bike Armor',
-  price: 500,
-  weight: 50,
+  price: 650,
+  weight: 30,
   craft: [
     [
       { itemid: 'refinedaluminium', amount: 8 },
