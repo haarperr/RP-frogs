@@ -997,7 +997,7 @@ AddEventHandler('drp-duty:in-n-out:successful', function()
 	end
 end)
 
-policeonline = 0
+--policeonline = 0  maybe a fix? PauseChamp
 
 RegisterNetEvent('job:policecount')
 AddEventHandler('job:policecount', function(currentCops)

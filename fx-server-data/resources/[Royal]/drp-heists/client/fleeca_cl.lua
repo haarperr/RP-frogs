@@ -640,16 +640,16 @@ AddEventHandler("drp-fleeca:reset", function(name, data)
         LootCheck[name][i] = false
     end
     Check[name] = false
-   -- TriggerEvent('DoLongHudText', 'Vault door will close in 3 minutes', 2)
-   -- Citizen.Wait(180000)
-   -- TriggerEvent('DoLongHudText', 'VAULT DOOR CLOSING', 2)
-   -- TriggerEvent("drp-fleeca:cleanUp", data, name)
-   -- if data.hash == nil then
-   --     TriggerServerEvent("drp-fleeca:openDoor", vector3(data.doors.startloc.x, data.doors.startloc.y, data.doors.startloc.z), 4)
-   -- elseif not data.hash == nil then
-   --     TriggerServerEvent("drp-fleeca:openDoor", vector3(data.doors.startloc.x, data.doors.startloc.y, data.doors.startloc.z), 5)
-   -- end
-end)   -- Disable Fleeca Reset
+   TriggerEvent('DoLongHudText', 'Vault door will close in 3 minutes', 2)
+    Citizen.Wait(180000)
+    TriggerEvent('DoLongHudText', 'VAULT DOOR CLOSING', 2)
+    TriggerEvent("drp-fleeca:cleanUp", data, name)
+    if data.hash == nil then
+        TriggerServerEvent("drp-fleeca:openDoor", vector3(data.doors.startloc.x, data.doors.startloc.y, data.doors.startloc.z), 4)
+    elseif not data.hash == nil then
+        TriggerServerEvent("drp-fleeca:openDoor", vector3(data.doors.startloc.x, data.doors.startloc.y, data.doors.startloc.z), 5)
+    end
+end)  
 
 RegisterNetEvent("drp-fleeca:startheist")
 AddEventHandler("drp-fleeca:startheist", function(data, name)
