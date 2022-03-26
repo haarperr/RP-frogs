@@ -52,15 +52,7 @@ CreateThread(function()
                         SetVehicleHandlingField(vehicle, "CHandlingData", "fInitialDriveForce", defaultcarspeed+Veny.MultiplierA)
                     end
                 else
-                    if Veny.notify == "DoLongHudText" then
-                        TriggerEvent('DoLongHudText', "You are not in a pursuit car" , 2)
-                    elseif Veny.notify == "mythicnotify" then
-                        exports['mythic_notify']:SendAlert('error', "You are not in a pursuit car")
-                    elseif Veny.notify == "qbcorenotify" then
-                        QBCore.Functions.Notify("You are not in a pursuit car", "error")
-                    elseif Veny.notify == "esxshownotification" then
-                        ESX.ShowNotification("You are not in a pursuit car", false, true, 130)
-                    end
+                   TriggerEvent('DoLongHudText', "You are not in a pursuit car" , 2)
                 end
             else
                 TriggerEvent('DoLongHudText', "You are not in a car" , 2)
