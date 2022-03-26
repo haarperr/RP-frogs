@@ -622,7 +622,7 @@ AddEventHandler("drp-paleto:startPaletoHeist", function()
     TriggerServerEvent('drp-paleto:getDoorAccessSV')
     Citizen.Wait(1000)
     local countpolice = exports["isPed"]:isPed("countpolice")
-    if countpolice >= -1 then
+    if countpolice >= 2 then
         
         if not paletoStateAlready == true then
             if paletoTimesHit2 > paletoTimesHit then
