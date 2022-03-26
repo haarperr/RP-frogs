@@ -998,6 +998,18 @@ AddEventHandler('drp-duty:in-n-out:successful', function()
 end)
 
 
+currentCops = 0
+
+RegisterNetEvent('job:policecount')
+AddEventHandler('job:policecount', function(currentCops)
+	
+end)
+
+function LawAmount()
+	return currentCops
+end
+
+
 
 -- DOJ Duty --
 
