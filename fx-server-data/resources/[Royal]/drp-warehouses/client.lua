@@ -47,7 +47,7 @@ Citizen.CreateThread(function()
     while true do
 	    Citizen.Wait(0)
         -- for each warehouse
-        for i in #warehouses do
+        for i=1,#warehouses do
             -- if player is near the warehouse
             local distance = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), warehouses[i]["x"], warehouses[i]["y"], warehouses[i]["z"], true)
             if distance <= 2.0 and exports["drp-inventory"]:hasEnoughOfItem(warehouses[i]["keyName"],1,false) then
