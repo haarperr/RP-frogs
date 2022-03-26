@@ -995,11 +995,13 @@ Citizen.CreateThread(function()
                                 lastCurrentVehicleBodyHealth = currentVehicleBodyHealth
                             else
                                 -- IsBike
-                                carCrash()
-                                stalled = true
-                                Citizen.Wait(1000)
-                                lastCurrentVehicleSpeed = 0.0
-                                lastCurrentVehicleBodyHealth = currentVehicleBodyHealth
+                                if math.random(1, 2) = 1:
+                                    carCrash()
+                                    stalled = true
+                                    Citizen.Wait(1000)
+                                    lastCurrentVehicleSpeed = 0.0
+                                    lastCurrentVehicleBodyHealth = currentVehicleBodyHealth
+                                end
                             end
                         end
                     else
