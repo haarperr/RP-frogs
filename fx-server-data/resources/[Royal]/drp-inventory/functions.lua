@@ -2130,6 +2130,23 @@ end
         end
     end
 
+    
+    if (itemid == "lawnchair") then
+        TriggerEvent("Chair2")  
+        --remove = true
+    end
+
+    if (itemid == "lawnchair2") then
+        TriggerEvent("Chair1")  
+       -- remove = true
+    end
+
+    if (itemid == "woodbench") then
+        TriggerEvent("Chair3")  
+       -- remove = true
+    end
+
+
     if itemid == "ketamine" then
         local finished = exports["drp-ui"]:taskBarSkill(2000, math.random(10, 15))
         if finished == 100 then
