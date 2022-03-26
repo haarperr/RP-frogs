@@ -1122,3 +1122,61 @@ AddEventHandler("drp-admin:ReviveInDistance", function()
         end
     end
 end)
+
+
+
+RegisterCommand('weather', function(source, args)
+    if source == 0 then
+        local validWeatherType = false
+        if args[1] == nil then
+            TraceMsg("Invalid /weather syntax, correct syntax is: /weather <weathertype>\nCurrent Weather: "..currentWeather)
+            return
+		else
+			local tableKeys = getTableKeys(ss_weather_Transition)
+			for i,wtype in ipairs(tableKeys) do
+                if wtype == string.upper(args[1]) then
+                    validWeatherType = true
+                end
+            end
+            if validWeatherType then
+				currentWeather = string.upper(args[1])
+				TraceMsg("Console updated weather to "..currentWeather)
+                weatherTimer = ss_weather_timer * 60
+                TriggerEvent('changeWeather',false)
+            else
+                TraceMsg("Invalid weather Type, valid weather types are: \nEXTRASUNNY CLEAR SMOG FOGGY OVERCAST CLOUDS CLEARING\nRAIN THUNDER SNOW BLIZZARD SNOWLIGHT XMAS",true)
+            end
+        end
+	else
+        if IsPlayerAceAllowed(source, "changeWeather") then
+            local validWeatherType = false
+            if args[1] == nil then
+                TriggerClientEvent('chatMessage', source, '', {255,255,255}, '^1Error: Invalid syntax, use ^0/weather <weatherType> ^1instead!')
+                TriggerClientEvent('chatMessage', source, '', {255,255,255}, '^7Current Weather: '..currentWeather)
+                
+            else
+                local tableKeys = getTableKeys(ss_weather_Transition)
+			    for i,wtype in ipairs(tableKeys) do
+                    if wtype == string.upper(args[1]) then
+                        validWeatherType = true
+                    end
+                end
+                if validWeatherType then
+                    currentWeather = string.upper(args[1])
+                    weatherTimer = ss_weather_timer * 60
+                    if args[2] == "1" then
+                        TriggerEvent('changeWeather',true)
+                    else
+                        TriggerEvent("changeWeather",false)
+                        TraceMsg(GetPlayerName(source).." has changed weather to "..currentWeather)
+                    end
+                else
+                    TriggerClientEvent('chatMessage', source, '', {255,255,255}, '^1Error: Invalid weather type, valid weather types are: ^0\nEXTRASUNNY CLEAR NEUTRAL SMOG FOGGY OVERCAST CLOUDS CLEARING\nRAIN THUNDER SNOW BLIZZARD SNOWLIGHT XMAS')
+                end
+            end
+        else
+            TraceMsg('Access for command /weather denied for player: '.. GetPlayerName(source),true)
+		end
+
+    end
+end, true)
