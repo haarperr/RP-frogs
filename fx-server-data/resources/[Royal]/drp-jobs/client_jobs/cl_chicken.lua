@@ -110,7 +110,7 @@ end
 
 RegisterNetEvent("drp-civjobs:package-chicken")
 AddEventHandler("drp-civjobs:package-chicken", function(position)
-	if exports["drp-inventory"]:hasEnoughOfItem("freshmeat", 2) then
+	if exports["drp-inventory"]:hasEnoughOfItem("freshmeat", 1) then
 		SetEntityHeading(GetPlayerPed(-1), 40.0)
 		local PedCoords = GetEntityCoords(GetPlayerPed(-1))
 		local meat = CreateObject(GetHashKey('prop_cs_steak'),PedCoords.x, PedCoords.y,PedCoords.z, true, true, true)
@@ -139,7 +139,11 @@ AddEventHandler("drp-civjobs:package-chicken", function(position)
 				TriggerEvent('DoLongHudText', 'Keep processing the chicken or take it to a vehicle and store it.', 1)
 				ClearPedTasks(GetPlayerPed(-1))
 			else
-				TriggerEvent('DoLongHudText', 'Missing items', 2)
+				FreezeEntityPosition(GetPlayerPed(-1),false)
+				TriggerEvent('inventory:removeItem', "freshmeat", 1)
+				TriggerEvent('player:receiveItem', "lqprotein", math.random(1,2))	
+				TriggerEvent('DoLongHudText', 'Keep processing the chicken or take it to a vehicle and store it.', 1)
+				ClearPedTasks(GetPlayerPed(-1))
 			end
 		end
 		DeleteEntity(carton)
@@ -148,6 +152,7 @@ AddEventHandler("drp-civjobs:package-chicken", function(position)
 		TriggerEvent('DoLongHudText', 'You have nothing to pack!', 2)
 	end
 end)
+
 
 RegisterNetEvent("drp-civjobs:process-alive_chicken")
 AddEventHandler("drp-civjobs:process-alive_chicken", function(position)
@@ -176,8 +181,18 @@ AddEventHandler("drp-civjobs:process-alive_chicken", function(position)
 				TriggerEvent('DoLongHudText', 'You slaughtered a chicken!', 1)
 				FreezeEntityPosition(GetPlayerPed(-1),false)
 				ClearPedTasks(GetPlayerPed(-1))
-				TriggerEvent('inventory:removeItem', "petchicken", 1)
-				TriggerEvent('player:receiveItem', "freshmeat", math.random(1,6))	
+				if exports["drp-inventory"]:getAmountOfItem("petchicken") >= 2 then
+					if math.random(2) == 2 then
+						TriggerEvent('inventory:removeItem', "petchicken", 2)
+						TriggerEvent('player:receiveItem', "freshmeat", math.random(6,12))	
+					else
+						TriggerEvent('inventory:removeItem', "petchicken", 1)
+						TriggerEvent('player:receiveItem', "freshmeat", math.random(1,6))	
+				else
+					TriggerEvent('inventory:removeItem', "petchicken", 1)
+					TriggerEvent('player:receiveItem', "freshmeat", math.random(1,6))	
+				end
+				
 			else
 				TriggerEvent('DoLongHudText', 'Might wanna pick that Alive Chicken back up from the floor', 2)
 			end
@@ -225,13 +240,21 @@ function TepnijWyjscie()
 			Citizen.Wait(900)
 			ClearPedTasks(GetPlayerPed(-1))
 			DeleteEntity(prop)
-			TriggerEvent('player:receiveItem', "petchicken", 5)
+			TriggerEvent('player:receiveItem', "petchicken", math.random(3, 5))
 		end
 	end
 end
 
+
+local chickenCounter = 0
+local maxChickenCounter = 15
+
 RegisterNetEvent("drp-chickens-start")
 AddEventHandler("drp-chickens-start", function()
+	if chickenCounter >= maxChickenCounter then 
+		TriggerEvent('DoLongHudText', 'You have already collected all the chickens!', 2)
+		return
+	end
 	DoScreenFadeOut(500)
 	Citizen.Wait(500)
 	SetEntityCoordsNoOffset(GetPlayerPed(-1), 2385.963, 5047.333, 46.400, 0, 0, 1)
@@ -258,6 +281,8 @@ function LoadDict(dict)
     end
 end
 
+
+
 Citizen.CreateThread(function()
     while true do
       Citizen.Wait(5)
@@ -278,7 +303,13 @@ Citizen.CreateThread(function()
 				splashed = 0
 				share = false
 				TriggerEvent('DoLongHudText', 'Take the chickens to a vehicle!', 1)
+				
+				if chickenCounter <= maxChickenCounter then 
+					Citizen.Wait(1800000)
+					chickenCounter = 0
+				end
 				TepnijWyjscie()
+				chickenCounter = chickenCounter + 1
 			end
 			
 			if dist <= 3.0 then
