@@ -185,6 +185,17 @@ function Mechanic() {
     return JSON.stringify(shopItems);
 }
 
+function CivCrafting() {
+    var shopItems = [
+        { item_id: "lockpick", id: 0, name: "Craft", information: "{}", slot: 1, amount: 5 },
+        { item_id: "advlockpick", id: 0, name: "Craft", information: "{}", slot: 2, amount: 5 },
+        { item_id: "repairkit", id: 0, name: "Craft", information: "{}", slot: 3, amount: 5 },
+        { item_id: "civradio", id: 0, name: "Craft", information: "{}", slot: 4, amount: 5 },
+        { item_id: "handcuffs", id: 0, name: "Craft", information: "{}", slot: 5, amount: 5 },
+         ];
+    return JSON.stringify(shopItems);
+}
+
 // stores
 function ConvenienceStore() {
     var shopItems = [
@@ -243,8 +254,8 @@ function HardwareStore() {
     var shopItems = [
         { item_id: "repairkit", id: 0, name: "Shop", information: "{}", slot: 1, amount: 50 },
         { item_id: "oxygentank", id: 0, name: "Shop", information: "{}", slot: 2, amount: 50 },
-        { item_id: "heavycutters", id: 0, name: "Shop", information: "{}", slot: 3, amount: 50 },
-        { item_id: "drill", id: 0, name: "Shop", information: "{}", slot: 4, amount: 50 },
+        { item_id: "lawnchair", id: 0, name: "Shop", information: "{}", slot: 3, amount: 50 },
+        { item_id: "lawnchair2", id: 0, name: "Shop", information: "{}", slot: 4, amount: 50 },
         { item_id: "nitrous", id: 0, name: "Shop", information: "{}", slot: 5, amount: 50 },
         { item_id: "armor", id: 0, name: "Shop", information: "{}", slot: 6, amount: 50 },
         { item_id: "antifreeze", id: 0, name: "Shop", information: "{}", slot: 7, amount: 50 },

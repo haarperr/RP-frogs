@@ -512,6 +512,12 @@ onNet("server-inventory-open", async(coords, player, secondInventory, targetName
             var shopArray = ConvenienceStore();
             var shopAmount = 17;
             emitNet("inventory-open-target", src, [invArray, arrayCount, playerinvname, shopArray, shopAmount, targetinvname, 500, false]);
+        } else if (secondInventory == "4588") {
+
+            var targetinvname = targetName;
+            var shopArray = CivCrafting();
+            var shopAmount = 5;
+            emitNet("inventory-open-target", src, [invArray, arrayCount, playerinvname, shopArray, shopAmount, targetinvname, 500, false]);
 
         } else if (secondInventory == "4") {
             var targetinvname = targetName;
