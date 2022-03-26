@@ -91,25 +91,25 @@ AddEventHandler("ls:updateBoostLevel", function(boostClass)
     if result[1] ~= nil then
       local xp = result[1].xp
       local level = result[1].level
-      xp = xp + math.random(3, 15)
+      xp = xp + math.random(1, 3)
 
       if level == 2 then
-        xp = xp + math.random(1, 5)
+        xp = xp + math.random(1)
       end
 
       if level == 3 then
-        xp = xp + math.random(5, 10)
+        xp = xp + math.random(1, 2)
       end
 
       if level == 4 then
-        xp = xp + math.random(10, 15)
+        xp = xp + math.random(1, 3)
       end
 
       if level == 5 then
-        xp = xp + math.random(15, 20)
+        xp = xp + math.random(1, 4)
       end
 
-      if xp >= 200 and level < 5 then
+      if xp >= 100 and level < 5 then
         level = level + 1
         xp = 0
       end
