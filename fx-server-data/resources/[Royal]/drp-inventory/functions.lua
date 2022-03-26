@@ -4038,7 +4038,7 @@ AddEventHandler('inv:advlockPick', function(isForced,inventoryName,slot)
 end)
 
 local advcount = 0
-local maxadv uses = 3
+local maxadv = 3
 
 local reapiring = false
 RegisterNetEvent('veh:repairing')
