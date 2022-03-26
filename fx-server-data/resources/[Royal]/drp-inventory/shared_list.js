@@ -300,12 +300,12 @@ itemList['148457251'] = {
   weight: 6,
   craft: [
     [
-      { itemid: 'aluminium', amount: 15 },
-      { itemid: 'steel', amount: 15 },
+      { itemid: 'aluminium', amount: 60 },
+      { itemid: 'steel', amount: 60 },
     ],
     [
-      { itemid: 'refinedaluminium', amount: 5 },
-      { itemid: 'refinedsteel', amount: 5 },
+      { itemid: 'refinedaluminium', amount: 30 },
+      { itemid: 'refinedsteel', amount: 30 },
     ]
   ],
   nonStack: true,
@@ -505,14 +505,14 @@ itemList['-134995899'] = {
   price: 250,
   craft: [
     [
-      { itemid: 'aluminium', amount: 30 },
-      { itemid: 'plastic', amount: 60 },
-      { itemid: 'rubber', amount: 30 },
+      { itemid: 'aluminium', amount: 70 },
+      { itemid: 'steel', amount: 70 },
+
     ],
     [
-      { itemid: 'refinedaluminium', amount: 10 },
-      { itemid: 'refinedplastic', amount: 20 },
-      { itemid: 'refinedrubber', amount: 10 },
+      { itemid: 'refinedaluminium', amount: 40 },
+      { itemid: 'refinedsteel', amount: 30 },
+  
     ]
   ],
   weight: 15,
@@ -1805,12 +1805,12 @@ itemList['pistolammo'] = {
   displayname: 'Pistol Ammo x50',
   craft: [
     [
-      { itemid: 'aluminium', amount: 1 },
-      { itemid: 'plastic', amount: 1 },
-      { itemid: 'rubber', amount: 1 },
+      { itemid: 'aluminium', amount: 4 },
+      { itemid: 'steel', amount: 4 },
     ],
     [
-      { itemid: 'refinedaluminium', amount: 1 },
+      { itemid: 'refinedaluminium', amount: 2 },
+      { itemid: 'refinedsteel', amount: 2 },
     ]
   ],
   price: 10,
@@ -1825,11 +1825,16 @@ itemList['rifleammo'] = {
   fullyDegrades: true,
   decayrate: 1.0,
   displayname: 'Rifle Ammo x50',
-  craft: [[
-    { itemid: 'aluminium', amount: 10 },
-    { itemid: 'plastic', amount: 10 },
-    { itemid: 'rubber', amount: 10 },
-  ]],
+  craft: [
+    [
+      { itemid: 'aluminium', amount: 10 },
+      { itemid: 'steel', amount: 10 },
+    ],
+    [
+      { itemid: 'refinedaluminium', amount: 5 },
+      { itemid: 'refinedsteel', amount: 5 },
+    ]
+  ],
   price: 10,
   weight: 2,
   nonStack: false,
@@ -1859,11 +1864,16 @@ itemList['subammoPD'] = {
   fullyDegrades: true,
   decayrate: 0.05,
   displayname: 'Sub Ammo x50 PD',
-  craft: [[
-    { itemid: 'aluminium', amount: 20 },
-    { itemid: 'plastic', amount: 1 },
-    { itemid: 'rubber', amount: 1 },
-  ]],
+  craft: [
+    [
+      { itemid: 'aluminium', amount: 7 },
+      { itemid: 'steel', amount: 7 },
+    ],
+    [
+      { itemid: 'refinedaluminium', amount: 4 },
+      { itemid: 'refinedsteel', amount: 3 },
+    ]
+  ],
   price: 10,
   weight: 2,
   nonStack: false,
@@ -7274,11 +7284,11 @@ itemList['lockpick'] = {
   craft: [
     [
       { itemid: 'aluminium', amount: 6 },
-      { itemid: 'plastic', amount: 4 },
+      { itemid: 'plastic', amount: 6 },
       { itemid: 'rubber', amount: 4 },
     ],
     [
-      { itemid: 'refinedaluminium', amount: 2 },
+      { itemid: 'refinedaluminium', amount: 5 },
     ]
   ],
   price: 250,

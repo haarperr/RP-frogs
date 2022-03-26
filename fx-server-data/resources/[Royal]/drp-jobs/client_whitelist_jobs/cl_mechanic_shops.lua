@@ -108,7 +108,7 @@ end)
  -- GUN CRAFTING
  RegisterNetEvent('drp-civjobs:craft-pammo')
  AddEventHandler('drp-civjobs:craft-pammo', function()
-     if exports['drp-inventory']:hasEnoughOfItem('aluminium', 5) and exports['drp-inventory']:hasEnoughOfItem('steel', 5) then
+     if exports['drp-inventory']:hasEnoughOfItem('aluminium', 4) and exports['drp-inventory']:hasEnoughOfItem('steel', 4) then
     TriggerEvent('inventory:removeItem', 'aluminium', 4)
     TriggerEvent('inventory:removeItem', 'steel', 4)
     TriggerEvent('player:receiveItem', 'pistolammo', 1)
@@ -253,7 +253,7 @@ end)
  AddEventHandler('drp-jobs:mechanic-craft', function()
     local finished = exports['drp-taskbar']:taskBar(1000, 'Accessing Bench')
 	if (finished == 100) then
-		TriggerEvent("server-inventory-open", "42000", "Craft");	-- pausechamp
+		TriggerEvent("server-inventory-open", "4588", "Craft");	-- pausechamp
 		Wait(1000)
 	end
  end)
@@ -262,53 +262,11 @@ end)
  
  RegisterNetEvent('civguncrafting')
  AddEventHandler('civguncrafting', function()
-     TriggerEvent('drp-context:sendMenu', {
-         {
-             id = 1,
-             header = "Weapons Bench",
-             txt = ""
-         },
-         {
-             id = 2,
-             header = "Craft Pistol Ammo",
-             txt = "Requires: 4x Aluminium | 4x Steel",
-             params = {
-                event = "drp-civjobs:craft-pammo"
-            }
-         },
-         {
-             id = 3,
-             header = "Craft Sub Ammo",
-             txt = "Requires: 7x Aluminium | 7x Steel",
-             params = {
-                 event = "drp-civjobs:craft-subammo"
-             }
-         },
-         {
-             id = 4,
-           header = "Craft Browning Hi-Power",
-            txt = "Requires: 50x Aluminium | 50x Steel",
-             params = {
-                 event = "drp-civjobs:craft-browning"
-             }
-        },
-         {
-             id = 5,
-             header = "Craft Mac-10",
-           txt = "Requires: 50x Refined Aluminium | 50x Refined Steel",
-            params = {
-                event = "drp-civjobs:craft-mac10"
-             }
-         },
-        {
-             id = 6,
-             header = "Close",
-             txt = "Exit the bench",
-             params = {
-                 event = ""
-             }
-         },
-     })
+    local finished = exports['drp-taskbar']:taskBar(1000, 'Accessing Bench')
+	if (finished == 100) then
+		TriggerEvent("server-inventory-open", "42000", "Craft");	-- pausechamp
+		Wait(1000)
+	end
  end)
  
 
