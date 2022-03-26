@@ -19,7 +19,7 @@ function PoliceArmory() {
         { item_id: "-820634585", id: 0, name: "Shop", information: "{}", slot: 10, amount: 1 },
         { item_id: "1737195953", id: 0, name: "Shop", information: "{}", slot: 11, amount: 5 },
         { item_id: "101631238", id: 0, name: "Shop", information: "{}", slot: 12, amount: 5 },
-        { item_id: "civradio", id: 0, name: "Shop", information: "{}", slot: 13, amount: 1 },
+        { item_id: "radio", id: 0, name: "Shop", information: "{}", slot: 13, amount: 1 },
         { item_id: "camera", id: 0, name: "Shop", information: "{}", slot: 14, amount: 1 },
         { item_id: "2343591895", id: 0, name: "Shop", information: "{}", slot: 15, amount: 1 },
         { item_id: "IFAK", id: 0, name: "Shop", information: "{}", slot: 16, amount: 5 },
@@ -260,7 +260,7 @@ function HardwareStore() {
         { item_id: "armor", id: 0, name: "Shop", information: "{}", slot: 6, amount: 50 },
         { item_id: "antifreeze", id: 0, name: "Shop", information: "{}", slot: 7, amount: 50 },
         { item_id: "hat", id: 0, name: "Shop", information: "{}", slot: 8, amount: 50 },
-        { item_id: "radio", id: 0, name: "Shop", information: "{}", slot: 9, amount: 50 },
+        { item_id: "civradio", id: 0, name: "Shop", information: "{}", slot: 9, amount: 50 },
         { item_id: "umbrella", id: 0, name: "Shop", information: "{}", slot: 10, amount: 50 },
         { item_id: "smallscales", id: 0, name: "Shop", information: "{}", slot: 11, amount: 50 },
         { item_id: "qualityscales", id: 0, name: "Shop", information: "{}", slot: 12, amount: 50 },
@@ -467,7 +467,7 @@ function UwUCafeFridge() {
 
 function DigitelDenShop() {
     var shopItems = [
-        { item_id: "radio", id: 0, name: "Shop", information: "{}", slot: 1, amount: 5 },
+        { item_id: "civradio", id: 0, name: "Shop", information: "{}", slot: 1, amount: 5 },
         { item_id: "mobilephone", id: 0, name: "Shop", information: "{}", slot: 2, amount: 5 },
    
     ];
