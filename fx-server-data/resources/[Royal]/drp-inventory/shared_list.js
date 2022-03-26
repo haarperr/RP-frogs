@@ -1722,7 +1722,7 @@ itemList['subammo'] = {
   fullyDegrades: true,
   decayrate: 1.0,
   displayname: 'Sub Ammo x50',
-  craft: craft: [
+  craft: [
     [
       { itemid: 'aluminium', amount: 10 },
       { itemid: 'steel', amount: 10 },
