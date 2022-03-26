@@ -1103,6 +1103,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid =="advrepairkit") then
+        
       TriggerEvent('veh:repairing',inventoryName,slot,itemid)
            
     end
@@ -4053,10 +4054,6 @@ AddEventHandler('veh:repairing', function(inventoryName,slot,itemid)
         advanced = true
     end
 
-    
-    if itemid == "advrepairkit" then
-        advcount = advcount + 1
-    end
 
     if itemid == "advrepairkit" and advcount > maxadv then
         TriggerEvent("DoLongHudText", "You can only use this kit "..maxadv.." times.",2)
@@ -4177,6 +4174,11 @@ AddEventHandler('veh:repairing', function(inventoryName,slot,itemid)
                         if fueltankhealth < 3800.0 then
                             SetVehiclePetrolTankHealth(targetVehicle, 3800.0)
                             SetVehicleFixed(targetVehicle, 1000.0)
+                        end
+
+                        
+                        if itemid == "advrepairkit" then
+                            advcount = advcount + 1
                         end
 
                     else
