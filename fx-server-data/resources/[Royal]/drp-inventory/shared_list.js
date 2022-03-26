@@ -1724,12 +1724,12 @@ itemList['subammo'] = {
   displayname: 'Sub Ammo x50',
   craft: [
     [
-      { itemid: 'aluminium', amount: 10 },
-      { itemid: 'steel', amount: 10 },
+      { itemid: 'aluminium', amount: 7 },
+      { itemid: 'steel', amount: 7 },
     ],
     [
-      { itemid: 'refinedaluminium', amount: 5 },
-      { itemid: 'refinedsteel', amount: 5 },
+      { itemid: 'refinedaluminium', amount: 4 },
+      { itemid: 'refinedsteel', amount: 3 },
     ]
   ],
   price: 100,
