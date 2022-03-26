@@ -84,7 +84,6 @@ Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait((60 * 1000) * 25) -- 25 mins
 		TriggerClientEvent('paycheck:client:call', -1)
-		print("^1[drp-base] Paychecks Sent^0")
 	end
 end)
 

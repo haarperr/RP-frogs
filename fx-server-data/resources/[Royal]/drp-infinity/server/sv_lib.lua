@@ -12,6 +12,5 @@ Citizen.CreateThread(function()
 
         TriggerClientEvent('rrp:infinity:player:coords', -1, sexinthetube)
         TriggerEvent("drp-base:updatecoords", sexinthetube.x, sexinthetube.y, sexinthetube.z)
-        print("[^2drp-infinity^0]^3 Sync Successful.^0")
     end
 end)

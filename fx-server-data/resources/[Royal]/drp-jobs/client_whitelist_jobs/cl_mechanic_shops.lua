@@ -86,8 +86,8 @@ end)
 
  RegisterNetEvent('drp-civjobs:craft-repairkit')
  AddEventHandler('drp-civjobs:craft-repairkit', function()
-    if exports['drp-inventory']:hasEnoughOfItem('electronics', 25) then
-         TriggerEvent('inventory:removeItem', 'electronics', 25)
+    if exports['drp-inventory']:hasEnoughOfItem('electronics', 30) then
+         TriggerEvent('inventory:removeItem', 'electronics', 30)
          TriggerEvent('player:receiveItem', 'advrepairkit', 1)
          TriggerEvent('DoLongHudText', 'Successfully crafted Advanced Repair Kit', 1)
      else
@@ -98,7 +98,7 @@ end)
  RegisterNetEvent('drp-civjobs:craft-tyre-repairkit')
  AddEventHandler('drp-civjobs:craft-tyre-repairkit', function()
      if exports['drp-inventory']:hasEnoughOfItem('refinedaluminium', 10) then
-    TriggerEvent('inventory:removeItem', 'refinedaluminium', 25)
+    TriggerEvent('inventory:removeItem', 'refinedaluminium', 20)
     TriggerEvent('player:receiveItem', 'asslockpick', 1)
      else
          TriggerEvent('DoLongHudText', 'Successfully crafted Ass Lockpick', 2)
@@ -276,7 +276,7 @@ end)
          {
              id = 4,
            header = "Craft Adv Repair Kit",
-            txt = "Requires: 25x Electronics",
+            txt = "Requires: 30x Electronics",
              params = {
                  event = "drp-civjobs:craft-repairkit"
              }
@@ -284,7 +284,7 @@ end)
          {
              id = 5,
              header = "Craft Ass Lockpick",
-           txt = "Requires: 25x Refined Aluminium",
+           txt = "Requires: 20x Refined Aluminium",
             params = {
                 event = "drp-civjobs:craft-tyre-repairkit"
              }
@@ -313,7 +313,7 @@ end)
          {
              id = 2,
              header = "Craft Pistol Ammo",
-             txt = "Requires: 5x Aluminium | 5x Steel",
+             txt = "Requires: 4x Aluminium | 4x Steel",
              params = {
                 event = "drp-civjobs:craft-pammo"
             }
@@ -321,7 +321,7 @@ end)
          {
              id = 3,
              header = "Craft Sub Ammo",
-             txt = "Requires: 5x Aluminium | 5x Steel",
+             txt = "Requires: 7x Aluminium | 7x Steel",
              params = {
                  event = "drp-civjobs:craft-subammo"
              }
@@ -329,7 +329,7 @@ end)
          {
              id = 4,
            header = "Craft Browning Hi-Power",
-            txt = "Requires: 20x Aluminium | 20x Steel",
+            txt = "Requires: 50x Aluminium | 50x Steel",
              params = {
                  event = "drp-civjobs:craft-browning"
              }
@@ -337,7 +337,7 @@ end)
          {
              id = 5,
              header = "Craft Mac-10",
-           txt = "Requires: 20x Refined Aluminium | 20x Refined Steel",
+           txt = "Requires: 50x Refined Aluminium | 50x Refined Steel",
             params = {
                 event = "drp-civjobs:craft-mac10"
              }

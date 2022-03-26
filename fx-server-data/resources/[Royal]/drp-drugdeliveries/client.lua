@@ -338,11 +338,11 @@ function DoDropOff()
 			TriggerEvent( "player:receiveItem", "vpnxj", 1 )
 		end
 
-		if math.random(50) == 1 then
+		if math.random(75) == 69 then
 			TriggerEvent( "player:receiveItem", "heistusb4", 1 )
 		end
 
-		if math.random(250) == 69 then
+		if math.random(500) == 69 then
 			TriggerEvent( "player:receiveItem", "heistlaptop3", 1 )
 		end
 
@@ -370,28 +370,24 @@ function DoDropOff()
 			end
 		end
 
-		if math.random(1,4) == 1 then
-			TriggerEvent( "player:receiveItem", "oxy", math.random(1,3) )
-		end
-
 		if pog == false then
-			TriggerEvent( "player:receiveItem", "oxy", math.random(3,6) )
+			TriggerEvent( "player:receiveItem", "oxy", math.random(1,5) )
 		end
 			
 		if math.random(100) >= 7 then
 			if math.random(1,2) == 1 then
 				cashPayment = cashPayment + math.random(250,1000)
 			else
-				TriggerEvent( "player:receiveItem", "oxy", math.random(6, 10))
+				TriggerEvent( "player:receiveItem", "oxy", math.random(3, 4))
 			end
 		end
 
 		
-		if math.random(100) >= 1 then
+		if math.random(100) == 69 then
 			cashPayment = cashPayment + math.random(1000,1500)
 		end
 		
-		if math.random(1000) >= 1 then
+		if math.random(1000) == 69 then
 			cashPayment = cashPayment + math.random(10000,15000)
 		end 
 	end
