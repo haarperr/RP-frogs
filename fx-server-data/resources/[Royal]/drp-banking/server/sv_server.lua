@@ -17,7 +17,7 @@ end)
 RegisterServerEvent('bank:withdraw')
 AddEventHandler('bank:withdraw', function(amount, cid , reason, statement)
   local src = source
-  local user = exports["drp-base"]:getModule("Player"):GetUser(src)
+ 
   local char = user:getCurrentCharacter()
   if (tonumber(user:getBalance()) >= amount) then
     user:removeBank(amount)
