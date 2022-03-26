@@ -40,7 +40,7 @@ if IsPedInAnyVehicle(playerPed, false) then
               if totalNos[plate] ~= nil then     
                 if totalNos[plate] > 1 then 
                   if nitroactive then 
-                  totalNos[plate] = totalNos[plate] - 0.1
+                  totalNos[plate] = totalNos[plate] - 0.05
                   -- print("total nos : " ..totalNos[plate])
                   if totalNos[plate] < 1 then 
                     SetVehicleNitroBoostEnabled(vehicle, false)
