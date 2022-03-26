@@ -181,7 +181,7 @@ end
 
 function carCrash()
     endNos()
-    local new_health = GetVehicleEngineHealth(currentVehicle) - math.random(50, 175)
+    local new_health = GetVehicleEngineHealth(currentVehicle) - math.random(50, 150)
     TriggerEvent('DoLongHudText', 'Your vehicle has stalled!', 2)
     SetVehicleEngineOn(currentVehicle, false, true, true)
     SetVehicleEngineHealth(currentVehicle, new_health)

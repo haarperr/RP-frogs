@@ -4037,7 +4037,8 @@ AddEventHandler('inv:advlockPick', function(isForced,inventoryName,slot)
     lockpicking = false
 end)
 
-
+local advcount = 0
+local maxadv = 3
 
 local reapiring = false
 RegisterNetEvent('veh:repairing')
@@ -4050,6 +4051,18 @@ AddEventHandler('veh:repairing', function(inventoryName,slot,itemid)
     local advanced = false
     if itemid == "advrepairkit" or itemid == "pdrepairkit" or itemid == "racerepairkit" then
         advanced = true
+    end
+
+    
+    if itemid == "advrepairkit" then
+        advcount = advcount + 1
+    end
+
+    if itemid == "advrepairkit" and advcount > maxadv then
+        TriggerEvent("DoLongHudText", "You can only use this kit "..maxadv.." times.",2)
+        TriggerEvent("inventory:removeItem","advrepairkit", 1)
+        advcount = 0
+        return
     end
 
     if targetVehicle ~= 0 then

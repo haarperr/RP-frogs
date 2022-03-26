@@ -5010,10 +5010,10 @@ itemList['aluminiumoxide'] = {
 
 itemList['advrepairkit'] = {
   fullyDegrades: false,
-  decayrate: 3.75,
+  decayrate: 2,
   displayname: 'Adv Repair Kit',
   craft: [[{ itemid: 'electronics', amount: 10 }]],
-  price: 100,
+  price: 125,
   weight: 20,
   nonStack: false,
   model: '',
