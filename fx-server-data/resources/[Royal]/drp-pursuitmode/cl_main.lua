@@ -28,28 +28,28 @@ CreateThread(function()
                         mode3 = false
                         mode4 = false
                         TriggerEvent('DoLongHudText', "Pursuit Mode: A+" , 1)
-                        SetVehicleHandlingField(vehicle, "CHandlingData", "fInitialDriveForce", defaultcarspeed+Veny.MultiplierAPlus)
+                        SetVehicleHandlingField(vehicle, "CHandlingData", "fInitialDriveForce", defaultcarspeed+Veny.MultiplierAPlus-Veny.MultiplierA)
                     elseif mode1 then
                         mode1 = false
                         mode2 = true
                         mode3 = false
                         mode4 = false
                         TriggerEvent('DoLongHudText', "Pursuit Mode: S" , 1)
-                        SetVehicleHandlingField(vehicle, "CHandlingData", "fInitialDriveForce", defaultcarspeed+Veny.MultiplierS)
+                        SetVehicleHandlingField(vehicle, "CHandlingData", "fInitialDriveForce", defaultcarspeed+Veny.MultiplierS-Veny.MultiplierAPlus)
                     elseif mode2 then
                         mode1 = false
                         mode2 = false
                         mode3 = true
                         mode4 = false
                         TriggerEvent('DoLongHudText', "Pursuit Mode: S+" , 1)
-                        SetVehicleHandlingField(vehicle, "CHandlingData", "fInitialDriveForce", defaultcarspeed+Veny.MultiplierSPlus)
+                        SetVehicleHandlingField(vehicle, "CHandlingData", "fInitialDriveForce", defaultcarspeed+Veny.MultiplierSPlus-Veny.MultiplierS)
                     elseif mode3 then
                         mode1 = false
                         mode2 = false
                         mode3 = false
                         mode4 = true
                         TriggerEvent('DoLongHudText', "Pursuit Mode: A" , 1)
-                        SetVehicleHandlingField(vehicle, "CHandlingData", "fInitialDriveForce", defaultcarspeed+Veny.MultiplierA)
+                        SetVehicleHandlingField(vehicle, "CHandlingData", "fInitialDriveForce", defaultcarspeed+Veny.MultiplierA-Veny.MultiplierSPlus)
                     end
                 else
                    TriggerEvent('DoLongHudText', "You are not in a pursuit car" , 2)
