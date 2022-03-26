@@ -251,53 +251,11 @@ end)
 
  RegisterNetEvent('drp-jobs:mechanic-craft')
  AddEventHandler('drp-jobs:mechanic-craft', function()
-     TriggerEvent('drp-context:sendMenu', {
-         {
-             id = 1,
-             header = "Public Workbench",
-             txt = ""
-         },
-         {
-             id = 2,
-             header = "Craft Lockpick",
-             txt = "Requires: 2x Steel",
-             params = {
-                event = "drp-civjobs:craft-lockpick"
-            }
-         },
-         {
-             id = 3,
-             header = "Craft Adv Lockpick",
-             txt = "Requires: 15x Refined Aluminium | 12x Refined Plastic | 15x Refined Rubber",
-             params = {
-                 event = "drp-civjobs:craft-advlockpick"
-             }
-         },
-         {
-             id = 4,
-           header = "Craft Adv Repair Kit",
-            txt = "Requires: 30x Electronics",
-             params = {
-                 event = "drp-civjobs:craft-repairkit"
-             }
-        },
-         {
-             id = 5,
-             header = "Craft Ass Lockpick",
-           txt = "Requires: 20x Refined Aluminium",
-            params = {
-                event = "drp-civjobs:craft-tyre-repairkit"
-             }
-         },
-        {
-             id = 6,
-             header = "Close",
-             txt = "Exit the bench",
-             params = {
-                 event = ""
-             }
-         },
-     })
+    local finished = exports['drp-taskbar']:taskBar(1000, 'Accessing Bench')
+	if (finished == 100) then
+		TriggerEvent("server-inventory-open", "42000", "Craft");	-- pausechamp
+		Wait(1000)
+	end
  end)
 
  
