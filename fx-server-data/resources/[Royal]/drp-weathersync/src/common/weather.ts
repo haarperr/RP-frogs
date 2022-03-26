@@ -87,7 +87,7 @@ export const transitions: Transitions = {
   ],
   'OVERCAST': [
     { to: 'RAIN', chance: 5 },
-    { to: 'THUNDER', chance: 5 },
+    { to: 'THUNDER', chance: 1 },
     { to: 'CLOUDS', chance: 25 },
     { to: 'SMOG', chance: 25 },
     { to: 'FOGGY', chance: 25 },
