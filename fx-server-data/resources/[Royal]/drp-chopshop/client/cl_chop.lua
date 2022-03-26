@@ -609,12 +609,12 @@ function RoyalCreateChopCar()
     CreatePickupCarBlip(x, y, z)
 
     RoyalChopCar = CreateVehicle(RoyalChopVehicle, x, y, z, h, true, false)
-
+    local isinchopcar = IsPedInVehicle(PlayerPedId(), RoyalChopVehicle, true)
 	local pos = GetEntityCoords(RoyalChopCar, false)
     Citizen.CreateThread(function()
         while true do
           Citizen.Wait(5)
-          if GetVehiclePedIsIn(PlayerPedId(), false) == RoyalChopCar then
+          if isinchopcar then
                 SetNewWaypoint(1360.2725830078,-2095.0549316406,51.993408203125)
                 TriggerEvent('phone:addnotification', 'Illegal Car Company', 'I updated your GPS go there and chop the car!')
                 DeleteBlip(blipPickup)
