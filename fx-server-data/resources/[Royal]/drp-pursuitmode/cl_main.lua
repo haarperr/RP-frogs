@@ -23,56 +23,32 @@ CreateThread(function()
                 if vehiclehash == Veny.PursuitCar1 or vehiclehash == Veny.PursuitCar2 or vehiclehash == Veny.PursuitCar3 or vehiclehash == Veny.PursuitCar4 then
                     local defaultcarspeed = GetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fInitialDriveForce')
                     if mode4 then
-                        mode4 = false
                         mode1 = true
-                        if Veny.notify == "DoLongHudText" then
-                            TriggerEvent('DoLongHudText', "Pursuit Mode: A+" , 1)
-                        elseif Veny.notify == "mythicnotify" then
-                            exports['mythic_notify']:SendAlert('success', "Pursuit Mode: A+")
-                        elseif Veny.notify == "qbcorenotify" then
-                            QBCore.Functions.Notify("Pursuit Mode: A+", "success")
-                        elseif Veny.notify == "esxshownotification" then
-                            ESX.ShowNotification("Pursuit Mode: A+", false, true, 130)
-                        end
+                        mode2 = false
+                        mode3 = false
+                        mode4 = false
+                        TriggerEvent('DoLongHudText', "Pursuit Mode: A+" , 1)
                         SetVehicleHandlingField(vehicle, "CHandlingData", "fInitialDriveForce", defaultcarspeed+Veny.MultiplierAPlus)
                     elseif mode1 then
                         mode1 = false
                         mode2 = true
-                        if Veny.notify == "DoLongHudText" then
-                            TriggerEvent('DoLongHudText', "Pursuit Mode: S" , 1)
-                        elseif Veny.notify == "mythicnotify" then
-                            exports['mythic_notify']:SendAlert('success', "Pursuit Mode: S")
-                        elseif Veny.notify == "qbcorenotify" then
-                            QBCore.Functions.Notify("Pursuit Mode: S", "success")
-                        elseif Veny.notify == "esxshownotification" then
-                            ESX.ShowNotification("Pursuit Mode: S", false, true, 130)
-                        end
+                        mode3 = false
+                        mode4 = false
+                        TriggerEvent('DoLongHudText', "Pursuit Mode: S" , 1)
                         SetVehicleHandlingField(vehicle, "CHandlingData", "fInitialDriveForce", defaultcarspeed+Veny.MultiplierS)
                     elseif mode2 then
+                        mode1 = false
                         mode2 = false
                         mode3 = true
-                        if Veny.notify == "DoLongHudText" then
-                            TriggerEvent('DoLongHudText', "Pursuit Mode: S+" , 1)
-                        elseif Veny.notify == "mythicnotify" then
-                            exports['mythic_notify']:SendAlert('success', "Pursuit Mode: S+")
-                        elseif Veny.notify == "qbcorenotify" then
-                            QBCore.Functions.Notify("Pursuit Mode: S+", "success")
-                        elseif Veny.notify == "esxshownotification" then
-                            ESX.ShowNotification("Pursuit Mode: S+", false, true, 130)
-                        end
+                        mode4 = false
+                        TriggerEvent('DoLongHudText', "Pursuit Mode: S+" , 1)
                         SetVehicleHandlingField(vehicle, "CHandlingData", "fInitialDriveForce", defaultcarspeed+Veny.MultiplierSPlus)
                     elseif mode3 then
+                        mode1 = false
+                        mode2 = false
                         mode3 = false
                         mode4 = true
-                        if Veny.notify == "DoLongHudText" then
-                            TriggerEvent('DoLongHudText', "Pursuit Mode: A" , 1)
-                        elseif Veny.notify == "mythicnotify" then
-                            exports['mythic_notify']:SendAlert('success', "Pursuit Mode: A")
-                        elseif Veny.notify == "qbcorenotify" then
-                            QBCore.Functions.Notify("Pursuit Mode: A", "success")
-                        elseif Veny.notify == "esxshownotification" then
-                            ESX.ShowNotification("Pursuit Mode: A", false, true, 130)
-                        end
+                        TriggerEvent('DoLongHudText', "Pursuit Mode: A" , 1)
                         SetVehicleHandlingField(vehicle, "CHandlingData", "fInitialDriveForce", defaultcarspeed+Veny.MultiplierA)
                     end
                 else
@@ -87,15 +63,7 @@ CreateThread(function()
                     end
                 end
             else
-                if Veny.notify == "DoLongHudText" then
-                    TriggerEvent('DoLongHudText', "You are not in a car" , 2)
-                elseif Veny.notify == "mythicnotify" then
-                    exports['mythic_notify']:SendAlert('error', "You are not in a car")
-                elseif Veny.notify == "qbcorenotify" then
-                    QBCore.Functions.Notify("You are not in a car", "error")
-                elseif Veny.notify == "esxshownotification" then
-                    ESX.ShowNotification("You are not in a car", false, true, 130)
-                end
+                TriggerEvent('DoLongHudText', "You are not in a car" , 2)
             end
         end
         Wait(0)
