@@ -581,7 +581,7 @@ function AlertGunShot(isHunting, sentWeapon)
                         secondColor = vehicleData.secondColor,
                         heading = vehicleData.heading,
                         origin = {x = newPos.x, y = newPos.y, z = newPos.z},
-                        dispatchMessage = "Car fleeing 10-60"
+                        dispatchMessage = "Car fleeing 10-99"
                     })
                     TriggerEvent('drp-dispatch:gunshotcl')
                 end
@@ -875,6 +875,18 @@ function OxyPing()
     local isInVehicle = IsPedInAnyVehicle(PlayerPedId())
     local currentVeh = GetVehiclePedIsIn(PlayerPedId(), false)
     local dispatchCode = "10-26"
+    local alpha = 360
+    local Blip = AddBlipForCoord(1690.576, 2534.541, 61.3709)
+
+    SetBlipScale(Blip, 1.3)
+    SetBlipSprite(Blip, 456)
+    SetBlipColour(Blip,  4)
+    SetBlipAlpha(Blip, alpha)
+    SetBlipAsShortRange(Blip, false)
+    BeginTextCommandSetBlipName("STRING")              -- set the blip's legend caption
+    AddTextComponentString('10-26 Sussy Activity')              -- to 'supermarket'
+    EndTextCommandSetBlipName(Blip)
+    
     TriggerServerEvent('drp-dispatch:bankwobbewy', currentPos)
     TriggerServerEvent('dispatch:svNotify', {
         dispatchCode = dispatchCode,
@@ -884,31 +896,16 @@ function OxyPing()
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "Suspicious Activity"
     })
-    if math.random(10) > 2 and not isInVehicle then
-        CreateThread(function()
-            Wait(math.random(17500, 25000))
-            if IsPedInAnyVehicle(PlayerPedId()) then
-                local vehicleData = GetVehicleDescription() or {}
-                local newPos = GetEntityCoords(PlayerPedId())
-                local locationInfo = GetStreetAndZone()
-                TriggerServerEvent('dispatch:svNotify', {
-                    dispatchCode = 'CarEvading',
-                    relatedCode = dispatchCode,
-                    firstStreet = locationInfo,
-                    gender = gender,
-                    model = vehicleData.model,
-                    plate = vehicleData.plate,
-                    priority = 1,
-                    firstColor = vehicleData.firstColor,
-                    secondColor = vehicleData.secondColor,
-                    heading = vehicleData.heading,
-                    origin = {x = newPos.x, y = newPos.y, z = newPos.z},
-                    dispatchMessage = "Evading 10-90"
-                })
-                TriggerServerEvent('drp-dispatch:bankwobbewy', newPos)
-            end
+    
+    while alpha ~= 0 do
+        Citizen.Wait(220 * 4)
+        alpha = alpha - 1
+        SetBlipAlpha(Blip, alpha)
+
+        if alpha == 0 then
+            RemoveBlip(Blip)
             return
-        end)
+        end
     end
 end
 
@@ -1016,39 +1013,40 @@ end
 
 RegisterNetEvent("drp-dispatch:boostTrackerPing")
 AddEventHandler("drp-dispatch:boostTrackerPing", function(toggle)
-    if toggle == true then
-  local pos = GetEntityCoords(PlayerPedId(), true)
-  local street = GetStreetAndZone()
-  local veh = GetVehiclePedIsIn(PlayerPedId(), false)
-  local color1, color2 = GetVehicleColours(veh)
-	local vehCol1 = colors[color1]
-  local vehCol2 = colors[color2]
-	local plate = GetVehicleNumberPlateText(veh)
-	local vehHash = GetEntityModel(veh)
-	local vehName = GetDisplayNameFromVehicleModel(vehHash)
-	local vehNameText = GetLabelText(vehName)
-  local gender = IsPedMale(PlayerPedId())
+if toggle == true then
+    local pos = GetEntityCoords(PlayerPedId(), true)
+    local street = GetStreetAndZone()
+    local veh = GetVehiclePedIsIn(PlayerPedId(), false)
+    local color1, color2 = GetVehicleColours(veh)
+    local vehCol1 = colors[color1]
+    local vehCol2 = colors[color2]
+    local plate = GetVehicleNumberPlateText(veh)
+    local vehHash = GetEntityModel(veh)
+    local vehName = GetDisplayNameFromVehicleModel(vehHash)
+    local vehNameText = GetLabelText(vehName)
+    local gender = IsPedMale(PlayerPedId())
 
-  TriggerServerEvent("dispatch:svNotify", {
-    dispatchCode = "10-60",
-    firstStreet = street,
-    gemder = gender,
-    model = vehNameText,
-    plate = plate,
-    firstColor = vehCol1,
-    secondColor = vehCol2,
-    isImportant = false,
-    dispatchMessage = "Stolen Vehicle Tracker",
-    recipientList = {police = "police", sheriff = "sheriff", state = "state"},
-    origin = {
-      x = pos.x,
-      y = pos.y,
-      z = pos.z
-    }
-  })
-  TriggerEvent("drp-dispatch:carBoostTracker")
-elseif toggle == false then
-    return end
+    TriggerServerEvent("dispatch:svNotify", {
+        dispatchCode = "10-60",
+        firstStreet = street,
+        gemder = gender,
+        model = vehNameText,
+        plate = plate,
+        firstColor = vehCol1,
+        secondColor = vehCol2,
+        isImportant = false,
+        dispatchMessage = "Stolen Vehicle Tracker",
+        recipientList = {police = "police", sheriff = "sheriff", state = "state"},
+        origin = {
+        x = pos.x,
+        y = pos.y,
+        z = pos.z
+        }
+    })
+    TriggerEvent("drp-dispatch:carBoostTracker")
+    elseif toggle == false then
+        return
+    end
 end)
 
 function AlertDeath()
