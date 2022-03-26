@@ -6,7 +6,6 @@ discordbot/*
 !*.js
 !*.html
 !*.css
-!*.
 !*.png
 !*.jpg
 !*.jpeg
