@@ -621,12 +621,7 @@ AddEventHandler("drp-paleto:startPaletoHeist", function()
     TriggerServerEvent('drp-paleto:getTime2SV')
     TriggerServerEvent('drp-paleto:getDoorAccessSV')
     Citizen.Wait(1000)
-<<<<<<< HEAD
     if exports["drp-duty"]:LawAmount() >= 2 then -- countpolice doesnt work use this instead
-=======
-    local countpolice = exports["isPed"]:isPed("countpolice")
-    if countpolice >= 2 then
->>>>>>> 4b4b74c6953259ecb2e8eb98a54b2db574ac2db9
         
         if not paletoStateAlready == true then
             if paletoTimesHit2 > paletoTimesHit then
