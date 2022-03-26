@@ -1,6 +1,13 @@
 local currentCops = 0
 local currentEMS = 0
 
+policeonline = 0
+
+function LawAmount()
+	return currentCops
+end
+
+
 RegisterServerEvent('drp-duty:AttemptDuty')
 AddEventHandler('drp-duty:AttemptDuty', function(pJobType)
 	local src = source
