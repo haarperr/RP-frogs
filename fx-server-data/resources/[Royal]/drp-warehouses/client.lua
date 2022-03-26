@@ -3,7 +3,8 @@ warehouses = {
 }
 
 
-function Draw3DText(x,y,z, text)
+function Draw3DText(x,y,z, text) 
+    local inv_factor = 1.0 / 370.0
     local factor = string_len(text) * inv_factor
     local onScreen,_x,_y = _in(0x34E82F05DF2974F5, x, y, z, _f, _f, _r) -- GetScreenCoordFromWorldCoord
 
@@ -47,10 +48,12 @@ Citizen.CreateThread(function()
     while true do
 	    Citizen.Wait(0)
         -- for each warehouse
-        for i=1,#warehouses do
+        i = 1
             -- if player is near the warehouse
+            Citizen.Trace("i: "..i)
+            Draw3DText(warehouses[i]["x"],warehouses[i]["y"],warehouses[i]["z"], warehouses[i]["locationName"])
             local distance = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), warehouses[i]["x"], warehouses[i]["y"], warehouses[i]["z"], true)
-            if distance <= 2.0 and exports["drp-inventory"]:hasEnoughOfItem(warehouses[i]["keyName"],1,false) then
+            if distance <= 25.0 and exports["drp-inventory"]:hasEnoughOfItem(warehouses[i]["keyName"],1,false) then
                 -- draw the text
                 Draw3DText(warehouses[i]["x"],warehouses[i]["y"],warehouses[i]["z"], "Press [E] to enter")
                 -- if player presses E

@@ -162,7 +162,7 @@ AddEventHandler("jewel:startrobberybitch", function()
 	TriggerServerEvent('drp-jewelry:getTime2SV')
 	Citizen.Wait(1000)
 	local copcount = exports["isPed"]:isPed("countpolice")
-	if copcount >= 4 then 
+	if copcount >= 2 then 
 		if exports["drp-inventory"]:hasEnoughOfItem("orangelaptop",1,false) then
 			if jewelryTimesHit2 > jewelryTimesHit then 
 				if jewelryBanksTimes >= 1 then
