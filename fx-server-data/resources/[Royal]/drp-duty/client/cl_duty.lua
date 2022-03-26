@@ -1002,7 +1002,8 @@ curpol = 0
 
 RegisterNetEvent('job:policecount')
 AddEventHandler('job:policecount', function(currentCops)
-	currentCops = curpol
+
+	curpol = currentCops
 end)
 
 function LawAmount()
