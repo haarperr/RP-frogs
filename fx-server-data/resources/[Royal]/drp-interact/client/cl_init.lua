@@ -1096,12 +1096,6 @@ Citizen.CreateThread(function()
         maxZ=14.58
     })
 
-    -- Recycle Centre
-
-    exports["drp-polytarget"]:AddCircleZone("recycle_trade",  vector3(995.23, -3100.04, -39.1), 0.3, {
-        useZ = true
-    })
-
     -- Red Circle
 
     exports["drp-polytarget"]:AddCircleZone("red_circle_table_1",  vector3(-309.92, 186.8, 103.59), 0.5, {
@@ -1306,10 +1300,6 @@ Citizen.CreateThread(function()
         maxZ=46.27
     })
 
-    exports["drp-polytarget"]:AddBoxZone("recycle_outside",  vector3(746.79, -1399.0, 26.54), 0.2, 1.2, {
-        minZ=25.14,
-        maxZ=27.94
-    })
 
     exports["drp-polytarget"]:AddBoxZone("doj_duty",  vector3(250.06, -1077.03, 29.29), 1.5, 2.6, {
         heading=0,
@@ -1317,10 +1307,6 @@ Citizen.CreateThread(function()
         maxZ=29.69
     })
 
-    exports["drp-polytarget"]:AddBoxZone("recycle_inside",  vector3(1028.14, -3101.38, -39.0), 3.0, 0.2, {
-        minZ=-39.8,
-        maxZ=-36.0
-    })
 
     exports["drp-polytarget"]:AddBoxZone("vpnzone",  vector3(-1359.52, -757.3862, 22.30463), 3.0, 0.2, {
         minZ=-21.8,
@@ -3447,18 +3433,6 @@ Citizen.CreateThread(function()
         distance = { radius = 2.5 },
     });
 
-    -- Recycling Center
-    exports["drp-interact"]:AddPeekEntryByPolyTarget("recycle_trade", {
-        {
-            event = "drp-trade:mats",
-            id = "recycle_trade",
-            icon = "circle",
-            label = "Trade Material",
-            parameters = {},
-        }
-    }, {
-        distance = { radius = 2.5 },
-    });
     -- Chopshop
     exports["drp-interact"]:AddPeekEntryByPolyTarget("royal_chop_location", {
         {
@@ -3636,27 +3610,6 @@ Citizen.CreateThread(function()
         distance = { radius = 1.5 },
     });
 
-
-        
-    exports["drp-interact"]:AddPeekEntryByPolyTarget("recycle_outside", {{
-        event = "recycle:InsideTP",
-        id = "recycle_enter",
-        icon = "circle",
-        label = "Recycling Plant",
-        parameters = {},
-    }}, {
-        distance = { radius = 1.5 },
-    });
-
-    exports["drp-interact"]:AddPeekEntryByPolyTarget("recycle_inside", {{
-        event = "recycle:OutsideTP",
-        id = "recycle_leave",
-        icon = "circle",
-        label = "Recycling Plant",
-        parameters = {},
-    }}, {
-        distance = { radius = 2.5 },
-    });
 
     exports["drp-interact"]:AddPeekEntryByPolyTarget("collect_courthouseshit", {{
         event = "courthouse:getitems",
