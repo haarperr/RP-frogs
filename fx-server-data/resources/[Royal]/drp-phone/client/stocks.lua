@@ -4,7 +4,7 @@ local serverstockvalues = {
 }
 
 clientstockamount = {
-  [1] = { ["value"] = 5.00 },
+  [1] = { ["value"] = 0.00 },
   [2] = { ["value"] = 0.00 },
   [3] = { ["value"] = 0.00 },
   [4] = { ["value"] = 0.00 },
