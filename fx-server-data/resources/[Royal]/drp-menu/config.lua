@@ -219,7 +219,7 @@ rootMenuConfig =  {
                 end
             end
         end,
-        subMenus = { "police:impoundsc" }
+        subMenus = { "police:impoundsc", "civ:reimpoundscuff" }
     },
 
     {

@@ -1446,8 +1446,33 @@ AddEventHandler('civ:reimpoundscuff', function()
     coordA = GetEntityCoords(playerped, 1)
     coordB = GetOffsetFromEntityInWorldCoords(playerped, 0.0, 100.0, 0.0)
     targetVehicle = getVehicleInDirection(coordA, coordB)
-	deleteVeh(targetVehicle)
-	CreateVehicle()
+	licensePlate = GetVehicleNumberPlateText(targetVehicle)
+	TriggerServerEvent("drp-vehicles:repo3",licensePlate)
+	
+	ped = GetPlayerPed(-1)
+	location = GetEntityCoords(ped, 1)
+
+	cid = exports["isPed"]:isPed("cid")
+	
+	
+
+
+	exports.ghmattimysql:execute('SELECT * FROM characters_cars WHERE id = @id', {['@id'] = cid}, function(vehicles)
+		args = {
+			model = vehicles[1].model,
+			fuel = vehicles[1].fuel, 
+			customized = vehicles[1].data,
+			plate = vehicles[1].license_plate,
+		}
+		local vehicle = SpawnVehicle(data.model, location, data.fuel, data.customized, data.plate, true)
+		SetVehicleNeedsToBeHotwired(vehicle, false)
+		SetVehicleHasBeenOwnedByPlayer(vehicle, true)
+		SetEntityAsMissionEntity(vehicle, true, true)
+		SetVehicleIsStolen(vehicle, false)
+		SetVehicleIsWanted(vehicle, false)
+		SetVehRadioStation(vehicle, 'OFF')
+		end
+	end)
 end)
 
 RegisterNetEvent('fullimpoundVehicle')
