@@ -1651,8 +1651,8 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
 
     if (itemid == "methtable") then
    
-        TriggerEvent("drp-drugs:tableplace")
-   -- remove = true
+        TriggerEvent("methjob_place")
+    remove = true
 end
 
     if (itemid == "lockpick") then
