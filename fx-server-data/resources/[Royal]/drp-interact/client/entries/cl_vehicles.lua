@@ -101,29 +101,29 @@ Entries[#Entries + 1] = {
     }
 }
 
--- Entries[#Entries + 1] = {
---     type = 'entity',
---     group = { 2 },
---     data = {
---         {
---             id = "vehicle_add_fakeplate",
---             label = "Add Fakeplate",
---             icon = "screwdriver",
---             event = "vehicle:addFakePlate",
---             parameters = {}
---         }
---     },
---     options = {
---         distance = { radius = 3.0 },
---         isEnabled = function(pEntity, pContext)
---             plate = GetVehicleNumberPlateText(pEntity)
---             hasKeys = exports["drp-keys"]:hasKey(plate)
---             return (isCloseToHood(pEntity, PlayerPedId(), 2.0) or isCloseToBoot(pEntity, PlayerPedId(), 2.0, pContext.model)) and not IsPedInAnyVehicle(PlayerPedId(), false)
---             and hasKeys and exports["drp-inventory"]:hasEnoughOfItem("fakeplate", 1, false)
---             and not exports["drp-vehicles"]:GetVehicleMetadata(pEntity, 'fakePlate')
---         end
---     }
--- }
+ Entries[#Entries + 1] = {
+     type = 'entity',
+     group = { 2 },
+     data = {
+         {
+             id = "vehicle_add_fakeplate",
+             label = "Add Fakeplate",
+             icon = "screwdriver",
+             event = "fakeplate:accepted",
+             parameters = {}
+         }
+     },
+     options = {
+         distance = { radius = 3.0 },
+         isEnabled = function(pEntity, pContext)
+             plate = GetVehicleNumberPlateText(pEntity)
+             hasKeys = exports["drp-keys"]:hasKey(plate)
+             return (isCloseToHood(pEntity, PlayerPedId(), 2.0) or isCloseToBoot(pEntity, PlayerPedId(), 2.0, pContext.model)) and not IsPedInAnyVehicle(PlayerPedId(), false)
+             and hasKeys and exports["drp-inventory"]:hasEnoughOfItem("fakeplate", 1, false)
+             and not exports["drp-vehicles"]:GetVehicleMetadata(pEntity, 'fakePlate')
+         end
+     }
+ }
 
 -- Entries[#Entries + 1] = {
 --     type = 'entity',

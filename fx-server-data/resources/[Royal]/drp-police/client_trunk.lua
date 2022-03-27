@@ -31,6 +31,7 @@ local disabledTrunk = {
     [25] = "fnf4r34",
     [26] = "ap2",
     [27] = "bullet",
+    [28] = "npwheelchair", -- Disabled wheelchair trunk lmao fucking 600 weight what
 }
 
 

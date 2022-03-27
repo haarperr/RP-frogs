@@ -176,7 +176,7 @@ AddEventHandler("store:dosafe", function()
 	local breakchace = math.random(100)
 	if exports["drp-duty"]:LawAmount() >= 1 then
 		safeLocations[storeid].robbed = true
-		
+		TriggerEvent("inventory:removeItem","safecrackingkit", 1) 
 		TriggerEvent("drp-dispatch:storerobbery2")
 		TriggerServerEvent("police:camrobbery",storeid)
 	    TriggerEvent("drp-hud:updateStress",true,15)
@@ -187,11 +187,12 @@ AddEventHandler("store:dosafe", function()
     	end,
    		 function()
         TriggerEvent('DoLongHudText', 'Failed.')
-			end)
-		if breakchace > 75 then
+		if breakchace > 50 then
 			TriggerEvent('DoLongHudText', 'Your tool get broken off in the lock', 2)  
 			TriggerEvent("inventory:removeItem","safecrackingkit", 1) 
 		end
+			end)
+		
 	else
 		TriggerEvent('DoLongHudText', 'Not enough police on duty.', 2)
 	end
