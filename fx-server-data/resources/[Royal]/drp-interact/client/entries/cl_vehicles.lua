@@ -125,28 +125,28 @@ Entries[#Entries + 1] = {
      }
  }
 
--- Entries[#Entries + 1] = {
---     type = 'entity',
---     group = { 2 },
---     data = {
---         {
---             id = "vehicle_remove_fakeplate",
---             label = "Remove Fakeplate",
---             icon = "ban",
---             event = "vehicle:removeFakePlate",
---             parameters = {}
---         }
---     },
---     options = {
---         distance = { radius = 3.0 },
---         isEnabled = function(pEntity, pContext)
---             plate = GetVehicleNumberPlateText(pEntity)
---             hasKeys = exports["drp-keys"]:hasKey(plate)
---             return isCloseToBoot(pEntity, PlayerPedId(), 1.8, pContext.model) and not IsPedInAnyVehicle(PlayerPedId(), false)
---             and hasKeys and exports["drp-vehicles"]:GetVehicleMetadata(pEntity, 'fakePlate')
---         end
---     }
--- }
+ Entries[#Entries + 1] = {
+     type = 'entity',
+     group = { 2 },
+     data = {
+         {
+             id = "vehicle_remove_fakeplate",
+             label = "Remove Fakeplate",
+             icon = "ban",
+             event = "fakeplate:off",
+             parameters = {}
+         }
+     },
+     options = {
+         distance = { radius = 3.0 },
+         isEnabled = function(pEntity, pContext)
+             plate = GetVehicleNumberPlateText(pEntity)
+             hasKeys = exports["drp-keys"]:hasKey(plate)
+             return isCloseToBoot(pEntity, PlayerPedId(), 1.8, pContext.model) and not IsPedInAnyVehicle(PlayerPedId(), false)
+             and hasKeys and exports["drp-vehicles"]:GetVehicleMetadata(pEntity, 'fakePlate')
+         end
+     }
+ }
 
 Entries[#Entries + 1] = {
     type = 'entity',
