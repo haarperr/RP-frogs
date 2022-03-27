@@ -248,11 +248,11 @@ end
 
 RegisterNetEvent('chickencooldown')
 AddEventHandler('chickencooldown', function(name)
-if chickencounter == 1 then -- set 1 to test
+
 	TriggerEvent('DoLongHudText', 'You must wait a bit to catch more chickens', 2)
 	Citizen.Wait(600000)
 	chickencounter == 0
-end
+
 end)
 
 
@@ -645,7 +645,11 @@ function RoyalRPChickensStart()
         while RoyalChickenStart do
             Citizen.Wait(5)
 			if IsControlJustReleased(0, 38) then
+				if chickencounter == 1 then
+				TriggerEvent("chickencooldown")
+				else
 				TriggerEvent('chickens-start')
+				end
 			end
 		end
 	end)
