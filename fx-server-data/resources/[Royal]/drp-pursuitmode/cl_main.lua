@@ -20,7 +20,7 @@ CreateThread(function()
         if IsControlJustPressed(0, 178) then --delete
             if vehicle ~= 0 then
                 local vehiclehash = GetEntityModel(vehicle)
-                if vehiclehash == Veny.PursuitCar1 or vehiclehash == Veny.PursuitCar2 or vehiclehash == Veny.PursuitCar3 or vehiclehash == Veny.PursuitCar4 then
+                if vehiclehash == Veny.PursuitCar1 or vehiclehash == Veny.PursuitCar2 or vehiclehash == Veny.PursuitCar3 or vehiclehash == Veny.PursuitCar4 or vehiclehash == Veny.PursuitCar5 or vehiclehash == Veny.PursuitCar6  or vehiclehash == Veny.PursuitCar7 then
                     local defaultcarspeed = GetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fInitialDriveForce')
                     if mode4 then
                         mode1 = true
