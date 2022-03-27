@@ -1127,7 +1127,7 @@ AddEventHandler('fakeplate:accepted', function(newplate, oldplate)
             TriggerEvent("DoLongHudText", 'You are now running on fake plates!')
             LicencePlate.Index = GetVehicleNumberPlateTextIndex(Vehicle)
             LicencePlate.Number = GetVehicleNumberPlateText(Vehicle)
-            SetVehicleNumberPlateText(Vehicle, "NVW "..math.ceil(math.random(10000,99999)))
+            SetVehicleNumberPlateText(Vehicle, "NVW"..math.ceil(math.random(10000,99999)))
             TriggerEvent("keys:addNew",Vehicle)
         else
 			TriggerEvent('DoLongHudText', 'No vehicle nearby.')
