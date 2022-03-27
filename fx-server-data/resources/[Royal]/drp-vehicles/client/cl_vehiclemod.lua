@@ -996,7 +996,10 @@ Citizen.CreateThread(function()
                             else
                                 -- IsBike
                                 carCrash()
+                                local stallchance = math.random(1,3)
+                                if stallchance == 3 then
                                 stalled = true
+                                end -- 1/3 stall chance on bikes maybe?
                                 Citizen.Wait(1000)
                                 lastCurrentVehicleSpeed = 0.0
                                 lastCurrentVehicleBodyHealth = currentVehicleBodyHealth
@@ -1124,7 +1127,7 @@ AddEventHandler('fakeplate:accepted', function(newplate, oldplate)
             TriggerEvent("DoLongHudText", 'You are now running on fake plates !')
             LicencePlate.Index = GetVehicleNumberPlateTextIndex(Vehicle)
             LicencePlate.Number = GetVehicleNumberPlateText(Vehicle)
-            SetVehicleNumberPlateText(Vehicle, "JGO "..math.ceil(math.random(10000,99999)))
+            SetVehicleNumberPlateText(Vehicle, "NVW "..math.ceil(math.random(10000,99999)))
             TriggerEvent("keys:addNew",Vehicle)
         else
 			TriggerEvent('DoLongHudText', 'No vehicle nearby.')
