@@ -1468,7 +1468,7 @@ AddEventHandler('civ:reimpoundscuff', function()
 		SetVehicleIsStolen(vehicle, false)
 		SetVehicleIsWanted(vehicle, false)
 		SetVehRadioStation(vehicle, 'OFF')
-	end
+	end)
 end)
 
 RegisterNetEvent('fullimpoundVehicle')
