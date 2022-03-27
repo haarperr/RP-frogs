@@ -22,10 +22,6 @@ local bennysHarmony2 = vector3(1182.4747314453, 2639.8022460938, 37.148681640625
 
 local RepairDriftSchool = vector3(-167.4725189209,-2460.7648925781,5.9091796875)
 
-function isPolice(
-    if 
-)
-
 rootMenuConfig =  {
     {
         id = "police-actions",
