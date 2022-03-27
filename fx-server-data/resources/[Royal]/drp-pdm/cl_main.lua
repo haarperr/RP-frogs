@@ -1166,9 +1166,9 @@ function ButtonSelected(button)
 		end
 	elseif this == "jobvehicles" or this == "s-class" or this == "a-class" or this == "b-class" or this == "c-class" or this == "casino" or this == "d-class" or this == "offroad" or this == "suvs" or this == "vans" or this == "industrial" or this == "cycles" or this == "motorcycles" then
 		if ownerMenu then
-			updateCarTable(button.model,button.costs,button.name)
+			updateCarTable(button.model,button.costs*2,button.name)
 		else
-			TriggerServerEvent('drp-pdm:ChechMoney',button.name, button.model, button.costs)
+			TriggerServerEvent('drp-pdm:ChechMoney',button.name, button.model, button.costs*2)
 		end
 	end
 end
@@ -1237,8 +1237,8 @@ Citizen.CreateThread(function()
 					end
 					drawMenuButton(button,vehshop.menu.x,y,selected)
 
-					if button.costs ~= nil then
-						drawMenuRight("$"..button.costs,vehshop.menu.x,y,selected)
+					if button.costs*2 ~= nil then
+						drawMenuRight("$"..button.costs*2,vehshop.menu.x,y,selected)
 					end
 
 					y = y + 0.04
