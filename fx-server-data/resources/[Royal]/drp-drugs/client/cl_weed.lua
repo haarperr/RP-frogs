@@ -104,7 +104,7 @@ AddEventHandler('drp-weed:plantSeed', function(sentType)
 end)
 
 RegisterNetEvent('drp-drugs:tableplace')
-AddEventHandler('drp-weed:tableplace', function(sentType)
+AddEventHandler('drp-drugs:tableplace', function(sentType)
     if not isBusy then
         if exports["drp-inventory"]:hasEnoughOfItem("methtable",1,false) then
             local veh = GetVehiclePedIsIn(PlayerPedId(), false)
