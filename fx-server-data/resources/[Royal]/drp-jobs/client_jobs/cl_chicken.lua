@@ -332,7 +332,7 @@ function Hewascaught()
 	ragdoll = true
 	local szansaZlapania = math.random(1,100)
 	if szansaZlapania <= 60 then
-			TriggerEvent('DoLongHudText', 'You managed to catch 1 chicken!', 1)
+			TriggerEvent('DoLongHudText', 'You managed to catch a chicken!', 1)
 			if Zlapany1 == 1 then
 				DeleteEntity(chicken1)
 				Zlapany1 = 0
@@ -362,7 +362,6 @@ Citizen.CreateThread(function()
 		end
 	end
 end)
-
 
 RegisterNetEvent("drp-chickens:sell")
 AddEventHandler("drp-chickens:sell", function()
