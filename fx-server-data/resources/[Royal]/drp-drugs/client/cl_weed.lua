@@ -103,6 +103,33 @@ AddEventHandler('drp-weed:plantSeed', function(sentType)
     end
 end)
 
+RegisterNetEvent('drp-drugs:tableplace')
+AddEventHandler('drp-weed:tableplace', function(sentType)
+    if not isBusy then
+        if exports["drp-inventory"]:hasEnoughOfItem("methtable",1,false) then
+            local veh = GetVehiclePedIsIn(PlayerPedId(), false)
+            if veh == 0 then
+                local success = true
+                isBusy = true
+                local ped = PlayerPedId()
+                local playerCoord = GetEntityCoords(ped)
+        
+                if not IsEntityInWater(PlayerPedId()) then
+                    MethTable(sentType,`v_ret_ml_tablea`)
+                else
+                    TriggerEvent("DoLongHudText", "Unable to place here!", 2)
+                end
+        
+            else
+                TriggerEvent("DoLongHudText", "You cant place this while in a vehicle!", 2)
+            end
+            isBusy = false
+        else
+            TriggerEvent("DoLongHudText", "You need something to plant it with!", 2)
+        end
+    end
+end)
+
 local function RotationToDirection(rotation)
 	local adjustedRotation = 
 	{ 
@@ -131,6 +158,73 @@ local function RayCastGamePlayCamera(distance)
 	}
 	local a, b, c, d, e = GetShapeTestResult(StartShapeTestRay(cameraCoord.x, cameraCoord.y, cameraCoord.z, destination.x, destination.y, destination.z, -1, -1, 1))
 	return b, c, e
+end
+
+function MethTable(sentType, theModel)
+    TriggerEvent("DoLongHudText", "Press (X) to cancel | (E) Place Table", 1)
+    Citizen.CreateThread(function()
+        local shouldBreak = false
+        local dontPlant = false
+        local pedCoords = GetEntityCoords(PlayerPedId())
+        local CreatedObject = CreateObject(theModel, pedCoords.x, pedCoords.y, pedCoords.z - 10, true, false, false)
+        SetEntityCollision(CreatedObject, false, false)
+        SetEntityCanBeDamaged(CreatedObject, false)
+        SetEntityAlpha(CreatedObject, 150)
+        while true do
+            Citizen.Wait(0)
+            local hit, coords = RayCastGamePlayCamera(1000.0)
+            local dist = #(coords - GetEntityCoords(PlayerPedId()))
+            if dist < 2.5 then
+                SetEntityCoords(CreatedObject, coords.x, coords.y, coords.z, 0, 0, 0)
+                PlaceObjectOnGroundProperly(CreatedObject)
+            end
+            TaskTurnPedToFaceEntity(PlayerPedId(), CreatedObject, 0)
+            local successShit = true
+            if IsControlJustPressed(0, 38) then
+                if hit == 1 then
+                    if knownCrops[1] ~= nil then
+                        for i = 1, #knownCrops do
+                            local dist = #(knownCrops[i]['coords'] - GetEntityCoords(CreatedObject))
+                            if dist < 1.5 then 
+                                successShit = false 
+                            end
+                        end
+                    end
+                    if successShit then
+                        shouldBreak = true
+                    else
+                        TriggerEvent("DoLongHudText", "You can't place this here.", 2)
+                    end
+                end
+            end
+            if IsControlJustPressed(0, 73) then
+                DeleteEntity(CreatedObject)
+                dontPlant = true
+                shouldBreak = true
+                ClearPedTasksImmediately(PlayerPedId())
+            end
+
+            if shouldBreak == true then
+                if dontPlant then
+                    break
+                end
+         
+                TaskPlayAnim(GetPlayerPed(-1), "amb@medic@standing@kneel@base" ,"base" ,8.0, -8.0, -1, 1, 0, false, false, false )
+                TaskPlayAnim(GetPlayerPed(-1), "anim@gangops@facility@servers@bodysearch@" ,"player_search" ,8.0, -8.0, -1, 48, 0, false, false, false)
+                local coordsShit = vector3(0, 0, 0)
+                local coordsShit = GetEntityCoords(CreatedObject)
+                DeleteEntity(CreatedObject)
+                local finished = exports["drp-taskbar"]:taskBar(math.random(2000, 5000),"Setting Up Table",false,false)
+                if (finished == 100) then
+                    if exports["drp-inventory"]:hasEnoughOfItem(sentType,1,false) then
+                        TriggerEvent("inventory:removeItem", sentType, 1)
+                        ClearPedTasks(PlayerPedId())
+                    end
+                end
+                break
+            end
+        end
+    end)
 end
 
 function ShitFunction(sentType, theModel)
