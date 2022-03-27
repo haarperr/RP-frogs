@@ -1692,6 +1692,13 @@ end
 
     end
 
+        if (itemid == "fakeplate") then
+        TriggerEvent("fakeplate:accepted")
+        plate = GetVehicleNumberPlateText(pEntity)
+        hasKeys = exports["drp-keys"]:hasKey(plate)
+       
+    end
+
     if (itemid == "securityblue" or itemid == "securityblack" or itemid == "securitygreen" or itemid == "securitygold" or itemid == "securityred")  then
         TriggerEvent("robbery:scanLock",false,itemid)
     end
