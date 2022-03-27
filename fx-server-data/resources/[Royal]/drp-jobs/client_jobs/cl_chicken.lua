@@ -250,10 +250,9 @@ RegisterNetEvent('chickencooldown')
 AddEventHandler('chickencooldown', function(name)
 if chickentimer == 5 then
 	TriggerEvent('DoLongHudText', 'You must wait a bit to catch more chickens', 2)
-end
 	Citizen.Wait(600000)
 	chickencounter = 0
-
+end
 end)
 
 
