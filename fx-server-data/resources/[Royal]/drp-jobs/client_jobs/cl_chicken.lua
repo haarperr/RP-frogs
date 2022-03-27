@@ -633,7 +633,7 @@ function RoyalRPChickensStart()
         while RoyalChickenStart do
             Citizen.Wait(5)
 			if IsControlJustReleased(0, 38) then
-				TriggerEvent('drp-chickens-start')
+				TriggerEvent('chickens-start')
 			end
 		end
 	end)
