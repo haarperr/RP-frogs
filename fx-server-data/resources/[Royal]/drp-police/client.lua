@@ -1451,7 +1451,7 @@ AddEventHandler('civ:reimpoundscuff', function()
 	DeleteVehicle(targetVehicle)
 	
 	ped = GetPlayerPed(-1)
-	location = GetEntityCoords(ped, 1)
+	location = GetEntityCoords(ped)
 	cid = exports["isPed"]:isPed("cid")
 
 	exports.ghmattimysql:execute('SELECT * FROM characters_cars WHERE id = @id', {['@id'] = cid}, function(vehicles)
