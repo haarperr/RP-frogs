@@ -92,7 +92,7 @@ end)
         "lazer",
         "cargobob",
         "tanker2",
-        "boxville4",
+        --"boxville4", removed postop truck model from blacklist
         "hydra",
         "insurgent",
         "technical",
