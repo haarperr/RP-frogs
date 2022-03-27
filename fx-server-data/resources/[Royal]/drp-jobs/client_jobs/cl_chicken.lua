@@ -21,8 +21,8 @@ local packingZ2 = 31.02
 local sellX = -591.5437
 local sellY = -892.665
 local sellZ = 25.94248
-
-
+local chickencd = false
+local chickencounter = 0
 local chicken1
 local chicken2
 local chicken3
@@ -246,8 +246,20 @@ function TepnijWyjscie()
 	end
 end
 
+RegisterNetEvent('chickencooldown')
+AddEventHandler('chickencooldown', function(name)
+if chickencounter == 1 then -- set 1 to test
+	TriggerEvent('DoLongHudText', 'You must wait a bit to catch more chickens', 2)
+	Citizen.Wait(600000)
+	chickencounter == 0
+end
+end)
+
+
 RegisterNetEvent("chickens-start")
 AddEventHandler("chickens-start", function()
+	chickencounter = chickencounter + 1
+	TriggerEvent("chickencooldown")
 	DoScreenFadeOut(500)
 	Citizen.Wait(500)
 	SetEntityCoordsNoOffset(GetPlayerPed(-1), 2385.963, 5047.333, 46.400, 0, 0, 1)
@@ -638,6 +650,8 @@ function RoyalRPChickensStart()
 		end
 	end)
 end
+
+
 
 --// Peds
 
