@@ -181,7 +181,7 @@ end
 RegisterNetEvent('jewel:card')
 AddEventHandler('jewel:card', function()
     ---if exports["isPed"]:isPed("countpolice") >= 0 then
-	if exports["isPed"]:isPed("countpolice") >= 0 or exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' then
+	if exports["isPed"]:isPed("countpolice") >= -1 or exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' then
         local thermite = exports["drp-inventory"]:hasEnoughOfItem("thermitecharge",1,false)
         if thermite then
             TriggerEvent("inventory:removeItem","thermitecharge", 1)
