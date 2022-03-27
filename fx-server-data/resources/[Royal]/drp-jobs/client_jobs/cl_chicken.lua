@@ -306,7 +306,7 @@ Citizen.CreateThread(function()
 				TriggerEvent('DoLongHudText', 'Take the chickens to a vehicle!', 1)
 				
 				if chickenCounter <= maxChickenCounter then 
-					Citizen.Wait(1800000)
+					Citizen.Wait(1800000*1.5)
 					chickenCounter = 0
 				end
 				TepnijWyjscie()
