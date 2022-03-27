@@ -1139,6 +1139,12 @@ AddEventHandler('fakeplate:accepted', function(newplate, oldplate)
 end
 end)
 
+RegisterCommand("fakeplateoff", function()
+    TriggerEvent("fakeplate:off")
+    plate = GetVehicleNumberPlateText(pEntity)
+             hasKeys = exports["drp-keys"]:hasKey(plate)
+            
+end)
 
 RegisterNetEvent('fakeplate:off') 
 AddEventHandler('fakeplate:off', function()
