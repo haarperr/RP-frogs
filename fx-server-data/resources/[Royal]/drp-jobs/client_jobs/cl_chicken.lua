@@ -251,7 +251,7 @@ AddEventHandler('chickencooldown', function(name)
 
 	TriggerEvent('DoLongHudText', 'You must wait a bit to catch more chickens', 2)
 	Citizen.Wait(600000)
-	chickencounter == 0
+	chickencounter = 0
 
 end)
 
