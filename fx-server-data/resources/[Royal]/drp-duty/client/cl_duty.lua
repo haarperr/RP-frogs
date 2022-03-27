@@ -1002,7 +1002,9 @@ policeonline = 0
 
 RegisterNetEvent('job:policecount')
 AddEventHandler('job:policecount', function(currentCops)
-	currentCops = policeonline 
+	currentCops = policeonline
+	return policeonline
+	
 end)
 
 function LawAmount()
