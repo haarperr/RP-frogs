@@ -4,7 +4,7 @@ RegisterServerEvent('drp-civjobs:post-op-payment')
 AddEventHandler('drp-civjobs:post-op-payment', function()
     local src = tonumber(source)
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
-    local payment = math.random(25, 75)
+    local payment = math.random(350, 525)
     user:addBank(payment)
     TriggerEvent('drp-base:postopLog', src, payment)
     TriggerClientEvent('DoLongHudText', src, 'You completed the delivery and got $'..payment , 1)
@@ -81,7 +81,7 @@ AddEventHandler('drp-garbage:pay', function(jobStatus)
     local user = exports["drp-base"]:getModule("Player"):GetUser(_source)
     if jobStatus then
         if user ~= nil then
-            local randomMoney = math.random(250, 350)
+            local randomMoney = math.random(350, 550)
             user:addMoney(randomMoney)
             TriggerEvent('drp-base:garbageLog', src, randomMoney)
         end
