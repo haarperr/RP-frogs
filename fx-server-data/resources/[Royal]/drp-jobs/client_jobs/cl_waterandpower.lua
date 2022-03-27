@@ -113,8 +113,8 @@ Citizen.CreateThread(function()
                             isOnWaterNPowerJob = true
                             RemoveBlip(JobBlip)
                             TriggerEvent('DoLongHudText', 'Good Work ! Keep it up or return to depo and clock out !', 2)
-                            TriggerServerEvent('drp-civjobs:post-op-payment')
-                            Citizen.Wait(math.random(20000, 60000))
+                            TriggerServerEvent('drp-civjobs:water-power-payme')
+                            Citizen.Wait(math.random(30000, 80000))
                             TriggerEvent('drp-civjobs:waternpower:givejob')
                         else
                             FreezeEntityPosition(GetPlayerPed(-1), false)
