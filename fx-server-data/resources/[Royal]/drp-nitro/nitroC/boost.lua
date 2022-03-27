@@ -19,14 +19,12 @@ RegisterNetEvent("carmod:nos") -- Whoever made this shit is dumb asf ngl : ) ¬ 
 AddEventHandler("carmod:nos", function()
 local playerPed = PlayerPedId()
 if IsPedInAnyVehicle(playerPed, false) then
-    TriggerEvent('inventory:removeItem', 'nitrous', 1)
     local finished = exports['drp-taskbar']:taskBar(5000, 'Hooking up Nitrous')
     if (finished == 100) then
         local vehicle = GetVehiclePedIsIn(playerPed, false)
             local plate = GetVehicleNumberPlateText(vehicle)
-            print("done!")
+            TriggerEvent('inventory:removeItem', 'nitrous', 1)
             nitroactive = true
-            print(plate)
             totalNos[plate] = 100
         end
         Citizen.CreateThread(function ()
@@ -41,10 +39,8 @@ if IsPedInAnyVehicle(playerPed, false) then
                 if totalNos[plate] > 1 then 
                   if nitroactive then 
                   totalNos[plate] = totalNos[plate] - 0.05
-                  -- print("total nos : " ..totalNos[plate])
                   if totalNos[plate] < 1 then 
                     SetVehicleNitroBoostEnabled(vehicle, false)
-                    print("test nos is gone!")
                    end
                   end
                 end
@@ -56,9 +52,6 @@ if IsPedInAnyVehicle(playerPed, false) then
             BackfireLoop()
           end
         end)
-        
-    else 
-        print("cant use")
     end
 end)
 
@@ -85,7 +78,7 @@ Citizen.CreateThread(function ()
       local vehicleModel = GetEntityModel(vehicle)
       local currentSpeed = GetEntitySpeed(vehicle)
       local maximumSpeed = GetVehicleModelMaxSpeed(vehicleModel)
-      local multiplier = 0.5 * maximumSpeed / currentSpeed
+      local multiplier = 0.75 * maximumSpeed / currentSpeed
 
       SetVehicleEngineTorqueMultiplier(vehicle, multiplier)
     end
