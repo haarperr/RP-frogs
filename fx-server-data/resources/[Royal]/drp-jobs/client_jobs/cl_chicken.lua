@@ -241,7 +241,7 @@ function TepnijWyjscie()
 			Citizen.Wait(900)
 			ClearPedTasks(GetPlayerPed(-1))
 			DeleteEntity(prop)
-			TriggerEvent('player:receiveItem', "alive_chicken", 5)
+			TriggerEvent('player:receiveItem', "petchicken", 5)
 		end
 	end
 end
