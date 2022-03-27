@@ -241,21 +241,13 @@ function TepnijWyjscie()
 			Citizen.Wait(900)
 			ClearPedTasks(GetPlayerPed(-1))
 			DeleteEntity(prop)
-			TriggerEvent('player:receiveItem', "petchicken", math.random(3, 5))
+			TriggerEvent('player:receiveItem', "alive_chicken", 5)
 		end
 	end
 end
 
-
-local chickenCounter = 0
-local maxChickenCounter = 15
-
-RegisterNetEvent("drp-chickens-start")
-AddEventHandler("drp-chickens-start", function()
-	if chickenCounter >= maxChickenCounter then 
-		TriggerEvent('DoLongHudText', 'You have already collected all the chickens!', 2)
-		return
-	end
+RegisterNetEvent("chickens-start")
+AddEventHandler("chickens-start", function()
 	DoScreenFadeOut(500)
 	Citizen.Wait(500)
 	SetEntityCoordsNoOffset(GetPlayerPed(-1), 2385.963, 5047.333, 46.400, 0, 0, 1)
@@ -282,8 +274,6 @@ function LoadDict(dict)
     end
 end
 
-
-
 Citizen.CreateThread(function()
     while true do
       Citizen.Wait(5)
@@ -304,13 +294,7 @@ Citizen.CreateThread(function()
 				splashed = 0
 				share = false
 				TriggerEvent('DoLongHudText', 'Take the chickens to a vehicle!', 1)
-				
-				if chickenCounter <= maxChickenCounter then 
-					Citizen.Wait(2400000)
-					chickenCounter = 0
-				end
 				TepnijWyjscie()
-				chickenCounter = chickenCounter + 1
 			end
 			
 			if dist <= 3.0 then
@@ -348,7 +332,7 @@ function Hewascaught()
 	ragdoll = true
 	local szansaZlapania = math.random(1,100)
 	if szansaZlapania <= 60 then
-			TriggerEvent('DoLongHudText', 'You managed to catch a chicken!', 1)
+			TriggerEvent('DoLongHudText', 'You managed to catch 1 chicken!', 1)
 			if Zlapany1 == 1 then
 				DeleteEntity(chicken1)
 				Zlapany1 = 0
@@ -378,6 +362,7 @@ Citizen.CreateThread(function()
 		end
 	end
 end)
+
 
 RegisterNetEvent("drp-chickens:sell")
 AddEventHandler("drp-chickens:sell", function()
