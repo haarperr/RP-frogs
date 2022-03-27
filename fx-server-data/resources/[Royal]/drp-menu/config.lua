@@ -218,7 +218,7 @@ rootMenuConfig =  {
         icon = "#impound-vehicle",
         enableMenu = function()
             if not exports['drp-death']:GetDeathStatus() and exports["drp-vehicles"]:NearVehicle("Distance") and not IsPedInAnyVehicle(PlayerPedId()) then
-                if not exports["isPed"]:isPed("myJob") == 'police' or not exports["isPed"]:isPed("myJob") == 'sheriff' or not exports["isPed"]:isPed("myJob") == 'towunion' or not exports["isPed"]:isPed("myJob") == 'state' or not exports["isPed"]:isPed("myJob") == 'ems' then
+                if not (exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'towunion' or exports["isPed"]:isPed("myJob") == 'state' or exports["isPed"]:isPed("myJob") == 'ems') then
                     return true
                 end
             end
