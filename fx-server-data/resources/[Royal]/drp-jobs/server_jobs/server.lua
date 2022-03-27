@@ -4,7 +4,7 @@ RegisterServerEvent('drp-civjobs:post-op-payment')
 AddEventHandler('drp-civjobs:post-op-payment', function()
     local src = tonumber(source)
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
-    local payment = math.random(350, 525)
+    local payment = math.random(275, 400)
     user:addBank(payment)
     TriggerEvent('drp-base:postopLog', src, payment)
     TriggerClientEvent('DoLongHudText', src, 'You completed the delivery and got $'..payment , 1)
@@ -15,7 +15,7 @@ RegisterServerEvent('drp-civjobs:water-power-payme')
 AddEventHandler('drp-civjobs:water-power-payme', function()
     local src = tonumber(source)
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
-    local payment = math.random(50, 75)
+    local payment = math.random(150, 275)
     user:addBank(payment)
     TriggerEvent('drp-base:waterpowerLog', src, payment)
     TriggerClientEvent('DoLongHudText', src, 'You completed the delivery and got $'..payment , 1)
@@ -28,7 +28,7 @@ local DISCORD_NAME5 = "Chicken Selling Logs"
 
 -- local STEAM_KEY = "0C007CC382AB06D1D99D9B45EC3924B1"
 -- local DISCORD_IMAGE = "https://i.imgur.com/zviw6oW.png"
-
+7
 -- PerformHttpRequest(DISCORD_WEBHOOK5, function(err, text, headers) end, 'POST', json.encode({username = DISCORD_NAME5, avatar_url = DISCORD_IMAGE}), { ['Content-Type'] = 'application/json' })
 
 local cachedData = {}

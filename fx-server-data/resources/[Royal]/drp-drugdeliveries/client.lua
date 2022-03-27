@@ -503,7 +503,7 @@ AddEventHandler("oxydelivery:client", function()
 
 						local pdping = math.random(0, 100)
 						if pdping <= 30 then
-							TriggerEvent("drp-dispatch:oxyping")
+							TriggerEvent('drp-dispatch:drugdealreport', crds)
 						end
 						TaskTurnPedToFaceEntity(deliveryPed, PlayerPedId(), 1.0)
 						local finished = exports["drp-taskbar"]:taskBar(22500, "Dropping Off")
