@@ -1124,7 +1124,7 @@ AddEventHandler('fakeplate:accepted', function(newplate, oldplate)
             FreezeEntityPosition(playerped, false)
             -- Wait 1 seconds
             Citizen.Wait(1000)
-            TriggerEvent("DoLongHudText", 'You are now running on fake plates !')
+            TriggerEvent("DoLongHudText", 'You are now running on fake plates!')
             LicencePlate.Index = GetVehicleNumberPlateTextIndex(Vehicle)
             LicencePlate.Number = GetVehicleNumberPlateText(Vehicle)
             SetVehicleNumberPlateText(Vehicle, "NVW "..math.ceil(math.random(10000,99999)))
@@ -1167,14 +1167,14 @@ AddEventHandler('fakeplate:off', function()
 			-- Wait 6 seconds
 			Citizen.Wait(6000)
             -- POG SHIT WORKS NOW 
-            TriggerEvent("DoLongHudText", 'You are now running on your orginal plates !')
+            TriggerEvent("DoLongHudText", 'You are now running on your orginal plates!')
 			SetVehicleNumberPlateTextIndex(Vehicle, LicencePlate.Index)
 			SetVehicleNumberPlateText(Vehicle, LicencePlate.Number)
 			LicencePlate.Index = false
 			LicencePlate.Number = false
 
         else
-			TriggerEvent('DoLongHudText', 'No vehicle nearby.')
+			TriggerEvent('DoLongHudText', 'Already on original plates!')
         end
     end
 end)
