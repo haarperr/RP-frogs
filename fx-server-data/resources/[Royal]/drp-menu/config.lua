@@ -22,6 +22,9 @@ local bennysHarmony2 = vector3(1182.4747314453, 2639.8022460938, 37.148681640625
 
 local RepairDriftSchool = vector3(-167.4725189209,-2460.7648925781,5.9091796875)
 
+function isPolice(
+    if 
+)
 
 rootMenuConfig =  {
     {
@@ -215,7 +218,7 @@ rootMenuConfig =  {
         icon = "#impound-vehicle",
         enableMenu = function()
             if not exports['drp-death']:GetDeathStatus() and exports["drp-vehicles"]:NearVehicle("Distance") and not IsPedInAnyVehicle(PlayerPedId()) then
-                return (exports["isPed"]:isPed("myJob") != 'police' or exports["isPed"]:isPed("myJob") != 'sheriff' or exports["isPed"]:isPed("myJob") != 'towunion' or exports["isPed"]:isPed("myJob") != 'state' or exports["isPed"]:isPed("myJob") != 'ems')
+                return (not exports["isPed"]:isPed("myJob") == 'police' or not exports["isPed"]:isPed("myJob") == 'sheriff' or not exports["isPed"]:isPed("myJob") != 'towunion' or exports["isPed"]:isPed("myJob") != 'state' or not exports["isPed"]:isPed("myJob") != 'ems')
             end
         end,
         subMenus = { "police:impoundsc" }
