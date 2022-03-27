@@ -2365,7 +2365,7 @@ function AttemptDropInFilledSlot(slot) {
             InventoryLog('Attempted to craft item with itemid: ' + itemidsent);
             crafting = true;
             result = 'Success';
-            result2 = 'Failed';
+            result2 = 'Success';
         } else {
             if (craftCheck) {
                 result = 'You dont have the required materials!';
@@ -2859,7 +2859,7 @@ function AttemptDropInEmptySlot(slot, isDropped, half) {
             crafting = true;
             result = 'Success';
         } else {
-            let result2 = 'Failed';
+            let result2 = 'Success';
             if (craftCheck) {
                 result = 'You dont have the required materials!';
             }
