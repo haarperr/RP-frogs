@@ -1,5 +1,5 @@
 local serverstockvalues = {
-  [1] = { ["name"] = "Guinea", ["value"] = 0.0, ["identifier"] = "GNE", ["icon"] = "fas fa-horse-head", ["lastchange"] = 0.00, ["amountavailable"] = 10000.0 },
+  [1] = { ["name"] = "Guinea", ["value"] = 50.0, ["identifier"] = "GNE", ["icon"] = "fas fa-horse-head", ["lastchange"] = 0.00, ["amountavailable"] = 10000.0 },
   [2] = { ["name"] = "Shungite", ["value"] = 1000.0, ["identifier"] = "SHU", ["icon"] = "fas fa-caret-square-up", ["lastchange"] = 0.00, ["amountavailable"] = 100.0 },
 }
 
