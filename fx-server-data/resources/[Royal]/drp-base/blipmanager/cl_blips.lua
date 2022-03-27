@@ -1,6 +1,5 @@
 local blips = {
     {id = "courthouse", name = "Los Santos Courthouse", scale = 0.7, color = 5, sprite = 58, x=243.36264038086, y=-1077.0593261719, z=29.296752929688},
-    {id = "Tuner Shop", name = "Tuner Shop", scale = 0.7, color = 1, sprite = 72, x=937.23828125, y=-970.89343261719, z=39.543106079102},
     {id = "Burger Shot", name = "Burger Shot", scale = 0.7, color = 8, sprite = 106, x=-1191.6701660156, y=-889.74584960938, z= 14.508341789246},
     {id = "police1", name = "Police Department HQ", scale = 0.7, color = 3, sprite = 60, x = 425.130, y = -979.558, z = 30.711},
     {id = "police2", name= "Sheriff Department HQ", scale = 0.7, color = 52, sprite=60, x=-450.063201904297, y=6016.5751953125, z=31.7163734436035},
