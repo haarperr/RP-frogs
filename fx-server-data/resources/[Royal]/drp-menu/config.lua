@@ -208,6 +208,19 @@ rootMenuConfig =  {
         subMenus = { "police:impoundsc", "police:impoundnormal", "police:impoundpolice"}
     },
 
+    
+    {
+        id = "impoundmenu",
+        displayName = "Impound Options",
+        icon = "#impound-vehicle",
+        enableMenu = function()
+            if not exports['drp-death']:GetDeathStatus() and exports["drp-vehicles"]:NearVehicle("Distance") and not IsPedInAnyVehicle(PlayerPedId()) then
+                return (exports["isPed"]:isPed("myJob") != 'police' or exports["isPed"]:isPed("myJob") != 'sheriff' or exports["isPed"]:isPed("myJob") != 'towunion' or exports["isPed"]:isPed("myJob") != 'state' or exports["isPed"]:isPed("myJob") != 'ems')
+            end
+        end,
+        subMenus = { "police:impoundsc" }
+    },
+
     {
         id = "enterrey",
         displayName = "Enter Recycle Center",
@@ -1274,6 +1287,11 @@ newSubMenus = {
         title="Impound Scuff",
         icon="#vehicle-options",
         functionName = "impoundsc",
+    },
+    ["civ:reimpoundscuff"]  = {
+        title="Respawn Vehicle",
+        icon="#vehicle-options",
+        functionName = "reimpoundscuff",
     },
 
     ["police:impoundnormal"]  = {
