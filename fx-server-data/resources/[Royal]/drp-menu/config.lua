@@ -210,7 +210,7 @@ rootMenuConfig =  {
 
     
     {
-        id = "impoundmenu",
+        id = "civimpoundmenu",
         displayName = "Impound Options",
         icon = "#impound-vehicle",
         enableMenu = function()
