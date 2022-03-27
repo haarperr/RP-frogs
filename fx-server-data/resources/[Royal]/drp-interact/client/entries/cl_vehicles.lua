@@ -120,7 +120,7 @@ Entries[#Entries + 1] = {
              hasKeys = exports["drp-keys"]:hasKey(plate)
              return (isCloseToHood(pEntity, PlayerPedId(), 2.0) or isCloseToBoot(pEntity, PlayerPedId(), 2.0, pContext.model)) and not IsPedInAnyVehicle(PlayerPedId(), false)
              and hasKeys and exports["drp-inventory"]:hasEnoughOfItem("fakeplate", 1, false)
-             and not exports["drp-vehicles"]:GetVehicleMetadata(pEntity, 'fakePlate')
+             
          end
      }
  }
@@ -143,7 +143,7 @@ Entries[#Entries + 1] = {
              plate = GetVehicleNumberPlateText(pEntity)
              hasKeys = exports["drp-keys"]:hasKey(plate)
              return isCloseToBoot(pEntity, PlayerPedId(), 1.8, pContext.model) and not IsPedInAnyVehicle(PlayerPedId(), false)
-             and hasKeys and exports["drp-vehicles"]:GetVehicleMetadata(pEntity, 'fakePlate')
+             and hasKeys
          end
      }
  }
