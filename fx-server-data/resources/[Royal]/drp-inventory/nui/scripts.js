@@ -2355,53 +2355,7 @@ function AttemptDropInFilledSlot(slot) {
 
     let result, result2;
 
-  if (inventoryDropName === 'wrapmain' && inventoryReturnItemDropName === 'craftContainer' && TargetInventoryName.indexOf('Craft') > -1) {
-        //InventoryLog('eh: Crafting');
-        inventoryReturnItemDropName = 'wrapsecondary';
-
-        [craftCheck, weightCheck, arraySlot] = CheckCraftFail(itemidsent, moveAmount);
-
-        if (!craftCheck && !weightCheck && currentInventory == 2 && inventoryDropName == 'wrapmain') {
-            InventoryLog('Attempted to craft item with itemid: ' + itemidsent);
-            crafting = true;
-            result = 'Success';
-            result2 = 'Success';
-        } else {
-            if (craftCheck) {
-                result = 'You dont have the required materials!';
-            }
-            if (weightCheck) {
-                result2 = 'The personal weight is too much.';
-                $('.weightcontainer').eq(0).shake();
-            }
-
-            EndDragError(slot);
-            InventoryLog('Error: ' + result + ' | ' + result2);
-            return;
-        } if (inventoryDropName === 'wrapmain' && inventoryReturnItemDropName === 'craftContainer' && TargetInventoryName.indexOf('Craft') > -1) {
-            //InventoryLog('eh: Crafting');
-            inventoryReturnItemDropName = 'wrapsecondary';
-    
-            [craftCheck, weightCheck, arraySlot] = CheckCraftFail(itemidsent, moveAmount);
-    
-            if (!craftCheck && !weightCheck && currentInventory == 2 && inventoryDropName == 'wrapmain') {
-                InventoryLog('Attempted to craft item with itemid: ' + itemidsent);
-                crafting = true;
-                result = 'Success';
-                result2 = 'Success';
-            } else {
-                if (craftCheck) {
-                    result = 'You dont have the required materials!';
-                }
-                if (weightCheck) {
-                    result2 = 'The personal weight is too much.';
-                    $('.weightcontainer').eq(0).shake();
-                }
-    
-                EndDragError(slot);
-                InventoryLog('Error: ' + result + ' | ' + result2);
-                return;
-            } if (inventoryDropName === 'wrapmain' && inventoryReturnItemDropName === 'craftContainer' && TargetInventoryName.indexOf('Craft') > -1) {
+    if (inventoryDropName === 'wrapmain' && inventoryReturnItemDropName === 'craftContainer' && TargetInventoryName.indexOf('Craft') > -1) {
         //InventoryLog('eh: Crafting');
         inventoryReturnItemDropName = 'wrapsecondary';
 
