@@ -772,6 +772,12 @@ Citizen.CreateThread(function()
         heading=263.1922,
     })
 
+    -- house guy
+
+    exports["drp-polytarget"]:AddBoxZone("houseguy", vector3(-156.5230, -603.8885, 48.2422), 1, 1.4, {
+        heading=130.1756,
+    })
+
     
     exports["drp-polytarget"]:AddBoxZone("taxiguy", vector3(894.9174, -179.3615, 74.7003), 1, 1.4, {
         heading=239.7525,
@@ -2250,6 +2256,19 @@ Citizen.CreateThread(function()
         id = "vpnguy",
         icon = "arrow-alt-circle-up",
         label = "Buy a VPN (5k)",
+        parameters = {},
+    }}, {
+        distance = { radius = 7 },
+    });
+
+
+    -- House Guy
+    
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("houseguy", {{
+        event = "houses:buyhouse",
+        id = "houseguy",
+        icon = "circle",
+        label = "Open the real estate shop",
         parameters = {},
     }}, {
         distance = { radius = 7 },
