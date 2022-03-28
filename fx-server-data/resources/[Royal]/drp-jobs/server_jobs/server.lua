@@ -308,17 +308,35 @@ local source = source
         TriggerClientEvent('player:receiveItem', source, 'stolen2ctchain', math.random(2,5))
     end
     if roll == 5 then
-        TriggerClientEvent('player:receiveItem', source, "starrynight", math.random(1,2))
+        TriggerClientEvent('player:receiveItem', source, "copper", math.random(1,2))
     end
     if roll == 6 then
-        TriggerClientEvent('player:receiveItem', source, "shitlockpick", math.random(1,5))
+        TriggerClientEvent('player:receiveItem', source, "lockpick", math.random(1,2))
     end
     if roll == 7 then
         TriggerClientEvent('player:receiveItem', source, "russian", math.random(1,1))
     end
     if roll == 8 then
-        TriggerClientEvent('player:receiveItem', source, "ruby", math.random(1,1))
+        TriggerClientEvent('player:receiveItem', source, "ruby", math.random(1,3))
     end
+    if roll == 9 then
+        TriggerClientEvent('player:receiveItem', source, "jadeite", math.random(1,3))
+    end
+    if roll == 10 then
+        TriggerClientEvent('player:receiveItem', source, "oxy", math.random(2,4))
+    end
+    if roll == 11 then -- 5% chance 
+        if math.random(1,100) >= 95
+        TriggerClientEvent('DoShortHudText',src, 'You see something shining in the water',2)
+        TriggerClientEvent('player:receiveItem', source, "heistusb3", 1)
+        else
+        TriggerClientEvent('player:receiveItem', source, "femaleseed", math.random(1,2))
+    end  
+        end
+    if roll == 12 then
+        TriggerClientEvent('player:receiveItem', source, "goldbar", math.random(1,2))
+    end
+    
 end)
 
 RegisterServerEvent('drp-scuba:paySalvage')
