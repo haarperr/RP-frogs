@@ -21,11 +21,13 @@ end
 
 
 function buildWarehouse(warehouseId)
-	DoScreenFadeOut(1)
+	-- DoScreenFadeOut(1)
 	Citizen.Wait(1000)
 
 	local generator = { x = warehouses[warehouseId]["x"] , y = warehouses[warehouseId]["y"], z = warehouses[warehouseId]["z"] - 30}
   	
+	SetEntityCoords(PlayerPedId(), generator.x-0.31811000,generator.y+1.79183500,generator.z+2.56171400)
+
 	local building = CreateObject(`ex_int_warehouse_s_dlc`,generator.x-0.31811000,generator.y+1.79183500,generator.z+2.56171400,false,false,false)
 	FreezeEntityPosition(building, true)
 	local coordsofbuilding = GetEntityCoords(building, true)
@@ -36,7 +38,7 @@ function buildWarehouse(warehouseId)
 	Citizen.Wait(500)
 	SetEntityHeading(PlayerPedId(),0.0)
 	FreezeEntityPosition(PlayerPedId(),false)
-	DoScreenFadeIn(1)
+	-- DoScreenFadeIn(1)
 end
 
 
