@@ -2558,7 +2558,11 @@ end
     end
 
     if itemid == "murdermeal" then
-         TriggerEvent("murdermeal")
+         TriggerEvent("murdermeal", ItemInfo.id)
+    end
+
+    if itemid == "pdevidencebag" then
+        TriggerEvent("pdevidencebag", ItemInfo.id)
     end
     
     if itemid == "keyholder" then
@@ -2873,6 +2877,9 @@ function GetItemInfo(checkslot)
     end
     return "No information stored";
 end
+
+
+
 exports("GetItemInfo", GetItemInfo)
 
 function GetInfoForFirstItemOfName(item_id)
