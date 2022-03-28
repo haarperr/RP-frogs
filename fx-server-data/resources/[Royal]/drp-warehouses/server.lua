@@ -17,6 +17,6 @@ AddEventHandler("houses:confirmwarehouse", function(warehouses)
         end)
     end
     if done == false then
-        TriggerClientEvent("houses:finishuywarehouse", False, "")
+        TriggerClientEvent("houses:finishuywarehouse", src, False, "")
     end
 end)
