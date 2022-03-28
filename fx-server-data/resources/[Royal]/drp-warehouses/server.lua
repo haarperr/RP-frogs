@@ -6,11 +6,7 @@ AddEventHandler("houses:confirmwarehouse", function(warehouses)
     for i, warehouse in pairs(warehouses) do  
         exports.ghmattimysql:execute("SELECT * FROM `houses2` WHERE keyname = ?", {warehouses[i]["keyName"]}, function(data)
             if not data[1] then
-                exports.ghmattimysql:execute('INSERT INTO `houses2` (cid, keyname, Name) VALUES (@cid, @keyname, @Name)',{
-                    ['@cid'] = characterId,
-                    ['@keyname'] = warehouses[i]["keyName"],
-                    ['@Name'] = warehouses[i]["locationName"],
-                })
+                insert(i, warehouses)
                 TriggerClientEvent("houses:finishuywarehouse", src, warehouses[i]["keyName"])
                 break
             end
@@ -21,3 +17,12 @@ AddEventHandler("houses:confirmwarehouse", function(warehouses)
         TriggerClientEvent("DoLongHudText", src, "There are no Warehouses availble right now!", 2)
     end
 end)
+
+
+function insert(i, warehouses)
+    exports.ghmattimysql:execute('INSERT INTO `houses2` (cid, keyname, Name) VALUES (@cid, @keyname, @Name)',{
+        ['@cid'] = characterId,
+        ['@keyname'] = warehouses[i]["keyName"],
+        ['@Name'] = warehouses[i]["locationName"],
+    })
+end
