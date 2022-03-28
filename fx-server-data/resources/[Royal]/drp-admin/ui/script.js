@@ -122,9 +122,9 @@ function userstage() {
     document.getElementById("stageuserbutton").classList.add("btnactive");;
 }
 
-function weatherstage() {
+function adminstage() {
     $('.stage-players').hide();
-    $('.stage-weather').show();
+    $('.stage-admin').show();
     // $('.stage-admin').hide();
     $('.stage-user').hide();
     //$('.stage-three').hide();
@@ -133,7 +133,7 @@ function weatherstage() {
     // document.getElementById("stage1button").classList.remove("btnactive");;
     document.getElementById("stage2button").classList.add("btnactive");;
     document.getElementById("stageplayerbutton").classList.remove("btnactive");;
-    document.getElementById("stageuserbutton").classList.remove("btnactive");;
+    document.getElementById("stageadminbutton").classList.remove("btnactive");;
 }
 
 function playersstage() {
