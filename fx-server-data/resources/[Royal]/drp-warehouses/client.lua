@@ -144,12 +144,14 @@ AddEventHandler("houses:buywarehouse", function()
 end)
 
 RegisterNetEvent("houses:finishuywarehouse")
-AddEventHandler("houses:finishbuywarehouse", function(buyed, keyname)
-    if exports["isPed"]:isPed("mycash") >= 200000 and buyed == true then
+AddEventHandler("houses:finishbuywarehouse", function(keyname)
+    TriggerEvent('DoLongHudText', "Test", 2)
+    if exports["isPed"]:isPed("mycash") >= 200000 then
+        TriggerEvent('DoLongHudText', "You sucessfull buyed a Warehouse.", 2)
         TriggerServerEvent('drp-banking:removeMoney', 200000)
         TriggerEvent("player:receiveItem",keyname,4)
         TriggerEvent("player:receiveItem","keyholder",4)
     else
-        TriggerEvent('DoLongHudText', "There are no Warehouses availble right now!", 2)
+        TriggerEvent('DoLongHudText', "You dont have the money you stupid piece of garbage.", 2)
     end
 end)
