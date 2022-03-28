@@ -112,6 +112,7 @@ function sell_items()
                     SetPedAsNoLongerNeeded(recent_ped)
                     TriggerEvent("DoLongHudText", "They are not interested anymore and called the cops!", 2)
                       -- Need event right here for dispatch alert.
+                end
             end
         end
     end
