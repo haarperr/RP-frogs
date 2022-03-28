@@ -136,6 +136,8 @@ AddEventHandler("houses:buywarehouse", function()
     
     if exports["isPed"]:isPed("mycash") >= 200000 then
         TriggerServerEvent("houses:confirmwarehouse", warehouses)
+        
+        -- TriggerServerEvent('drp-banking:removeMoney', 200000)
     else
         TriggerEvent('DoLongHudText', "You do not have enough money!", 2)
     end
