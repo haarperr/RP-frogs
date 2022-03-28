@@ -99,16 +99,19 @@ RegisterNUICallback('jobadmin', function(data, cb)
 end) 
 
 RegisterNUICallback('jobems', function(data, cb)
-  TriggerEvent("emsduty")
-  -- TriggerEvent("DoLongHudText","Job changed.")
+  TriggerServerEvent("jobssystem:jobs", "ems")
+  TriggerEvent("DoLongHudText","Job changed.")
 end)
 
 RegisterNUICallback('jobleo', function(data, cb)
-  TriggerEvent("leoduty")
-  -- TriggerEvent("DoLongHudText","Job changed.")
+  TriggerServerEvent("jobssystem:jobs", "police")
+  TriggerEvent("DoLongHudText","Job changed.")
 end)
 
-
+RegisterNUICallback('jobleo2', function(data, cb)
+  TriggerServerEvent("jobssystem:jobs", "sheriff")
+  TriggerEvent("DoLongHudText","Job changed.")
+end)
 
 RegisterNUICallback('maxstats', function(data, cb)
   TriggerEvent('drp-admin:maxstats')
@@ -170,6 +173,7 @@ RegisterNUICallback('spectateplayer', function(data, cb)
   print("Player Id from JS:" ..data.selectedplayer)
   local player = GetPlayerFromServerId(data.selectedplayer)
   print(data.selectedplayer)
+
 end)
 
 RegisterNUICallback('deletevehicle', function(data, cb)

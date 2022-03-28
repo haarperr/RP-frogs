@@ -253,6 +253,13 @@ function jobleo() {
     $.post('http://drp-admin/jobleo', JSON.stringify({}));
 } 
 
+function jobleo2() {
+    // $('.stage-four').fadeIn();
+    
+    $.post('http://drp-admin/jobleo2', JSON.stringify({}));
+} 
+
+
 function sendAnnounce(){
     
     var message = document.getElementById("announce").value;
