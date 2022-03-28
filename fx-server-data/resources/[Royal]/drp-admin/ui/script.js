@@ -57,57 +57,57 @@ function destroy(){
     }
 }
 
-// function extendmenu() {
-//     $(".container-modmenu").css("width" , "96%");
-//     $(".container-modmenu").css("transition" , "1");
-//     $(".left-nav").css("width" , "2.5%");
-//     $(".top-nav").css("width" , "97.4%");
-//     $(".top-nav").css("left" , "2.60%");
-//     $(".actions-scroll").css("width" , "101.5%");
-//     $(".actions-scroll").css("left" , "-8%");
-//     $(".actions-scroll").css("top" , "-1%");
-//     $("#individualplayer").css("top" , "-20.5%");
-//     $("#individualplayer").css("left" , "-0%");
+function extendmenu() {
+     $(".container-modmenu").css("width" , "96%");
+     $(".container-modmenu").css("transition" , "1");
+     $(".left-nav").css("width" , "2.5%");
+     $(".top-nav").css("width" , "97.4%");
+     $(".top-nav").css("left" , "2.60%");
+     $(".actions-scroll").css("width" , "101.5%");
+     $(".actions-scroll").css("left" , "-8%");
+     $(".actions-scroll").css("top" , "-1%");
+     $("#individualplayer").css("top" , "-20.5%");
+     $("#individualplayer").css("left" , "-0%");
 
-//     $(".playerscontainer").css("left" , "-0.1%");
-//     $(".playerscontainer").css("width" , "103.4%");
+     $(".playerscontainer").css("left" , "-0.1%");
+     $(".playerscontainer").css("width" , "103.4%");
     
-//     $(".container3").css("width" , "108.25%");
-//     $(".container3").css("left" , "-1.5%");
+     $(".container3").css("width" , "108.25%");
+     $(".container3").css("left" , "-1.5%");
 
-//     $(".content").css("left" , ".1%");
-//     $(".content").css("width" , "92.025%");
+     $(".content").css("left" , ".1%");
+     $(".content").css("width" , "92.025%");
 
-//     $(".playerlist").css("height" , "88%");
-//     $('.extend-menu').hide();
-//     $('.shorten-menu').show();
-// }
+     $(".playerlist").css("height" , "88%");
+     $('.extend-menu').hide();
+     $('.shorten-menu').show();
+ }
 
-// function shortenmenu() {
-//     $(".container-modmenu").css("width" , "22.7%");
-//     $(".container-modmenu").css("transition" , "1");
-//     $(".left-nav").css("width" , "10.05%");
-//     $(".top-nav").css("width" , "90%");
-//     $(".top-nav").css("left" , "10%");
-//     $(".actions-scroll").css("width" , "90%");
-//     $(".actions-scroll").css("top" , "1%");
-//     $(".actions-scroll").css("left" , "");
-//     $("#individualplayer").css("top" , "-5%");
-//     $("#individualplayer").css("width" , "90%");
+ function shortenmenu() {
+     $(".container-modmenu").css("width" , "22.7%");
+     $(".container-modmenu").css("transition" , "1");
+     $(".left-nav").css("width" , "10.05%");
+     $(".top-nav").css("width" , "90%");
+     $(".top-nav").css("left" , "10%");
+     $(".actions-scroll").css("width" , "90%");
+     $(".actions-scroll").css("top" , "1%");
+     $(".actions-scroll").css("left" , "");
+     $("#individualplayer").css("top" , "-5%");
+     $("#individualplayer").css("width" , "90%");
 
-//     $(".playerscontainer").css("left" , "4.5%");
-//     $(".playerscontainer").css("width" , "96.5%");
+     $(".playerscontainer").css("left" , "4.5%");
+     $(".playerscontainer").css("width" , "96.5%");
     
-//     $(".container3").css("width" , "100%");
-//     $(".container3").css("left" , "0%");
+     $(".container3").css("width" , "100%");
+     $(".container3").css("left" , "0%");
 
-//     $(".content").css("left" , ".6%");
-//     $(".content").css("width" , "91.85%");
+     $(".content").css("left" , ".6%");
+     $(".content").css("width" , "91.85%");
     
-//     $(".playerlist").css("height" , "91%");
-//     $('.extend-menu').show();
-//     $('.shorten-menu').hide();
-// }
+     $(".playerlist").css("height" , "91%");
+     $('.extend-menu').show();
+     $('.shorten-menu').hide();
+ }
 
 function userstage() {
     $('.stage-players').hide();
