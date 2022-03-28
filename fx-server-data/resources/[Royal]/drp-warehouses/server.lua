@@ -19,7 +19,6 @@ AddEventHandler("houses:confirmwarehouse", function(warehouses)
             TriggerClientEvent("houses:finishuywarehouse", src, warehouses[i]["keyName"])
             break
         end
-
     end
     if x == false then
         TriggerClientEvent("DoLongHudText", src, "There are no Warehouses availble right now!", 2)
