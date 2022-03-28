@@ -143,7 +143,7 @@ RegisterNetEvent("drp-selling:status", function()
     end
 end)
 
-RegisterCommand('cornertest', function(source, args, raw)
+RegisterCommand('cornertest', function()
 
 		TriggerEvent('drp-selling:status')
 
