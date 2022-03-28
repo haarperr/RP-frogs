@@ -83,7 +83,6 @@ Citizen.CreateThread(function()
                     SetEntityCoords(PlayerPedId(), warehouses[i]["x"], warehouses[i]["y"], warehouses[i]["z"])
                     DoScreenFadeIn(1)
                 end
-                end
             end
         end
     end
