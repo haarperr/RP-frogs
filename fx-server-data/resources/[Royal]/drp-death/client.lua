@@ -54,7 +54,7 @@ AddEventHandler('doTimer', function()
     while imDead == 1 do
         Citizen.Wait(0)
         if thecount > 0 then
-            drawTxt(0.89, 1.44, 1.0,1.0, 0.4, "Respawn: ~r~" .. math.ceil(thecount) .. "~w~ seconds remaining", 255, 255, 255, 255)
+            drawTxt(0.89, 1.44, 1.0,1.0, 0.4, "Respawn: ~r~" .. math.ceil(thecount) .. "~w~ seconds remaining | [~r~H~s~] Send a distress signal", 255, 255, 255, 255)
         else
             drawTxt(0.89, 1.44, 1.0,1.0,0.4, "~w~HOLD ~r~E ~w~(" .. math.ceil(EHeld/100) .. ") ~w~TO ~r~RESPAWN ~w~OR WAIT FOR ~r~EMS", 255, 255, 255, 255)
         end
@@ -266,34 +266,38 @@ end)
 local gamerTimer = 0
 function deathTimer()
     EHeld = 500
-    TriggerEvent("civilian:alertPolice",100.0,"death",0)
     thecount = 300
     TriggerEvent("doTimer")
-    gamerTimer = GetGameTimer()
     TriggerEvent("disableAllActions")
-    while isPlayerDead == 1 do
+    while imDead == 1 do
         
-        Citizen.Wait(5)
-        
-        if GetGameTimer() - gamerTimer > 1000 then
-            gamerTimer = GetGameTimer()
-            thecount = thecount - 1
-            
-            while thecount < 0 do
-                Citizen.Wait(1)
-                
-                if IsControlPressed(1,38) then
-                    local hspDist = #(vector3(307.93017578125,-594.99530029297,43.291835784912) - GetEntityCoords(PlayerPedId()))
-                    EHeld = EHeld - 1
-                    if hspDist > 5 and EHeld < 1 then
-                        thecount = 99999999
-                        releaseBody()
-                    end
-                else
-                    EHeld = 500
+        Citizen.Wait(100)
+        thecount = thecount - 0.1
+
+        while thecount < 0 do
+            Citizen.Wait(1)
+             
+            if IsControlPressed(1,38) then
+                local hspDist = #(vector3(307.93017578125,-594.99530029297,43.291835784912) - GetEntityCoords(PlayerPedId()))
+                EHeld = EHeld - 1
+                if hspDist > 5 and EHeld < 1 then
+                    thecount = 99999999
+                    releaseBody()
                 end
+            else
+                EHeld = 500
             end
-        end      
+        end    
+
+        if IsControlPressed(1, 74) then
+            if not AlreadyCalled then
+                TriggerEvent("drp-dispatch:downperson")
+                TriggerEvent("DoLongHudText", "Distress Signal Sent!", 1)
+                AlreadyCalled = true
+            else
+                TriggerEvent("DoLongHudText", "You just sent a distress signal, wait a bit!", 2)
+            end
+        end
     end
 end
 
