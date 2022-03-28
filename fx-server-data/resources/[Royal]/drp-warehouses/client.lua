@@ -5,6 +5,8 @@ warehouses = {
 
 function Draw3DText(x,y,z, text) 
     local inv_factor = 1.0 / 370.0
+    
+    Citizen.Trace(text)
     local factor = string_len(text) * inv_factor
     local onScreen,_x,_y = _in(0x34E82F05DF2974F5, x, y, z, _f, _f, _r) -- GetScreenCoordFromWorldCoord
 
