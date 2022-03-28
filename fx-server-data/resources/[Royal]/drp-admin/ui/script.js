@@ -342,20 +342,20 @@ function devmodecheckbox() {
     }
 }
 
-// function debugmodecheckbox() {
-//     // Get the checkbox
-//     var checkBox = document.getElementById("debugmodecheckbox");
-//     // Get the output text
+ function debugmodecheckbox() {
+     // Get the checkbox
+     var checkBox = document.getElementById("debugmodecheckbox");
+     // Get the output text
   
-//     // If the checkbox is checked, display the output text
-//     var returnvalue = checkBox.checked
+     // If the checkbox is checked, display the output text
+     var returnvalue = checkBox.checked
 
-//     if (checkBox.checked == true){
-//         $.post('http://drp-admin/debugmode', JSON.stringify({returnvalue}));
-//     } else {
-//         $.post('http://drp-admin/debugmode', JSON.stringify({returnvalue}));
-//     }
-// }
+     if (checkBox.checked == true){
+        $.post('http://drp-admin/debugmode', JSON.stringify({returnvalue}));
+    } else {
+         $.post('http://drp-admin/debugmode', JSON.stringify({returnvalue}));
+     }
+ }
 
 function godmodecheckbox() {
     // Get the checkbox
