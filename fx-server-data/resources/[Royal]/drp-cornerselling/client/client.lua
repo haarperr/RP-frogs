@@ -103,7 +103,7 @@ function sell_items()
                -- remoteCalls.execute('drp-selling:attempt:sell', hasitems, amount, is_corner_selling, currently_selling)
                         -- Old event from old code, replace with function to give money based upon drug type sold.
                 if math.random(1, 100) >= 90 then
-                 -- Need event right here for dispatch alert.
+                TriggerEvent("drp-mdt:drugsale")
                 end
             else
                 SetPedAsNoLongerNeeded(recent_ped)
@@ -111,7 +111,7 @@ function sell_items()
                 if math.random(1,100) >= 50 then
                     SetPedAsNoLongerNeeded(recent_ped)
                     TriggerEvent("DoLongHudText", "They are not interested anymore and called the cops!", 2)
-                      -- Need event right here for dispatch alert.
+                    TriggerEvent("drp-mdt:drugsale")
                 end
             end
         end
