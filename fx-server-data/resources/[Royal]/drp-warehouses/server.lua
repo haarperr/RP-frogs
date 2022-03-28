@@ -1,5 +1,3 @@
-
-
 RegisterNetEvent("houses:confirmwarehouse")
 AddEventHandler("houses:confirmwarehouse", function(warehouses)
     src = source
@@ -18,7 +16,7 @@ AddEventHandler("houses:confirmwarehouse", function(warehouses)
             end
         end)
     end
-    
+
     if x == false then
         TriggerClientEvent("DoLongHudText", src, "There are no Warehouses availble right now!", 2)
     end
