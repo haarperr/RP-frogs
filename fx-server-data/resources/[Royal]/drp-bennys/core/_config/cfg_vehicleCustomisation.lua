@@ -13,7 +13,7 @@ vehicleCustomisationPrices =
 {
     cosmetics = 
     {
-        price = 200
+        price = 0
     },
     respray = 
     {
