@@ -18,6 +18,7 @@
 !*.md  
 !*.txt
 !*.sh
+!*.cfg
 !*.bat
 
 fx-server-data/cache/*

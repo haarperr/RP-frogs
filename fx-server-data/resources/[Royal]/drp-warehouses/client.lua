@@ -23,10 +23,11 @@ end
 function buildWarehouse(warehouseId)
 	DoScreenFadeOut(1)
 	Citizen.Wait(1000)
-	local generator = { x = warehouses[warehouseId]["x"] , y = warehouses[warehouseId]["y"], z = warehouses[warehouseId]["z"] + 30.0}
+
+	local generator = { x = warehouses[warehouseId]["x"] , y = warehouses[warehouseId]["y"], z = warehouses[warehouseId]["z"] - 30}
   	SetEntityCoords(PlayerPedId(),generator.x,generator.y,generator.z+2)
   	
-	local building = CreateObject(`ex_int_warehouse_s_dlc`,generator.x-0.31811000,generator.y+1.79183500,generator.z+2.56171400,false,false,false)
+	local building = CreateObject(`po1_08_warehouseint1`,generator.x-0.31811000,generator.y+1.79183500,generator.z+2.56171400,false,false,false)
 	FreezeEntityPosition(building, true)
 	local coordsofbuilding = GetEntityCoords(building, true)
 	FreezeEntityPosition(coordsofbuilding,true)
@@ -45,18 +46,17 @@ Citizen.CreateThread(function()
     while true do
 	    Citizen.Wait(0)
         -- for each warehouse
-        for i, warehouse in pairs(warehouses) do
-            
+        for i, warehouse in pairs(warehouses) do  
         -- if player is near the warehouse
-        
             local distance = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), warehouses[i]["x"], warehouses[i]["y"], warehouses[i]["z"], true)
-            if distance <= 25.0 and exports["drp-inventory"]:hasEnoughOfItem(warehouses[i]["keyName"],1,false) then
+            if distance <= 22.5 and exports["drp-inventory"]:hasEnoughOfItem(warehouses[i]["keyName"],1,false) then
                 -- draw the text
                 Draw3DText(warehouses[i]["x"],warehouses[i]["y"],warehouses[i]["z"], "Press [E] to enter")
                 -- if player presses E
                 if IsControlJustPressed(0, 38) and distance <= 1.75 then
                     -- build the warehouse
                     buildWarehouse(i)
+				    Citizen.Wait(1000)
                 end
             end
         end
