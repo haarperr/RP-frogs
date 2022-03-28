@@ -110,10 +110,10 @@ end)
 
 
 RegisterServerEvent('drp-civjobs:sell-gem-cash')
-AddEventHandler('drp-civjobs:sell-gem-cash', function(amount)
+AddEventHandler('drp-civjobs:sell-gem-cash', function(toSell)
     local src = tonumber(source)
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
-    local cash = math.random(20, 150) * amount
+    local cash = math.random(20, 150) * toSell
 
     user:addMoney(cash)
     TriggerEvent('drp-base:miningLog', src, cash)
@@ -121,50 +121,50 @@ AddEventHandler('drp-civjobs:sell-gem-cash', function(amount)
 end)
 
 RegisterServerEvent('drp-civjobs:sell-stone-cash')
-AddEventHandler('drp-civjobs:sell-stone-cash', function(amount)
+AddEventHandler('drp-civjobs:sell-stone-cash', function(toSell)
     local src = tonumber(source)
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
-    local cash = math.random(20, 150) * amount
+    local cash = math.random(20, 150) * toSell
     user:addMoney(cash)
     TriggerEvent('drp-base:miningLog', src, cash)
     TriggerClientEvent('DoLongHudText', src, 'You were paid $'..cash, 1)
 end)
 
 RegisterServerEvent('drp-civjobs:sell-coal-cash')
-AddEventHandler('drp-civjobs:sell-coal-cash', function(amount)
+AddEventHandler('drp-civjobs:sell-coal-cash', function(toSell)
     local src = tonumber(source)
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
-    local cash = math.random(15, 25) * amount
+    local cash = math.random(15, 25) * toSell
     user:addMoney(cash)
     TriggerEvent('drp-base:miningLog', src, cash)
     TriggerClientEvent('DoLongHudText', src, 'You were paid $'..cash, 1)
 end)
 
 RegisterServerEvent('drp-civjobs:sell-diamond-cash')
-AddEventHandler('drp-civjobs:sell-diamond-cash', function(amount)
+AddEventHandler('drp-civjobs:sell-diamond-cash', function(toSell)
     local src = tonumber(source)
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
-    local cash = math.random(5, 25) * amount
+    local cash = math.random(5, 25) * toSell
     user:addMoney(cash)
     TriggerEvent('drp-base:miningLog', src, cash)
     TriggerClientEvent('DoLongHudText', src, 'You were paid $'..cash, 1)
 end)
 
 RegisterServerEvent('drp-civjobs:sell-sapphire-cash')
-AddEventHandler('drp-civjobs:sell-sapphire-cash', function(amount)
+AddEventHandler('drp-civjobs:sell-sapphire-cash', function(toSell)
     local src = tonumber(source)
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
-    local cash = math.random(25, 30) * amount
+    local cash = math.random(25, 30) * toSell
     user:addMoney(cash)
     TriggerEvent('drp-base:miningLog', src, cash)
     TriggerClientEvent('DoLongHudText', src, 'You were paid $'..cash, 1)
 end)
 
 RegisterServerEvent('drp-civjobs:sell-ruby-cash')
-AddEventHandler('drp-civjobs:sell-ruby-cash', function(amount)
+AddEventHandler('drp-civjobs:sell-ruby-cash', function(toSell)
     local src = tonumber(source)
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
-    local cash = math.random(250, 800) * amount
+    local cash = math.random(250, 800) * toSell
     user:addMoney(cash)
     TriggerEvent('drp-base:miningLog', src, cash)
     TriggerClientEvent('DoLongHudText', src, 'You were paid $'..cash, 1)
