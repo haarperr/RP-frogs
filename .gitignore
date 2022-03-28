@@ -1,8 +1,24 @@
-fx-server/*
-discordbot/*
+*.*
 
-! fx-server-data/
-**/fx-server-data/*
-!**/fx-server-data/resources
-**/fx-server-data/resources/*
-!**/fx-server-data/resources/\[Royal\]
+!*.lua
+!*.js
+!*.html
+!*.css
+!*.png
+!*.jpg
+!*.jpeg
+!*.gif
+!*.ico
+!*.mp3
+!*.log
+!*.ttf
+!*.gitignore
+!*.npmrc
+!*.json
+!*.md  
+!*.txt
+!*.sh
+!*.bat
+
+fx-server-data/cache/*
+fx-server/*
