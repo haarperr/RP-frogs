@@ -6,6 +6,6 @@ AddEventHandler('drp-death:reviveSV', function(t)
 end)
 
 RegisterServerEvent('drp-death:reviveSV2')
-AddEventHandler('drp-death:reviveSV2', function(source)
+AddEventHandler('drp-death:reviveSV2', function()
 	TriggerClientEvent('drp-death:revive', source)
 end)
