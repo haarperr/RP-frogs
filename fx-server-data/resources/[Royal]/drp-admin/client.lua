@@ -5,8 +5,8 @@ AddEventHandler('RecieveActivePlayers', function(players)
   SendNUIMessage({action = "playerretrieve", players = players})
 end)
 
-RegisterNetEvent('durp:openmodmenu')
-AddEventHandler('durp:openmodmenu', function()
+RegisterNetEvent('drp:openmodmenu')
+AddEventHandler('drp:openmodmenu', function()
   SendNUIMessage({action = "openadmin"})
   SetNuiFocus(true, true)
 
@@ -16,8 +16,8 @@ AddEventHandler('durp:openmodmenu', function()
   TriggerServerEvent('getallplayers', source)
 end)
 
-RegisterNetEvent('durp-adminmenu:CloseMouse')
-AddEventHandler('durp-adminmenu:CloseMouse', function()
+RegisterNetEvent('drp-adminmenu:CloseMouse')
+AddEventHandler('drp-adminmenu:CloseMouse', function()
   SetNuiFocus(false, false)
 end)
 
@@ -94,32 +94,35 @@ RegisterNUICallback('jobesate', function(data, cb)
 end)
 
 RegisterNUICallback('jobadmin', function(data, cb)
-  TriggerServerEvent("jobssystem:jobs", "DURP_Admin")
+  TriggerServerEvent("jobssystem:jobs", "drp_Admin")
   TriggerEvent("DoLongHudText","Job changed.")
 end) 
 
 RegisterNUICallback('jobems', function(data, cb)
-  TriggerEvent("emsduty")
-  -- TriggerEvent("DoLongHudText","Job changed.")
+  TriggerServerEvent("jobssystem:jobs", "ems")
+  TriggerEvent("DoLongHudText","Job changed.")
 end)
 
 RegisterNUICallback('jobleo', function(data, cb)
-  TriggerEvent("leoduty")
-  -- TriggerEvent("DoLongHudText","Job changed.")
+  TriggerServerEvent("jobssystem:jobs", "police")
+  TriggerEvent("DoLongHudText","Job changed.")
 end)
 
-
+RegisterNUICallback('jobleo2', function(data, cb)
+  TriggerServerEvent("jobssystem:jobs", "sheriff")
+  TriggerEvent("DoLongHudText","Job changed.")
+end)
 
 RegisterNUICallback('maxstats', function(data, cb)
-  TriggerEvent('durp-admin:maxstats')
+  TriggerEvent('drp-admin:maxstats')
 end)
 
 RegisterNUICallback('spawncar', function(data, cb)
-  TriggerEvent('durp-adminmenu:runSpawnCommand', data.carname)
+  TriggerEvent('drp-adminmenu:runSpawnCommand', data.carname)
 end)
 
 RegisterNUICallback('sendAnnouncement', function(data, cb)
-  TriggerServerEvent('durp-adminmenu:sendAnnoucement', data.message)
+  TriggerServerEvent('drp-adminmenu:sendAnnoucement', data.message)
 end)
 
 RegisterNUICallback('spawnitem', function(data, cb)
@@ -130,22 +133,22 @@ RegisterNUICallback('spawnitem', function(data, cb)
   end
 end)
 
-RegisterNUICallback('durp-admin:update:vehicle:cl', function(data, cb)
-  TriggerServerEvent('durp-admin:update:vehicle', source, data.licenseplate, data.garagename)
+RegisterNUICallback('drp-admin:update:vehicle:cl', function(data, cb)
+  TriggerServerEvent('drp-admin:update:vehicle', source, data.licenseplate, data.garagename)
 end)
 
 RegisterNUICallback('viewentity', function(data, cb)
-  TriggerServerEvent('durp-adminmenu:entviewtoggle',source, true, "All")
+  TriggerServerEvent('drp-adminmenu:entviewtoggle',source, true, "All")
 end)
 
 
 RegisterNUICallback('devmode', function(data, cb)
-  TriggerEvent('durp-admin:currentDevmode', data.returnvalue)
+  TriggerEvent('drp-admin:currentDevmode', data.returnvalue)
   devmodeToggle = data.returnvalue
 end)
 
 RegisterNUICallback('debugmode', function(data, cb)
-  TriggerEvent('durp-admin:currentDebug', data.returnvalue)
+  TriggerEvent('drp-admin:currentDebug', data.returnvalue)
 end)
 
 RegisterNUICallback('godmode', function(data, cb)
@@ -163,13 +166,14 @@ RegisterNUICallback('heal', function(data, cb)
 end)
 
 RegisterNUICallback('revivepersonal', function(data, cb)
-  TriggerEvent("durp-admin:ReviveInDistance")
+  TriggerEvent("drp-admin:ReviveInDistance")
 end)
 
 RegisterNUICallback('spectateplayer', function(data, cb)
   print("Player Id from JS:" ..data.selectedplayer)
   local player = GetPlayerFromServerId(data.selectedplayer)
   print(data.selectedplayer)
+
 end)
 
 RegisterNUICallback('deletevehicle', function(data, cb)
@@ -194,7 +198,7 @@ end)
 
 RegisterNUICallback('reviveplayer', function(data, cb)
   print("Player Id from JS:" ..data.selectedplayer)
-  TriggerServerEvent("durp-death:reviveSV", data.selectedplayer)
+  TriggerServerEvent("drp-death:reviveSV", data.selectedplayer)
   TriggerServerEvent("reviveGranted", data.selectedplayer)
   TriggerServerEvent("ems:healplayer",data.selectedplayer)
 end)
@@ -205,11 +209,15 @@ RegisterNUICallback('healplayer', function(data, cb)
 end)
 
 RegisterNUICallback('removestress', function(data, cb)
-  TriggerEvent("client:newStress",false,10000)
+  TriggerEvent("drp-hud:updateStress",false,5000)
 end)
 
 RegisterNUICallback('ViewEntities', function(data, cb)
-  TriggerEvent('hud:enabledebug')
+  TriggerEvent('drp-admin:currentDebug')
+end)
+
+RegisterNUICallback('AYO', function(data, cb)
+  TriggerEvent("DoLongHudText", 'AYOOOOOOOOO YOU CLICKED THE CUM MENU',2)
 end)
 
 RegisterNUICallback('clothingmenuplayer', function(data, cb)
@@ -232,12 +240,12 @@ end)
 
 RegisterNUICallback('fixcarplayer', function(data, cb)
   print("Player Id from JS:" ..data.selectedplayer)
-  TriggerServerEvent("durp:fixplayercar", data.selectedplayer)
+  TriggerServerEvent("drp:fixplayercar", data.selectedplayer)
 end) 
 
 RegisterNUICallback('searchinventoryplayer', function(data, cb)
   print("Player Id from JS:" ..data.selectedplayer)
-  TriggerServerEvent('durp-adminmenu:CheckInventory', data.selectedplayer)
+  TriggerServerEvent('drp-adminmenu:CheckInventory', data.selectedplayer)
   SetNuiFocus(false,false)
   --local player = GetPlayerFromServerId(data.selectedplayer)
   --local player = GetPlayerFromServerId(player)
@@ -247,8 +255,8 @@ RegisterNUICallback('viewinformationplayer', function(data, cb)
     -- marvin will do this one
 end)
 
-RegisterNetEvent('durp:fixcar')
-AddEventHandler('durp:fixcar', function(playerreturn)  
+RegisterNetEvent('drp:fixcar')
+AddEventHandler('drp:fixcar', function(playerreturn)  
     local playerIdx = GetPlayerFromServerId(playerreturn)
     local ped = GetPlayerPed(playerIdx)
     
@@ -259,20 +267,20 @@ AddEventHandler('durp:fixcar', function(playerreturn)
     SetVehiclePetrolTankHealth(vehicle, 4000.0)
 end)
 
-RegisterNetEvent('durp:fixclothes')
-AddEventHandler('durp:fixclothes', function(playerreturn)  
+RegisterNetEvent('drp:fixclothes')
+AddEventHandler('drp:fixclothes', function(playerreturn)  
     local playerIdx = GetPlayerFromServerId(playerreturn)
     local ped = GetPlayerPed(playerIdx)
     TriggerEvent("raid_clothes:openClothing",ped)
     
 end)
 
--- RegisterNetEvent('durp:fixstress2')
--- AddEventHandler('durp:fixstress2', function(playerreturn)  
---     local playerIdx = GetPlayerFromServerId(playerreturn)
---     local ped = GetPlayerPed(playerIdx)
---     TriggerEvent("client:newStress",ped,false,10000)
--- end)
+ RegisterNetEvent('drp:fixstress2')
+ AddEventHandler('drp:fixstress2', function(playerreturn)  
+     local playerIdx = GetPlayerFromServerId(playerreturn)
+     local ped = GetPlayerPed(playerIdx)
+     TriggerEvent("client:newStress",ped,false,10000)
+ end)
 
 function teleportMarker()
 
@@ -298,8 +306,8 @@ function teleportMarker()
 end
 
 local LastVehicle = nil
-RegisterNetEvent("durp-adminmenu:runSpawnCommand")
-AddEventHandler("durp-adminmenu:runSpawnCommand", function(model, livery)
+RegisterNetEvent("drp-adminmenu:runSpawnCommand")
+AddEventHandler("drp-adminmenu:runSpawnCommand", function(model, livery)
     Citizen.CreateThread(function()
 
         local hash = GetHashKey(model)
@@ -376,8 +384,8 @@ function GetPlayers()
   return players
 end
 
-RegisterNetEvent("durp-admin:ReviveInDistance")
-AddEventHandler("durp-admin:ReviveInDistance", function()
+RegisterNetEvent("drp-admin:ReviveInDistance")
+AddEventHandler("drp-admin:ReviveInDistance", function()
     local playerList = {}
     local players = GetPlayers()
     local ply = PlayerPedId()
@@ -406,8 +414,8 @@ AddEventHandler("durp-admin:ReviveInDistance", function()
     
 end)
 
-RegisterNetEvent("durp-admin:bringPlayer")
-AddEventHandler("durp-admin:bringPlayer", function(targPos)
+RegisterNetEvent("drp-admin:bringPlayer")
+AddEventHandler("drp-admin:bringPlayer", function(targPos)
     Citizen.CreateThread(function()
         RequestCollisionAtCoord(targPos.x, targPos.y, targPos.z)
         SetEntityCoordsNoOffset(PlayerPedId(), targPos.x, targPos.y, targPos.z, 0, 0, 2.0)
@@ -430,11 +438,11 @@ RegisterNetEvent('event:control:adminDev')
 AddEventHandler('event:control:adminDev', function(useID)
     if not devmodeToggle then return end
     if useID == 1 then
-        TriggerEvent("durp:openmodmenu")
+        TriggerEvent("drp:openmodmenu")
     elseif useID == 2 then
         local bool = not isInNoclip
         RunNclp(nil,bool)
-        TriggerEvent("durp-admin:noClipToggle",bool)
+        TriggerEvent("drp-admin:noClipToggle",bool)
     elseif useID == 4 then
         teleportMarker(nil)
     end
@@ -450,7 +458,7 @@ function RunNclp(self,bool)
     if bool and isInNoclip then return end
     isInNoclip = bool
     
-    TriggerEvent("durp-admin:noClipToggle", isInNoclip)
+    TriggerEvent("drp-admin:noClipToggle", isInNoclip)
 end
 
 
@@ -638,7 +646,7 @@ function checkInputRotation()
   end)
 end
 
-AddEventHandler("durp-admin:noClipToggle", function(pIsEnabled)
+AddEventHandler("drp-admin:noClipToggle", function(pIsEnabled)
   noClipEnabled = pIsEnabled
   inputRotEnabled = pIsEnabled
 

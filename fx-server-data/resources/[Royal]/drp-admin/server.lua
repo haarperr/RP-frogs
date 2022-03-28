@@ -3,7 +3,7 @@ players = {}
 
 RegisterNetEvent('getallplayers')
 AddEventHandler('getallplayers', function(source)
-   if GetCurrentResourceName() == "durp-admin" then
+   if GetCurrentResourceName() == "drp-admin" then
         for k in pairs (players) do
             players [k] = nil
         end
@@ -18,22 +18,22 @@ AddEventHandler('getallplayers', function(source)
     end
 end)
 
-RegisterServerEvent('durp-adminmenu:sendAnnoucement')
-AddEventHandler("durp-adminmenu:sendAnnoucement", function(msg)
+RegisterServerEvent('drp-adminmenu:sendAnnoucement')
+AddEventHandler("drp-adminmenu:sendAnnoucement", function(msg)
     TriggerClientEvent('chatMessage', -1, 'Admin', 1, msg)
 end)
 
-RegisterServerEvent("durp-adminmenu:CheckInventory")
-AddEventHandler("durp-adminmenu:CheckInventory", function(target)
+RegisterServerEvent("drp-adminmenu:CheckInventory")
+AddEventHandler("drp-adminmenu:CheckInventory", function(target)
     local src = source
     if target ~= "" then
-        local user = exports["durp-base"]:getModule("Player"):GetUser(tonumber(target))
+        local user = exports["drp-base"]:getModule("Player"):GetUser(tonumber(target))
         local char = user:getCurrentCharacter()
-        TriggerClientEvent('durp-adminmenu:CloseMouse', src)
+        TriggerClientEvent('drp-adminmenu:CloseMouse', src)
         Wait(1)
         TriggerClientEvent("server-inventory-open", src, "1", "ply-"..char.id)
     else
-        TriggerClientEvent('durp-adminmenu:CloseMouse', src)
+        TriggerClientEvent('drp-adminmenu:CloseMouse', src)
         TriggerClientEvent('DoLongHudText', src, 'You need to select someone to search!', 2)
     end
 end)
@@ -42,7 +42,7 @@ RegisterServerEvent('admin:bringPlayer')
 AddEventHandler('admin:bringPlayer', function(pSrc, target)
     local pTarget = tonumber(target)
     local coords = GetEntityCoords(GetPlayerPed(tonumber(pSrc)))
-    TriggerClientEvent('durp-admin:bringPlayer', pTarget, coords)
+    TriggerClientEvent('drp-admin:bringPlayer', pTarget, coords)
     TriggerClientEvent('DoLongHudText', tonumber(pSrc), 'Player Brought!')
 end)
 
@@ -50,7 +50,7 @@ RegisterServerEvent('admin:teleportToPlayer')
 AddEventHandler('admin:teleportToPlayer', function(target)
     local src = source
     local coords = GetEntityCoords(GetPlayerPed(target))
-    TriggerClientEvent('durp-admin:bringPlayer', src, coords)
+    TriggerClientEvent('drp-admin:bringPlayer', src, coords)
     TriggerClientEvent('DoLongHudText', src, 'You teleported to this player.')
 end)
 
@@ -60,23 +60,23 @@ RegisterCommand("menu", function(source, args)
 
     exports.ghmattimysql:execute('SELECT rank FROM users WHERE `hex_id`= ?', {steamIdentifier}, function(data)
         if data[1].rank == "dev" or data[1].rank == "admin" or data[1].rank == "mod" then
-            TriggerClientEvent('durp:openmodmenu', src) 
+            TriggerClientEvent('drp:openmodmenu', src) 
         end
     end)
 end)
 
-RegisterServerEvent('durp:fixplayercar')
-AddEventHandler('durp:fixplayercar', function(t)
-	TriggerClientEvent('durp:fixcar', t)
+RegisterServerEvent('drp:fixplayercar')
+AddEventHandler('drp:fixplayercar', function(t)
+	TriggerClientEvent('drp:fixcar', t)
 end) 
 
 RegisterServerEvent('raid_clothes:openClothing2')
 AddEventHandler('raid_clothes:openClothing2', function(t)
-	TriggerClientEvent('durp:fixclothes', t)
+	TriggerClientEvent('drp:fixclothes', t)
 end) 
 
-RegisterServerEvent('durp-admin:update:vehicle')
-AddEventHandler('durp-admin:update:vehicle', function(data, licensePlate, garagename)
+RegisterServerEvent('drp-admin:update:vehicle')
+AddEventHandler('drp-admin:update:vehicle', function(data, licensePlate, garagename)
     local src = source
     local plate = licensePlate
     local garage = garagename
