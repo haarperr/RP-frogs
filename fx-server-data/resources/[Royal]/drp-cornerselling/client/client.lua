@@ -100,8 +100,26 @@ function sell_items()
                 giveAnim(ped)
                 giveAnim(PlayerPedId())
                 Citizen.Wait(1500)
-               -- remoteCalls.execute('drp-selling:attempt:sell', hasitems, amount, is_corner_selling, currently_selling)
-                        -- Old event from old code, replace with function to give money based upon drug type sold.
+                local sellableItems = {
+                    [1] = {name = 'oxy', amount = math.random(3,8), price=100},
+                    [2] = {name = 'methlabproduct', amount = math.random(1,5), price=500},
+                    [3] = {name = 'weedq', amount = math.random(3,10), price=420},
+                }
+
+                local pog = false
+        
+                -- randomize the sellable items
+                for i = 1, #sellableItems do
+                    local randomIndex = math.random(#sellableItems)
+                    sellableItems[i] = sellableItems[randomIndex]
+                    
+                    if exports["drp-inventory"]:hasEnoughOfItem(sellableItems[i].name,sellableItems[i].amount,false) then
+                        TriggerEvent("inventory:removeItem",sellableItems[i].name,sellableItems[i].amount)
+                        TriggerServerEvent('mission:completed', sellableItems[i].price * sellableItems[i].amount)
+                        pog = true
+                        break
+                    end
+                end
                 if math.random(1, 100) >= 50 then
                     TriggerEvent("civilian:alertPolice", 15.0, "drugsale", 0)
                 end
