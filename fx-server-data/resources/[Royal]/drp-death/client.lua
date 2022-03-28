@@ -51,17 +51,17 @@ end)
 RegisterNetEvent('doTimer')
 AddEventHandler('doTimer', function()
     TriggerEvent('pd:deathcheck')
-    while isPlayerDead == 1 do
+    while imDead == 1 do
         Citizen.Wait(0)
         if thecount > 0 then
-            SendNUIMessage({countCheck = true, time = math.ceil(thecount)})
+            drawTxt(0.89, 1.44, 1.0,1.0, 0.4, "Respawn: ~r~" .. math.ceil(thecount) .. "~w~ seconds remaining", 255, 255, 255, 255)
         else
-            countCheck = false
-            SendNUIMessage({respawn = true, respawnInfo = "Hold [ E ] (" .. math.ceil(EHeld/100) .. ") to respawn"})
+            drawTxt(0.89, 1.44, 1.0,1.0,0.4, "~w~HOLD ~r~E ~w~(" .. math.ceil(EHeld/100) .. ") ~w~TO ~r~RESPAWN ~w~OR WAIT FOR ~r~EMS", 255, 255, 255, 255)
         end
     end
     TriggerEvent('pd:deathcheck')
 end)
+
 
 
 
