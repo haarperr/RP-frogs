@@ -208,10 +208,16 @@ AddEventHandler("stress:timedtest",function(alteredValue,scenario)
     if exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' then
         local finished = exports["drp-taskbar"]:taskBar(5000,"Unlocking rifle rack..",false,true)
         if finished == 100 then
-        TriggerEvent("server-inventory-open", "1", "pdrifle-rack"..cid)
-		Wait(1000)
+            -- get current ped
+            local ped = GetPlayerPed(-1)
+            -- get vehicle
+            local vehicle = GetVehiclePedIsIn(ped, false)
+            -- get vehicle plate
+            local plate = GetVehicleNumberPlateText(vehicle)
+            TriggerEvent("server-inventory-open", "1", "pdrifle-rack"..plate)
+		    Wait(1000)
+        end
     end
-end
 end)
 
 --  Sandy Shores PD Amory
