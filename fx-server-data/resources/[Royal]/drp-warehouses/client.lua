@@ -107,3 +107,31 @@ Citizen.CreateThread(function()
         end
     end
 end)
+
+
+RegisterNetEvent("houses:buyhouse")
+AddEventHandler("houses:buyhouse", function()
+    TriggerEvent('drp-context:sendMenu', {
+        {
+			id = "1",
+			header = "Buy a House (100k)",
+			txt = "",
+			params = {
+				event = "houses:buyhouse",
+			}
+		},
+        {
+			id = "2",
+			header = "Buy a Warehouse (200k)",
+			txt = "",
+			params = {
+				event = "houses:buywarehouse",
+			}
+		}
+	})
+end)
+
+RegisterNetEvent("huses:buywarehouse")
+AddEventHandler("houses:buywarehouse", function()
+    TriggerServerEvent("houses:confirmwarehouse", warehouses)
+end)
