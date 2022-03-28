@@ -205,7 +205,7 @@ Config["Offenses"] = {
         [166] = {title = 'Introducing Contraband Into a Government Facility', class = 'Felony', id = '166', months = 20, fine = 1500, color = 'orange'},
         [167] = {title = 'Accomplice to Introducing Contraband Into a Government Facility', class = 'Felony', id = '167', months = 20, fine = 1500, color = 'orange'},
         [168] = {title = 'Accessory to Introducing Contraband Into a Government Facility', class = 'Felony', id = '168', months = 16, fine = 1200, color = 'orange'},
-        [169] = {title = 'Concealing an Escaped Prisoner (Patty's Law)', class = 'Felony', id = '169', months = 0, fine = 0, color = 'orange'},
+        [169] = {title = 'Concealing an Escaped Prisoner (Pattys Law)', class = 'Felony', id = '169', months = 0, fine = 0, color = 'orange'},
         [170] = {title = 'Disobeying a Peace Officer', class = 'Misdemeanor', id = '170', months = 7, fine = 525, color = 'orange'},
         [171] = {title = 'Accomplice to Disobeying a Peace Officer', class = 'Misdemeanor', id = '171', months = 7, fine = 525, color = 'orange'},
         [172] = {title = 'Accessory to Disobeying a Peace Officer', class = 'Misdemeanor', id = '172', months = 6, fine = 420, color = 'orange'},
