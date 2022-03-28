@@ -7,7 +7,7 @@ document.onkeydown = function(evt) {
     evt = evt || window.event;
     if (evt.keyCode == 27) {
         $('.container-modmenu').hide();
-        $.post('http://brp-admin/closenui', JSON.stringify({}));
+        $.post('http://drp-admin/closenui', JSON.stringify({}));
     }
 };
 
@@ -161,24 +161,24 @@ function stagetwo() {
 function tptomarker() {
    // $('.stage-four').fadeIn();
    
-   $.post('http://brp-admin/tptomarker', JSON.stringify({}));
+   $.post('http://drp-admin/tptomarker', JSON.stringify({}));
 }
 
 function sendAnnounce(){
     
     var message = document.getElementById("announce").value;
 
-    $.post('http://brp-admin/sendAnnouncement', JSON.stringify({message}));
+    $.post('http://drp-admin/sendAnnouncement', JSON.stringify({message}));
 }
 
 function maxstats(){
     
-    $.post('http://brp-admin/maxstats', JSON.stringify({}));
+    $.post('http://drp-admin/maxstats', JSON.stringify({}));
 }
 
 function currentcoords(){
     
-    $.post('http://brp-admin/getplayercoords', JSON.stringify({}));
+    $.post('http://drp-admin/getplayercoords', JSON.stringify({}));
 }
 
 function spawncarmenu() {
@@ -191,7 +191,7 @@ function spawncarnow() {
     $('.solo-input').hide();
     $('.spawncarinput').hide();
     var carname = document.getElementById("spawncar").value;
-    $.post('http://brp-admin/spawncar', JSON.stringify({carname}));
+    $.post('http://drp-admin/spawncar', JSON.stringify({carname}));
 }
 
 function spawnitemnow() {
@@ -201,7 +201,7 @@ function spawnitemnow() {
     var itemname = document.getElementById("spawnitem").value;
     var itemamount = document.getElementById("spawnitemamount").value;
 
-    $.post('http://brp-admin/spawnitem', JSON.stringify({itemname, itemamount}));
+    $.post('http://drp-admin/spawnitem', JSON.stringify({itemname, itemamount}));
 }
 
 function spawnitemmenu() {
@@ -232,11 +232,11 @@ function setgaragestate() {
     var licenseplate = document.getElementById("licenseplate").value;
     var garagename = document.getElementById("garagename").value;
 
-    $.post('http://brp-admin/brp-admin:update:vehicle:cl', JSON.stringify({licenseplate, garagename}));
+    $.post('http://drp-admin/drp-admin:update:vehicle:cl', JSON.stringify({licenseplate, garagename}));
 }
 
 function viewentity() {
-    $.post('http://brp-admin/viewentity', JSON.stringify({}));
+    $.post('http://drp-admin/viewentity', JSON.stringify({}));
 }
 
 function devmodecheckbox() {
@@ -247,9 +247,9 @@ function devmodecheckbox() {
     // If the checkbox is checked, display the output text
     var returnvalue = checkBox.checked
     if (checkBox.checked == true){
-        $.post('http://brp-admin/devmode', JSON.stringify({returnvalue}));
+        $.post('http://drp-admin/devmode', JSON.stringify({returnvalue}));
     } else {
-        $.post('http://brp-admin/devmode', JSON.stringify({returnvalue}));
+        $.post('http://drp-admin/devmode', JSON.stringify({returnvalue}));
     }
 }
 
@@ -262,9 +262,9 @@ function debugmodecheckbox() {
     var returnvalue = checkBox.checked
 
     if (checkBox.checked == true){
-        $.post('http://brp-admin/debugmode', JSON.stringify({returnvalue}));
+        $.post('http://drp-admin/debugmode', JSON.stringify({returnvalue}));
     } else {
-        $.post('http://brp-admin/debugmode', JSON.stringify({returnvalue}));
+        $.post('http://drp-admin/debugmode', JSON.stringify({returnvalue}));
     }
 }
 
@@ -277,9 +277,9 @@ function godmodecheckbox() {
     var returnvalue = checkBox.checked
 
     if (checkBox.checked == true){
-        $.post('http://brp-admin/godmode', JSON.stringify({returnvalue}));
+        $.post('http://drp-admin/godmode', JSON.stringify({returnvalue}));
     } else {
-        $.post('http://brp-admin/godmode', JSON.stringify({returnvalue}));
+        $.post('http://drp-admin/godmode', JSON.stringify({returnvalue}));
     }
 }
 
@@ -292,64 +292,64 @@ function invisiblecheckbox() {
     var returnvalue = checkBox.checked
 
     if (checkBox.checked == true){
-        $.post('http://brp-admin/invisible', JSON.stringify({returnvalue}));
+        $.post('http://drp-admin/invisible', JSON.stringify({returnvalue}));
     } else {
-        $.post('http://brp-admin/invisible', JSON.stringify({returnvalue}));
+        $.post('http://drp-admin/invisible', JSON.stringify({returnvalue}));
     }
 }
 
 function healcheckbox() {
-    $.post('http://brp-admin/heal', JSON.stringify({}));
+    $.post('http://drp-admin/heal', JSON.stringify({}));
 }
 
 function revivepersonal() {
-    $.post('http://brp-admin/revivepersonal', JSON.stringify({}));
+    $.post('http://drp-admin/revivepersonal', JSON.stringify({}));
 }
 
 function spectateplayer() {
-    $.post('http://brp-admin/spectateplayer', JSON.stringify({selectedplayer}));
+    $.post('http://drp-admin/spectateplayer', JSON.stringify({selectedplayer}));
 }
 
 function bringplayer() {
-    $.post('http://brp-admin/bringplayer', JSON.stringify({selectedplayer}));
+    $.post('http://drp-admin/bringplayer', JSON.stringify({selectedplayer}));
 }
 
 function teleporttoplayer() {
-    $.post('http://brp-admin/teleporttoplayer', JSON.stringify({selectedplayer}));
+    $.post('http://drp-admin/teleporttoplayer', JSON.stringify({selectedplayer}));
 }
 
 function reviveplayer() {
-    $.post('http://brp-admin/reviveplayer', JSON.stringify({selectedplayer}));
+    $.post('http://drp-admin/reviveplayer', JSON.stringify({selectedplayer}));
 }
 
 function healplayer() {
-    $.post('http://brp-admin/healplayer', JSON.stringify({selectedplayer}));
+    $.post('http://drp-admin/healplayer', JSON.stringify({selectedplayer}));
 }
 
 function fixcarplayer() {
-    $.post('http://brp-admin/fixcarplayer', JSON.stringify({selectedplayer}));
+    $.post('http://drp-admin/fixcarplayer', JSON.stringify({selectedplayer}));
 }
 
 function fixcarpersonal() {
-    $.post('http://brp-admin/fixcarpersonal', JSON.stringify({}));
+    $.post('http://drp-admin/fixcarpersonal', JSON.stringify({}));
 }
 
 function RemoveStress() {
-    $.post('http://brp-admin/removestress', JSON.stringify({}));
+    $.post('http://drp-admin/removestress', JSON.stringify({}));
     
 }
 
 function Clothingmenu() {
-    $.post('http://brp-admin/clothingmenu', JSON.stringify({}));
+    $.post('http://drp-admin/clothingmenu', JSON.stringify({}));
     $('.container-modmenu').hide();
 }
 
 function searchplayer() {
     $('.container-modmenu').hide();
-    $.post('http://brp-admin/searchinventoryplayer', JSON.stringify({selectedplayer}));
+    $.post('http://drp-admin/searchinventoryplayer', JSON.stringify({selectedplayer}));
 }
 
 function Clothingmenuplayer() {
     $('.container-modmenu').hide();
-    $.post('http://brp-admin/clothingmenuplayer', JSON.stringify({selectedplayer}));
+    $.post('http://drp-admin/clothingmenuplayer', JSON.stringify({selectedplayer}));
 }

@@ -16,8 +16,8 @@ AddEventHandler('brp:openmodmenu', function()
   TriggerServerEvent('getallplayers', source)
 end)
 
-RegisterNetEvent('brp-adminmenu:CloseMouse')
-AddEventHandler('brp-adminmenu:CloseMouse', function()
+RegisterNetEvent('drp-adminmenu:CloseMouse')
+AddEventHandler('drp-adminmenu:CloseMouse', function()
   SetNuiFocus(false, false)
 end)
 
@@ -36,15 +36,15 @@ RegisterNUICallback('tptomarker', function(data, cb)
 end)
 
 RegisterNUICallback('maxstats', function(data, cb)
-  TriggerEvent('brp-admin:maxstats')
+  TriggerEvent('drp-admin:maxstats')
 end)
 
 RegisterNUICallback('spawncar', function(data, cb)
-  TriggerEvent('brp-adminmenu:runSpawnCommand', data.carname)
+  TriggerEvent('drp-adminmenu:runSpawnCommand', data.carname)
 end)
 
 RegisterNUICallback('sendAnnouncement', function(data, cb)
-  TriggerServerEvent('brp-adminmenu:sendAnnoucement', data.message)
+  TriggerServerEvent('drp-adminmenu:sendAnnoucement', data.message)
 end)
 
 RegisterNUICallback('spawnitem', function(data, cb)
@@ -55,22 +55,22 @@ RegisterNUICallback('spawnitem', function(data, cb)
   end
 end)
 
-RegisterNUICallback('brp-admin:update:vehicle:cl', function(data, cb)
-  TriggerServerEvent('brp-admin:update:vehicle', source, data.licenseplate, data.garagename)
+RegisterNUICallback('drp-admin:update:vehicle:cl', function(data, cb)
+  TriggerServerEvent('drp-admin:update:vehicle', source, data.licenseplate, data.garagename)
 end)
 
 RegisterNUICallback('viewentity', function(data, cb)
-  TriggerServerEvent('brp-adminmenu:entviewtoggle',source, true, "All")
+  TriggerServerEvent('drp-adminmenu:entviewtoggle',source, true, "All")
 end)
 
 
 RegisterNUICallback('devmode', function(data, cb)
-  TriggerEvent('brp-admin:currentDevmode', data.returnvalue)
+  TriggerEvent('drp-admin:currentDevmode', data.returnvalue)
   devmodeToggle = data.returnvalue
 end)
 
 RegisterNUICallback('debugmode', function(data, cb)
-  TriggerEvent('brp-admin:currentDebug', data.returnvalue)
+  TriggerEvent('drp-admin:currentDebug', data.returnvalue)
 end)
 
 RegisterNUICallback('godmode', function(data, cb)
@@ -88,7 +88,7 @@ RegisterNUICallback('heal', function(data, cb)
 end)
 
 RegisterNUICallback('revivepersonal', function(data, cb)
-  TriggerEvent("brp-admin:ReviveInDistance")
+  TriggerEvent("drp-admin:ReviveInDistance")
 end)
 
 RegisterNUICallback('spectateplayer', function(data, cb)
@@ -115,7 +115,7 @@ end)
 
 RegisterNUICallback('reviveplayer', function(data, cb)
   print("Player Id from JS:" ..data.selectedplayer)
-  TriggerServerEvent("brp-death:reviveSV", data.selectedplayer)
+  TriggerServerEvent("drp-death:reviveSV", data.selectedplayer)
   TriggerServerEvent("reviveGranted", data.selectedplayer)
   TriggerServerEvent("ems:healplayer",data.selectedplayer)
 end)
@@ -153,7 +153,7 @@ end)
 
 RegisterNUICallback('searchinventoryplayer', function(data, cb)
   print("Player Id from JS:" ..data.selectedplayer)
-  TriggerServerEvent('brp-adminmenu:CheckInventory', data.selectedplayer)
+  TriggerServerEvent('drp-adminmenu:CheckInventory', data.selectedplayer)
   SetNuiFocus(false,false)
   --local player = GetPlayerFromServerId(data.selectedplayer)
   --local player = GetPlayerFromServerId(player)
@@ -199,8 +199,8 @@ function teleportMarker()
 end
 
 local LastVehicle = nil
-RegisterNetEvent("brp-adminmenu:runSpawnCommand")
-AddEventHandler("brp-adminmenu:runSpawnCommand", function(model, livery)
+RegisterNetEvent("drp-adminmenu:runSpawnCommand")
+AddEventHandler("drp-adminmenu:runSpawnCommand", function(model, livery)
     Citizen.CreateThread(function()
 
         local hash = GetHashKey(model)
@@ -277,8 +277,8 @@ function GetPlayers()
   return players
 end
 
-RegisterNetEvent("brp-admin:ReviveInDistance")
-AddEventHandler("brp-admin:ReviveInDistance", function()
+RegisterNetEvent("drp-admin:ReviveInDistance")
+AddEventHandler("drp-admin:ReviveInDistance", function()
     local playerList = {}
     local players = GetPlayers()
     local ply = PlayerPedId()
@@ -307,8 +307,8 @@ AddEventHandler("brp-admin:ReviveInDistance", function()
     
 end)
 
-RegisterNetEvent("brp-admin:bringPlayer")
-AddEventHandler("brp-admin:bringPlayer", function(targPos)
+RegisterNetEvent("drp-admin:bringPlayer")
+AddEventHandler("drp-admin:bringPlayer", function(targPos)
     Citizen.CreateThread(function()
         RequestCollisionAtCoord(targPos.x, targPos.y, targPos.z)
         SetEntityCoordsNoOffset(PlayerPedId(), targPos.x, targPos.y, targPos.z, 0, 0, 2.0)
@@ -335,7 +335,7 @@ AddEventHandler('event:control:adminDev', function(useID)
     elseif useID == 2 then
         local bool = not isInNoclip
         RunNclp(nil,bool)
-        TriggerEvent("brp-admin:noClipToggle",bool)
+        TriggerEvent("drp-admin:noClipToggle",bool)
     elseif useID == 4 then
         teleportMarker(nil)
     end
@@ -351,7 +351,7 @@ function RunNclp(self,bool)
     if bool and isInNoclip then return end
     isInNoclip = bool
     
-    TriggerEvent("brp-admin:noClipToggle", isInNoclip)
+    TriggerEvent("drp-admin:noClipToggle", isInNoclip)
 end
 
 
@@ -539,7 +539,7 @@ function checkInputRotation()
   end)
 end
 
-AddEventHandler("brp-admin:noClipToggle", function(pIsEnabled)
+AddEventHandler("drp-admin:noClipToggle", function(pIsEnabled)
   noClipEnabled = pIsEnabled
   inputRotEnabled = pIsEnabled
 

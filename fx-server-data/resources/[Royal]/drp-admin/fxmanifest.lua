@@ -1,16 +1,19 @@
-fx_version 'cerulean'
+fx_version 'adamant'
 game 'gta5'
 
-client_script "client/cl_*.lua"
-server_script "server/sv_*.lua"
 
--- shared_script '@drp-lib/import.lua'
+ui_page "ui/index.html"
 
-ui_page "html/admin-menu.html"
+files {
+    "ui/index.html",
+    "ui/script.js",
+    "ui/main.css",
+    "ui/img/logo.png",
+}
 
-files({
-    "html/admin-menu.html",
-    "html/js/*.js",
-    "html/*.css",
-    "html/*.svg"
-})
+server_scripts {
+    '@mysql-async/lib/MySQL.lua',
+    "server.lua"
+}
+
+client_script "client.lua"
