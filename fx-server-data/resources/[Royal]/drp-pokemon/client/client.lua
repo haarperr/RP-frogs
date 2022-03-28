@@ -750,6 +750,12 @@ AddEventHandler('murdermeal', function()
 	TriggerEvent("server-inventory-open", "1", "MurderMeal -"..cid)
 end)
 
+RegisterNetEvent('keyholder')
+AddEventHandler('keyholder', function()
+	local cid = exports["isPed"]:isPed("cid")
+	TriggerEvent("server-inventory-open", "1", "keyholder -"..cid)
+end)
+
 RegisterNetEvent('murdermeal:toys1')
 AddEventHandler('murdermeal:toys1', function(type)
 	TriggerEvent("inventory:removeItem","randomtoy", 1)

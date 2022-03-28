@@ -2560,7 +2560,10 @@ end
     if itemid == "murdermeal" then
          TriggerEvent("murdermeal")
     end
-
+    
+    if itemid == "keyholder" then
+        TriggerEvent("keyholder")
+   end
  
 
     if itemid == "mask" then
