@@ -58,6 +58,7 @@ Citizen.CreateThread(function()
                 if IsControlJustPressed(0, 38) and distance <= 1.75 then
                     -- build the warehouse
                     buildWarehouse(i)
+				    Citizen.Wait(1000)
                 end
             end
         end
