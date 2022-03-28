@@ -1,7 +1,7 @@
 warehouses = {
-    [1] = { ['x'] = 493.3533, ['y'] = -570.8793, ['z'] = 24.5781, ['h'] = 263.2521, ['locationName'] = 'LS Freeway', ['keyName'] = 'warehousekey1'},
-    [2] = { ['x'] = 758.5064, ['y'] = -816.1545, ['z'] = 26.3925, ['h'] = 89.3749, ['locationName'] = 'Ottos', ['keyName'] = 'warehousekey2'},
-    [3] = { ['x'] = 488.7054, ['y'] = -898.6812, ['z'] = 25.8201, ['h'] = 263.5672, ['locationName'] = 'MRPD', ['keyName'] = 'warehousekey3'},
+    [1] = { ['x'] = 493.3533, ['y'] = -570.8793, ['z'] = 24.5781, ['h'] = 263.2521, ['locationName'] = 'LS Freeway', ['keyName'] = 'warehousekey1'}, 
+    [2] = { ['x'] = 758.5064, ['y'] = -816.1545, ['z'] = 26.3925, ['h'] = 89.3749, ['locationName'] = 'Ottos', ['keyName'] = 'warehousekey2'}, -- taken by jimmy
+    [3] = { ['x'] = 488.7054, ['y'] = -898.6812, ['z'] = 25.8201, ['h'] = 263.5672, ['locationName'] = 'MRPD', ['keyName'] = 'warehousekey3'}, 
     [4] = { ['x'] = -231.4028, ['y'] = 6234.7920, ['z'] = 31.4959, ['h'] = 34.7782, ['locationName'] = 'Paleto', ['keyName'] = 'warehousekey4'}, -- taken by percy
     [5] = { ['x'] = -1267.7404, ['y'] = -811.9473, ['z'] = 17.1088, ['h'] = 124.1376, ['locationName'] = 'Burger Shot', ['keyName'] = 'warehousekey5'},
 }
