@@ -23,12 +23,12 @@ end)
 
 --// Chicken Server Side
 
--- local DISCORD_WEBHOOK5 = "https://discord.com/api/webhooks/903025721243496518/GUUwv2Lg_W8xN8a_NIh3c7VOvdWfKHDMCX6Hv3nsWnmp8Ffuo9shSbG8ZGiJW07kTxbS"
+ local DISCORD_WEBHOOK5 = "https://discord.com/api/webhooks/957802732838879253/YSlhAuk9to9H4yh2xcQsPUGsGZHNGfO0KasCDB5mvPJ1fHS92n1-GTOn6Dfej22zx8ek"
 local DISCORD_NAME5 = "Chicken Selling Logs"
 
--- local STEAM_KEY = "0C007CC382AB06D1D99D9B45EC3924B1"
--- local DISCORD_IMAGE = "https://i.imgur.com/zviw6oW.png"
--- PerformHttpRequest(DISCORD_WEBHOOK5, function(err, text, headers) end, 'POST', json.encode({username = DISCORD_NAME5, avatar_url = DISCORD_IMAGE}), { ['Content-Type'] = 'application/json' })
+ local STEAM_KEY = "D01BB33086A760AE0098638CB73C7224"
+ local DISCORD_IMAGE = "https://i.imgur.com/zviw6oW.png"
+ PerformHttpRequest(DISCORD_WEBHOOK5, function(err, text, headers) end, 'POST', json.encode({username = DISCORD_NAME5, avatar_url = DISCORD_IMAGE}), { ['Content-Type'] = 'application/json' })
 
 local cachedData = {}
 
@@ -51,16 +51,16 @@ end)
 
 
 
--- function sendToDiscord5(name, message, color)
---     local connect = {
---       {
---         ["color"] = color,
---         ["title"] = "**".. name .."**",
---         ["description"] = message,
---       }
---     }
---     PerformHttpRequest(DISCORD_WEBHOOK5, function(err, text, headers) end, 'POST', json.encode({username = DISCORD_NAME5, embeds = connect, avatar_url = DISCORD_IMAGE}), { ['Content-Type'] = 'application/json' })
--- end
+ function sendToDiscord5(name, message, color)
+     local connect = {
+       {
+         ["color"] = color,
+         ["title"] = "**".. name .."**",
+         ["description"] = message,
+       }
+     }
+     PerformHttpRequest(DISCORD_WEBHOOK5, function(err, text, headers) end, 'POST', json.encode({username = DISCORD_NAME5, embeds = connect, avatar_url = DISCORD_IMAGE}), { ['Content-Type'] = 'application/json' })
+ end
 
 --// Fishing Server Side
 
