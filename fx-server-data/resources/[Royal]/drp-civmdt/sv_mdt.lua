@@ -66,7 +66,7 @@ AddEventHandler("mdt-civ:getOffenderDetails", function(offender)
 			offender.notes = result[1].notes
 			offender.mugshot_url = result[1].mugshot_url
 		end
-		MySQL.Async.fetchAll('SELECT * FROM `user_convictions` WHERE `char_id` = @id', {
+		MySQL.Async.fetchAll('SELECT * FROM `mdt_incidents` WHERE `id` = @id', {
 			['@id'] = offender.id
 		}, function(convictions)
 			if convictions[1] then
@@ -77,7 +77,7 @@ AddEventHandler("mdt-civ:getOffenderDetails", function(offender)
 				end
 			end
 
-			MySQL.Async.fetchAll('SELECT * FROM `mdt_warrants` WHERE `char_id` = @id', {
+			MySQL.Async.fetchAll('SELECT * FROM `mdt_incidents` WHERE `_id` = @id', {
 				['@id'] = offender.id
 			}, function(warrants)
 				if warrants[1] then
