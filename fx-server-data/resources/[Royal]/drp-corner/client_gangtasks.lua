@@ -44,8 +44,8 @@ end)
 --Davis
 local pedsused = {}
 
-local cocainetime = false
-local cracktime = false
+local cocainetime = true
+local cracktime = true
 local sellingcocaine = false
 local sellingcrack = false
 local sellingweed = false
