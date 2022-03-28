@@ -248,9 +248,9 @@ end
 
 RegisterNetEvent('chickencooldown')
 AddEventHandler('chickencooldown', function(name)
-if chickencounter == 5 then
-	TriggerEvent('DoLongHudText', 'You must wait a bit to catch more chickens', 2)
-	Citizen.Wait(600000)
+if chickencounter == 10 then
+	TriggerEvent('DoLongHudText', 'You must wait a bit to catch more chooks', 2)
+	Citizen.Wait(900000) -- 15 MINUTE DELAY AND THEN WHAT?! 
 	chickencounter = 0
 end
 end)
