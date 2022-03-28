@@ -20,7 +20,12 @@ local tabletObject = nil
  	end
  end)
 
-RegisterNetEvent("civ:mdt:open")
+
+
+RegisterCommand("civmdt", function()
+    TriggerServerEvent("mdt-civ:hotKeyOpen")
+end)
+NetEvent("civ:mdt:open")
 AddEventHandler("civ:mdt:open", function()
     TriggerServerEvent("mdt-civ:hotKeyOpen")
 end)
