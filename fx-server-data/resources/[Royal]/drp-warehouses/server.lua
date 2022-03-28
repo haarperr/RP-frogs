@@ -15,6 +15,6 @@ AddEventHandler("houses:confirmwarehouse", function(warehouses)
                     })
                 end
             end)
-        end)
+        end
     end
 end)
