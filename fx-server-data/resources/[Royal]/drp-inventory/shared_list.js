@@ -22683,7 +22683,7 @@ itemList['pdevidencebag'] = {
   decayrate: 0,
   displayname: 'Evidence Bag',
   price: 10,
-  weight: 10,
+  weight: 5,
   nonStack: true,
   model: '',
   image: 'np_evidence_bag.png',
