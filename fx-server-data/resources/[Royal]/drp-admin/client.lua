@@ -209,11 +209,15 @@ RegisterNUICallback('healplayer', function(data, cb)
 end)
 
 RegisterNUICallback('removestress', function(data, cb)
-  TriggerEvent("client:newStress",false,10000)
+  TriggerEvent("drp-hud:updateStress",false,5000)
 end)
 
 RegisterNUICallback('ViewEntities', function(data, cb)
-  TriggerEvent('hud:enabledebug')
+  TriggerEvent('drp-admin:currentDebug')
+end)
+
+RegisterNUICallback('AYO', function(data, cb)
+  TriggerEvent("DoLongHudText", 'AYOOOOOOOOO YOU CLICKED THE CUM MENU',2)
 end)
 
 RegisterNUICallback('clothingmenuplayer', function(data, cb)

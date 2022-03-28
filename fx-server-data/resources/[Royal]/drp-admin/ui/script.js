@@ -443,6 +443,10 @@ function ViewEntities() {
     $.post('http://drp-admin/ViewEntities', JSON.stringify({}));
     
 }
+function AYO() {
+    $.post('http://drp-admin/AYO', JSON.stringify({}));
+    
+}
 
 function Clothingmenu() {
     $.post('http://drp-admin/clothingmenu', JSON.stringify({}));
