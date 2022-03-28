@@ -83,7 +83,7 @@ Config["Offenses"] = {
         [44] = {title = 'Accomplice of Reckless Endangerment', class = 'Felony', id = '44', months = 11, fine = 825, color = 'orange'},
         [45] = {title = 'Accessory of Reckless Endangerment', class = 'Felony', id = '45', months = 9, fine = 660, color = 'orange'},
         [46] = {title = 'Brandishing of a Firearm', class = 'Misdemeanor', id = '46', months = 7, fine = 525, color = 'orange'},
-        [47] = {title = 'Forcer's Law', class = 'Felony', id = '47', months = 0, fine = HU, color = 'orange'},
+        [47] = {title = 'Forcers Law', class = 'Felony', id = '47', months = 0, fine = HU, color = 'orange'},
         [48] = {title = 'Petty Theft', class = 'Infraction', id = '48', months = 0, fine = 250, color = 'orange'},
         [49] = {title = 'Accomplice to Petty Theft', class = 'Infraction', id = '49', months = 0, fine = 250, color = 'orange'},
         [50] = {title = 'Accessory to Petty Theft', class = 'Infraction', id = '50', months = 0, fine = 200, color = 'orange'},
