@@ -250,6 +250,7 @@ Citizen.CreateThread(function()
     }, {})
 end)
 
+
 AddEventHandler("drp-polyzone:enter", function(zone)
     if zone == "grove_street" or zone == "forum_street" or zone == "vine_wood" or zone == "airport" or zone == "venice" or zone == "paleto_spot" or zone == "college" or zone == "too_tired" or zone == "vagos_spot" then
         currently_selected_drug_location = zone
