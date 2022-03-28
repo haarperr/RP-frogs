@@ -19,7 +19,7 @@ function Draw3DText(x,y,z, text)
 end
 
 function buildWarehouse(warehouseId)
-	-- DoScreenFadeOut(1)
+	DoScreenFadeOut(1)
 	Citizen.Wait(1000)
 
 	local generator = { x = warehouses[warehouseId]["x"] , y = warehouses[warehouseId]["y"], z = warehouses[warehouseId]["z"] - 35}
@@ -27,16 +27,19 @@ function buildWarehouse(warehouseId)
 	SetEntityCoords(PlayerPedId(), generator.x-0.31811000,generator.y+1.79183500,generator.z+2.56171400)
 
 	local building = CreateObject(`warehouse_shell`,generator.x-0.31811000,generator.y+1.79183500,generator.z+2.56171400,false,false,false)
+
+    CreateObject(`prop_speaker_05`,coordsofbuilding.x-2.40189600,coordsofbuilding.y+0.54597100,coordsofbuilding.z+3.89755000,false,false,false)
+
 	FreezeEntityPosition(building, true)
 	local coordsofbuilding = GetEntityCoords(building, true)
 	FreezeEntityPosition(coordsofbuilding,true)
     
-	Citizen.Wait(500)
+	Citizen.Wait(750)
 	SetEntityCoords(PlayerPedId(), coordsofbuilding)
 	Citizen.Wait(500)
 	SetEntityHeading(PlayerPedId(),0.0)
 	FreezeEntityPosition(PlayerPedId(),false)
-	-- DoScreenFadeIn(1)
+	DoScreenFadeIn(1)
 end
 
 
