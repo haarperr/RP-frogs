@@ -212,7 +212,7 @@ on('player:receiveItem', async(id, amount, generateInformation, itemdata, return
         emit('DoLongHudText', id + ' fell on the ground because you are overweight', 2);
         let droppedItem = { slot: 3, itemid: id, amount: amount, generateInformation: generateInformation };
         cid = exports.isPed.isPed("cid");
-        emitNet('server-inventory-open', GetEntityCoords(PlayerPedId()), cid, '3', "Drop-Overweight", { "items": [droppedItem] });
+        emitNet('server-inventory-open', GetEntityCoords(PlayerPedId()), cid, '13', "Drop-Overweight", { "items": [droppedItem] });
         return;
     }
     SendNuiMessage(
@@ -590,7 +590,7 @@ function GroundInventoryScan() {
     if (row) {
         emitNet('server-inventory-open', GetEntityCoords(PlayerPedId()), cid, '1', row.name);
     } else {
-        emitNet('server-inventory-open', GetEntityCoords(PlayerPedId()), cid, '13', 'create');
+        emitNet('server-inventory-open', GetEntityCoords(PlayerPedId()), cid, '3', 'create');
     }
 }
 
