@@ -15,16 +15,16 @@ Citizen.CreateThread(function()
                 local pedType = GetPedType(ped)
                 if ped ~= recent_ped and (IsPedAPlayer(ped) == false and pedType ~= 28) then
                     if HasItems() then
-                        TriggerEvent('drp-interaction:ShowUI', 'show', "[E] Attempt Sale") 
+                        exports['drp-textui']:showInteraction("[E] Attempt Sale")
                     end
 
                     if IsControlJustPressed(1, 86) and HasItems() then
                         sell_items()
-                        TriggerEvent('drp-interaction:HideUI')
+                        exports['drp-textui']:hideInteraction()
                     elseif not HasItems() then
-                        TriggerEvent('drp-interaction:ShowUI', 'show', "You dont have anything to offer") 
+                        exports['drp-textui']:showInteraction("No Drugs")
                         Citizen.Wait(2000)
-                        TriggerEvent('drp-interaction:HideUI')
+                        exports['drp-textui']:hideInteraction()
                     end
                 else
                     Citizen.Wait(500)
@@ -43,7 +43,7 @@ Citizen.CreateThread(function()
                 ped = GetPedInFront()
 
                 if ped == 0 then
-                    TriggerEvent('drp-interaction:HideUI')
+                    exports['drp-textui']:hideInteraction()
                 end
             else
                 Citizen.Wait(1000)
@@ -143,7 +143,7 @@ RegisterNetEvent("drp-selling:status", function()
         TriggerEvent("DoLongHudText", ('Corner selling has been %s!'):format(is_corner_selling and 'Enabled' or 'Disabled'), 1) 
 
         if not is_corner_selling then
-            TriggerEvent('drp-interaction:HideUI')
+            exports['drp-textui']:hideInteraction()
         end
     end
 end)
