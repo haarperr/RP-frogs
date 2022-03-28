@@ -715,6 +715,22 @@ AddEventHandler("stress:timed2",function(alteredValue,scenario)
 	TriggerServerEvent("server:alterStress",false,removedStress)
 end)
 
+RegisterNetEvent("CarFuelAlarm")
+AddEventHandler("CarFuelAlarm",function()
+    if not alarmset then
+        alarmset = true
+        local i = 5
+        TriggerEvent("DoLongHudText", "Low fuel.",1)
+        while i > 0 do
+            PlaySound(-1, "5_SEC_WARNING", "HUD_MINI_GAME_SOUNDSET", 0, 0, 1)
+            i = i - 1
+            Citizen.Wait(300)
+        end
+        Citizen.Wait(60000)
+        alarmset = false
+    end
+end)
+
 
 Citizen.CreateThread(function()
 
@@ -795,6 +811,8 @@ Citizen.CreateThread(function()
                             missingTankHealth = missingTankHealth * (missingTankHealth * missingTankHealth * 12)
                         end
 
+                       
+
                         local factorFuel = (fuelMath + 1 / 5000) * (missingTankHealth+1)
                         Fuel = Fuel - factorFuel
                     end
@@ -814,6 +832,9 @@ Citizen.CreateThread(function()
                 end
 
                 if Fuel < 15 then
+                   
+                        TriggerEvent("CarFuelAlarm")
+                 
                 end
 
                 if Fuel < 1 then
