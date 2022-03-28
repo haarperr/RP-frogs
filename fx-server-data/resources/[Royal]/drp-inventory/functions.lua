@@ -2560,6 +2560,10 @@ end
     if itemid == "murdermeal" then
          TriggerEvent("murdermeal", ItemInfo.id)
     end
+
+    if itemid == "pdevidencebag" then
+        TriggerEvent("pdevidencebag", ItemInfo.id)
+    end
     
     if itemid == "keyholder" then
         TriggerEvent("keyholder")

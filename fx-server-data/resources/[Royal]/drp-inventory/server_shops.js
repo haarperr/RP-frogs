@@ -44,6 +44,7 @@ function PoliceArmory() {
         { item_id: "dashcamstaticpd", id: 0, name: "Shop", information: "{}", slot: 35, amount: 1 },
         { item_id: "elevatorhackingdevice", id: 0, name: "Shop", information: "{}", slot: 36, amount: 1 },
         { item_id: "carpolish_high", id: 0, name: "Shop", information: "{}", slot: 37, amount: 1 },
+        { item_id: "pdevidencebag", id: 0, name: "Shop", information: "{}", slot: 38, amount: 1 },
     ];
     return JSON.stringify(shopItems);
 }

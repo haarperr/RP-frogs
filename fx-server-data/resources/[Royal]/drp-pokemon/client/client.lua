@@ -749,6 +749,12 @@ AddEventHandler('murdermeal', function(itemid)
 	TriggerEvent("server-inventory-open", "1", "MurderMeal -"..itemid)
 end)
 
+
+RegisterNetEvent('pdevidencebag')
+AddEventHandler('pdevidencebag', function(itemid)
+	TriggerEvent("server-inventory-open", "1", "pdevidencebag -"..itemid)
+end)
+
 RegisterNetEvent('keyholder')
 AddEventHandler('keyholder', function()
 	local cid = exports["isPed"]:isPed("cid")
