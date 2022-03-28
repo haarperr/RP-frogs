@@ -7,7 +7,7 @@ AddEventHandler("mdt-civ:hotKeyOpen", function()
 		for r = 1, #reports do
 			reports[r].charges = json.decode(reports[r].charges)
 		end
-		MySQL.Async.fetchAll("SELECT * FROM (SELECT * FROM `mdt_warrants` ORDER BY `id` DESC LIMIT 3) sub ORDER BY `id` DESC", {}, function(warrants)
+		MySQL.Async.fetchAll("SELECT * FROM (SELECT * FROM `mdt_incidents` ORDER BY `id` DESC LIMIT 3) sub ORDER BY `id` DESC", {}, function(warrants)
 			for w = 1, #warrants do
 				warrants[w].charges = json.decode(warrants[w].charges)
 			end
