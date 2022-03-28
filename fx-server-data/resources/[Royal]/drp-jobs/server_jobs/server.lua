@@ -28,7 +28,6 @@ local DISCORD_NAME5 = "Chicken Selling Logs"
 
 -- local STEAM_KEY = "0C007CC382AB06D1D99D9B45EC3924B1"
 -- local DISCORD_IMAGE = "https://i.imgur.com/zviw6oW.png"
-7
 -- PerformHttpRequest(DISCORD_WEBHOOK5, function(err, text, headers) end, 'POST', json.encode({username = DISCORD_NAME5, avatar_url = DISCORD_IMAGE}), { ['Content-Type'] = 'application/json' })
 
 local cachedData = {}
