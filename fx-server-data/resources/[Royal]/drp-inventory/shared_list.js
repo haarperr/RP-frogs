@@ -15154,7 +15154,7 @@ itemList['keyholder'] = {
   fullyDegrades: false,
   decayrate: 0.0,
   displayname: 'Key Holder',
-  price: 150,
+  price: 250,
   weight: 0,
   nonStack: true,
   model: '',
