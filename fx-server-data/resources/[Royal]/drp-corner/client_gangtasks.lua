@@ -520,6 +520,7 @@ AddEventHandler('drugs:corner', function()
 
     local currentStreetHash, intersectStreetHash = GetStreetNameAtCoord(x, y, z, currentStreetHash, intersectStreetHash)
     MyStreetName = GetStreetNameFromHashKey(currentStreetHash)
+	plyCoords = GetEntityCoords(plyId)
     local dst = #(vector3(plyCoords) - vector3(143.62,-1766.86,28.4))
 
     if (MyStreetName == "Forum Dr" or MyStreetName == "Brouge Ave" or MyStreetName == "Grove St" or MyStreetName == "Macdonald St" or MyStreetName == "Jamestown St" or MyStreetName == "Carson Ave") and exports["drp-inventory"]:hasEnoughOfItem("weedq",1,false) and dst < 500.0 then
