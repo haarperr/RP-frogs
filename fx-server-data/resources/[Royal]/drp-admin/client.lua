@@ -172,6 +172,7 @@ end)
 RegisterNUICallback('spectateplayer', function(data, cb)
   print("Player Id from JS:" ..data.selectedplayer)
   local player = GetPlayerFromServerId(data.selectedplayer)
+  TriggerServerEvent("txAdmin:menu:spectatePlayer", player)
   print(data.selectedplayer)
 
 end)
