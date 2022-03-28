@@ -2,8 +2,8 @@ is_corner_selling = false
 currently_selling = nil
 
 drugs_wanted = {
-    "weedq"
-    "oxy"
+    "weedq",
+    "oxy",
     "methlabproduct"
 }
 
