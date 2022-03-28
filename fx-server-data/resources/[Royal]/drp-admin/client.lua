@@ -271,12 +271,12 @@ AddEventHandler('drp:fixclothes', function(playerreturn)
     
 end)
 
--- RegisterNetEvent('drp:fixstress2')
--- AddEventHandler('drp:fixstress2', function(playerreturn)  
---     local playerIdx = GetPlayerFromServerId(playerreturn)
---     local ped = GetPlayerPed(playerIdx)
---     TriggerEvent("client:newStress",ped,false,10000)
--- end)
+ RegisterNetEvent('drp:fixstress2')
+ AddEventHandler('drp:fixstress2', function(playerreturn)  
+     local playerIdx = GetPlayerFromServerId(playerreturn)
+     local ped = GetPlayerPed(playerIdx)
+     TriggerEvent("client:newStress",ped,false,10000)
+ end)
 
 function teleportMarker()
 
