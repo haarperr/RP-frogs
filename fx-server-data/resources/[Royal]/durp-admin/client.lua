@@ -5,8 +5,8 @@ AddEventHandler('RecieveActivePlayers', function(players)
   SendNUIMessage({action = "playerretrieve", players = players})
 end)
 
-RegisterNetEvent('brp:openmodmenu')
-AddEventHandler('brp:openmodmenu', function()
+RegisterNetEvent('durp:openmodmenu')
+AddEventHandler('durp:openmodmenu', function()
   SendNUIMessage({action = "openadmin"})
   SetNuiFocus(true, true)
 
@@ -16,14 +16,14 @@ AddEventHandler('brp:openmodmenu', function()
   TriggerServerEvent('getallplayers', source)
 end)
 
-RegisterNetEvent('drp-adminmenu:CloseMouse')
-AddEventHandler('drp-adminmenu:CloseMouse', function()
+RegisterNetEvent('durp-adminmenu:CloseMouse')
+AddEventHandler('durp-adminmenu:CloseMouse', function()
   SetNuiFocus(false, false)
 end)
 
 RegisterNUICallback('getplayercoords', function(data, cb)
-  TriggerEvent('DoLongHudText', 'Players Current Coordinates Saved To [coords.txt]', 1)
-  ExecuteCommand('pos')
+  -- TriggerEvent('DoLongHudText', 'Players Current Coordinates Saved To [coords.txt]', 1)
+  ExecuteCommand('coords')
 end)
 
 RegisterNUICallback('closenui', function(data, cb)
@@ -32,19 +32,94 @@ end)
 
 RegisterNUICallback('tptomarker', function(data, cb)
   SetNuiFocus(false, false)
+  SendNUIMessage({action = "closenui"})
+  -- TriggerEvent("closenui")
   teleportMarker(nil)
 end)
 
+RegisterNUICallback('jobvu', function(data, cb)
+  TriggerServerEvent("jobssystem:jobs", "entertainer")
+  TriggerEvent("DoLongHudText","Job changed.")
+end)
+
+RegisterNUICallback('jobgallery', function(data, cb)
+  TriggerServerEvent("jobssystem:jobs", "gallery")
+  TriggerEvent("DoLongHudText","Job changed.")
+end)
+
+RegisterNUICallback('jobsrs', function(data, cb)
+  TriggerServerEvent("jobssystem:jobs", "tuner_mech")
+  TriggerEvent("DoLongHudText","Job changed.")
+end)
+
+RegisterNUICallback('jobpdm', function(data, cb)
+  TriggerServerEvent("jobssystem:jobs", "car_shop")
+  TriggerEvent("DoLongHudText","Job changed.")
+end)
+
+RegisterNUICallback('jobburgershot', function(data, cb)
+  TriggerServerEvent("jobssystem:jobs", "burger_shot")
+  TriggerEvent("DoLongHudText","Job changed.")
+end)
+
+RegisterNUICallback('jobtokyos', function(data, cb)
+  TriggerServerEvent("jobssystem:jobs", "rooster_rest")
+  TriggerEvent("DoLongHudText","Job changed.")
+end) 
+
+
+RegisterNUICallback('jobrecords', function(data, cb)
+  TriggerServerEvent("jobssystem:jobs", "records")
+  TriggerEvent("DoLongHudText","Job changed.")
+end)
+
+RegisterNUICallback('jobharmony', function(data, cb)
+  TriggerServerEvent("jobssystem:jobs", "repairs_harmony")
+  TriggerEvent("DoLongHudText","Job changed.")
+end)
+
+RegisterNUICallback('jobhayes', function(data, cb)
+  TriggerServerEvent("jobssystem:jobs", "auto_bodies")
+  TriggerEvent("DoLongHudText","Job changed.")
+end)
+
+RegisterNUICallback('jobmamas', function(data, cb)
+  TriggerServerEvent("jobssystem:jobs", "bahama_mamas")
+  TriggerEvent("DoLongHudText","Job changed.")
+end)
+
+RegisterNUICallback('jobesate', function(data, cb)
+  TriggerServerEvent("jobssystem:jobs", "real_estate")
+  TriggerEvent("DoLongHudText","Job changed.")
+end)
+
+RegisterNUICallback('jobadmin', function(data, cb)
+  TriggerServerEvent("jobssystem:jobs", "DURP_Admin")
+  TriggerEvent("DoLongHudText","Job changed.")
+end) 
+
+RegisterNUICallback('jobems', function(data, cb)
+  TriggerEvent("emsduty")
+  -- TriggerEvent("DoLongHudText","Job changed.")
+end)
+
+RegisterNUICallback('jobleo', function(data, cb)
+  TriggerEvent("leoduty")
+  -- TriggerEvent("DoLongHudText","Job changed.")
+end)
+
+
+
 RegisterNUICallback('maxstats', function(data, cb)
-  TriggerEvent('drp-admin:maxstats')
+  TriggerEvent('durp-admin:maxstats')
 end)
 
 RegisterNUICallback('spawncar', function(data, cb)
-  TriggerEvent('drp-adminmenu:runSpawnCommand', data.carname)
+  TriggerEvent('durp-adminmenu:runSpawnCommand', data.carname)
 end)
 
 RegisterNUICallback('sendAnnouncement', function(data, cb)
-  TriggerServerEvent('drp-adminmenu:sendAnnoucement', data.message)
+  TriggerServerEvent('durp-adminmenu:sendAnnoucement', data.message)
 end)
 
 RegisterNUICallback('spawnitem', function(data, cb)
@@ -55,22 +130,22 @@ RegisterNUICallback('spawnitem', function(data, cb)
   end
 end)
 
-RegisterNUICallback('drp-admin:update:vehicle:cl', function(data, cb)
-  TriggerServerEvent('drp-admin:update:vehicle', source, data.licenseplate, data.garagename)
+RegisterNUICallback('durp-admin:update:vehicle:cl', function(data, cb)
+  TriggerServerEvent('durp-admin:update:vehicle', source, data.licenseplate, data.garagename)
 end)
 
 RegisterNUICallback('viewentity', function(data, cb)
-  TriggerServerEvent('drp-adminmenu:entviewtoggle',source, true, "All")
+  TriggerServerEvent('durp-adminmenu:entviewtoggle',source, true, "All")
 end)
 
 
 RegisterNUICallback('devmode', function(data, cb)
-  TriggerEvent('drp-admin:currentDevmode', data.returnvalue)
+  TriggerEvent('durp-admin:currentDevmode', data.returnvalue)
   devmodeToggle = data.returnvalue
 end)
 
 RegisterNUICallback('debugmode', function(data, cb)
-  TriggerEvent('drp-admin:currentDebug', data.returnvalue)
+  TriggerEvent('durp-admin:currentDebug', data.returnvalue)
 end)
 
 RegisterNUICallback('godmode', function(data, cb)
@@ -88,14 +163,17 @@ RegisterNUICallback('heal', function(data, cb)
 end)
 
 RegisterNUICallback('revivepersonal', function(data, cb)
-  TriggerEvent("drp-admin:ReviveInDistance")
+  TriggerEvent("durp-admin:ReviveInDistance")
 end)
-
 
 RegisterNUICallback('spectateplayer', function(data, cb)
   print("Player Id from JS:" ..data.selectedplayer)
   local player = GetPlayerFromServerId(data.selectedplayer)
   print(data.selectedplayer)
+end)
+
+RegisterNUICallback('deletevehicle', function(data, cb)
+  TriggerEvent( "wk:deleteVehicle" )
 end)
 
 RegisterNUICallback('bringplayer', function(data, cb)
@@ -116,7 +194,7 @@ end)
 
 RegisterNUICallback('reviveplayer', function(data, cb)
   print("Player Id from JS:" ..data.selectedplayer)
-  TriggerServerEvent("drp-death:reviveSV", data.selectedplayer)
+  TriggerServerEvent("durp-death:reviveSV", data.selectedplayer)
   TriggerServerEvent("reviveGranted", data.selectedplayer)
   TriggerServerEvent("ems:healplayer",data.selectedplayer)
 end)
@@ -127,18 +205,23 @@ RegisterNUICallback('healplayer', function(data, cb)
 end)
 
 RegisterNUICallback('removestress', function(data, cb)
-  --TriggerEvent("client:newStress",false,10000)
-  TriggerEvent("admin:stressremove")
+  TriggerEvent("client:newStress",false,10000)
+end)
+
+RegisterNUICallback('ViewEntities', function(data, cb)
+  TriggerEvent('hud:enabledebug')
 end)
 
 RegisterNUICallback('clothingmenuplayer', function(data, cb)
   print("Player Id from JS:" ..data.selectedplayer)
-  TriggerServerEvent('brp:clothing:admin', data.selectedplayer)    
+  TriggerServerEvent("raid_clothes:openClothing2", data.selectedplayer)    
 end)
 
-RegisterNUICallback('clothingmenu', function(data, cb)
-  TriggerEvent('raid_clothes:admin:open', 'clothing_shop')
-end)
+-- TriggerEvent("raid_clothes:openClothing", true, true)
+
+-- RegisterNUICallback('clothingmenu', function(data, cb)
+--   TriggerEvent("raid_clothes:openClothing") 
+-- end)
 
 RegisterNUICallback('fixcarpersonal', function(data, cb)
   local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
@@ -149,12 +232,12 @@ end)
 
 RegisterNUICallback('fixcarplayer', function(data, cb)
   print("Player Id from JS:" ..data.selectedplayer)
-  TriggerServerEvent("brp:fixplayercar", data.selectedplayer)
-end)
+  TriggerServerEvent("durp:fixplayercar", data.selectedplayer)
+end) 
 
 RegisterNUICallback('searchinventoryplayer', function(data, cb)
   print("Player Id from JS:" ..data.selectedplayer)
-  TriggerServerEvent('drp-adminmenu:CheckInventory', data.selectedplayer)
+  TriggerServerEvent('durp-adminmenu:CheckInventory', data.selectedplayer)
   SetNuiFocus(false,false)
   --local player = GetPlayerFromServerId(data.selectedplayer)
   --local player = GetPlayerFromServerId(player)
@@ -164,8 +247,8 @@ RegisterNUICallback('viewinformationplayer', function(data, cb)
     -- marvin will do this one
 end)
 
-RegisterNetEvent('brp:fixcar')
-AddEventHandler('brp:fixcar', function(playerreturn)  
+RegisterNetEvent('durp:fixcar')
+AddEventHandler('durp:fixcar', function(playerreturn)  
     local playerIdx = GetPlayerFromServerId(playerreturn)
     local ped = GetPlayerPed(playerIdx)
     
@@ -175,6 +258,21 @@ AddEventHandler('brp:fixcar', function(playerreturn)
     SetVehicleFixed(vehicle)
     SetVehiclePetrolTankHealth(vehicle, 4000.0)
 end)
+
+RegisterNetEvent('durp:fixclothes')
+AddEventHandler('durp:fixclothes', function(playerreturn)  
+    local playerIdx = GetPlayerFromServerId(playerreturn)
+    local ped = GetPlayerPed(playerIdx)
+    TriggerEvent("raid_clothes:openClothing",ped)
+    
+end)
+
+-- RegisterNetEvent('durp:fixstress2')
+-- AddEventHandler('durp:fixstress2', function(playerreturn)  
+--     local playerIdx = GetPlayerFromServerId(playerreturn)
+--     local ped = GetPlayerPed(playerIdx)
+--     TriggerEvent("client:newStress",ped,false,10000)
+-- end)
 
 function teleportMarker()
 
@@ -200,8 +298,8 @@ function teleportMarker()
 end
 
 local LastVehicle = nil
-RegisterNetEvent("drp-adminmenu:runSpawnCommand")
-AddEventHandler("drp-adminmenu:runSpawnCommand", function(model, livery)
+RegisterNetEvent("durp-adminmenu:runSpawnCommand")
+AddEventHandler("durp-adminmenu:runSpawnCommand", function(model, livery)
     Citizen.CreateThread(function()
 
         local hash = GetHashKey(model)
@@ -278,8 +376,8 @@ function GetPlayers()
   return players
 end
 
-RegisterNetEvent("drp-admin:ReviveInDistance")
-AddEventHandler("drp-admin:ReviveInDistance", function()
+RegisterNetEvent("durp-admin:ReviveInDistance")
+AddEventHandler("durp-admin:ReviveInDistance", function()
     local playerList = {}
     local players = GetPlayers()
     local ply = PlayerPedId()
@@ -308,8 +406,8 @@ AddEventHandler("drp-admin:ReviveInDistance", function()
     
 end)
 
-RegisterNetEvent("drp-admin:bringPlayer")
-AddEventHandler("drp-admin:bringPlayer", function(targPos)
+RegisterNetEvent("durp-admin:bringPlayer")
+AddEventHandler("durp-admin:bringPlayer", function(targPos)
     Citizen.CreateThread(function()
         RequestCollisionAtCoord(targPos.x, targPos.y, targPos.z)
         SetEntityCoordsNoOffset(PlayerPedId(), targPos.x, targPos.y, targPos.z, 0, 0, 2.0)
@@ -332,11 +430,11 @@ RegisterNetEvent('event:control:adminDev')
 AddEventHandler('event:control:adminDev', function(useID)
     if not devmodeToggle then return end
     if useID == 1 then
-        TriggerEvent("brp:openmodmenu")
+        TriggerEvent("durp:openmodmenu")
     elseif useID == 2 then
         local bool = not isInNoclip
         RunNclp(nil,bool)
-        TriggerEvent("drp-admin:noClipToggle",bool)
+        TriggerEvent("durp-admin:noClipToggle",bool)
     elseif useID == 4 then
         teleportMarker(nil)
     end
@@ -352,7 +450,7 @@ function RunNclp(self,bool)
     if bool and isInNoclip then return end
     isInNoclip = bool
     
-    TriggerEvent("drp-admin:noClipToggle", isInNoclip)
+    TriggerEvent("durp-admin:noClipToggle", isInNoclip)
 end
 
 
@@ -540,7 +638,7 @@ function checkInputRotation()
   end)
 end
 
-AddEventHandler("drp-admin:noClipToggle", function(pIsEnabled)
+AddEventHandler("durp-admin:noClipToggle", function(pIsEnabled)
   noClipEnabled = pIsEnabled
   inputRotEnabled = pIsEnabled
 
@@ -549,3 +647,82 @@ AddEventHandler("drp-admin:noClipToggle", function(pIsEnabled)
     checkInputRotation()
   end
 end)
+
+
+-- The distance to check in front of the player for a vehicle   
+local distanceToCheck = 5.0
+
+-- The number of times to retry deleting a vehicle if it fails the first time 
+local numRetries = 5
+
+-- Add an event handler for the deleteVehicle event. Gets called when a user types in /dv in chat
+RegisterNetEvent( "wk:deleteVehicle" )
+AddEventHandler( "wk:deleteVehicle", function()
+  local ped = GetPlayerPed( -1 )
+
+  if ( DoesEntityExist( ped ) and not IsEntityDead( ped ) ) then 
+      local pos = GetEntityCoords( ped )
+
+      if ( IsPedSittingInAnyVehicle( ped ) ) then 
+          local vehicle = GetVehiclePedIsIn( ped, false )
+
+          if ( GetPedInVehicleSeat( vehicle, -1 ) == ped ) then 
+              DeleteGivenVehicle( vehicle, numRetries )
+          else 
+            TriggerEvent("DoLongHudText","You must be in the driver's seat!")
+          end 
+      else
+          local inFrontOfPlayer = GetOffsetFromEntityInWorldCoords( ped, 0.0, distanceToCheck, 0.0 )
+          local vehicle = GetVehicleInDirection( ped, pos, inFrontOfPlayer )
+
+          if ( DoesEntityExist( vehicle ) ) then 
+              DeleteGivenVehicle( vehicle, numRetries )
+          else 
+              TriggerEvent("DoLongHudText","You must be in or near a vehicle to delete it.")
+          end 
+      end 
+  end 
+end )
+
+function DeleteGivenVehicle( veh, timeoutMax )
+  local timeout = 0 
+
+  SetEntityAsMissionEntity( veh, true, true )
+  DeleteVehicle( veh )
+
+  if ( DoesEntityExist( veh ) ) then
+      TriggerEvent("DoLongHudText","Failed to delete vehicle, trying again...")
+
+      -- Fallback if the vehicle doesn't get deleted
+      while ( DoesEntityExist( veh ) and timeout < timeoutMax ) do 
+          DeleteVehicle( veh )
+
+          -- The vehicle has been banished from the face of the Earth!
+          if ( not DoesEntityExist( veh ) ) then 
+              TriggerEvent("DoLongHudText","Vehicle deleted.")
+          end 
+
+          -- Increase the timeout counter and make the system wait
+          timeout = timeout + 1 
+          Citizen.Wait( 500 )
+
+          -- We've timed out and the vehicle still hasn't been deleted. 
+          if ( DoesEntityExist( veh ) and ( timeout == timeoutMax - 1 ) ) then
+              TriggerEvent("DoLongHudText","Failed.")
+          end 
+      end 
+  else 
+      TriggerEvent("DoLongHudText","Vehicle deleted.")
+  end 
+end 
+
+-- Gets a vehicle in a certain direction
+-- Credit to Konijima
+function GetVehicleInDirection( entFrom, coordFrom, coordTo )
+local rayHandle = StartShapeTestCapsule( coordFrom.x, coordFrom.y, coordFrom.z, coordTo.x, coordTo.y, coordTo.z, 5.0, 10, entFrom, 7 )
+  local _, _, _, _, vehicle = GetShapeTestResult( rayHandle )
+  
+  if ( IsEntityAVehicle( vehicle ) ) then 
+      return vehicle
+  end 
+end

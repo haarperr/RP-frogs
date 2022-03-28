@@ -1,0 +1,395 @@
+
+<title>sk's Admin Menu</title>
+<html style="overflow-y: hidden;">
+<head>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script src="script.js"></script>
+    <script type="text/javascript" src="nui://game/ui/jquery.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/485844d313.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    
+    <div class="container-modmenu">
+        <div class="solo-input">
+
+            <form name="answerbox" target="#here" onsubmit="spawncarnow()" method="post" class="spawncarinput">
+                <input type="text" id="spawncar" class="userinput" placeholder="Vehicle Name">
+            </form>
+
+            <form name="answerbox" target="#here" onsubmit="setgaragestate()" method="post" class="garagestateinput">
+                <input type="text" id="licenseplate" class="userinput" style="margin-top: -20%;" placeholder="License Plate">
+            </form>
+            <form name="answerbox" target="#here" onsubmit="setgaragestate()" method="post" class="garagestateinput">
+                <input type="text submit" id="garagename" class="userinput" style="margin-top: 1%;" placeholder="Garage">
+            </form>
+
+            <form name="answerbox" target="#here" onsubmit="spawnitemnow()" method="post" class="spawniteminput">
+                <input type="text" id="spawnitem" class="userinput" style="margin-top: -20%;" placeholder="Item Name">
+            </form>
+            <form name="answerbox" target="#here" onsubmit="spawnitemnow()" method="post" class="spawniteminput">
+                <input type="text submit" id="spawnitemamount" class="userinput" style="margin-top: 1%;" placeholder="Item Amount">
+            </form>
+            
+
+            <button class="btnmenu solobackbutton" onclick="backfromsolo()" style="left: 46%; padding-left: 22px; padding-top: 2px; bottom: -47%; width: 19%; background: rgb(255, 225, 89);"><p style="font-size: 0.9rem;">BACK</p></button>
+        </div>
+
+        <div class="top-nav">
+            
+            <button class="topbtncode btnactive" onclick="playersstage()" id="stageplayerbutton" style="width: 17%;"><p style="font-size: 0.9rem;">Players</p></button>
+            <!-- <button class="topbtncode" onclick="stageone()" id="stage1button" style="width: 17%;"><p style="font-size: 0.9rem;">Player</p></button> -->
+            <button class="topbtncode" onclick="stagetwo()" id="stage2button" style="width: 17%;"><p style="font-size: 0.9rem;">Utility</p></button>
+            <button class="topbtncode" onclick="userstage()" id="stageuserbutton" style="width: 17%;"><p style="font-size: 0.9rem;">Jobs</p></button>
+        </div>
+
+        <div class="left-nav">
+
+            <!-- <label class="extendmenu">
+                <span class="extend-menu" onclick="extendmenu()"><i style="font-size: 20px;" class="fa-solid fa-angle-left"></i></span>
+                <span class="shorten-menu" onclick="shortenmenu()" style="display: none;"><i style="font-size: 20px;" class="fa-solid fa-angle-right"></i></span>
+            </label> -->
+
+            <div style="position: relative; margin-top:43.5em;">
+                <label class="container2" onclick="devmodecheckbox()">
+                    <input type="checkbox" id="devmodecheckbox">
+                    <span class="checkmark2"><i style="font-size: 25px;" class="fa-solid fa-terminal"></i></span>
+                </label>
+
+                <!-- <label class="container2" onclick="debugmodecheckbox()">
+                    <input type="checkbox" style="margin-top: -28%;" id="debugmodecheckbox">
+                    <span class="checkmark2"><i style="font-size: 25px; padding: 2px;" class="fa-solid fa-bug"></i></span>
+                </label> -->
+                <label class="container2" onclick="godmodecheckbox()">
+                    <input type="checkbox" style="margin-top: -29%;" id="godmodecheckbox">
+                    <span class="checkmark2"><i style="font-size: 25px; padding: 3.5px;" class="fa-solid fa-book-bible"></i></span>
+                </label>
+                <label class="container2" onclick="invisiblecheckbox()">
+                    <input type="checkbox" style="margin-top: -32%;" id="invisiblecheckbox">
+                    <span class="checkmark2"><i style="font-size: 25px; padding: 5px;" class="fa-solid fa-ghost"></i></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="stage-players">
+
+
+            <section>
+                <div class="container3">
+
+                    <select id="bigboyplayers">
+                    </select>
+                    
+
+                    <button type="button" class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%;"><p style="font-size: 0.9rem;">Bring Player</p></button>
+                    <div class="content" style="height: 35px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <div>
+                            <button class="submitbtn" onclick="bringplayer()">Submit</button>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%;"><p style="font-size: 0.9rem;">Teleport to player</p></button>
+                    <div class="content" style="height: 35px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <div>
+                            <button class="submitbtn" onclick="teleporttoplayer()">Submit</button>
+                        </div>
+                    </div>
+                    <!-- <button class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%;"><p style="font-size: 0.9rem;">Spectate Player</p></button>
+                    <div class="content" style="height: 35px;">
+                        <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p>
+                        <div>
+                            <button class="submitbtn" onclick="spectateplayer()">Submit</button>
+                        </div>
+                    </div> -->
+                    <button type="button" class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%;"><p style="font-size: 0.9rem;">Revive</p></button>
+                    <div class="content" style="height: 65px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <div>
+                            <button class="submitbtn"style="bottom: 35px;" onclick="reviveplayer()">Revive Player</button>
+                        </div>
+                        <div>
+                            <button class="submitbtn" onclick="revivepersonal()">Revive Personal</button>
+                        </div>
+                    </div>
+                    <button class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%;"><p style="font-size: 0.9rem;">Heal Player</p></button>
+                    <div class="content" style="height: 35px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <div>
+                            <button class="submitbtn" onclick="healplayer()">Submit</button>
+                        </div>
+                    </div>
+                    <button class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%;"><p style="font-size: 0.9rem;">Fix Vehicle</p></button>
+                    <div class="content" style="height: 65px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px; left: 1%;">Fix Players Vehicle</p> -->
+                        <div>
+                            <button class="submitbtn" style="bottom: 35px;" onclick="fixcarplayer()">Fix Players Vehicle</button>
+                        </div>
+                        
+                        <!-- <p style="font-size: 12px; color: white; position: relative; bottom: -12px; left: 1%;">Fix Vehicle Personal</p> -->
+                        <div>
+                            <button class="submitbtn" onclick="fixcarpersonal()">Fix Vehicle Personal</button>
+                        </div>
+                    </div>
+                    <button class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%;"><p style="font-size: 0.9rem;">Vehicle Garage State</p></button>
+                    <div class="content" style="height: 35px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <div>
+                            <button class="submitbtn" onclick="setgaragestatemenu()">Submit</button>
+                        </div>
+                    </div>
+                    <button class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%;"><p style="font-size: 0.9rem;">Search Players Inventory</p></button>
+                    <div class="content" style="height: 35px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <div>
+                            <button class="submitbtn" onclick="searchplayer()">Submit</button>
+                        </div>
+                    </div>
+                    <button class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%;"><p style="font-size: 0.9rem;">Give Clothing Menu To Player</p></button>
+                    <div class="content" style="height: 35px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <div>
+                            <button class="submitbtn" onclick="Clothingmenuplayer()">Submit</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>
+        </div>
+
+        <div class="stage-two">
+            <section>
+                <div class="container4">
+
+                    <!-- <select >
+                    </select> -->
+
+
+                    <!-- <button type="button" class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%; position: relative; top: +10px;"><p style="font-size: 0.9rem;">Bring Player</p></button>
+                    <div class="content" style="height: 35px; position: relative; top: +11px;">
+                        <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p>
+                        <div>
+                            <button class="submitbtn" onclick="bringplayer()">Submit</button>
+                        </div>
+                    </div> -->
+                    <button class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%; position: relative; top: +11px;"><p style="font-size: 0.9rem;">Teleport To Marker</p></button>
+                    <div class="content" style="height: 35px; position: relative; top: +11px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <div>
+                            <button class="submitbtn" onclick="tptomarker()">Submit</button>
+                        </div>
+                    </div>
+                    <button class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%; position: relative; top: +11px;"><p style="font-size: 0.9rem;">Spawn Vehicle</p></button>
+                    <div class="content" style="height: 35px; position: relative; top: +11px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <div>
+                            <button class="submitbtn" onclick="spawncarmenu()">Submit</button>
+                        </div>
+                    </div>
+                    <button class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%; position: relative; top: +11px;"><p style="font-size: 0.9rem;">Delete Vehicle</p></button>
+                    <div class="content" style="height: 35px; position: relative; top: +11px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <div>
+                            <button class="submitbtn" onclick="deletevehicle()">Submit</button>
+                        </div>
+                    </div>
+                    <button class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%; position: relative; top: +11px;"><p style="font-size: 0.9rem;">Spawn Item</p></button>
+                    <div class="content" style="height: 35px; position: relative; top: +11px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <div>
+                            <button class="submitbtn" onclick="spawnitemmenu()">Submit</button>
+                        </div>
+                    </div>
+                    <button class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%; position: relative; top: +11px;"><p style="font-size: 0.9rem;">Get Current Coords</p></button>
+                    <div class="content" style="height: 35px; position: relative; top: +11px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <div>
+                            <button class="submitbtn" onclick="currentcoords()">Submit</button>
+                        </div>
+                    </div>
+                    <button class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%; position: relative; top: +11px;"><p style="font-size: 0.9rem;">Heal Self</p></button>
+                    <div class="content" style="height: 35px; position: relative; top: +11px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <div>
+                            <button class="submitbtn" onclick="healcheckbox()">Submit</button>
+                        </div>
+                    </div>
+                    <button class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%; position: relative; top: +11px;"><p style="font-size: 0.9rem;">Give Max Stats</p></button>
+                    <div class="content" style="height: 35px; position: relative; top: +11px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <div>
+                            <button class="submitbtn" onclick="maxstats()">Submit</button>
+                        </div>
+                    </div>
+                    <!-- <button class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.5); width: 92%;"><p style="font-size: 0.9rem;">Give Clothing Menu To Self</p></button>
+                    <div class="content" style="height: 35px;">
+                        <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p>
+                        <div>
+                            <button class="submitbtn" onclick="Clothingmenu()">Submit</button>
+                        </div>
+                    </div> -->
+                    <button class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%; position: relative; top: +11px;"><p style="font-size: 0.9rem;">Remove Stress</p></button>
+                    <div class="content" style="height: 35px; position: relative; top: +11px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <div>
+                            <button class="submitbtn" onclick="RemoveStress()">Submit</button>
+                        </div>
+                    </div>
+                    <button class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%; position: relative; top: +11px;"><p style="font-size: 0.9rem;">Debug Mode</p></button>
+                    <div class="content" style="height: 35px; position: relative; top: +11px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <div>
+                            <button class="submitbtn" onclick="ViewEntities()">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="serverannouncement">
+                <p class="announcetitle" style="font-size: 0.6rem; position: relative; top: 3px;">BROADCAST SERVER ANNOUNCEMENT</p>
+                <textarea name="text" id="announce" rows="14" class="inputtext" cols="10" wrap="soft" style="overflow:hidden; resize:none;"></textarea>
+                <button class="btnannounce" onclick="sendAnnounce()" ><p style="font-size: 0.6rem;">ANNOUNCE</p></button>
+            </div>
+        </div>
+
+        <!-- <div class="stage-admin">
+        </div> -->
+
+        <div class="stage-user">
+            <section>
+                <div class="container4">
+
+                    <!-- <select >
+                    </select> -->
+
+
+                    <!-- <button type="button" class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%; position: relative; top: +10px;"><p style="font-size: 0.9rem;">Bring Player</p></button>
+                    <div class="content" style="height: 35px; position: relative; top: +11px;">
+                        <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p>
+                        <div>
+                            <button class="submitbtn" onclick="bringplayer()">Submit</button>
+                        </div>
+                    </div> -->
+                    <button class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%; position: relative; top: +11px;"><p style="font-size: 0.9rem;">Vanilla Unicorn</p></button>
+                    <div class="content" style="height: 35px; position: relative; top: +11px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <div>
+                            <button class="submitbtn" onclick="jobvu()">Submit</button>
+                        </div>
+                    </div>
+                    <button class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%; position: relative; top: +11px;"><p style="font-size: 0.9rem;">Vultur Lé Culturé</p></button>
+                    <div class="content" style="height: 35px; position: relative; top: +11px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <div>
+                            <button class="submitbtn" onclick="jobgallery()">Submit</button>
+                        </div>
+                    </div>
+                    <button class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%; position: relative; top: +11px;"><p style="font-size: 0.9rem;">SRS Tuner Shop</p></button>
+                    <div class="content" style="height: 35px; position: relative; top: +11px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <div>
+                            <button class="submitbtn" onclick="jobsrs()">Submit</button>
+                        </div>
+                    </div>
+                    <button class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%; position: relative; top: +11px;"><p style="font-size: 0.9rem;">PDM</p></button>
+                    <div class="content" style="height: 35px; position: relative; top: +11px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <div>
+                            <button class="submitbtn" onclick="jobpdm()">Submit</button>
+                        </div>
+                    </div>
+                    <button class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%; position: relative; top: +11px;"><p style="font-size: 0.9rem;">Burger Shot</p></button>
+                    <div class="content" style="height: 35px; position: relative; top: +11px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <div>
+                            <button class="submitbtn" onclick="jobburgershot()">Submit</button>
+                        </div>
+                    </div>
+                    <button class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%; position: relative; top: +11px;"><p style="font-size: 0.9rem;">Tokyos Rest</p></button>
+                    <div class="content" style="height: 35px; position: relative; top: +11px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <div>
+                            <button class="submitbtn" onclick="jobtokyos()">Submit</button>
+                        </div>
+                    </div>
+                    <button class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%; position: relative; top: +11px;"><p style="font-size: 0.9rem;">Triad Records</p></button>
+                    <div class="content" style="height: 35px; position: relative; top: +11px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <div>
+                            <button class="submitbtn" onclick="jobrecords()">Submit</button>
+                        </div>
+                    </div>
+                    <button class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%; position: relative; top: +11px;"><p style="font-size: 0.9rem;">Harmony Repairs</p></button>
+                    <div class="content" style="height: 35px; position: relative; top: +11px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <div>
+                            <button class="submitbtn" onclick="jobharmony()">Submit</button>
+                        </div>
+                    </div>
+                    <button class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%; position: relative; top: +11px;"><p style="font-size: 0.9rem;">Hayes Autos</p></button>
+                    <div class="content" style="height: 35px; position: relative; top: +11px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <div>
+                            <button class="submitbtn" onclick="jobhayes()">Submit</button>
+                        </div>
+                    </div>
+                    <button class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%; position: relative; top: +11px;"><p style="font-size: 0.9rem;">Bahama Mamas</p></button>
+                    <div class="content" style="height: 35px; position: relative; top: +11px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <div>
+                            <button class="submitbtn" onclick="jobmamas()">Submit</button>
+                        </div>
+                    </div>
+                    <button class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%; position: relative; top: +11px;"><p style="font-size: 0.9rem;">Real Estate</p></button>
+                    <div class="content" style="height: 35px; position: relative; top: +11px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <div>
+                            <button class="submitbtn" onclick="jobestate()">Submit</button>
+                        </div>
+                    </div>
+                    <button class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%; position: relative; top: +11px;"><p style="font-size: 0.9rem;">DURP Admin</p></button>
+                    <div class="content" style="height: 35px; position: relative; top: +11px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <div>
+                            <button class="submitbtn" onclick="jobadmin()">Submit</button>
+                        </div>
+                    </div>
+                    <button class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%; position: relative; top: +11px;"><p style="font-size: 0.9rem;">EMS</p></button>
+                    <div class="content" style="height: 35px; position: relative; top: +11px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <div>
+                            <button class="submitbtn" onclick="jobems()">Submit</button>
+                        </div>
+                    </div>
+                    <button class="btnmenu collapsible" style="background: rgb(255, 255, 255, 0.8); width: 92%; position: relative; top: +11px;"><p style="font-size: 0.9rem;">Police / DOC</p></button>
+                    <div class="content" style="height: 35px; position: relative; top: +11px;">
+                        <!-- <p style="font-size: 12px; color: white; position: relative; top: -10px;">Target (Not Required):</p> -->
+                        <div>
+                            <button class="submitbtn" onclick="jobleo()">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+        
+        for (i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+              content.style.display = "none";
+            } else {
+              content.style.display = "block";
+            }
+          });
+        }
+    </script>
+</body>
+</html>

@@ -1,6 +1,8 @@
 fx_version 'adamant'
 game 'gta5'
 
+dependency "durp-base"
+dependency "ghmattimysql"
 
 ui_page "ui/index.html"
 
