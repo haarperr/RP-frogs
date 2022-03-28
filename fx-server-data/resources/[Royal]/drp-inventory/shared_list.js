@@ -2330,13 +2330,10 @@ itemList['joint2'] = {
   illegal: true,
   decayrate: 0.2,
   displayname: '2g Joint',
-  craft: [{
-        itemid: "weedq",
-        amount: 0.3
-    }, {
-        itemid: "rollingpaper",
-        amount: 1
-    }],
+  craft: [[
+    { itemid: 'weedq', amount: 1 },
+    { itemid: 'rollingpaper', amount: 1 },
+  ]],
   price: 20,
   weight: 1,
   nonStack: false,
