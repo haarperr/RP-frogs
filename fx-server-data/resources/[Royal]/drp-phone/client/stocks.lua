@@ -1,11 +1,11 @@
 local serverstockvalues = {
-  [1] = { ["name"] = "Guinea", ["value"] = 50.0, ["identifier"] = "GNE", ["icon"] = "fas fa-horse-head", ["lastchange"] = 0.00, ["amountavailable"] = 10000.0 },
-  [2] = { ["name"] = "Shungite", ["value"] = 1000.0, ["identifier"] = "SHU", ["icon"] = "fas fa-caret-square-up", ["lastchange"] = 0.00, ["amountavailable"] = 100.0 },
+  [1] = { ["name"] = "Guinea", ["value"] = 1.0, ["identifier"] = "GNE", ["icon"] = "fas fa-horse-head", ["lastchange"] = 0.00, ["amountavailable"] = 10000.0 },
+  [2] = { ["name"] = "Shungite", ["value"] = 1.0, ["identifier"] = "SHU", ["icon"] = "fas fa-caret-square-up", ["lastchange"] = 0.00, ["amountavailable"] = 100.0 },
 }
 
 clientstockamount = {
-  [1] = { ["value"] = 0.00 },
-  [2] = { ["value"] = 0.00 },
+  [1] = { ["value"] = 1.00 },
+  [2] = { ["value"] = 1.00 },
   [3] = { ["value"] = 0.00 },
   [4] = { ["value"] = 0.00 },
   [5] = { ["value"] = 0.00 },
