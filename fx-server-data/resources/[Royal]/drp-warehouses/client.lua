@@ -51,7 +51,8 @@ function buildWarehouse(warehouseId)
 	DoScreenFadeIn(1)
 end
 
-
+local currentWarehouse = 0
+local isInWarehouse = false
 
 Citizen.CreateThread(function()
     while true do
@@ -67,8 +68,20 @@ Citizen.CreateThread(function()
                 if IsControlJustPressed(0, 38) and distance <= 1.75 then
                     -- build the warehouse
                     buildWarehouse(i)
-                    isInWarehouse = true
 				    Citizen.Wait(1000)
+                end
+            end
+
+            local exitDistance = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), warehouses[i]["x"]+3, warehouses[i]["y"], warehouses[i]["z"]-30, true)
+            if distance <= 7.5 then
+                Draw3DText(warehouses[i]["x"]+3,warehouses[i]["y"],warehouses[i]["z"]-30, "Press [E] to exit")
+                if IsControlJustPressed(0, 38) and exitDistance <= 1.75 then
+                    -- exit the warehouse
+                    DoScreenFadeOut(1)
+                    SetEntityCoords(PlayerPedId(), warehouses[i]["x"], warehouses[i]["y"], warehouses[i]["z"])
+                    Citizen.Wait(1000)
+                    SetEntityCoords(PlayerPedId(), warehouses[i]["x"], warehouses[i]["y"], warehouses[i]["z"])
+                    DoScreenFadeIn(1)
                 end
             end
         end
