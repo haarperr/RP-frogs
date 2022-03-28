@@ -1,47 +1,8 @@
 fx-server/*
 discordbot/*
 
-!fx-server-data/resources/*
-!*.lua
-!*.js
-!*.html
-!*.css
-!*.png
-!*.jpg
-!*.jpeg
-!*.gif
-!*.ico
-!*.mp3
-
-!*.ttf
-!*.gitignore
-!*.npmrc
-!*.json
-!*.md  
-!*.txt
-!*.sh
-!*.bat
-
-
-
 ! fx-server-data/
 **/fx-server-data/*
 !**/fx-server-data/resources
 **/fx-server-data/resources/*
 !**/fx-server-data/resources/\[Royal\]
-
-! fx-server-data/
-**/fx-server-data/*
-!**/fx-server-data/resources
-**/fx-server-data/resources/*
-
-**/fx-server-data/resources/\[vehicles\]/assets_vehicles/*
-**/fx-server-data/resources/\[vehicles\]/royal-vehicleconfig/*
-**/fx-server-data/resources/\[vehicles\]/royal-vehicleaudio/*
-
-!**/fx-server-data/resources/\[vehicles\]
-
-!fx-server-data/resources/\[vehicles\]/royal-vehicleconfig/*
-
-
-
