@@ -5,8 +5,8 @@ AddEventHandler('RecieveActivePlayers', function(players)
   SendNUIMessage({action = "playerretrieve", players = players})
 end)
 
-RegisterNetEvent('brp:openmodmenu')
-AddEventHandler('brp:openmodmenu', function()
+RegisterNetEvent('drp:openmodmenu')
+AddEventHandler('drp:openmodmenu', function()
   SendNUIMessage({action = "openadmin"})
   SetNuiFocus(true, true)
 
@@ -132,11 +132,11 @@ end)
 
 RegisterNUICallback('clothingmenuplayer', function(data, cb)
   print("Player Id from JS:" ..data.selectedplayer)
-  TriggerServerEvent('brp:clothing:admin', data.selectedplayer)    
+  TriggerServerEvent('drp:clothing:admin', data.selectedplayer)    
 end)
 
 RegisterNUICallback('clothingmenu', function(data, cb)
-  TriggerEvent('brp:clothing:admin') 
+  TriggerEvent('drp:clothing:admin') 
 end)
 
 RegisterNUICallback('fixcarpersonal', function(data, cb)
@@ -148,7 +148,7 @@ end)
 
 RegisterNUICallback('fixcarplayer', function(data, cb)
   print("Player Id from JS:" ..data.selectedplayer)
-  TriggerServerEvent("brp:fixplayercar", data.selectedplayer)
+  TriggerServerEvent("drp:fixplayercar", data.selectedplayer)
 end)
 
 RegisterNUICallback('searchinventoryplayer', function(data, cb)
@@ -163,8 +163,8 @@ RegisterNUICallback('viewinformationplayer', function(data, cb)
     -- marvin will do this one
 end)
 
-RegisterNetEvent('brp:fixcar')
-AddEventHandler('brp:fixcar', function(playerreturn)  
+RegisterNetEvent('drp:fixcar')
+AddEventHandler('drp:fixcar', function(playerreturn)  
     local playerIdx = GetPlayerFromServerId(playerreturn)
     local ped = GetPlayerPed(playerIdx)
     
@@ -331,7 +331,7 @@ RegisterNetEvent('event:control:adminDev')
 AddEventHandler('event:control:adminDev', function(useID)
     if not devmodeToggle then return end
     if useID == 1 then
-        TriggerEvent("brp:openmodmenu")
+        TriggerEvent("drp:openmodmenu")
     elseif useID == 2 then
         local bool = not isInNoclip
         RunNclp(nil,bool)
