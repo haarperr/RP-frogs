@@ -51,6 +51,8 @@ Citizen.CreateThread(function()
         i = 1
         -- if player is near the warehouse
         Citizen.Trace("i: "..i)
+        
+        Citizen.Trace(warehouses[i]["locationName"])
         Draw3DText(warehouses[i]["x"],warehouses[i]["y"],warehouses[i]["z"], warehouses[i]["locationName"])
         local distance = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), warehouses[i]["x"], warehouses[i]["y"], warehouses[i]["z"], true)
         if distance <= 25.0 and exports["drp-inventory"]:hasEnoughOfItem(warehouses[i]["keyName"],1,false) then
