@@ -124,15 +124,16 @@ function userstage() {
 
 function weatherstage() {
     $('.stage-players').hide();
-    $('.stage-two').hide();
+    $('.stage-two').show();
     // $('.stage-admin').hide();
     $('.stage-user').hide();
-    $('.stage-three').hide();
-    $('.stage-four').fadeIn();
+    //$('.stage-three').hide();
+    //$('.stage-four').fadeIn();
+
     // document.getElementById("stage1button").classList.remove("btnactive");;
-    document.getElementById("stage2button").classList.remove("btnactive");;
+    document.getElementById("stage2button").classList.add("btnactive");;
     document.getElementById("stageplayerbutton").classList.remove("btnactive");;
-    document.getElementById("stageuserbutton").classList.add("btnactive");;
+    document.getElementById("stageuserbutton").classList.remove("btnactive");;
 }
 
 function playersstage() {
