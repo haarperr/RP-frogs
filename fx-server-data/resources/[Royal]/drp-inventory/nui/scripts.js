@@ -913,7 +913,7 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
         secondaryMaxWeight = 10.0;
         slotLimitTarget = 3;
         displayName = 'Murder Meal';
-    } else if (targetinvName.indexOf('KeyHolder') > -1) {
+    } else if (targetinvName.indexOf('keyholder') > -1) {
         secondaryMaxWeight = 10.0;
         slotLimitTarget = 5;
         displayName = 'Key Holder';
