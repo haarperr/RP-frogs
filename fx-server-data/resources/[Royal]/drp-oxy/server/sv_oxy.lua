@@ -8,7 +8,7 @@ AddEventHandler('oxydelivery:server', function(money)
 
 		TriggerClientEvent("oxydelivery:startDealing", source)
     else
-        TriggerClientEvent('DoLongHudText', source, 'You dont have enough money little stupid fucking bitch.', 2)
+        TriggerClientEvent('DoLongHudText', source, 'You a broke bitch.', 2)
 	end
 end)
 

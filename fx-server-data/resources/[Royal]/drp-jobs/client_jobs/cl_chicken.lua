@@ -645,7 +645,7 @@ function RoyalRPChickensStart()
         while RoyalChickenStart do
             Citizen.Wait(5)
 			if IsControlJustReleased(0, 38) then
-				if chickencounter == 5 then
+				if chickencounter == 10 then
 				TriggerEvent("chickencooldown")
 				else
 				TriggerEvent('chickens-start')
