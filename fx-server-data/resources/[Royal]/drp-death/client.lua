@@ -210,7 +210,7 @@ myanim = "dead_a"
 
 function InVeh()
   local ply = PlayerPedId()
-  local intrunk = exports["isPed"]:isCharacter("intrunk")
+  local intrunk = exports["isPed"]:isPed("intrunk")
   if IsPedSittingInAnyVehicle(ply) or intrunk then
     return true
   else
@@ -277,7 +277,7 @@ AddEventHandler('disableAllActions', function()
                 if not inveh then
                     inveh = true
                 end
-                local intrunk = exports["isPed"]:isCharacter("intrunk")
+                local intrunk = exports["isPed"]:isPed("intrunk")
                 if not intrunk then
                     deadcaranim()
                 end
