@@ -590,7 +590,7 @@ function GroundInventoryScan() {
     if (row) {
         emitNet('server-inventory-open', GetEntityCoords(PlayerPedId()), cid, '1', row.name);
     } else {
-        emitNet('server-inventory-open', GetEntityCoords(PlayerPedId()), cid, '3', 'create');
+        emitNet('server-inventory-open', GetEntityCoords(PlayerPedId()), cid, '13', 'create');
     }
 }
 
