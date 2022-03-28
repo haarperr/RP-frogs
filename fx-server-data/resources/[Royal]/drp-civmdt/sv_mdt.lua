@@ -168,7 +168,7 @@ AddEventHandler("mdt-civ:getReportDetailsById", function(query, _source)
 end)
 
 function GetCharacterName(source)
-	local user = exports["iconic-fw"]:getModule("Player"):GetUser(source)
+	local user = exports["drp-base"]:getModule("Player"):GetUser(source)
 	if user ~= false then
 		local characterId = user:getVar("character").id
 		local result = MySQL.Sync.fetchAll('SELECT first_name, last_name FROM characters WHERE id = @id', {
