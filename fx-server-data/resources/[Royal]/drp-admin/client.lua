@@ -91,6 +91,7 @@ RegisterNUICallback('revivepersonal', function(data, cb)
   TriggerEvent("drp-admin:ReviveInDistance")
 end)
 
+
 RegisterNUICallback('spectateplayer', function(data, cb)
   print("Player Id from JS:" ..data.selectedplayer)
   local player = GetPlayerFromServerId(data.selectedplayer)
