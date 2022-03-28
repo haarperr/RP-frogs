@@ -72,8 +72,24 @@ AddEventHandler("mdt-civ:getOffenderDetails", function(offender)
 			if convictions[1] then
 				offender.convictions = {}
 				for i = 1, #convictions do
-					local conviction = convictions[i]
-					offender.convictions[conviction.offense] = conviction.count
+					local convictions = {}
+					local associatedData = json.decode(result[1].associated)
+					for index, data in pairs(associatedData) do
+						table.insert(convictions, {
+							cid = data.Cid,
+							name = GetFullNameFromIdentifier(data.Cid),
+							warrant = data.Warrant,
+							guilty = data.Guilty,
+							processed = data.Processed,
+							associated = data.Isassociated,
+							fine = data.Fine,
+							sentence = data.Sentence,
+							recfine = data.recfine,
+							recsentence = data.recsentence,
+							charges = data.Charges
+						})
+					end
+					return result[1], convictions
 				end
 			end
 
