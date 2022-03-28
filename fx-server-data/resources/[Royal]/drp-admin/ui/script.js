@@ -124,7 +124,7 @@ function userstage() {
 
 function weatherstage() {
     $('.stage-players').hide();
-    $('.stage-two').show();
+    $('.stage-weather').show();
     // $('.stage-admin').hide();
     $('.stage-user').hide();
     //$('.stage-three').hide();
