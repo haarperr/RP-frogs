@@ -913,6 +913,10 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
         secondaryMaxWeight = 10.0;
         slotLimitTarget = 3;
         displayName = 'MurderMeal';
+    } else if (targetinvName.indexOf('WAREHOUSE') > -1) {
+        secondaryMaxWeight = 2000.0;
+        slotLimitTarget = 250;
+        displayName = 'Stash';
     } else if (targetinvName.indexOf('Trunk') > -1) {
         secondaryMaxWeight = 650.0;
         slotLimitTarget = 65;
