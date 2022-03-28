@@ -56,7 +56,7 @@ function Login.characterLoaded()
   TriggerServerEvent('dispatch:setcallsign')
   TriggerServerEvent('drp-base:addLicenses')
   TriggerEvent("stocks:clientvalueupdate")
-  TriggerEvent("stocks:servervalueupdate")
+
 end
 
 function Login.characterSpawned()
