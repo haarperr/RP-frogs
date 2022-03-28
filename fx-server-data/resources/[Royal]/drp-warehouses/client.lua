@@ -133,5 +133,10 @@ end)
 
 RegisterNetEvent("huses:buywarehouse")
 AddEventHandler("houses:buywarehouse", function()
-    TriggerServerEvent("houses:confirmwarehouse", warehouses)
+    
+    if exports["isPed"]:isPed("mycash") >= 200000 then
+        TriggerServerEvent("houses:confirmwarehouse", warehouses)
+    else
+        TriggerEvent('DoLongHudText', "You do not have enough money!", 2)
+    end
 end)

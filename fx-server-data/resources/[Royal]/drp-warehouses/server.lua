@@ -16,7 +16,5 @@ AddEventHandler("houses:confirmwarehouse", function(warehouses)
                 end
             end)
         end)
-    else
-        TriggerEvent('DoLongHudText', "You do not have enough money!", 2)
     end
 end)
