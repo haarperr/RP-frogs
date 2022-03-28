@@ -604,6 +604,16 @@ rootMenuConfig =  {
     },
 
     {
+        id = "cornerSelling",
+        displayName = "Corner",
+        icon = "#animation-arrogant",
+        functionName = "drp-selling:status",
+        enableMenu = function()
+            return (exports["drp-cornerselling"]:NearCorner("Distance") and not exports['drp-death']:GetDeathStatus())
+        end
+   },
+
+    {
          id = "storeVehicle",
          displayName = "Store Vehicle",
          icon = "#Store-Vehicle",
@@ -733,7 +743,7 @@ newSubMenus = {
     },
     ['police:gsr'] = {
         title = "GSR Check",
-        icon = "#police-action-gsr",
+        icon = "o#plice-action-gsr",
         functionName = "police:gsr"
     },
     ['police:dnaSwab'] = {

@@ -148,6 +148,16 @@ RegisterNetEvent("drp-selling:status", function()
     end
 end)
 
+exports("NearCorner", function(pType)
+    if pType == "Distance" then
+        if currently_selected_drug_location ~= nil then
+            return true
+        else
+            return false
+        end
+    end
+end)
+
 RegisterCommand('cornertest', function()
 
 		TriggerEvent('drp-selling:status')
