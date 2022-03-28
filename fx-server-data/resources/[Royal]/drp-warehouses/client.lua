@@ -54,7 +54,7 @@ Citizen.CreateThread(function()
                 -- draw the text
                 Draw3DText(warehouses[i]["x"],warehouses[i]["y"],warehouses[i]["z"], "Press [E] to enter")
                 -- if player presses E
-                if IsControlJustPressed(0, 38) then
+                if IsControlJustPressed(0, 38) and distance <= 1.75 then
                     -- build the warehouse
                     buildWarehouse(i)
                 end
