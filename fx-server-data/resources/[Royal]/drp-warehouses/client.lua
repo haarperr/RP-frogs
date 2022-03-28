@@ -91,7 +91,7 @@ Citizen.CreateThread(function()
                 Draw3DText(warehouses[i]["x"], warehouses[i]["y"]+2.2, warehouses[i]["z"]-32, "Press [H] to stash")
                 if IsControlJustPressed(0, 74) and stashDistance <= 1.75 then
                     -- stash the items
-			        TriggerEvent("server-inventory-open", "1", "WAREHOUSE ID: "..i)
+			        TriggerEvent("server-inventory-open", "1", "WAREHOUSE -"..i)
                 end
             end
         end
