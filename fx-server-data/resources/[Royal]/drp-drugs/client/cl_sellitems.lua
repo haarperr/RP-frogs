@@ -148,14 +148,6 @@ AddEventHandler("fenceguy:menu", function()
 			params = {
 				event = "sellrolex",
 			}
-		},
-        {
-			id = "10",
-			header = "Sell Oxy",
-			txt = "",
-			params = {
-				event = "selloxy",
-			}
-		},
+		}
 	})
 end)
