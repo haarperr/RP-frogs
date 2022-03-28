@@ -289,7 +289,7 @@ Config["Offenses"] = {
         [250] = {title = 'Illegal Exhumation', class = 'Felony', id = '250', months = 1440, fine = 0, color = 'orange'},
         [251] = {title = 'Accomplice to Illegal Exhumation Felony', class = '1440', id = '251', months = 0, fine = 0, color = 'orange'},
         [252] = {title = 'Accessory to Illegal Exhumation Felony', class = '1440', id = '252', months = 0, fine = 0, color = 'orange'},
-        [253] = {title = 'Drug Trafficking Felony', class = '1440', id = '253', months = 0, fine = , color = 'orange'},
+        [253] = {title = 'Drug Trafficking Felony', class = '1440', id = '253', months = 0, fine = 0, color = 'orange'},
         [254] = {title = 'Accomplice to Drug Trafficking Felony', class = '1440', id = '254', months = 0, fine = 0, color = 'orange'},
         [255] = {title = 'Accessory to Drug Trafficking Felony', class = '1440', id = '255', months = 0, fine = 0, color = 'orange'},
         [256] = {title = 'Human Trafficking Felony', class = '1440', id = '256', months = 1440, fine = 0, color = 'orange'},
