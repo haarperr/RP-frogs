@@ -77,7 +77,7 @@ AddEventHandler("mdt-civ:getOffenderDetails", function(offender)
 				end
 			end
 
-			MySQL.Async.fetchAll('SELECT * FROM `mdt_warrants` WHERE `charid` = @id', {
+			MySQL.Async.fetchAll('SELECT * FROM `mdt_incidents` WHERE `charid` = @id', {
 				['@id'] = offender.id
 			}, function(warrants)
 				if warrants[1] then
