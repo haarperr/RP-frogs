@@ -71,10 +71,10 @@ Citizen.CreateThread(function()
 				    Citizen.Wait(1000)
                 end
             end
-
-            local exitDistance = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), warehouses[i]["x"]+3, warehouses[i]["y"], warehouses[i]["z"]-30, true)
-            if distance <= 7.5 then
-                Draw3DText(warehouses[i]["x"]+3,warehouses[i]["y"],warehouses[i]["z"]-30, "Press [E] to exit")
+            
+            local exitDistance = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), warehouses[i]["x"]-9, warehouses[i]["y"]+1, warehouses[i]["z"]-31, true)
+            if exitDistance <= 15 then
+                Draw3DText(warehouses[i]["x"]-9,warehouses[i]["y"]+1,warehouses[i]["z"]-31, "Press [E] to exit")
                 if IsControlJustPressed(0, 38) and exitDistance <= 1.75 then
                     -- exit the warehouse
                     DoScreenFadeOut(1)
