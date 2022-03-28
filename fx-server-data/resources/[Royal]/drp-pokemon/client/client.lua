@@ -745,9 +745,8 @@ Citizen.CreateThread(function()
 end)
 
 RegisterNetEvent('murdermeal')
-AddEventHandler('murdermeal', function()
-	local cid = exports["isPed"]:isPed("cid")
-	TriggerEvent("server-inventory-open", "1", "MurderMeal -"..cid)
+AddEventHandler('murdermeal', function(itemid)
+	TriggerEvent("server-inventory-open", "1", "MurderMeal -"..itemid)
 end)
 
 RegisterNetEvent('keyholder')
