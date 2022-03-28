@@ -32,7 +32,7 @@ function buildWarehouse(warehouseId)
 	FreezeEntityPosition(building, true)
 	local coordsofbuilding = GetEntityCoords(building, true)
 
-    CreateObject(`prop_speaker_05`,coordsofbuilding.x-2.40189600,coordsofbuilding.y+0.54597100,coordsofbuilding.z+3.89755000,false,false,false)
+    CreateObject(`prop_warehseshelf03`,coordsofbuilding.x,coordsofbuilding.y+4,coordsofbuilding.z,false,false,false)
 
 
 	FreezeEntityPosition(coordsofbuilding,true)
