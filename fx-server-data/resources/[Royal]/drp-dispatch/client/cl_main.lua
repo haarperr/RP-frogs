@@ -609,7 +609,7 @@ function DrugSale()
         gender = gender,
         priority = 2,
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
-        dispatchMessage = "Suspicious Hand-off"
+        dispatchMessage = "Suspicious Activity"
     })
     if math.random(10) > 5 and not isInVehicle then
         CreateThread(function()
