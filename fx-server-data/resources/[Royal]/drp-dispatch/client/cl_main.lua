@@ -887,7 +887,7 @@ function OxyPing()
     AddTextComponentString('10-26 Sussy Activity')              -- to 'supermarket'
     EndTextCommandSetBlipName(Blip)
     
-    TriggerServerEvent('drp-dispatch:bankwobbewy', currentPos)
+    TriggerServerEvent('drp-dispatch:drugsale', currentPos)
     TriggerServerEvent('dispatch:svNotify', {
         dispatchCode = dispatchCode,
         firstStreet = locationInfo,
