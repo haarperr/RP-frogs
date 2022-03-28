@@ -136,7 +136,7 @@ RegisterNUICallback('clothingmenuplayer', function(data, cb)
 end)
 
 RegisterNUICallback('clothingmenu', function(data, cb)
-  TriggerEvent('brp:clothing:admin') 
+  TriggerEvent('raid_clothes:admin:open', 'clothing_shop')
 end)
 
 RegisterNUICallback('fixcarpersonal', function(data, cb)
