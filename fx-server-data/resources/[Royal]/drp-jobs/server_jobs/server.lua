@@ -326,7 +326,7 @@ local source = source
         TriggerClientEvent('player:receiveItem', source, "oxy", math.random(2,4))
     end
     if roll == 11 then -- 5% chance 
-        if math.random(1,100) >= 95
+        if math.random(1,100) >= 95 then
         TriggerClientEvent('DoShortHudText',src, 'You see something shining in the water',2)
         TriggerClientEvent('player:receiveItem', source, "heistusb3", 1)
         else
