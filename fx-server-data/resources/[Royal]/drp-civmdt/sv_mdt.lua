@@ -3,7 +3,7 @@
 RegisterServerEvent("mdt-civ:hotKeyOpen")
 AddEventHandler("mdt-civ:hotKeyOpen", function()
 	local usource = source
-	MySQL.Async.fetchAll("SELECT * FROM (SELECT * FROM `mdt_reports` ORDER BY `id` DESC LIMIT 3) sub ORDER BY `id` DESC", {}, function(reports)
+	MySQL.Async.fetchAll("SELECT * FROM (SELECT * FROM `mdt_report` ORDER BY `id` DESC LIMIT 3) sub ORDER BY `id` DESC", {}, function(reports)
 		for r = 1, #reports do
 			reports[r].charges = json.decode(reports[r].charges)
 		end
@@ -128,7 +128,7 @@ RegisterServerEvent("mdt-civ:performReportSearch")
 AddEventHandler("mdt-civ:performReportSearch", function(query)
 	local usource = source
 	local matches = {}
-	MySQL.Async.fetchAll("SELECT * FROM `mdt_reports` WHERE `id` LIKE @query OR LOWER(`title`) LIKE @query OR LOWER(`name`) LIKE @query OR LOWER(`author`) LIKE @query or LOWER(`charges`) LIKE @query", {
+	MySQL.Async.fetchAll("SELECT * FROM `mdt_report` WHERE `id` LIKE @query OR LOWER(`title`) LIKE @query OR LOWER(`name`) LIKE @query OR LOWER(`author`) LIKE @query or LOWER(`charges`) LIKE @query", {
 		['@query'] = string.lower('%'..query..'%') -- % wildcard, needed to search for all alike results
 	}, function(result)
 
@@ -157,7 +157,7 @@ RegisterServerEvent("mdt-civ:getReportDetailsById")
 AddEventHandler("mdt-civ:getReportDetailsById", function(query, _source)
 	if _source then source = _source end
 	local usource = source
-	MySQL.Async.fetchAll("SELECT * FROM `mdt_reports` WHERE `id` = @query", {
+	MySQL.Async.fetchAll("SELECT * FROM `mdt_report` WHERE `id` = @query", {
 		['@query'] = query
 	}, function(result)
 		if result and result[1] then
