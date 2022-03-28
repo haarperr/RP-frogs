@@ -10,14 +10,14 @@ AddEventHandler("houses:confirmwarehouse", function(warehouses)
                 exports.ghmattimysql:execute('INSERT INTO `houses2` (cid, keyname, Name) VALUES (@cid, @keyname, @Name)',{
                     ['@cid'] = characterId,
                     ['@keyname'] = warehouses[i]["keyName"],
-                    ['@Name'] = warehouses[i]["name"],
+                    ['@Name'] = warehouses[i]["locationName"],
                 })
                 done = true
-                TriggerClientEvent("houses:finishuywarehouse", True, warehouse["keyName"]) 
+                TriggerClientEvent("houses:finishuywarehouse", True, warehouses[i]["keyName"]) 
             end
         end)
     end
     if done == false then
-        TriggerClientEvent("houses:finishuywarehouse", False, warehouse["keyName"])
+        TriggerClientEvent("houses:finishuywarehouse", False, warehouses[i]["keyName"])
     end
 end)
