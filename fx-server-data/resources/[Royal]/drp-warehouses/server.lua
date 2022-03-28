@@ -12,11 +12,11 @@ AddEventHandler("houses:confirmwarehouse", function(warehouses)
                     ['@keyname'] = warehouses[i]["keyName"],
                     ['@Name'] = warehouses[i]["locationName"],
                 })
-                TriggerClientEvent("houses:finishuywarehouse", src, warehouses[i]["keyName"])
                 x = true
             end
         end)
         if x == true then
+            TriggerClientEvent("houses:finishuywarehouse", src, warehouses[i]["keyName"])
             break
         end
 
