@@ -31,9 +31,13 @@ function buildWarehouse(warehouseId)
 	FreezeEntityPosition(building, true)
 	local coordsofbuilding = GetEntityCoords(building, true)
 
-    CreateObject(`imp_prop_impexp_boxpile_01`,coordsofbuilding.x,coordsofbuilding.y+2.35,coordsofbuilding.z-1.6,false,false,false)
-    CreateObject(`gr_prop_gr_bench_01b`,coordsofbuilding.x,coordsofbuilding.y-2.35,coordsofbuilding.z-1.6,false,false,false)
+    local chest = CreateObject(`imp_prop_impexp_boxpile_01`,coordsofbuilding.x,coordsofbuilding.y+2.35,coordsofbuilding.z-1.6,false,false,false)
+    local crafting = CreateObject(`gr_prop_gr_bench_01b`,coordsofbuilding.x,coordsofbuilding.y-2.35,coordsofbuilding.z-1.6,false,false,false)
 
+    SetEntityRotation(crafting,0.0,0.0,-90.0,2,1)
+    FreezeEntityPosition(crafting, true)
+    
+    FreezeEntityPosition(chest, true)
 
 	FreezeEntityPosition(coordsofbuilding,true)
 
