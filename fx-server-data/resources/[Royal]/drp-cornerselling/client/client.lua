@@ -103,7 +103,7 @@ function sell_items()
                 local sellableItems = {
                     [1] = {name = 'oxy', amount = math.random(3,8), price=100},
                     [2] = {name = 'methlabproduct', amount = math.random(1,5), price=500},
-                    [3] = {name = 'weedq', amount = math.random(3,10), price=420},
+                  --  [3] = {name = 'weedq', amount = math.random(3,10), price=420},  not enough weed in the game to have it in the table right now
                 }
 
                 local pog = false
