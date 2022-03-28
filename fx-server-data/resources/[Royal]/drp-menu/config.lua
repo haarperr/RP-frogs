@@ -606,7 +606,7 @@ rootMenuConfig =  {
     {
         id = "cornerSelling",
         displayName = "Corner",
-        icon = "#animation-arrogant",
+        icon = "#cocaine-crate",
         functionName = "drp-selling:status",
         enableMenu = function()
             return (exports["drp-cornerselling"]:NearCorner("Distance") and not exports['drp-death']:GetDeathStatus())
