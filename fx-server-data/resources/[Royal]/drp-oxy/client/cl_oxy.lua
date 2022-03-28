@@ -330,6 +330,8 @@ function CreateOxyVehicle()
 	local plt = GetVehicleNumberPlateText(oxyVehicle)
 	DecorSetInt(oxyVehicle,"GamemodeCar",955)
 	SetVehicleHasBeenOwnedByPlayer(oxyVehicle,true)
+	SetVehicleIsStolen(oxyVehicle, true)
+	SetVehRadioStation(oxyVehicle, 'OFF')
 	TriggerEvent("keys:received",plt)
 
 
