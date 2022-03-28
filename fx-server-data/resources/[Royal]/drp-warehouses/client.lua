@@ -52,6 +52,7 @@ end)
 
 
 function Draw3DText(x,y,z, text) 
+    text = "gf"
     local inv_factor = 1.0 / 370.0
     
     Citizen.Trace(text)
