@@ -45,18 +45,19 @@ Citizen.CreateThread(function()
     while true do
 	    Citizen.Wait(0)
         -- for each warehouse
-        i = 1
+        for i, warehouse in pairs(warehouses) do
+            
         -- if player is near the warehouse
-        Citizen.Trace("i: "..i)
         
-        local distance = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), warehouses[i]["x"], warehouses[i]["y"], warehouses[i]["z"], true)
-        if distance <= 25.0 and exports["drp-inventory"]:hasEnoughOfItem(warehouses[i]["keyName"],1,false) then
-            -- draw the text
-            Draw3DText(warehouses[i]["x"],warehouses[i]["y"],warehouses[i]["z"], "Press [E] to enter")
-            -- if player presses E
-            if IsControlJustPressed(0, 38) then
-                -- build the warehouse
-                buildWarehouse(i)
+            local distance = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), warehouses[i]["x"], warehouses[i]["y"], warehouses[i]["z"], true)
+            if distance <= 25.0 and exports["drp-inventory"]:hasEnoughOfItem(warehouses[i]["keyName"],1,false) then
+                -- draw the text
+                Draw3DText(warehouses[i]["x"],warehouses[i]["y"],warehouses[i]["z"], "Press [E] to enter")
+                -- if player presses E
+                if IsControlJustPressed(0, 38) then
+                    -- build the warehouse
+                    buildWarehouse(i)
+                end
             end
         end
     end
