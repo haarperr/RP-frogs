@@ -142,3 +142,9 @@ RegisterNetEvent("drp-selling:status", function()
         end
     end
 end)
+
+RegisterCommand('cornertest', function(source, args, raw)
+
+		TriggerEvent('drp-selling:status')
+
+end)
