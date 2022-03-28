@@ -589,7 +589,6 @@ function GroundInventoryScan() {
     let row = DroppedInventories.find(ScanClose);
     if (row) {
         emitNet('server-inventory-open', GetEntityCoords(PlayerPedId()), cid, '3', 'create');
-      
     } else {
         emitNet('server-inventory-open', GetEntityCoords(PlayerPedId()), cid, '1', row.name);
     }
