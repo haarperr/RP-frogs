@@ -2,8 +2,8 @@ is_corner_selling = false
 currently_selling = nil
 
 drugs_wanted = {
-    "weedq"
-    "oxy"
+    "weedq",
+    "oxy",
     "methlabproduct"
 }
 
@@ -141,4 +141,10 @@ RegisterNetEvent("drp-selling:status", function()
             TriggerEvent('drp-textui:HideUI')
         end
     end
+end)
+
+RegisterCommand('cornertest', function()
+
+		TriggerEvent('drp-selling:status')
+
 end)
