@@ -1138,9 +1138,9 @@ LoadRoyalVersion = function()
         local isUnderground = false
         if plyCoords.z <= -25 then isUnderground = true end
         if alertType == "drugsale" and not underground then
-            if dst > 50.5 and dst < 75.0 then
+           -- if dst > 50.5 and dst < 75.0 then
                 DrugSale()
-            end
+           -- end
         elseif alertType == "druguse" and not underground and not pd then
             if dst > 12.0 and dst < 18.0 then
                 DrugUse()
