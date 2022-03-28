@@ -92,6 +92,8 @@ local carspawns = {
 ------ NETEVENTS ------
 -----------------------
 
+
+
 RegisterNetEvent('lunchtime')
 AddEventHandler('lunchtime', function(pass)
 	lunchtime = pass
@@ -236,9 +238,9 @@ AddEventHandler('drp-polyzone:enter', function(name)
         OxySpot = true     
         LuckyDrawOxyPlace()
 		if not OxyRun then
-			TriggerEvent('drp-textui:ShowUI', 'show', ("[E] %s"):format("Start Run ($1500)")) 
+			exports['drp-textui']:showInteraction("[E] Start Run $1500")
 		else
-			TriggerEvent('drp-textui:ShowUI', 'show', ("%s"):format("Finish run, wait for the next one!")) 
+			exports['drp-textui']:showInteraction("Must Finsh Current Run!")
 		end
     end
 end)
@@ -246,7 +248,7 @@ end)
 AddEventHandler('drp-polyzone:exit', function(name)
     if name == "oxy_run_start" then
         OxySpot = false  
-		TriggerEvent('drp-textui:HideUI')   
+		exports['drp-textui']:hideInteraction()  
     end
 end)
 
