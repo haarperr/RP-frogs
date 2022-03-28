@@ -32,6 +32,30 @@ local DISCORD_NAME5 = "Chicken Selling Logs"
 
 local cachedData = {}
 
+RegisterNetEvent('chickensell:log')
+AddEventHandler('chickensell:log', function()
+    local src = source
+    local user = exports["drp-base"]:getModule("Player"):GetUser(src)
+    local hexId = user:getVar("hexid")
+    local pName = GetPlayerName(source)
+    local pDiscord = GetPlayerIdentifiers(src)[3]
+    local DISCORD_NAME5 = "Chicken Selling Logs"
+
+ local STEAM_KEY = "D01BB33086A760AE0098638CB73C7224"
+ local DISCORD_IMAGE = "https://i.imgur.com/zviw6oW.png"
+    local LogData = {
+        {
+           ['description'] = string.format("`%s`\n\n`• Server Id: %s`\n\n━━━━━━━━━━━━━━━━━━\n`• Steam: %s`\n\n`• Discord: %s`\n━━━━━━━━━━━━━━━━━━", "is selling chickens!", src, hexId, pDiscord),
+            ['color'] = 2317994,
+            ['author'] = {
+                ['name'] = "Steam Name: "..pName
+            },
+        }
+    }
+
+    PerformHttpRequest(DISCORD_WEBHOOK5, function(err, text, headers) end, 'POST', json.encode({username = DISCORD_NAME5, avatar_url = DISCORD_IMAGE}), { ['Content-Type'] = 'application/json' })
+end)
+
 RegisterServerEvent('chickenpayment:pay')
 AddEventHandler('chickenpayment:pay', function(money)
     local source = source
@@ -39,6 +63,7 @@ AddEventHandler('chickenpayment:pay', function(money)
     local user = exports["drp-base"]:getModule("Player"):GetUser(source)
     if money ~= nil then
         user:addMoney(money)
+        TriggerServerEvent("chickensell:log")
 	end
 end)
 
