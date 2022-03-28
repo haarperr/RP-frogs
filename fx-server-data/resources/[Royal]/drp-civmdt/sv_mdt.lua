@@ -68,18 +68,24 @@ AddEventHandler("mdt-civ:getOffenderDetails", function(offender)
 		end
 		MySQL.Async.fetchAll('SELECT * FROM `mdt_incidents` WHERE `id` = @id', {
 			['@id'] = offender.id
-		}, function(Charges)
-			if Charges[1] then
-				offender.Charges = {}
-				for i = 1, #Charges do
-					local conviction = Charges[i]
-					offender.Charges[conviction.offense] = conviction.count
+		}, function(convictions)
+			if convictions[1] then
+				offender.convictions = {}
+				for i = 1, #convictions do
+					local conviction = convictions[i]
+					offender.convictions[conviction.offense] = conviction.count
 				end
 			end
 
+			MySQL.Async.fetchAll('SELECT * FROM `mdt_warrants` WHERE `charid` = @id', {
+				['@id'] = offender.id
+			}, function(warrants)
+				if warrants[1] then
+					offender.haswarrant = true
+				end
 
 				TriggerClientEvent("mdt-civ:returnOffenderDetails", usource, offender)
-			
+			end)
 		end)
 	end)
 end)
