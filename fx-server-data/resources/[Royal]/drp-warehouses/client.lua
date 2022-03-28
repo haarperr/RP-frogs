@@ -19,8 +19,8 @@ function Draw3DText(x,y,z, text)
     DrawText(_x,_y) 
     local factor = (string.len(text)) / 370
     DrawRect(_x,_y+0.0125, 0.015+ factor, 0.03, 41, 11, 41, 68)
-end
-, , , 
+end 
+
 function buildWarehouse(warehouseId)
 	DoScreenFadeOut(1)
 	Citizen.Wait(1000)
