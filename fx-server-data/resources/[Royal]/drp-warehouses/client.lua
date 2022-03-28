@@ -72,9 +72,9 @@ Citizen.CreateThread(function()
                 end
             end
             
-            local exitDistance = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), warehouses[i]["x"]-9, warehouses[i]["y"]+1, warehouses[i]["z"]-31, true)
+            local exitDistance = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), warehouses[i]["x"]-9, warehouses[i]["y"]+1.4, warehouses[i]["z"]-31, true)
             if exitDistance <= 15 then
-                Draw3DText(warehouses[i]["x"]-9,warehouses[i]["y"]+1,warehouses[i]["z"]-31, "Press [E] to exit")
+                Draw3DText(warehouses[i]["x"]-9,warehouses[i]["y"]+1.4,warehouses[i]["z"]-31, "Press [E] to exit")
                 if IsControlJustPressed(0, 38) and exitDistance <= 1.75 then
                     -- exit the warehouse
                     DoScreenFadeOut(1)
@@ -82,6 +82,16 @@ Citizen.CreateThread(function()
                     Citizen.Wait(1000)
                     SetEntityCoords(PlayerPedId(), warehouses[i]["x"], warehouses[i]["y"], warehouses[i]["z"])
                     DoScreenFadeIn(1)
+                end
+            end
+
+
+            local stashDistance = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), warehouses[i]["x"], warehouses[i]["y"]+2.2, warehouses[i]["z"]-32, true)
+            if stashDistance <= 15 then
+                Draw3DText(warehouses[i]["x"], warehouses[i]["y"]+2.2, warehouses[i]["z"]-32, "Press [H] to stash")
+                if IsControlJustPressed(0, 74) and stashDistance <= 1.75 then
+                    -- stash the items
+			        TriggerEvent("server-inventory-open", "1", "WAREHOUSE ID: "..i)
                 end
             end
         end
