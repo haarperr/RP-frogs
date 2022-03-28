@@ -77,6 +77,8 @@ AddEventHandler("mdt-civ:getOffenderDetails", function(offender)
 				end
 			end
 
+
+				TriggerClientEvent("mdt-civ:returnOffenderDetails", usource, offender)
 			
 		end)
 	end)
