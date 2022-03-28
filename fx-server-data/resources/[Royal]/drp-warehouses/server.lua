@@ -11,9 +11,7 @@ AddEventHandler("houses:confirmwarehouse", function(warehouses)
                     exports.ghmattimysql:execute('INSERT INTO `houses2` (cid, keyname, Name) VALUES (@cid, @keyname, @Name)',{
                         ['@cid'] = characterId,
                         ['@keyname'] = warehouse["keyName"],
-                        ['@Name'] = warehouse["name"]
-                        ['@keyname'] = vehicle,
-                        ['@Name'] = json.encode(personalvehicle),
+                        ['@Name'] = warehouse["name"],
                     })
                 end
             end)
