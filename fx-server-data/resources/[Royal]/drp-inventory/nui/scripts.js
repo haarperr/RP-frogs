@@ -914,8 +914,8 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
         slotLimitTarget = 3;
         displayName = 'Murder Meal';
     } else if (targetinvName.indexOf('keyholder') > -1) {
-        secondaryMaxWeight = 10.0;
-        slotLimitTarget = 5;
+        secondaryMaxWeight = 4.0;
+        slotLimitTarget = 4;
         displayName = 'Key Holder';
     } else if (targetinvName.indexOf('WAREHOUSE') > -1) {
         secondaryMaxWeight = 2000.0;
