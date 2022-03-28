@@ -19,7 +19,6 @@ AddEventHandler("houses:confirmwarehouse", function(warehouses)
 
     if x == true then
         TriggerClientEvent("houses:finishuywarehouse", src, warehouses[i]["keyName"])
-        break
     end
     
     if x == false then
