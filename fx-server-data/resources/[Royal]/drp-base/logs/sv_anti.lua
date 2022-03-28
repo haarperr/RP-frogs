@@ -92,13 +92,15 @@ end)
         "lazer",
         "cargobob",
         "tanker2",
-        "boxville4",
+        --"boxville4", removed postop truck model from blacklist
         "hydra",
         "insurgent",
         "technical",
         "technical2",
         "savage",
         "valkyrie",
+        "firetruk",-- Firetruck
+        "Ambulance",-- EMS
         "blazer5",
         "dune4",
         "ruiner2",
@@ -203,7 +205,6 @@ end)
         "imperator2",
         "impaler3",
         "slamvan6",
-        "boxville5",
         "dune2",
         "dune3",
         "nightshark",
