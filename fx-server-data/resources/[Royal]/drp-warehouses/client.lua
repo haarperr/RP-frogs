@@ -18,8 +18,6 @@ function Draw3DText(x,y,z, text)
     DrawRect(_x,_y+0.0125, 0.015+ factor, 0.03, 41, 11, 41, 68)
 end
 
-
-
 function buildWarehouse(warehouseId)
 	-- DoScreenFadeOut(1)
 	Citizen.Wait(1000)
@@ -28,7 +26,7 @@ function buildWarehouse(warehouseId)
   	
 	SetEntityCoords(PlayerPedId(), generator.x-0.31811000,generator.y+1.79183500,generator.z+2.56171400)
 
-	local building = CreateObject(`traphouse_shell`,generator.x-0.31811000,generator.y+1.79183500,generator.z+2.56171400,false,false,false)
+	local building = CreateObject(`ex_exec_warehouse_placement_interior_1_int_warehouse_s_dlc_milo`,generator.x-0.31811000,generator.y+1.79183500,generator.z+2.56171400,false,false,false)
 	FreezeEntityPosition(building, true)
 	local coordsofbuilding = GetEntityCoords(building, true)
 	FreezeEntityPosition(coordsofbuilding,true)
