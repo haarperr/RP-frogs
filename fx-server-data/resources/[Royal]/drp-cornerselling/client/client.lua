@@ -108,6 +108,10 @@ function sell_items()
             else
                 SetPedAsNoLongerNeeded(recent_ped)
                 TriggerEvent("DoLongHudText", "They are not interested anymore!", 2)
+                if math.random(1,100) >= 50 then
+                    SetPedAsNoLongerNeeded(recent_ped)
+                    TriggerEvent("DoLongHudText", "They are not interested anymore and called the cops!", 2)
+                      -- Need event right here for dispatch alert.
             end
         end
     end
