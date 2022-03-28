@@ -85,7 +85,6 @@ Citizen.CreateThread(function()
                 end
             end
 
-
             local stashDistance = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), warehouses[i]["x"], warehouses[i]["y"]+4, warehouses[i]["z"]-32, true)
             if stashDistance <= 15 then
                 Draw3DText(warehouses[i]["x"], warehouses[i]["y"]+4, warehouses[i]["z"]-32, "Press [H] to stash")
@@ -93,14 +92,13 @@ Citizen.CreateThread(function()
                     -- stash the items
 			        TriggerEvent("server-inventory-open", "1", "WAREHOUSE -"..i)
                 end
-            end
+            end 
 
-            
             local craftingDistance = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), warehouses[i]["x"], warehouses[i]["y"]-4, warehouses[i]["z"]-32, true)
             if craftingDistance <= 15 then
-                Draw3DText(warehouses[i]["x"], warehouses[i]["y"]-4, warehouses[i]["z"]-32, "Press [H] to stash")
-                if IsControlJustPressed(0, 74) and stashDistance <= 1.75 then
-                    -- nothing
+                Draw3DText(warehouses[i]["x"], warehouses[i]["y"]-4, warehouses[i]["z"]-32, "Press [E] to craft")
+                if IsControlJustPressed(0, 38) and stashDistance <= 1.75 then
+                    TriggerEvent("server-inventory-open", "4588", "Craft");
                 end
             end
         end
