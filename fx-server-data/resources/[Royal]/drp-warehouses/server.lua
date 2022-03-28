@@ -1,3 +1,5 @@
+local x = false
+
 RegisterNetEvent("houses:confirmwarehouse")
 AddEventHandler("houses:confirmwarehouse", function(warehouses)
     src = source
@@ -5,10 +7,10 @@ AddEventHandler("houses:confirmwarehouse", function(warehouses)
     local characterId = user:getCurrentCharacter().id
     for i, warehouse in pairs(warehouses) do  
         exports.ghmattimysql:execute("SELECT * FROM `houses2` WHERE keyname = ?", {warehouses[i]["keyName"]}, function(data)
-            if not data[1] then
+            if not data[1] and x == false then
+                x = true
                 insert(i, warehouses)
                 TriggerClientEvent("houses:finishuywarehouse", src, warehouses[i]["keyName"])
-                break
             end
         end)
     end
