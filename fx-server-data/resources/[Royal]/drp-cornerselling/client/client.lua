@@ -118,6 +118,8 @@ function sell_items()
                         TriggerServerEvent('mission:completed', sellableItems[i].price * sellableItems[i].amount)
                         pog = true
                         break
+                    else
+                        TriggerEvent("DoLongHudText", "Not enough product homie!", 2)
                     end
                 end
                 if math.random(1, 100) >= 50 then
