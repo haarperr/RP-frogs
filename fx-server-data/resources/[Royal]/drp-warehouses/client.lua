@@ -131,14 +131,29 @@ AddEventHandler("houses:buyhouse", function()
 	})
 end)
 
-RegisterNetEvent("huses:buywarehouse")
+RegisterNetEvent("houses:buywarehouse")
 AddEventHandler("houses:buywarehouse", function()
     
     if exports["isPed"]:isPed("mycash") >= 200000 then
-        TriggerServerEvent("houses:confirmwarehouse", warehouses)
-        
-        -- TriggerServerEvent('drp-banking:removeMoney', 200000)
+        local finished = exports["drp-taskbar"]:taskBar(10000,"Getting Warehouse Informations",false,false,playerVeh)
+        if (finished == 100) then
+            TriggerServerEvent("houses:confirmwarehouse", warehouses)
+        end
     else
         TriggerEvent('DoLongHudText', "You do not have enough money!", 2)
+    end
+end)
+
+RegisterNetEvent("houses:finishuywarehouse")
+AddEventHandler("houses:finishbuywarehouse", function(buyed, keyname)
+    if exports["isPed"]:isPed("mycash") >= 200000 and buyed == true then
+        local finished = exports["drp-taskbar"]:taskBar(10000,"Signing the Contract",false,false,playerVeh)
+        if (finished == 100) then
+            TriggerServerEvent('drp-banking:removeMoney', 200000)
+            TriggerEvent("player:receiveItem",keyname,4)
+            TriggerEvent("player:receiveItem","keyholder",4)
+        end
+    else
+        TriggerEvent('DoLongHudText', "There are no Warehouses availble right now!", 2)
     end
 end)
