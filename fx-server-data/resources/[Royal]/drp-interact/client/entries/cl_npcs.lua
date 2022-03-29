@@ -319,6 +319,24 @@ Entries[#Entries + 1] = {
 }
 
 Entries[#Entries + 1] = {
+    type = 'flag',
+    group = { 'isHouseGuy' },
+    data = {
+        {
+            id = "houseguy",
+            label = "Look For Job",
+            icon = "circle",
+            event = "drp-houserobbery:getJob",
+            parameters = {}
+        }
+    },
+    options = {
+        distance = { radius = 3.0 }
+    }
+}
+
+
+Entries[#Entries + 1] = {
   type = 'flag',
   group = { 'isNPC' },
   data = {
