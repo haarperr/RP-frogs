@@ -573,7 +573,6 @@ AddEventHandler("drp-houserobbery:common_items", function()
 		TriggerEvent("player:receiveItem", "stolengameboy", 1)
 	elseif roll == 4 then
 		TriggerEvent("player:receiveItem", "stolencasiowatch", 1)
-	end
 	elseif roll == 6 then
 	TriggerEvent("player:receiveItem", "oxy", 3)
 	end
