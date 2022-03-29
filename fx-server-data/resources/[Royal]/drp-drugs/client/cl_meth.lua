@@ -123,7 +123,7 @@ local plyCoords = GetEntityCoords(PlayerPedId())
 local distance = GetDistanceBetweenCoords(plyCoords.x,plyCoords.y,plyCoords.z, 1396.2266845703, 3614.4304199219, 38.942546844482,false)
 
 local cid = exports["isPed"]:isPed("cid")
-if stashDistance <= 30 then
+if stashDistance <= 1.5 then
 	Draw3DText(1396.2266845703, 3614.4304199219, 38.942546844482, "Press [H] to stash")
 	if IsControlJustPressed(0, 74) and stashDistance <= 3.75 then
 		-- stash the items
