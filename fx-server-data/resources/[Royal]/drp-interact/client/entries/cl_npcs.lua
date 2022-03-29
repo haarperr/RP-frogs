@@ -320,10 +320,10 @@ Entries[#Entries + 1] = {
 
 Entries[#Entries + 1] = {
     type = 'flag',
-    group = { 'isNPC' },
+    group = { 'isHouseGuy2' },
     data = {
         {
-            id = "houseguy",
+            id = "houseguy2",
             label = "Look For Job",
             icon = "circle",
             event = "drp-houserobbery:getJob",

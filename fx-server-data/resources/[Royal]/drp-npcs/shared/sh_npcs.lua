@@ -1067,7 +1067,7 @@ Generic.NPCS[#Generic.NPCS + 1] = {
    },
    flags = {
      ['isNPC'] = true,
-     isHouseGuy = true,
+     ['isHouseGuy2'] = true
    },
    scenario = "WORLD_HUMAN_CLIPBOARD"
  }
