@@ -328,6 +328,27 @@ let v = new Vue({
 
 		},
 
+		// Add arrow keys to select currentSpawnSelected
+		keydown(e){
+			if (this.running){
+				if (e.keyCode == 37){
+					this.currentSpawnSelected--
+					if (this.currentSpawnSelected < 0){
+						this.currentSpawnSelected = this.spawns.length-1
+					}
+				}
+				if (e.keyCode == 39){
+					this.currentSpawnSelected++
+					if (this.currentSpawnSelected > this.spawns.length-1){
+						this.currentSpawnSelected = 0
+					}
+				}
+				if (e.keyCode == 13){
+					this.selectSpawn(this.spawns[this.currentSpawnSelected])
+				}
+			}
+		},
+
 		spawnClickInput(spawnInfo,spawnID) {
 
 			//Spawn in if # of spawns == 1
