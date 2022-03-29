@@ -126,9 +126,9 @@ Generic.CasinoLocations = {
 --   vector4(-549.58,-618.83,33.72,178.55),
 -- }
 
--- Generic.WeedShopLocations = {
---   vector4(1175.49, -437.54, 65.9, 262.06),
--- }
+Generic.WeedShopLocations = {
+  vector4(1175.49, -437.54, 65.9, 262.06),
+}
 
 -- Generic.JobVehLocations = {
 --   vector4(-50.2,-1089.03,25.48,154.36),
@@ -304,7 +304,7 @@ Generic.NPCS[#Generic.NPCS + 1] = {
   networked = false,
   distance = 200.0,
   position = {
-    coords = vector3(-524.7509, -711.4124, 33.8249),
+    coords = vector3(-524.7509, -711.4124, 32.8249),
     heading = 112.7492,
     random = false
   },
