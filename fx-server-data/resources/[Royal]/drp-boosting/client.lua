@@ -250,13 +250,6 @@ AddEventHandler("ls:startCarBoost", function(modelName)
   end
   StartedBoost = true
   local vehicle = CreateVehicle(vehHash, x, y, z, h, true, false)
-
-  SetVehicleHasBeenOwnedByPlayer(vehicle, true)
-  SetEntityAsMissionEntity(vehicle, true, true)
-  SetVehicleIsStolen(vehicle, true)
-  SetVehicleIsWanted(vehicle, true)
-  SetVehRadioStation(vehicle, 'OFF')
-
   SetVehicleDoorsLocked(vehicle, 2)
   spawnedVeh = GetClosestVehicle(x, y, z, 3.5, 0, 70)
 
@@ -338,7 +331,7 @@ AddEventHandler("ls:boostLockPick", function()
           StartedBoost = true
         end  
         if vehClass == 'D' then
-          if math.random(1,3) == 1 then
+          if math.random(1,4) == 1 then
             TriggerEvent("drp-dispatch:initBoostAlert", spawnedVeh)
           end
         elseif vehClass == 'C' then
@@ -373,7 +366,7 @@ AddEventHandler("ls:boostLockPick", function()
           -- print(vehClass.. 'Boost started Wait timer :' ..DispatchDelayTimer)
         end
 
-        TriggerEvent('phone:addnotification', 'DarkNet', "Looks like you've found the car, keep an eye on your GPS, I'll ping you a drop location soon. This one has a tracker by the way!")
+        TriggerEvent('phone:addnotification', 'DarkNet', "Looks like you've found the car, keep an eye on your GPS, i'll ping you a drop location soon. This one has a tracker by the way!")
         Wait(120000)
         pedsSpawned = false
         TriggerEvent("ls:boostDropOff") 
@@ -474,28 +467,6 @@ AddEventHandler("ls:spawnPed", function(x, y, z, h, weapon)
 
 end)
 
-
-function setboostped()
-  modelHash = GetHashKey("ig_vincent")
-  RequestModel(modelHash)
-  while not HasModelLoaded(modelHash) do
-      Wait(1)
-  end
-  created_ped = CreatePed(0, modelHash , -1361.62, -755.74, 22.30  -1, true)
-  FreezeEntityPosition(created_ped, true)
-  SetEntityHeading(created_ped, 266.77166748047)
-  SetEntityInvincible(created_ped, true)
-  SetBlockingOfNonTemporaryEvents(created_ped, true)
-  TaskStartScenarioInPlace(created_ped, "WORLD_HUMAN_CLIPBOARD", 0, true)
-
-
-end
-
-Citizen.CreateThread(function()
-  setboostped()
-end)
-
-
 RegisterNetEvent("ls:boostDropOff")
 AddEventHandler("ls:boostDropOff", function()
   local dropRand = math.random(1, #dropPoint)
@@ -564,7 +535,7 @@ AddEventHandler("ls:boostComplete", function()
   DeleteBlip(blipDropOff)
   TriggerServerEvent("ls:updateBoostLevel", vehClass)
   sentEmail = false
-  TriggerEvent('phone:addnotification', 'DarkNet', "Boost completed! Hope to do business again soon.")
+  TriggerEvent('phone:addnotification', 'DarkNet', "Good shit, you successfully completed the Boost, hope to see you again sometime")
   StartedBoost = false
   SpawnedPed = false
 end)
@@ -578,7 +549,6 @@ local tabletObject = nil
 RegisterNetEvent("drp-boosting:openLaptop")
 AddEventHandler("drp-boosting:openLaptop", function()
   local playerPed = PlayerPedId()
-  if exports["drp-inventory"]:hasEnoughOfItem("vpnxj",1,false) then 
   if not isVisible then
       local dict = "amb@world_human_seat_wall_tablet@female@base"
       RequestAnimDict(dict)
@@ -596,9 +566,6 @@ AddEventHandler("drp-boosting:openLaptop", function()
       tabletObject = nil
   end
   SetDisplay(not display)
-else
-  TriggerEvent('DoLongHudText', 'Network Encrypted', 2)
-end
 end)
 
 function SetDisplay(bool)
