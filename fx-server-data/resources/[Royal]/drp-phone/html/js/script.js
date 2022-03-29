@@ -414,10 +414,10 @@ $(document).ready(function () {
             case "tweetnotify":
                 addNoti(item.ptwat, item.phandle, item.ptime);
                 break;
-            case "robnotify":
+            case "emailnotify":
                 addNotiEmail(item.pEMessages, item.pEHandle);
                 break;
-             case "email":
+             case "robnotify":
                     addNotiRob(item.pEMessages, item.pEHandle);
                     break;   
             case "messagenotify":
@@ -1572,7 +1572,7 @@ function addNoti(tweets, myHandle, pTime) {
 }
 
 function addNotiEmail(email, myHandle) {
-    var notiElement = $(`</div><div class="top-notifications-email" style="max-height: 80px; display: flex;  ;"><div class="notification-container-email slideoutnotify slideinnotify" style="display: block; right: 55px;"><div class="app-bar-email"><div class="icon-twitter"><div class="emailicon" title="Email" id="icon-noti" style="background: url('https://gta-assets.nopixel.net/images/phone-icons/jobs.png') 0% 0% / cover no-repeat;height: 18px; width: 18px; bottom: 10px; left: 2px;">
+    var notiElement = $(`</div><div class="top-notifications-email" style="max-height: 80px; display: flex;  ;"><div class="notification-container-email slideoutnotify slideinnotify" style="display: block; right: 55px;"><div class="app-bar-email"><div class="icon-twitter"><div class="emailicon" title="Email" id="icon-noti" style="background: url('https://gta-assets.nopixel.net/images/phone-icons/email.png') 0% 0% / cover no-repeat;height: 18px; width: 18px; bottom: 10px; left: 2px;">
                 
     </div>
     </div><div class="name"><p class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary" style="margin-left: 0.5vw; color: white; word-break: break-word;">${myHandle}</p></div><p class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary" style="word-break: break-word; color: white;" id="notificaçao-time">${("now")}</p></div><div class="content"><div class="text"><p class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary" style="word-break: break-word; margin-top: -16px; color: white; overflow: hidden; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;" id="notificaçaotweet-mensagem">${email}</p>
@@ -1592,7 +1592,7 @@ function addNotiEmail(email, myHandle) {
 }
 
 function addNotiRob(email, myHandle) {
-    var notiElement = $(`</div><div class="top-notifications-email" style="max-height: 80px; display: flex;  ;"><div class="notification-container-email slideoutnotify slideinnotify" style="display: block; right: 55px;"><div class="app-bar-email"><div class="icon-twitter"><div class="emailicon" title="Email" id="icon-noti" style="background: url('https://gta-assets.nopixel.net/images/phone-icons/email.png') 0% 0% / cover no-repeat;height: 18px; width: 18px; bottom: 10px; left: 2px;">
+    var notiElement = $(`</div><div class="top-notifications-email" style="max-height: 80px; display: flex;  ;"><div class="notification-container-email slideoutnotify slideinnotify" style="display: block; right: 55px;"><div class="app-bar-email"><div class="icon-twitter"><div class="emailicon" title="Email" id="icon-noti" style="background: url('https://gta-assets.nopixel.net/images/phone-icons/jobs.png') 0% 0% / cover no-repeat;height: 18px; width: 18px; bottom: 10px; left: 2px;">
                 
     </div>
     </div><div class="name"><p class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary" style="margin-left: 0.5vw; color: white; word-break: break-word;">${myHandle}</p></div><p class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary" style="word-break: break-word; color: white;" id="notificaçao-time">${("now")}</p></div><div class="content"><div class="text"><p class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary" style="word-break: break-word; margin-top: -16px; color: white; overflow: hidden; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;" id="notificaçaotweet-mensagem">${email}</p>
