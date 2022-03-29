@@ -40,18 +40,20 @@ end
 local carList = {
   ["d-class"] = {
     {name = "Declasse Asea", model = "asea"},
-    {name = "Declasse Emperor",  model = "emperor"},
+    {name = "Albany Emperor",  model = "emperor"},
     {name = "Dundreary Regina",  model = "regina"},
     {name = "Chariot Romero Hearse", model = "romero"},
     {name = "Vapid Minivan", model = "minivan"},
     {name = "Bravado Paradise", model = "paradise"},
     {name = "Brute Pony", model = "pony"},
+    {name = "Karin Dilettante", model = "dilettante"},
   },
   ["c-class"] = {
     {name = "Dinka Blista Compact", model = "blista2"},
     {name = "Karin Asterope", model = "asterope"},
     {name = "Vulcar Ingot", model = "ingot"},
     {name = "Albany Primo",model = "primo"},
+    {name = "Declasse Tornado",model = "tornado3"}, 
   },
   ["b-class"] = {
     {name = "Lampadati Komoda", model = "komoda"},

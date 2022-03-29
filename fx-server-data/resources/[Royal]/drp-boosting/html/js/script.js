@@ -64,7 +64,10 @@ $(function () {
       $("#levelright").html("S");
     } else if (level === 5) {
       $("#levelleft").html("S");
-      $("#levelright").html("S");
+      $("#levelright").html("S+");
+    } else if (level === 6) {
+      $("#levelleft").html("S+");
+      $("#levelright").html("?");
     }
   };
 
