@@ -94,7 +94,7 @@ AddEventHandler('drp-houserobbery:getJob', function()
 				EndTextCommandSetBlipName(HouseRobberyLocation)
 				SetBlipRoute(HouseRobberyLocation, true)
 				SetBlipRouteColour(HouseRobberyLocation, 29)
-				TriggerEvent('phone:addnotification', 'Boss', "Ive updated the location of the house on your GPS.")
+				TriggerEvent('phone:robberynotif', 'Boss', "Ive updated the location of the house on your GPS.")
 				firstentry = true
 				entrance()
 			else
