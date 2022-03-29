@@ -7,8 +7,7 @@ author 'Xinerki - https://github.com/Xinerki/'
 url 'https://github.com/Xinerki/kgv-blackjack'
 
 shared_scripts {
-	'coords.lua',
-	'@qb-core/import.lua'
+	'coords.lua'
 }
 
 client_scripts{
