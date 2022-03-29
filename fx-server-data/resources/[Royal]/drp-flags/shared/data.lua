@@ -48,6 +48,7 @@ Flags["PedFlags"] = {
 	  isLaptopSeller = prevPedFlag(),
     isComicStoreCrafter = prevPedFlag(),
     isBarry = prevPedFlag(),
+    isHouseGuy = prevPedFlag(),
 }
 
 

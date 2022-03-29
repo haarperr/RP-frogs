@@ -72,9 +72,9 @@ Citizen.CreateThread(function()
 	end
 end)
 
-RegisterCommand('getjob', function()
-	TriggerEvent('drp-houserobbery:getJob')
-end)
+--RegisterCommand('getjob', function()
+--	TriggerEvent('drp-houserobbery:getJob')
+--end)
 
 RegisterNetEvent('drp-houserobbery:getJob')
 AddEventHandler('drp-houserobbery:getJob', function()
