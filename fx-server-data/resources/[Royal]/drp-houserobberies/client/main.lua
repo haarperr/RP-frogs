@@ -84,7 +84,7 @@ AddEventHandler('drp-houserobbery:getJob', function()
 				cleanup()
 				working = true
 				enterCoords = Houses()
-				TriggerEvent('phone:addnotification', 'Boss', "Ill have a job for you shortly.")
+				TriggerEvent('phone:robberynotif', 'Boss', "Ill have a job for you shortly.")
 				Citizen.Wait(math.random(1,2) * 60 * 1000)
 				PlaySoundFrontend(-1, "Menu_Accept", "Phone_SoundSet_Default", true)
 				HouseRobberyLocation = AddBlipForCoord(enterCoords.x, enterCoords.y, enterCoords.z)

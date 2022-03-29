@@ -2404,6 +2404,16 @@ AddEventHandler('phone:addnotification', function(name, message)
     curNotifications[#curNotifications+1] = { ["name"] = name, ["message"] = message, ['time'] = time }
 end)
 
+RegisterNetEvent('phone:robberynotif')
+AddEventHandler('phone:robberynotif', function(name, message)
+    SendNUIMessage({openSection = "robnotify", pEHandle = 'Email Received.', pEMessages = message})
+    if exports['drp-phone']:pOpen() == false then 
+      SendNUIMessage({openSection = "robnotify", pEHandle = 'Email Received.', pEMessages = message})
+      SendNUIMessage({openSection = "phonemedio", timeout = "5200", pOpen = exports['drp-phone']:pOpen()}) 
+    end
+    curNotifications[#curNotifications+1] = { ["name"] = name, ["message"] = message, ['time'] = time }
+end)
+
 RegisterNetEvent('YellowPageArray')
 AddEventHandler('YellowPageArray', function(pass)
     local notdecoded = json.encode(pass)
