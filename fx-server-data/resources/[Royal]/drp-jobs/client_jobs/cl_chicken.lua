@@ -18,9 +18,9 @@ local packingX2 = -104.20
 local packingY2 = 6206.45
 local packingZ2 = 31.02
 
-local sellX = -591.5437
-local sellY = -892.665
-local sellZ = 25.94248
+local sellX = -524.7509
+local sellY = -711.4124
+local sellZ =  33.8249
 local chickencd = false
 local chickencounter = 0
 local chicken1
