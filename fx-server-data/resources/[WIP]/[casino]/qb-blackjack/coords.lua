@@ -24,11 +24,11 @@ ChackCardPropAnim = true
 
 tables = { -- Spawns Ped Only -- Setup Currently For This https://forum.cfx.re/t/cayo-perico-casino-dlc-ipl-loader/2099391
 	{
-		coords = vector4(996.17, 51.69, 68.45, 318.91), --Table 1
+		coords = vector4(1036.1055908203, 54.243225097656, 69.060165405273, 16.963186264038), --Table 1
 		highStakes = false
 	},
 	{
-		coords = vector4(1000.66, 50.88, 68.45, 6.73), --Table 2
+		coords = vector4(1036.5822753906, 51.683109283447, 69.060165405273, 185.04672241211), --Table 2
 		highStakes = false
 	},
 	{
@@ -40,11 +40,11 @@ tables = { -- Spawns Ped Only -- Setup Currently For This https://forum.cfx.re/t
 		highStakes = false
 	},
 	{
-		coords = vector4(998.44, 60.99, 68.45, 191.77), --Table 5
+		coords = vector4(1043.5748291016, 55.894065856934, 69.060165405273, 6.383044719696), --Table 5
 		highStakes = false
 	},
 	{
-		coords = vector4(994.89, 58.29, 68.45, 237.13), --Table 6
+		coords = vector4(1044.1754150391, 53.498111724854, 69.060165405273, 188.07557678223), --Table 6
 		highStakes = false
 	},
 	{
