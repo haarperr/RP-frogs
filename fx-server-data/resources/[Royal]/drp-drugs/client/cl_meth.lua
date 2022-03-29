@@ -103,7 +103,7 @@ end)
 -- Meth Lab Custom -- -- 1396.2266845703, 3614.4304199219, 38.942546844482 Heading: 293.90432739258
 
 local stashDistance = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), 1396.2266845703, 3614.4304199219, 38.942546844482, true)
-if stashDistance <= 15 and cid == 1 then
+if stashDistance <= 15 then
 	Draw3DText(1396.2266845703, 3614.4304199219, 38.942546844482, "Press [H] to stash")
 	if IsControlJustPressed(0, 74) and stashDistance <= 1.75 then
 		-- stash the items
