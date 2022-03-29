@@ -925,6 +925,10 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
         secondaryMaxWeight = 2000.0;
         slotLimitTarget = 250;
         displayName = 'Stash';
+    } else if (targetinvName.indexOf('LabStash') > -1) {
+        secondaryMaxWeight = 2000.0;
+        slotLimitTarget = 500;
+        displayName = 'Stash';
     } else if (targetinvName.indexOf('Trunk') > -1) {
         secondaryMaxWeight = 650.0;
         slotLimitTarget = 65;
