@@ -219,21 +219,7 @@ dealerValue = {}
 dealerHandObjs = {}
 handObjs = {}
 
-function CreatePeds()
-	if not HasAnimDictLoaded("anim_casino_b@amb@casino@games@blackjack@dealer") then
-		RequestAnimDict("anim_casino_b@amb@casino@games@blackjack@dealer")
-		repeat Wait(0) until HasAnimDictLoaded("anim_casino_b@amb@casino@games@blackjack@dealer")
-	end
 
-	if not HasAnimDictLoaded("anim_casino_b@amb@casino@games@shared@dealer@") then
-		RequestAnimDict("anim_casino_b@amb@casino@games@shared@dealer@")
-		repeat Wait(0) until HasAnimDictLoaded("anim_casino_b@amb@casino@games@shared@dealer@")
-	end
-
-	if not HasAnimDictLoaded("anim_casino_b@amb@casino@games@blackjack@player") then
-		RequestAnimDict("anim_casino_b@amb@casino@games@blackjack@player")
-		repeat Wait(0) until HasAnimDictLoaded("anim_casino_b@amb@casino@games@blackjack@player")
-	end
 	
 	for i,v in pairs(customTables) do
 
