@@ -114,10 +114,7 @@ AddEventHandler("ls:updateBoostLevel", function(boostClass)
         level = level + 1
         xp = 0
       end
-      exports.ghmattimysql:execute("UPDATE boost_levels SET xp = @xp WHERE id = @id", {
-        ['xp'] = xp,
-        ['id'] = cid
-      })
+      
       exports.ghmattimysql:execute("UPDATE boost_levels SET level = @level WHERE id = @id", {
         ['level'] = level,
         ['id'] = cid
