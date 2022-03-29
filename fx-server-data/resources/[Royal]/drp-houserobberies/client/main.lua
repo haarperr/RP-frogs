@@ -94,7 +94,7 @@ AddEventHandler('drp-houserobbery:getJob', function()
 				EndTextCommandSetBlipName(HouseRobberyLocation)
 				SetBlipRoute(HouseRobberyLocation, true)
 				SetBlipRouteColour(HouseRobberyLocation, 29)
-				TriggerEvent('phone:addnotification', 'Boss', "Ive updated the location of the house on your GPS.")
+				TriggerEvent('phone:robberynotif', 'Boss', "Ive updated the location of the house on your GPS.")
 				firstentry = true
 				entrance()
 			else
@@ -564,7 +564,7 @@ end
 
 RegisterNetEvent("drp-houserobbery:common_items")
 AddEventHandler("drp-houserobbery:common_items", function()
-	local roll = math.random(6)
+	local roll = math.random(7)
 	if roll == 1 then
 		TriggerEvent("player:receiveItem", "stolennokia", 1)
 	elseif roll == 2 then
@@ -575,5 +575,7 @@ AddEventHandler("drp-houserobbery:common_items", function()
 		TriggerEvent("player:receiveItem", "stolencasiowatch", 1)
 	elseif roll == 6 then
 	TriggerEvent("player:receiveItem", "oxy", 3)
+	elseif roll == 7 then
+	TriggerEvent("player:receiveItem", "safecrackingkit", 1)
 	end
 end)

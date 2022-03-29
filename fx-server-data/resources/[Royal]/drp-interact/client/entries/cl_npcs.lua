@@ -323,7 +323,7 @@ Entries[#Entries + 1] = {
     group = { 'isNPC' },
     data = {
         {
-            id = "houseguy",
+            id = "houseguy2",
             label = "Look For Job",
             icon = "circle",
             event = "drp-houserobbery:getJob",

@@ -2406,9 +2406,9 @@ end)
 
 RegisterNetEvent('phone:robberynotif')
 AddEventHandler('phone:robberynotif', function(name, message)
-    SendNUIMessage({openSection = "robnotify", pEHandle = 'Email Received.', pEMessages = message})
+    SendNUIMessage({openSection = "robnotify", pEHandle = 'From The Boss', pEMessages = message})
     if exports['drp-phone']:pOpen() == false then 
-      SendNUIMessage({openSection = "robnotify", pEHandle = 'Email Received.', pEMessages = message})
+      SendNUIMessage({openSection = "robnotify", pEHandle = 'From The Boss', pEMessages = message})
       SendNUIMessage({openSection = "phonemedio", timeout = "5200", pOpen = exports['drp-phone']:pOpen()}) 
     end
     curNotifications[#curNotifications+1] = { ["name"] = name, ["message"] = message, ['time'] = time }
