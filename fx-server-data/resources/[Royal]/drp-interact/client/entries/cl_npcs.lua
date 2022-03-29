@@ -331,7 +331,7 @@ Entries[#Entries + 1] = {
         }
     },
     options = {
-        distance = { radius = 3.0 }
+        distance = { radius = 3.0 },
         npcIds = {"join_vendor"}
     }
 }
