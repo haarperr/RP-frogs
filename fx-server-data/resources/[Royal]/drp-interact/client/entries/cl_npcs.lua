@@ -320,7 +320,7 @@ Entries[#Entries + 1] = {
 
 Entries[#Entries + 1] = {
     type = 'flag',
-    group = { 'isHouseGuy' },
+    group = { 'isNPC' },
     data = {
         {
             id = "houseguy",
