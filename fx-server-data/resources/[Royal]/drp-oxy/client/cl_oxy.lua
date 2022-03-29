@@ -28,22 +28,22 @@ local inkedmoneybagprice = math.random(20000, 30000)
 local inkedmoneybagamount = 1
 
 local OxyDropOffs = {
-	[1] =  { ['x'] = 483.17,['y'] = -1827.35,['z'] = 27.86,['h'] = 135.87, ['info'] = ' East Side 1' },
-	[2] =  { ['x'] = 475.87,['y'] = -1798.45,['z'] = 28.49,['h'] = 229.85, ['info'] = ' East Side 2' },
-	[3] =  { ['x'] = 503.54,['y'] = -1765.06,['z'] = 28.51,['h'] = 67.61, ['info'] = ' East Side 3' },
-	[4] =  { ['x'] = 512.0,['y'] = -1842.13,['z'] = 27.9,['h'] = 138.1, ['info'] = ' East Side 4' },
-	[5] =  { ['x'] = 466.89,['y'] = -1852.81,['z'] = 27.72,['h'] = 310.97, ['info'] = ' East Side 5' },
-	[6] =  { ['x'] = 431.33,['y'] = -1882.85,['z'] = 26.85,['h'] = 39.7, ['info'] = ' East Side 6' },
-	[7] =  { ['x'] = 410.64,['y'] = -1908.57,['z'] = 25.46,['h'] = 80.03, ['info'] = ' East Side 7' },
-	[8] =  { ['x'] = 192.93,['y'] = -2027.95,['z'] = 18.29,['h'] = 251.25, ['info'] = ' East Side 8' },
-	[9] =  { ['x'] = 184.05,['y'] = -2004.77,['z'] = 18.31,['h'] = 49.81, ['info'] = ' East Side 9' },
-	[10] =  { ['x'] = 212.4,['y'] = -1971.66,['z'] = 20.31,['h'] = 63.83, ['info'] = ' East Side 10' },
-	[11] =  { ['x'] = 266.85,['y'] = -1964.41,['z'] = 23.0,['h'] = 49.59, ['info'] = ' East Side 11' },
-	[12] =  { ['x'] = 313.05,['y'] = -1918.57,['z'] = 25.65,['h'] = 315.88, ['info'] = ' East Side 12' },
-	[13] =  { ['x'] = 282.63,['y'] = -1948.96,['z'] = 24.39,['h'] = 40.21, ['info'] = ' East Side 13' },
-	[14] =  { ['x'] = 250.44,['y'] = -1995.9,['z'] = 20.32,['h'] = 324.5, ['info'] = ' East Side 14' },
-	[15] =  { ['x'] = 270.54,['y'] = -1706.13,['z'] = 29.31,['h'] = 46.82, ['info'] = ' Central 1' },
-	[16] =  { ['x'] = 167.78,['y'] = -1635.0,['z'] = 29.3,['h'] = 22.04, ['info'] = ' Central 2' },
+	[1] =  { ['x'] = 74.5,['y'] = -762.17,['z'] = 31.68,['h'] = 160.98, ['info'] = ' 1' },
+	[2] =  { ['x'] = 100.58,['y'] = -644.11,['z'] = 44.23,['h'] = 69.11, ['info'] = ' 2' },
+	[3] =  { ['x'] = 175.45,['y'] = -445.95,['z'] = 41.1,['h'] = 92.72, ['info'] = ' 3' },
+	[4] =  { ['x'] = 130.3,['y'] = -246.26,['z'] = 51.45,['h'] = 219.63, ['info'] = ' 4' },
+	[5] =  { ['x'] = 198.1,['y'] = -162.11,['z'] = 56.35,['h'] = 340.09, ['info'] = ' 5' },
+	[6] =  { ['x'] = 341.0,['y'] = -184.71,['z'] = 58.07,['h'] = 159.33, ['info'] = ' 6' },
+	[7] =  { ['x'] = -26.96,['y'] = -368.45,['z'] = 39.69,['h'] = 251.12, ['info'] = ' 7' },
+	[8] =  { ['x'] = -155.88,['y'] = -751.76,['z'] = 33.76,['h'] = 251.82, ['info'] = ' 8' },
+	[9] =  { ['x'] = -305.02,['y'] = -226.17,['z'] = 36.29,['h'] = 306.04, ['info'] = ' 9' },
+	[10] =  { ['x'] = -347.19,['y'] = -791.04,['z'] = 33.97,['h'] = 3.06, ['info'] = ' 10' },
+	[11] =  { ['x'] = -703.75,['y'] = -932.93,['z'] = 19.22,['h'] = 87.86, ['info'] = ' 11' },
+	[12] =  { ['x'] = -659.35,['y'] = -256.83,['z'] = 36.23,['h'] = 118.92, ['info'] = ' 12' },
+	[13] =  { ['x'] = -934.18,['y'] = -124.28,['z'] = 37.77,['h'] = 205.79, ['info'] = ' 13' },
+	[14] =  { ['x'] = -1214.3,['y'] = -317.57,['z'] = 37.75,['h'] = 18.39, ['info'] = ' 14' },
+	[15] =  { ['x'] = -822.83,['y'] = -636.97,['z'] = 27.9,['h'] = 160.23, ['info'] = ' 15' },
+	[16] =  { ['x'] = 308.04,['y'] = -1386.09,['z'] = 31.79,['h'] = 47.23, ['info'] = ' 16' }, -- what the fuck lmao
 	[17] =  { ['x'] = 175.98,['y'] = -1542.48,['z'] = 29.27,['h'] = 316.21, ['info'] = ' Central 3' },
 	[18] =  { ['x'] = -99.69,['y'] = -1577.74,['z'] = 31.73,['h'] = 231.66, ['info'] = ' Central 4' },
 	[19] =  { ['x'] = -171.68,['y'] = -1659.11,['z'] = 33.47,['h'] = 85.41, ['info'] = ' Central 5' },
@@ -68,8 +68,24 @@ local OxyDropOffs = {
 	[38] =  { ['x'] = -548.36,['y'] = -854.53,['z'] = 28.82,['h'] = 352.84, ['info'] = ' West 10' },
 	[39] =  { ['x'] = -518.18,['y'] = -804.65,['z'] = 30.8,['h'] = 267.32, ['info'] = ' West 11' },
 	[40] =  { ['x'] = -509.05,['y'] = -737.77,['z'] = 32.6,['h'] = 174.97, ['info'] = ' West 12' },
-	[41] =  { ['x'] = -561.21,['y'] = -709.27,['z'] = 32.98,['h'] = 269.87, ['info'] = ' West 13' },
+	[41] =  { ['x'] = -567.5,['y'] = -717.77,['z'] = 33.43,['h'] = 268.02, ['info'] = ' West 13' },
 	[42] =  { ['x'] = -654.89,['y'] = -732.13,['z'] = 27.56,['h'] = 309.15, ['info'] = ' West 14' },
+	[43] =  { ['x'] = 483.17,['y'] = -1827.35,['z'] = 27.86,['h'] = 135.87, ['info'] = ' East Side 1' },
+	[44] =  { ['x'] = 475.87,['y'] = -1798.45,['z'] = 28.49,['h'] = 229.85, ['info'] = ' East Side 2' },
+	[45] =  { ['x'] = 503.54,['y'] = -1765.06,['z'] = 28.51,['h'] = 67.61, ['info'] = ' East Side 3' },
+	[46] =  { ['x'] = 512.0,['y'] = -1842.13,['z'] = 27.9,['h'] = 138.1, ['info'] = ' East Side 4' },
+	[47] =  { ['x'] = 466.89,['y'] = -1852.81,['z'] = 27.72,['h'] = 310.97, ['info'] = ' East Side 5' },
+	[48] =  { ['x'] = 431.33,['y'] = -1882.85,['z'] = 26.85,['h'] = 39.7, ['info'] = ' East Side 6' },
+	[49] =  { ['x'] = 410.64,['y'] = -1908.57,['z'] = 25.46,['h'] = 80.03, ['info'] = ' East Side 7' },
+	[50] =  { ['x'] = 192.93,['y'] = -2027.95,['z'] = 18.29,['h'] = 251.25, ['info'] = ' East Side 8' },
+	[50] =  { ['x'] = 184.05,['y'] = -2004.77,['z'] = 18.31,['h'] = 49.81, ['info'] = ' East Side 9' },
+	[51] =  { ['x'] = 212.4,['y'] = -1971.66,['z'] = 20.31,['h'] = 63.83, ['info'] = ' East Side 10' },
+	[52] =  { ['x'] = 266.85,['y'] = -1964.41,['z'] = 23.0,['h'] = 49.59, ['info'] = ' East Side 11' },
+	[53] =  { ['x'] = 313.05,['y'] = -1918.57,['z'] = 25.65,['h'] = 315.88, ['info'] = ' East Side 12' },
+	[54] =  { ['x'] = 282.63,['y'] = -1948.96,['z'] = 24.39,['h'] = 40.21, ['info'] = ' East Side 13' },
+	[55] =  { ['x'] = 250.44,['y'] = -1995.9,['z'] = 20.32,['h'] = 324.5, ['info'] = ' East Side 14' },
+	[56] =  { ['x'] = 270.54,['y'] = -1706.13,['z'] = 29.31,['h'] = 46.82, ['info'] = ' Central 1' },
+	[57] =  { ['x'] = 167.78,['y'] = -1635.0,['z'] = 29.3,['h'] = 22.04, ['info'] = ' Central 2' },
 }
 
 
@@ -101,7 +117,6 @@ end)
 
 RegisterNetEvent("oxydelivery:client")
 AddEventHandler("oxydelivery:client", function()
-
 	if tasking then
 		return
 	end
@@ -143,23 +158,24 @@ AddEventHandler("oxydelivery:client", function()
 			local crds = GetEntityCoords(deliveryPed)
 			DrawText3Ds(crds["x"],crds["y"],crds["z"], "[~b~E~w~]")  
 			if IsControlJustReleased(0,38) then
-				TaskTurnPedToFaceEntity(deliveryPed, PlayerPedId(), 1.0)
-				Citizen.Wait(1500)
-				PlayAmbientSpeech1(deliveryPed, "Generic_Hi", "Speech_Params_Force")
-				PedGiveAnim()
-				local finished = exports["drp-taskbar"]:taskBar(4000,"Handing Over Package")
-				if finished == 100 then
-					DoDropOff()
-					tasking = false
+				if not IsPedInVehicle(PlayerPedId(), oxyVehicle, false) then
+					TaskTurnPedToFaceEntity(deliveryPed, PlayerPedId(), 1.0)
+					Citizen.Wait(1500)
+					PlayAmbientSpeech1(deliveryPed, "Generic_Hi", "Speech_Params_Force")
+					PedGiveAnim()
+					local finished = exports["drp-taskbar"]:taskBar(22500,"Handing Over Package")
+					if finished == 100 then
+						DoDropOff()
+						tasking = false
+					end
+				else
+					TriggerEvent("DoLongHudText","You cannot sell out of your Car Bozo")
 				end
 			end
 		end
-end
-	
 	DeleteCreatedPed()
 	DeleteBlipOxy()
-
-end)
+	end)
 
 
 function PedGiveAnim()
@@ -357,8 +373,7 @@ function CreateOxyPed()
         Citizen.Wait(100)
     end
 
-
-	deliveryPed = CreatePed(pedType, hashKey, OxyDropOffs[rnd]["x"],OxyDropOffs[rnd]["y"],OxyDropOffs[rnd]["z"], OxyDropOffs[rnd]["h"], 0, 0, isNetwork)
+	deliveryPed = CreatePed(pedType, hashKey, OxyDropOffs[rnd]["x"],OxyDropOffs[rnd]["y"],OxyDropOffs[rnd]["z"], OxyDropOffs[rnd]["h"], 0, 0, True, True)
 	
 	DecorSetBool(deliveryPed, 'ScriptedPed', true)
     ClearPedTasks(deliveryPed)
@@ -452,48 +467,64 @@ function DoDropOff(requestMoney)
 			TriggerEvent("civilian:alertPolice", 15.0, "drugsale", 0)  -- 1/3 chance to ping PD
 		end
 
-			if math.random(20) == 1 then
-				TriggerEvent( "player:receiveItem", "heistusb3", 1 )
+		if math.random(20) == 1 then
+			TriggerEvent( "player:receiveItem", "heistusb3", 1 )
+		end
+		
+		if math.random(10) == 1 then
+			TriggerEvent( "player:receiveItem", "lockpick", 1 )
+		end
+
+		if OxyRun then
+			local sellableItems = {
+				[1] = {name = 'rollcash', amount = math.random(3,15), price=rollcashprice},
+				[2] = {name = 'inkedmoneybag', amount = 1, price=inkedmoneybagprice},
+				[3] = {name = 'markedbills', amount = math.random(3,10), price=markedbillsprice},
+				[4] = {name = 'band', amount = math.random(3,10), price=bandprice},
+			}
+
+			local cashPayment = math.random(50,60)
+
+			local pog = false
+
+
+			-- randomize the sellable items
+			for i = 1, #sellableItems do
+				local randomIndex = math.random(#sellableItems)
+				sellableItems[i] = sellableItems[randomIndex]
+				
+				if exports["drp-inventory"]:hasEnoughOfItem(sellableItems[i].name,sellableItems[i].amount,false) then
+					TriggerEvent("inventory:removeItem",sellableItems[i].name,sellableItems[i].amount)
+					TriggerServerEvent('mission:completed', sellableItems[i].price * sellableItems[i].amount)
+					pog = true
+					break
+				end
+			end
+
+			if pog == false then
+				TriggerEvent( "player:receiveItem", "oxy", math.random(1,5) )
+			end
+				
+			if math.random(2) == 1 then
+				TriggerEvent( "player:receiveItem", "oxy", math.random(1,3))
+			end
+
+			if math.random(100) >= 7 then
+				if math.random(1,2) == 1 then
+					cashPayment = cashPayment + math.random(250,1000)
+				else
+					TriggerEvent( "player:receiveItem", "oxy", math.random(3, 4))
+				end
+			end
+
+			
+			if math.random(100) == 69 then
+				cashPayment = cashPayment + math.random(1000,1500)
 			end
 			
-			if math.random(10) == 1 then
-				TriggerEvent( "player:receiveItem", "lockpick", 1 )
-			end
-
-			if OxyRun then
-				local cashPayment = math.random(50,60)
-				if exports["drp-inventory"]:hasEnoughOfItem("rollcash", rollcount) then     
-					TriggerEvent("inventory:removeItem","rollcash", rollcount)   
-					cashPayment = cashPayment + rollcashprice           
-					TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
-					TriggerServerEvent('mission:completed', cashPayment)
-				elseif exports["drp-inventory"]:hasEnoughOfItem("band",bandcount) then     
-					TriggerEvent("inventory:removeItem","band", bandcount)   
-					cashPayment = cashPayment + bandprice              
-					TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
-					TriggerServerEvent('mission:completed', cashPayment)
-				elseif exports["drp-inventory"]:hasEnoughOfItem("markedbills",cashstackamount) then     
-					TriggerEvent("inventory:removeItem","markedbills", cashstackamount)   
-					cashPayment = cashPayment + inkedbillsprice           
-					TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
-					TriggerServerEvent('mission:completed', cashPayment)
-				elseif exports["drp-inventory"]:hasEnoughOfItem("cashroll", cashrollcount) then     
-					TriggerEvent("inventory:removeItem","cashroll", cashrollcount)   
-					cashPayment = cashPayment + cashrollprice           
-					TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
-					TriggerServerEvent('mission:completed', cashPayment)
-				elseif exports["drp-inventory"]:hasEnoughOfItem("inkedmoneybag", inkedmoneybagamount) then     
-					TriggerEvent("inventory:removeItem","inkedmoneybag", inkedmoneybagamount)   
-					cashPayment = cashPayment + inkedmoneybagprice           
-					TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
-					TriggerServerEvent('mission:completed', cashPayment)
-				else
-					TriggerEvent("DoLongHudText","Thanks, no extra sauce though?!")
-				end
-
-				if math.random(100) > 45 then
-					TriggerEvent( "player:receiveItem", "oxy", math.random(1,4))
-				end
+			if math.random(1000) == 69 then
+				cashPayment = cashPayment + math.random(10000,15000)
+			end 
 		end
 	end
 
@@ -535,7 +566,6 @@ function DoDropOff(requestMoney)
 		--TriggerServerEvent("police:multipledenominators",true)
 		TriggerEvent("denoms",true)
 		TriggerEvent("drp-hud:updateStress",true,5)
-
 	else
 		TriggerEvent("DoLongHudText","The drop off failed.",2)
 	end
