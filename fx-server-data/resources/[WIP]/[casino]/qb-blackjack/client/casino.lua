@@ -48,21 +48,22 @@ Citizen.CreateThread(function()
             wait = 2000
         end
         
+        
         if inZone and not alreadyEnteredZone then
             alreadyEnteredZone = true
-            exports['drp-textui']:showInteraction(text)
+            TriggerEvent('drawtextui:ShowUI', 'show', text)
         end
 
         if not inZone and alreadyEnteredZone then
             alreadyEnteredZone = false
-            exports['drp-textui']:hideInteraction()
+            TriggerEvent('drawtextui:HideUI')
         end
         Citizen.Wait(wait)
     end
 end)
 
 RegisterNetEvent('doj:casinoChipMenu', function()
-    exports['drp-textui']:showInteraction("Bennys")
+    TriggerEvent('drawtextui:HideUI')
     TriggerEvent('drp-context:sendMenu', {
         {
             id = 1,
