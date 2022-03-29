@@ -2279,18 +2279,6 @@ Citizen.CreateThread(function()
 
 
     
-    -- Oxy Guy
-    
-    exports["drp-interact"]:AddPeekEntryByPolyTarget("oxyguy", {{
-        event = "oxy:initialize",
-        id = "oxyguy",
-        icon = "circle",
-        label = "Get a Oxy Job (1.5k)",
-        parameters = {},
-    }}, {
-        distance = { radius = 7 },
-    });
-    
     -- Chicken Guy
     
     exports["drp-interact"]:AddPeekEntryByPolyTarget("chickenguy", {{
