@@ -779,7 +779,7 @@ Citizen.CreateThread(function()
     
     -- Oxy Guy
     exports["drp-polytarget"]:AddBoxZone("oxyguy", vector3(194.0911, -1843.4448, 27.2103), 1, 1.4, {
-        heading=138.2796,
+        heading=318.8792,
     })
 
     -- Chicken Stash
