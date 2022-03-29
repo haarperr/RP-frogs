@@ -1050,7 +1050,7 @@ Generic.NPCS[#Generic.NPCS + 1] = {
 
  Generic.NPCS[#Generic.NPCS + 1] = {
    id = "join_vendor",
-   name = "join vendor",
+   name = "join_vendor",
    pedType = 2,
    model = "a_m_m_og_boss_01",
    networked = false,
