@@ -1012,7 +1012,7 @@ AddEventHandler("drp-fleeca:startFleecaHeist", function()
     TriggerServerEvent('drp-fleeca:getTime2SV')
     TriggerServerEvent('drp-fleeca:getDoorAccessSV')
     Citizen.Wait(1000)
-	if exports["drp-duty"]:LawAmount() >= 1 then
+	if exports["drp-duty"]:LawAmount() > 0 then
         if not fleecaStateAlready == true then
             if fleecaTimesHit2 > fleecaTimesHit then
                 if fleecaBanksTimes >= 1 then
@@ -1029,7 +1029,8 @@ AddEventHandler("drp-fleeca:startFleecaHeist", function()
                                 TriggerEvent("inventory:removeItem","heistlaptop3", 1)
                             end,
                             function() -- failure
-                                TriggerEvent('drp-fleeca:removePlease')  local breaklaptop = math.random(1,3)
+                                TriggerEvent('drp-fleeca:removePlease') 
+                                 local breaklaptop = math.random(1,3)
                                 if breaklaptop == 1 then
                                 TriggerEvent("inventory:removeItem","heistlaptop3", 1) -- delete laptop on use 33% chance
                                 TriggerEvent('DoLongHudText', 'You broke the laptop', 2)
