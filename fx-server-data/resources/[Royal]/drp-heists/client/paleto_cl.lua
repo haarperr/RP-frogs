@@ -621,7 +621,7 @@ AddEventHandler("drp-paleto:startPaletoHeist", function()
     TriggerServerEvent('drp-paleto:getTime2SV')
     TriggerServerEvent('drp-paleto:getDoorAccessSV')
     Citizen.Wait(1000)
-    if exports["drp-duty"]:LawAmount() >= 1 then -- countpolice doesnt work use this instead
+    if exports["drp-duty"]:LawAmount() > 0 then -- countpolice doesnt work use this instead
         
         if not paletoStateAlready == true then
             if paletoTimesHit2 > paletoTimesHit then
@@ -634,10 +634,11 @@ AddEventHandler("drp-paleto:startPaletoHeist", function()
                         exports["hacking2"]:hacking2(
                             function() -- success
                                 TriggerEvent('drp-paleto:addPlease')
-                                TriggerEvent("inventory:removeItem","heistlaptop2", 1) -- delete laptop 
+                                TriggerEvent("inventory:removeItem","heistlaptop2", 1)
                             end,
                             function() -- failure
                                 TriggerEvent('drp-paleto:removePlease')
+                                local breaklaptop = math.random(1,3)
                                 if breaklaptop == 1 then
                                     TriggerEvent("inventory:removeItem","heistlaptop2", 1) -- delete laptop on use 33% chance
                                     TriggerEvent('DoLongHudText', 'You broke the laptop', 2)

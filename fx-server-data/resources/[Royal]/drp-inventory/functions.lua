@@ -1023,6 +1023,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
 
         local myJob = exports["isPed"]:isPed("myJob")
         if myJob ~= "news" then
+            TriggerEvent("dummie-check:boosting")
             TriggerEvent("inv:advlockPick")
             TriggerEvent("inv:advancedLockpick")
             
@@ -3891,6 +3892,7 @@ end)
 RegisterNetEvent('inv:advlockPick')
 AddEventHandler('inv:advlockPick', function(isForced,inventoryName,slot)
     TriggerEvent("robbery:scanLock",true)
+    
     if lockpicking then return end
 
     lockpicking = true

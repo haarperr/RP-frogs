@@ -10621,8 +10621,8 @@ itemList['illegalhook'] = {
 };
 
 itemList['fishingrod'] = {
-  fullyDegrades: false,
-  decayrate: 0.0,
+  fullyDegrades: true,
+  decayrate: 1.0,
   displayname: 'Fishing Rod',
   price: 100,
   weight: 10,
