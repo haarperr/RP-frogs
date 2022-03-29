@@ -87,7 +87,7 @@ AddEventHandler("ls:updateBoostLevel", function(boostClass)
   pSrc = source
   local user = exports["drp-base"]:getModule("Player"):GetUser(pSrc)
 	local cid = user:getCurrentCharacter().id
-  exports.ghmattimysql:execute('SELECT * FROM boost_levels WHERE id = ?', {cid}, function(result))
+  exports.ghmattimysql:execute('SELECT * FROM boost_levels WHERE id = ?', {cid}, function(result)
     if result[1] ~= nil then
       local xp = result[1].xp
       local level = result[1].level
@@ -122,7 +122,7 @@ AddEventHandler("ls:updateBoostLevel", function(boostClass)
         ['level'] = level,
         ['id'] = cid
       })
-    end 
+    end)
  
 end)
 
