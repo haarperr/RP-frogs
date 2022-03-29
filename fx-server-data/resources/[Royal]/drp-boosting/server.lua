@@ -124,7 +124,7 @@ AddEventHandler("ls:updateBoostLevel", function(boostClass)
       })
       
     end
-  end)
+  
 end)
 
 -- PD Tracker Stuff
