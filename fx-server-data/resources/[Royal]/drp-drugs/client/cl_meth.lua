@@ -100,18 +100,6 @@ end
 end)
 
 
--- Meth Lab Custom -- -- 1396.2266845703, 3614.4304199219, 38.942546844482 Heading: 293.90432739258
-
-local stashDistance = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), 1396.2266845703, 3614.4304199219, 38.942546844482, true)
-local cid = exports["isPed"]:isPed("cid")
-if stashDistance <= 15 and cid == 1 then
-	Draw3DText(1396.2266845703, 3614.4304199219, 38.942546844482, "Press [H] to stash")
-	if IsControlJustPressed(0, 74) and stashDistance <= 1.75 then
-		-- stash the items
-		TriggerEvent("server-inventory-open", "1", "LabStash -"..i)
-	end
-end 
-
 function Draw3DText(x,y,z, text)
     local onScreen,_x,_y=World3dToScreen2d(x,y,z)
     local px,py,pz=table.unpack(GetGameplayCamCoords())
@@ -125,6 +113,20 @@ function Draw3DText(x,y,z, text)
     DrawText(_x,_y) 
     local factor = (string.len(text)) / 370
     DrawRect(_x,_y+0.0125, 0.015+ factor, 0.03, 41, 11, 41, 68)
+end 
+
+
+
+-- Meth Lab Custom -- -- 1396.2266845703, 3614.4304199219, 38.942546844482 Heading: 293.90432739258
+
+local stashDistance = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), 1396.2266845703, 3614.4304199219, 38.942546844482, true)
+local cid = exports["isPed"]:isPed("cid")
+if stashDistance <= 15 then
+	Draw3DText(1396.2266845703, 3614.4304199219, 38.942546844482, "Press [H] to stash")
+	if IsControlJustPressed(0, 74) and stashDistance <= 1.75 then
+		-- stash the items
+		TriggerEvent("server-inventory-open", "1", "LabStash -"..i)
+	end
 end 
 
 
