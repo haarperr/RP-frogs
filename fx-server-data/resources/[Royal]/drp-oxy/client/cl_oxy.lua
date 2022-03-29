@@ -272,10 +272,11 @@ end)
 function LuckyDrawOxyPlace()
 	Citizen.CreateThread(function()
         while OxySpot do
-            Citizen.Wait(5)
+            Citizen.Wait(100)
 			if IsControlJustReleased(0, 38) then
 				if not OxyRun then
 					TriggerServerEvent("oxydelivery:server", 1500)
+					Citizen.Wait(1000)
 				end          
 			end
 		end
