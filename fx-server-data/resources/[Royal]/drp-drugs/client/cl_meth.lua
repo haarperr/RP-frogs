@@ -119,7 +119,9 @@ end
 
 -- Meth Lab Custom -- -- 1396.2266845703, 3614.4304199219, 38.942546844482 Heading: 293.90432739258
 
-local stashDistance = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), 1396.2266845703, 3614.4304199219, 38.942546844482, true)
+local plyCoords = GetEntityCoords(PlayerPedId())
+local distance = GetDistanceBetweenCoords(plyCoords.x,plyCoords.y,plyCoords.z, 1396.2266845703, 3614.4304199219, 38.942546844482,false)
+
 local cid = exports["isPed"]:isPed("cid")
 if stashDistance <= 30 then
 	Draw3DText(1396.2266845703, 3614.4304199219, 38.942546844482, "Press [H] to stash")
