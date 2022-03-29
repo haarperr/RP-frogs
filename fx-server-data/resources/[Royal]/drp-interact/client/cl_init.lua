@@ -765,11 +765,20 @@ Citizen.CreateThread(function()
         heading=340.6491,
     })
 
+    -- Chicken Guy
+    
+    exports["drp-polytarget"]:AddBoxZone("chickenguy", vector3(-524.7509, -711.4124, 33.8249), 1, 1.4, {
+        heading=112.7492,
+    })
+
     -- VPN Guy
-    
-    
     exports["drp-polytarget"]:AddBoxZone("vpnguy", vector3(944.7300, -1697.6277, 30.0850), 1, 1.4, {
         heading=263.1922,
+    })
+
+    -- Chicken Stash
+    exports["drp-polytarget"]:AddBoxZone("chickenstash", vector3(-518.4832, -700.2421, 33.1997), 1, 1.4, {
+        heading=359.0948,
     })
 
     -- house guy
@@ -2260,6 +2269,119 @@ Citizen.CreateThread(function()
     }}, {
         distance = { radius = 7 },
     });
+
+
+
+    
+    -- Chicken Guy
+    
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("chickenguy", {{
+        event = "drp-chickens:sell",
+        id = "chickenguy",
+        icon = "circle",
+        label = "Sell your Chickens",
+        parameters = {},
+    }}, {
+        distance = { radius = 5 },
+    });
+
+    
+    --  Burgershot Shit
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("royal_burgershot_make_drinks", {{
+        event = "drp-jobs:burgershot-drinks",
+        id = "royal_burgershot_make_drinks",
+        icon = "circle",
+        label = "Drink Machine",
+        parameters = {},
+    }}, {
+        distance = { radius = 2.5 },
+    });
+    -- Burgershot Warmer
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("burgershot_warmer", {{
+        event = "drp-jobs:burgershot-warmer",
+        id = "royal_burgershot_warmer",
+        icon = "circle",
+        label = "Food Warmer",
+        parameters = {},
+    }}, {
+        distance = { radius = 2.5 },
+    });
+
+    -- Tray 1
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("burger_shot_tray_1", {{
+        event = "drp-jobs:BurgerShotTray-1",
+        id = "burger_shot_tray_1",
+        icon = "hand-holding",
+        label = "Grab Order",
+        parameters = {},
+    }}, {
+        distance = { radius = 2.5 },
+    });
+
+    -- Tray 2
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("burger_shot_tray_2", {{
+        event = "drp-jobs:BurgerShotTray-2",
+        id = "burger_shot_tray_2",
+        icon = "hand-holding",
+        label = "Grab Order",
+        parameters = {},
+    }}, {
+        distance = { radius = 2.5 },
+    });
+
+    -- Grill Pattys
+      exports["drp-interact"]:AddPeekEntryByPolyTarget("burgershot_stuffs_4", {{
+        event = "drp-civjobs:burgershot-make-pattys",
+        id = "burgershot_stuffs_4",
+        icon = "hamburger",
+        label = "Grill Patty",
+        parameters = {},
+    }}, {
+        distance = { radius = 2.5 },
+    });
+
+    -- Fryer
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_fryer", {{
+        event = "drp-cluckinbell:startfryer",
+        id = "cluckinbell_fryer",
+        icon = "circle",
+        label = "Make Fries",
+        parameters = {},
+    }}, {
+        distance = { radius = 2.5 },
+    });
+
+    -- Stash Ect
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_stash", {
+        {
+            event = "drp-cluckinbell:stash",
+            id = "cluckinbell_stash_1",
+            icon = "search",
+            label = "Open Fridge",
+            parameters = {},
+        },
+        {
+            event = "drp-cluckinbell:store",
+            id = "cluckinbell_stash_2",
+            icon = "circle",
+            label = "Get Ingridients",
+            parameters = {},
+        }
+    }, {
+        distance = { radius = 2.5 },
+    });
+
+    -- Assemble Burgers
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_assemble", {{
+        event = "drp-civjobs:cluckinbell-make-burgers",
+        id = "cluckinbell_assemble",
+        icon = "hand-holding",
+        label = "Assemble Burger",
+        parameters = {},
+    }}, {
+        distance = { radius = 2.5 },
+    });
+
 
 
     -- House Guy

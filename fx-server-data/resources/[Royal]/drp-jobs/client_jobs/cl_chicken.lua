@@ -18,9 +18,9 @@ local packingX2 = -104.20
 local packingY2 = 6206.45
 local packingZ2 = 31.02
 
-local sellX = -591.5437
-local sellY = -892.665
-local sellZ = 25.94248
+local sellX = -524.7509
+local sellY = -711.4124
+local sellZ =  33.8249
 local chickencd = false
 local chickencounter = 0
 local chicken1
@@ -444,9 +444,9 @@ end
 RoyalChickenProcessStation2 = false
 
 Citizen.CreateThread(function()
-    exports["drp-polyzone"]:AddBoxZone("royal_chicken_procces_station_2", vector3(-100.34, 6202.42, 31.03), 1, 1.8, {
+    exports["drp-polyzone"]:AddBoxZone("royal_chicken_procces_station_2", vector3(-524.7509, -711.4124, 33.8249), 1, 1.8, {
         name="royal_chicken_procces_station_2",
-		heading=225,
+		heading=112.7492,
 		--debugPoly=true,
 		minZ=28.03,
 		maxZ=32.03
@@ -677,44 +677,4 @@ Citizen.CreateThread(function()
 	setChickenStartPed()
 end)
 
---// Sell Chickens
 
-RoyalChickensSales = false
-
-Citizen.CreateThread(function()
-    exports["drp-polyzone"]:AddBoxZone("royal_chicken_sales", vector3(-591.81, -892.58, 25.81), 2, 2, {
-        name="royal_chicken_sales",
-		heading=0,
-		--debugPoly=true,
-		minZ=23.81,
-		maxZ=27.81
-    })
-end)
-
-RegisterNetEvent('drp-polyzone:enter')
-AddEventHandler('drp-polyzone:enter', function(name)
-    if name == "royal_chicken_sales" then
-        RoyalChickensSales = true     
-        RoyalChickensSalesFunction()
-		exports['drp-textui']:showInteraction("[E] Sell Processed Protein")
-    end
-end)
-
-RegisterNetEvent('drp-polyzone:exit')
-AddEventHandler('drp-polyzone:exit', function(name)
-    if name == "royal_chicken_sales" then
-        RoyalChickensSales = false
-        exports['drp-textui']:hideInteraction()
-    end
-end)
-
-function RoyalChickensSalesFunction()
-	Citizen.CreateThread(function()
-        while RoyalChickensSales do
-            Citizen.Wait(5)
-			if IsControlJustReleased(0, 38) then
-				TriggerEvent('drp-chickens:sell')
-			end
-		end
-	end)
-end

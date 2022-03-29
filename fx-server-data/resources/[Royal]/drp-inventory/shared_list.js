@@ -25943,3 +25943,27 @@ itemList['chickenslammer'] = {
   image: 'chicken-slammer.png',
   information: 'Maddi Memory Axe',
 };
+
+itemList['maddi'] = {
+  fullyDegrades: false,
+  decayrate: 0.0,
+  displayname: 'Maddi Card',
+  price: 0,
+  weight: 0,
+  nonStack: true,
+  model: '',
+  image: 'maddi.png',
+  information: 'Vesicles Mommy',
+};
+
+itemList['maddicum'] = {
+  fullyDegrades: false,
+  decayrate: 0.0,
+  displayname: 'Used Maddi Card',
+  price: 0,
+  weight: 0,
+  nonStack: true,
+  model: '',
+  image: 'maddicum.png',
+  information: 'Its really sticky...',
+};
