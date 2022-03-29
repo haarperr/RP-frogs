@@ -94,7 +94,7 @@ AddEventHandler("ls:updateBoostLevel", function(boostClass)
       xp = xp + math.random(1, 4)
 
         xp = xp + math.random(2, 3)
-      end
+     end
 
       if level == 3 then
         xp = xp + math.random(1, 3)
@@ -122,9 +122,9 @@ AddEventHandler("ls:updateBoostLevel", function(boostClass)
         ['level'] = level,
         ['id'] = cid
       })
-      
+    end 
     
-  
+  end)
 end)
 
 
