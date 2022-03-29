@@ -1056,7 +1056,7 @@ Generic.NPCS[#Generic.NPCS + 1] = {
    networked = false,
    distance = 50.0,
    position = {
-     coords = vector3(1175.49, -437.54, 66.9 - 1.0), --   -1358.93, -759.38, 21.32, 346.47
+     coords = vector3(1148.0798339844, -437.89566040039, 66.9 - 1.0), --   1148.0798339844, -437.89566040039, 66.997009277344 Heading: 341.26635742188
      heading = 262.06,
  },
    appearance = nil,
@@ -1069,5 +1069,5 @@ Generic.NPCS[#Generic.NPCS + 1] = {
      ['isNPC'] = true,
      --isLaptopInst = true,
    },
-   scenario = "WORLD_HUMAN_SMOKING_POT"
+   scenario = "WORLD_HUMAN_CLIPBOARD"
  }
