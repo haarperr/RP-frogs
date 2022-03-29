@@ -358,7 +358,7 @@ function CreateOxyPed()
     end
 
 
-	deliveryPed = CreatePed(pedType, hashKey, OxyDropOffs[rnd]["x"],OxyDropOffs[rnd]["y"],OxyDropOffs[rnd]["z"], OxyDropOffs[rnd]["h"], 0, 0, BOOL isNetwork)
+	deliveryPed = CreatePed(pedType, hashKey, OxyDropOffs[rnd]["x"],OxyDropOffs[rnd]["y"],OxyDropOffs[rnd]["z"], OxyDropOffs[rnd]["h"], 0, 0, isNetwork)
 	
 	DecorSetBool(deliveryPed, 'ScriptedPed', true)
     ClearPedTasks(deliveryPed)
