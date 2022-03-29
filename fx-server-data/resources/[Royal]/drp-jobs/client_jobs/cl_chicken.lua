@@ -676,3 +676,5 @@ end
 Citizen.CreateThread(function()
 	setChickenStartPed()
 end)
+
+

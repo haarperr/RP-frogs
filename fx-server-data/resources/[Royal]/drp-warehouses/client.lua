@@ -47,7 +47,6 @@ function buildWarehouse(warehouseId)
     
     
 	Citizen.Wait(750)
-    coordsofbuilding.x = coordsofbuilding.x + 1.25
 	SetEntityCoords(PlayerPedId(), coordsofbuilding)
 	Citizen.Wait(500)
 	SetEntityHeading(PlayerPedId(),0.0)
