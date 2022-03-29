@@ -311,7 +311,7 @@ AddEventHandler("drp-paleto:startheist", function(data, name)
 
     TriggerEvent("chatMessage", "Encrypted", 8, "Bank security captcha bypassed successfully. Standby while I get that door open. ")
 
-    Citizen.Wait(180000) -- set to 180000 when finish testing
+    Citizen.Wait(360000) -- now 6 Minutes -- set to 180000 when finish testing
 
     TriggerServerEvent('drp-paleto:openDoor')
     startdstcheck = true
@@ -621,7 +621,7 @@ AddEventHandler("drp-paleto:startPaletoHeist", function()
     TriggerServerEvent('drp-paleto:getTime2SV')
     TriggerServerEvent('drp-paleto:getDoorAccessSV')
     Citizen.Wait(1000)
-    if exports["drp-duty"]:LawAmount() > 0 then -- countpolice doesnt work use this instead
+    if exports["drp-duty"]:LawAmount() >= 2 then -- countpolice doesnt work use this instead
         
         if not paletoStateAlready == true then
             if paletoTimesHit2 > paletoTimesHit then
