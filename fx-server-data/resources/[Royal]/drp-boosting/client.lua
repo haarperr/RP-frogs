@@ -71,7 +71,7 @@ local carList = {
     {name = "Grotti Cheetah Classic", model = "cheetah2"},
     {name = "Grotti Furia", model = "furia"},
     {name = "Grotti Turismo Classic", model = "turismo2"},
-  }
+  } 
 }
 
 local carSpawns = {

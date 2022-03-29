@@ -323,7 +323,7 @@ AddEventHandler('drp-houserobber:animations', function(anim, delete, i)
 					DeleteEntity(telescopioObj)
 					telescopioObj = nil
 					ClearPedTasksImmediately(ped)		
-					TriggerEvent('player:receiveItem', 'stolentelescope', 1)
+					TriggerEvent('player:receiveItem', 'stolenmusic', 1)
 					charging = false
 					break
 				end
@@ -360,7 +360,7 @@ AddEventHandler('drp-houserobber:animations', function(anim, delete, i)
 		FreezeEntityPosition(ped,true)
 		AnimBolso()
 		DeleteEntity(items[i].objeto)
-		TriggerEvent('player:receiveItem', 'stolenlaptop', 1)
+		TriggerEvent('player:receiveItem', 'stolencomputer', 1)
 	else
 		LoadAnim("anim@heists@box_carry@")
 		FreezeEntityPosition(ped,true)
@@ -395,7 +395,7 @@ AddEventHandler('drp-houserobber:animations', function(anim, delete, i)
 					DeleteEntity(objeto)
 					objeto = nil
 					ClearPedTasksImmediately(ped)		
-					TriggerEvent('player:receiveItem', 'stolenmicrowave', 1)
+					TriggerEvent('player:receiveItem', 'stolencomputer', 1)
 					charging = false
 					break
 				end

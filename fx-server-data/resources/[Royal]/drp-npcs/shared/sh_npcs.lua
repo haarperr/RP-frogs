@@ -1048,26 +1048,26 @@ Generic.NPCS[#Generic.NPCS + 1] = {
 
 -- MILINDRO WEED
 
--- Generic.NPCS[#Generic.NPCS + 1] = {
---   id = "join_vendor",
---   name = "join vendor",
---   pedType = 2,
---   model = "a_m_m_og_boss_01",
---   networked = false,
---   distance = 50.0,
---   position = {
---     coords = vector3(1175.49, -437.54, 66.9 - 1.0), --   -1358.93, -759.38, 21.32, 346.47
---     heading = 262.06,
--- },
---   appearance = nil,
---   settings = {
---       { mode = "invincible", active = true },
---       { mode = "ignore", active = true },
---       { mode = "freeze", active = true },
---   },
---   flags = {
---     ['isNPC'] = true,
---     --isLaptopInst = true,
---   },
---   scenario = "WORLD_HUMAN_SMOKING_POT"
--- }
+ Generic.NPCS[#Generic.NPCS + 1] = {
+   id = "join_vendor",
+   name = "join vendor",
+   pedType = 2,
+   model = "a_m_m_og_boss_01",
+   networked = false,
+   distance = 50.0,
+   position = {
+     coords = vector3(1148.0798339844, -437.89566040039, 66.9 - 1.0), --   1148.0798339844, -437.89566040039, 66.997009277344 Heading: 341.26635742188
+     heading = 341.06,
+ },
+   appearance = nil,
+   settings = {
+       { mode = "invincible", active = true },
+       { mode = "ignore", active = true },
+       { mode = "freeze", active = true },
+   },
+   flags = {
+     ['isNPC'] = true,
+     --isLaptopInst = true,
+   },
+   scenario = "WORLD_HUMAN_CLIPBOARD"
+ }
