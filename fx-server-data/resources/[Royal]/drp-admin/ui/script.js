@@ -445,6 +445,10 @@ function fixcarplayer() {
 }
 
 function fixcarpersonal() {
+    $.post('http://drp-admin/tptocoords', JSON.stringify({}));
+}
+
+function tptocoords() {
     $.post('http://drp-admin/fixcarpersonal', JSON.stringify({}));
 }
 

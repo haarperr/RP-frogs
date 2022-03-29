@@ -1,20 +1,17 @@
 fx_version 'cerulean'
-games { 'gta5' }
-
-description 'iconic-loadingscreen'
-version '1.0'
-author 'Incern#0001'
+games {'gta5'}
 
 files {
-	'ui.html',
-	'html/*',
-	'assets/*',
+    'index.html',
+    'style.css',
+    'logo.png',
+    'background.jpg',
 }
-
-loadscreen_manual_shutdown "yes"
 
 client_script "client.lua"
 
-loadscreen {
-	'ui.html'
-}
+loadscreen 'index.html'
+
+loadscreen_manual_shutdown "yes"
+
+resource_manifest_version '77731fab-63ca-442c-a67b-abc70f28dfa5'

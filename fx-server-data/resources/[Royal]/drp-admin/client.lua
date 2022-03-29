@@ -239,6 +239,36 @@ RegisterNUICallback('fixcarpersonal', function(data, cb)
   SetVehiclePetrolTankHealth(vehicle, 4000.0)
 end)
 
+RegisterNUICallback('tptocoords', function(data, cb)
+        tptocoords()
+end)
+
+
+function tptocoords()
+  if coords[1] ~= nil and coords[2] ~= nil and coords[3] ~= nil then
+    local pos = vector3(tonumber(coords[1].input),tonumber(coords[2].input),tonumber(coords[3].input))
+    local ped = PlayerPedId()
+
+    Citizen.CreateThread(function()
+        RequestCollisionAtCoord(pos)
+        SetPedCoordsKeepVehicle(ped, pos)
+        FreezeEntityPosition(ped, true)
+        SetPlayerInvincible(PlayerId(), true)
+
+        local startedCollision = GetGameTimer()
+
+        while not HasCollisionLoadedAroundEntity(ped) do
+            if GetGameTimer() - startedCollision > 5000 then break end
+            Citizen.Wait(0)
+        end
+
+        FreezeEntityPosition(ped, false)
+        SetPlayerInvincible(PlayerId(), false)
+    end)
+  end
+end
+
+
 RegisterNUICallback('fixcarplayer', function(data, cb)
   print("Player Id from JS:" ..data.selectedplayer)
   TriggerServerEvent("drp:fixplayercar", data.selectedplayer)

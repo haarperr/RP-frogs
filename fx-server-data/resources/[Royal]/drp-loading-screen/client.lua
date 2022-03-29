@@ -6,9 +6,6 @@ AddEventHandler("loading:disableLoading", function()
 		Ran = true
 	end
 end)
-
-
-
 Citizen.CreateThread(function()
 	SetNuiFocus(true, false)
 end)
