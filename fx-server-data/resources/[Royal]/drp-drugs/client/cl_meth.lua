@@ -123,9 +123,9 @@ local stashDistance = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), 1
 local cid = exports["isPed"]:isPed("cid")
 if stashDistance <= 30 then
 	Draw3DText(1396.2266845703, 3614.4304199219, 38.942546844482, "Press [H] to stash")
-	if IsControlJustPressed(0, 74) and stashDistance <= 1.75 then
+	if IsControlJustPressed(0, 74) and stashDistance <= 3.75 then
 		-- stash the items
-		TriggerEvent("server-inventory-open", "1", "LabStash -"..i)
+		TriggerEvent("server-inventory-open", "1", "LabStash")
 	end
 end 
 
