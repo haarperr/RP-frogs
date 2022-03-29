@@ -25956,7 +25956,6 @@ itemList['maddi'] = {
   information: 'Vesicles Mommy',
 };
 
-
 itemList['maddicum'] = {
   fullyDegrades: false,
   decayrate: 0.0,
