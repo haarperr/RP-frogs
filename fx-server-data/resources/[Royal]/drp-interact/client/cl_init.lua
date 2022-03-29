@@ -765,16 +765,14 @@ Citizen.CreateThread(function()
         heading=340.6491,
     })
 
-    -- VPN Guy
+    -- Chicken Guy
     
-    
-    exports["drp-polytarget"]:AddBoxZone("vpnguy", vector3(-524.7509, -711.4124, 33.8249), 1, 1.4, {
+    exports["drp-polytarget"]:AddBoxZone("chickenguy", vector3(-524.7509, -711.4124, 33.8249), 1, 1.4, {
         heading=112.7492,
     })
 
-    -- Chicken Guy
-    
-    exports["drp-polytarget"]:AddBoxZone("chickenguy", vector3(944.7300, -1697.6277, 30.0850), 1, 1.4, {
+    -- VPN Guy
+    exports["drp-polytarget"]:AddBoxZone("vpnguy", vector3(944.7300, -1697.6277, 30.0850), 1, 1.4, {
         heading=263.1922,
     })
 
