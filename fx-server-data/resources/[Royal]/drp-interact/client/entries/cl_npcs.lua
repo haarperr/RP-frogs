@@ -323,6 +323,24 @@ Entries[#Entries + 1] = {
     group = { 'isNPC' },
     data = {
         {
+            id = "oxyguy",
+            label = "Start Oxy Run ($1500)",
+            icon = "circle",
+            event = "oxy:initialize",
+            parameters = {}
+        }
+    },
+    options = {
+        distance = { radius = 3.0 },
+        npcIds = {"oxyguy"}
+    }
+}
+
+Entries[#Entries + 1] = {
+    type = 'flag',
+    group = { 'isNPC' },
+    data = {
+        {
             id = "houseguy2",
             label = "Look For Job",
             icon = "circle",
@@ -335,6 +353,7 @@ Entries[#Entries + 1] = {
         npcIds = {"join_vendor"}
     }
 }
+
 
 
 Entries[#Entries + 1] = {
