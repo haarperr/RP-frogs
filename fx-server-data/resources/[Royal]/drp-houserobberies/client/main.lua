@@ -555,7 +555,7 @@ function isnight()
 	if hora > 13 or hora < 12 then
 		return true
 	end
-	return true
+	return false
 end
 
 function bar(percentage)
