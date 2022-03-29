@@ -444,9 +444,9 @@ end
 RoyalChickenProcessStation2 = false
 
 Citizen.CreateThread(function()
-    exports["drp-polyzone"]:AddBoxZone("royal_chicken_procces_station_2", vector3(-100.34, 6202.42, 31.03), 1, 1.8, {
+    exports["drp-polyzone"]:AddBoxZone("royal_chicken_procces_station_2", vector3(-524.7509, -711.4124, 33.8249), 1, 1.8, {
         name="royal_chicken_procces_station_2",
-		heading=225,
+		heading=112.7492,
 		--debugPoly=true,
 		minZ=28.03,
 		maxZ=32.03
