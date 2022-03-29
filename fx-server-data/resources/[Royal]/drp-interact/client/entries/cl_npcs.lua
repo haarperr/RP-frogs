@@ -332,6 +332,7 @@ Entries[#Entries + 1] = {
     },
     options = {
         distance = { radius = 3.0 }
+        npcIds = {"join_vendor"}
     }
 }
 
@@ -353,6 +354,8 @@ Entries[#Entries + 1] = {
       npcIds = {"liqourkeeper_1", "liqourkeeper_2", "liqourkeeper_3", "liqourkeeper_4", "liqourkeeper_5", "liqourkeeper_6","liqourkeeper_7", "liqourkeeper_8", "liqourkeeper_9", "liqourkeeper_10", "liqourkeeper_11"}
   }
 }
+
+
 
 Entries[#Entries + 1] = {
   type = 'flag',
