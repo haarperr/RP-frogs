@@ -21213,7 +21213,7 @@ itemList['deanworldsoftpretzel'] = {
 
 itemList['fruitslushy'] = {
   fullyDegrades: true,
-  decayrate: 0.01,
+  decayrate: 0.1,
   displayname: 'Fruit Slushy',
   price: 0,
   weight: 1,
@@ -21225,7 +21225,7 @@ itemList['fruitslushy'] = {
 
 itemList['murdermeal'] = {
   fullyDegrades: true,
-  decayrate: 0.001,
+  decayrate: 1.0,
   displayname: 'Murder Meal',
   price: 0,
   weight: 11,
