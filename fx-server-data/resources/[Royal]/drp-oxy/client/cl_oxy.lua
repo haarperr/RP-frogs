@@ -175,7 +175,8 @@ AddEventHandler("oxydelivery:client", function()
 		end
 	DeleteCreatedPed()
 	DeleteBlipOxy()
-	end)
+	end
+end)
 
 
 function PedGiveAnim()
