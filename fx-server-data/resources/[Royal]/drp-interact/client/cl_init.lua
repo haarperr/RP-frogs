@@ -776,6 +776,12 @@ Citizen.CreateThread(function()
         heading=263.1922,
     })
 
+    
+    -- Oxy Guy
+    exports["drp-polytarget"]:AddBoxZone("oxyguy", vector3(194.0911, -1843.4448, 27.2103), 1, 1.4, {
+        heading=138.2796,
+    })
+
     -- Chicken Stash
     exports["drp-polytarget"]:AddBoxZone("chickenstash", vector3(-518.4832, -700.2421, 33.1997), 1, 1.4, {
         heading=359.0948,
@@ -2272,6 +2278,18 @@ Citizen.CreateThread(function()
 
 
 
+    
+    -- Oxy Guy
+    
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("oxyguy", {{
+        event = "oxy:initialize",
+        id = "oxyguy",
+        icon = "circle",
+        label = "Get a Oxy Job (1.5k)",
+        parameters = {},
+    }}, {
+        distance = { radius = 7 },
+    });
     
     -- Chicken Guy
     

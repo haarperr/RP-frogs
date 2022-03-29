@@ -6,7 +6,6 @@ AddEventHandler('oxydelivery:server', function(money)
 	if user:getCash() >= money then
         user:removeMoney(money)
 		TriggerClientEvent("oxydelivery:startDealing", source)
-        Citizen.Wait(1000)
     else
         TriggerClientEvent('DoLongHudText', source, 'You a broke bitch.', 2)
 	end

@@ -240,48 +240,14 @@ end
 
 OxySpot = false
 
-Citizen.CreateThread(function()
-	exports["drp-polyzone"]:AddBoxZone("oxy_run_start",vector3(195.35, -1842.06, 27.21), 1.8, 1.0, {
-		name="oxy_run_start",
-		heading=50,
-		--debugPoly=true,
-		minZ=26.31,
-		maxZ=29.91
-	})
-end)
 
-AddEventHandler('drp-polyzone:enter', function(name)
-    if name == "oxy_run_start" then
-        OxySpot = true     
-        LuckyDrawOxyPlace()
-		if not OxyRun then
-			exports['drp-textui']:showInteraction("[E] Start Run $1500")
-		else
-			exports['drp-textui']:showInteraction("Must Finsh Current Run!")
-		end
-    end
+AddEventHandler("oxy:initialize", function()
+	if not OxyRun then
+		TriggerServerEvent("oxydelivery:server", 1500)
+	else
+		TriggerEvent("DoLongHudText","You must finish your current run to start a new one.")
+	end
 end)
-
-AddEventHandler('drp-polyzone:exit', function(name)
-    if name == "oxy_run_start" then
-        OxySpot = false  
-		exports['drp-textui']:hideInteraction()  
-    end
-end)
-
-function LuckyDrawOxyPlace()
-	Citizen.CreateThread(function()
-        while OxySpot do
-            Citizen.Wait(100)
-			if IsControlJustReleased(0, 38) then
-				if not OxyRun then
-					TriggerServerEvent("oxydelivery:server", 1500)
-					Citizen.Wait(1000)
-				end          
-			end
-		end
-	end)
-end
 
 Citizen.CreateThread(function()
     while true do
