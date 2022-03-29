@@ -272,10 +272,11 @@ end)
 function LuckyDrawOxyPlace()
 	Citizen.CreateThread(function()
         while OxySpot do
-            Citizen.Wait(5)
+            Citizen.Wait(100)
 			if IsControlJustReleased(0, 38) then
 				if not OxyRun then
 					TriggerServerEvent("oxydelivery:server", 1500)
+					Citizen.Wait(1000)
 				end          
 			end
 		end
@@ -477,10 +478,11 @@ function DoDropOff(requestMoney)
 		end
 
 		if OxyRun then
+			
 			local sellableItems = {
-				[1] = {name = 'rollcash', amount = math.random(3,15), price=rollcashprice},
+				[1] = {name = 'rollcash', amount = math.random(3,10), price=rollcashprice},
 				[2] = {name = 'inkedmoneybag', amount = 1, price=inkedmoneybagprice},
-				[3] = {name = 'markedbills', amount = math.random(3,10), price=markedbillsprice},
+				[3] = {name = 'markedbills', amount = math.random(3,10), price=inkedbillsprice},
 				[4] = {name = 'band', amount = math.random(3,10), price=bandprice},
 			}
 
