@@ -173,15 +173,9 @@ AddEventHandler("oxydelivery:client", function()
 				end
 			end
 		end
-<<<<<<< Updated upstream
-	DeleteCreatedPed()
-	DeleteBlipOxy()
-	end
-=======
 	end
 	DeleteCreatedPed()
 	DeleteBlipOxy()
->>>>>>> Stashed changes
 end)
 
 
@@ -450,18 +444,10 @@ function DoDropOff(requestMoney)
 		end
 
 		if OxyRun then
-<<<<<<< Updated upstream
-			
-			local sellableItems = {
-				[1] = {name = 'rollcash', amount = math.random(3,10), price=rollcashprice},
-				[2] = {name = 'inkedmoneybag', amount = 1, price=inkedmoneybagprice},
-				[3] = {name = 'markedbills', amount = math.random(3,10), price=inkedbillsprice},
-=======
 			local sellableItems = {
 				[1] = {name = 'rollcash', amount = math.random(3,15), price=rollcashprice},
 				[2] = {name = 'inkedmoneybag', amount = 1, price=inkedmoneybagprice},
 				[3] = {name = 'markedbills', amount = math.random(3,10), price=markedbillsprice},
->>>>>>> Stashed changes
 				[4] = {name = 'band', amount = math.random(3,10), price=bandprice},
 			}
 
@@ -481,7 +467,6 @@ function DoDropOff(requestMoney)
 					pog = true
 					break
 				end
-<<<<<<< Updated upstream
 			end
 
 			if pog == false then
@@ -492,18 +477,6 @@ function DoDropOff(requestMoney)
 				TriggerEvent( "player:receiveItem", "oxy", math.random(1,3))
 			end
 
-=======
-			end
-
-			if pog == false then
-				TriggerEvent( "player:receiveItem", "oxy", math.random(1,5) )
-			end
-				
-			if math.random(2) == 1 then
-				TriggerEvent( "player:receiveItem", "oxy", math.random(1,3))
-			end
-
->>>>>>> Stashed changes
 			if math.random(100) >= 7 then
 				if math.random(1,2) == 1 then
 					cashPayment = cashPayment + math.random(250,1000)
