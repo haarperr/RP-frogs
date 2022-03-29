@@ -123,7 +123,7 @@ AddEventHandler("ls:updateBoostLevel", function(boostClass)
         ['id'] = cid
       })
       
-    end
+    
   
 end)
 
