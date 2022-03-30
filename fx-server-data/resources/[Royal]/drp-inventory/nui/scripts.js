@@ -885,8 +885,8 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
         PlayerStore = true;
         displayName = 'Player Store';
     } else if (targetinvName.indexOf('storage') > -1) {
-        secondaryMaxWeight = 2000.0;
-        slotLimitTarget = 200;
+        secondaryMaxWeight = 1500.0;
+        slotLimitTarget = 175;
     } else if (targetinvName.indexOf('office') > -1) {
         secondaryMaxWeight = 100.0;
         slotLimitTarget = 5;
