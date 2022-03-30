@@ -949,6 +949,10 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
         secondaryMaxWeight = 12000.0;
         slotLimitTarget = 400;
         displayName = 'Evidence';
+    } else if (targetinvName.indexOf('CASE ID') > -1) {
+        secondaryMaxWeight = 4000.0;
+        slotLimitTarget = 400;
+        displayName = 'Evidence';
     } else if (targetinvName.indexOf('Case') > -1) {
         secondaryMaxWeight = 4000.0;
         slotLimitTarget = 400;
