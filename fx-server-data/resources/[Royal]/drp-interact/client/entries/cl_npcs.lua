@@ -302,7 +302,7 @@ Entries[#Entries + 1] = {
 --}
 
 Entries[#Entries + 1] = {
-    type = 'flag',
+    type = 'flag', 
     group = { 'isShopKeeper' },
     data = {
         {
@@ -333,6 +333,25 @@ Entries[#Entries + 1] = {
     options = {
         distance = { radius = 3.0 },
         npcIds = {"oxyguy"}
+    }
+}
+
+
+Entries[#Entries + 1] = {
+    type = 'flag',
+    group = { 'isNPC' },
+    data = {
+        {
+            id = "gneguy",
+            label = "Open up the GNE Shop",
+            icon = "circle",
+            event = "gne:openshop",
+            parameters = {}
+        }
+    },
+    options = {
+        distance = { radius = 3.0 },
+        npcIds = {"gneguy"}
     }
 }
 

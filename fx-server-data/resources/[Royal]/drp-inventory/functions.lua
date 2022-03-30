@@ -1980,6 +1980,7 @@ end
     if (itemid == "pillbox") then
         local finished = exports["drp-taskbar"]:taskBar(5000, "Opening pill box", false, false, playerVeh)
         if (finished == 100) then
+            remove = true
             TriggerEvent( "player:receiveItem", "experiment_01", 5 )
             TriggerEvent( "player:receiveItem", "experiment_02", 5 )
             TriggerEvent( "player:receiveItem", "experiment_03", 5 )
