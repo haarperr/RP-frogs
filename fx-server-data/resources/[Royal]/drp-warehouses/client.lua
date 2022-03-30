@@ -97,7 +97,7 @@ Citizen.CreateThread(function()
                 end
             end 
 
-            local craftingDistance = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), warehouses[i]["x"], warehouses[i]["y"]-3, warehouses[i]["z"]-32, true)
+            local craftingDistance = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), warehouses[i]["x"], warehouses[i]["y"]-1.5, warehouses[i]["z"]-32, true)
             if craftingDistance <= 15 and exports["drp-inventory"]:hasEnoughOfItem(warehouses[i]["keyName"],1,false) then
                 Draw3DText(warehouses[i]["x"], warehouses[i]["y"]-1.5, warehouses[i]["z"]-32, "Press [E] to craft")
                 if IsControlJustPressed(0, 38) and craftingDistance <= 1.75 then
