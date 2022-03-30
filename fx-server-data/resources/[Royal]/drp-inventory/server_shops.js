@@ -192,7 +192,7 @@ function CivCrafting() {
         { item_id: "advlockpick", id: 0, name: "Craft", information: "{}", slot: 2, amount: 3 },
         { item_id: "repairkit", id: 0, name: "Craft", information: "{}", slot: 3, amount: 1 },
         { item_id: "civradio", id: 0, name: "Craft", information: "{}", slot: 4, amount: 1 },
-        { item_id: "handcuffs", id: 0, name: "Craft", information: "{}", slot: 5, amount: 1 },
+        { item_id: "cuffs", id: 0, name: "Craft", information: "{}", slot: 5, amount: 1 },
          ];
     return JSON.stringify(shopItems);
 }
@@ -203,8 +203,9 @@ function WarehouseCrafting() {
         { item_id: "lockpick", id: 0, name: "Craft", information: "{}", slot: 1, amount: 5 },
         { item_id: "advlockpick", id: 0, name: "Craft", information: "{}", slot: 2, amount: 3 },
         { item_id: "repairkit", id: 0, name: "Craft", information: "{}", slot: 3, amount: 1 },
+        { item_id: "advrepairkit", id: 0, name: "Craft", information: "{}", slot: 3, amount: 1 },
         { item_id: "civradio", id: 0, name: "Craft", information: "{}", slot: 4, amount: 1 },
-        { item_id: "handcuffs", id: 0, name: "Craft", information: "{}", slot: 5, amount: 1 },
+        { item_id: "cuffs", id: 0, name: "Craft", information: "{}", slot: 5, amount: 1 },
         { item_id: "rifleammo", id: 0, name: "craft", information: "{}", slot: 6, amount: 1 },
         { item_id: "pistolammo", id: 0, name: "craft", information: "{}", slot: 7, amount: 1 },
         { item_id: "subammo", id: 0, name: "craft", information: "{}", slot: 8, amount: 1 },

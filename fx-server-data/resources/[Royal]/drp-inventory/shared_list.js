@@ -1724,12 +1724,12 @@ itemList['subammo'] = {
   displayname: 'Sub Ammo x50',
   craft: [
     [
-      { itemid: 'aluminium', amount: 7 },
-      { itemid: 'steel', amount: 7 },
+      { itemid: 'aluminium', amount: 2 },
+      { itemid: 'steel', amount: 2 },
     ],
     [
       { itemid: 'refinedaluminium', amount: 4 },
-      { itemid: 'refinedsteel', amount: 3 },
+      { itemid: 'refinedsteel', amount: 4 },
     ]
   ],
   price: 100,
@@ -1810,8 +1810,8 @@ itemList['pistolammo'] = {
   displayname: 'Pistol Ammo x50',
   craft: [
     [
-      { itemid: 'aluminium', amount: 4 },
-      { itemid: 'steel', amount: 4 },
+      { itemid: 'aluminium', amount: 1 },
+      { itemid: 'steel', amount: 1 },
     ],
     [
       { itemid: 'refinedaluminium', amount: 2 },
@@ -1832,12 +1832,12 @@ itemList['rifleammo'] = {
   displayname: 'Rifle Ammo x50',
   craft: [
     [
-      { itemid: 'aluminium', amount: 10 },
-      { itemid: 'steel', amount: 10 },
+      { itemid: 'aluminium', amount: 2 },
+      { itemid: 'steel', amount: 2 },
     ],
     [
-      { itemid: 'refinedaluminium', amount: 5 },
-      { itemid: 'refinedsteel', amount: 5 },
+      { itemid: 'refinedaluminium', amount: 1 },
+      { itemid: 'refinedsteel', amount: 1 },
     ]
   ],
   price: 10,
@@ -2041,7 +2041,7 @@ itemList['repairkit'] = {
   fullyDegrades: true,
   decayrate: 0.25,
   displayname: 'Repair Kit',
-  craft: [[{ itemid: 'electronics', amount: 25 }]],
+  craft: [[{ itemid: 'electronics', amount: 10 }]],
   price: 250,
   weight: 10,
   nonStack: false,
@@ -4826,14 +4826,14 @@ itemList['advlockpick'] = {
   price: 2500,
   craft: [
     [
-      { itemid: 'aluminium', amount: 50 },
-      { itemid: 'plastic', amount: 50 },
-      { itemid: 'rubber', amount: 50 },
+      { itemid: 'aluminium', amount: 35 },
+      { itemid: 'plastic', amount: 35 },
+      { itemid: 'rubber', amount: 35 },
     ],
     [
-      { itemid: 'refinedaluminium', amount: 15 },
-      { itemid: 'refinedplastic', amount: 12 },
-      { itemid: 'refinedrubber', amount: 15 },
+      { itemid: 'refinedaluminium', amount: 10 },
+      { itemid: 'refinedplastic', amount: 8 },
+      { itemid: 'refinedrubber', amount: 10 },
     ]
   ],
   weight: 3,
@@ -5009,7 +5009,7 @@ itemList['advrepairkit'] = {
   fullyDegrades: false,
   decayrate: 2,
   displayname: 'Adv Repair Kit',
-  craft: [[{ itemid: 'electronics', amount: 10 }]],
+  craft: [[{ itemid: 'electronics', amount: 40 }]],
   price: 125,
   weight: 20,
   nonStack: false,
@@ -6014,7 +6014,7 @@ itemList['cuffs'] = {
   fullyDegrades: false,
   decayrate: 0.0,
   displayname: 'Hand Cuffs',
-  craft: [[{ itemid: 'scrapmetal', amount: 500 }]],
+  craft: [[{ itemid: 'scrapmetal', amount: 125 }]],
   price: 250,
   weight: 1,
   nonStack: false,
@@ -8299,7 +8299,7 @@ itemList["civradio"] = {
   decayrate: 0.25,
   displayname: "Standard Radio",
   craft: [[
-    { itemid: "electronics", amount: 50 },
+    { itemid: "electronics", amount: 30 },
   ]],
   price: 3000,
   weight: 5,
