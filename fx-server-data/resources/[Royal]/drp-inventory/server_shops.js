@@ -205,11 +205,11 @@ function WarehouseCrafting() {
         { item_id: "repairkit", id: 0, name: "Craft", information: "{}", slot: 3, amount: 5 },
         { item_id: "civradio", id: 0, name: "Craft", information: "{}", slot: 4, amount: 5 },
         { item_id: "handcuffs", id: 0, name: "Craft", information: "{}", slot: 5, amount: 5 },
-        { item_id: "rifleammo", id: 0, name: "craft", information: "{}", slot: 1, amount: 10 },
-        { item_id: "pistolammo", id: 0, name: "craft", information: "{}", slot: 2, amount: 10 },
-        { item_id: "subammo", id: 0, name: "craft", information: "{}", slot: 3, amount: 10 },
-        { item_id: "148457251", id: 0, name: "craft", information: "{}", slot: 4, amount: 1 },
-        { item_id: "-134995899", id: 0, name: "craft", information: "{}", slot: 5, amount: 1 },
+        { item_id: "rifleammo", id: 0, name: "craft", information: "{}", slot: 6, amount: 10 },
+        { item_id: "pistolammo", id: 0, name: "craft", information: "{}", slot: 7, amount: 10 },
+        { item_id: "subammo", id: 0, name: "craft", information: "{}", slot: 8, amount: 10 },
+        { item_id: "148457251", id: 0, name: "craft", information: "{}", slot: 9, amount: 1 },
+        { item_id: "-134995899", id: 0, name: "craft", information: "{}", slot: 10, amount: 1 },
          ];
     return JSON.stringify(shopItems);
 }
