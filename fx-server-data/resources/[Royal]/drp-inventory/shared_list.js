@@ -5009,7 +5009,7 @@ itemList['advrepairkit'] = {
   fullyDegrades: false,
   decayrate: 2,
   displayname: 'Adv Repair Kit',
-  craft: [[{ itemid: 'electronics', amount: 40 }]],
+  craft: [[{ itemid: 'electronics', amount: 25 }]],
   price: 125,
   weight: 20,
   nonStack: false,
