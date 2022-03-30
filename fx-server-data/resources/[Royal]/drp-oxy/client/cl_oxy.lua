@@ -474,10 +474,10 @@ function DoDropOff(requestMoney)
 			end
 				
 			if math.random(2) == 1 then
-				TriggerEvent( "player:receiveItem", "oxy", math.random(1))
+				TriggerEvent( "player:receiveItem", "oxy", 1)
 			end
 
-			if math.random(100) >= 7 then
+			if math.random(100) >= 35 then
 				if math.random(1,2) == 1 then
 					cashPayment = cashPayment + math.random(250,1000)
 				else
@@ -526,9 +526,8 @@ function DoDropOff(requestMoney)
 	if success then
 
 		PlayAmbientSpeech1(deliveryPed, "Generic_Thanks", "Speech_Params_Force_Shouted_Critical")
-		if math.random(7) == 5 then
-			TriggerEvent( "player:receiveItem", "oxy", math.random(1,3))
-		end
+			TriggerEvent( "player:receiveItem", "oxy", math.random(1,2))
+				-- 100% chance to recieve some oxy
 
 		TriggerServerEvent('mission:completed', cashPayment)
 		--TriggerServerEvent("police:multipledenominators",true)
