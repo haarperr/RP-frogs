@@ -323,14 +323,14 @@ local source = source
         TriggerClientEvent('player:receiveItem', source, "jadeite", math.random(1,3))
     end
     if roll == 10 then
-        TriggerClientEvent('player:receiveItem', source, "oxy", math.random(2,4))
+        TriggerClientEvent('player:receiveItem', source, "oxy", math.random(1,3))
     end
     if roll == 11 then -- 5% chance 
         if math.random(1,100) >= 95 then
-        TriggerClientEvent('DoShortHudText',src, 'You see something shining in the water',2)
-        TriggerClientEvent('player:receiveItem', source, "heistusb3", 1)
+            TriggerClientEvent('DoShortHudText',src, 'You see something shining in the water',2)
+            TriggerClientEvent('player:receiveItem', source, "heistusb3", 1)
         else
-        TriggerClientEvent('player:receiveItem', source, "femaleseed", math.random(1,2))
+            TriggerClientEvent('player:receiveItem', source, "femaleseed", math.random(1,2))
     end  
         end
     if roll == 12 then

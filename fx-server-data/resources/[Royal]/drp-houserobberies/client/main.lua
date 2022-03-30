@@ -564,7 +564,7 @@ end
 
 RegisterNetEvent("drp-houserobbery:common_items")
 AddEventHandler("drp-houserobbery:common_items", function()
-	local roll = math.random(7)
+	local roll = math.random(8)
 	if roll == 1 then
 		TriggerEvent("player:receiveItem", "stolennokia", 1)
 	elseif roll == 2 then
@@ -574,8 +574,10 @@ AddEventHandler("drp-houserobbery:common_items", function()
 	elseif roll == 4 then
 		TriggerEvent("player:receiveItem", "stolencasiowatch", 1)
 	elseif roll == 6 then
-	TriggerEvent("player:receiveItem", "oxy", 3)
+		TriggerEvent("player:receiveItem", "oxy", math.random(1,3))
 	elseif roll == 7 then
-	TriggerEvent("player:receiveItem", "safecrackingkit", 1)
+		TriggerEvent("player:receiveItem", "safecrackingkit", 1)
+	elseif roll == 8 then
+		TriggerEvent("player:receiveItem", "rolex", 1)
 	end
 end)

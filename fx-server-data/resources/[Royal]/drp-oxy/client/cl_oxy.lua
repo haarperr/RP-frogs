@@ -445,7 +445,7 @@ function DoDropOff(requestMoney)
 
 		if OxyRun then
 			local sellableItems = {
-				[1] = {name = 'rollcash', amount = math.random(3,15), price=rollcashprice},
+				[1] = {name = 'rollcash', amount = math.random(3,10), price=rollcashprice},
 				[2] = {name = 'inkedmoneybag', amount = 1, price=inkedmoneybagprice},
 				[3] = {name = 'markedbills', amount = math.random(3,10), price=markedbillsprice},
 				[4] = {name = 'band', amount = math.random(3,10), price=bandprice},
@@ -470,18 +470,18 @@ function DoDropOff(requestMoney)
 			end
 
 			if pog == false then
-				TriggerEvent( "player:receiveItem", "oxy", math.random(1,5) )
+				TriggerEvent( "player:receiveItem", "oxy", math.random(1,2) )
 			end
 				
 			if math.random(2) == 1 then
-				TriggerEvent( "player:receiveItem", "oxy", math.random(1,3))
+				TriggerEvent( "player:receiveItem", "oxy", math.random(1))
 			end
 
 			if math.random(100) >= 7 then
 				if math.random(1,2) == 1 then
 					cashPayment = cashPayment + math.random(250,1000)
 				else
-					TriggerEvent( "player:receiveItem", "oxy", math.random(3, 4))
+					TriggerEvent( "player:receiveItem", "oxy", math.random(1, 2))
 				end
 			end
 
