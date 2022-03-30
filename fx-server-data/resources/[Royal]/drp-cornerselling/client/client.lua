@@ -14,14 +14,14 @@ Citizen.CreateThread(function()
             if ped ~= 0 and not IsPedDeadOrDying(ped) and not IsPedInAnyVehicle(ped) then 
                 local pedType = GetPedType(ped)
                 if ped ~= recent_ped and (IsPedAPlayer(ped) == false and pedType ~= 28) then
-                    if HasItems(1) then
+                    if HasItems() then
                         exports['drp-textui']:showInteraction("[E] Attempt Sale")
                     end
 
-                    if IsControlJustPressed(1, 86) and HasItems(1) then
+                    if IsControlJustPressed(1, 86) and HasItems() then
                         sell_items()
                         exports['drp-textui']:hideInteraction()
-                    elseif not HasItems(1) then
+                    elseif not HasItems() then
                         exports['drp-textui']:showInteraction("No Drugs")
                         Citizen.Wait(2000)
                         exports['drp-textui']:hideInteraction()
@@ -76,9 +76,8 @@ function HasItems(amount)
                 return true, 1
             end
         end
-
-        return false, 0
-    end
+    return false, 0
+    end    
 end
 
 function sell_items()
