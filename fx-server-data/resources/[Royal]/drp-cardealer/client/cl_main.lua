@@ -105,7 +105,7 @@ local vehicles = {
 	{name = "GT500", sCode = "gt500", price = 57600, category = 'Classic'},
 	{name = "Savestra", sCode = "savestra", price = 43100, category = 'Classic'},
 	{name = "Mamba", sCode = "mamba", price = 84200, category = 'Classic'},
-	{name = "Tesla Model S", sCode = "teslapd", price = 122450, category = 'Classic'},
+	{name = "Tesla Model S", sCode = "teslapd", price = 101450, category = 'Classic'},
 
     	--[[ Muscle ]]--
 	{name = "Clique", sCode = "clique", price = 86750, category = 'Muscle'},
