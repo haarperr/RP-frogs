@@ -68,7 +68,7 @@ end
 function ReworkedHasItems()
     for i = 1, #drugs_wanted do
         local amount = exports["drp-inventory"]:getAmountOfItem(drugs_wanted[i])
-        if amount != 0 then
+        if amount ~= 0 then
             return true, amount
         end
     end
