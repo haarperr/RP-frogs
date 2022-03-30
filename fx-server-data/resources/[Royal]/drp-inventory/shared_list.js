@@ -5027,7 +5027,7 @@ itemList['tirerepairkit'] = {
     { itemid: 'copper', amount: 1 },
     { itemid: 'rubber', amount: 6 },
   ]],
-  price: 20,
+  price: 325,
   weight: 5,
   nonStack: false,
   blockScrap: true,
