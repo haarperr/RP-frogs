@@ -268,6 +268,16 @@ end)
 		Wait(1000)
 	end
  end)
+
+ 
+ RegisterNetEvent('warehousecrafting')
+ AddEventHandler('warehousecrafting', function()
+    local finished = exports['drp-taskbar']:taskBar(2500, 'Accessing Bench')
+	if (finished == 100) then
+		TriggerEvent("server-inventory-open", "43000", "Craft");	-- pausechamp
+		Wait(1000)
+	end
+ end)
  
 
  

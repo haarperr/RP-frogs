@@ -519,6 +519,13 @@ onNet("server-inventory-open", async(coords, player, secondInventory, targetName
             var shopAmount = 5;
             emitNet("inventory-open-target", src, [invArray, arrayCount, playerinvname, shopArray, shopAmount, targetinvname, 500, false]);
 
+        } else if (secondInventory == "43000") {
+
+            var targetinvname = targetName;
+            var shopArray = WarehouseCrafting();
+            var shopAmount = 10;
+            emitNet("inventory-open-target", src, [invArray, arrayCount, playerinvname, shopArray, shopAmount, targetinvname, 500, false]);
+
         } else if (secondInventory == "4") {
             var targetinvname = targetName;
             var shopArray = HardwareStore();
