@@ -64,7 +64,7 @@ local vehicles = {
 	--{name = "Buffalo", sCode = "buffalo", price = 33350, category = 'Sports'},
 	--{name = "Buffalo S", sCode = "buffalo2", price = 36800, category = 'Sports'},
 	{name = "Carbonizzare", sCode = "carbonizzare", price = 99000, category = 'Sports'},
-	{name = "Comet", sCode = "comet2", price = 12100, category = 'Sports'},
+	{name = "Comet", sCode = "comet2", price = 121000, category = 'Sports'},
 	{name = "Comet SR", sCode = "comet5", price = 142800, category = 'Sports'},
 	{name = "Coquette", sCode = "coquette", price = 98800, category = 'Sports'},
 	{name = "Feltzer", sCode = "feltzer2", price = 111300, category = 'Sports'},
