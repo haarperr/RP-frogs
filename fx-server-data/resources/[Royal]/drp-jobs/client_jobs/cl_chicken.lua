@@ -389,7 +389,7 @@ AddEventHandler("drp-chickens:sell", function()
 	if (finished == 100) then
 
 		TriggerEvent('inventory:removeItem', 'lqprotein', toSell)
-		TriggerServerEvent('chickenpayment:pay', math.random(125, 225) * toSell)
+		TriggerServerEvent('chickenpayment:pay', math.random(115, 200) * toSell)
 		ClearPedTasksImmediately(PlayerPedId())
 	end
 	DeleteEntity(prop)

@@ -105,7 +105,7 @@ function sell_items()
         local plycoords = GetEntityCoords(PlayerPedId())
         recent_ped = ped
         if (finished == 100) then
-            if math.random(1, 100) >= 40 then
+            if math.random(1, 100) >= 40 then 
                 giveAnim(ped)
                 giveAnim(PlayerPedId())
                 Citizen.Wait(1500)
@@ -131,13 +131,13 @@ function sell_items()
                         TriggerEvent("DoLongHudText", "Not enough product homie!", 2)
                     end
                 end
-                if math.random(1, 100) >= 50 then
+                if math.random(1, 100) >= 20 then
                     TriggerEvent("civilian:alertPolice", 15.0, "drugsale", 0)
                 end
             else
                 SetPedAsNoLongerNeeded(recent_ped)
                 TriggerEvent("DoLongHudText", "They are not interested anymore!", 2)
-                if math.random(1,100) >= 50 then
+                if math.random(1,100) >= 20 then
                     SetPedAsNoLongerNeeded(recent_ped)
                     TriggerEvent("DoLongHudText", "They are not interested anymore and called the cops!", 2)
                     TriggerEvent("civilian:alertPolice", 15.0, "drugsale", 0)
