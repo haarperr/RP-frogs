@@ -343,7 +343,7 @@ function setCategory(type)
     local categoryVehs = {}
     for k, v in pairs(vehicles) do
         if v.category == type then
-            table.insert(categoryVehs, {displayName = v.name, sCode = v.sCode, price = v.price})
+            table.insert(categoryVehs, {displayName = v.name, sCode = v.sCode, price = (v.price * 2)})
         end
     end
     SendNUIMessage({
