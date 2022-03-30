@@ -61,8 +61,8 @@ local vehicles = {
 	{name = "Alpha", sCode = "alpha", price = 104000, category = 'Sports'},
 	{name = "Banshee", sCode = "banshee", price = 92650, category = 'Sports'},
 	{name = "Bestia GTS", sCode = "bestiagts", price = 98250, category = 'Sports'},
-	--{name = "Buffalo", sCode = "buffalo", price = 33350, category = 'Sports'},
-	--{name = "Buffalo S", sCode = "buffalo2", price = 36800, category = 'Sports'},
+	{name = "Buffalo", sCode = "buffalo", price = 53350, category = 'Sports'},
+	{name = "Buffalo S", sCode = "buffalo2", price = 56800, category = 'Sports'},
 	{name = "Carbonizzare", sCode = "carbonizzare", price = 99000, category = 'Sports'},
 	{name = "Comet", sCode = "comet2", price = 121000, category = 'Sports'},
 	{name = "Comet SR", sCode = "comet5", price = 142800, category = 'Sports'},
@@ -84,7 +84,7 @@ local vehicles = {
 	{name = "Tropos", sCode = "tropos", price = 63200, category = 'Sports'},
 	{name = "Verlierer", sCode = "verlierer2", price = 92250, category = 'Sports'},
 	{name = "Streiter", sCode = "streiter", price = 42650, category = 'Sports'},
-	--{name = "Comet Safari", sCode = "comet4", price = 48300, category = 'Sports'},
+	{name = "Comet Safari", sCode = "comet4", price = 68300, category = 'Sports'},
 	{name = "Pariah", sCode = "pariah", price = 99150, category = 'Sports'},
 
 	--[[ Classic ]]--
@@ -105,6 +105,7 @@ local vehicles = {
 	{name = "GT500", sCode = "gt500", price = 57600, category = 'Classic'},
 	{name = "Savestra", sCode = "savestra", price = 43100, category = 'Classic'},
 	{name = "Mamba", sCode = "mamba", price = 84200, category = 'Classic'},
+	{name = "Tesla Model S", sCode = "teslapd", price = 122450, category = 'Classic'},
 
     	--[[ Muscle ]]--
 	{name = "Clique", sCode = "clique", price = 86750, category = 'Muscle'},
@@ -135,7 +136,7 @@ local vehicles = {
 	{name = "Primo Lowrider", sCode = "primo2", price = 47250, category = 'Muscle'},
 	{name = "Slam Van", sCode = "slamvan", price = 104750, category = 'Muscle'},
 	{name = "Yosemite", sCode = "yosemite", price = 103600, category = 'Muscle'},
-	-- {name = "Tulip", sCode = "tulip", price = 48300, category = 'Muscle'},
+	{name = "Tulip", sCode = "tulip", price = 58300, category = 'Muscle'},
 	{name = "Vamos", sCode = "vamos", price = 102600, category = 'Muscle'},
 	{name = "Virgo Lowrider", sCode = "virgo3", price = 69250, category = 'Muscle'},
 	{name = "Voodoo Lowrider", sCode = "voodoo", price = 34750, category = 'Muscle'},
