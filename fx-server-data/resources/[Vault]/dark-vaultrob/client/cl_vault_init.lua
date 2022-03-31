@@ -1,3 +1,5 @@
+Citizen.CreateThread(function()
+
 exports["drp-polyzone"]:AddBoxZone("vault_lower_pin_code1", vector3(279.57, 230.38, 97.69), 0.6, 0.4, {
     heading = 70,
     minZ = 97.29,
@@ -219,6 +221,7 @@ exports["drp-polyzone"]:AddBoxZone("vault_heist_lower_trolley_6", vector3(302.41
     }
 )
 
+end)
 local dispatchsend = false
 
 RegisterCommand("blackout", function()
