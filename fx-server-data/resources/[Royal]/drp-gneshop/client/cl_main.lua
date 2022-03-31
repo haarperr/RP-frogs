@@ -74,7 +74,7 @@ end)
 RegisterNetEvent('gne:attemptBuyadvrepairkit')
 AddEventHandler('gne:attemptBuyadvrepairkit', function()
     local price = 7
-    TriggerEvent("gne:check", "gne_buyadvrepairkit", price, false)
+    TriggerEvent("gne:check", price, "gne_buyadvrepairkit", false)
 end)
 
 RegisterNetEvent("gne:gne_buyadvrepairkit")
@@ -86,7 +86,7 @@ end)
 RegisterNetEvent('gne:attemptBuyNOS')
 AddEventHandler('gne:attemptBuyNOS', function()
     local price = 15
-    TriggerEvent("gne:check", "gne_buynos", price, false)
+    TriggerEvent("gne:check", price, "gne_buynos", false)
 end)
 
 RegisterNetEvent("gne:gne_buynos")
@@ -98,7 +98,7 @@ end)
 RegisterNetEvent('gne:attemptBuyfakeplates')
 AddEventHandler('gne:attemptBuyfakeplates', function()
     local price = 40
-    TriggerEvent("gne:check", "gne_buyfakeplates", price, false)
+    TriggerEvent("gne:check", price, "gne_buyfakeplates", false)
 end)
 
 RegisterNetEvent("gne:gne_buyfakeplates")
@@ -110,7 +110,7 @@ end)
 RegisterNetEvent('gne:attemptBuybrakes')
 AddEventHandler('gne:attemptBuybrakes', function()
     local price = 75
-    TriggerEvent("gne:check", "gne_buybrakes", price, false)
+    TriggerEvent("gne:check", price, "gne_buybrakes", false)
 end)
 
 RegisterNetEvent("gne:gne_buybrakes")
@@ -122,7 +122,7 @@ end)
 RegisterNetEvent('gne:attemptBuySuspention')
 AddEventHandler('gne:attemptBuySuspention', function()
     local price = 75
-    TriggerEvent("gne:check", "gne_buySuspention", price, false)
+    TriggerEvent("gne:check", price, "gne_buySuspention", false)
 end)
 
 RegisterNetEvent("gne:gne_buySuspention")
@@ -134,7 +134,7 @@ end)
 RegisterNetEvent('gne:attemptBuyEngine')
 AddEventHandler('gne:attemptBuyEngine', function()
     local price = 125
-    TriggerEvent("gne:check", "gne_buyEngine", price, false)
+    TriggerEvent("gne:check", price, "gne_buyEngine", false)
 end)
 
 RegisterNetEvent("gne:gne_buyEngine")
@@ -146,7 +146,7 @@ end)
 RegisterNetEvent('gne:attemptBuyTurbo')
 AddEventHandler('gne:attemptBuyTurbo', function()
     local price = 125
-    TriggerEvent("gne:check", "gne_buyTurbo", price, false)
+    TriggerEvent("gne:check", price, "gne_buyTurbo", false)
 end)
 
 RegisterNetEvent("gne:gne_buyTurbo")
