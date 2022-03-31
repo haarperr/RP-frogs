@@ -21,7 +21,6 @@ RegisterCommand('localems', function()
     local sX, sY, sZ = table.unpack(vector)
 
     vehicle = CreateVehicle("emsnspeedo", sX, sY, sZ, heading, true, true)
-    SetVehicleOnGroundProperly(vehicle)  
     
     Citizen.Trace(sX .. " " .. sY .. " " .. sZ)
     SetEntityInvincible(vehicle, true)
@@ -83,15 +82,15 @@ RegisterCommand('localems', function()
     
     SetVehicleOnGroundProperly(vehicle)   -- Set the vehicle on ground properly
 
-    Citizen.Wait(5000)
-
-    SetVehicleSiren(vehicle, true)
     TaskVehicleDriveToCoordLongrange(ped, vehicle, cords.x, cords.y, cords.z, speed, drivingStyle, stopRange)
+    SetVehicleSiren(vehicle, true)
 
     while GetDistanceBetweenCoords(coords.x, coords.y, coords.z, GetEntityCoords(vehicle).x, GetEntityCoords(vehicle).y, GetEntityCoords(vehicle).z, true) >= stopRange or timeout >= 1 do
         
-        timeout = timeout - 1
-        Citizen.Wait(1)
+        timeout = timeout - 60
+        Citizen.Wait(60)
+
+        TaskVehicleDriveToCoordLongrange(ped, vehicle, cords.x, cords.y, cords.z, speed, drivingStyle, stopRange)
 
         if timeout >= defaultTimeout - 15000 then -- Check if EMS car moved out of spawn to prevent weird spawnings
             if GetDistanceBetweenCoords(GetEntityCoords(vehicle).x, GetEntityCoords(vehicle).y, GetEntityCoords(vehicle).z, sX, sY, sZ, true) >= 3.5 then
