@@ -1,12 +1,14 @@
-RegisterCommand('localems', function(source)
+RegisterCommand('localems', function()
+    local ped = GetPlayerPed(-1)
+    local coords = GetEntityCoords(ped)
+
+
     local car = GetHashKey("emsnspeedo")
     RequestModel(car)
     while not HasModelLoaded(car) do
         Citizen.Wait(0)
     end
 
-    local ped = GetPlayerPed(-1)
-    local coords = GetEntityCoords(ped)
 
     coords.x = coords.x + 150
     coords.y = coords.y + 150
@@ -18,6 +20,6 @@ RegisterCommand('localems', function(source)
     local id = NetworkGetNetworkIdFromEntity(vehicle)
     SetNetworkIdCanMigrate(id, true)
     
-    
+
 
 end)
