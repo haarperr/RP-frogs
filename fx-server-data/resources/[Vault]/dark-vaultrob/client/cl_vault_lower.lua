@@ -160,7 +160,7 @@ AddEventHandler('dark-vaultrob:lower:firstdoor', function()
     local deleternd = math.random(1,100)
         if exports["drp-inventory"]:hasEnoughOfItem("heistlaptop1", 1) then
             if not firstlowerdoor then
-                if #(playercoords - firstdoorlowerlocation) < 3.0 then
+                if #(playercoords - firstdoorlowerlocation) < 5.0 then
                     TaskGoStraightToCoord(PlayerPedId(), 271.99, 230.84, 97.36, 1.0, -1, 337.34, 0.0)
                     Wait(5000)
                     openanim()

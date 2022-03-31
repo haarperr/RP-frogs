@@ -1050,6 +1050,11 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
         
     end
 
+    if (itemid == "heistlaptop1") then
+        TriggerEvent("dark-vaultrob:lower:firstdoor")
+        
+    end
+
     if (itemid == "miningpickaxe") then
         TriggerEvent("drp-start-mining")
     end
