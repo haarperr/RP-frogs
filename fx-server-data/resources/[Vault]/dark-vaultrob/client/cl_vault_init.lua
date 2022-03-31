@@ -1,15 +1,34 @@
 Citizen.CreateThread(function()
-
 exports["drp-polyzone"]:AddBoxZone("vault_lower_pin_code1", vector3(279.57, 230.38, 97.69), 0.6, 0.4, {
     heading = 70,
     minZ = 97.29,
     maxZ = 97.69
+}, {
+    options = {
+        {
+            event = "dark-vaultrob:lower:laptoppin",
+            icon = "fas fa-user-secret",
+            label = "Print Access Codes"
+        },
+    },
+    job = {"all"},
+    distance = 2
 })
 
 exports["drp-polyzone"]:AddBoxZone("vault_lower_pin_code2", vector3(289.20, 227.47, 98.90), 0.4, 0.2, {
     heading = 142.81,
     minZ = 98.13,
     maxZ = 98.42
+}, {
+    options = {
+        {
+            event = "dark-vaultrob:lower:firstpindoor",
+            icon = "fas fa-circle",
+            label = "Access Code"
+        },
+    },
+    job = {"all"},
+    distance = 2
 })
 
 exports["drp-polyzone"]:AddBoxZone("vault_lower_pin_code3", vector3(286.83, 227.47, 98.90), 0.4, 0.2, {
@@ -222,6 +241,7 @@ exports["drp-polyzone"]:AddBoxZone("vault_heist_lower_trolley_6", vector3(302.41
 )
 
 end)
+
 local dispatchsend = false
 
 RegisterCommand("blackout", function()

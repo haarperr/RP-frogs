@@ -4146,19 +4146,16 @@ Citizen.CreateThread(function()
     }, {
         distance = { radius = 1.05 },
     });
- ---- VAULT
-
- exports["drp-interact"]:AddPeekEntryByPolyTarget("vault_lower_pin_code1", {
-    {
-        event = "dark-vaultrob:lower:laptoppin",
-        id = "dark-vaultrob:lower:laptoppin",
-        icon = "fas fa-user-secret",
-        label = "Print Access Codes",
-    },
-}, {
-    distance = { radius = 1.05 },
-});
-
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("vault_lower_pin_code1", {
+        {
+            event = "plootCash2",
+            id = "cash",
+            icon = "fas fa-hand-holding",
+            label = "TEST",
+        },
+    }, {
+        distance = { radius = 1.05 },
+    });
     
     
 
