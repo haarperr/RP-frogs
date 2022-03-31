@@ -82,22 +82,19 @@ RegisterCommand('localems', function()
         Citizen.Wait(0)
     end
     
-    closeOne = 1 -- Coords 
-    closeRange = 10000000 -- Range
-    for i = 1, #locations do
-        local x, y, z, h = table.unpack(locations[i])
-        local distance = GetDistanceBetweenCoords(coords.x, coords.y, coords.z, x, y, z, true)
-        Citizen.Trace(closeRange .. "\n")
-        Citizen.Trace(distance .. "\n")
-        Citizen.Trace(i .. "\n")
-        if closeRange > distance then
-            
-            closeRange = distance
-            closeOne = i
+    -- get the closest location
+    local closest = nil
+    local closest_dist = nil
+    for k,v in pairs(locations) do
+        local dist = GetDistanceBetweenCoords(coords, v.x, v.y, v.z, true)
+        if closest_dist == nil or dist < closest_dist then
+            closest_dist = dist
+            closest = k
         end
     end
 
-    Citizen.Trace(tostring(closeRange) .. "\n")
-    Citizen.Trace(closeOne .. "\n")
+    -- spawn the vehicle
+    Citizen.Trace(location[closest].x .. " " .. location[closest].y .. " " .. location[closest].z .. " " .. location[closest].h .. "\n")
+
 end)
 
