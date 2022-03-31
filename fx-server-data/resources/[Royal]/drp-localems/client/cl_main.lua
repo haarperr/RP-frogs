@@ -40,6 +40,8 @@ RegisterCommand('localems', function()
     -- set emergency lights
     SetVehicleIndicatorLights(vehicle, 0, true)
 
+    SetVehicleSiren(vehicle, true)
+
     local currentCords = GetEntityCoords(vehicle)
     Citizen.Trace(currentCords.x .. " " .. currentCords.y .. " " .. currentCords.z)
 
