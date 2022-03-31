@@ -883,5 +883,43 @@ AddEventHandler('drp-dispatch:DispatchVaultAlert', function()
 	TriggerServerEvent('drp-dispatch:vaulttt', {x = pos.x, y = pos.y, z = pos.z})
 end)
 
+----------- Vault 
+
+RegisterNetEvent('drp-dispatch:vaultlasers')
+AddEventHandler('drp-dispatch:vaultlasers', function(targetCoords)
+	if exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' then	
+		local alpha = 360
+		local jew = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
+
+		SetBlipSprite(jew,  500)
+		SetBlipColour(jew,  1)
+		SetBlipScale(jew, 1.5)
+		SetBlipAsShortRange(jew, false)
+		BeginTextCommandSetBlipName("STRING")
+		AddTextComponentString('Lower Vault Laser Alarm')
+		EndTextCommandSetBlipName(jew)
+		TriggerEvent('InteractSound_CL:PlayOnOne', 'bankalarm', 1.0)
+
+
+		while alpha ~= 0 do
+			Citizen.Wait(120 * 4)
+			alpha = alpha - 1
+			SetBlipAlpha(jew, alpha)
+
+		if alpha == 0 then
+			RemoveBlip(jew)
+		return
+      end
+    end
+  end
+end)
+
+
+AddEventHandler('drp-dispatch:DispatchVaultAlert', function()
+	local pos = GetEntityCoords(PlayerPedId(), true)
+	TriggerServerEvent('drp-dispatch:vaulttt', {x = pos.x, y = pos.y, z = pos.z})
+end)
+
+
 
 

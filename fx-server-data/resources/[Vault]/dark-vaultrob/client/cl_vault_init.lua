@@ -260,8 +260,7 @@ AddEventHandler("drp-polyzone:enter", function(name)
             if not dispatchsend then
                 if not blackout then
                 dispatchsend = true
-                TriggerEvent('blz-alerts:vaultlowewrlasersrobbeydis') --ur dispatch event
-                TriggerEvent('blz-alerts:vaultlowewrlasersrobbey') --ur dispatch event
+                TriggerEvent('drp-dispatch:vaultlasers') --vault alarm
                 Wait(25000)
                 dispatchsend = false
                 end
