@@ -254,13 +254,47 @@ RegisterCommand("blackout", function()
     end
 end)
 
+
+function VaultLasers()
+    local street1 = GetStreetAndZone()
+    local gender = IsPedMale(PlayerPedId())
+    local plyPos = GetEntityCoords(PlayerPedId(), true)
+
+  
+    local dispatchCode = "10-90A"
+
+  
+    TriggerServerEvent('dispatch:svNotify', {
+      dispatchCode = dispatchCode,
+      firstStreet = street1,
+      gender = gender,
+
+      isImportant = true,
+          priority = 3,
+      dispatchMessage = "Lower Vault Lasers Alarm",
+      recipientList = {
+        police = "police"
+      },
+      origin = {
+        x = plyPos.x,
+        y = plyPos.y,
+        z = plyPos.z
+      }
+    })
+  
+    TriggerEvent('drp-dispatch:DispatchVaultAlert')
+--        Wait(math.random(5000,15000))
+
+  end
+
+
 AddEventHandler("drp-polyzone:enter", function(name)
     if name == "vault_lower_entrance" then
         while true do
             if not dispatchsend then
                 if not blackout then
                 dispatchsend = true
-                TriggerEvent('drp-dispatch:vaultlasers') --vault alarm
+                VaultLasers()
                 Wait(25000)
                 dispatchsend = false
                 end
