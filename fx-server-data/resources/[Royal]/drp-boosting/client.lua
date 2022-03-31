@@ -251,10 +251,14 @@ AddEventHandler("ls:startCarBoost", function(modelName)
     Citizen.Wait(10)
   end
   StartedBoost = true
-  local vehicle = CreateVehicle(vehHash, x, y, z, h, true, false)
+  local vehicle = CreateVehicle(vehHash, x, y, z, h, true, true)
   SetVehicleDoorsLocked(vehicle, 2)
   spawnedVeh = GetClosestVehicle(x, y, z, 3.5, 0, 70)
-
+  while not DoesEntityExist(spawnedVeh) do
+    Citizen.Wait(100)
+    print("Boosting Car Not Spawned")
+end
+  
   CreateBlipBoostLoc(x, y, z)
   
   function SpawnPedLoc()
