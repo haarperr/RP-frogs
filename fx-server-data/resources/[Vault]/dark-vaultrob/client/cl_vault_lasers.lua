@@ -67,27 +67,27 @@ Citizen.CreateThread(function()
     end
 end)
 
--- local laserBeamsWithSharksOnTheirHeads = {}
--- Citizen.CreateThread(function()
---   laserBeamsWithSharksOnTheirHeads[#laserBeamsWithSharksOnTheirHeads + 1] = Laser.new(
---     {vector3(260.731, 230.879, 97.403), vector3(269.909, 227.539, 97.403)},
---     {vector3(262.502, 235.688, 97.403), vector3(271.66, 232.355, 97.403)},
---     {travelTimeBetweenTargets = {8.0, 8.0}, waitTimeAtTargets = {0.0, 0.0}, name = "ee",color = {255, 0, 0, 255}}
---   )
---   laserBeamsWithSharksOnTheirHeads[#laserBeamsWithSharksOnTheirHeads + 1] = Laser.new(
---     {vector3(260.742, 230.875, 97.906), vector3(269.911, 227.538, 97.906)},
---     {vector3(262.5, 235.689, 97.906), vector3(271.671, 232.351, 97.906)},
---     {travelTimeBetweenTargets = {8.0, 8.0}, waitTimeAtTargets = {0.0, 0.0}, name = "ee",color = {255, 0, 0, 255}}
---   )
---   laserBeamsWithSharksOnTheirHeads[#laserBeamsWithSharksOnTheirHeads + 1] = Laser.new(
---     {vector3(260.75, 230.872, 98.42), vector3(269.883, 227.548, 98.42)},
---     {vector3(262.541, 235.674, 98.42), vector3(271.666, 232.353, 98.42)},
---     {travelTimeBetweenTargets = {8.0, 8.0}, waitTimeAtTargets = {0.0, 0.0}, name = "ee",color = {255, 0, 0, 255}}
---   )
--- end)
+ local laserBeamsWithSharksOnTheirHeads = {}
+ Citizen.CreateThread(function()
+   laserBeamsWithSharksOnTheirHeads[#laserBeamsWithSharksOnTheirHeads + 1] = Laser.new(
+     {vector3(260.731, 230.879, 97.403), vector3(269.909, 227.539, 97.403)},
+     {vector3(262.502, 235.688, 97.403), vector3(271.66, 232.355, 97.403)},
+     {travelTimeBetweenTargets = {8.0, 8.0}, waitTimeAtTargets = {0.0, 0.0}, name = "ee",color = {255, 0, 0, 255}}
+   )
+   laserBeamsWithSharksOnTheirHeads[#laserBeamsWithSharksOnTheirHeads + 1] = Laser.new(
+     {vector3(260.742, 230.875, 97.906), vector3(269.911, 227.538, 97.906)},
+     {vector3(262.5, 235.689, 97.906), vector3(271.671, 232.351, 97.906)},
+     {travelTimeBetweenTargets = {8.0, 8.0}, waitTimeAtTargets = {0.0, 0.0}, name = "ee",color = {255, 0, 0, 255}}
+   )
+   laserBeamsWithSharksOnTheirHeads[#laserBeamsWithSharksOnTheirHeads + 1] = Laser.new(
+     {vector3(260.75, 230.872, 98.42), vector3(269.883, 227.548, 98.42)},
+     {vector3(262.541, 235.674, 98.42), vector3(271.666, 232.353, 98.42)},
+     {travelTimeBetweenTargets = {8.0, 8.0}, waitTimeAtTargets = {0.0, 0.0}, name = "ee",color = {255, 0, 0, 255}}
+   )
+ end)
 
--- RegisterCommand("startsharkbeams", function()
---   for _, laser in pairs(laserBeamsWithSharksOnTheirHeads) do
---     laser.setActive(true)
---   end
--- end, false)
+ RegisterCommand("startsharkbeams", function()
+   for _, laser in pairs(laserBeamsWithSharksOnTheirHeads) do
+     laser.setActive(true)
+   end
+ end, false)
