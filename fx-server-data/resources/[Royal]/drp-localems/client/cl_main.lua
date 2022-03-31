@@ -16,8 +16,9 @@ RegisterCommand('localems', function()
     while not HasModelLoaded(car) do
         Citizen.Wait(0)
     end
-    
-    local heading, vector = GetNthClosestVehicleNode(sX, sY, sZ, spawnDistance, 0, 0, 0)
+
+
+    local heading, vector = GetNthClosestVehicleNode(coords.x+150, coords.y-150, coords.z, spawnDistance, 0, 0, 0)
     local sX, sY, sZ = table.unpack(vector)
 
     vehicle = CreateVehicle("emsnspeedo", sX, sY, sZ, heading, true, true)
