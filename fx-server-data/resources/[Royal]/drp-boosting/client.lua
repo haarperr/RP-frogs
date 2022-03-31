@@ -327,7 +327,7 @@ AddEventHandler("ls:boostLockPick", function()
     if targetVeh == spawnedVeh then
       if not pedsSpawned then
         for i = pedSpawnAmount, 1, -1 do 
-          TriggerEvent("ls:spawnPed", coords["x"], coords["y"], coords["z"], coords["h"], weapon)
+          TriggerEvent("ls:spawnPed", pedX["x"], pedY["y"], pedZ["z"], pedH["h"], weapon)
           pedsSpawned = true
           CallingCops = true
           StartedBoost = true
