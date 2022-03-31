@@ -1,6 +1,7 @@
-local drivingStyle = 2883621
+local drivingStyle = 1074528293
 local stopRange = 10.0
 local speed = 20.5
+local spawnDistance = 500
 
 RegisterCommand('localems', function()
     local ped = GetPlayerPed(-1)
@@ -14,20 +15,14 @@ RegisterCommand('localems', function()
     end
 
 
-    
-    local vehicle = CreateVehicle(car, coords.x+150, coords.y+150, coords.z, 0.0, true, true)
+    local heading, vector = GetNthClosestVehicleNode(coords.x+150, coords.y+150, coords.z, spawnDistance, 0, 0, 0)
+    local sX, sY, sZ = table.unpack(vector)
+
     PlaceObjectOnGroundProperly(vehicle)
     SetEntityInvincible(vehicle, true)
     
     cords = GetEntityCoords(vehicle)
 
-    local heading, vector = GetNthClosestVehicleNode(cords.x, cords.y, cords.z, 1, 0, 0)
-    local sX, sY, sZ = table.unpack(vector)
-
-    SetEntityHeading(vehicle, heading)
-    SetEntityCoords(vehicle, sX, sY, sZ)
-    
-    
     SetVehicleDoorsLocked(vehicle, 4)
     SetVehicleForwardSpeed(vehicle, 120.0)
     SetVehicleEngineOn(vehicle, true, true)
@@ -38,8 +33,6 @@ RegisterCommand('localems', function()
     SetNetworkIdCanMigrate(id, true)
     
     -- set emergency lights
-    SetVehicleIndicatorLights(vehicle, 0, true)
-
     SetVehicleSiren(vehicle, true)
 
     local currentCords = GetEntityCoords(vehicle)
