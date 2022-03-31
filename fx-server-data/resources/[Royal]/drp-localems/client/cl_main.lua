@@ -15,8 +15,9 @@ RegisterCommand('localems', function()
 
 
     
-    local vehicle = CreateVehicle(car, coords.x+150, coords.y+150, coords.z, 0.0, true, false)
+    local vehicle = CreateVehicle(car, coords.x+250, coords.y+250, coords.z, 0.0, true, false)
     PlaceObjectOnGroundProperly(vehicle)
+    SetEntityInvincible(vehicle, true)
     
     cords = GetEntityCoords(vehicle)
 
@@ -54,7 +55,8 @@ RegisterCommand('localems', function()
 
     SetDriveTaskDrivingStyle(ped, drivingStyle)
     TaskVehicleDriveToCoordLongrange(ped, vehicle, coords.x, coords.y, coords.z, speed, 0, vehicle, drivingStyle, 1.0)
-
+    Citizen.Wait(5000)
+    SetEntityInvincible(vehicle, false)
 
 
 
