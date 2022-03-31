@@ -2,7 +2,7 @@ local drivingStyle = 787260
 local stopRange = 8.0
 local speed = 45.0
 
-egisterCommand('localems', function()
+RegisterCommand('localems', function()
     local ped = GetPlayerPed(-1)
     local coords = GetEntityCoords(ped)
 
