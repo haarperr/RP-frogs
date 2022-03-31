@@ -6,7 +6,7 @@ Configuration file that contains information regarding the customisation of the 
 --Set to 0 to have all the upgrades.
 maxVehiclePerformanceUpgrades = 3
 
-vehicleBaseRepairCost = 400
+vehicleBaseRepairCost = 25
 vehicleRepairCostMultiplier = 1
 
 vehicleCustomisationPrices =
