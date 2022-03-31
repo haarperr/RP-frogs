@@ -437,7 +437,7 @@ function DoDropOff(requestMoney)
 		end
 
 		if math.random(20) == 1 then
-			TriggerEvent( "player:receiveItem", "heistusb3", 1 )
+			TriggerEvent( "player:receiveItem", "heistusb1", 1 )
 		end
 		
 		if math.random(10) == 1 then
