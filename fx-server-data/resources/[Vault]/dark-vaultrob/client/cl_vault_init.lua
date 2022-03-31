@@ -3,6 +3,7 @@ exports["drp-polyzone"]:AddBoxZone("vault_lower_pin_code1", vector3(279.57, 230.
     heading = 70,
     minZ = 96.29,
     maxZ = 98.69
+    debugPoly = true
 }, {
     options = {
         {
