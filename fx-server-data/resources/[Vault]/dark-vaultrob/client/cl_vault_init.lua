@@ -1,9 +1,8 @@
 Citizen.CreateThread(function()
-exports["drp-polyzone"]:AddBoxZone("vault_lower_pin_code1", vector3(279.7448425293, 230.71296691895, 97.169334411621), 0.6, 0.4, {
-    heading = 1450,
-    minZ = 96.29,
-    maxZ = 98.69
-    debugPoly = true
+exports["drp-polyzone"]:AddBoxZone("vault_lower_pin_code1", vector3(279.57, 230.38, 97.69), 0.6, 0.4, {
+    heading = 70,
+    minZ = 97.29,
+    maxZ = 97.69
 }, {
     options = {
         {
