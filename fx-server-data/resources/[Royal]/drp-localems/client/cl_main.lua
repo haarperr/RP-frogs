@@ -82,20 +82,18 @@ RegisterCommand('localems', function()
         Citizen.Wait(0)
     end
     
-    local closeOne = nil -- Coords 
+    local closeOne = 0 -- Coords 
     local closeRange = 10000000 -- Range
     for i = 1, #locations do
         local x, y, z, h = table.unpack(locations[i])
         local distance = GetDistanceBetweenCoords(coords.x, coords.y, coords.z, x, y, z, true)
         if closeRange >= distance then
             closeRange = distance
-            closeOne = x, y, z, h
+            closeOne = i
         end
     end
 
-    Citizen.Trace(tostring(closeOne))
-    Citizen.Trace(tostring(closeRange))
-
-
+    Citizen.Trace(tostring(closeRange) .. "\n")
+    Citizen.Trace(tostring(table.unpack(locations[closeOne])) .. "\n")
 end)
 
