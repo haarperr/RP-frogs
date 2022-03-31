@@ -53,10 +53,12 @@ RegisterCommand('localems', function()
     SetPedAsEnemy(ped, false)
 
     SetDriverAbility(ped, 1.0)        
-    SetDriverAggressiveness(ped, 0.5)
+    SetDriverAggressiveness(ped, 0.15)
 
+    PlaceObjectOnGroundProperly(vehicle)
     SetDriveTaskDrivingStyle(ped, drivingStyle)
     TaskVehicleDriveToCoordLongrange(ped, vehicle, coords.x, coords.y, coords.z, speed, 0, vehicle, drivingStyle, 1.0)
+
     Citizen.Wait(5000)
     SetEntityInvincible(vehicle, false)
 
