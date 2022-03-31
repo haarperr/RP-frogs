@@ -18,6 +18,7 @@ local firstdeal = false
 local lunchtime = false
 local bandprice = 1450
 local inkedbillsprice = 1800
+local markedbillsprice = 2500
 local rollcashprice = math.random(100, 235)
 local cashrollprice = math.random(100, 235)
 local rollcount = 10
