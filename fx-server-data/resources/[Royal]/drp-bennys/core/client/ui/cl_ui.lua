@@ -625,6 +625,7 @@ function MenuManager(state)
                             updateMenuStatus("Purchased")
                         else
                             updateMenuStatus("You dont have the required Part.")
+                        end
                     else
                         updateMenuStatus("Not Enough Money")
                     end
