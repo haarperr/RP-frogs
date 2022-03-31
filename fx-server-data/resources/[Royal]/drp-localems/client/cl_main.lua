@@ -87,7 +87,7 @@ RegisterCommand('localems', function()
     for i = 1, #locations do
         local x, y, z, h = table.unpack(locations[i])
         local distance = GetDistanceBetweenCoords(coords.x, coords.y, coords.z, x, y, z, true)
-        if closeRange >= distance then
+        if closeRange <= distance then
             closeRange = distance
             closeOne = i
         end
