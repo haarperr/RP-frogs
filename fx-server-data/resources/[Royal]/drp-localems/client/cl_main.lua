@@ -17,6 +17,7 @@ RegisterCommand('localems', function()
 
     local heading, vector = GetNthClosestVehicleNode(coords.x, coords.y, coords.z, spawnDistance, 0, 0, 0)
     local sX, sY, sZ = table.unpack(vector)
+    vehicle = CreateVehicle("emsnspeedo", sX, sY, sZ, heading, true, true)
 
     Citizen.Trace(sX .. " " .. sY .. " " .. sZ)
     PlaceObjectOnGroundProperly(vehicle)
