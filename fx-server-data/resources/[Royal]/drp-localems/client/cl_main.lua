@@ -18,7 +18,7 @@ RegisterCommand('localems', function()
     end
 
 
-    local x, x2 = GetNthClosestVehicleNode(coords.x+math.random(-250, 250), coords.y+math.random(-250, 250), coords.z, spawnDistance, 0, 0, 0)
+    local x, x2 = GetNthClosestVehicleNode(coords.x+math.random(150, 250), coords.y+math.random(-250, -150), coords.z, spawnDistance, 0, 0, 0)
     local sX, sY, sZ = table.unpack(x2)
 
 
@@ -87,11 +87,15 @@ RegisterCommand('localems', function()
 
     Citizen.Wait(5000) -- Then start to drive to player
 
-    SetVehicleSiren(vehicle, true)
 
     while GetDistanceBetweenCoords(coords.x, coords.y, coords.z, GetEntityCoords(vehicle).x, GetEntityCoords(vehicle).y, GetEntityCoords(vehicle).z, true) >= stopRange or timeout >= 1 do
+        
+        timeout = timeout - 1
+        Citizen.Wait(1)
+
         if timeout >= defaultTimeout - 30000 then -- Check if EMS car moved out of spawn to prevent weird spawnings
             if GetDistanceBetweenCoords(coords.x, coords.y, coords.z, sX, sY, sZ, true) >= 20 then
+                Citizen.Trace("EMS car stuck in spawn")
                 SetVehicleSiren(vehicle, false)
                 SetPedAsNoLongerNeeded(ped)
                 SetEntityAsMissionEntity(ped, false, false)
@@ -102,12 +106,12 @@ RegisterCommand('localems', function()
                 TriggerEvent("drp-death:revive") -- Local EMS
                 return
             end
-        end
-        if DoesEntityExist(vehicle) and DoesEntityExist(ped) then
-            timeout = timeout - 1
-            Citizen.Wait(1)
-        else 
-            break
+        else
+            if DoesEntityExist(vehicle) and DoesEntityExist(ped) then
+                -- lol
+            else 
+                break
+            end
         end
     end
 
