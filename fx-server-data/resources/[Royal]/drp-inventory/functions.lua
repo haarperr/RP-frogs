@@ -1066,7 +1066,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "heistlaptop4") then
-        TriggerEvent("vault:laptopcheck")
+        TriggerEvent("dark-vaultrob:upper:heistlaptop4")
     end
  
      if (itemid == "Gruppe6Card") then
