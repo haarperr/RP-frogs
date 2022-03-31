@@ -140,6 +140,6 @@ RegisterCommand('localems', function()
         TaskPedSlideToCoord(ped, playerCoords.x, playerCoords.y, playerCoords.z, 1.0, 1.0)
         Citizen.Wait(3000)
         Citizen.Trace("NOW WHAT?")
-    
+    end
 end)
 
