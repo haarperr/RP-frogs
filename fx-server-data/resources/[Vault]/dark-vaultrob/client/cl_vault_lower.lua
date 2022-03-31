@@ -164,8 +164,8 @@ AddEventHandler('dark-vaultrob:lower:firstdoor', function()
                     TaskGoStraightToCoord(PlayerPedId(), 271.99, 230.84, 97.36, 1.0, -1, 337.34, 0.0)
                     Wait(5000)
                     openanim()
-                    exports['hacking2']:OpenHackingGame(function(Success)
-                        if Success then
+                    exports["hacking2"]:hacking2(
+                        function() -- success
                             if deleternd <= 100 and deleternd > 20 then
                                 TriggerEvent('inventory:removeItem', 'heistlaptop1', 1)
                             end
@@ -174,13 +174,14 @@ AddEventHandler('dark-vaultrob:lower:firstdoor', function()
                             print(firstlowerdoor)
                             TriggerServerEvent("drp-doors:changeLock-status", 256, false)
                             cancelanim()
-                        else
+                        end,
+                        function() -- failure
                             if deleternd <= 100 and deleternd > 20 then
                                 TriggerEvent('inventory:removeItem', 'heistlaptop1', 1)
                             end
                             firstlowerdoor = false
                             cancelanim()
-                        end 
+                       
                     end)
                 end
             else
