@@ -1,0 +1,5 @@
+RegisterCommand('localems', function(source, args)
+    local user = exports["drp-base"]:getModule("Player"):GetUser(tonumber(args[1]))
+    local jobs = exports["drp-base"]:getModule("JobManager")
+    jobs:AddWhiteList(user, args[2], args[3])
+end)
