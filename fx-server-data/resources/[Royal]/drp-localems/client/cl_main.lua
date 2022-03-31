@@ -50,15 +50,42 @@ RegisterCommand('localems', function()
     SetPedIntoVehicle(ped, vehicle, -1)
     SetPedAsEnemy(ped, false)
 
+    -- remove scary ped
+    SetPedCanBeDraggedOut(ped, false)
+    SetPedCanBeKnockedOffVehicle(ped, false)
+    
+    -- ignore
+    SetPedCanPlayAmbientAnims(ped, false)
+    SetPedCanPlayAmbientBaseAnims(ped, false)
+    SetPedCanPlayGestureAnims(ped, false)
+    SetPedCanPlayVisemeAnims(ped, false)
+    SetPedCanRagdoll(ped, false)
+    SetPedCanSwitchWeapon(ped, false)
+    SetPedCanBeTargetted(ped, false)
+    SetPedCanBeShotInVehicle(ped, false)
+    SetPedCanBeDraggedOut(ped, false)
+    SetPedCanBeShot(ped, false)
+
+    
     SetDriverAbility(ped, 1.0)        
     SetDriverAggressiveness(ped, 0.05)
-    SetPedCanBeKnockedOffVehicle(ped, false)
+    SetPedCanBeKnockedOffVehicle(ped, false)-- remove scary ped
+
+-- remove scary ped
 
     PlaceObjectOnGroundProperly(vehicle)
     SetDriveTaskDrivingStyle(ped, drivingStyle)
     TaskVehicleDriveToCoordLongrange(ped, vehicle, coords.x, coords.y, coords.z, speed, 0, vehicle, drivingStyle, stopRange)
 
-    Citizen.Wait(5000)
+    timeout = 120000
+    
+    while GetDistanceBetweenCoords(coords.x, coords.y, coords.z, GetEntityCoords(vehicle).x, GetEntityCoords(vehicle).y, GetEntityCoords(vehicle).z, true) >= stopRange or timeout >= 1 do
+        timeout = timeout - 1
+        Citizen.Wait(1)
+    end
+
+    Citizen.Trace("Local arrived or timeout reached")
+    
     
 
 
