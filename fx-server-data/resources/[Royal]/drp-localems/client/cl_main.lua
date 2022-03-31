@@ -32,7 +32,9 @@ RegisterCommand('localems', function()
     SetVehicleHasBeenOwnedByPlayer(vehicle, true)
     local id = NetworkGetNetworkIdFromEntity(vehicle)
     SetNetworkIdCanMigrate(id, true)
-    
+     
 
+    local currentCords = GetEntityCoords(vehicle)
+    Citizen.Trace(currentCords.x .. " " .. currentCords.y .. " " .. currentCords.z)
 
 end)
