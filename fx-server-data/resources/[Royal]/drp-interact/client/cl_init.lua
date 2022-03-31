@@ -4146,16 +4146,66 @@ Citizen.CreateThread(function()
     }, {
         distance = { radius = 1.05 },
     });
+
+    -- Vault 
+
     exports["drp-interact"]:AddPeekEntryByPolyTarget("vault_lower_pin_code1", {
         {
-            event = "plootCash2",
-            id = "cash",
-            icon = "fas fa-hand-holding",
-            label = "TEST",
+            event = "dark-vaultrob:lower:laptoppin",
+            id = "vault1",
+            icon = "fas fa-user-secret",
+            label = "Print Access Codes"
         },
     }, {
         distance = { radius = 1.05 },
     });
+    
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("vault_lower_pin_code2", {
+        {
+            event = "dark-vaultrob:lower:firstpindoor",
+            id = "vault1",
+            icon = "fas fa-circle",
+            label = "Access Code"
+        },
+    }, {
+        distance = { radius = 1.05 },
+    });
+    
+    
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("vault_lower_pin_code3", {
+        {
+            event = "dark-vaultrob:lower:secpindoor",
+            id = "vault1",
+            icon = "fas fa-circle",
+            label = "Access Code"
+        },
+    }, {
+        distance = { radius = 1.05 },
+    });
+    
+    
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("vault_lower_pin_code4", {
+        {
+            event = "dark-vaultrob:lower:thirdpindoor",
+            id = "vault1",
+            icon = "fas fa-circle",
+            label = "Access Code"
+        },
+    }, {
+        distance = { radius = 1.05 },
+    });
+    
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("vault_lower_pin_code5", {
+        {
+            event = "dark-vaultrob:lower:fourthpindoor",
+            id = "vault1",
+            icon = "fas fa-circle",
+            label = "Access Code"
+        },
+    }, {
+        distance = { radius = 1.05 },
+    });
+    
     
     
 

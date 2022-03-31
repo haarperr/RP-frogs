@@ -1,9 +1,8 @@
 Citizen.CreateThread(function()
 exports["drp-polyzone"]:AddBoxZone("vault_lower_pin_code1", vector3(279.57, 230.38, 97.69), 0.6, 0.4, {
     heading = 70,
-    minZ = 96.29,
-    maxZ = 98.69
-    debugPoly = true
+    minZ = 97.09,
+    maxZ = 97.99
 }, {
     options = {
         {
@@ -16,7 +15,7 @@ exports["drp-polyzone"]:AddBoxZone("vault_lower_pin_code1", vector3(279.57, 230.
     distance = 2
 })
 
-exports["drp-polyzone"]:AddBoxZone("vault_lower_pin_code2", vector3(289.20, 227.47, 98.90), 0.4, 0.2, {
+exports["drp-polyzone"]:AddBoxZone("vault_lower_pin_code2", vector3(289.20, 227.47, 97.90), 0.4, 0.2, {
     heading = 142.81,
     minZ = 98.13,
     maxZ = 98.42
@@ -32,7 +31,7 @@ exports["drp-polyzone"]:AddBoxZone("vault_lower_pin_code2", vector3(289.20, 227.
     distance = 2
 })
 
-exports["drp-polyzone"]:AddBoxZone("vault_lower_pin_code3", vector3(286.83, 227.47, 98.90), 0.4, 0.2, {
+exports["drp-polyzone"]:AddBoxZone("vault_lower_pin_code3", vector3(286.83, 227.47, 97.90), 0.4, 0.2, {
     heading = 253.11,
     minZ = 98.13,
     maxZ = 98.42
@@ -48,7 +47,7 @@ exports["drp-polyzone"]:AddBoxZone("vault_lower_pin_code3", vector3(286.83, 227.
     distance = 2
 })
 
-exports["drp-polyzone"]:AddBoxZone("vault_lower_pin_code4", vector3(284.75, 221.69, 98.27), 0.4, 0.2, {
+exports["drp-polyzone"]:AddBoxZone("vault_lower_pin_code4", vector3(284.75, 221.69, 97.27), 0.4, 0.2, {
     heading = 70.19,
     minZ = 98.13,
     maxZ = 98.42
@@ -64,7 +63,7 @@ exports["drp-polyzone"]:AddBoxZone("vault_lower_pin_code4", vector3(284.75, 221.
     distance = 2
 })
 
-exports["drp-polyzone"]:AddBoxZone("vault_lower_pin_code5", vector3(286.52, 220.17, 98.27), 0.4, 0.2, {
+exports["drp-polyzone"]:AddBoxZone("vault_lower_pin_code5", vector3(286.52, 220.17, 97.27), 0.4, 0.2, {
     heading = 175.99,
     minZ = 98.13,
     maxZ = 98.42
