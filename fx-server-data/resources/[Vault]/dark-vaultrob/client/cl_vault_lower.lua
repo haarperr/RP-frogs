@@ -164,7 +164,7 @@ AddEventHandler('dark-vaultrob:lower:firstdoor', function()
                     TaskGoStraightToCoord(PlayerPedId(), 271.99, 230.84, 97.36, 1.0, -1, 337.34, 0.0)
                     Wait(5000)
                     openanim()
-                    exports['hacking3']:OpenHackingGame(function(Success)
+                    exports['hacking2']:OpenHackingGame(function(Success)
                         if Success then
                             if deleternd <= 100 and deleternd > 20 then
                                 TriggerEvent('inventory:removeItem', 'heistlaptop1', 1)
