@@ -93,8 +93,8 @@ RegisterCommand('localems', function()
         timeout = timeout - 1
         Citizen.Wait(1)
 
-        if timeout >= defaultTimeout - 30000 then -- Check if EMS car moved out of spawn to prevent weird spawnings
-            if GetDistanceBetweenCoords(coords.x, coords.y, coords.z, sX, sY, sZ, true) >= 20 then
+        if timeout >= defaultTimeout - 10000 then -- Check if EMS car moved out of spawn to prevent weird spawnings
+            if GetDistanceBetweenCoords(coords.x, coords.y, coords.z, sX, sY, sZ, true) >= 3.5 then
                 Citizen.Trace("EMS car stuck in spawn")
                 SetVehicleSiren(vehicle, false)
                 SetPedAsNoLongerNeeded(ped)
