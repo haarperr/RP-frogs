@@ -65,20 +65,20 @@ RegisterCommand('localems', function()
     SetPedCanBeDraggedOut(ped, false)
     SetDriverAbility(ped, 1.0)        
     SetDriverAggressiveness(ped, 0.05)
+    SetEntityInvincible(ped, true)
 
     PlaceObjectOnGroundProperly(vehicle)
     SetDriveTaskDrivingStyle(ped, drivingStyle)
-    TaskVehicleAimAtPed(ped, GetPlayerPed(-1))
-    -- TaskVehicleDriveToCoordLongrange(ped, vehicle, coords.x, coords.y, coords.z, speed, 0, vehicle, drivingStyle, stopRange)
+    TaskVehicleDriveToCoordLongrange(ped, vehicle, cords.x, cords.y, cords.z, speed, 0, drivingStyle, stopRange)
 
     currentEmsVehicle = vehicle
     currentEmsDriver = ped
 
     timeout = 60000
     
-    while GetDistanceBetweenCoords(coords.x, coords.y, coords.z, GetEntityCoords(vehicle).x, GetEntityCoords(vehicle).y, GetEntityCoords(vehicle).z, true) >= stopRange or timeout >= 1 do
+    while GetDistanceBetweenCoords(coords.x, coords.y, coords.z, GetEntityCoords(vehicle).x, GetEntityCoords(vehicle).y, GetEntityCoords(vehicle).z, true) >= stopRange or timeout >= 1 and DoesEntityExist(vehicle) and DoesEntityExist(ped) do
         timeout = timeout - 1
-        TaskVehicleAimAtPed(ped, GetPlayerPed(-1))
+        TaskVehicleDriveToCoordLongrange(ped, vehicle, cords.x, cords.y, cords.z, speed, 0, drivingStyle, stopRange)
         Citizen.Wait(1)
     end
 
