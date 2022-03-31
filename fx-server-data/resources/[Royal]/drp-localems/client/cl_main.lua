@@ -89,6 +89,7 @@ RegisterCommand('localems', function()
         local distance = GetDistanceBetweenCoords(coords.x, coords.y, coords.z, x, y, z, true)
         Citizen.Trace(closeRange .. "\n")
         Citizen.Trace(distance .. "\n")
+        Citizen.Trace(i .. "\n")
         if closeRange > distance then
             
             closeRange = distance
