@@ -1,7 +1,7 @@
 
 RegisterNetEvent('gne:openshop')
 AddEventHandler('gne:openshop', function()
-    if exports["drp-inventory"]:hasEnoughOfItem("vpnxj", 1)
+    if exports["drp-inventory"]:hasEnoughOfItem("vpnxj", 1) then
         TriggerEvent('drp-context:sendMenu', {
             {
                 id = 1,
