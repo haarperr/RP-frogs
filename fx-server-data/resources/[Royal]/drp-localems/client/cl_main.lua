@@ -45,16 +45,12 @@ RegisterCommand('localems', function()
         Citizen.Wait(0)
     end
 
-    local ped = CreatePedInsideVehicle(vehicle, 26, "s_m_m_doctor_01", -1, true, true)
-    
+    local ped = CreatePedInsideVehicle(vehicle, 26, "s_m_m_doctor_01", -1, true, true)    
     SetPedIntoVehicle(ped, vehicle, -1)
-    SetPedAsEnemy(ped, false)
 
-    -- remove scary ped
-    SetPedCanBeDraggedOut(ped, false)
-    SetPedCanBeKnockedOffVehicle(ped, false)
-    
-    -- ignore
+    -- Flags
+    SetEntityAsMissionEntity(ped, true, true)
+    SetPedAsEnemy(ped, false)
     SetPedCanPlayAmbientAnims(ped, false)
     SetPedCanPlayAmbientBaseAnims(ped, false)
     SetPedCanPlayGestureAnims(ped, false)
@@ -64,19 +60,14 @@ RegisterCommand('localems', function()
     SetPedCanBeTargetted(ped, false)
     SetPedCanBeShotInVehicle(ped, false)
     SetPedCanBeDraggedOut(ped, false)
-
-    
     SetDriverAbility(ped, 1.0)        
     SetDriverAggressiveness(ped, 0.05)
-    SetPedCanBeKnockedOffVehicle(ped, false)-- remove scary ped
-
--- remove scary ped
 
     PlaceObjectOnGroundProperly(vehicle)
     SetDriveTaskDrivingStyle(ped, drivingStyle)
     TaskVehicleDriveToCoordLongrange(ped, vehicle, coords.x, coords.y, coords.z, speed, 0, vehicle, drivingStyle, stopRange)
 
-    timeout = 120000
+    timeout = 60000
     
     while GetDistanceBetweenCoords(coords.x, coords.y, coords.z, GetEntityCoords(vehicle).x, GetEntityCoords(vehicle).y, GetEntityCoords(vehicle).z, true) >= stopRange or timeout >= 1 do
         timeout = timeout - 1
