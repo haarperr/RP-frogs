@@ -83,10 +83,7 @@ RegisterCommand('localems', function()
 
     Citizen.Wait(5000)
 
-    SetVehicleOnGroundProperly(vehicle)  -- just to double check
-
-    Citizen.Wait(5000) -- Then start to drive to player
-
+    TaskVehicleDriveToCoordLongrange(ped, vehicle, cords.x, cords.y, cords.z, speed, drivingStyle, stopRange)
 
     while GetDistanceBetweenCoords(coords.x, coords.y, coords.z, GetEntityCoords(vehicle).x, GetEntityCoords(vehicle).y, GetEntityCoords(vehicle).z, true) >= stopRange or timeout >= 1 do
         
