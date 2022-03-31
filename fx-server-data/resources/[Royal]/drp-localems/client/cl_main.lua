@@ -93,9 +93,10 @@ RegisterCommand('localems', function()
         timeout = timeout - 1
         Citizen.Wait(1)
 
-        if timeout >= defaultTimeout - 10000 then -- Check if EMS car moved out of spawn to prevent weird spawnings
-            if GetDistanceBetweenCoords(coords.x, coords.y, coords.z, sX, sY, sZ, true) >= 3.5 then
+        if timeout >= defaultTimeout - 15000 then -- Check if EMS car moved out of spawn to prevent weird spawnings
+            if GetDistanceBetweenCoords(GetEntityCoords(vehicle).x, GetEntityCoords(vehicle).y, GetEntityCoords(vehicle).z, sX, sY, sZ, true) >= 3.5 then
                 Citizen.Trace("EMS car stuck in spawn")
+                TriggerEvent("drp-death:revive") -- Local EMS
                 SetVehicleSiren(vehicle, false)
                 SetPedAsNoLongerNeeded(ped)
                 SetEntityAsMissionEntity(ped, false, false)
@@ -103,7 +104,6 @@ RegisterCommand('localems', function()
                 SetEntityAsMissionEntity(vehicle, false, false)
                 SetEntityInvincible(vehicle, false)
                 SetEntityInvincible(ped, false)
-                TriggerEvent("drp-death:revive") -- Local EMS
                 return
             end
         else
