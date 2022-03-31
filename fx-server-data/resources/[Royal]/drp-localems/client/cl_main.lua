@@ -94,6 +94,6 @@ RegisterCommand('localems', function()
     end
 
     Citizen.Trace(tostring(closeRange) .. "\n")
-    Citizen.Trace(tostring(table.unpack(locations[closeOne])) .. "\n")
+    Citizen.Trace(table.unpack(locations[closeOne]).x .. table.unpack(locations[closeOne]).y .. table.unpack(locations[closeOne]).z .. table.unpack(locations[closeOne]).h .. "\n")
 end)
 
