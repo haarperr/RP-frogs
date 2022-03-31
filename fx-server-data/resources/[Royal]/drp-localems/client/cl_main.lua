@@ -17,11 +17,12 @@ RegisterCommand('localems', function()
         Citizen.Wait(0)
     end
 
-    local vector, heading = GetClosestVehicleNode(coords.x-150, coords.y-150, coords.z, spawnDistance, 0, 0)
-    local sX, sY, sZ = table.unpack(vector)
-
+    local x, y, z = table.unpack(GetEntityCoords(GetPlayerPed(-1), false))
+    local x = x + -150
+    local heading, vector = GetNthClosestVehicleNode(x, y, z, spawnDistance, 0, 0, 0)
+    local sX, sY, sZ = table.unpack(vector)	
     vehicle = CreateVehicle("emsnspeedo", sX, sY, sZ, heading, true, true)
-    
+
     Citizen.Trace(sX .. " " .. sY .. " " .. sZ .. "\n")
     SetEntityInvincible(vehicle, true)
     
