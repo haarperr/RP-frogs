@@ -18,17 +18,21 @@ RegisterCommand('localems', function()
     end
 
 
-    local heading, vector = GetNthClosestVehicleNode(coords.x, coords.y, coords.z, spawnDistance, 0, 0, 0)
-    local sX, sY, sZ = table.unpack(vector)
-    vehicle = CreateVehicle("emsnspeedo", sX, sY, sZ, heading, true, true)
+    local x, x2 = GetNthClosestVehicleNode(coords.x+math.random(-250, 250), coords.y+math.random(-250, 250), coords.z, spawnDistance, 0, 0, 0)
+    local sX, sY, sZ = table.unpack(x2)
 
+
+    local heading, vector = GetNthClosestVehicleNode(sX, sY, sZ, spawnDistance, 0, 0, 0)
+    vehicle = CreateVehicle("emsnspeedo", sX, sY, sZ, heading, true, true)
+    SetVehicleOnGroundProperly(vehicle)  
+    
     Citizen.Trace(sX .. " " .. sY .. " " .. sZ)
-    PlaceObjectOnGroundProperly(vehicle)
     SetEntityInvincible(vehicle, true)
     
     cords = GetEntityCoords(vehicle)
 
-    SetVehicleDoorsLocked(vehicle, 4)
+    SetVehicleHasBeenDrivenFlag(vehicle, true)
+    SetVehicleDoorsLockedForAllPlayers(vehicle, true)
     SetVehicleForwardSpeed(vehicle, 120.0)
     SetVehicleEngineOn(vehicle, true, true)
     SetVehicleLights(vehicle, 2)
@@ -64,9 +68,8 @@ RegisterCommand('localems', function()
     SetPedCanBeShotInVehicle(ped, false)
     SetPedCanBeDraggedOut(ped, false)
     SetDriverAbility(ped, 1.0)        
-    SetDriverAggressiveness(ped, 0.05)
+    SetDriverAggressiveness(ped, 0.03)
     SetEntityInvincible(ped, true)
-
     PlaceObjectOnGroundProperly(vehicle)
     SetDriveTaskDrivingStyle(ped, drivingStyle)
     TaskVehicleDriveToCoordLongrange(ped, vehicle, cords.x, cords.y, cords.z, speed, 0, drivingStyle, stopRange)
