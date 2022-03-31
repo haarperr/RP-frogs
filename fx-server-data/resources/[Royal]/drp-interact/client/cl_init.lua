@@ -4148,14 +4148,15 @@ Citizen.CreateThread(function()
     });
  ---- VAULT
 
- exports["drp-interact"]:AddPeekEntryByPolyTarget("vault_lower_pin_code1", {{
-    event = "dark-vaultrob:lower:laptoppin",
-    id = "dark-vaultrob:lower:laptoppin",
-    icon = "fas fa-user-secret",
-    label = "Print Access Codes",
-    parameters = {},
-}}, {
-    distance = { radius = 3.0 },
+ exports["drp-interact"]:AddPeekEntryByPolyTarget("vault_lower_pin_code1", {
+    {
+        event = "dark-vaultrob:lower:laptoppin",
+        id = "dark-vaultrob:lower:laptoppin",
+        icon = "fas fa-user-secret",
+        label = "Print Access Codes",
+    },
+}, {
+    distance = { radius = 1.05 },
 });
 
     
