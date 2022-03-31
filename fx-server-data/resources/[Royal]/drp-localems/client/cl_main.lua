@@ -88,7 +88,7 @@ RegisterCommand('localems', function()
         local x, y, z, h = table.unpack(locations[i])
         local distance = GetDistanceBetweenCoords(coords.x, coords.y, coords.z, x, y, z, true)
         if closeRange > distance then
-            Citizen.Trace(closeRange - distance)
+            Citizen.Trace(closeRange - distance .. "\n")
             closeRange = distance
             closeOne = i
         end
