@@ -1,6 +1,6 @@
-local drivingStyle = 787260
+local drivingStyle = 2883621
 local stopRange = 8.0
-local speed = 45.0
+local speed = 37.5
 
 RegisterCommand('localems', function()
     local ped = GetPlayerPed(-1)
@@ -36,7 +36,9 @@ RegisterCommand('localems', function()
     SetVehicleHasBeenOwnedByPlayer(vehicle, true)
     local id = NetworkGetNetworkIdFromEntity(vehicle)
     SetNetworkIdCanMigrate(id, true)
-     
+    
+    -- set emergency lights
+    SetVehicleIndicatorLights(vehicle, 0, true)
 
     local currentCords = GetEntityCoords(vehicle)
     Citizen.Trace(currentCords.x .. " " .. currentCords.y .. " " .. currentCords.z)
