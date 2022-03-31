@@ -602,22 +602,75 @@ function MenuManager(state)
         if currentMenuItem2 ~= "Installed" then
             if isMenuActive("modMenu") then
                 if currentCategory == 18 then --Turbo
-                    if AttemptPurchase("turbo") then
-                        ApplyMod(currentCategory, currentMenuItemID)
-                        playSoundEffect("wrench", 0.4)
-                        updateItem2Text(currentMenu, currentMenuItemID, "Installed")
-                        updateMenuStatus("Purchased")
+                    if exports['drp-inventory']:hasEnoughOfItem('turbokit', 1) then
+                        if AttemptPurchase("turbo") then
+                            TriggerEvent("inventory:removeItem","turbokit", 1)
+                            ApplyMod(currentCategory, currentMenuItemID)
+                            playSoundEffect("wrench", 0.4)
+                            updateItem2Text(currentMenu, currentMenuItemID, "Installed")
+                            updateMenuStatus("Purchased")
+                        else
+                            updateMenuStatus("Not Enough Money or part missing!")
+                        end
+                        
                     else
-                        updateMenuStatus("Not Enough Money!")
+                        updateMenuStatus("Vehicle Part missing!")
                     end
-                elseif currentCategory == 11 or currentCategory == 12 or currentCategory== 13 or currentCategory == 15 or currentCategory == 16 then --Performance Upgrades
-                    if AttemptPurchase("performance", currentMenuItemID) then
-                        ApplyMod(currentCategory, currentMenuItemID)
-                        playSoundEffect("wrench", 0.4)
-                        updateItem2Text(currentMenu, currentMenuItemID, "Installed")
-                        updateMenuStatus("Purchased")
+                elseif currentCategory == 11 then -- Engine
+                    if exports['drp-inventory']:hasEnoughOfItem('enginekit', 1) then
+                        if AttemptPurchase("performance", currentMenuItemID) then
+                            TriggerEvent("inventory:removeItem","enginekit", 1)
+                            ApplyMod(currentCategory, enginekit)
+                            playSoundEffect("wrench", 0.4)
+                            updateItem2Text(currentMenu, currentMenuItemID, "Installed")
+                            updateMenuStatus("Purchased")
+                        else
+                            updateMenuStatus("Not Enough Money!")
+                        end
                     else
-                        updateMenuStatus("Not Enough Money")
+                        updateMenuStatus("Vehicle Part missing!")
+                    end
+                elseif currentCategory == 12 then -- Brake
+                    if exports['drp-inventory']:hasEnoughOfItem('brakingkit', 1) then
+                        if AttemptPurchase("performance", currentMenuItemID) then
+                            TriggerEvent("inventory:removeItem","brakingkit", 1)
+                            ApplyMod(currentCategory, enginekit)
+                            playSoundEffect("wrench", 0.4)
+                            updateItem2Text(currentMenu, currentMenuItemID, "Installed")
+                            updateMenuStatus("Purchased")
+                        else
+                            updateMenuStatus("Not Enough Money or part missing!")
+                        end
+                    else
+                        updateMenuStatus("Vehicle Part missing!")
+                    end
+                elseif currentCategory == 13 then -- Transmission
+                    if exports['drp-inventory']:hasEnoughOfItem('transmissionkit', 1) then
+                        if AttemptPurchase("performance", currentMenuItemID) then
+                            TriggerEvent("inventory:removeItem","transmissionkit", 1)
+                            ApplyMod(currentCategory, enginekit)
+                            playSoundEffect("wrench", 0.4)
+                            updateItem2Text(currentMenu, currentMenuItemID, "Installed")
+                            updateMenuStatus("Purchased")
+                        else
+                            updateMenuStatus("Not Enough Money or part missing!")
+                        end
+                    else
+                        updateMenuStatus("Vehicle Part missing!")
+                    end
+                elseif currentCategory == 15 then -- Suspension
+                    if exports['drp-inventory']:hasEnoughOfItem('suspensionkit', 1) then
+                        if AttemptPurchase("performance", currentMenuItemID) then
+                            TriggerEvent("inventory:removeItem","suspensionkit", 1)
+                            ApplyMod(currentCategory, enginekit)
+                            playSoundEffect("wrench", 0.4)
+                            updateItem2Text(currentMenu, currentMenuItemID, "Installed")
+                            updateMenuStatus("Purchased")
+                        else
+                            updateMenuStatus("Not Enough Money or part missing!")
+                        end
+                    else
+                        updateMenuStatus("Vehicle Part missing!")
                     end
                 else
                     if AttemptPurchase("cosmetics") then

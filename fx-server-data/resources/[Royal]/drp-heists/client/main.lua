@@ -26,15 +26,15 @@ Citizen.CreateThread(function()
     
     if exports["drp-inventory"]:hasEnoughOfItem("heistusb4", 1, false, true) then
       TriggerEvent("inventory:removeItem", "heistusb4", 1)
-      TriggerEvent( "player:receiveItem", "heistlaptop3", 1 )
+      TriggerServerEvent('buy:buyitem', "heistlaptop3", 10000, 1)
     end
     if exports["drp-inventory"]:hasEnoughOfItem("heistusb1", 1, false, true) then
       TriggerEvent("inventory:removeItem", "heistusb1", 1)
-      TriggerEvent( "player:receiveItem", "heistlaptop2", 1 )
+      TriggerServerEvent('buy:buyitem', "heistlaptop2", 25000, 1)
     end
     if exports["drp-inventory"]:hasEnoughOfItem("heistusb2", 1, false, true) then
       TriggerEvent("inventory:removeItem", "heistusb2", 1)
-      TriggerEvent( "player:receiveItem", "heistlaptop4", 1 )
+      TriggerServerEvent('buy:buyitem', "heistlaptop4", 35000, 1)
     end
     Citizen.Wait(1000)
   end

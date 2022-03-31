@@ -116,9 +116,13 @@ end
 
 RegisterNetEvent('gne:check');
 AddEventHandler('gne:check', function(costs,functionCall,server)
+  if clientstockamount[1]["value"] == nil then
+    clientstockamount[1]["value"] = 0
+    updateServerClientStocks()
+  end
 
-  if clientstockamount[1]["value"] >= costs then
-    clientstockamount[1]["value"] = clientstockamount[1]["value"] - costs
+  if tonumber(clientstockamount[1]["value"]) >= costs then
+    clientstockamount[1]["value"] = tonumber(clientstockamount[1]["value"]) - costs
     updateServerClientStocks()
     if server then
       TriggerServerEvent(functionCall)
@@ -133,9 +137,13 @@ end)
 
 RegisterNetEvent('shungite:check');
 AddEventHandler('shungite:check', function(costs,functionCall,server)
+  if clientstockamount[2]["value"] == nil then
+    clientstockamount[2]["value"] = 0
+    updateServerClientStocks()
+  end
 
-  if clientstockamount[2]["value"] >= costs then
-    clientstockamount[2]["value"] = clientstockamount[1]["value"] - costs
+  if tonumber(clientstockamount[2]["value"]) >= costs then
+    clientstockamount[2]["value"] = tonumber(clientstockamount[1]["value"]) - costs
     updateServerClientStocks()
     if server then
       TriggerServerEvent(functionCall)

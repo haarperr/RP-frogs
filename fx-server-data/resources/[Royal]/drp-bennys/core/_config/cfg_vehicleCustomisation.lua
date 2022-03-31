@@ -6,8 +6,8 @@ Configuration file that contains information regarding the customisation of the 
 --Set to 0 to have all the upgrades.
 maxVehiclePerformanceUpgrades = 3
 
-vehicleBaseRepairCost = 400
-vehicleRepairCostMultiplier = 1
+vehicleBaseRepairCost = 25
+vehicleRepairCostMultiplier = 0.5
 
 vehicleCustomisationPrices =
 {
@@ -24,36 +24,36 @@ vehicleCustomisationPrices =
         prices = 
         {
             0,
-            1625,
-            2750,
-            5225,
-            7625,
-            10250
+            2625,
+            5750,
+            7225,
+            10625,
+            15250
         }
     },
     turbo = 
     {
-        price = 7500
+        price = 10000
     },
     wheels = 
     {
-        price = 200
+        price = 500
     },
     customwheels = 
     {
-        price = 300
+        price = 600
     },
     wheelsmoke = 
     {
-        price = 200
+        price = 500
     },
     windowtint = 
     {
-        price = 200
+        price = 500
     },
     neonside = 
     {
-        price = 50
+        price = 250
     },
     neoncolours = 
     {
@@ -61,19 +61,19 @@ vehicleCustomisationPrices =
     },
     headlights = 
     {
-        price = 50
+        price = 500
     },
     xenoncolours = 
     {
-        price = 250
+        price = 500
     },
     oldlivery = 
     {
-        price = 50
+        price = 500
     },
     plateindex = 
     {
-        price = 500
+        price = 750
     }
 }
 

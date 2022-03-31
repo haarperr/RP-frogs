@@ -52,9 +52,11 @@ RegisterNUICallback('btnTwatter', function()
 end)
   
 RegisterNUICallback('newTwatSubmit', function(data, cb)
-    local handle = exports["isPed"]:isPed("twitterhandle")
-    TriggerServerEvent('Tweet', handle, data.twat, data.time)
-    TriggerServerEvent('drp-phone:twatSendNotification', handle, data.twat, data.time)   
+    if data.twat ~= "" then
+      local handle = exports["isPed"]:isPed("twitterhandle")
+      TriggerServerEvent('Tweet', handle, data.twat, data.time)
+      TriggerServerEvent('drp-phone:twatSendNotification', handle, data.twat, data.time)   
+    end
 end)
 
 
