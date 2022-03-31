@@ -15,9 +15,10 @@ RegisterCommand('localems', function()
     end
 
 
-    local heading, vector = GetNthClosestVehicleNode(coords.x+150, coords.y+150, coords.z, spawnDistance, 0, 0, 0)
+    local heading, vector = GetNthClosestVehicleNode(coords.x, coords.y, coords.z, spawnDistance, 0, 0, 0)
     local sX, sY, sZ = table.unpack(vector)
 
+    Citizen.Trace(sX .. " " .. sY .. " " .. sZ)
     PlaceObjectOnGroundProperly(vehicle)
     SetEntityInvincible(vehicle, true)
     
@@ -29,10 +30,10 @@ RegisterCommand('localems', function()
     SetVehicleLights(vehicle, 2)
     SetEntityAsMissionEntity(vehicle, true, true)
     SetVehicleHasBeenOwnedByPlayer(vehicle, true)
+
     local id = NetworkGetNetworkIdFromEntity(vehicle)
     SetNetworkIdCanMigrate(id, true)
     
-    -- set emergency lights
     SetVehicleSiren(vehicle, true)
 
     local currentCords = GetEntityCoords(vehicle)
@@ -44,18 +45,20 @@ RegisterCommand('localems', function()
     end
 
     local ped = CreatePedInsideVehicle(vehicle, 26, "s_m_m_doctor_01", -1, true, true)
+    
     SetPedIntoVehicle(ped, vehicle, -1)
     SetPedAsEnemy(ped, false)
 
     SetDriverAbility(ped, 1.0)        
-    SetDriverAggressiveness(ped, 0.15)
+    SetDriverAggressiveness(ped, 0.05)
+    SetPedCanBeKnockedOffVehicle(ped, false)
 
     PlaceObjectOnGroundProperly(vehicle)
     SetDriveTaskDrivingStyle(ped, drivingStyle)
     TaskVehicleDriveToCoordLongrange(ped, vehicle, coords.x, coords.y, coords.z, speed, 0, vehicle, drivingStyle, stopRange)
 
     Citizen.Wait(5000)
-    SetEntityInvincible(vehicle, false)
+    
 
 
 
