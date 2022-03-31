@@ -1,4 +1,8 @@
-RegisterCommand('localems', function()
+local drivingStyle = 787260
+local stopRange = 8.0
+local speed = 45.0
+
+egisterCommand('localems', function()
     local ped = GetPlayerPed(-1)
     local coords = GetEntityCoords(ped)
 
@@ -35,5 +39,23 @@ RegisterCommand('localems', function()
 
     local currentCords = GetEntityCoords(vehicle)
     Citizen.Trace(currentCords.x .. " " .. currentCords.y .. " " .. currentCords.z)
+
+    RequestModel("s_m_m_doctor_01")
+    while not HasModelLoaded("s_m_m_doctor_01") do
+        Citizen.Wait(0)
+    end
+
+    local ped = CreatePedInsideVehicle(vehicle, 26, "s_m_m_doctor_01", -1, true, false)
+    SetPedIntoVehicle(ped, vehicle, -1)
+    SetPedAsEnemy(ped, false)
+
+    SetDriverAbility(ped, 1.0)        
+    SetDriverAggressiveness(ped, 0.5)
+
+    SetDriveTaskDrivingStyle(ped, drivingStyle)
+    TaskVehicleDriveToCoordLongrange(ped, vehicle, coords.x, coords.y, coords.z, speed, 0, vehicle, drivingStyle, 1.0)
+
+
+
 
 end)
