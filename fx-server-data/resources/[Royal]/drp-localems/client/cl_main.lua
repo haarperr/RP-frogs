@@ -16,13 +16,10 @@ RegisterCommand('localems', function()
     while not HasModelLoaded(car) do
         Citizen.Wait(0)
     end
-
-
-    local x, x2 = GetNthClosestVehicleNode(coords.x+math.random(150, 250), coords.y+math.random(-250, -150), coords.z, spawnDistance, 0, 0, 0)
-    local sX, sY, sZ = table.unpack(x2)
-
-
+    
     local heading, vector = GetNthClosestVehicleNode(sX, sY, sZ, spawnDistance, 0, 0, 0)
+    local sX, sY, sZ = table.unpack(vector)
+
     vehicle = CreateVehicle("emsnspeedo", sX, sY, sZ, heading, true, true)
     SetVehicleOnGroundProperly(vehicle)  
     
@@ -30,14 +27,6 @@ RegisterCommand('localems', function()
     SetEntityInvincible(vehicle, true)
     
     cords = GetEntityCoords(vehicle)
-
-    SetVehicleHasBeenDrivenFlag(vehicle, true)
-    SetVehicleDoorsLockedForAllPlayers(vehicle, true)
-    SetVehicleForwardSpeed(vehicle, 120.0)
-    SetVehicleEngineOn(vehicle, true, true)
-    SetVehicleLights(vehicle, 2)
-    SetEntityAsMissionEntity(vehicle, true, true)
-    SetVehicleHasBeenOwnedByPlayer(vehicle, true)
 
     local id = NetworkGetNetworkIdFromEntity(vehicle)
     SetNetworkIdCanMigrate(id, true)
@@ -55,7 +44,12 @@ RegisterCommand('localems', function()
     SetPedIntoVehicle(ped, vehicle, -1)
 
     -- Flags
-    SetEntityAsMissionEntity(ped, true, true)
+    SetVehicleHasBeenDrivenFlag(vehicle, true)
+    SetVehicleDoorsLockedForAllPlayers(vehicle, true)
+    SetVehicleForwardSpeed(vehicle, 120.0)
+    SetVehicleEngineOn(vehicle, true, true)
+    SetVehicleLights(vehicle, 2)
+    SetVehicleHasBeenOwnedByPlayer(vehicle, true)
     SetPedAsEnemy(ped, false)
     SetPedCanPlayAmbientAnims(ped, false)
     SetPedCanPlayAmbientBaseAnims(ped, false)
@@ -63,16 +57,24 @@ RegisterCommand('localems', function()
     SetPedCanPlayVisemeAnims(ped, false)
     SetPedCanRagdoll(ped, false)
     SetPedCanSwitchWeapon(ped, false)
-    SetPedCanBeTargetted(ped, false)
     SetPedCanBeShotInVehicle(ped, false)
-    SetPedCanBeDraggedOut(ped, false)
-    SetDriverAbility(ped, 1.0)        
-    SetDriverAggressiveness(ped, 0.03)
     SetEntityInvincible(ped, true)
-    PlaceObjectOnGroundProperly(vehicle)
     SetDriveTaskDrivingStyle(ped, drivingStyle)
+    SetEntityAsMissionEntity(ped, true, true)
+	SetEntityAsMissionEntity(vehicle, true, true)
+	SetEntityCanBeDamaged(vehicle, false)
+	SetVehicleDamageModifier(vehicle, 0.0)
+	SetVehicleEngineCanDegrade(vehicle, false)
+	SetEntityCanBeDamaged(ped, false)
+	SetPedCanBeTargetted(ped, false)
+	SetDriverAbility(ped, 1.0)
+	SetDriverAggressiveness(ped, 0.0)
+	SetBlockingOfNonTemporaryEvents(ped, true)
+	SetPedConfigFlag(ped, 251, true)
+	SetPedConfigFlag(ped, 64, true)
+	SetPedStayInVehicleWhenJacked(ped, true)
+	SetPedCanBeDraggedOut(ped, false)
 
-    TaskVehicleDriveWander(ped, vehicle, speed, drivingStyle)
 
     currentEmsVehicle = vehicle
     currentEmsDriver = ped
@@ -83,6 +85,7 @@ RegisterCommand('localems', function()
 
     Citizen.Wait(5000)
 
+    SetVehicleSiren(vehicle, true)
     TaskVehicleDriveToCoordLongrange(ped, vehicle, cords.x, cords.y, cords.z, speed, drivingStyle, stopRange)
 
     while GetDistanceBetweenCoords(coords.x, coords.y, coords.z, GetEntityCoords(vehicle).x, GetEntityCoords(vehicle).y, GetEntityCoords(vehicle).z, true) >= stopRange or timeout >= 1 do
