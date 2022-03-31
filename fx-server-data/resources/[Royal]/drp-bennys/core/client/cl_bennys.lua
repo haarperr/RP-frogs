@@ -94,6 +94,7 @@ function AttemptPurchase(type, upgradeLevel)
     if upgradeLevel ~= nil then
         upgradeLevel = upgradeLevel + 2
     end
+    Citizen.Trace(type)
     TriggerServerEvent("drp-bennys:attemptPurchase", type, upgradeLevel)
 
     attemptingPurchase = true

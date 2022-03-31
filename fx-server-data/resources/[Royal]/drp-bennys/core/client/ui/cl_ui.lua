@@ -603,19 +603,28 @@ function MenuManager(state)
             if isMenuActive("modMenu") then
                 if currentCategory == 18 then --Turbo
                     if AttemptPurchase("turbo") then
-                        ApplyMod(currentCategory, currentMenuItemID)
-                        playSoundEffect("wrench", 0.4)
-                        updateItem2Text(currentMenu, currentMenuItemID, "Installed")
-                        updateMenuStatus("Purchased")
+                        if exports['drp-inventory']:hasEnoughOfItem('turbokit', 1) then
+                            TriggerEvent("inventory:removeItem","turbokit", 1)
+                            ApplyMod(currentCategory, currentMenuItemID)
+                            playSoundEffect("wrench", 0.4)
+                            updateItem2Text(currentMenu, currentMenuItemID, "Installed")
+                            updateMenuStatus("Purchased")
+                        else
+                            updateMenuStatus("You dont have the required Part.")
+                        end
                     else
                         updateMenuStatus("Not Enough Money!")
                     end
                 elseif currentCategory == 11 or currentCategory == 12 or currentCategory== 13 or currentCategory == 15 or currentCategory == 16 then --Performance Upgrades
                     if AttemptPurchase("performance", currentMenuItemID) then
-                        ApplyMod(currentCategory, currentMenuItemID)
-                        playSoundEffect("wrench", 0.4)
-                        updateItem2Text(currentMenu, currentMenuItemID, "Installed")
-                        updateMenuStatus("Purchased")
+                        if exports['drp-inventory']:hasEnoughOfItem('enginekit', 1) then
+                            TriggerEvent("inventory:removeItem","turbokit", 1)
+                            ApplyMod(currentCategory, enginekit)
+                            playSoundEffect("wrench", 0.4)
+                            updateItem2Text(currentMenu, currentMenuItemID, "Installed")
+                            updateMenuStatus("Purchased")
+                        else
+                            updateMenuStatus("You dont have the required Part.")
                     else
                         updateMenuStatus("Not Enough Money")
                     end
