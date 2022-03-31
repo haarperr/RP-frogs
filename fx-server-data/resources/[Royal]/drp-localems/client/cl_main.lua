@@ -15,7 +15,7 @@ RegisterCommand('localems', function()
 
 
     
-    local vehicle = CreateVehicle(car, coords.x+150, coords.y+150, coords.z, 0.0, true, false)
+    local vehicle = CreateVehicle(car, coords.x+150, coords.y+150, coords.z, 0.0, true, true)
     PlaceObjectOnGroundProperly(vehicle)
     SetEntityInvincible(vehicle, true)
     
@@ -46,7 +46,7 @@ RegisterCommand('localems', function()
         Citizen.Wait(0)
     end
 
-    local ped = CreatePedInsideVehicle(vehicle, 26, "s_m_m_doctor_01", -1, true, false)
+    local ped = CreatePedInsideVehicle(vehicle, 26, "s_m_m_doctor_01", -1, true, true)
     SetPedIntoVehicle(ped, vehicle, -1)
     SetPedAsEnemy(ped, false)
 
