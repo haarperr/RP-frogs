@@ -199,8 +199,8 @@ AddEventHandler('dark-vaultrob:upper:heistlaptop4', function()
 		Citizen.Wait(6300)
 		NetworkStartSynchronisedScene(netScene2)
 		Citizen.Wait(2000)
-		exports['hacking2']:hacking2(function(Success)
-            if Success then
+		exports["hacking2"]:hacking2(
+			function() -- success
 				animcancel1()
 				TriggerServerEvent('drp-doors:changeLock-status', 250, false)
 				secdoorshmm = true
@@ -208,15 +208,16 @@ AddEventHandler('dark-vaultrob:upper:heistlaptop4', function()
 				if deleternd <= 100 and deleternd > 20 then
 					TriggerEvent('inventory:removeItem', 'heistlaptop4', 1)
 				end
-			else
+			end,
+			function() -- failure
 				animcancel1()
 				secdoorshmm = false
 				local deleternd = math.random(1,100)
 				if deleternd <= 100 and deleternd > 20 then
 					TriggerEvent('inventory:removeItem', 'heistlaptop4', 1)
 				end
-			end 
-		end)
+			
+			end)
  	else
  		TriggerEvent("notification", "Something is missing!", 2)
  	end
@@ -266,8 +267,8 @@ elseif #(playercoords - thirddoorvector) < 3.0 then
 	Citizen.Wait(6300)
 	NetworkStartSynchronisedScene(netScene2)
 	Citizen.Wait(2000)
-	exports['hacking2']:hacking2(function(Success)
-		if Success then
+	exports["hacking2"]:hacking2(
+		function() -- success
 			local ped = PlayerPedId()
 			
 			local animDict = "anim@heists@ornate_bank@hack"
@@ -300,7 +301,8 @@ elseif #(playercoords - thirddoorvector) < 3.0 then
 			TriggerServerEvent("dark-vaultrob:upper:openvault", 1)
 			SpawnTrolleys()
 			thirddoor = true
-		else
+		end,
+		function() -- failure
 			local ped = PlayerPedId()
 			
 			local animDict = "anim@heists@ornate_bank@hack"
@@ -332,7 +334,7 @@ elseif #(playercoords - thirddoorvector) < 3.0 then
 			SetPedComponentVariation(ped, 5, 45, 0, 0)
 			thirddoor = false
 			TriggerServerEvent('drp-doors:changeLock-status', 251, false)
-		end
+		
 	end)
 else
 	TriggerServerEvent("notification","Something is missing!", 2)
