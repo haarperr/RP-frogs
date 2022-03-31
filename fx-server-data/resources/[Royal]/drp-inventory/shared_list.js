@@ -7899,7 +7899,7 @@ itemList['nitrous'] = {
   displayname: 'Nitrous Oxide',
   craft: [[{ itemid: 'electronics', amount: 10 }]],
   price: 300,
-  weight: 100,
+  weight: 50,
   nonStack: false,
   model: '',
   image: 'np_nitrous-oxide.png',
