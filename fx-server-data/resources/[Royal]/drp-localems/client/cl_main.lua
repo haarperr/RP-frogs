@@ -94,6 +94,6 @@ RegisterCommand('localems', function()
     end
 
     Citizen.Trace(tostring(closeRange) .. "\n")
-    Citizen.Trace(i .. "\n")
+    Citizen.Trace(CloseOne .. "\n")
 end)
 
