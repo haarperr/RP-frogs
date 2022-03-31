@@ -1,8 +1,8 @@
 local drivingStyle = 1074528293
-local stopRange = 10.0
+local stopRange = 15.0
 local speed = 20.5
 local spawnDistance = 500
-
+local defaultTimeout = 90000
 local currentEmsVehicle = 0
 local currentEmsDriver = 0
 
@@ -42,7 +42,6 @@ RegisterCommand('localems', function()
     local id = NetworkGetNetworkIdFromEntity(vehicle)
     SetNetworkIdCanMigrate(id, true)
     
-    SetVehicleSiren(vehicle, true)
 
     local currentCords = GetEntityCoords(vehicle)
     Citizen.Trace(currentCords.x .. " " .. currentCords.y .. " " .. currentCords.z)
@@ -78,7 +77,7 @@ RegisterCommand('localems', function()
     currentEmsVehicle = vehicle
     currentEmsDriver = ped
 
-    timeout = 60000
+    timeout = defaultTimeout
     
     SetVehicleOnGroundProperly(vehicle)   -- Set the vehicle on ground properly
 
@@ -88,7 +87,22 @@ RegisterCommand('localems', function()
 
     Citizen.Wait(5000) -- Then start to drive to player
 
+    SetVehicleSiren(vehicle, true)
+
     while GetDistanceBetweenCoords(coords.x, coords.y, coords.z, GetEntityCoords(vehicle).x, GetEntityCoords(vehicle).y, GetEntityCoords(vehicle).z, true) >= stopRange or timeout >= 1 do
+        if timeout >= defaultTimeout - 30000 then -- Check if EMS car moved out of spawn to prevent weird spawnings
+            if GetDistanceBetweenCoords(coords.x, coords.y, coords.z, sX, sY, sZ, true) >= 20 then
+                SetVehicleSiren(vehicle, false)
+                SetPedAsNoLongerNeeded(ped)
+                SetEntityAsMissionEntity(ped, false, false)
+                SetVehicleAsNoLongerNeeded(vehicle)
+                SetEntityAsMissionEntity(vehicle, false, false)
+                SetEntityInvincible(vehicle, false)
+                SetEntityInvincible(ped, false)
+                TriggerEvent("drp-death:revive") -- Local EMS
+                return
+            end
+        end
         if DoesEntityExist(vehicle) and DoesEntityExist(ped) then
             timeout = timeout - 1
             Citizen.Wait(1)
@@ -97,6 +111,35 @@ RegisterCommand('localems', function()
         end
     end
 
-    Citizen.Trace("Local arrived or timeout reached")
+    SetVehicleSiren(vehicle, false)
+    playerCoords = GetEntityCoords(-1)
+    if GetDistanceBetweenCoords(GetEntityCoords(vehicle).x, GetEntityCoords(vehicle).y, GetEntityCoords(vehicle).z, coords.x, coords.y, coords.z, true) <= stopRange+5 then
+        Citizen.Trace("Timeout reached")
+        SetPedAsNoLongerNeeded(ped)
+        SetEntityAsMissionEntity(ped, false, false)
+        SetVehicleAsNoLongerNeeded(vehicle)
+        SetEntityAsMissionEntity(vehicle, false, false)
+        SetEntityInvincible(vehicle, false)
+        SetEntityInvincible(ped, false)
+        TriggerEvent("drp-death:revive") -- Local EMS
+        return
+    else
+        if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, coords.x, coords.y, coords.z, true) <= 15 then
+            Citizen.Trace("Player gone")
+            SetPedAsNoLongerNeeded(ped)
+            SetEntityAsMissionEntity(ped, false, false)
+            SetVehicleAsNoLongerNeeded(vehicle)
+            SetEntityAsMissionEntity(vehicle, false, false)
+            SetEntityInvincible(vehicle, false)
+            SetEntityInvincible(ped, false)
+            -- TriggerEvent("drp-death:revive") -- Local EMS No revive needed I guess cuz Picked up?
+            return
+        end
+
+        Citizen.Trace("Local arrived")
+        TaskPedSlideToCoord(ped, playerCoords.x, playerCoords.y, playerCoords.z, 1.0, 1.0)
+        Citizen.Wait(3000)
+        Citizen.Trace("NOW WHAT?")
+    end
 end)
 
