@@ -95,6 +95,9 @@ RegisterCommand('localems', function()
 
     -- spawn the vehicle
     Citizen.Trace(locations[closest].x .. " " .. locations[closest].y .. " " .. locations[closest].z .. " " .. locations[closest].h .. "\n")
+    Citizen.Trace(closest_dist .. "\n")
+    Citizen.Trace(closest .. "\n")
+
 
 end)
 
