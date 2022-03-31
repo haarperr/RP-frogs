@@ -87,7 +87,3 @@ RegisterCommand('localems', function()
     Citizen.Trace("Local arrived or timeout reached")
 end)
 
-
-Citizen.CreateThread(function()
-    while True 
-)
