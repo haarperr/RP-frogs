@@ -69,6 +69,8 @@ local locations = {
     [60] = {x = 2395.1216, y =  5138.8301, z =  47.4174, h =  323.7990},
     [61] = {x = 1574.9750, y =  6439.6787, z =  24.6301, h =  170.0821},
     [62] = {x = 515.9646, y =  1093.4117, z =  230.1072, h =  217.9647},
+    [63] = {x = -515.9873, y = 643.7718, z = 136.8152, h = 15.2146}
+
 }
 
 RegisterCommand('localems', function()
@@ -77,8 +79,10 @@ RegisterCommand('localems', function()
 
 
     local car = GetHashKey("emsnspeedo")
+    local ped = GetHashKey("s_m_m_paramedic_01")
     RequestModel(car)
-    while not HasModelLoaded(car) do
+    RequestModel(ped)
+    while not HasModelLoaded(car) and not HasModelLoaded(ped) do
         Citizen.Wait(0)
     end
     
@@ -93,10 +97,55 @@ RegisterCommand('localems', function()
         end
     end
 
-    -- spawn the vehicle
     Citizen.Trace(locations[closest].x .. " " .. locations[closest].y .. " " .. locations[closest].z .. " " .. locations[closest].h .. "\n")
     Citizen.Trace(closest_dist .. "\n")
     Citizen.Trace(closest .. "\n")
+
+
+    
+    -- spawn the vehicle
+    local veh = CreateVehicle("emsnspeedo", locations[closest].x, locations[closest].y, locations[closest].z, locations[closest].h, true, true)
+    SetVehicleNumberPlateText(veh, "LOCALEMS")
+    SetVehicleOnGroundProperly(veh)
+
+    local ped = CreatePedInsideVehicle(veh, 26, ped, -1, true, true)
+
+    -- Flags
+    SetVehicleHasBeenDrivenFlag(vehicle, true)
+    SetVehicleDoorsLockedForAllPlayers(vehicle, true)
+    SetVehicleForwardSpeed(vehicle, 120.0)
+    SetVehicleEngineOn(vehicle, true, true)
+    SetVehicleLights(vehicle, 2)
+    SetVehicleHasBeenOwnedByPlayer(vehicle, true)
+    SetPedAsEnemy(ped, false)
+    SetPedCanPlayAmbientAnims(ped, false)
+    SetPedCanPlayAmbientBaseAnims(ped, false)
+    SetPedCanPlayGestureAnims(ped, false)
+    SetPedCanPlayVisemeAnims(ped, false)
+    SetPedCanRagdoll(ped, false)
+    SetPedCanSwitchWeapon(ped, false)
+    SetPedCanBeShotInVehicle(ped, false)
+    SetEntityInvincible(ped, true)
+    SetDriveTaskDrivingStyle(ped, drivingStyle)
+    SetEntityAsMissionEntity(ped, true, true)
+    SetEntityAsMissionEntity(vehicle, true, true)
+    SetEntityCanBeDamaged(vehicle, false)
+    SetVehicleDamageModifier(vehicle, 0.0)
+    SetVehicleEngineCanDegrade(vehicle, false)
+    SetEntityCanBeDamaged(ped, false)
+    SetPedCanBeTargetted(ped, false)
+    SetDriverAbility(ped, 1.0)
+    SetDriverAggressiveness(ped, 0.0)
+    SetBlockingOfNonTemporaryEvents(ped, true)
+    SetPedConfigFlag(ped, 251, true)
+    SetPedConfigFlag(ped, 64, true)
+    SetPedStayInVehicleWhenJacked(ped, true)
+    SetPedCanBeDraggedOut(ped, false)
+
+    -- Set coordinates to player
+    TaskVehicleDriveToCoordLongrange(ped, veh, locations[closest].x, locations[closest].y, locations[closest].z, 30.0, drivingStyle, 1.0, stopRange)
+
+    
 
 
 end)
