@@ -1,4 +1,4 @@
-local chicken = vehicleBaseRepairCost
+local chicken = vehicleBaseRepairCost / 2
 
 RegisterServerEvent('drp-bennys:attemptPurchase')
 AddEventHandler('drp-bennys:attemptPurchase', function(type, upgradeLevel)
@@ -6,7 +6,7 @@ AddEventHandler('drp-bennys:attemptPurchase', function(type, upgradeLevel)
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
     
     if type == "repair" then
-        if user:getCash() >= chicken then
+        if user:getCash() >= chicken  then
             user:removeMoney(chicken)
             TriggerClientEvent('drp-bennys:purchaseSuccessful', src, chicken)
         else
@@ -14,8 +14,61 @@ AddEventHandler('drp-bennys:attemptPurchase', function(type, upgradeLevel)
         end
     elseif type == "performance" then
         if user:getCash() >= vehicleCustomisationPrices[type].prices[upgradeLevel] then
-            TriggerClientEvent('drp-bennys:purchaseSuccessful', src, vehicleCustomisationPrices[type].prices[upgradeLevel])
-            user:removeMoney(vehicleCustomisationPrices[type].prices[upgradeLevel])
+            if exports['drp-inventory']:hasEnoughOfItem('enginekit', 1) then
+                TriggerEvent("inventory:removeItem","enginekit", 1)
+                TriggerClientEvent('drp-bennys:purchaseSuccessful', src, vehicleCustomisationPrices[type].prices[upgradeLevel])
+                user:removeMoney(vehicleCustomisationPrices[type].prices[upgradeLevel])
+            else
+                TriggerClientEvent('drp-bennys:purchaseFailed', src)
+            end
+        else
+            TriggerClientEvent('drp-bennys:purchaseFailed', src)
+        end
+    elseif type == "brake" then
+        if user:getCash() >= vehicleCustomisationPrices[type].prices[upgradeLevel] then
+            if exports['drp-inventory']:hasEnoughOfItem('brakingkit', 1) then
+                TriggerEvent("inventory:removeItem","brakingkit", 1)
+                TriggerClientEvent('drp-bennys:purchaseSuccessful', src, vehicleCustomisationPrices[type].prices[upgradeLevel])
+                user:removeMoney(vehicleCustomisationPrices[type].prices[upgradeLevel])
+            else
+                TriggerClientEvent('drp-bennys:purchaseFailed', src)
+            end
+        else
+            TriggerClientEvent('drp-bennys:purchaseFailed', src)
+        end
+    elseif type == "transmission" then
+        if user:getCash() >= vehicleCustomisationPrices[type].prices[upgradeLevel] then
+            if exports['drp-inventory']:hasEnoughOfItem('transmissionkit', 1) then
+                TriggerEvent("inventory:removeItem","transmissionkit", 1)
+                TriggerClientEvent('drp-bennys:purchaseSuccessful', src, vehicleCustomisationPrices[type].prices[upgradeLevel])
+                user:removeMoney(vehicleCustomisationPrices[type].prices[upgradeLevel])
+            else
+                TriggerClientEvent('drp-bennys:purchaseFailed', src)
+            end
+        else
+            TriggerClientEvent('drp-bennys:purchaseFailed', src)
+        end
+    elseif type == "sussypention" then
+        if user:getCash() >= vehicleCustomisationPrices[type].prices[upgradeLevel] then
+            if exports['drp-inventory']:hasEnoughOfItem('suspensionkit', 1) then
+                TriggerEvent("inventory:removeItem","suspensionkit", 1)
+                TriggerClientEvent('drp-bennys:purchaseSuccessful', src, vehicleCustomisationPrices[type].prices[upgradeLevel])
+                user:removeMoney(vehicleCustomisationPrices[type].prices[upgradeLevel])
+            else
+                TriggerClientEvent('drp-bennys:purchaseFailed', src)
+            end
+        else
+            TriggerClientEvent('drp-bennys:purchaseFailed', src)
+        end
+    elseif type == "turbo" then
+        if user:getCash() >= vehicleCustomisationPrices[type].prices[upgradeLevel] then
+            if exports['drp-inventory']:hasEnoughOfItem('turbokit', 1) then
+                TriggerEvent("inventory:removeItem","turbokit", 1)
+                TriggerClientEvent('drp-bennys:purchaseSuccessful', src, vehicleCustomisationPrices[type].prices[upgradeLevel])
+                user:removeMoney(vehicleCustomisationPrices[type].prices[upgradeLevel])
+            else
+                TriggerClientEvent('drp-bennys:purchaseFailed', src)
+            end
         else
             TriggerClientEvent('drp-bennys:purchaseFailed', src)
         end

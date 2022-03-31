@@ -50,6 +50,14 @@ AddEventHandler('gne:openshop', function()
             },
             {
                 id = 7,
+                header = "Purchase Transmission Upgrade",
+                    txt = "75 GNE",
+                    params = {
+                        event = "gne:attemptBuyTransmission"
+                }
+            },
+            {
+                id = 8,
                 header = "Purchase Engine Upgrade",
                     txt = "125 GNE",
                     params = {
@@ -57,7 +65,7 @@ AddEventHandler('gne:openshop', function()
                 }
             },
             {
-                id = 8,
+                id = 9,
                 header = "Purchase Turbo Upgrade",
                     txt = "125 GNE",
                     params = {
@@ -128,6 +136,18 @@ end)
 RegisterNetEvent("gne:buySuspention")
 AddEventHandler("gne:buySuspention", function()
     TriggerEvent("player:receiveItem", "suspensionkit", 1)
+end)
+
+
+RegisterNetEvent('gne:attemptBuyTransmission')
+AddEventHandler('gne:attemptBuyTransmission', function()
+    local price = 75
+    TriggerEvent("gne:check", price, "gne:buyTransmission", false)
+end)
+
+RegisterNetEvent("gne:buyTransmission")
+AddEventHandler("gne:buyTransmission", function()
+    TriggerEvent("player:receiveItem", "transmissionkit", 1)
 end)
 
 
