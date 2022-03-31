@@ -326,8 +326,8 @@ AddEventHandler("ls:boostLockPick", function()
     pedSpawnAmount = math.random(2,4)
     weapon = bigBoyGuns[math.random(1, #bigBoyGuns)]
   end
-  
-  -- Citizen.CreateThread(function()
+end)
+ Citizen.CreateThread(function()
     if targetVeh == spawnedVeh then
       if not pedsSpawned then
         for i = pedSpawnAmount, 1, -1 do 
@@ -378,8 +378,8 @@ AddEventHandler("ls:boostLockPick", function()
         TriggerEvent("ls:boostDropOff") 
       end
     end
-  -- end)
-end)
+   end)
+
 
 RegisterNetEvent('trackerGoBr')
 AddEventHandler('trackerGoBr', function()
