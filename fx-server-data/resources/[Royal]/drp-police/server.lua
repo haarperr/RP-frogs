@@ -100,6 +100,7 @@ AddEventHandler('checkLicensePlate', function(oof)
 						TriggerClientEvent("chatMessage", source, "DISPATCH", 1, "10-60 (Negative) Name: " .. data[1].first_name .. " " .. data[1].last_name .. " Phone #: " .. phoneNumber .. ' Job: ' .. job)
 						TriggerClientEvent('InteractSound_CL:PlayOnOne', source, 'radioclick', 1.0)
 					else
+						local phoneNumber = string.sub(data[1].phone_number, 0, 3) .. '-' .. string.sub(data[1].phone_number, 4, 6) .. '-' .. string.sub(data[1].phone_number, 7, 10)
 						TriggerClientEvent("chatMessage", source, "DISPATCH", 1, "10-60 (Flagged) Stolen Name: " .. data[1].first_name .. " " .. data[1].last_name .. " Phone #: " .. phoneNumber .. ' Job: ' .. job)
 						TriggerClientEvent('InteractSound_CL:PlayOnOne', source, 'radioclick', 1.0)
 					end
@@ -146,11 +147,11 @@ AddEventHandler("serial:search:weapon", function(serial)
 			TriggerClientEvent("DoLongHudText", src, "Keep an eye on your email")
 			Wait(5000)
 			TriggerClientEvent('serial:email:request', src)
-			Wait(60000)
+			Wait(30000)
 			print(data[1].first_name)
 			if data[1] then
-			local responceFromDB = data[1].first_name.." "..data[1].last_name
-			TriggerClientEvent('serial:email:suc', src, responceFromDB)
+				local responceFromDB = data[1].first_name.." "..data[1].last_name
+				TriggerClientEvent('serial:email:suc', src, responceFromDB)
 			else
 				TriggerClientEvent('serial:email:fail', src)
 			end
@@ -166,7 +167,7 @@ AddEventHandler("blood:search:weapon", function(blood)
 			TriggerClientEvent("DoLongHudText", src, "Keep an eye on your email")
 			Wait(5000)
 			TriggerClientEvent('blood:email:request', src)
-			Wait(60000)
+			Wait(30000)
 			if data[1] then
 			local responceFromDB = data[1].first_name.." "..data[1].last_name
 			TriggerClientEvent('blood:email:suc', src, responceFromDB)

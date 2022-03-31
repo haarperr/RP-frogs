@@ -533,9 +533,9 @@ end)
 
 Citizen.CreateThread(function()
 
-		Citizen.Wait(60000)
-		TriggerServerEvent('police:setServerMeta')
--- Saves META once a minute to database - hopefully armor saving?
+	Citizen.Wait(60000)
+	TriggerServerEvent('police:setServerMeta')
+	-- Saves META once a minute to database - hopefully armor saving?
 end)
 
 
@@ -567,7 +567,7 @@ end)
 RegisterNetEvent('police:uncuffMenu')
 AddEventHandler('police:uncuffMenu', function()
 	t, distance = GetClosestPlayer()
-	if(distance ~= -1 and distance < 2) then
+	if(distance ~= -1 and distance < 2.2) then
 		TriggerEvent("animation:PlayAnimation","uncuff")
 		local finished = exports["drp-taskbar"]:taskBar(5000, "Uncuffing", false, true, false, false, nil, 1.0, PlayerPedId())
 		if finished == 100 then
@@ -610,7 +610,7 @@ AddEventHandler('police:getArrested2', function(cuffer)
 
 	local finished = 0
 	if not exports['drp-death']:GetDeathStatus() then
-		local taskbar = exports["drp-ui"]:taskBarSkill(1000, math.random(1, 10))
+		local taskbar = exports["drp-ui"]:taskBarSkill(1000, math.random(1, 200))
 		if taskbar == 100 then
 			TriggerEvent('DoLongHudText', 'You slipped out of cuffs !',1)
 			TriggerEvent("handcuffed",false)
@@ -1247,7 +1247,7 @@ shitson = false
 RegisterNetEvent('dragPlayer')
 AddEventHandler('dragPlayer', function()
 	t, distance = GetClosestPlayer()
-	if(distance ~= -1 and distance < 1.0) then
+	if(distance ~= -1 and distance < 1.2) then
 		if not beingDragged then
 			DetachEntity(PlayerPedId(), true, false)
 			TriggerServerEvent("police:dragAsk", GetPlayerServerId(t))
@@ -1269,7 +1269,7 @@ RegisterNetEvent('escortPlayer')
 AddEventHandler('escortPlayer', function()
 	t, distance = GetClosestPlayer()
 	if not IsPedInAnyVehicle(PlayerPedId(), false) then
-		if(distance ~= -1 and distance < 5) then
+		if(distance ~= -1 and distance < 4) then
 			if not escort then
 				TriggerServerEvent("police:escortAsk", GetPlayerServerId(t))
 			end
@@ -1523,7 +1523,7 @@ AddEventHandler('police:stealrob', function()
 		if finished == 100 then
 			t, distance, closestPed = GetClosestPlayer()
 
-   				if distance ~= -1 and distance < 5 and ( IsEntityPlayingAnim(closestPed, "dead", "dead_a", 3) or IsEntityPlayingAnim(closestPed, "amb@code_human_cower_stand@male@base", "base", 3) or IsEntityPlayingAnim(closestPed, "amb@code_human_cower@male@base", "base", 3) or IsEntityPlayingAnim(closestPed, "random@arrests@busted", "idle_a", 3) or IsEntityPlayingAnim(closestPed, "mp_arresting", "idle", 3) or IsEntityPlayingAnim(closestPed, "random@mugging3", "handsup_standing_base", 3) or IsEntityPlayingAnim(closestPed, "missfbi5ig_22", "hands_up_anxious_scientist", 3) or IsEntityPlayingAnim(closestPed, "missfbi5ig_22", "hands_up_loop_scientist", 3) or IsEntityPlayingAnim(closestPed, "missminuteman_1ig_2", "handsup_base", 3) ) or TaskPlayAnim(lPed, "random@shop_robbery", "robbery_action_b", 8.0, -8, -1, 16, 0, 0, 0, 0) then
+   				if distance ~= -1 and distance < 4 and ( IsEntityPlayingAnim(closestPed, "dead", "dead_a", 3) or IsEntityPlayingAnim(closestPed, "amb@code_human_cower_stand@male@base", "base", 3) or IsEntityPlayingAnim(closestPed, "amb@code_human_cower@male@base", "base", 3) or IsEntityPlayingAnim(closestPed, "random@arrests@busted", "idle_a", 3) or IsEntityPlayingAnim(closestPed, "mp_arresting", "idle", 3) or IsEntityPlayingAnim(closestPed, "random@mugging3", "handsup_standing_base", 3) or IsEntityPlayingAnim(closestPed, "missfbi5ig_22", "hands_up_anxious_scientist", 3) or IsEntityPlayingAnim(closestPed, "missfbi5ig_22", "hands_up_loop_scientist", 3) or IsEntityPlayingAnim(closestPed, "missminuteman_1ig_2", "handsup_base", 3) ) or TaskPlayAnim(lPed, "random@shop_robbery", "robbery_action_b", 8.0, -8, -1, 16, 0, 0, 0, 0) then
 				if not IsPedInAnyVehicle(PlayerPedId()) then
 					ClearPedTasksImmediately(lPed)
 					TriggerServerEvent("police:targetCheckInventory", GetPlayerServerId(t), false)
@@ -1796,7 +1796,7 @@ TimerEnabled = false
 function TryTackle()
     if not TimerEnabled then
         t, distance = GetClosestPlayer()
-        if(distance ~= -1 and distance < 2) then
+        if(distance ~= -1 and distance < 2.2) then
             local maxheading = (GetEntityHeading(PlayerPedId()) + 15.0)
             local minheading = (GetEntityHeading(PlayerPedId()) - 15.0)
             local theading = (GetEntityHeading(t))
@@ -1819,7 +1819,7 @@ end
 
 RegisterNetEvent('playerTackled')
 AddEventHandler('playerTackled', function()
-	SetPedToRagdoll(PlayerPedId(), math.random(8500), math.random(8500), 0, 0, 0, 0) 
+	SetPedToRagdoll(PlayerPedId(), math.random(2000, 8500), math.random(2000, 8500), 0, 0, 0, 0) 
 
 	TimerEnabled = true
 	Citizen.Wait(1500)
