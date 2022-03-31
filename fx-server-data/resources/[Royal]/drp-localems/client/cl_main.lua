@@ -13,7 +13,6 @@ RegisterCommand('localems', function()
     
     local vehicle = CreateVehicle(car, coords.x+150, coords.y+150, coords.z, 0.0, true, false)
     PlaceObjectOnGroundProperly(vehicle)
-    PlaceObjectOnGroundProperly2(vehicle)
     
     cords = GetEntityCoords(vehicle)
 
