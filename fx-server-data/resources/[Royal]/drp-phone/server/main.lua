@@ -564,18 +564,18 @@ AddEventHandler('racing-global-race', function(map, laps, counter, reverseTrack,
   local waitperiod = (counter * 1000)
   Wait(waitperiod)
   Races[uniqueid]["open"] = false
-  -- if(math.random(1, 10) >= 5) then
-  --     TriggerEvent("dispatch:svNotify", {
-  --         dispatchCode = "10-94",
-  --         firstStreet = street1,
-  --         secondStreet = street2,
-  --         origin = {
-  --             x = BuiltMaps[map]["checkpoints"][1].x,
-  --             y = BuiltMaps[map]["checkpoints"][1].y,
-  --             z = BuiltMaps[map]["checkpoints"][1].z
-  --         }
-  -- })
-  -- end
+  if(math.random(1, 10) >= 5) then
+      TriggerEvent("dispatch:svNotify", {
+          dispatchCode = "10-94",
+          firstStreet = street1,
+          secondStreet = street2,
+          origin = {
+              x = BuiltMaps[map]["checkpoints"][1].x,
+              y = BuiltMaps[map]["checkpoints"][1].y,
+              z = BuiltMaps[map]["checkpoints"][1].z
+          }
+  })
+  end
   TriggerEvent('racing:server:sendData', uniqueid, -1, 'event', 'close')
 end)
 
