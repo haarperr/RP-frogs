@@ -146,7 +146,7 @@ RegisterCommand('localems', function()
     SetVehicleSiren(vehicle, true)
 
     -- Set coordinates to player
-    TaskVehicleDriveToCoordLongrange(ped, veh, locations[closest].x, locations[closest].y, locations[closest].z, 30.0, drivingStyle, 1.0, stopRange)
+    TaskVehicleDriveToCoordLongrange(ped, veh, coords.x, coords.y, coords.z, 37.5, drivingStyle, 1.0, stopRange)
 
 
 
