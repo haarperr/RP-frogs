@@ -251,10 +251,6 @@ AddEventHandler("ls:startCarBoost", function(modelName)
     Citizen.Wait(10)
   end
   StartedBoost = true
-  while not DoesEntityExist(vehicle) do
-    Citizen.Wait(100)
-    print("Boosting Car Not Spawned")
-  end
   local vehicle = CreateVehicle(vehHash, x, y, z, h, true, false)
   SetVehicleDoorsLocked(vehicle, 2)
   SetVehicleHasBeenOwnedByPlayer(vehicle,true)
