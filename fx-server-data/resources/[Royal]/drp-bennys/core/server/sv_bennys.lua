@@ -4,6 +4,7 @@ RegisterServerEvent('drp-bennys:attemptPurchase')
 AddEventHandler('drp-bennys:attemptPurchase', function(type, upgradeLevel)
 	local src = source
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
+    
     if type == "repair" then
         if user:getCash() >= chicken then
             user:removeMoney(chicken)
@@ -42,7 +43,7 @@ AddEventHandler('royal:bennys:pay1', function()
     if user:getCash() >= 350 then
         user:removeMoney(350)
         TriggerClientEvent('bennys:civ:repair:cl', src)
-        TriggerEvent('DoLongHudText', "You Have Been Charged For: $3250!", 2)
+        TriggerEvent('DoLongHudText', "You Have Been Charged For: $350!", 2)
     else
         TriggerClientEvent('DoLongHudText', src, 'You need $350', 2)
     end
