@@ -6492,11 +6492,11 @@ itemList['failtest'] = {
 
 itemList['fakeplate'] = {
   fullyDegrades: false,
-  decayrate: 0.25,
+  decayrate: 0,
   displayname: 'Fake Plate Kit',
   craft: [[{ itemid: 'scrapmetal', amount: 15 }]],
   price: 50,
-  weight: 0,
+  weight: 15,
   nonStack: false,
   model: '',
   image: 'np_plate.png',
