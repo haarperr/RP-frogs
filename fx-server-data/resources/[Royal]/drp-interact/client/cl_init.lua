@@ -4149,6 +4149,7 @@ Citizen.CreateThread(function()
     exports["drp-interact"]:AddPeekEntryByPolyTarget("vault_lower_pin_code1", {
         {
             event = "dark-vaultrob:lower:laptoppin",
+            id = "vault1",
             icon = "fas fa-user-secret",
             label = "Print Access Codes"
         },
