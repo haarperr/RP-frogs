@@ -91,7 +91,6 @@ RegisterCommand('localems', function()
     while GetDistanceBetweenCoords(coords.x, coords.y, coords.z, GetEntityCoords(vehicle).x, GetEntityCoords(vehicle).y, GetEntityCoords(vehicle).z, true) >= stopRange or timeout >= 1 do
         if DoesEntityExist(vehicle) and DoesEntityExist(ped) then
             timeout = timeout - 1
-            TaskVehicleDriveToCoordLongrange(ped, vehicle, cords.x, cords.y, cords.z, speed, 0, drivingStyle, stopRange)
             Citizen.Wait(1)
         else 
             break
