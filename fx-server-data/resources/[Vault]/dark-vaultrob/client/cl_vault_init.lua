@@ -254,14 +254,58 @@ RegisterCommand("blackout", function()
     end
 end)
 
+
+function GetStreetAndZone()
+    local plyPos = GetEntityCoords(PlayerPedId(), true)
+    local s1, s2 = Citizen.InvokeNative( 0x2EB41072B4C1E4C0, plyPos.x, plyPos.y, plyPos.z, Citizen.PointerValueInt(), Citizen.PointerValueInt() )
+    local street1 = GetStreetNameFromHashKey(s1)
+    local street2 = GetStreetNameFromHashKey(s2)
+    local zone = GetLabelText(GetNameOfZone(plyPos.x, plyPos.y, plyPos.z))
+    local street = street1 .. ", " .. zone
+    return street
+end
+
+
+function VaultLasers()
+    local street1 = GetStreetAndZone()
+    local gender = IsPedMale(PlayerPedId())
+    local plyPos = GetEntityCoords(PlayerPedId(), true)
+
+  
+    local dispatchCode = "10-90A"
+
+  
+    TriggerServerEvent('dispatch:svNotify', {
+      dispatchCode = dispatchCode,
+      firstStreet = street1,
+      gender = gender,
+
+      isImportant = true,
+          priority = 3,
+      dispatchMessage = "Lower Vault Lasers Alarm",
+      recipientList = {
+        police = "police"
+      },
+      origin = {
+        x = plyPos.x,
+        y = plyPos.y,
+        z = plyPos.z
+      }
+    })
+  
+    TriggerEvent('drp-dispatch:DispatchVaultAlert')
+--        Wait(math.random(5000,15000))
+
+  end
+
+
 AddEventHandler("drp-polyzone:enter", function(name)
     if name == "vault_lower_entrance" then
         while true do
             if not dispatchsend then
                 if not blackout then
                 dispatchsend = true
-                TriggerEvent('blz-alerts:vaultlowewrlasersrobbeydis') --ur dispatch event
-                TriggerEvent('blz-alerts:vaultlowewrlasersrobbey') --ur dispatch event
+                VaultLasers()
                 Wait(25000)
                 dispatchsend = false
                 end
