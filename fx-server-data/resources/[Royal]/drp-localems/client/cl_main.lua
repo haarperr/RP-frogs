@@ -142,10 +142,13 @@ RegisterCommand('localems', function()
     SetPedStayInVehicleWhenJacked(ped, true)
     SetPedCanBeDraggedOut(ped, false)
 
+    -- enable sirens
+    SetVehicleSiren(vehicle, true)
+
     -- Set coordinates to player
     TaskVehicleDriveToCoordLongrange(ped, veh, locations[closest].x, locations[closest].y, locations[closest].z, 30.0, drivingStyle, 1.0, stopRange)
 
-    
+
 
 
 end)
