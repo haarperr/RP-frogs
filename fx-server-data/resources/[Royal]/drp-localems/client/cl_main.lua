@@ -17,12 +17,12 @@ RegisterCommand('localems', function()
         Citizen.Wait(0)
     end
 
-    local noidea, vector, heading = GetClosestVehicleNodeWithHeading(coords.x-150, coords.y-150, coords.z, 12, 3.0, 0)
+    local vector, heading = GetClosestVehicleNode(coords.x-150, coords.y-150, coords.z, spawnDistance, 0, 0)
     local sX, sY, sZ = table.unpack(vector)
 
     vehicle = CreateVehicle("emsnspeedo", sX, sY, sZ, heading, true, true)
     
-    Citizen.Trace(sX .. " " .. sY .. " " .. sZ)
+    Citizen.Trace(sX .. " " .. sY .. " " .. sZ .. "\n")
     SetEntityInvincible(vehicle, true)
     
     cords = GetEntityCoords(vehicle)
@@ -32,7 +32,7 @@ RegisterCommand('localems', function()
     
 
     local currentCords = GetEntityCoords(vehicle)
-    Citizen.Trace(currentCords.x .. " " .. currentCords.y .. " " .. currentCords.z)
+    Citizen.Trace(currentCords.x .. " " .. currentCords.y .. " " .. currentCords.z .. "\n")
 
     RequestModel("s_m_m_doctor_01")
     while not HasModelLoaded("s_m_m_doctor_01") do
@@ -92,14 +92,8 @@ RegisterCommand('localems', function()
         timeout = timeout - 1
         Citizen.Wait(1)
 
-        if count <= 5000 then
-            count = 0
-            Citizen.Trace(GetDistanceBetweenCoords(coords.x, coords.y, coords.z, GetEntityCoords(vehicle).x, GetEntityCoords(vehicle).y, GetEntityCoords(vehicle).z, true))
-            TaskVehicleDriveToCoordLongrange(ped, vehicle, cords.x, cords.y, cords.z, speed, drivingStyle, stopRange)
-        end
-
-        if timeout >= defaultTimeout - 15000 then -- Check if EMS car moved out of spawn to prevent weird spawnings
-            Citizen.Trace(GetDistanceBetweenCoords(GetEntityCoords(vehicle).x, GetEntityCoords(vehicle).y, GetEntityCoords(vehicle).z, sX, sY, sZ, true))
+        if timeout >= (defaultTimeout - 15000) then -- Check if EMS car moved out of spawn to prevent weird spawnings
+            Citizen.Trace(GetDistanceBetweenCoords(GetEntityCoords(vehicle).x, GetEntityCoords(vehicle).y, GetEntityCoords(vehicle).z, sX, sY, sZ, true) .. "\n")
             if GetDistanceBetweenCoords(GetEntityCoords(vehicle).x, GetEntityCoords(vehicle).y, GetEntityCoords(vehicle).z, sX, sY, sZ, true) >= 3.5 then
                 Citizen.Trace("EMS car stuck in spawn")
                 TriggerEvent("drp-death:revive") -- Local EMS
@@ -134,7 +128,7 @@ RegisterCommand('localems', function()
         TriggerEvent("drp-death:revive") -- Local EMS
         return
     else
-        if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, coords.x, coords.y, coords.z, true) <= 15 then
+        if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, coords.x, coords.y, coords.z, true) >= 15 then
             Citizen.Trace("Player gone")
             SetPedAsNoLongerNeeded(ped)
             SetEntityAsMissionEntity(ped, false, false)
