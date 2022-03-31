@@ -1946,38 +1946,38 @@ controlNames[13] = ["generalEscapeMenu","General: Leave Menu",true];
 controlNames[14] = ["generalChat","General: Chat",true];
 
 controlNames[15] = ["actionBar","General: Action Bar",true];
-controlNames[16] = ["generalUse","General: Use Action",false]; // this is set to false , might end up setting true might need testing
+controlNames[16] = ["generalUse","General: Use Action",true]; // this is set to false , might end up setting true might need testing
 controlNames[17] = ["generalUseSecondary","General: Menu Secondary",true];
 controlNames[18] = ["generalUseSecondaryWorld","General: World Secondary",true];
-controlNames[19] = ["generalUseThird","General: World Third",false];
+controlNames[19] = ["generalUseThird","General: World Third",true];
 controlNames[20] = ["generalTackle","General: Tackle",true];
 controlNames[21] = ["generalMenu","General: Action Menu",true];
-controlNames[22] = ["generalProp","General: Prop Drop",false];
+controlNames[22] = ["generalProp","General: Prop Drop",true];
 controlNames[23] = ["generalScoreboard","General: Scoreboard",false];
 
 controlNames[24] = ["label","Movement Controls"];
-controlNames[25] = ["movementCrouch","Move: Crouch",false];
-controlNames[26] = ["movementCrawl","Move: Crawl",false];
+controlNames[25] = ["movementCrouch","Move: Crouch",true];
+controlNames[26] = ["movementCrawl","Move: Crawl",true];
 
 
 controlNames[27] = ["label","Vehicle Controls"];
-controlNames[28] = ["vehicleCruise","Vehicle: Cruise Control",false];
+controlNames[28] = ["vehicleCruise","Vehicle: Cruise Control",true];
 controlNames[29] = ["vehicleSearch","Vehicle: Search",false];
 controlNames[30] = ["vehicleHotwire","Vehicle: Hotwire",false];
-controlNames[31] = ["vehicleDoors","Vehicle: Door Lock",false];
-controlNames[32] = ["vehicleBelt","Vehicle: Toggle Belt",false];
+controlNames[31] = ["vehicleDoors","Vehicle: Door Lock",true];
+controlNames[32] = ["vehicleBelt","Vehicle: Toggle Belt",true];
 
-controlNames[33] = ["vehicleSlights","Siren: Toggle Lights",false];
-controlNames[34] = ["vehicleSsound","Siren: Toggle Sound",false];
-controlNames[35] = ["vehicleSnavigate","Siren: Switch Lights",false];
+controlNames[33] = ["vehicleSlights","Siren: Toggle Lights",true];
+controlNames[34] = ["vehicleSsound","Siren: Toggle Sound",true];
+controlNames[35] = ["vehicleSnavigate","Siren: Switch Lights",true];
 
 
 
-controlNames[36] = ["heliCam","Heli: Cam",false];
-controlNames[37] = ["helivision","Heli: Vision",false];
-controlNames[38] = ["helirappel","Heli: Rappel",false];
-controlNames[39] = ["helispotlight","Heli: Spotlight",false];
-controlNames[40] = ["helilockon","Heli: Lockon",false];
+controlNames[36] = ["heliCam","Heli: Cam",true];
+controlNames[37] = ["helivision","Heli: Vision",true];
+controlNames[38] = ["helirappel","Heli: Rappel",true];
+controlNames[39] = ["helispotlight","Heli: Spotlight",true];
+controlNames[40] = ["helilockon","Heli: Lockon",true];
 
 
 controlNames[41] = ["label","News Controls"];
