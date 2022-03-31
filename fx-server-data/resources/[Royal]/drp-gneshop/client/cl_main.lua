@@ -21,7 +21,7 @@ AddEventHandler('gne:openshop', function()
                 header = "Purchase NOS",
                     txt = "15 GNE",
                     params = {
-                        event = "gne:"
+                        event = "gne:attemptBuyNOS"
                 }
             },
             {
@@ -29,7 +29,7 @@ AddEventHandler('gne:openshop', function()
                 header = "Purchase Fake Plates",
                     txt = "40 GNE",
                     params = {
-                        event = "gne:"
+                        event = "gne:attemptBuyfakeplates"
                 }
             },
             {
@@ -37,7 +37,7 @@ AddEventHandler('gne:openshop', function()
                 header = "Purchase Brake Upgrade",
                     txt = "75 GNE",
                     params = {
-                        event = "gne:"
+                        event = "gne:attemptBuybrakes"
                 }
             },
             {
@@ -45,7 +45,7 @@ AddEventHandler('gne:openshop', function()
                 header = "Purchase Suspention Upgrade",
                     txt = "75 GNE",
                     params = {
-                        event = "gne:"
+                        event = "gne:attemptBuySuspention"
                 }
             },
             {
@@ -53,7 +53,7 @@ AddEventHandler('gne:openshop', function()
                 header = "Purchase Engine Upgrade",
                     txt = "125 GNE",
                     params = {
-                        event = "gne:"
+                        event = "gne:attemptBuyEngine"
                 }
             },
             {
@@ -61,7 +61,7 @@ AddEventHandler('gne:openshop', function()
                 header = "Purchase Turbo Upgrade",
                     txt = "125 GNE",
                     params = {
-                        event = "gne:"
+                        event = "gne:attemptBuyTurbo"
                 }
             }
         })
@@ -73,7 +73,7 @@ end)
 
 RegisterNetEvent('gne:attemptBuyadvrepairkit')
 AddEventHandler('gne:attemptBuyadvrepairkit', function()
-    local price = 7
+    local price = "7"
     TriggerEvent("gne:check", "gne_buyadvrepairkit", price, false)
 end)
 
@@ -85,7 +85,7 @@ end)
 
 RegisterNetEvent('gne:attemptBuyNOS')
 AddEventHandler('gne:attemptBuyNOS', function()
-    local price = 15
+    local price = "15"
     TriggerEvent("gne:check", "gne_buynos", price, false)
 end)
 
@@ -97,7 +97,7 @@ end)
 
 RegisterNetEvent('gne:attemptBuyfakeplates')
 AddEventHandler('gne:attemptBuyfakeplates', function()
-    local price = 40
+    local price = "40"
     TriggerEvent("gne:check", "gne_buyfakeplates", price, false)
 end)
 
@@ -109,7 +109,7 @@ end)
 
 RegisterNetEvent('gne:attemptBuybrakes')
 AddEventHandler('gne:attemptBuybrakes', function()
-    local price = 75
+    local price = "75"
     TriggerEvent("gne:check", "gne_buybrakes", price, false)
 end)
 
@@ -121,7 +121,7 @@ end)
 
 RegisterNetEvent('gne:attemptBuySuspention')
 AddEventHandler('gne:attemptBuySuspention', function()
-    local price = 75
+    local price = "75"
     TriggerEvent("gne:check", "gne_buySuspention", price, false)
 end)
 
@@ -133,7 +133,7 @@ end)
 
 RegisterNetEvent('gne:attemptBuyEngine')
 AddEventHandler('gne:attemptBuyEngine', function()
-    local price = 125
+    local price = "125"
     TriggerEvent("gne:check", "gne_buyEngine", price, false)
 end)
 
@@ -145,7 +145,7 @@ end)
 
 RegisterNetEvent('gne:attemptBuyTurbo')
 AddEventHandler('gne:attemptBuyTurbo', function()
-    local price = 125
+    local price = "125"
     TriggerEvent("gne:check", "gne_buyTurbo", price, false)
 end)
 
