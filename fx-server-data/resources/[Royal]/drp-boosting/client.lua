@@ -327,59 +327,56 @@ AddEventHandler("ls:boostLockPick", function()
     weapon = bigBoyGuns[math.random(1, #bigBoyGuns)]
   end
   
-  -- Citizen.CreateThread(function()
+  Citizen.CreateThread(function()
     if targetVeh == spawnedVeh then
       if not pedsSpawned then
         for i = pedSpawnAmount, 1, -1 do 
-          TriggerEvent("ls:spawnPed", pedX["x"], pedY["y"], pedZ["z"], pedH["h"], weapon)
+          TriggerEvent("ls:spawnPed", coords["x"], coords["y"], coords["z"], coords["h"], weapon)
           pedsSpawned = true
-          CallingCops = true
-          StartedBoost = true
         end  
         if vehClass == 'D' then
           if math.random(1,4) == 1 then
-            TriggerEvent("drp-dispatch:initBoostAlert", spawnedVeh)
+            TriggerEvent("drp-dispatch:initBoostAlert", spawnedVeh) 
           end
         elseif vehClass == 'C' then
           if math.random(1,2) == 1 then
-            TriggerEvent("drp-dispatch:initBoostAlert", spawnedVeh)
+            TriggerEvent("drp-dispatch:initBoostAlert", spawnedVeh) 
           end
         else
-          TriggerEvent("drp-dispatch:initBoostAlert", spawnedVeh)
+          TriggerEvent("drp-dispatch:initBoostAlert", spawnedVeh) 
         end
 
         while not IsPedInAnyVehicle(PlayerPedId(), false) do
           Citizen.Wait(1000)
         end 
 
-        -- local isPedInBoostCar = IsPedInVehicle(PlayerPedId(), spawnedVeh, true)
+        local isPedInBoostCar = IsPedInVehicle(PlayerPedId(), spawnedVeh, true)
 
- 
+        local TrackerTriggerTime = 30000
         if vehClass == 'D' then
-          DispatchDelayTimer = 20000
-          -- print(vehClass.. 'Boost started Wait timer :' ..DispatchDelayTimer)
+          TrackerTriggerTime = 80000
         elseif vehClass == 'C' then
-          DispatchDelayTimer = 20000 
-          -- print(vehClass.. 'Boost started Wait timer :' ..DispatchDelayTimer)
+          TrackerTriggerTime = 60000
         elseif vehClass == 'B' then
-          DispatchDelayTimer = 30000 
-          -- print(vehClass.. 'Boost started Wait timer :' ..DispatchDelayTimer)
+          TrackerTriggerTime = 45000
+          TriggerServerEvent('drp-boosting:tracker', spawnedVeh, TrackerTriggerTime, vehClass)
         elseif vehClass == 'A' then
-          DispatchDelayTimer = 10000 
-          -- print(vehClass.. 'Boost started Wait timer :' ..DispatchDelayTimer)
+          TrackerTriggerTime = 30000
+          TriggerServerEvent('drp-boosting:tracker', spawnedVeh, TrackerTriggerTime, vehClass)
         elseif vehClass == 'S' then
-          DispatchDelayTimer = 10000 -- Every 10 seconds
-          -- print(vehClass.. 'Boost started Wait timer :' ..DispatchDelayTimer)
+          TrackerTriggerTime = 10000
+          TriggerServerEvent('drp-boosting:tracker', spawnedVeh, TrackerTriggerTime, vehClass)
         end
 
-        TriggerEvent('phone:addnotification', 'DarkNet', "Looks like you've found the car, keep an eye on your GPS, i'll ping you a drop location soon. This one has a tracker by the way!")
-        Wait(120000)
+        TriggerEvent("chatMessage","DarkNet", 5, "Bring that car to the drop off location")
         pedsSpawned = false
         TriggerEvent("ls:boostDropOff") 
       end
     end
-  -- end)
+   end)
+
 end)
+
 
 RegisterNetEvent('trackerGoBr')
 AddEventHandler('trackerGoBr', function()
