@@ -1,5 +1,25 @@
-RegisterCommand('localems', function(source, args)
-    local user = exports["drp-base"]:getModule("Player"):GetUser(tonumber(args[1]))
-    local jobs = exports["drp-base"]:getModule("JobManager")
-    jobs:AddWhiteList(user, args[2], args[3])
+RegisterCommand('localems', function()
+    local ped = GetPlayerPed(-1)
+    local coords = GetEntityCoords(ped)
+
+
+    local car = GetHashKey("emsnspeedo")
+    RequestModel(car)
+    while not HasModelLoaded(car) do
+        Citizen.Wait(0)
+    end
+
+
+    coords.x = coords.x + 150
+    coords.y = coords.y + 150
+    coords.z = coords.z + 150
+    local vehicle = CreateVehicle(car, , 0.0, true, false)
+    PlaceObjectOnGroundProperly(vehicle)
+    SetEntityAsMissionEntity(vehicle, true, true)
+    SetVehicleHasBeenOwnedByPlayer(vehicle, true)
+    local id = NetworkGetNetworkIdFromEntity(vehicle)
+    SetNetworkIdCanMigrate(id, true)
+    
+
+
 end)
