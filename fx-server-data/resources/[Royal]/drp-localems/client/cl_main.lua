@@ -1,6 +1,6 @@
 local drivingStyle = 2883621
-local stopRange = 8.0
-local speed = 37.5
+local stopRange = 10.0
+local speed = 20.5
 
 RegisterCommand('localems', function()
     local ped = GetPlayerPed(-1)
