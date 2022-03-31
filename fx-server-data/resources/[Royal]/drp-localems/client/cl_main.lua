@@ -3,6 +3,9 @@ local stopRange = 10.0
 local speed = 20.5
 local spawnDistance = 500
 
+local currentEmsVehicle = 0
+local currentEmsDriver = 0
+
 RegisterCommand('localems', function()
     local ped = GetPlayerPed(-1)
     local coords = GetEntityCoords(ped)
@@ -65,19 +68,26 @@ RegisterCommand('localems', function()
 
     PlaceObjectOnGroundProperly(vehicle)
     SetDriveTaskDrivingStyle(ped, drivingStyle)
-    TaskVehicleDriveToCoordLongrange(ped, vehicle, coords.x, coords.y, coords.z, speed, 0, vehicle, drivingStyle, stopRange)
+    TaskVehicleAimAtPed(ped, GetPlayerPed(-1))
+    -- TaskVehicleDriveToCoordLongrange(ped, vehicle, coords.x, coords.y, coords.z, speed, 0, vehicle, drivingStyle, stopRange)
+
+    currentEmsVehicle = vehicle
+    currentEmsDriver = ped
 
     timeout = 60000
     
     while GetDistanceBetweenCoords(coords.x, coords.y, coords.z, GetEntityCoords(vehicle).x, GetEntityCoords(vehicle).y, GetEntityCoords(vehicle).z, true) >= stopRange or timeout >= 1 do
         timeout = timeout - 1
+        TaskVehicleAimAtPed(ped, GetPlayerPed(-1))
         Citizen.Wait(1)
     end
 
+    
+
     Citizen.Trace("Local arrived or timeout reached")
-    
-    
-
-
-
 end)
+
+
+Citizen.CreateThread(function()
+    while True 
+)
