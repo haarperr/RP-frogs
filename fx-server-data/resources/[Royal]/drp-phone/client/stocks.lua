@@ -119,7 +119,6 @@ AddEventHandler('gne:check', function(costs,functionCall,server)
   Citizen.Trace("Checking")
   Citizen.Trace(costs)
   Citizen.Trace(functionCall)
-  Citizen.Trace(server)
   if tonumber(clientstockamount[1]["value"]) >= costs then
     clientstockamount[1]["value"] = tonumber(clientstockamount[1]["value"]) - costs
     updateServerClientStocks()

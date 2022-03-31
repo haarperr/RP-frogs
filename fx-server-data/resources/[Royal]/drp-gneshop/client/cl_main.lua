@@ -74,11 +74,11 @@ end)
 RegisterNetEvent('gne:attemptBuyadvrepairkit')
 AddEventHandler('gne:attemptBuyadvrepairkit', function()
     local price = 7
-    TriggerEvent("gne:check", price, "gne_buyadvrepairkit", false)
+    TriggerEvent("gne:check", price, "gne:buyadvrepairkit", false)
 end)
 
-RegisterNetEvent("gne:gne_buyadvrepairkit")
-AddEventHandler("gne:gne_buyadvrepairkit", function()
+RegisterNetEvent("gne:buyadvrepairkit")
+AddEventHandler("gne:buyadvrepairkit", function()
     TriggerEvent("player:receiveItem", "advrepairkit", 1)
 end)
 
@@ -86,11 +86,11 @@ end)
 RegisterNetEvent('gne:attemptBuyNOS')
 AddEventHandler('gne:attemptBuyNOS', function()
     local price = 15
-    TriggerEvent("gne:check", price, "gne_buynos", false)
+    TriggerEvent("gne:check", price, "gne:buynos", false)
 end)
 
-RegisterNetEvent("gne:gne_buynos")
-AddEventHandler("gne:gne_buynos", function()
+RegisterNetEvent("gne:buynos")
+AddEventHandler("gne:buynos", function()
     TriggerEvent("player:receiveItem", "nitrous", 1)
 end)
 
@@ -98,11 +98,11 @@ end)
 RegisterNetEvent('gne:attemptBuyfakeplates')
 AddEventHandler('gne:attemptBuyfakeplates', function()
     local price = 40
-    TriggerEvent("gne:check", price, "gne_buyfakeplates", false)
+    TriggerEvent("gne:check", price, "gne:buyfakeplates", false)
 end)
 
-RegisterNetEvent("gne:gne_buyfakeplates")
-AddEventHandler("gne:gne_buyfakeplates", function()
+RegisterNetEvent("gne:buyfakeplates")
+AddEventHandler("gne:buyfakeplates", function()
     TriggerEvent("player:receiveItem", "fakeplate", 1)
 end)
 
@@ -110,11 +110,11 @@ end)
 RegisterNetEvent('gne:attemptBuybrakes')
 AddEventHandler('gne:attemptBuybrakes', function()
     local price = 75
-    TriggerEvent("gne:check", price, "gne_buybrakes", false)
+    TriggerEvent("gne:check", price, "gne:buybrakes", false)
 end)
 
-RegisterNetEvent("gne:gne_buybrakes")
-AddEventHandler("gne:gne_buybrakes", function()
+RegisterNetEvent("gne:buybrakes")
+AddEventHandler("gne:buybrakes", function()
     TriggerEvent("player:receiveItem", "brakingkit", 1)
 end)
 
@@ -122,11 +122,11 @@ end)
 RegisterNetEvent('gne:attemptBuySuspention')
 AddEventHandler('gne:attemptBuySuspention', function()
     local price = 75
-    TriggerEvent("gne:check", price, "gne_buySuspention", false)
+    TriggerEvent("gne:check", price, "gne:buySuspention", false)
 end)
 
-RegisterNetEvent("gne:gne_buySuspention")
-AddEventHandler("gne:gne_buySuspention", function()
+RegisterNetEvent("gne:buySuspention")
+AddEventHandler("gne:buySuspention", function()
     TriggerEvent("player:receiveItem", "suspensionkit", 1)
 end)
 
@@ -134,11 +134,11 @@ end)
 RegisterNetEvent('gne:attemptBuyEngine')
 AddEventHandler('gne:attemptBuyEngine', function()
     local price = 125
-    TriggerEvent("gne:check", price, "gne_buyEngine", false)
+    TriggerEvent("gne:check", price, "gne:buyEngine", false)
 end)
 
-RegisterNetEvent("gne:gne_buyEngine")
-AddEventHandler("gne:gne_buyEngine", function()
+RegisterNetEvent("gne:buyEngine")
+AddEventHandler("gne:buyEngine", function()
     TriggerEvent("player:receiveItem", "enginekit", 1)
 end)
 
@@ -146,11 +146,11 @@ end)
 RegisterNetEvent('gne:attemptBuyTurbo')
 AddEventHandler('gne:attemptBuyTurbo', function()
     local price = 125
-    TriggerEvent("gne:check", price, "gne_buyTurbo", false)
+    TriggerEvent("gne:check", price, "gne:buyTurbo", false)
 end)
 
-RegisterNetEvent("gne:gne_buyTurbo")
-AddEventHandler("gne:gne_buyTurbo", function()
+RegisterNetEvent("gne:buyTurbo")
+AddEventHandler("gne:buyTurbo", function()
     TriggerEvent("player:receiveItem", "turbokit", 1)
 end)
 
