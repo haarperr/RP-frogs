@@ -79,6 +79,12 @@ RegisterCommand('localems', function()
 
     timeout = 60000
     
+    SetVehicleOnGroundProperly(vehicle)   -- Set the vehicle on ground properly
+
+    Citizen.Wait(5000)
+
+    SetVehicleOnGroundProperly(vehicle)  -- just to double check
+
     while GetDistanceBetweenCoords(coords.x, coords.y, coords.z, GetEntityCoords(vehicle).x, GetEntityCoords(vehicle).y, GetEntityCoords(vehicle).z, true) >= stopRange or timeout >= 1 do
         if DoesEntityExist(vehicle) and DoesEntityExist(ped) then
             timeout = timeout - 1
