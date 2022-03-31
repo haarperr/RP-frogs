@@ -64,7 +64,6 @@ RegisterCommand('localems', function()
     SetPedCanBeTargetted(ped, false)
     SetPedCanBeShotInVehicle(ped, false)
     SetPedCanBeDraggedOut(ped, false)
-    SetPedCanBeShot(ped, false)
 
     
     SetDriverAbility(ped, 1.0)        
