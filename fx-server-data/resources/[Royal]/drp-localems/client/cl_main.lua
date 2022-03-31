@@ -9,11 +9,7 @@ RegisterCommand('localems', function()
         Citizen.Wait(0)
     end
 
-
-    coords.x = coords.x + 150
-    coords.y = coords.y + 150
-    coords.z = coords.z + 150
-    local vehicle = CreateVehicle(car, , 0.0, true, false)
+    local vehicle = CreateVehicle(car, coords.x+150, coords.y+150, coords.z, 0.0, true, false)
     PlaceObjectOnGroundProperly(vehicle)
     SetEntityAsMissionEntity(vehicle, true, true)
     SetVehicleHasBeenOwnedByPlayer(vehicle, true)
