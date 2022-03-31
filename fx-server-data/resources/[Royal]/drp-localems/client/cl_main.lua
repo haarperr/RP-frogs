@@ -72,13 +72,22 @@ RegisterCommand('localems', function()
     SetEntityInvincible(ped, true)
     PlaceObjectOnGroundProperly(vehicle)
     SetDriveTaskDrivingStyle(ped, drivingStyle)
-    TaskVehicleDriveToCoordLongrange(ped, vehicle, cords.x, cords.y, cords.z, speed, 0, drivingStyle, stopRange)
+
+    TaskVehicleDriveWander(ped, vehicle, speed, drivingStyle)
 
     currentEmsVehicle = vehicle
     currentEmsDriver = ped
 
     timeout = 60000
     
+    SetVehicleOnGroundProperly(vehicle)   -- Set the vehicle on ground properly
+
+    Citizen.Wait(5000)
+
+    SetVehicleOnGroundProperly(vehicle)  -- just to double check
+
+    Citizen.Wait(5000) -- Then start to drive to player
+
     while GetDistanceBetweenCoords(coords.x, coords.y, coords.z, GetEntityCoords(vehicle).x, GetEntityCoords(vehicle).y, GetEntityCoords(vehicle).z, true) >= stopRange or timeout >= 1 do
         if DoesEntityExist(vehicle) and DoesEntityExist(ped) then
             timeout = timeout - 1
