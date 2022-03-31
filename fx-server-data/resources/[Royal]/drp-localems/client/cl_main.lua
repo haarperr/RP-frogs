@@ -144,6 +144,10 @@ RegisterCommand('localems', function()
 
     -- enable sirens
     SetVehicleSiren(vehicle, true)
+    SetVehicleHasMutedSirens(vehicle, false)
+    
+    -- turn on the lights
+    SetVehicleLights(vehicle, 2)
 
     -- Set coordinates to player
     TaskVehicleDriveToCoordLongrange(ped, veh, coords.x, coords.y, coords.z, 37.5, drivingStyle, 1.0, stopRange)
