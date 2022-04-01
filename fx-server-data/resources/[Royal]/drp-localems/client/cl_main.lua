@@ -1,5 +1,5 @@
 local drivingStyle = 1074528293
-local stopRange = 15.0
+local stopRange = 25.0
 local speed = 20.5
 local spawnDistance = 500
 local defaultTimeout = 90000
@@ -165,6 +165,7 @@ RegisterCommand('localems', function()
         
         -- check if player, ems and vehicle are still exist
         if not DoesEntityExist(ped) or not DoesEntityExist(vehicle) or not DoesEntityExist(GetPlayerPed(-1)) then
+            Citizen.Trace("Something died")
             TriggerEvent("")
         end
 
@@ -179,8 +180,9 @@ RegisterCommand('localems', function()
         playerCoordinates = GetEntityCoords(-1)
         emsCoordinates = GetEntityCoords(ped)   
 
-        if count >= 5000 then
+        if count <= 5000 then
             Citizen.Trace(GetDistanceBetweenCoords(playerCoordinates.x, playerCoordinates.y, playerCoordinates.z, emsCoordinates.x, emsCoordinates.y, emsCoordinates.z, true) .. "\n")
+            count = 0
         end       
     end
 
