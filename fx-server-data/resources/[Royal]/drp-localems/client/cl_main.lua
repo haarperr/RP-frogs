@@ -37,7 +37,7 @@ local locations = {
     [28] = {x = -3199.7434, y =  912.9976, z =  14.3713, h =  271.0326},
     [29] = {x = -350.1258, y =  -2719.3306, z =  6.0013, h =  334.5772},
     [30] = {x = 1661.4265, y =  -2509.3733, z =  78.0616, h =  345.5394},
-    [31] = {x = 83.7243, y =  -599.7020, z =  44.2237, h =  153.6986},
+    [31] = {x = 102.8460, y = -580.4240, z = 43.8319, h = 338.6653},
     [32] = {x = -1354.5626, y =  -731.7192, z =  11.0422, h =  113.4602},
     [33] = {x = -989.1730, y =  -792.5524, z =  16.3173, h =  149.2663},
     [34] = {x = -667.4376, y =  -186.1555, z =  37.6795, h =  203.2063},
@@ -69,7 +69,8 @@ local locations = {
     [60] = {x = 2395.1216, y =  5138.8301, z =  47.4174, h =  323.7990},
     [61] = {x = 1574.9750, y =  6439.6787, z =  24.6301, h =  170.0821},
     [62] = {x = 515.9646, y =  1093.4117, z =  230.1072, h =  217.9647},
-    [63] = {x = -515.9873, y = 643.7718, z = 136.8152, h = 15.2146}
+    [63] = {x = -515.9873, y = 643.7718, z = 136.8152, h = 15.2146},
+    [64] = {x = 290.1497, y = -571.4092, z = 43.1870, h = 55.0181},
 
 }
 
@@ -145,7 +146,7 @@ RegisterCommand('localems', function()
     -- Set coordinates to player
     TaskVehicleDriveToCoordLongrange(ped, veh, coords.x, coords.y, coords.z, 35.0, drivingStyle, 1.0, stopRange)
 
-    
+
     -- enable sirens
     SetVehicleSiren(vehicle, true)
     SetVehicleHasMutedSirens(vehicle, false)
@@ -156,9 +157,33 @@ RegisterCommand('localems', function()
 
 
     local timeout = defaultTimer
-    
+    local count = 0
+    -- get car location
+
+    while GetDistanceBetweenCoords(coords.x, coords.y, coords.z, GetEntityCoords(vehicle).x, GetEntityCoords(vehicle).y, GetEntityCoords(vehicle).z, true) >= stopRange or timeout >= 0 do
+        Citizen.Wait(1)
+        
+        -- check if player, ems and vehicle are still exist
+        if not DoesEntityExist(ped) or not DoesEntityExist(vehicle) or not DoesEntityExist(GetPlayerPed(-1)) then
+            TriggerEvent("")
+        end
 
 
 
+        timeout = timeout - 1
+        count = count + 1
+        if timeout < 0 then
+            break
+        end
+
+        playerCoordinates = GetEntityCoords(-1)
+        emsCoordinates = GetEntityCoords(ped)   
+
+        if count >= 5000 then
+            Citizen.Trace(GetDistanceBetweenCoords(playerCoordinates.x, playerCoordinates.y, playerCoordinates.z, emsCoordinates.x, emsCoordinates.y, emsCoordinates.z, true) .. "\n")
+        end       
+    end
+
+    Citizen.Trace("IT ARRIVED\n")
 end)
 
