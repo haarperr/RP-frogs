@@ -448,7 +448,7 @@ function DoDropOff(requestMoney)
 			local sellableItems = {
 				[1] = {name = 'rollcash', amount = math.random(3,10), price=rollcashprice},
 				[2] = {name = 'inkedmoneybag', amount = 1, price=inkedmoneybagprice},
-				[3] = {name = 'markedbills', amount = math.random(3,10), price=markedbillsprice},
+				[3] = {name = 'markedbills', amount = math.random(3,5), price=markedbillsprice},
 				[4] = {name = 'band', amount = math.random(3,10), price=bandprice},
 			}
 
@@ -462,9 +462,9 @@ function DoDropOff(requestMoney)
 				local randomIndex = math.random(#sellableItems)
 				sellableItems[i] = sellableItems[randomIndex]
 				
-				if exports["drp-inventory"]:hasEnoughOfItem(sellableItems[i].name,sellableItems[i].amount,false) then
-					TriggerEvent("inventory:removeItem",sellableItems[i].name,sellableItems[i].amount)
-					TriggerServerEvent('mission:completed', sellableItems[i].price * sellableItems[i].amount)
+				if exports["drp-inventory"]:hasEnoughOfItem(sellableItems[i].name, sellableItems[i].amount, false) then
+					TriggerEvent("inventory:removeItem",sellableItems[i].name, sellableItems[i].amount)
+					TriggerServerEvent('mission:completed', (sellableItems[i].price * sellableItems[i].amount))
 					pog = true
 					break
 				end
