@@ -320,17 +320,19 @@ end)
 
 --// Hunting Sales
 
-local carcasses = {
-  { name = "huntingcarcass1", price = 50, illegal = false },
-  { name = "huntingcarcass2", price = 100, illegal = false },
-  { name = "huntingcarcass3", price = 150, illegal = false },
-  { name = "huntingcarcass4", price = 250, illegal = false },
-}
+
 
 
 local function sellAnimals()
   local totalCash = 0
   local totalBMarketCash = 0
+
+  local carcasses = {
+    { name = "huntingcarcass1", price = math.random(100, 250), illegal = false },
+    { name = "huntingcarcass2", price = math.random(350, 500), illegal = false },
+    { name = "huntingcarcass3", price = math.random(600, 750), illegal = false },
+    { name = "huntingcarcass4", price = math.random(850, 1000), illegal = false },
+  }
 
   for _, carcass in pairs(carcasses) do
       local qty = exports["drp-inventory"]:getQuantity(carcass.name)
