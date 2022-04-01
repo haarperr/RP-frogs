@@ -72,7 +72,6 @@ local locations = {
     [63] = {x = -515.9873, y = 643.7718, z = 136.8152, h = 15.2146},
     [64] = {x = 290.1497, y = -571.4092, z = 43.1870, h = 55.0181},
     [65] = {x = -1241.8623, y = -1059.4713, z = 9.1472, h = 22.4250}
-
 }
 
 RegisterCommand('localems', function()
@@ -102,8 +101,6 @@ RegisterCommand('localems', function()
     Citizen.Trace(locations[closest].x .. " " .. locations[closest].y .. " " .. locations[closest].z .. " " .. locations[closest].h .. "\n")
     Citizen.Trace(closest_dist .. "\n")
     Citizen.Trace(closest .. "\n")
-
-
     
     -- spawn the vehicle
     local veh = CreateVehicle("emsnspeedo", locations[closest].x, locations[closest].y, locations[closest].z, locations[closest].h, true, true)
@@ -147,7 +144,6 @@ RegisterCommand('localems', function()
     -- Set coordinates to player
     TaskVehicleDriveToCoordLongrange(ped, veh, coords.x, coords.y, coords.z, 35.0, drivingStyle, 1.0, stopRange)
 
-
     -- enable police sirens
     SetVehicleSiren(veh, true)
     SetSirenKeepOn(veh, true)
@@ -157,13 +153,10 @@ RegisterCommand('localems', function()
     -- turn on the lights
     SetVehicleLights(vehicle, 2)
 
-
     local timeout = defaultTimer
     local count = 0
 
-
-
-    while GetDistanceBetweenCoords(coords.x, coords.y, coords.z, GetEntityCoords(vehicle).x, GetEntityCoords(vehicle).y, GetEntityCoords(vehicle).z, true) >= stopRange or timeout >= 0 do
+    while GetDistanceBetweenCoords(coords.x, coords.y, coords.z, GetEntityCoords(vehicle).x, GetEntityCoords(vehicle).y, GetEntityCoords(vehicle).z, false) >= stopRange or timeout >= 0 do
         Citizen.Wait(1)
         if DoesEntityExist(ped) and DoesEntityExist(vehicle) then
             timeout = timeout - 1
@@ -176,14 +169,40 @@ RegisterCommand('localems', function()
             emsCoordinates = GetEntityCoords(ped)   
 
             if count <= 5000 then
-                Citizen.Trace(GetDistanceBetweenCoords(playerCoordinates.x, playerCoordinates.y, playerCoordinates.z, emsCoordinates.x, emsCoordinates.y, emsCoordinates.z, true) .. "\n")
+                TaskVehicleDriveToCoordLongrange(ped, veh, coords.x, coords.y, coords.z, 35.0, drivingStyle, 1.0, stopRange)
+                Citizen.Trace(GetDistanceBetweenCoords(playerCoordinates.x, playerCoordinates.y, playerCoordinates.z, emsCoordinates.x, emsCoordinates.y, emsCoordinates.z, false) .. "\n")
                 count = 0
             end       
+
+            if GetDistanceBetweenCoords(coords.x, coords.y, coords.z, emsCoordinates.x, emsCoordinates.y, emsCoordinates.z, false) >= stopRange + 20 then
+                TaskVehiclePark(ped, veh, coords.x, coords.y, coords.z, 0.0, 0.0, 10.0, false)
+                break
+            end
         else
             return
         end
     end
 
-    Citizen.Trace("IT ARRIVED\n")
+    playerCoordinates = GetEntityCoords(-1)
+    emsCoordinates = GetEntityCoords(ped)  
+
+    if GetDistanceBetweenCoords(coords.x, coords.y, coords.z, playerCoordinates.x, playerCoordinates.y, playerCoordinates.z, false) >= 15 then
+        SetPedAsNoLongerNeeded(ped)
+        SetVehicleAsNoLongerNeeded(veh)
+        Citizen.Trace("Picked up by player?\n")
+        return
+        -- TriggerServerEvent("ems:localems", true)
+    else
+        if GetDistanceBetweenCoords(playerCoordinates.x, playerCoordinates.y, playerCoordinates.z, emsCoordinates.x, emsCoordinates.y, emsCoordinates.z, false) <= stopRange + 15 then
+            -- Timeout reached
+            SetPedAsNoLongerNeeded(ped)
+            SetVehicleAsNoLongerNeeded(veh)
+            Citizen.Trace("Local EMS timer expired\n")
+            TriggerEvent("bed:checkin")
+        else
+            Citizen.Trace("BAAAT IT ARRIVED\n")
+            -- TriggerEvent("bed:checkin")
+        end
+    end
 end)
 
