@@ -166,7 +166,7 @@ RegisterCommand('localems', function()
         Citizen.Wait(1)
         
         -- check if player, ems and vehicle are still exist
-        if not DoesEntityExist(ped) or not DoesEntityExist(vehicle) or not DoesEntityExist(GetPlayerPed(-1)) then
+        if not DoesEntityExist(ped) or not DoesEntityExist(vehicle) then
             Citizen.Trace("Something died")
             TriggerEvent("")
         end
