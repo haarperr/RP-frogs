@@ -160,7 +160,7 @@ RegisterCommand('localems', function()
     local count = 0
     -- get car location
 
-    Citizen.Wait(2500)
+    Citizen.Wait(1000)
 
     while GetDistanceBetweenCoords(coords.x, coords.y, coords.z, GetEntityCoords(vehicle).x, GetEntityCoords(vehicle).y, GetEntityCoords(vehicle).z, true) >= stopRange or timeout >= 0 do
         Citizen.Wait(1)
