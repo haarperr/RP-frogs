@@ -71,6 +71,7 @@ local locations = {
     [62] = {x = 515.9646, y =  1093.4117, z =  230.1072, h =  217.9647},
     [63] = {x = -515.9873, y = 643.7718, z = 136.8152, h = 15.2146},
     [64] = {x = 290.1497, y = -571.4092, z = 43.1870, h = 55.0181},
+    [65] = {x = -1241.8623, y = -1059.4713, z = 9.1472, h = 22.4250}
 
 }
 
@@ -147,10 +148,11 @@ RegisterCommand('localems', function()
     TaskVehicleDriveToCoordLongrange(ped, veh, coords.x, coords.y, coords.z, 35.0, drivingStyle, 1.0, stopRange)
 
 
-    -- enable sirens
-    SetVehicleSiren(vehicle, true)
-    SetVehicleHasMutedSirens(vehicle, false)
-
+    -- enable police sirens
+    SetVehicleSiren(veh, true)
+    SetSirenKeepOn(veh, true)
+    SetSirenWithNoDriver(veh, true)
+    UseSirenAsHorn(veh, true)
     
     -- turn on the lights
     SetVehicleLights(vehicle, 2)
@@ -159,22 +161,7 @@ RegisterCommand('localems', function()
     local timeout = defaultTimer
     local count = 0
 
-    
-    SetVehicleSiren(vehicle, true)
 
-
-    
-    SetVehicleSiren(vehicle, true)
-
-    
-    SetVehicleSiren(vehicle, true)
-    
-    SetVehicleSiren(vehicle, true)
-    
-    SetVehicleSiren(vehicle, true)
-    
-    SetVehicleSiren(vehicle, true)
-    
 
     while GetDistanceBetweenCoords(coords.x, coords.y, coords.z, GetEntityCoords(vehicle).x, GetEntityCoords(vehicle).y, GetEntityCoords(vehicle).z, true) >= stopRange or timeout >= 0 do
         Citizen.Wait(1)
