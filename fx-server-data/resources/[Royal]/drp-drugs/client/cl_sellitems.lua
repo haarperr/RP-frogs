@@ -57,6 +57,33 @@ AddEventHandler('sellstolenpsp', function()
     doSell("stolenpsp", math.random(75,125))
 end)
 
+RegisterNetEvent('sellstolennokia')
+AddEventHandler('sellstolennokia', function()
+    doSell("stolennokia", math.random(125,175))
+end)
+RegisterNetEvent('sellstoleniphone')
+AddEventHandler('sellstoleniphone', function()
+    doSell("stoleniphone", math.random(125,175))
+end)
+
+RegisterNetEvent('sellstolentv')
+AddEventHandler('sellstolentv', function()
+    doSell("stolentv", math.random(500,1250))
+end)
+RegisterNetEvent('sellstolenmusic')
+AddEventHandler('sellstolenmusic', function()
+    doSell("stolenmusic", math.random(350,550))
+end)
+
+RegisterNetEvent('sellstolenart')
+AddEventHandler('sellstolenart', function()
+    doSell("stolenart", math.random(250,1250))
+end)
+RegisterNetEvent('sellstolencomputer')
+AddEventHandler('sellstolencomputer', function()
+    doSell("stolencomputer", math.random(500,800))
+end)
+
 RegisterNetEvent('sellstolencasiowatch')
 AddEventHandler('sellstolencasiowatch', function()
     doSell("stolencasiowatch", math.random(25,75))
@@ -64,7 +91,7 @@ end)
 
 RegisterNetEvent('sellrolex')
 AddEventHandler('sellrolex', function()
-    doSell("rolexwatch", math.random(175,300))
+    doSell("rolexwatch", math.random(225,325))
 end)
 
 RegisterNetEvent('selloxy')
@@ -119,6 +146,22 @@ AddEventHandler("fenceguy:menu", function()
 		},
         {
 			id = "6",
+			header = "Sell Nokia",
+			txt = "",
+			params = {
+				event = "sellstolennokia",
+			}
+		},
+        {
+			id = "7",
+			header = "Sell IPhone",
+			txt = "",
+			params = {
+				event = "sellstoleniphone",
+			}
+		},
+        {
+			id = "8",
 			header = "Sell Oakleys",
 			txt = "",
 			params = {
@@ -126,7 +169,7 @@ AddEventHandler("fenceguy:menu", function()
 			}
 		},
         {
-			id = "7",
+			id = "9",
 			header = "Sell PSP",
 			txt = "",
 			params = {
@@ -134,7 +177,7 @@ AddEventHandler("fenceguy:menu", function()
 			}
 		},
         {
-			id = "8",
+			id = "10",
 			header = "Sell Casio Watch",
 			txt = "",
 			params = {
@@ -142,11 +185,43 @@ AddEventHandler("fenceguy:menu", function()
 			}
 		},
         {
-			id = "9",
+			id = "11",
 			header = "Sell Rolex",
 			txt = "",
 			params = {
 				event = "sellrolex",
+			}
+		},
+        {
+			id = "12",
+			header = "Sell TV",
+			txt = "",
+			params = {
+				event = "sellstolentv",
+			}
+		},
+        {
+			id = "13",
+			header = "Sell Music Player",
+			txt = "",
+			params = {
+				event = "sellstolenmusic",
+			}
+		},
+        {
+			id = "14",
+			header = "Sell Art",
+			txt = "",
+			params = {
+				event = "sellstolenart",
+			}
+		},
+        {
+			id = "15",
+			header = "Sell Computer",
+			txt = "",
+			params = {
+				event = "sellstolencomputer",
 			}
 		}
 	})

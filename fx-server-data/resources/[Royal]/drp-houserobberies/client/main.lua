@@ -562,22 +562,69 @@ function bar(percentage)
 	SendNUIMessage({runProgress = true, Length = percentage})
 end
 
+
 RegisterNetEvent("drp-houserobbery:common_items")
 AddEventHandler("drp-houserobbery:common_items", function()
-	local roll = math.random(8)
+	local roll = math.random(25)
 	if roll == 1 then
-		TriggerEvent("player:receiveItem", "stolennokia", 1)
+		TriggerEvent("player:receiveItem", "copper", math.random(1, 8))
 	elseif roll == 2 then
-		TriggerEvent("player:receiveItem", "stoleniphone", 1)
+		TriggerEvent("player:receiveItem", "electronics", math.random(1, 8))
 	elseif roll == 3 then
-		TriggerEvent("player:receiveItem", "stolengameboy", 1)
+		TriggerEvent("player:receiveItem", "rubber", math.random(1, 8))
 	elseif roll == 4 then
-		TriggerEvent("player:receiveItem", "stolencasiowatch", 1)
+		TriggerEvent("player:receiveItem", "scrapmetal", math.random(1, 8))
+	elseif roll == 5 then
+		TriggerEvent("player:receiveItem", "steel", math.random(1, 8))
 	elseif roll == 6 then
-		TriggerEvent("player:receiveItem", "oxy", math.random(1,3))
+		TriggerEvent("player:receiveItem", "rolexwatch", math.random(1, 3))
 	elseif roll == 7 then
-		TriggerEvent("player:receiveItem", "safecrackingkit", 1)
+		TriggerEvent("player:receiveItem", "stolennokia", math.random(1, 2))
 	elseif roll == 8 then
-		TriggerEvent("player:receiveItem", "rolex", 1)
-	end
+		TriggerEvent("player:receiveItem", "stoleniphone", math.random(1, 2))
+	elseif roll == 9 then
+		TriggerEvent("player:receiveItem", "stolen2ctchain", math.random(1, 2))
+	elseif roll == 10 then
+		TriggerEvent("player:receiveItem", "stolen5ctchain", math.random(1))
+	elseif roll == 11 then
+		TriggerEvent("player:receiveItem", "stolen8ctchain", math.random(1))
+	elseif roll == 12 then
+		TriggerEvent("player:receiveItem", "stolengameboy", math.random(1, 2))
+	elseif roll == 13 then
+		TriggerEvent("player:receiveItem", "stolenoakleys", math.random(1, 2))
+	elseif roll == 14 then
+		TriggerEvent("player:receiveItem", "stolenpsp", math.random(1, 2))
+	elseif roll == 15 then
+		TriggerEvent("player:receiveItem", "stolencasiowatch", math.random(1, 2))
+	elseif roll == 16 then
+		if math.random(1, 5) == 1 then
+			TriggerEvent("player:receiveItem", "safecrackingkit", math.random(1))
+		else
+			roll = math.random(19, 25)
+		end
+	elseif roll == 17 then
+		TriggerEvent("player:receiveItem", "lockpick", math.random(1))
+	elseif roll == 18 then
+		if math.random(1, 10) == 1 then
+			TriggerEvent("player:receiveItem", "heistusb3", math.random(1))
+		else
+			roll = math.random(19, 25)
+		end
+	elseif roll == 19 then
+		TriggerEvent("player:receiveItem", "pillbox", math.random(1))
+	elseif roll == 20 then
+		TriggerEvent("player:receiveItem", "pistolammo", math.random(1, 2))
+	elseif roll == 21 then
+		TriggerEvent("player:receiveItem", "oxy", math.random(1, 2))
+	elseif roll == 22 then
+		TriggerEvent("player:receiveItem", "muffin", math.random(1, 2))
+	elseif roll == 23 then
+		TriggerEvent("player:receiveItem", "viagra", math.random(1, 2))
+	elseif roll == 24 then
+		TriggerEvent("player:receiveItem", "xscondom", math.random(1))
+	elseif roll == 25 then
+		TriggerEvent("player:receiveItem", "poisonedsandwich", math.random(1))
+	end 
 end)
+
+
