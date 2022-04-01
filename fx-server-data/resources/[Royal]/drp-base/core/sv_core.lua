@@ -93,13 +93,12 @@ AddEventHandler('paycheck:server:send', function(cid)
 	local user = exports["drp-base"]:getModule("Player"):GetUser(src)
 	local job = user:getVar("job")
 	if user ~= false then
-
 		if job == "unemployed" then -- Bum Jobs 
 			TriggerEvent("paycheck:server:add", src, cid, 50)
 		elseif job == "police" then -- Police
-			TriggerEvent("paycheck:server:add", src, cid, 300)
+			TriggerEvent("paycheck:server:add", src, cid, 400)
 		elseif job == "sheriff" then -- Police
-			TriggerEvent("paycheck:server:add", src, cid, 300)
+			TriggerEvent("paycheck:server:add", src, cid, 400)
 		elseif job == "towunion" then -- Police
 			TriggerEvent("paycheck:server:add", src, cid, 150)
 		elseif job == "best_buds" or job == "burger_shot" or job == "bean_machine" or job == "vanilla_unicorn" then -- Civ Jobs
@@ -107,9 +106,9 @@ AddEventHandler('paycheck:server:send', function(cid)
 		elseif job == "auto_bodies" or job == "tuner_shop" or job == "paleto_mech" or job == "auto_exotics" or job == "car_shop" then -- Mechanic Shops
 			TriggerEvent("paycheck:server:add", src, cid, 100)
 		elseif job == "ems" then -- EMS
-			TriggerEvent("paycheck:server:add", src, cid, 300)
+			TriggerEvent("paycheck:server:add", src, cid, 400)
 		elseif job == 'doj' then -- doj
-			TriggerEvent("paycheck:server:add", src, cid, 350)
+			TriggerEvent("paycheck:server:add", src, cid, 450)
 		end
 		
 	end
