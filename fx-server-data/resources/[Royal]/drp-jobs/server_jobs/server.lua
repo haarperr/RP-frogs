@@ -63,7 +63,7 @@ AddEventHandler('chickenpayment:pay', function(money)
     local user = exports["drp-base"]:getModule("Player"):GetUser(source)
     if money ~= nil then
         user:addMoney(money)
-        TriggerServerEvent("chickensell:log")
+        TriggerEvent("chickensell:log")
 	end
 end)
 
