@@ -158,34 +158,28 @@ RegisterCommand('localems', function()
 
     local timeout = defaultTimer
     local count = 0
-    -- get car location
-
-    Citizen.Wait(1000)
 
     while GetDistanceBetweenCoords(coords.x, coords.y, coords.z, GetEntityCoords(vehicle).x, GetEntityCoords(vehicle).y, GetEntityCoords(vehicle).z, true) >= stopRange or timeout >= 0 do
         Citizen.Wait(1)
         
         -- check if player, ems and vehicle are still exist
-        if not DoesEntityExist(ped) or not DoesEntityExist(vehicle) then
-            Citizen.Trace("Something died")
-            TriggerEvent("")
+        if DoesEntityExist(ped) and DoesEntityExist(vehicle) then
+            timeout = timeout - 1
+            count = count + 1
+            if timeout < 0 then
+                break
+            end
+
+            playerCoordinates = GetEntityCoords(-1)
+            emsCoordinates = GetEntityCoords(ped)   
+
+            if count <= 5000 then
+                Citizen.Trace(GetDistanceBetweenCoords(playerCoordinates.x, playerCoordinates.y, playerCoordinates.z, emsCoordinates.x, emsCoordinates.y, emsCoordinates.z, true) .. "\n")
+                count = 0
+            end       
+        else
+            return
         end
-
-
-
-        timeout = timeout - 1
-        count = count + 1
-        if timeout < 0 then
-            break
-        end
-
-        playerCoordinates = GetEntityCoords(-1)
-        emsCoordinates = GetEntityCoords(ped)   
-
-        if count <= 5000 then
-            Citizen.Trace(GetDistanceBetweenCoords(playerCoordinates.x, playerCoordinates.y, playerCoordinates.z, emsCoordinates.x, emsCoordinates.y, emsCoordinates.z, true) .. "\n")
-            count = 0
-        end       
     end
 
     Citizen.Trace("IT ARRIVED\n")
