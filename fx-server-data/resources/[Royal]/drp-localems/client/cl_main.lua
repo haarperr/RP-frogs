@@ -156,11 +156,11 @@ RegisterCommand('localems', function()
     local timeout = defaultTimer
     local count = 0
 
-    while GetDistanceBetweenCoords(coords.x, coords.y, coords.z, GetEntityCoords(vehicle).x, GetEntityCoords(vehicle).y, GetEntityCoords(vehicle).z, false) >= stopRange or timeout >= 0 do
+    while GetDistanceBetweenCoords(coords.x, coords.y, coords.z, GetEntityCoords(vehicle).x, GetEntityCoords(vehicle).y, GetEntityCoords(vehicle).z, false) >= stopRange or timeout <= 0 do
         Citizen.Wait(1)
         timeout = timeout - 1
         count = count + 1
-        Citizen.Trace("bat\n")
+        
         playerCoordinates = GetEntityCoords(-1)
         emsCoordinates = GetEntityCoords(ped)   
 
