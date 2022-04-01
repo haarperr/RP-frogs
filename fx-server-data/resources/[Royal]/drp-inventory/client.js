@@ -500,7 +500,8 @@ on('inventory-open-request', () => {
 
 
                     if (GetVehicleClass(vehicleFound) == "8") {
-                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk8-" + licensePlate);
+                        // emitNet("server-inventory-open", startPosition, cid, "1", "Trunk8-" + licensePlate);
+                        emitNet("DoLongHudText", "This Vehicle doesnt have a Trunk!", 2)
                     }
 
 
