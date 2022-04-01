@@ -11183,7 +11183,7 @@ itemList['heistlaptop1'] = {
 // fleeca
 itemList['heistusb4'] = {
   fullyDegrades: true,
-  decayrate: 1.0,
+  decayrate: 0.75,
   displayname: 'Phone Dongle',
   price: 1,
   weight: 10,
@@ -11195,7 +11195,7 @@ itemList['heistusb4'] = {
 
 itemList['heistusb5'] = {
   fullyDegrades: true,
-  decayrate: 1.0,
+  decayrate: 0.75,
   displayname: 'Laptop Dongle',
   price: 1,
   weight: 1,
@@ -11207,7 +11207,7 @@ itemList['heistusb5'] = {
 
 itemList['heistusb6'] = {
   fullyDegrades: true,
-  decayrate: 1.0,
+  decayrate: 0.75,
   displayname: 'Laptop Dongle',
   price: 1,
   weight: 1,
@@ -11257,7 +11257,7 @@ itemList['heistusb1'] = {
 // vault upper
 itemList['heistusb2'] = {
   fullyDegrades: true,
-  decayrate: 1.0,
+  decayrate: 0.33,
   displayname: 'Phone Dongle',
   price: 1,
   weight: 10,

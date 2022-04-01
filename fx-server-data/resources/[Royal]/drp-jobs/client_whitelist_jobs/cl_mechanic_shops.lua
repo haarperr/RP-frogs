@@ -208,9 +208,9 @@ end)
  
  RegisterNetEvent('drp-civjobs:craft-pipebomb')
  AddEventHandler('drp-civjobs:craft-pipebomb', function()
-    if exports['drp-inventory']:hasEnoughOfItem('aluminium', 50) and exports['drp-inventory']:hasEnoughOfItem('scrapmetal', 50) then
+    if exports['drp-inventory']:hasEnoughOfItem('aluminium', 50) and exports['drp-inventory']:hasEnoughOfItem('steel', 50) then
         TriggerEvent('inventory:removeItem', 'aluminium', 50)
-        TriggerEvent('inventory:removeItem', 'scrapmetal', 50)
+        TriggerEvent('inventory:removeItem', 'steel', 50)
         TriggerEvent('player:receiveItem', '-1169823560', 1)
         TriggerEvent('DoLongHudText', 'Successfully crafted a Pipe Bomb', 2)
      else
