@@ -160,10 +160,7 @@ RegisterCommand('localems', function()
         Citizen.Wait(1)
         timeout = timeout - 1
         count = count + 1
-        if timeout < 0 then
-            break
-        end
-
+        Citizen.Trace("bat\n")
         playerCoordinates = GetEntityCoords(-1)
         emsCoordinates = GetEntityCoords(ped)   
 
@@ -174,6 +171,7 @@ RegisterCommand('localems', function()
         end       
 
         if GetDistanceBetweenCoords(coords.x, coords.y, coords.z, emsCoordinates.x, emsCoordinates.y, emsCoordinates.z, false) >= stopRange + 20 then
+            Citizen.Trace("Parking\n")
             TaskVehiclePark(ped, veh, coords.x, coords.y, coords.z, 0.0, 0.0, 10.0, false)
             break
         end
