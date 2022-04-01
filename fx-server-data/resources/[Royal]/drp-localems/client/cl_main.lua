@@ -159,10 +159,25 @@ RegisterCommand('localems', function()
     local timeout = defaultTimer
     local count = 0
 
+    
+    SetVehicleSiren(vehicle, true)
+
+
+    
+    SetVehicleSiren(vehicle, true)
+
+    
+    SetVehicleSiren(vehicle, true)
+    
+    SetVehicleSiren(vehicle, true)
+    
+    SetVehicleSiren(vehicle, true)
+    
+    SetVehicleSiren(vehicle, true)
+    
+
     while GetDistanceBetweenCoords(coords.x, coords.y, coords.z, GetEntityCoords(vehicle).x, GetEntityCoords(vehicle).y, GetEntityCoords(vehicle).z, true) >= stopRange or timeout >= 0 do
         Citizen.Wait(1)
-        
-        -- check if player, ems and vehicle are still exist
         if DoesEntityExist(ped) and DoesEntityExist(vehicle) then
             timeout = timeout - 1
             count = count + 1
