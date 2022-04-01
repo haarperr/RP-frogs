@@ -158,28 +158,24 @@ RegisterCommand('localems', function()
 
     while GetDistanceBetweenCoords(coords.x, coords.y, coords.z, GetEntityCoords(vehicle).x, GetEntityCoords(vehicle).y, GetEntityCoords(vehicle).z, false) >= stopRange or timeout >= 0 do
         Citizen.Wait(1)
-        if DoesEntityExist(ped) and DoesEntityExist(vehicle) then
-            timeout = timeout - 1
-            count = count + 1
-            if timeout < 0 then
-                break
-            end
+        timeout = timeout - 1
+        count = count + 1
+        if timeout < 0 then
+            break
+        end
 
-            playerCoordinates = GetEntityCoords(-1)
-            emsCoordinates = GetEntityCoords(ped)   
+        playerCoordinates = GetEntityCoords(-1)
+        emsCoordinates = GetEntityCoords(ped)   
 
-            if count <= 5000 then
-                TaskVehicleDriveToCoordLongrange(ped, veh, coords.x, coords.y, coords.z, 35.0, drivingStyle, 1.0, stopRange)
-                Citizen.Trace(GetDistanceBetweenCoords(playerCoordinates.x, playerCoordinates.y, playerCoordinates.z, emsCoordinates.x, emsCoordinates.y, emsCoordinates.z, false) .. "\n")
-                count = 0
-            end       
+        if count <= 5000 then
+            TaskVehicleDriveToCoordLongrange(ped, veh, coords.x, coords.y, coords.z, 35.0, drivingStyle, 1.0, stopRange)
+            Citizen.Trace(GetDistanceBetweenCoords(playerCoordinates.x, playerCoordinates.y, playerCoordinates.z, emsCoordinates.x, emsCoordinates.y, emsCoordinates.z, false) .. "\n")
+            count = 0
+        end       
 
-            if GetDistanceBetweenCoords(coords.x, coords.y, coords.z, emsCoordinates.x, emsCoordinates.y, emsCoordinates.z, false) >= stopRange + 20 then
-                TaskVehiclePark(ped, veh, coords.x, coords.y, coords.z, 0.0, 0.0, 10.0, false)
-                break
-            end
-        else
-            return
+        if GetDistanceBetweenCoords(coords.x, coords.y, coords.z, emsCoordinates.x, emsCoordinates.y, emsCoordinates.z, false) >= stopRange + 20 then
+            TaskVehiclePark(ped, veh, coords.x, coords.y, coords.z, 0.0, 0.0, 10.0, false)
+            break
         end
     end
 
