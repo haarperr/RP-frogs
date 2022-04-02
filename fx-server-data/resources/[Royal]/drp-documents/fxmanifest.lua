@@ -11,7 +11,7 @@ files {
 }
 
 server_scripts {
-	"@oxmysql/lib/MySQL.lua",
+	'@mysql-async/lib/MySQL.lua',
 	'@drp-lib/server/sv_rpc.lua',
     '@drp-lib/server/sv_sql.lua',
 	"server/*",
