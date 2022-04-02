@@ -139,14 +139,14 @@ rootMenuConfig =  {
         end,
         subMenus = { "expressions:normal", "expressions:drunk", "expressions:angry", "expressions:dumb", "expressions:electrocuted", "expressions:grumpy", "expressions:happy", "expressions:injured", "expressions:joyful", "expressions:mouthbreather", "expressions:oneeye", "expressions:shocked", "expressions:sleeping", "expressions:smug", "expressions:speculative", "expressions:stressed", "expressions:sulking", "expressions:weird", "expressions:weird2"}
     },
-    {
-        id = "blips",
-        displayName = "Blips",
-        icon = "#blips",
-        enableMenu = function()
-            return not exports['drp-death']:GetDeathStatus()
-        end,
-        subMenus = { "blips:gasstations", "blips:trainstations", "blips:garages", "blips:barbershop", "blips:tattooshop"}
+    --{
+    --    id = "blips",
+    --    displayName = "Blips",
+    --    icon = "#blips",
+    --    enableMenu = function()
+    --        return not exports['drp-death']:GetDeathStatus()
+    --    end,
+    --    subMenus = { "blips:gasstations", "blips:trainstations", "blips:garages", "blips:barbershop", "blips:tattooshop"}
     },
     {
         id = "drivinginstructor",
@@ -219,7 +219,7 @@ rootMenuConfig =  {
                 end
             end
         end,
-        subMenus = { "police:impoundsc", "civ:reimpoundscuff" }
+        subMenus = { "police:impoundsc" }
     },
 
     {
@@ -564,17 +564,17 @@ rootMenuConfig =  {
         subMenus = {'radio:1', 'radio:2', 'radio:3', 'radio:4', 'radio:5'}
     },
 
-    {
-        id = "k9",
-        displayName = "K9",
-        icon="#k9",
-        enableMenu = function()
-            if not exports['drp-death']:GetDeathStatus() then
-                return (exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'ems' or exports["isPed"]:isPed("myJob") == 'state')
-            end
-        end,
-        subMenus = {'k9Summon', 'k9Dismiss', 'k9Follow', 'k9GetInout', 'k9Sit','k9Lay','k9Stand','k9Sniff','k9SniffVehicle','k9Hunt', }
-    },
+    --{
+    --    id = "k9",
+    --    displayName = "K9",
+    --    icon="#k9",
+    --    enableMenu = function()
+    --        if not exports['drp-death']:GetDeathStatus() then
+    --            return (exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'ems' or exports["isPed"]:isPed("myJob") == 'state')
+    --        end
+    --    end,
+    --    subMenus = {'k9Summon', 'k9Dismiss', 'k9Follow', 'k9GetInout', 'k9Sit','k9Lay','k9Stand','k9Sniff','k9SniffVehicle','k9Hunt', }
+    --},
     
     -- PD Vehicle
     {
@@ -583,7 +583,7 @@ rootMenuConfig =  {
         icon = "#police-vehicle",
             enableMenu = function()
                 if not exports['drp-death']:GetDeathStatus() then
-                    return ( IsPedInAnyVehicle(PlayerPedId(), false) and exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'ems' or exports["isPed"]:isPed("myJob") == 'state')
+                    return ((IsPedInAnyVehicle(PlayerPedId(), false) and exports["isPed"]:isPed("myJob") == 'police') or (IsPedInAnyVehicle(PlayerPedId(), false) and exports["isPed"]:isPed("myJob") == 'sheriff') or (IsPedInAnyVehicle(PlayerPedId(), false) and exports["isPed"]:isPed("myJob") == 'state'))
                 end
             end,
         subMenus = {"police:riflerack","police:toggleradar"}
