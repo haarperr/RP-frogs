@@ -111,42 +111,46 @@ end
 RegisterNetEvent("drp-civjobs:package-chicken")
 AddEventHandler("drp-civjobs:package-chicken", function(position)
 	if exports["drp-inventory"]:hasEnoughOfItem("freshmeat", 1) then
-		SetEntityHeading(GetPlayerPed(-1), 40.0)
-		local PedCoords = GetEntityCoords(GetPlayerPed(-1))
-		local meat = CreateObject(GetHashKey('prop_cs_steak'),PedCoords.x, PedCoords.y,PedCoords.z, true, true, true)
-		AttachEntityToEntity(meat, GetPlayerPed(-1), GetPedBoneIndex(GetPlayerPed(-1), 0x49D9), 0.15, 0.0, 0.01, 0.0, 0.0, 0.0, false, false, false, false, 2, true)
-		local carton = CreateObject(GetHashKey('prop_cs_clothes_box'),PedCoords.x, PedCoords.y,PedCoords.z, true, true, true)
-		AttachEntityToEntity(carton, GetPlayerPed(-1), GetPedBoneIndex(GetPlayerPed(-1), 57005), 0.13, 0.0, -0.16, 250.0, -30.0, 0.0, false, false, false, false, 2, true)
-		packs = 1
-		LoadDict("anim@heists@ornate_bank@grab_cash_heels")
-		TaskPlayAnim(PlayerPedId(), "anim@heists@ornate_bank@grab_cash_heels", "grab", 8.0, -8.0, -1, 1, 0, false, false, false)
-		--FreezeEntityPosition(GetPlayerPed(-1), true)
+		if exports["drp-inventory"]:getQuantity("freshmeat") >= 1 then
+			SetEntityHeading(GetPlayerPed(-1), 40.0)
+			local PedCoords = GetEntityCoords(GetPlayerPed(-1))
+			local meat = CreateObject(GetHashKey('prop_cs_steak'),PedCoords.x, PedCoords.y,PedCoords.z, true, true, true)
+			AttachEntityToEntity(meat, GetPlayerPed(-1), GetPedBoneIndex(GetPlayerPed(-1), 0x49D9), 0.15, 0.0, 0.01, 0.0, 0.0, 0.0, false, false, false, false, 2, true)
+			local carton = CreateObject(GetHashKey('prop_cs_clothes_box'),PedCoords.x, PedCoords.y,PedCoords.z, true, true, true)
+			AttachEntityToEntity(carton, GetPlayerPed(-1), GetPedBoneIndex(GetPlayerPed(-1), 57005), 0.13, 0.0, -0.16, 250.0, -30.0, 0.0, false, false, false, false, 2, true)
+			packs = 1
+			LoadDict("anim@heists@ornate_bank@grab_cash_heels")
+			TaskPlayAnim(PlayerPedId(), "anim@heists@ornate_bank@grab_cash_heels", "grab", 8.0, -8.0, -1, 1, 0, false, false, false)
+			--FreezeEntityPosition(GetPlayerPed(-1), true)
 
-		local finishedpacktime = 7500
+			local finishedpacktime = 7500
 
-		if exports['drp-inventory']:hasEnoughOfItem('chickenslammer', 1, false) then
-			finishedpacktime = math.random(5000, 7500)
-		end
-
-		local finishedpacking = exports['drp-taskbar']:taskBar(finishedpacktime, 'Processing Meat')
-
-		if (finishedpacking == 100 ) then 
-			if exports["drp-inventory"]:hasEnoughOfItem("freshmeat", 2) then
-				FreezeEntityPosition(GetPlayerPed(-1),false)
-				TriggerEvent('inventory:removeItem', "freshmeat", 2)
-				TriggerEvent('player:receiveItem', "lqprotein", math.random(1,3))	
-				TriggerEvent('DoLongHudText', 'Keep processing the chicken.', 1)
-				ClearPedTasks(GetPlayerPed(-1))
-			else
-				FreezeEntityPosition(GetPlayerPed(-1),false)
-				TriggerEvent('inventory:removeItem', "freshmeat", 1)
-				TriggerEvent('player:receiveItem', "lqprotein", math.random(1,2))	
-				TriggerEvent('DoLongHudText', 'Keep processing the chicken.', 1)
-				ClearPedTasks(GetPlayerPed(-1))
+			if exports['drp-inventory']:hasEnoughOfItem('chickenslammer', 1, false) then
+				finishedpacktime = math.random(5000, 7500)
 			end
+
+			local finishedpacking = exports['drp-taskbar']:taskBar(finishedpacktime, 'Processing Meat')
+
+			if (finishedpacking == 100 ) then 
+				if exports["drp-inventory"]:hasEnoughOfItem("freshmeat", 2) then
+					FreezeEntityPosition(GetPlayerPed(-1),false)
+					TriggerEvent('inventory:removeItem', "freshmeat", 2)
+					TriggerEvent('player:receiveItem', "lqprotein", math.random(1,3))	
+					TriggerEvent('DoLongHudText', 'Keep processing the chicken.', 1)
+					ClearPedTasks(GetPlayerPed(-1))
+				else
+					FreezeEntityPosition(GetPlayerPed(-1),false)
+					TriggerEvent('inventory:removeItem', "freshmeat", 1)
+					TriggerEvent('player:receiveItem', "lqprotein", math.random(1,2))	
+					TriggerEvent('DoLongHudText', 'Keep processing the chicken.', 1)
+					ClearPedTasks(GetPlayerPed(-1))
+				end
+			end
+			DeleteEntity(carton)
+			DeleteEntity(meat)
+		else
+			TriggerEvent('DoLongHudText', 'Your Chicken Meat is already bad!', 2)	
 		end
-		DeleteEntity(carton)
-		DeleteEntity(meat)
 	else
 		TriggerEvent('DoLongHudText', 'You have nothing to pack!', 2)
 	end
