@@ -72,6 +72,10 @@ end
     Events
 ]]
 
+RegisterCommand('doctest', function()
+ TriggerEvent("drp-documents:openDocuments")
+  end)
+
 RegisterNetEvent("drp-documents:openDocuments")
 AddEventHandler("drp-documents:openDocuments", function()
     local data = {}
