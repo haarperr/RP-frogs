@@ -248,18 +248,17 @@ end
 
 RegisterNetEvent('chickencooldown')
 AddEventHandler('chickencooldown', function(name)
-if chickencounter == 15 then
-	TriggerEvent('DoLongHudText', 'You must wait a bit to catch more chooks', 2)
-	Citizen.Wait(1200000) -- OK 20 now Sadge
-	chickencounter = 0
-end
+	if chickencounter == 15 then
+		TriggerEvent('DoLongHudText', 'You must wait a bit to catch more chooks', 2)
+		Citizen.Wait(1200000) -- OK 20 now Sadge
+		chickencounter = 0
+	end
 end)
 
 
 RegisterNetEvent("chickens-start")
 AddEventHandler("chickens-start", function()
 	chickencounter = chickencounter + 1
-	TriggerEvent("chickencooldown")
 	DoScreenFadeOut(500)
 	Citizen.Wait(500)
 	SetEntityCoordsNoOffset(GetPlayerPed(-1), 2385.963, 5047.333, 46.400, 0, 0, 1)
@@ -651,11 +650,10 @@ function RoyalRPChickensStart()
         while RoyalChickenStart do
             Citizen.Wait(5)
 			if IsControlJustReleased(0, 38) then
-				if chickencounter == 15 then
-				TriggerEvent("chickencooldown")
-				else
+				
 				TriggerEvent('chickens-start')
-				end
+				Citizen.Wait(500)
+				TriggerEvent("chickencooldown")
 			end
 		end
 	end)
