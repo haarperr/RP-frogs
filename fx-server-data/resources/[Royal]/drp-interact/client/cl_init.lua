@@ -1276,8 +1276,7 @@ Citizen.CreateThread(function()
     })
 
     exports["drp-polytarget"]:AddBoxZone("civcraft",  vector3(578.7003, -1870.0605, 25.2696), 0.8, 0.2, {
-        minZ=24,
-        maxZ=26
+
     })
 
     exports["drp-polytarget"]:AddBoxZone("paintball",  vector3(2364.9, 2595.09, 58.818), 2.8, 2.2, {
@@ -1286,8 +1285,6 @@ Citizen.CreateThread(function()
     })
 
     exports["drp-polytarget"]:AddBoxZone("civguncrafting",  vector3(679.0682, 1287.0681, 360.4913), 0.8, 0.2, {
-        minZ=24,
-        maxZ=26
     })
 
     -- vector3(488.09, -1966.26, 24.84), 0.8, 0.2, { BENCH IN SOUTCH SIDE USED AT THE BEGINNING 
