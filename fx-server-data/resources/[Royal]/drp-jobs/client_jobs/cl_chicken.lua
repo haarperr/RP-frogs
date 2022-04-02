@@ -396,7 +396,6 @@ AddEventHandler("drp-chickens:sell", function()
 			else 
 				TriggerEvent('DoLongHudText', 'Your chickens are bad!', 2)
 			end
-			end
 		end
 	end
 	DeleteEntity(prop)
