@@ -147,7 +147,7 @@ rootMenuConfig =  {
     --        return not exports['drp-death']:GetDeathStatus()
     --    end,
     --    subMenus = { "blips:gasstations", "blips:trainstations", "blips:garages", "blips:barbershop", "blips:tattooshop"}
-    },
+    --},
     {
         id = "drivinginstructor",
         displayName = "Driving Instructor",
@@ -712,7 +712,6 @@ rootMenuConfig =  {
             return (not isDead and IsPedInAnyVehicle(PlayerPedId()) and #(GetEntityCoords(PlayerPedId()) - bennysHarmony2) <= 3)
         end,
     },
-
 }
 
 newSubMenus = {
