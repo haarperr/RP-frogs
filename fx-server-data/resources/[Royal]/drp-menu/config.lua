@@ -58,7 +58,7 @@ rootMenuConfig =  {
         icon = "#police-dead",
         functionName = "police:tenThirteenA",
         enableMenu = function()
-            return (exports['drp-death']:GetDeathStatus() and exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state')
+            return ((exports['drp-death']:GetDeathStatus() and exports["isPed"]:isPed("myJob") == 'police') or (exports['drp-death']:GetDeathStatus() and exports["isPed"]:isPed("myJob") == 'sheriff') or (exports['drp-death']:GetDeathStatus() and exports["isPed"]:isPed("myJob") == 'state'))
         end
     },
     {
@@ -67,7 +67,7 @@ rootMenuConfig =  {
         icon = "#police-dead",
         functionName = "police:tenThirteenB",
         enableMenu = function()
-            return (exports['drp-death']:GetDeathStatus() and exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state')
+            return ((exports['drp-death']:GetDeathStatus() and exports["isPed"]:isPed("myJob") == 'police') or (exports['drp-death']:GetDeathStatus() and exports["isPed"]:isPed("myJob") == 'sheriff') or (exports['drp-death']:GetDeathStatus() and exports["isPed"]:isPed("myJob") == 'state'))
         end
     },
     {
