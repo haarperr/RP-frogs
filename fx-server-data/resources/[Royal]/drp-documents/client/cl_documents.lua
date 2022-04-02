@@ -18,7 +18,7 @@ function CreateNewForm(aDocument)
     aDocument.headerFirstName = exports["drp-base"]:getChar("first_name")
     aDocument.headerLastName = exports["drp-base"]:getChar("last_name")
     aDocument.headerDateOfBirth = exports["drp-base"]:getChar("dob")
-    aDocument.headerJobLabel = aDocument.job or exports["drp-jobs"]:jobName(exports["drp-base"]:getChar("job"))
+    aDocument.headerJobLabel = aDocument.job or exports["drp-jobs"]:jobName(exports["isPed"]:isPed("myjob"))
 
     if aDocument.job then
         aDocument.job = nil
@@ -96,7 +96,7 @@ AddEventHandler("drp-documents:openDocuments", function()
         children = publicdocuments,
     })
 
-    local job = exports["drp-base"]:getChar("job")
+    local job = exports["isPed"]:isPed("myjob")
     if Config["Documents"]["Jobs"][job] then
         local jobdocuments = {}
         for i, v in ipairs(Config["Documents"]["Jobs"][job]) do
