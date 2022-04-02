@@ -66,7 +66,7 @@ RegisterNetEvent("drp-documents:copyDocument")
 AddEventHandler("drp-documents:copyDocument", function(player, document)
     local src = source
 
-    local cid = exports["caue-base"]:getChar(player, "id")
+    local cid = exports["isPed"]:isPed(player, "cid")
     if not cid then return end
 
     submitDocument(document, cid)

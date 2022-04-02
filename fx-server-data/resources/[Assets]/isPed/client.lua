@@ -1,6 +1,7 @@
 dead = false
 handcuffed = false
 job = "None"
+dob = 0
 bank = 10
 cash = 10
 paycheck = 0
@@ -254,8 +255,21 @@ function isPed(checkType)
       pass = Firstname .. " " .. Lastname
     end
 
+    if checkType == "firstname" then
+      pass = Firstname 
+    end
+
+    
+    if checkType == "lastname" then
+      pass = Lastname
+    end
+
     if checkType == "myjob" then
 	    pass = job
+    end
+
+    if checkType == "dob" then
+	    pass = dob
     end
 
     if checkType == "mybank" then

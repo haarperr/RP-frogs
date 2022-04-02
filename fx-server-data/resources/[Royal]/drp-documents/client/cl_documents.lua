@@ -15,10 +15,10 @@ function GetClosestPlayers(coords, distance)
 end
 
 function CreateNewForm(aDocument)
-    aDocument.headerFirstName = exports["drp-base"]:getChar("first_name")
-    aDocument.headerLastName = exports["drp-base"]:getChar("last_name")
-    aDocument.headerDateOfBirth = exports["drp-base"]:getChar("dob")
-    aDocument.headerJobLabel = aDocument.job or exports["drp-jobs"]:jobName(exports["isPed"]:isPed("myjob"))
+    aDocument.headerFirstName = exports["isPed"]:isPed("firstname")
+    aDocument.headerLastName = exports["isPed"]:isPed("lastname")
+    aDocument.headerDateOfBirth = exports["isPed"]:isPed("dob")
+    aDocument.headerJobLabel = aDocument.job or exports["isPed"]:isPed("myjob")
 
     if aDocument.job then
         aDocument.job = nil
@@ -116,7 +116,7 @@ AddEventHandler("drp-documents:openDocuments", function()
     end
 
     local mydocuments = {}
-    local _mydocuments = RPC.execute("drp-documents:getDocuments", "cid", exports["drp-base"]:getChar("id"))
+    local _mydocuments = RPC.execute("drp-documents:getDocuments", "cid", exports["isPed"]:isPed("cid"))
     for i, v in ipairs(_mydocuments) do
         local actions = {
             { title = "View", action = "drp-documents:ViewDocument", params = v.data },
@@ -140,7 +140,7 @@ AddEventHandler("drp-documents:openDocuments", function()
         children = mydocuments,
     })
 
-    local groups = exports["drp-base"]:getChar("groups")
+    local groups = exports["isPed"]:isPed("passes")
     if #groups > 0 then
         local _groups = {}
         for i, v in ipairs(groups) do
@@ -153,13 +153,13 @@ AddEventHandler("drp-documents:openDocuments", function()
                     { title = "Copy", action = "drp-documents:CopyDocument", params = v2.data },
                 }
 
-                if exports["drp-groups"]:GroupRankInfo(v.group, "documents") then
+              
                     table.insert(actions, {
                         title = "Delete", children = {
                             { title = "Confirm Delete", action = "drp-documents:DeleteDocument", params = v2.id },
                         }
                     })
-                end
+             
 
                 table.insert(groupdocuments, {
                     title = v2.data.headerTitle,
@@ -217,7 +217,7 @@ RegisterNUICallback("form_submit", function(data, cb)
         data.callback = nil
     end
 
-    local cid = exports["drp-base"]:getChar("id")
+    local cid = exports["isPed"]:isPed("cid")
     local group = nil
 
     if data.group then
