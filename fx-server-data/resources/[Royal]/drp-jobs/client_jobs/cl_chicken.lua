@@ -123,31 +123,35 @@ AddEventHandler("drp-civjobs:package-chicken", function(position)
 			TaskPlayAnim(PlayerPedId(), "anim@heists@ornate_bank@grab_cash_heels", "grab", 8.0, -8.0, -1, 1, 0, false, false, false)
 			--FreezeEntityPosition(GetPlayerPed(-1), true)
 
-			local finishedpacktime = 7500
+			local finishedpacktime = 5000
 
 			if exports['drp-inventory']:hasEnoughOfItem('chickenslammer', 1, false) then
-				finishedpacktime = math.random(5000, 7500)
+				finishedpacktime = math.random(3000, 5000)
 			end
 
 			local finishedpacking = exports['drp-taskbar']:taskBar(finishedpacktime, 'Processing Meat')
 
 			if (finishedpacking == 100 ) then 
-				if exports["drp-inventory"]:hasEnoughOfItem("freshmeat", 2) then
-					FreezeEntityPosition(GetPlayerPed(-1),false)
-					TriggerEvent('inventory:removeItem', "freshmeat", 2)
-					TriggerEvent('player:receiveItem', "lqprotein", math.random(1,3))	
-					TriggerEvent('DoLongHudText', 'Keep processing the chicken.', 1)
-					ClearPedTasks(GetPlayerPed(-1))
-				else
-					FreezeEntityPosition(GetPlayerPed(-1),false)
-					TriggerEvent('inventory:removeItem', "freshmeat", 1)
-					TriggerEvent('player:receiveItem', "lqprotein", math.random(1,2))	
-					TriggerEvent('DoLongHudText', 'Keep processing the chicken.', 1)
-					ClearPedTasks(GetPlayerPed(-1))
+				local lockingAnimation = exports["drp-ui"]:taskBarSkill(math.random(750, 1500),math.random(50,75))
+				if (lockingAnimation == 100) then
+
+					if exports["drp-inventory"]:hasEnoughOfItem("freshmeat", 2) then
+						FreezeEntityPosition(GetPlayerPed(-1),false)
+						TriggerEvent('inventory:removeItem', "freshmeat", 2)
+						TriggerEvent('player:receiveItem', "lqprotein", math.random(1,3))	
+						TriggerEvent('DoLongHudText', 'Keep processing the chicken.', 1)
+						ClearPedTasks(GetPlayerPed(-1))
+					else
+						FreezeEntityPosition(GetPlayerPed(-1),false)
+						TriggerEvent('inventory:removeItem', "freshmeat", 1)
+						TriggerEvent('player:receiveItem', "lqprotein", math.random(1,2))	
+						TriggerEvent('DoLongHudText', 'Keep processing the chicken.', 1)
+						ClearPedTasks(GetPlayerPed(-1))
+					end
 				end
+				DeleteEntity(carton)
+				DeleteEntity(meat)
 			end
-			DeleteEntity(carton)
-			DeleteEntity(meat)
 		else
 			TriggerEvent('DoLongHudText', 'Your Chicken Meat is already bad!', 2)	
 		end
@@ -170,10 +174,10 @@ AddEventHandler("drp-civjobs:process-alive_chicken", function(position)
 		local chicken = CreateObject(GetHashKey('prop_int_cf_chick_01'), x, y, z,  true,  false, false)
 		SetEntityHeading(chicken, GetEntityHeading(GetPlayerPed(-1)))
 
-		local finishedtime = 6500
+		local finishedtime = 5000
 
 		if exports['drp-inventory']:hasEnoughOfItem('chickenslammer', 1, false) then
-			finishedtime = math.random(2500, 6500)
+			finishedtime = math.random(3000, 5000)
 		end
 
 		local finished = exports['drp-taskbar']:taskBar(finishedtime, 'Cutting the Chicken')
@@ -251,7 +255,7 @@ function TepnijWyjscie()
 end
 
 RegisterNetEvent('chickencooldown')
-AddEventHandler('chickencooldown', function(name)
+AddEventHandler('chickencooldown', function()
 	if chickencounter == 15 then
 		TriggerEvent('DoLongHudText', 'You must wait a bit to catch more chooks', 2)
 		Citizen.Wait(1200000) -- OK 20 now Sadge
@@ -263,6 +267,7 @@ end)
 RegisterNetEvent("chickens-start")
 AddEventHandler("chickens-start", function()
 	chickencounter = chickencounter + 1
+	TriggerEvent("chickencooldown")
 	DoScreenFadeOut(500)
 	Citizen.Wait(500)
 	SetEntityCoordsNoOffset(GetPlayerPed(-1), 2385.963, 5047.333, 46.400, 0, 0, 1)
@@ -347,21 +352,21 @@ function Hewascaught()
 	ragdoll = true
 	local szansaZlapania = math.random(1,100)
 	if szansaZlapania <= 60 then
-			TriggerEvent('DoLongHudText', 'You managed to catch a chicken!', 1)
-			if Zlapany1 == 1 then
-				DeleteEntity(chicken1)
-				Zlapany1 = 0
-				splashed = splashed +1
-			elseif Zlapany2 == 1 then
-				DeleteEntity(chicken2)
-				Zlapany2 = 0
-				splashed = splashed +1
-			elseif Zlapany3 == 1 then
-				DeleteEntity(chicken3)
-				Zlapany3 = 0
-				splashed = splashed +1
-			end
-		else
+		TriggerEvent('DoLongHudText', 'You managed to catch a chicken!', 1)
+		if Zlapany1 == 1 then
+			DeleteEntity(chicken1)
+			Zlapany1 = 0
+			splashed = splashed +1
+		elseif Zlapany2 == 1 then
+			DeleteEntity(chicken2)
+			Zlapany2 = 0
+			splashed = splashed +1
+		elseif Zlapany3 == 1 then
+			DeleteEntity(chicken3)
+			Zlapany3 = 0
+			splashed = splashed +1
+		end
+	else
 		TriggerEvent('DoLongHudText', 'The chicken escaped your arms!', 2)
 	end
 end
@@ -654,10 +659,11 @@ function RoyalRPChickensStart()
         while RoyalChickenStart do
             Citizen.Wait(5)
 			if IsControlJustReleased(0, 38) then
-				
-				TriggerEvent('chickens-start')
-				Citizen.Wait(500)
-				TriggerEvent("chickencooldown")
+				if chickencounter == 15 then
+					TriggerEvent('DoLongHudText', 'You must wait a bit to catch more chooks', 2)
+				else
+					TriggerEvent('chickens-start')
+				end
 			end
 		end
 	end)
