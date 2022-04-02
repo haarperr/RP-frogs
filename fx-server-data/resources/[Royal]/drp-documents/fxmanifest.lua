@@ -16,12 +16,13 @@ shared_scripts {
 
 server_scripts {
 	"@oxmysql/lib/MySQL.lua",
-    "@drp-lib/server/sv_rpc.lua",
+	'@drp-lib/server/sv_rpc.lua',
+    '@drp-lib/server/sv_sql.lua',
 	"server/*",
 }
 
 client_scripts {
-	"@drp-lib/client/cl_rpc.lua",
+	'@drp-lib/client/cl_rpc.lua',
     "client/*",
 	"client/documents/*",
 }
