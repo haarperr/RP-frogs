@@ -22,13 +22,22 @@ local bennysHarmony2 = vector3(1182.4747314453, 2639.8022460938, 37.148681640625
 
 local RepairDriftSchool = vector3(-167.4725189209,-2460.7648925781,5.9091796875)
 
+
+function isPlayerNearby()
+    t, distance, closestPed = GetClosestPlayer()
+    if not IsPedInAnyVehicle(PlayerPedId()) and distance ~= -1 and distance < 2 and not exports['drp-death']:GetDeathStatus() then
+        return true
+     end
+     return false
+ end
+
 rootMenuConfig =  {
     {
         id = "police-actions",
         displayName = "Police Actions",
         icon = "#police-action",
         enableMenu = function()
-            return (exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' and not exports['drp-death']:GetDeathStatus())
+            return (isPlayerNearby() and exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' and not exports['drp-death']:GetDeathStatus())
         end,
         --"police:runplate", "police:toggleradar"
         subMenus = {'police:checkInventory', 'police:revive', 'police:remmask', 'police:checkBank', 'police:checkLicenses', 'police:gsr', 'police:dnaSwab'}
@@ -157,12 +166,13 @@ rootMenuConfig =  {
         end,
         subMenus = { "drivinginstructor:drivingtest", "drivinginstructor:submittest", }
     },
+
     {
         id = "cuff",
         displayName = "Cuff Actions",
         icon = "#cuffs",
         enableMenu = function()
-            return (not isHandcuffed and not isHandcuffedAndWalking and (exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' or exports["drp-inventory"]:hasEnoughOfItem("cuffs", 1, false)) and not exports['drp-death']:GetDeathStatus())
+            return (not isHandcuffed and isPlayerNearby() and not isHandcuffedAndWalking and (exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' or exports["drp-inventory"]:hasEnoughOfItem("cuffs", 1, false)) and not exports['drp-death']:GetDeathStatus())
         end,
         subMenus = { "cuffs:uncuff", "cuffs:remmask", "cuffs:cuff" }
     },
@@ -488,20 +498,21 @@ rootMenuConfig =  {
          end
     },
 
+    --{
+    --    id = "train",
+    --    displayName = "Request Train",
+    --    icon = "#general-ask-for-train",
+    --    functionName = "AskForTrain",
+    --   enableMenu = function()
+    --        for _,d in ipairs(trainstations) do
+    --            if #(vector3(d[1],d[2],d[3]) - GetEntityCoords(PlayerPedId())) < 25 and not exports['drp-death']:GetDeathStatus() then
+    --                return true
+    --            end
+    --        end
+    --        return false
+    --    end
+    --},
     {
-        id = "train",
-        displayName = "Request Train",
-        icon = "#general-ask-for-train",
-        functionName = "AskForTrain",
-        enableMenu = function()
-            for _,d in ipairs(trainstations) do
-                if #(vector3(d[1],d[2],d[3]) - GetEntityCoords(PlayerPedId())) < 25 and not exports['drp-death']:GetDeathStatus() then
-                    return true
-                end
-            end
-            return false
-        end
-    }, {
         id = "oxygentank",
         displayName = "Remove Oxygen Tank",
         icon = "#oxygen-mask",
