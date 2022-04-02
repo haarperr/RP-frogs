@@ -1275,9 +1275,8 @@ Citizen.CreateThread(function()
         maxZ=29.17
     })
 
-    exports["drp-polytarget"]:AddBoxZone("civcraft",  vector3(2781.3, 1400.4, 24.4), 0.8, 0.2, {
-        minZ=24,
-        maxZ=26
+    exports["drp-polytarget"]:AddBoxZone("civcraft",  vector3(578.7003, -1870.0605, 25.2696), 0.8, 0.2, {
+
     })
 
     exports["drp-polytarget"]:AddBoxZone("paintball",  vector3(2364.9, 2595.09, 58.818), 2.8, 2.2, {
@@ -1285,15 +1284,14 @@ Citizen.CreateThread(function()
         maxZ=62
     })
 
-    exports["drp-polytarget"]:AddBoxZone("civguncrafting",  vector3(488.09, -1966.26, 24.84), 0.8, 0.2, {
-        minZ=24,
-        maxZ=26
+    exports["drp-polytarget"]:AddBoxZone("civguncrafting",  vector3(679.0682, 1287.0681, 360.4913), 0.8, 0.2, {
     })
 
-    
-    exports["drp-polytarget"]:AddBoxZone("vagoscrafting",  vector3(578.7003, -1870.0605, 25.2696), 0.8, 0.2, {
-        
-    })
+    -- vector3(488.09, -1966.26, 24.84), 0.8, 0.2, { BENCH IN SOUTCH SIDE USED AT THE BEGINNING 
+
+    --exports["drp-polytarget"]:AddBoxZone("vagoscrafting",  vector3(578.7003, -1870.0605, 25.2696), 0.8, 0.2, {
+    --    
+    --})
 
     
     exports["drp-polytarget"]:AddBoxZone("racooncrafting",  vector3(2399.6152, 3080.7529, 48.1614), 0.8, 0.2, {

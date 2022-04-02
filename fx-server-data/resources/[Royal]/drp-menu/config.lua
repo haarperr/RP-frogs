@@ -22,13 +22,22 @@ local bennysHarmony2 = vector3(1182.4747314453, 2639.8022460938, 37.148681640625
 
 local RepairDriftSchool = vector3(-167.4725189209,-2460.7648925781,5.9091796875)
 
+
+function isPlayerNearby()
+    t, distance, closestPed = GetClosestPlayer()
+    if not IsPedInAnyVehicle(PlayerPedId()) and distance ~= -1 and distance < 2 and not exports['drp-death']:GetDeathStatus() then
+        return true
+     end
+     return false
+ end
+
 rootMenuConfig =  {
     {
         id = "police-actions",
         displayName = "Police Actions",
         icon = "#police-action",
         enableMenu = function()
-            return (exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' and not exports['drp-death']:GetDeathStatus())
+            return (exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' and isPlayerNearby() and not exports['drp-death']:GetDeathStatus())
         end,
         --"police:runplate", "police:toggleradar"
         subMenus = {'police:checkInventory', 'police:revive', 'police:remmask', 'police:checkBank', 'police:checkLicenses', 'police:gsr', 'police:dnaSwab'}
@@ -58,7 +67,7 @@ rootMenuConfig =  {
         icon = "#police-dead",
         functionName = "police:tenThirteenA",
         enableMenu = function()
-            return (exports['drp-death']:GetDeathStatus() and exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state')
+            return ((exports['drp-death']:GetDeathStatus() and exports["isPed"]:isPed("myJob") == 'police') or (exports['drp-death']:GetDeathStatus() and exports["isPed"]:isPed("myJob") == 'sheriff') or (exports['drp-death']:GetDeathStatus() and exports["isPed"]:isPed("myJob") == 'state'))
         end
     },
     {
@@ -67,7 +76,7 @@ rootMenuConfig =  {
         icon = "#police-dead",
         functionName = "police:tenThirteenB",
         enableMenu = function()
-            return (exports['drp-death']:GetDeathStatus() and exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state')
+            return ((exports['drp-death']:GetDeathStatus() and exports["isPed"]:isPed("myJob") == 'police') or (exports['drp-death']:GetDeathStatus() and exports["isPed"]:isPed("myJob") == 'sheriff') or (exports['drp-death']:GetDeathStatus() and exports["isPed"]:isPed("myJob") == 'state'))
         end
     },
     {
@@ -139,15 +148,15 @@ rootMenuConfig =  {
         end,
         subMenus = { "expressions:normal", "expressions:drunk", "expressions:angry", "expressions:dumb", "expressions:electrocuted", "expressions:grumpy", "expressions:happy", "expressions:injured", "expressions:joyful", "expressions:mouthbreather", "expressions:oneeye", "expressions:shocked", "expressions:sleeping", "expressions:smug", "expressions:speculative", "expressions:stressed", "expressions:sulking", "expressions:weird", "expressions:weird2"}
     },
-    {
-        id = "blips",
-        displayName = "Blips",
-        icon = "#blips",
-        enableMenu = function()
-            return not exports['drp-death']:GetDeathStatus()
-        end,
-        subMenus = { "blips:gasstations", "blips:trainstations", "blips:garages", "blips:barbershop", "blips:tattooshop"}
-    },
+    --{
+    --    id = "blips",
+    --    displayName = "Blips",
+    --    icon = "#blips",
+    --    enableMenu = function()
+    --        return not exports['drp-death']:GetDeathStatus()
+    --    end,
+    --    subMenus = { "blips:gasstations", "blips:trainstations", "blips:garages", "blips:barbershop", "blips:tattooshop"}
+    --},
     {
         id = "drivinginstructor",
         displayName = "Driving Instructor",
@@ -157,12 +166,13 @@ rootMenuConfig =  {
         end,
         subMenus = { "drivinginstructor:drivingtest", "drivinginstructor:submittest", }
     },
+
     {
         id = "cuff",
         displayName = "Cuff Actions",
         icon = "#cuffs",
         enableMenu = function()
-            return (not isHandcuffed and not isHandcuffedAndWalking and (exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' or exports["drp-inventory"]:hasEnoughOfItem("cuffs", 1, false)) and not exports['drp-death']:GetDeathStatus())
+            return (not isHandcuffed and isPlayerNearby() and not isHandcuffedAndWalking and (exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' or exports["drp-inventory"]:hasEnoughOfItem("cuffs", 1, false)) and not exports['drp-death']:GetDeathStatus())
         end,
         subMenus = { "cuffs:uncuff", "cuffs:remmask", "cuffs:cuff" }
     },
@@ -219,7 +229,7 @@ rootMenuConfig =  {
                 end
             end
         end,
-        subMenus = { "police:impoundsc", "civ:reimpoundscuff" }
+        subMenus = { "police:impoundsc" }
     },
 
     {
@@ -488,20 +498,21 @@ rootMenuConfig =  {
          end
     },
 
+    --{
+    --    id = "train",
+    --    displayName = "Request Train",
+    --    icon = "#general-ask-for-train",
+    --    functionName = "AskForTrain",
+    --   enableMenu = function()
+    --        for _,d in ipairs(trainstations) do
+    --            if #(vector3(d[1],d[2],d[3]) - GetEntityCoords(PlayerPedId())) < 25 and not exports['drp-death']:GetDeathStatus() then
+    --                return true
+    --            end
+    --        end
+    --        return false
+    --    end
+    --},
     {
-        id = "train",
-        displayName = "Request Train",
-        icon = "#general-ask-for-train",
-        functionName = "AskForTrain",
-        enableMenu = function()
-            for _,d in ipairs(trainstations) do
-                if #(vector3(d[1],d[2],d[3]) - GetEntityCoords(PlayerPedId())) < 25 and not exports['drp-death']:GetDeathStatus() then
-                    return true
-                end
-            end
-            return false
-        end
-    }, {
         id = "oxygentank",
         displayName = "Remove Oxygen Tank",
         icon = "#oxygen-mask",
@@ -564,17 +575,17 @@ rootMenuConfig =  {
         subMenus = {'radio:1', 'radio:2', 'radio:3', 'radio:4', 'radio:5'}
     },
 
-    {
-        id = "k9",
-        displayName = "K9",
-        icon="#k9",
-        enableMenu = function()
-            if not exports['drp-death']:GetDeathStatus() then
-                return (exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'ems' or exports["isPed"]:isPed("myJob") == 'state')
-            end
-        end,
-        subMenus = {'k9Summon', 'k9Dismiss', 'k9Follow', 'k9GetInout', 'k9Sit','k9Lay','k9Stand','k9Sniff','k9SniffVehicle','k9Hunt', }
-    },
+    --{
+    --    id = "k9",
+    --    displayName = "K9",
+    --    icon="#k9",
+    --    enableMenu = function()
+    --        if not exports['drp-death']:GetDeathStatus() then
+    --            return (exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'ems' or exports["isPed"]:isPed("myJob") == 'state')
+    --        end
+    --    end,
+    --    subMenus = {'k9Summon', 'k9Dismiss', 'k9Follow', 'k9GetInout', 'k9Sit','k9Lay','k9Stand','k9Sniff','k9SniffVehicle','k9Hunt', }
+    --},
     
     -- PD Vehicle
     {
@@ -583,7 +594,7 @@ rootMenuConfig =  {
         icon = "#police-vehicle",
             enableMenu = function()
                 if not exports['drp-death']:GetDeathStatus() then
-                    return ( IsPedInAnyVehicle(PlayerPedId(), false) and exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'ems' or exports["isPed"]:isPed("myJob") == 'state')
+                    return ((IsPedInAnyVehicle(PlayerPedId(), false) and exports["isPed"]:isPed("myJob") == 'police') or (IsPedInAnyVehicle(PlayerPedId(), false) and exports["isPed"]:isPed("myJob") == 'sheriff') or (IsPedInAnyVehicle(PlayerPedId(), false) and exports["isPed"]:isPed("myJob") == 'state'))
                 end
             end,
         subMenus = {"police:riflerack","police:toggleradar"}
@@ -712,7 +723,6 @@ rootMenuConfig =  {
             return (not isDead and IsPedInAnyVehicle(PlayerPedId()) and #(GetEntityCoords(PlayerPedId()) - bennysHarmony2) <= 3)
         end,
     },
-
 }
 
 newSubMenus = {
@@ -1299,12 +1309,6 @@ newSubMenus = {
         icon="#vehicle-options",
         functionName = "impoundsc",
     },
-    ["civ:reimpoundscuff"]  = {
-        title="Respawn Vehicle",
-        icon="#vehicle-options",
-        functionName = "reimpoundscuff",
-    },
-
     ["police:impoundnormal"]  = {
         title="Impound Normal $100",
         icon="#vehicle-options",

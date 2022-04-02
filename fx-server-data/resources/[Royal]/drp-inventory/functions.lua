@@ -695,9 +695,9 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
         TriggerEvent('burner:ui')
     end
 
-    if (itemid == "pdbadge") then
-        RPC.execute("drp-gov:police:showBadge", json.decode(ItemInfo.information))
-    end
+    --if (itemid == "pdbadge") then
+    --    RPC.execute("drp-gov:police:showBadge", json.decode(ItemInfo.information))
+    --end
 
     if (itemid == "joint" or itemid == "weed5oz" or itemid == "weedq" or itemid == "beer" or itemid == "vodka" or itemid == "whiskey" or itemid == "lsdtab" or itemid == 'winemilkshake' or itemid == 'honestwineglass' or itemid == "customjointitem") then
         drugitem = true
@@ -2548,7 +2548,7 @@ end
     end
  
     if itemid == "fries" or itemid == "chips" then
-        AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,15000,"Eating","inv:fed",true,itemid,playerVeh)
+        AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,15000,"Eating","inv:fed2",true,itemid,playerVeh)
     end
 
     if itemid == "bscoffee" then

@@ -435,11 +435,15 @@ function DoDropOff(requestMoney)
 			TriggerEvent("civilian:alertPolice", 15.0, "drugsale", 0)  -- 1/3 chance to ping PD
 		end
 
-		if math.random(20) == 1 then
-			TriggerEvent( "player:receiveItem", "heistusb1", 1 )
+		if math.random(30) == 1 then
+			TriggerEvent( "player:receiveItem", "safecrackingkit", 1 )
+		end
+
+		if math.random(50) == 1 then
+			TriggerEvent( "player:receiveItem", "heistusb4", 1 )
 		end
 		
-		if math.random(10) == 1 then
+		if math.random(15) == 1 then
 			TriggerEvent( "player:receiveItem", "lockpick", 1 )
 		end
 
