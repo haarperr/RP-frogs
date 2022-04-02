@@ -22,7 +22,7 @@ Config["Documents"]["Jobs"]["police"] = {
         },
     },
     {
-        headerTitle = "Clean Record Verification,
+        headerTitle = "Clean Record Verification",
         headerSubtitle = "Verifies you have a clean record.",
         elements = {
             { label = "First Name", type = "input", value = "", can_be_emtpy = false },
