@@ -1290,7 +1290,8 @@ Citizen.CreateThread(function()
         maxZ=26
     })
 
-    
+    -- vector3(488.09, -1966.26, 24.84), 0.8, 0.2, { BENCH IN SOUTCH SIDE USED AT THE BEGINNING 
+
     --exports["drp-polytarget"]:AddBoxZone("vagoscrafting",  vector3(578.7003, -1870.0605, 25.2696), 0.8, 0.2, {
     --    
     --})
