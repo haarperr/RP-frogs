@@ -175,28 +175,25 @@ AddEventHandler("drp-civjobs:process-alive_chicken", function(position)
 		local finished = exports['drp-taskbar']:taskBar(finishedtime, 'Cutting the Chicken')
 		
 		if (finished == 100 ) then 
-			local lockingAnimation = exports["drp-ui"]:taskBarSkill(math.random(750, 1500),math.random(50,100))
+			local lockingAnimation = exports["drp-ui"]:taskBarSkill(math.random(750, 1500),math.random(50,75))
 			if (lockingAnimation == 100) then
-				local finished2 = exports['drp-taskbar']:taskBar(finishedtime/2, 'Cutting the Chicken')
-				if (finished2 == 100 ) then 
-					if exports["drp-inventory"]:hasEnoughOfItem("petchicken", 1) then
-						TriggerEvent('DoLongHudText', 'You slaughtered a chicken!', 1)
-						FreezeEntityPosition(GetPlayerPed(-1),false)
-						ClearPedTasks(GetPlayerPed(-1))
-						if exports["drp-inventory"]:getAmountOfItem("petchicken") >= 2 then
-							if math.random(2) == 2 then
-								TriggerEvent('inventory:removeItem', "petchicken", 2)
-								TriggerEvent('player:receiveItem', "freshmeat", math.random(6,12))	
-							else
-								TriggerEvent('inventory:removeItem', "petchicken", 1)
-								TriggerEvent('player:receiveItem', "freshmeat", math.random(1,6))	
-							end
+				if exports["drp-inventory"]:hasEnoughOfItem("petchicken", 1) then
+					TriggerEvent('DoLongHudText', 'You slaughtered a chicken!', 1)
+					FreezeEntityPosition(GetPlayerPed(-1),false)
+					ClearPedTasks(GetPlayerPed(-1))
+					if exports["drp-inventory"]:getAmountOfItem("petchicken") >= 2 then
+						if math.random(2) == 2 then
+							TriggerEvent('inventory:removeItem', "petchicken", 2)
+							TriggerEvent('player:receiveItem', "freshmeat", math.random(6,12))	
 						else
 							TriggerEvent('inventory:removeItem', "petchicken", 1)
 							TriggerEvent('player:receiveItem', "freshmeat", math.random(1,6))	
 						end
+					else
+						TriggerEvent('inventory:removeItem', "petchicken", 1)
+						TriggerEvent('player:receiveItem', "freshmeat", math.random(1,6))	
 					end
-				end				
+				end
 			else
 				TriggerEvent('DoLongHudText', 'Might wanna pick that Alive Chicken back up from the floor', 2)
 			end
