@@ -26,14 +26,22 @@ AddEventHandler('gne:openshop', function()
             },
             {
                 id = 4,
+                header = "Purchase Harness",
+                    txt = "30 GNE",
+                    params = {
+                        event = "gne:attemptBuyHarness"
+                }
+            },
+            {
+                id = 5,
                 header = "Purchase Fake Plates",
-                    txt = "40 GNE",
+                    txt = "45 GNE",
                     params = {
                         event = "gne:attemptBuyfakeplates"
                 }
             },
             {
-                id = 5,
+                id = 6,
                 header = "Purchase Brake Upgrade",
                     txt = "75 GNE",
                     params = {
@@ -41,7 +49,7 @@ AddEventHandler('gne:openshop', function()
                 }
             },
             {
-                id = 6,
+                id = 7,
                 header = "Purchase Suspention Upgrade",
                     txt = "75 GNE",
                     params = {
@@ -49,7 +57,7 @@ AddEventHandler('gne:openshop', function()
                 }
             },
             {
-                id = 7,
+                id = 8,
                 header = "Purchase Transmission Upgrade",
                     txt = "75 GNE",
                     params = {
@@ -57,7 +65,7 @@ AddEventHandler('gne:openshop', function()
                 }
             },
             {
-                id = 8,
+                id = 9,
                 header = "Purchase Engine Upgrade",
                     txt = "125 GNE",
                     params = {
@@ -65,7 +73,7 @@ AddEventHandler('gne:openshop', function()
                 }
             },
             {
-                id = 9,
+                id = 10,
                 header = "Purchase Turbo Upgrade",
                     txt = "125 GNE",
                     params = {
@@ -103,9 +111,21 @@ AddEventHandler("gne:buynos", function()
 end)
 
 
+
+RegisterNetEvent('gne:attemptBuyHarness')
+AddEventHandler('gne:attemptBuyHarness', function()
+    local price = 30
+    TriggerEvent("gne:check", price, "gne:buyHarness", false)
+end)
+
+RegisterNetEvent("gne:buyHarness")
+AddEventHandler("gne:buyHarness", function()
+    TriggerEvent("player:receiveItem", "harness", 1)
+end)
+
 RegisterNetEvent('gne:attemptBuyfakeplates')
 AddEventHandler('gne:attemptBuyfakeplates', function()
-    local price = 40
+    local price = 45
     TriggerEvent("gne:check", price, "gne:buyfakeplates", false)
 end)
 
