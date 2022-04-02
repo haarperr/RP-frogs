@@ -5,7 +5,7 @@
 function getDocuments(type, data)
     if not type or not data then return {} end
 
-    local documents = exports.ghmattimysql:execute([[
+    local documents = Await(SQL.execute([[
         SELECT *
         FROM documents
         WHERE ?? = ?
