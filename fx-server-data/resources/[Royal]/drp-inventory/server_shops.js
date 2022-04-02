@@ -554,7 +554,7 @@ function watervend() {
         name: "Shop",
         information: "{}",
         slot: 1,
-        amount: 50,
+        amount: 1,
       },
       {
         item_id: "chips",
@@ -562,7 +562,7 @@ function watervend() {
         name: "Shop",
         information: "{}",
         slot: 2,
-        amount: 50,
+        amount: 1,
       },
     ];
     return JSON.stringify(shopItems);
