@@ -99,6 +99,11 @@ AddEventHandler('selloxy', function()
     doSell("oxy", math.random(85, 115))
 end)
 
+RegisterNetEvent('sellstolenBrokenGoods')
+AddEventHandler('sellstolenBrokenGoods', function()
+    doSell("stolenBrokenGoods", math.random(25,75))
+end)
+
 --#########--
 --# Fence #--
 
@@ -222,6 +227,14 @@ AddEventHandler("fenceguy:menu", function()
 			txt = "",
 			params = {
 				event = "sellstolencomputer",
+			}
+		},
+        {
+			id = "16",
+			header = "Sell Broken Goods	",
+			txt = "",
+			params = {
+				event = "sellstolenBrokenGoods",
 			}
 		}
 	})
