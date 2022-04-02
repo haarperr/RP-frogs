@@ -169,6 +169,16 @@ RegisterNetEvent("burgershot:change:volume", function()
     end
 end)
 
+RegisterCommand('bsmusic', function()
+    TriggerEvent("burgershot:request:song")
+     end)
+
+     RegisterCommand('bsmusicv', function()
+        TriggerEvent("burgershot:change:volume")
+         end)
+    
+
+     
 RegisterNetEvent("burgershot:request:song", function()
     local job = exports["isPed"]:GroupRank('burger_shot')
     if job >= 1 then
