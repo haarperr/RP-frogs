@@ -10,7 +10,7 @@ function getDocuments(type, data)
         FROM documents
         WHERE ?? = ?
     ]],
-    { type, data })
+    { type, data }))
 
     for i, v in ipairs(documents) do
         v["data"] = json.decode(v["data"])
