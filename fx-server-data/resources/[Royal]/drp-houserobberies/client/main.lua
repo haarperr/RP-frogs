@@ -183,15 +183,15 @@ function entrance()
 					if IsControlJustReleased(0,74) and distancia < 3 and firstentry then
 						RemoveBlip(HouseRobberyLocation)
 						if exports['drp-inventory']:hasEnoughOfItem('advlockpick', 1) then
-							local finished = exports["drp-ui"]:taskBarSkill(math.random(1500, 2750),math.random(50, 150))
+							local finished = exports["drp-ui"]:taskBarSkill(math.random(1000, 2500),math.random(40, 150))
 							if (finished == 100) then
-								local finished2 = exports["drp-ui"]:taskBarSkill(math.random(1500, 2750),math.random(50,150))
+								local finished2 = exports["drp-ui"]:taskBarSkill(math.random(1000, 2500),math.random(40,150))
 								if (finished2 == 100) then
-									local finished3 = exports["drp-ui"]:taskBarSkill(math.random(1500, 2750),math.random(50,150))
+									local finished3 = exports["drp-ui"]:taskBarSkill(math.random(1000, 2500),math.random(40,150))
 									if (finished3 == 100) then
-										local finished4 = exports["drp-ui"]:taskBarSkill(math.random(1500, 2750),math.random(50,150))
+										local finished4 = exports["drp-ui"]:taskBarSkill(math.random(1000, 2500),math.random(40,150))
 										if (finished4 == 100) then
-											local finished5 = exports["drp-ui"]:taskBarSkill(math.random(1500, 2750),math.random(50,100))
+											local finished5 = exports["drp-ui"]:taskBarSkill(math.random(1000, 2500),math.random(40,100))
 											if (finished5 == 100) then
 											EnterHouse()
 											firstentry = false
