@@ -85,7 +85,7 @@ AddEventHandler('drp-houserobbery:getJob', function()
 				working = true
 				enterCoords = Houses()
 				TriggerEvent('phone:robberynotif', 'Boss', "Ill have a job for you shortly.")
-				Citizen.Wait(math.random(1,2) * 60 * 1000)
+				Citizen.Wait(math.random(1,3) * 60 * 1000)
 				PlaySoundFrontend(-1, "Menu_Accept", "Phone_SoundSet_Default", true)
 				HouseRobberyLocation = AddBlipForCoord(enterCoords.x, enterCoords.y, enterCoords.z)
 				SetBlipSprite(HouseRobberyLocation, 40)
@@ -183,15 +183,15 @@ function entrance()
 					if IsControlJustReleased(0,74) and distancia < 3 and firstentry then
 						RemoveBlip(HouseRobberyLocation)
 						if exports['drp-inventory']:hasEnoughOfItem('advlockpick', 1) then
-							local finished = exports["drp-ui"]:taskBarSkill(5000,math.random(400, 1000))
+							local finished = exports["drp-ui"]:taskBarSkill(math.random(1500, 2750),math.random(50, 150))
 							if (finished == 100) then
-								local finished2 = exports["drp-ui"]:taskBarSkill(5000,math.random(200,800))
+								local finished2 = exports["drp-ui"]:taskBarSkill(math.random(1500, 2750),math.random(50,150))
 								if (finished2 == 100) then
-									local finished3 = exports["drp-ui"]:taskBarSkill(5000,math.random(400,800))
+									local finished3 = exports["drp-ui"]:taskBarSkill(math.random(1500, 2750),math.random(50,150))
 									if (finished3 == 100) then
-										local finished4 = exports["drp-ui"]:taskBarSkill(5000,math.random(200,800))
+										local finished4 = exports["drp-ui"]:taskBarSkill(math.random(1500, 2750),math.random(50,150))
 										if (finished4 == 100) then
-											local finished5 = exports["drp-ui"]:taskBarSkill(5000,math.random(400,800))
+											local finished5 = exports["drp-ui"]:taskBarSkill(math.random(1500, 2750),math.random(50,100))
 											if (finished5 == 100) then
 											EnterHouse()
 											firstentry = false
