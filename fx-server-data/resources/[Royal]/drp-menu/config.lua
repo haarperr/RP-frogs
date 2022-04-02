@@ -1299,12 +1299,6 @@ newSubMenus = {
         icon="#vehicle-options",
         functionName = "impoundsc",
     },
-    ["civ:reimpoundscuff"]  = {
-        title="Respawn Vehicle",
-        icon="#vehicle-options",
-        functionName = "reimpoundscuff",
-    },
-
     ["police:impoundnormal"]  = {
         title="Impound Normal $100",
         icon="#vehicle-options",
