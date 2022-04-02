@@ -128,27 +128,21 @@ AddEventHandler("drp-civjobs:package-chicken", function(position)
 			finishedpacktime = math.random(2500, 5000)
 		end
 
-		local finishedpacking = exports['drp-taskbar']:taskBar(finishedpacktime/2, 'Processing Meat')
+		local finishedpacking = exports['drp-taskbar']:taskBar(finishedpacktime, 'Processing Meat')
 
 		if (finishedpacking == 100 ) then 
-			local lockingAnimation = exports["drp-ui"]:taskBarSkill(math.random(800, 2300),math.random(35,150))
-			if (lockingAnimation == 100) then
-				local finishedpacking2 = exports['drp-taskbar']:taskBar(finishedpacktime/2, 'Processing Meat')
-				if (finishedpacking2 == 100 ) then 
-					if exports["drp-inventory"]:hasEnoughOfItem("freshmeat", 2) then
-						FreezeEntityPosition(GetPlayerPed(-1),false)
-						TriggerEvent('inventory:removeItem', "freshmeat", 2)
-						TriggerEvent('player:receiveItem', "lqprotein", math.random(1,3))	
-						TriggerEvent('DoLongHudText', 'Keep processing the chicken.', 1)
-						ClearPedTasks(GetPlayerPed(-1))
-					else
-						FreezeEntityPosition(GetPlayerPed(-1),false)
-						TriggerEvent('inventory:removeItem', "freshmeat", 1)
-						TriggerEvent('player:receiveItem', "lqprotein", math.random(1,2))	
-						TriggerEvent('DoLongHudText', 'Keep processing the chicken.', 1)
-						ClearPedTasks(GetPlayerPed(-1))
-					end
-				end
+			if exports["drp-inventory"]:hasEnoughOfItem("freshmeat", 2) then
+				FreezeEntityPosition(GetPlayerPed(-1),false)
+				TriggerEvent('inventory:removeItem', "freshmeat", 2)
+				TriggerEvent('player:receiveItem', "lqprotein", math.random(1,3))	
+				TriggerEvent('DoLongHudText', 'Keep processing the chicken.', 1)
+				ClearPedTasks(GetPlayerPed(-1))
+			else
+				FreezeEntityPosition(GetPlayerPed(-1),false)
+				TriggerEvent('inventory:removeItem', "freshmeat", 1)
+				TriggerEvent('player:receiveItem', "lqprotein", math.random(1,2))	
+				TriggerEvent('DoLongHudText', 'Keep processing the chicken.', 1)
+				ClearPedTasks(GetPlayerPed(-1))
 			end
 		end
 		DeleteEntity(carton)
@@ -172,10 +166,10 @@ AddEventHandler("drp-civjobs:process-alive_chicken", function(position)
 		local chicken = CreateObject(GetHashKey('prop_int_cf_chick_01'), x, y, z,  true,  false, false)
 		SetEntityHeading(chicken, GetEntityHeading(GetPlayerPed(-1)))
 
-		local finishedtime = 6500
+		local finishedtime = 5000
 
 		if exports['drp-inventory']:hasEnoughOfItem('chickenslammer', 1, false) then
-			finishedtime = math.random(3500, 6500)
+			finishedtime = math.random(2500, 5000)
 		end
 
 		local finished = exports['drp-taskbar']:taskBar(finishedtime, 'Cutting the Chicken')
@@ -183,7 +177,7 @@ AddEventHandler("drp-civjobs:process-alive_chicken", function(position)
 		if (finished == 100 ) then 
 			local lockingAnimation = exports["drp-ui"]:taskBarSkill(math.random(800, 2300),math.random(35,150))
 			if (lockingAnimation == 100) then
-				local finished2 = exports['drp-taskbar']:taskBar(finishedtime/2, 'Processing Meat')
+				local finished2 = exports['drp-taskbar']:taskBar(finishedtime/2, 'Cutting the Chicken')
 				if (finished2 == 100 ) then 
 					if exports["drp-inventory"]:hasEnoughOfItem("petchicken", 1) then
 						TriggerEvent('DoLongHudText', 'You slaughtered a chicken!', 1)
