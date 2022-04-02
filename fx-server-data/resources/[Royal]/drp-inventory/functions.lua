@@ -2548,7 +2548,7 @@ end
     end
  
     if itemid == "fries" or itemid == "chips" then
-        AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,15000,"Eating","inv:fed",true,itemid,playerVeh)
+        AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,15000,"Eating","inv:fed2",true,itemid,playerVeh)
     end
 
     if itemid == "bscoffee" then
