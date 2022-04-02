@@ -91,34 +91,3 @@ RPC.register("drp-documents:deleteDocument", function(src, id)
     return deleteDocument(id)
 end)
 
-
-function RPC.register(name, func)
-    Functions[name] = func
-end
-
-function RPC.remove(name)
-    Functions[name] = nil
-end
-
-function RPC.execute(name, ...)
-    local callID, solved = CallIdentifier, false
-    CallIdentifier = CallIdentifier + 1
-
-    Promises[callID] = promise:new()
-
-    TriggerClientEvent("rpc:request", Resource, name, callID, ParamPacker(...))
-
-    Citizen.SetTimeout(20000, function()
-        if not solved then
-            Promises[callID]:resolve({nil})
-        end
-    end)
-
-    local response = Citizen.Await(Promises[callID])
-
-    solved = true
-
-    ClearPromise(callID)
-
-    return ParamUnpacker(response)
-end

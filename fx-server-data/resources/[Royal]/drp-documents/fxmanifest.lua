@@ -10,10 +10,6 @@ files {
 	"html/img/*",
 }
 
-shared_scripts {
-    "shared/*",
-}
-
 server_scripts {
 	"@oxmysql/lib/MySQL.lua",
 	'@drp-lib/server/sv_rpc.lua',
@@ -26,3 +22,8 @@ client_scripts {
     "client/*",
 	"client/documents/*",
 }
+
+shared_scripts {
+    "shared/*",
+}
+
