@@ -221,10 +221,14 @@ RegisterNUICallback('AYO', function(data, cb)
   TriggerEvent("DoLongHudText", 'AYOOOOOOOOO YOU CLICKED THE CUM MENU',2)
 end)
 
-RegisterCommand("lightsout", function()
+RegisterCommand("lights", function()
   if exports["drp-base"]:getModule("LocalPlayer"):getVar("rank") == ('dev' or 'admin' or 'superadmin' or 'mod' or 'owner') then
-
-    SetBlackout(true)
+lightsout = false
+if lightsout == false then
+    SetBlackout(false)
+    lightsout = true
+else
+  lightsout = false
     end
 end)
 
