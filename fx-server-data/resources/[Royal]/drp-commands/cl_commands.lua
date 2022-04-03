@@ -26,7 +26,7 @@ RegisterCommand("rollup", function(source, args, rawCommand)
 end, false)
 
 RegisterCommand("finance", function(source, args, rawCommand)
-  TriggerEvent('finance1')
+  TriggerEvent('drp-pdm:enablefinance')
 end, false)
 
 
