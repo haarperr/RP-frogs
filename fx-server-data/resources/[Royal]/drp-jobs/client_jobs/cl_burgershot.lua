@@ -388,6 +388,23 @@ AddEventHandler('drp-civjobs:burgershot-meatfree', function()
     end
 end)  
 
+
+RegisterCommand('bsmusic', function()
+    local job = exports["isPed"]:GroupRank('burger_shot')
+    if job >= 1 then
+    TriggerEvent("burgershot:request:song")
+    end
+     end)
+
+     RegisterCommand('bsmusicv', function()
+        local job = exports["isPed"]:GroupRank('burger_shot')
+        if job >= 1 then
+        TriggerEvent("burgershot:change:volume")
+        end
+         end)
+    
+
+
 RegisterNetEvent('drp-civjobs:burgershot-bleeder')
 AddEventHandler('drp-civjobs:burgershot-bleeder', function()
     local ped = PlayerPedId()
