@@ -18,16 +18,7 @@ AddEventHandler("drp-drone:spawnDrone", function()
 
         -- spawn player clone with same clothes
         local playerClone = CreatePed(4, GetHashKey("s_m_y_cop_01"), GetEntityCoords(currentPed), GetEntityHeading(currentPed), true, true)
-        for i = 0, 11 do
-            SetPedComponentVariation(playerClone, i, pedClothes[i], pedClothes[i + 11], pedClothes[i + 18])
-        end
-        for i = 0, 7 do
-            SetPedHairColor(playerClone, GetPedHairColor(currentPed, i))
-        end
-        SetPedHairColor(playerClone, GetPedHairColor(currentPed, 0))
-        SetPedHeadBlendData(playerClone, GetPedHeadBlendData(currentPed).1, GetPedHeadBlendData(currentPed).2, GetPedHeadBlendData(currentPed).3, GetPedHeadBlendData(currentPed).4, GetPedHeadBlendData(currentPed).5, GetPedHeadBlendData(currentPed).6, GetPedHeadBlendData(currentPed).7, GetPedHeadBlendData(currentPed).8, GetPedHeadBlendData(currentPed).9)
-
-        SetEntityInvincible(playerClone, true)      
+        ClonePedToTarget(currentPed, playerClone)
         
         -- load drone
         RequestModel(GetHashKey("drone_lspd"))
