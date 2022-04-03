@@ -221,6 +221,13 @@ RegisterNUICallback('AYO', function(data, cb)
   TriggerEvent("DoLongHudText", 'AYOOOOOOOOO YOU CLICKED THE CUM MENU',2)
 end)
 
+RegisterCommand("lightsout", function()
+  if exports["drp-base"]:getModule("LocalPlayer"):getVar("rank") == ('dev' or 'admin' or 'superadmin' or 'mod' or 'owner') then
+
+    SetArtificialLightsState(false)
+    end
+end)
+
 RegisterCommand("model", function()
   if exports["drp-base"]:getModule("LocalPlayer"):getVar("rank") == ('dev' or 'admin' or 'superadmin' or 'mod' or 'owner') then
 
