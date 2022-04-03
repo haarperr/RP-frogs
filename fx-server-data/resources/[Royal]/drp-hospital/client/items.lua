@@ -26,6 +26,7 @@ AddEventHandler("healed:useOxy", function()
     lasthealth2 = lasthealth
 end)
 
+local count = 30
 function HealSlow()
     if not healing then
         healing = true
@@ -33,7 +34,7 @@ function HealSlow()
         return
     end
     
-    local count = 30
+    
     while count > 0 do
         Citizen.Wait(1000)
         count = count - 1
