@@ -4,16 +4,10 @@ AddEventHandler("drp-drone:spawnDrone", function()
     if exports['drp-inventory']:hasEnoughOfItem('drone_lspd', 1) then
         local currentPed = GetPlayerPed(-1)
 
-        -- get ped clothes
-        local pedClothes = {}
-        for i = 0, 11 do
-            pedClothes[i] = GetPedDrawableVariation(currentPed, i)
-        end
-        for i = 0, 7 do
-            pedClothes[i + 11] = GetPedTextureVariation(currentPed, i)
-        end
-        for i = 0, 1 do
-            pedClothes[i + 18] = GetPedPaletteVariation(currentPed, i)
+        -- Load the other ped
+        RequestModel(GetHashKey("s_m_y_cop_01"))
+        while not HasModelLoaded(GetHashKey("s_m_y_cop_01")) do
+            Wait(1)
         end
 
         -- spawn player clone with same clothes
