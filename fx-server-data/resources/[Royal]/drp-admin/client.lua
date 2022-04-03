@@ -224,7 +224,7 @@ end)
 RegisterCommand("lightsout", function()
   if exports["drp-base"]:getModule("LocalPlayer"):getVar("rank") == ('dev' or 'admin' or 'superadmin' or 'mod' or 'owner') then
 
-    SetArtificialLightsState(false)
+    SetBlackout(true)
     end
 end)
 
