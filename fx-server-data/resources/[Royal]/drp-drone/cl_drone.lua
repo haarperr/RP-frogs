@@ -29,6 +29,20 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(5)
         if isInDrone then
+            if GetVehicleBodyHealth(drone) <= 350 then
+                -- remove drone
+                SetEntityAsMissionEntity(drone, true, true)
+                DeleteEntity(drone)
+                isInDrone = false
+                drone = 0
+                -- teleport ped back to where he entered
+                SetEntityCoords(GetPlayerPed(-1), enterCoords.x, enterCoords.y, enterCoords.z)
+                -- Message to player
+                TriggerEvent("inventory:removeItem", "drone_lspd", 1)
+                TriggerEvent("DoLongHudText", "Your Drone is too Damaged.", 1)
+                return
+            end 
+
             -- if player is not in drone
             if not IsPedInAnyVehicle(GetPlayerPed(-1), false) then
                 -- remove drone
@@ -39,7 +53,7 @@ Citizen.CreateThread(function()
                 -- teleport ped back to where he entered
                 SetEntityCoords(GetPlayerPed(-1), enterCoords.x, enterCoords.y, enterCoords.z)
                 -- Message to player
-                TriggerEvent("DoLongHudText","You left the Drone.", 1)
+                TriggerEvent("DoLongHudText", "You left the Drone.", 1)
             end
         end
     end
