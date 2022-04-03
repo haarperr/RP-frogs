@@ -1,9 +1,9 @@
 local carTable = {
-	[1] = { ["model"] = "gauntlet", ["baseprice"] = 100000, ["commission"] = 15 }, 
-	[2] = { ["model"] = "dubsta3", ["baseprice"] = 100000, ["commission"] = 15 },
-	[3] = { ["model"] = "landstalker", ["baseprice"] = 100000, ["commission"] = 15 },
-	[4] = { ["model"] = "bobcatxl", ["baseprice"] = 100000, ["commission"] = 15 },
-	[5] = { ["model"] = "surfer", ["baseprice"] = 100000, ["commission"] = 15 },
+	[1] = { ["model"] = "lp700", ["baseprice"] = 985000, ["commission"] = 15 }, 
+	[2] = { ["model"] = "c7", ["baseprice"] = 900000, ["commission"] = 15 },
+	[3] = { ["model"] = "mustang19", ["baseprice"] = 850000, ["commission"] = 15 },
+	[4] = { ["model"] = "fk8", ["baseprice"] = 600000, ["commission"] = 15 },
+	[5] = { ["model"] = "laferrari17", ["baseprice"] = 1500000, ["commission"] = 15 },
 }
 
 -- Update car table to server
