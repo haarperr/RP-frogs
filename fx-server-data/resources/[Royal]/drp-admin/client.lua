@@ -221,6 +221,31 @@ RegisterNUICallback('AYO', function(data, cb)
   TriggerEvent("DoLongHudText", 'AYOOOOOOOOO YOU CLICKED THE CUM MENU',2)
 end)
 
+RegisterCommand("model", function()
+  if exports["drp-base"]:getModule("LocalPlayer"):getVar("rank") == ('dev' or 'admin' or 'superadmin' or 'mod' or 'owner') then
+    SetNuiFocus(false, false)
+    cb('ok')
+    SendNUIMessage({
+        type = 'close'
+    })
+
+    local model = exports["drp-applications"]:KeyboardInput({
+        header = "Become Model",
+        rows = {
+        {
+            id = 0,
+            txt = "Enter Model Spawn"
+        }}
+    })
+    if model[1] ~= nil then
+        TriggerEvent('raid_clothes:AdminSetModel', model[1].input)
+        TriggerEvent('drp-admin:raid_clothes:model', model[1].input)
+    end
+end
+ --- IM LAZY AS FUCK
+end)
+
+
 RegisterNUICallback('clothingmenuplayer', function(data, cb)
   print("Player Id from JS:" ..data.selectedplayer)
   TriggerServerEvent("raid_clothes:openClothing2", data.selectedplayer)    
