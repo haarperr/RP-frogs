@@ -8741,7 +8741,13 @@ DOOR_CONFIG = {
         job = {},
         cid = {
           [1] = true,
-		[8] = true
+          [47] = true,
+          [35] = true,
+          [13] = true,
+          [48] = true,
+          [84] = true,
+          [12] = true,
+          [68] = true
         }
       }
     },
@@ -8758,7 +8764,13 @@ DOOR_CONFIG = {
         job = {},
         cid = {
           [1] = true,
-		[8] = true
+          [47] = true,
+          [35] = true,
+          [13] = true,
+          [48] = true,
+          [84] = true,
+          [12] = true,
+          [68] = true
         }
       }
     },
