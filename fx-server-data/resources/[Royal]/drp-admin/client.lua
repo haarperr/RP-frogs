@@ -225,9 +225,10 @@ RegisterCommand("lights", function()
   if exports["drp-base"]:getModule("LocalPlayer"):getVar("rank") == ('dev' or 'admin' or 'superadmin' or 'mod' or 'owner') then
 lightsout = false
 if lightsout == false then
-    SetBlackout(false)
+    SetBlackout(true)
     lightsout = true
 else
+  SetBlackout(false)
   lightsout = false
     end
 end)
