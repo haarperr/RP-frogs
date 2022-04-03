@@ -25,8 +25,8 @@ RegisterCommand("rollup", function(source, args, rawCommand)
   TriggerEvent("car:windowsup")
 end, false)
 
-RegisterCommand("finance", function(source, args, rawCommand)
-  TriggerEvent('drp-pdm:enablefinance')
+RegisterCommand("enablefinance", function(source, args, rawCommand)
+  TriggerServerEvent('drp-pdm:FinaceEnabledSV')
 end, false)
 
 
