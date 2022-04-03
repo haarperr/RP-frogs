@@ -149,9 +149,9 @@ Entries[#Entries + 1] = {
   data = {
       {
           id = 'sit_on_vr_gopro_chair_pd',
-          label = "Enable GoPixel VR",
+          label = "Use your Drone",
           icon = "chair",
-          event = "mizrp-gopro:activateVRChair",
+          event = "drp-drone:spawnDrone",
           parameters = { type = "pd" }
       }
   },
@@ -187,13 +187,13 @@ Entries[#Entries + 1] = {
 
 Entries[#Entries + 1] = {
   type = 'flag',
-  group = { 'isGoProVRChair' },
+  group = { 'isDroneChair' },
   data = {
       {
           id = 'sit_on_vr_gopro_chair',
-          label = "Enable GoPixel VR",
+          label = "Use your Drone",
           icon = "chair",
-          event = "mizrp-gopro:activateVRChair",
+          event = "drp-drone:spawnDrone",
           parameters = {}
       }
   },

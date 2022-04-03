@@ -11,6 +11,6 @@ data_file 'VEHICLE_METADATA_FILE' 'vehicles.meta'
 data_file 'VEHICLE_VARIATION_FILE' 'carvariations.meta'
 data_file 'CARCOLS_FILE' 'carcols.meta'
 
-client_script 'vehicle_names.lua'
+client_script 'cl_drone.lua'
 
 
