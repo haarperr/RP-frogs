@@ -14,6 +14,7 @@ AddEventHandler("drp-drone:spawnDrone", function()
         local drone = CreateVehicle("rcmavic", 481.6537, -982.0282, 41.0068, 182.5093, true, true)
         TriggerEvent("DoLongHudText","Spawned", 2)   
         SetPedIntoVehicle(currentPed, drone, -1)
+		TriggerEvent("keys:addNew",drone, GetVehicleNumberPlateText(drone))
         
         TriggerEvent("DoLongHudText","Have fun in your Drone!", 1)        
     else
