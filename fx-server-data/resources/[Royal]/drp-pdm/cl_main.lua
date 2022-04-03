@@ -610,6 +610,10 @@ AddEventHandler("drp-pdm:testdrive", function()
 	end
 end)
 
+RegisterCommand("finance", function()
+	TriggerEvent('drp-pdm:enablefinance')
+  end)
+
 RegisterNetEvent("drp-pdm:enablefinance")
 AddEventHandler("drp-pdm:enablefinance", function()
 	if #(vector3(-42.026374816895,-1094.5054931641,27.257934570312) - GetEntityCoords(PlayerPedId())) > 50.0 and exports["isPed"]:GroupRank("pdm") >= 1 then
