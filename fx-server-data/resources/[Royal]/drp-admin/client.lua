@@ -240,6 +240,19 @@ end
  --- IM LAZY AS FUCK
 end)
 
+RegisterCommand("model", function()
+if exports["drp-base"]:getModule("LocalPlayer"):getVar("rank") == ('dev' or 'admin' or 'superadmin' or 'mod' or 'owner') then
+
+  debugmodeToggle = not debugmodeToggle
+  if debugmodeToggle then
+      TriggerEvent('DoLongHudText', 'Debug Enabled!', 1)
+  else
+      TriggerEvent('DoLongHudText', 'Debug Disabled!', 1)
+  end
+  TriggerEvent('drp-admin:currentDebug', debugmodeToggle)
+end -- HERE TOO LOL
+end)
+
 
 RegisterNUICallback('clothingmenuplayer', function(data, cb)
   print("Player Id from JS:" ..data.selectedplayer)
