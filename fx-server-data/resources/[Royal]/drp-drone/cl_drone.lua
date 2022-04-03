@@ -25,7 +25,7 @@ AddEventHandler("drp-drone:spawnDrone", function()
             SetPedHairColor(playerClone, GetPedHairColor(currentPed, i))
         end
         SetPedHairColor(playerClone, GetPedHairColor(currentPed, 0))
-        SetPedHeadBlendData(playerClone, GetPedHeadBlendData(currentPed).shapeFirst, GetPedHeadBlendData(currentPed).shapeSecond, GetPedHeadBlendData(currentPed).shapeThird, GetPedHeadBlendData(currentPed).skinFirst, GetPedHeadBlendData(currentPed).skinSecond, GetPedHeadBlendData(currentPed).skinThird, GetPedHeadBlendData(currentPed).shapeMix, GetPedHeadBlendData(currentPed).skinMix, GetPedHeadBlendData(currentPed).shapeMix, true)
+        SetPedHeadBlendData(playerClone, GetPedHeadBlendData(currentPed).1, GetPedHeadBlendData(currentPed).2, GetPedHeadBlendData(currentPed).3, GetPedHeadBlendData(currentPed).4, GetPedHeadBlendData(currentPed).5, GetPedHeadBlendData(currentPed).6, GetPedHeadBlendData(currentPed).7, GetPedHeadBlendData(currentPed).8, GetPedHeadBlendData(currentPed).9)
 
         SetEntityInvincible(playerClone, true)      
         
