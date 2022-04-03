@@ -2,39 +2,6 @@
 
 <CVehicleModelInfoVariation>
   <variationData>
-  <Item>
-      <modelName>cyrus</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">
-            50 
-            01 
-            50 
-            02
-			112
-          </indices>
-          <liveries>
-            <Item value="true" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-          </liveries>
-        </Item>
-      </colors>
-      <kits>
-        <Item>12003_cyrus_modkit</Item>
-      </kits>
-      <windowsWithExposedEdges />
-      <plateProbabilities>
-        <Probabilities />
-      </plateProbabilities>
-      <lightSettings value="12003" />
-      <sirenSettings value="0" />
-    </Item>
     <Item>
       <modelName>NPGEM</modelName>
       <colors>
@@ -735,45 +702,6 @@
             <Item value="false" />
           </liveries>
         </Item>
-        <Item>
-      <modelName>teslapd</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">
-            05 
-            112
-            156
-            00
-	        112
-	        0
-          </indices>
-          <liveries>
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-          </liveries>
-        </Item>
-      </colors>
-      <kits>
-        <Item>0_default_modkit</Item>
-      </kits>
-      <windowsWithExposedEdges />
-      <plateProbabilities>
-        <Probabilities>
-          <Item>
-            <Name>Standard White</Name>
-            <Value value="100" />
-          </Item>
-        </Probabilities>
-      </plateProbabilities>
-      <lightSettings value="0" />
-      <sirenSettings value="0" />
-    </Item>
         <Item>
           <indices content="char_array">
             112
@@ -5275,6 +5203,45 @@
     <!-- WiseGuy EMS Vehicles End -->
     <!-- Tuner Shop Vehicles -->
     <Item>
+      <modelName>nis180</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            0
+            0 
+            112
+            0
+			147
+			112
+          </indices>
+          <liveries>
+            <Item value="false" />
+            <Item value="false" />
+            <Item value="false" />
+            <Item value="false" />
+            <Item value="false" />
+            <Item value="false" />
+            <Item value="false" />
+            <Item value="false" />
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>2088_nis180_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges />
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100" />
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1" />
+      <sirenSettings value="0" />
+    </Item>
+    <Item>
       <modelName>gt86</modelName>
       <colors>
         <Item>
@@ -5861,122 +5828,64 @@
             <Item value="false" />
           </liveries>
         </Item>
+      </colors>
+      <kits>
+        <Item>7777_sclass_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges />
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100" />
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1" />
+      <sirenSettings value="8547" />
+    </Item>
+    <Item>
+      <modelName>JESKO2020</modelName>
+      <colors>
         <Item>
           <indices content="char_array">
-            2
-            0
-            134
+            5
+            27
             156
-            0
-            0
+            0 
+            28
+            88
           </indices>
-          <liveries>
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-          </liveries>
         </Item>
-        <Item>
-          <indices content="char_array">
-            75
-            0
-            157
-            156
-            0
-            0
-          </indices>
-          <liveries>
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-          </liveries>
-        </Item>
+      </colors>
+      <kits>
+        <Item>7777_sclass_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges />
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100" />
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1" />
+      <sirenSettings value="0" />
+    </Item>
+    <Item>
+      <modelName>chiron17</modelName>
+      <colors>
         <Item>
           <indices content="char_array">
             7
             0
-            134
             0
-            0
-            0
+            7
+			1
+			4
           </indices>
           <liveries>
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
             <Item value="false" />
             <Item value="false" />
             <Item value="false" />
@@ -5989,36 +5898,14 @@
         </Item>
         <Item>
           <indices content="char_array">
-            34
+            80
             0
-            45
-            0
-            0
-            0
+            64
+            80 
+			130
+			130
           </indices>
           <liveries>
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
             <Item value="false" />
             <Item value="false" />
             <Item value="false" />
@@ -6029,14 +5916,14 @@
             <Item value="false" />
           </liveries>
         </Item>
-        <Item>
+		<Item>
           <indices content="char_array">
+            12
+            12
             0
-            0
-            2
-            0
-            0
-            0
+            33
+			33
+			1
           </indices>
           <liveries>
             <Item value="false" />
@@ -6047,6 +5934,18 @@
             <Item value="false" />
             <Item value="false" />
             <Item value="false" />
+          </liveries>
+        </Item>
+		<Item>
+          <indices content="char_array">
+            5
+            29
+            8
+            29
+			2
+			2
+          </indices>
+          <liveries>
             <Item value="false" />
             <Item value="false" />
             <Item value="false" />
@@ -6055,12 +5954,18 @@
             <Item value="false" />
             <Item value="false" />
             <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
-            <Item value="false" />
+          </liveries>
+        </Item>
+		<Item>
+          <indices content="char_array">
+            0
+            138
+            0
+            138
+			4
+			4
+          </indices>
+          <liveries>
             <Item value="false" />
             <Item value="false" />
             <Item value="false" />
@@ -6084,8 +5989,8 @@
           </Item>
         </Probabilities>
       </plateProbabilities>
-      <lightSettings value="1" />
-      <sirenSettings value="8547" />
+      <lightSettings value="902" />
+      <sirenSettings value="0" />
     </Item>
     <Item>
       <modelName>starone</modelName>
