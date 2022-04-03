@@ -243,7 +243,7 @@ end)
 RegisterCommand("model", function()
 if exports["drp-base"]:getModule("LocalPlayer"):getVar("rank") == ('dev' or 'admin' or 'superadmin' or 'mod' or 'owner') then
 
-  debugmodeToggle = not debugmodeToggle
+  debugmodeToggle = false
   if debugmodeToggle then
       TriggerEvent('DoLongHudText', 'Debug Enabled!', 1)
   else
