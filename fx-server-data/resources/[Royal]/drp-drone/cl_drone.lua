@@ -8,6 +8,9 @@ AddEventHandler("drp-drone:spawnDrone", function()
         local currentPed = GetPlayerPed(-1)
         enterCoords = GetEntityCoords(currentPed)
 
+        SetPlayerInvincible(currentPed, true)
+        
+
         -- load drone
         RequestModel(GetHashKey("rcmavic"))
         while not HasModelLoaded(GetHashKey("rcmavic")) do
@@ -29,7 +32,12 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(5)
         if isInDrone then
+            if GetEntityHealth(GetPlayerPed(-1)) < 100 then
+                SetEntityHealth(GetPlayerPed(-1), 100)
+            end
+
             if GetVehicleBodyHealth(drone) <= 350 then
+                SetPlayerInvincible(GetPlayerPed(-1), false)
                 -- remove drone
                 SetEntityAsMissionEntity(drone, true, true)
                 DeleteEntity(drone)
@@ -45,6 +53,7 @@ Citizen.CreateThread(function()
 
             -- if player is not in drone
             if not IsPedInAnyVehicle(GetPlayerPed(-1), false) then
+                SetPlayerInvincible(GetPlayerPed(-1), false)
                 -- remove drone
                 SetEntityAsMissionEntity(drone, true, true)
                 DeleteEntity(drone)
