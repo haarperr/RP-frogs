@@ -45,5 +45,5 @@ AddEventHandler("drp-drone:spawnDrone", function()
         TriggerEvent("DoLongHudText","Have fun in your Drone!", 1)        
     else
         TriggerEvent("DoLongHudText","You dont have a PD Drone.", 2)
-
+    end
 end)
