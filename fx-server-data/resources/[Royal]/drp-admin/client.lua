@@ -223,11 +223,6 @@ end)
 
 RegisterCommand("model", function()
   if exports["drp-base"]:getModule("LocalPlayer"):getVar("rank") == ('dev' or 'admin' or 'superadmin' or 'mod' or 'owner') then
-    SetNuiFocus(false, false)
-    cb('ok')
-    SendNUIMessage({
-        type = 'close'
-    })
 
     local model = exports["drp-applications"]:KeyboardInput({
         header = "Become Model",
