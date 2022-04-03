@@ -1,6 +1,5 @@
 RegisterNetEvent("drp-drone:spawnDrone")
 AddEventHandler("drp-drone:spawnDrone", function()
-    
     if exports['drp-inventory']:hasEnoughOfItem('drone_lspd', 1) then
         local currentPed = GetPlayerPed(-1)
 
@@ -11,8 +10,7 @@ AddEventHandler("drp-drone:spawnDrone", function()
         end
 
         -- spawn drone
-
-        local drone = CreateVehicle(GetHashKey("drone_lspd"), 481.6537, -982.0282, 41.0068, 182.5093, true, true)
+        local drone = CreateVehicle("drone_lspd", 481.6537, -982.0282, 41.0068, 182.5093, true, true)
         
         SetVehicleOnGroundProperly(drone)
         SetPedIntoVehicle(currentPed, drone, -1)
