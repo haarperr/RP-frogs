@@ -44,3 +44,15 @@ Citizen.CreateThread(function()
         end
     end
 end)
+
+-- on ressource stop remove drone
+AddEventHandler('onResourceStop', function(resource)
+    if resource == GetCurrentResourceName() then
+        if isInDrone then
+            SetEntityAsMissionEntity(drone, true, true)
+            DeleteEntity(drone)
+            isInDrone = false
+            drone = 0
+        end
+    end
+end)
