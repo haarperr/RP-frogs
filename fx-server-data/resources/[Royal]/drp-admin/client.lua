@@ -148,7 +148,7 @@ RegisterNUICallback('devmode', function(data, cb)
 end)
 
 RegisterNUICallback('debugmode', function(data, cb)
-  TriggerEvent('hud:enabledebug')
+  TriggerEvent('drp-admin:currentDebug', data.returnvalue)
 end)
 
 RegisterNUICallback('godmode', function(data, cb)
