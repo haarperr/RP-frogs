@@ -25578,7 +25578,7 @@ itemList['notepadnote'] = {
   contraband: false,
 };
 
-itemList['drone_lspd'] = {
+itemList['c'] = {
   fullyDegrades: false,
   illegal: false,
   decayrate: 0.0,
