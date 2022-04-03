@@ -98,7 +98,7 @@ function drawskillbar(duration,level) {
 
     key_to_press = ''+getRandomInt(1,4);
 
-    time = (duration / 1000 );
+    time = (duration / 1000 ) * 3;
 
     animation_loop = setInterval(animate_to, time);
 }
