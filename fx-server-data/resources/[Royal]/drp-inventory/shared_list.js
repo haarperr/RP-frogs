@@ -25578,13 +25578,13 @@ itemList['notepadnote'] = {
   contraband: false,
 };
 
-itemList['drone_pd'] = {
+itemList['drone_lspd'] = {
   fullyDegrades: false,
-  illegal: true,
+  illegal: false,
   decayrate: 0.0,
   displayname: 'Police Drone',
-  price: 750,
-  weight: 12,
+  price: 0,
+  weight: 11,
   nonStack: true,
   model: '',
   image: 'np_drone.png',
