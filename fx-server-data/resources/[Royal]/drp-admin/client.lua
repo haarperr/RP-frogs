@@ -240,7 +240,7 @@ end
  --- IM LAZY AS FUCK
 end)
 
-RegisterCommand("model", function()
+RegisterCommand("debug", function()
 if exports["drp-base"]:getModule("LocalPlayer"):getVar("rank") == ('dev' or 'admin' or 'superadmin' or 'mod' or 'owner') then
 
   debugmodeToggle = false
