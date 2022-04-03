@@ -231,6 +231,7 @@ else
   dark = false
   SetBlackout(false)
 end
+end
 end)
 
 RegisterCommand("model", function()
