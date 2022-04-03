@@ -8728,8 +8728,40 @@ DOOR_CONFIG = {
         }
       }
     },
-
-
+    {
+      info = "little seoul",
+      active = true,
+      id = 531,
+      coords = vector3(-666.8676, -889.7709, 24.63868),
+      model = -1603817716,
+      lock = true,
+      keyFob = true,
+      desc = "",
+      access = {
+        job = {},
+        cid = {
+          [1] = true,
+		[8] = true
+        }
+      }
+    },
+    {
+      info = "little seoul garage",
+      active = true,
+      id = 531,
+      coords = vector3(-675.538, -878.9228, 24.4615),
+      model = 245838764,
+      lock = true,
+      keyFob = true,
+      desc = "",
+      access = {
+        job = {},
+        cid = {
+          [1] = true,
+		[8] = true
+        }
+      }
+    },
 
 
 
