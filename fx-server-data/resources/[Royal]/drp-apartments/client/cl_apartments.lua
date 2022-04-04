@@ -414,7 +414,7 @@ function nearClothing()
     end
 
     local myjob = exports["isPed"]:isPed("myjob")
-    if myjob == "police" or myjob == "ems" or myjob == "doctor" or myjob == "sheriff" or myjob == "state" then
+    if myjob == "police" or myjob == "ems" or myjob == "doctor" or myjob == "sheriff" or myjob == "state" or myjob == "judge" then
         return true
     end
     
