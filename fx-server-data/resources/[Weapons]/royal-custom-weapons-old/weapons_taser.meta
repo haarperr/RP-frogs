@@ -39,12 +39,12 @@
           <Model />
           <Audio />
           <Slot />
-          <AmmoMax value="3" />
-          <AmmoMax50 value="3" />
-          <AmmoMax100 value="3" />
-          <AmmoMaxMP value="3" />
-          <AmmoMax50MP value="3" />
-          <AmmoMax100MP value="3" />
+          <AmmoMax value="6" />
+          <AmmoMax50 value="6" />
+          <AmmoMax100 value="6" />
+          <AmmoMaxMP value="6" />
+          <AmmoMax50MP value="6" />
+          <AmmoMax100MP value="6" />
           <AmmoFlags />
         </Item>
       </Infos>
