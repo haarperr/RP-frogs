@@ -837,7 +837,7 @@ end)
 --   print(json.encode(coordsBro[#coordsBro]))
 -- end, false)
 -- Citizen.CreateThread(function()
---   exports["drp-keybinds"]:registerKeyMapping("", "Casino", "Add Coords", "+addCasinoCoords", "-addCasinoCoords")
+--   exports["drp-binds"]:registerKeyMapping("", "Casino", "Add Coords", "+addCasinoCoords", "-addCasinoCoords")
 -- end)
 
 -- Citizen.CreateThread(function()
