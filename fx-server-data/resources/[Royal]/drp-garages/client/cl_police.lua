@@ -48,7 +48,7 @@ AddEventHandler('drp-garages:openBuyMenu', function()
 		{
 			id = 1,
 			header = "Normal Police Cars",
-			txt = "",
+			txt = "Open the Shop",
 			params = {
 				event = "drp-garages:open:normal",
 			}
@@ -56,7 +56,7 @@ AddEventHandler('drp-garages:openBuyMenu', function()
         {
 			id = 2,
 			header = "Interceptor Cars",
-			txt = "",
+			txt = "Open the Shop",
 			params = {
 				event = "drp-garages:open:interceptor"
 			}
@@ -64,7 +64,7 @@ AddEventHandler('drp-garages:openBuyMenu', function()
         {
 			id = 3,
 			header = "Undercover Cars",
-			txt = "",
+			txt = "Open the Shop",
 			params = {
 				event = "drp-garages:open:undercover"
 			}
@@ -156,7 +156,7 @@ AddEventHandler("drp-garages:open:undercover", function()
 			header = "Purchase Undercover Buffalo",
 			txt = "Price: $220.000",
 			params = {
-				event = "drp-garages:Purchaseduccomet",
+				event = "drp-garages:Purchaseducbuffalo",
 			}
 		},
         {
@@ -164,7 +164,7 @@ AddEventHandler("drp-garages:open:undercover", function()
 			header = "Purchase Undercover Coquette",
 			txt = "Price: $230.000",
 			params = {
-				event = "drp-garages:Purchaseduccomet",
+				event = "drp-garages:Purchaseduccoquette",
 			}
 		},
         {
@@ -241,6 +241,53 @@ AddEventHandler('drp-garages:Purchasednpolchal', function()
     buyCar("npolchal", price)
 end)
 
+RegisterNetEvent('drp-garages:Purchaseducwashington')
+AddEventHandler('drp-garages:Purchaseducwashington', function()
+	local price = 80000
+	buyCar("ucwashington", price)
+end)
+
+RegisterNetEvent('drp-garages:Purchaseducrancher')
+AddEventHandler('drp-garages:Purchaseducrancher', function()
+	local price = 80000
+	buyCar("ucrancher", price)
+end)
+
+RegisterNetEvent('drp-garages:Purchaseducprimo')
+AddEventHandler('drp-garages:Purchaseducprimo', function()
+	local price = 100000
+	buyCar("ucprimo", price)
+end)
+
+RegisterNetEvent('drp-garages:Purchaseducballer')
+AddEventHandler('drp-garages:Purchaseducballer', function()
+	local price = 150000
+	buyCar("ucballer", price)
+end)
+
+RegisterNetEvent('drp-garages:Purchaseducbuffalo')
+AddEventHandler('drp-garages:Purchaseducbuffalo', function()
+	local price = 220000
+	buyCar("ucbuffalo", price)
+end)
+
+RegisterNetEvent('drp-garages:Purchaseduccoquette')
+AddEventHandler('drp-garages:Purchaseduccoquette', function()
+	local price = 230000
+	buyCar("uccoquette", price)
+end)
+
+RegisterNetEvent('drp-garages:Purchaseducbanshee')
+AddEventHandler('drp-garages:Purchaseducbanshee', function()
+	local price = 240000
+	buyCar("ucbanshee", price)
+end)
+
+RegisterNetEvent('drp-garages:Purchaseduccomet')
+AddEventHandler('drp-garages:Purchaseduccomet', function()
+	local price = 250000
+	buyCar("uccomet", price)
+end)
 
 function buyCar(model, price)
     if exports["isPed"]:isPed("mycash") >= price then
