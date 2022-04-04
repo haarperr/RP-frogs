@@ -279,7 +279,7 @@ Citizen.CreateThread(function()
         HideHudComponentThisFrame(13)
         HideHudComponentThisFrame(14)
         HideHudComponentThisFrame(15)
-        HideHudComponentThisFrame(16)
+        --HideHudComponentThisFrame(16)  --Disable Hiding Radio
         HideHudComponentThisFrame(17)
         HideHudComponentThisFrame(18)
         HideHudComponentThisFrame(19)
