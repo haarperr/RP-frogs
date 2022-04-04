@@ -32,17 +32,12 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(5)
         if isInDrone then
-            if GetEntityHealth(GetPlayerPed(-1)) < 100 then
-                SetEntityHealth(GetPlayerPed(-1), 100)
-            end
-
             if GetVehicleBodyHealth(drone) <= 350 then
                 SetPlayerInvincible(GetPlayerPed(-1), false)
                 -- remove drone
-                SetEntityAsMissionEntity(drone, true, true)
-                DeleteEntity(drone)
+                DeleteVehicle(drone)
                 isInDrone = false
-                drone = 0
+                drone = nil
                 -- teleport ped back to where he entered
                 SetEntityCoords(GetPlayerPed(-1), enterCoords.x, enterCoords.y, enterCoords.z)
                 -- Message to player
@@ -55,10 +50,9 @@ Citizen.CreateThread(function()
             if not IsPedInAnyVehicle(GetPlayerPed(-1), false) then
                 SetPlayerInvincible(GetPlayerPed(-1), false)
                 -- remove drone
-                SetEntityAsMissionEntity(drone, true, true)
-                DeleteEntity(drone)
+                DeleteVehicle(drone)
                 isInDrone = false
-                drone = 0
+                drone = nil
                 -- teleport ped back to where he entered
                 SetEntityCoords(GetPlayerPed(-1), enterCoords.x, enterCoords.y, enterCoords.z)
                 -- Message to player
