@@ -114,7 +114,7 @@ AddEventHandler('drp-jobs:cook-grapes-purple:winery', function()
                 TriggerEvent("inventory:removeItem","grapesp", 3)
                 Wait(1000)
                 FreezeEntityPosition(GetPlayerPed(-1),false)
-                TriggerEvent('player:receiveItem', 'redwine', 1)
+                TriggerEvent('player:receiveItem', 'kennyred', 1)
             else
                 FreezeEntityPosition(GetPlayerPed(-1),false)
                 TriggerEvent('DoLongHudText', 'You burnt yourself scream for help', 2)
@@ -203,12 +203,12 @@ RegisterNetEvent('drp-jobs:pourRedWine')
 AddEventHandler('drp-jobs:pourRedWine', function()
     local rank = exports["isPed"]:GroupRank("winery")
     if rank > 0 then 
-        if exports['drp-inventory']:hasEnoughOfItem('redwine', 1) and exports['drp-inventory']:hasEnoughOfItem('wineglass', 1) then
+        if exports['drp-inventory']:hasEnoughOfItem('kennyred', 1) and exports['drp-inventory']:hasEnoughOfItem('wineglass', 1) then
             FreezeEntityPosition(GetPlayerPed(-1),true)
             TriggerEvent("animation:PlayAnimation","cokecut")
             local cooking = exports['drp-taskbar']:taskBar(5000, 'Pouring Red Wine')
             if (cooking == 100) then
-                TriggerEvent("inventory:removeItem","redwine", 1)
+                TriggerEvent("inventory:removeItem","kennyred", 1)
                 TriggerEvent("inventory:removeItem","wineglass", 1)
                 Wait(1000)
                 FreezeEntityPosition(GetPlayerPed(-1),false)
@@ -232,13 +232,13 @@ end
 
 RegisterNetEvent("drp-jobs:SellRedWine")
 AddEventHandler("drp-jobs:SellRedWine", function()
-	if exports["drp-inventory"]:getQuantity("redwine") >= 5 then
+	if exports["drp-inventory"]:getQuantity("kennyred") >= 5 then
 		playerAnim()
 		local finished = exports["drp-taskbar"]:taskBar(4000,"Selling Red Wine",true,false,playerVeh)
 		if finished == 100 then
-			if exports["drp-inventory"]:getQuantity("redwine") >= 5 then
+			if exports["drp-inventory"]:getQuantity("kennyred") >= 5 then
 				ClearPedTasksImmediately(PlayerPedId())
-				TriggerEvent('inventory:removeItem', 'redwine', 5)
+				TriggerEvent('inventory:removeItem', 'kennyred', 5)
 				TriggerServerEvent('drp-banking:addMoney', 2500)
 			else
                 TriggerEvent('DoLongHudText', 'Required: 5x Red Wine', 2)
