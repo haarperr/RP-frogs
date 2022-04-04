@@ -47,14 +47,160 @@ AddEventHandler('drp-garages:openBuyMenu', function()
     TriggerEvent('drp-context:sendMenu', {
 		{
 			id = 1,
-			header = "Police Crown Vic",
-			txt = "Purchase for $80000",
+			header = "Normal Police Cars",
+			txt = "",
 			params = {
-				event = "drp-garages:PurchasedVic"
+				event = "drp-garages:open:normal",
+			}
+		},
+        {
+			id = 2,
+			header = "Interceptor Cars",
+			txt = "",
+			params = {
+				event = "drp-garages:open:interceptor"
+			}
+		},
+        {
+			id = 3,
+			header = "Undercover Cars",
+			txt = "",
+			params = {
+				event = "drp-garages:open:undercover"
 			}
 		},
 	})
 end)
+
+RegisterEvent("drp-garages:open:normal")
+AddEventHandler("drp-garages:open:normal", function()
+    TriggerEvent('drp-context:sendMenu', {
+		{
+			id = 1,
+			header = "Purchase Crown Victoria",
+			txt = "Price: $80.000",
+			params = {
+				event = "drp-garages:PurchasedVic",
+			}
+		},
+    }
+end)
+
+RegisterEvent("drp-garages:open:interceptor")
+AddEventHandler("drp-garages:open:interceptor", function()
+    TriggerEvent('drp-context:sendMenu', {
+		{
+			id = 1,
+			header = "Purchase Mustang",
+			txt = "Price: $250.000",
+			params = {
+				event = "drp-garages:Purchasednpolstang",
+			}
+		},
+		{
+			id = 2,
+			header = "Purchase Challenger",
+			txt = "Price: $250.000",
+			params = {
+				event = "drp-garages:Purchasednpolchal",
+			}
+		},
+		{
+			id = 3,
+			header = "Purchase Corvette",
+			txt = "Price: $250.000",
+			params = {
+				event = "drp-garages:Purchasednpolvette",
+			}
+		},
+    }
+end)
+
+RegisterEvent("drp-garages:open:undercover")
+AddEventHandler("drp-garages:open:undercover", function()
+    TriggerEvent('drp-context:sendMenu', {
+		{
+			id = 1,
+			header = "Purchase Undercover Washington",
+			txt = "Price: $80.000",
+			params = {
+				event = "drp-garages:Purchaseducwashington",
+			}
+		},
+        {
+			id = 2,
+			header = "Purchase Undercover Rancher",
+			txt = "Price: $80.000",
+			params = {
+				event = "drp-garages:Purchaseducrancher",
+			}
+		},
+        {
+			id = 3,
+			header = "Purchase Undercover Primo",
+			txt = "Price: $100.000",
+			params = {
+				event = "drp-garages:Purchaseducprimo",
+			}
+		},
+        {
+			id = 4,
+			header = "Purchase Undercover Baller",
+			txt = "Price: $150.000",
+			params = {
+				event = "drp-garages:Purchaseducballer",
+			}
+		},
+        {
+			id = 5,
+			header = "Purchase Undercover Buffalo",
+			txt = "Price: $220.000",
+			params = {
+				event = "drp-garages:Purchaseduccomet",
+			}
+		},
+        {
+			id = 6,
+			header = "Purchase Undercover Coquette",
+			txt = "Price: $230.000",
+			params = {
+				event = "drp-garages:Purchaseduccomet",
+			}
+		},
+        {
+			id = 7,
+			header = "Purchase Undercover Banshee",
+			txt = "Price: $240.000",
+			params = {
+				event = "drp-garages:Purchaseducbanshee",
+			}
+		},
+        {
+			id = 8,
+			header = "Purchase Undercover Comet",
+			txt = "Price: $250.000",
+			params = {
+				event = "drp-garages:Purchaseduccomet",
+			}
+		}
+    }
+end)
+
+RegisterEvent("drp-garages:open:normal")
+AddEventHandler("drp-garages:open:normal", function()
+    TriggerEvent('drp-context:sendMenu', {
+		{
+			id = 1,
+			header = "Purchase Crown Victoria",
+			txt = "Price: $80.000",
+			params = {
+				event = "drp-garages:PurchasedVic",
+			}
+		},
+    }
+end)
+
+
 
 RegisterNetEvent('drp-garages:openBuyMenu2')
 AddEventHandler('drp-garages:openBuyMenu2', function()
@@ -82,13 +228,43 @@ end)
 
 RegisterNetEvent('drp-garages:PurchasedVic')
 AddEventHandler('drp-garages:PurchasedVic', function()
-    if exports["isPed"]:isPed("mycash") >= 80000 then
-        TriggerServerEvent('drp-banking:removeMoney', 80000)
-        TriggerEvent('drp-garages:PurchasedVeh', 'Police Vic', 'npolvic', '80000')
+    local price = 80000
+    buyCar("npolvic", price)
+end)
+
+RegisterNetEvent('drp-garages:Purchasednpolvette')
+AddEventHandler('drp-garages:Purchasednpolvette', function()
+    local price = 250000
+    buyCar("npolvette", price)
+end)
+
+RegisterNetEvent('drp-garages:Purchasednpolstang')
+AddEventHandler('drp-garages:Purchasednpolstang', function()
+    local price = 250000
+    buyCar("npolstang", price)
+end)
+
+RegisterNetEvent('drp-garages:Purchasednpolchal')
+AddEventHandler('drp-garages:Purchasednpolchal', function()
+    local price = 250000
+    buyCar("npolchal", price)
+end)
+
+RegisterNetEvent('drp-garages:Purchasednpolchal')
+AddEventHandler('drp-garages:Purchasednpolchal', function()
+    local price = 250000
+    buyCar("npolchal", price)
+end)
+
+
+function buyCar(model, price)
+    if exports["isPed"]:isPed("mycash") >= price then
+        TriggerServerEvent('drp-banking:removeMoney', price)
+        TriggerEvent('drp-garages:PurchasedVeh', model, model, price)
     else
         TriggerEvent('DoLongHudText', "You do not have enough money!", 2)
     end
-end)
+end
     
 
 RegisterNetEvent('drp-garages:PurchasedVeh')

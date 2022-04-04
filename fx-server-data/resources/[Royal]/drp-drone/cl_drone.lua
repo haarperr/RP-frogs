@@ -35,9 +35,7 @@ Citizen.CreateThread(function()
             if GetVehicleEngineHealth(drone) <= 50 or GetVehicleBodyHealth <= 50 or GetVehicleWheelHealth <= 50 then
                 SetPlayerInvincible(GetPlayerPed(-1), false)
                 -- remove drone
-                SetVehicleAsNoLongerNeeded(drone)
-                DeleteVehicle(drone)
-                DeleteEntity(drone)
+                DeleteVehicle(GetPlayersLastVehicle())
                 isInDrone = false
                 drone = nil
                 -- teleport ped back to where he entered
@@ -51,10 +49,11 @@ Citizen.CreateThread(function()
             -- if player is not in drone
             if not IsPedInAnyVehicle(GetPlayerPed(-1), false) then
                 SetPlayerInvincible(GetPlayerPed(-1), false)
+                
                 -- remove drone
                 SetVehicleAsNoLongerNeeded(drone)
-                DeleteVehicle(drone)
-                DeleteEntity(drone)
+                
+                DeleteVehicle(GetPlayersLastVehicle())
                 isInDrone = false
                 drone = nil
                 -- teleport ped back to where he entered
