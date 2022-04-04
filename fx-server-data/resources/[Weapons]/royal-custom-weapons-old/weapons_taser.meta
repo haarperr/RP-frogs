@@ -70,7 +70,7 @@
           <Group>GROUP_STUNGUN</Group>
           <AmmoInfo ref="AMMO_TASER" />
           <AimingInfo ref="PISTOL_2H_BASE_STRAFE" />
-          <ClipSize value="1" />
+          <ClipSize value="2" />
           <AccuracySpread value="1.000000" />
           <AccurateModeAccuracyModifier value="0.500000" />
           <RunAndGunAccuracyModifier value="2.000000" />
@@ -147,7 +147,7 @@
           <VehicleReloadTime value="6.000000" />
           <AnimReloadRate value="0.400000" />
           <BulletsPerAnimLoop value="1" />
-          <TimeBetweenShots value="3.000000" />
+          <TimeBetweenShots value="5.000000" />
           <TimeLeftBetweenShotsWhereShouldFireIsCached value="-1.000000" />
           <SpinUpTime value="0.000000" />
           <SpinTime value="0.000000" />
