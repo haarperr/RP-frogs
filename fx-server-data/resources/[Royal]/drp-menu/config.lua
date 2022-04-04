@@ -1801,7 +1801,6 @@ local approvedGarages = {
     "garaget",
     "garageu",
     "garagepd",
-    "garagepdoutside"
     "garage_mrpdheli",
     "garagesandy",
     "garagestate",

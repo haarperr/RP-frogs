@@ -32,39 +32,6 @@ RPC.register("drp-garages:selectMenu", function(pGarage, pJob)
 				},
 			})
 		end
-
-	elseif pGarage == 'garagepdoutside' then
-		if pJob == 'police' or pJob == 'state' or pJob == 'sheriff' then
-			TriggerClientEvent('drp-context:sendMenu', pSrc, {
-				{
-					id = 1,
-					header = "Shared Vehicles",
-					txt = "List of all the shared vehicles.",
-					params = {
-						event = "drp-garages:openSharedGarage"
-					}
-				},
-				{
-					id = 2,
-					header = "Personal Vehicles",
-					txt = "List of all the personal vehicles.",
-					params = {
-						event = "drp-garages:openPersonalGarage"
-					}
-				},
-			})
-		else
-			TriggerClientEvent('drp-context:sendMenu', pSrc, {
-				{
-					id = 1,
-					header = "Personal Vehicles",
-					txt = "List of all the personal vehicles.",
-					params = {
-						event = "drp-garages:openPersonalGarage"
-					}
-				},
-			})
-		end
 	
 	elseif pGarage == 'garageems' then
 		if pJob == 'ems' then

@@ -192,12 +192,8 @@ Config.Zones = {
 			maxZ=28.7
   		}),
 
-		BoxZone:Create(vector3(442.64, -1025.73, 28.71), 7.5, 25, {
-		name="garagepdoutside",
-		heading=0,
-		--debugPoly=true
-		})
-		
+
+
 
 		  
 		BoxZone:Create(vector3(1850.4, 3674.66, 33.77), 5.0, 12.2, {  -- Far right side from sandy pd
