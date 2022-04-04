@@ -3265,11 +3265,11 @@ itemList['kennyred'] = {
   decayrate: 0.0,
   displayname: 'Kenny Red',
   price: 1,
-  weight: 0,
+  weight: 5,
   nonStack: false,
   model: '',
   image: 'kennyred.png',
-  information: 'No crime just wine',
+  information: '"All you need is ERP and wine."',
 };
 
 itemList['rum'] = {
@@ -9757,11 +9757,11 @@ itemList['kennywhite'] = {
   decayrate: 0.0,
   displayname: 'Kenny White',
   price: 1,
-  weight: 0,
+  weight: 5,
   nonStack: false,
   model: '',
   image: 'kennywhite.png',
-  information: 'Made from real crime free grapes',
+  information: '"All you need is ERP and wine."',
 };
 
 itemList['wineglassf'] = {

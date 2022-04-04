@@ -69,6 +69,15 @@ AddEventHandler('coffee:drink', function()
 
 end)
 
+RegisterNetEvent('drinkwine')
+AddEventHandler('drinkwine', function()
+        TriggerEvent("Evidence:StateSet",27,6000) -- Coffee Effect
+        SetPlayerMaxArmour(PlayerId(), 100 ) -- Armor
+        SetPedArmour( player, 100 )
+        TriggerEvent("drp-hud:updateStress",false,300)  -- Stress Relief
+        
+end)
+
 
 -- command is something we do in the loop if we want to disable more, IE a vehicle engine.
 -- return true or false, if false, gives the % completed.

@@ -628,6 +628,26 @@ attachPropList = {
 		["yR"] = 0.0,
 		["zR"] = 0.0
 	},
+	["wineglassw"] = {
+		["model"] = "prop_drink_whtwine",
+		["bone"] = 28422,
+		["x"] = 0.0,
+		["y"] = 0.0,
+		["z"] = 0.0,
+		["xR"] = 0.0,
+		["yR"] = 0.0,
+		["zR"] = 0.0
+	},
+	["wineglassr"] = {
+		["model"] = "prop_drink_redwine",
+		["bone"] = 28422,
+		["x"] = 0.0,
+		["y"] = 0.0,
+		["z"] = 0.0,
+		["xR"] = 0.0,
+		["yR"] = 0.0,
+		["zR"] = 0.0
+	},
 	["shotglass"] = {
 		["model"] = "prop_shots_glass_cs",
 		["bone"] = 28422,
