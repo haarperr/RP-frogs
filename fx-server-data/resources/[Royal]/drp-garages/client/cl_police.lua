@@ -85,6 +85,14 @@ AddEventHandler("drp-garages:open:normal", function()
     TriggerEvent('drp-context:sendMenu', {
 		{
 			id = 1,
+			header = "<- Go back",
+			txt = "",
+			params = {
+				event = "drp-garages:openBuyMenu"
+			}
+		},
+		{
+			id = 2,
 			header = "Purchase Crown Victoria",
 			txt = "Price: $80.000",
 			params = {
@@ -92,7 +100,7 @@ AddEventHandler("drp-garages:open:normal", function()
 			}
 		},
 		{
-			id = 2,
+			id = 3,
 			header = "Purchase Explorer",
 			txt = "Price: $80.000",
 			params = {
@@ -100,7 +108,7 @@ AddEventHandler("drp-garages:open:normal", function()
 			}
 		},
 		{
-			id = 3,
+			id = 4,
 			header = "Purchase Police Bike",
 			txt = "Price: $100.000",
 			params = {
@@ -108,7 +116,7 @@ AddEventHandler("drp-garages:open:normal", function()
 			}
 		},
 		{
-			id = 3,
+			id = 5,
 			header = "Purchase Dodge Charger",
 			txt = "Price: $150.000",
 			params = {
@@ -123,6 +131,14 @@ AddEventHandler("drp-garages:open:interceptor", function()
     TriggerEvent('drp-context:sendMenu', {
 		{
 			id = 1,
+			header = "<- Go back",
+			txt = "",
+			params = {
+				event = "drp-garages:openBuyMenu"
+			}
+		},
+		{
+			id = 2,
 			header = "Purchase Mustang",
 			txt = "Price: $250.000",
 			params = {
@@ -130,7 +146,7 @@ AddEventHandler("drp-garages:open:interceptor", function()
 			}
 		},
 		{
-			id = 2,
+			id = 3,
 			header = "Purchase Challenger",
 			txt = "Price: $250.000",
 			params = {
@@ -138,7 +154,7 @@ AddEventHandler("drp-garages:open:interceptor", function()
 			}
 		},
 		{
-			id = 3,
+			id = 4,
 			header = "Purchase Corvette",
 			txt = "Price: $250.000",
 			params = {
@@ -153,6 +169,14 @@ AddEventHandler("drp-garages:open:undercover", function()
     TriggerEvent('drp-context:sendMenu', {
 		{
 			id = 1,
+			header = "<- Go back",
+			txt = "",
+			params = {
+				event = "drp-garages:openBuyMenu"
+			}
+		},
+		{
+			id = 2,
 			header = "Purchase Undercover Washington",
 			txt = "Price: $80.000",
 			params = {
@@ -160,7 +184,7 @@ AddEventHandler("drp-garages:open:undercover", function()
 			}
 		},
         {
-			id = 2,
+			id = 3,
 			header = "Purchase Undercover Rancher",
 			txt = "Price: $80.000",
 			params = {
@@ -168,7 +192,7 @@ AddEventHandler("drp-garages:open:undercover", function()
 			}
 		},
         {
-			id = 3,
+			id = 4,
 			header = "Purchase Undercover Primo",
 			txt = "Price: $100.000",
 			params = {
@@ -176,7 +200,7 @@ AddEventHandler("drp-garages:open:undercover", function()
 			}
 		},
         {
-			id = 4,
+			id = 5,
 			header = "Purchase Undercover Baller",
 			txt = "Price: $150.000",
 			params = {
@@ -184,7 +208,7 @@ AddEventHandler("drp-garages:open:undercover", function()
 			}
 		},
         {
-			id = 5,
+			id = 6,
 			header = "Purchase Undercover Buffalo",
 			txt = "Price: $220.000",
 			params = {
@@ -192,7 +216,7 @@ AddEventHandler("drp-garages:open:undercover", function()
 			}
 		},
         {
-			id = 6,
+			id = 7,
 			header = "Purchase Undercover Coquette",
 			txt = "Price: $230.000",
 			params = {
@@ -200,7 +224,7 @@ AddEventHandler("drp-garages:open:undercover", function()
 			}
 		},
         {
-			id = 7,
+			id = 8,
 			header = "Purchase Undercover Banshee",
 			txt = "Price: $240.000",
 			params = {
@@ -208,7 +232,7 @@ AddEventHandler("drp-garages:open:undercover", function()
 			}
 		},
         {
-			id = 8,
+			id = 9,
 			header = "Purchase Undercover Comet",
 			txt = "Price: $250.000",
 			params = {
@@ -223,6 +247,14 @@ AddEventHandler('drp-garages:open:others', function()
 	TriggerEvent('drp-context:sendMenu', {
         {
 			id = 1,
+			header = "<- Go back",
+			txt = "",
+			params = {
+				event = "drp-garages:openBuyMenu"
+			}
+		},
+        {
+			id = 2,
 			header = "Purchase Police Helicopter",
 			txt = "$450.000",
 			params = {
@@ -230,7 +262,7 @@ AddEventHandler('drp-garages:open:others', function()
 			}
 		},
 		{
-			id = 2,
+			id = 3,
 			header = "Purchase Ranger Quad",
 			txt = "$50.000",
 			params = {
