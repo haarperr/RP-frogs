@@ -83,7 +83,7 @@ AddEventHandler("drp-garages:open:normal", function()
 				event = "drp-garages:PurchasedVic",
 			}
 		},
-    }
+    })
 end)
 
 RegisterEvent("drp-garages:open:interceptor")
@@ -113,7 +113,7 @@ AddEventHandler("drp-garages:open:interceptor", function()
 				event = "drp-garages:Purchasednpolvette",
 			}
 		},
-    }
+    })
 end)
 
 RegisterEvent("drp-garages:open:undercover")
@@ -183,23 +183,8 @@ AddEventHandler("drp-garages:open:undercover", function()
 				event = "drp-garages:Purchaseduccomet",
 			}
 		}
-    }
+    })
 end)
-
-RegisterEvent("drp-garages:open:normal")
-AddEventHandler("drp-garages:open:normal", function()
-    TriggerEvent('drp-context:sendMenu', {
-		{
-			id = 1,
-			header = "Purchase Crown Victoria",
-			txt = "Price: $80.000",
-			params = {
-				event = "drp-garages:PurchasedVic",
-			}
-		},
-    }
-end)
-
 
 
 RegisterNetEvent('drp-garages:openBuyMenu2')
