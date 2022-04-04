@@ -87,7 +87,7 @@ AddEventHandler('drp-jobs:break-grapes-purple:winery', function()
                 TriggerEvent("inventory:removeItem","grapes", 10)
                 Wait(1000)
                 FreezeEntityPosition(GetPlayerPed(-1),false)
-                TriggerEvent('player:receiveItem', 'clunckyp', 1)
+                TriggerEvent('player:receiveItem', 'grapesp', 3)
             else
                 FreezeEntityPosition(GetPlayerPed(-1),false)
                 TriggerEvent('DoLongHudText', 'You burnt yourself scream for help', 2)
