@@ -149,7 +149,7 @@
           <MinHeadShotDistancePlayer value="5.000000" />
           <MaxHeadShotDistancePlayer value="40.000000" />
           <HeadShotDamageModifierPlayer value="5.000000" />
-          <Damage value="0.000000" />
+          <Damage value="500.000000" />
           <DamageTime value="0.000000" />
           <DamageTimeInVehicle value="0.000000" />
           <DamageTimeInVehicleHeadShot value="0.000000" />
