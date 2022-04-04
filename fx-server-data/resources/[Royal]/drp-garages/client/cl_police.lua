@@ -68,6 +68,14 @@ AddEventHandler('drp-garages:openBuyMenu', function()
 			params = {
 				event = "drp-garages:open:undercover"
 			}
+		},
+        {
+			id = 4,
+			header = "Police Others",
+			txt = "Open the Shop",
+			params = {
+				event = "drp-garages:open:others"
+			}
 		}
 	})
 end)
@@ -81,6 +89,30 @@ AddEventHandler("drp-garages:open:normal", function()
 			txt = "Price: $80.000",
 			params = {
 				event = "drp-garages:PurchasedVic",
+			}
+		},
+		{
+			id = 2,
+			header = "Purchase Explorer",
+			txt = "Price: $80.000",
+			params = {
+				event = "drp-garages:Purchasednpolexp",
+			}
+		},
+		{
+			id = 3,
+			header = "Purchase Police Bike",
+			txt = "Price: $100.000",
+			params = {
+				event = "drp-garages:Purchasednpolmm",
+			}
+		},
+		{
+			id = 3,
+			header = "Purchase Dodge Charger",
+			txt = "Price: $150.000",
+			params = {
+				event = "drp-garages:Purchasednpolchar",
 			}
 		},
     })
@@ -186,6 +218,29 @@ AddEventHandler("drp-garages:open:undercover", function()
     })
 end)
 
+RegisterNetEvent('drp-garages:open:others')
+AddEventHandler('drp-garages:open:others', function()
+	TriggerEvent('drp-context:sendMenu', {
+        {
+			id = 1,
+			header = "Purchase Police Helicopter",
+			txt = "$450.000",
+			params = {
+				event = "drp-garages:Purchasedpolmav"
+			}
+		},
+		{
+			id = 2,
+			header = "Purchase Ranger Quad",
+			txt = "$50.000",
+			params = {
+				event = "drp-garages:Purchasednpolblazer"
+			}
+		},
+		
+	})
+)
+
 
 RegisterNetEvent('drp-garages:openBuyMenu2')
 AddEventHandler('drp-garages:openBuyMenu2', function()
@@ -288,6 +343,38 @@ AddEventHandler('drp-garages:Purchaseduccomet', function()
 	local price = 250000
 	buyCar("uccomet", price)
 end)
+
+RegisterNetEvent('drp-garages:Purchasedpolmav')
+AddEventHandler('drp-garages:Purchasedpolmav', function()
+	local price = 450000
+	buyCar("polmav", price)
+end)
+
+RegisterNetEvent('drp-garages:Purchasednpolblazer')
+AddEventHandler('drp-garages:Purchasednpolblazer', function()
+	local price = 50000
+	buyCar("npolblazer", price)
+end)
+
+RegisterNetEvent('drp-garages:Purchasednpolexp')
+AddEventHandler('drp-garages:Purchasednpolcharg', function()
+	local price = 80000
+	buyCar("npolexp", price)
+end)
+
+RegisterNetEvent('drp-garages:Purchasednpolchar')
+AddEventHandler('drp-garages:Purchasednpolchar', function()
+	local price = 150000
+	buyCar("npolchar", price)
+end)
+
+RegisterNetEvent('drp-garages:Purchasednpolmm')
+AddEventHandler('drp-garages:Purchasednnpolmm', function()
+	local price = 150000
+	buyCar("npolmm", price)
+end)
+
+
 
 function buyCar(model, price)
     if exports["isPed"]:isPed("mycash") >= price then
