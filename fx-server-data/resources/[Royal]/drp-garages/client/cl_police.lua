@@ -236,10 +236,9 @@ AddEventHandler('drp-garages:open:others', function()
 			params = {
 				event = "drp-garages:Purchasednpolblazer"
 			}
-		},
-		
+		}	
 	})
-)
+end)
 
 
 RegisterNetEvent('drp-garages:openBuyMenu2')
