@@ -3260,10 +3260,10 @@ itemList['cabsinthe'] = {
   information: 'Duuude..bro...',
 };
 
-itemList['redwine'] = {
+itemList['kennyred'] = {
   fullyDegrades: false,
   decayrate: 0.0,
-  displayname: 'Red Wine',
+  displayname: 'Kenny Red',
   price: 1,
   weight: 0,
   nonStack: false,
