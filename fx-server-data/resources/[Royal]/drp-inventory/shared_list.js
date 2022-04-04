@@ -3268,7 +3268,7 @@ itemList['kennyred'] = {
   weight: 0,
   nonStack: false,
   model: '',
-  image: 'np_red-wine-bottle.png',
+  image: 'kennyred.png',
   information: 'No crime just wine',
 };
 
@@ -9752,15 +9752,15 @@ itemList['whitepearl'] = {
   image: 'np_white-pearl.png',
 };
 
-itemList['whitewine'] = {
+itemList['kennywhite'] = {
   fullyDegrades: false,
   decayrate: 0.0,
-  displayname: 'White Wine',
+  displayname: 'Kenny White',
   price: 1,
   weight: 0,
   nonStack: false,
   model: '',
-  image: 'np_white-wine-bottle.png',
+  image: 'kennywhite.png',
   information: 'Made from real crime free grapes',
 };
 
