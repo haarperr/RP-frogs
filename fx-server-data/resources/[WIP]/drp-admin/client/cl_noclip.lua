@@ -202,5 +202,5 @@ RegisterCommand("+addAdminNoClip", function()
 RegisterCommand("-addAdminNoClip", function() end, false)
 
 Citizen.CreateThread(function()
-  exports["drp-keybinds"]:registerKeyMapping("", "Admin", "NoClip", "+addAdminNoClip", "-addAdminNoClip")
+  exports["drp-binds"]:registerKeyMapping("", "Admin", "NoClip", "+addAdminNoClip", "-addAdminNoClip")
 end)

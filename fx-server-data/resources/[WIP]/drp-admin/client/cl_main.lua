@@ -660,5 +660,5 @@ RegisterCommand("+addAdminMenu", function()
 RegisterCommand("-addAdminMenu", function() end, false)
 
 Citizen.CreateThread(function()
-  exports["drp-keybinds"]:registerKeyMapping("", "Admin", "Open Menu", "+addAdminMenu", "-addAdminMenu")
+  exports["drp-binds"]:registerKeyMapping("", "Admin", "Open Menu", "+addAdminMenu", "-addAdminMenu")
 end)
