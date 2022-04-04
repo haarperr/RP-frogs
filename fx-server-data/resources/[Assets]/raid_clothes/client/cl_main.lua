@@ -1279,10 +1279,10 @@ AddEventHandler('raid_clothes:ListOutfits', function(skincheck)
         }
     end
     if #menuData >= 0 then
-        if #menuData < 10 then
+        if #menuData < 20 then
             --Find first empty slot
             local emptySlot = -1
-            for i=1,10 do
+            for i=1,20 do
                 if emptySlot == -1 and takenSlots[i] == nil then
                     emptySlot = i
                 end

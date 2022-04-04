@@ -44,7 +44,7 @@
           <AmmoMax100MP value="999" />
           <AmmoFlags>InfiniteAmmo</AmmoFlags>
           <AmmoSpecialType>None</AmmoSpecialType>
-          <Damage value="10.000000" />
+          <Damage value="5.000000" />
           <LifeTime value="5.000000" />
           <FromVehicleLifeTime value="0.500000" />
           <LifeTimeAfterImpact value="0.000000" />

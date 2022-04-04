@@ -393,6 +393,7 @@ local outfitPlaces = {
   vector3(1113.89, 248.44, -45.84), -- Casino Office
   vector3(350.92, 3568.95, 22.79), -- Starscream lab
   vector3(2296.24, 4850.33, 33.91), -- Optimus Prime lab
+  vector3(459.4229, -998.9232, 30.6848), -- MRPD
 }
 function nearClothing()
 
@@ -413,7 +414,7 @@ function nearClothing()
     end
 
     local myjob = exports["isPed"]:isPed("myjob")
-    if myjob == "police" or myjob == "ems" or myjob == "doctor" or myjob == "sheriff" or myjob == "state" then
+    if myjob == "police" or myjob == "ems" or myjob == "doctor" or myjob == "sheriff" or myjob == "state" or myjob == "judge" then
         return true
     end
     
@@ -423,6 +424,7 @@ function nearClothing()
 
     return false
 end
+
 
 
 RegisterNetEvent('hotel:outfit')

@@ -351,7 +351,6 @@ RegisterCommand("saveoutfits", function(source,args,raw)
     TriggerClientEvent("hotel:outfit", source,args,1)
 end)
 
-
 ------ WIP----
 -- RPC.register("raid_clothes:get_custom_outfits",function(pSource)
 --     local src = source

@@ -46,7 +46,7 @@
           <AmmoMax50MP value="1" />
           <AmmoMax100MP value="1" />
           <AmmoFlags>FixedAfterExplosion</AmmoFlags>
-          <Damage value="15.000000" />
+          <Damage value="20.000000" />
           <LifeTime value="10.000000" />
           <FromVehicleLifeTime value="10.000000" />
           <LifeTimeAfterImpact value="10.000000" />

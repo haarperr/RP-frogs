@@ -96,18 +96,26 @@ AddEventHandler('paycheck:server:send', function(cid)
 		if job == "unemployed" then -- Bum Jobs 
 			TriggerEvent("paycheck:server:add", src, cid, 50)
 		elseif job == "police" then -- Police
-			TriggerEvent("paycheck:server:add", src, cid, 400)
+			TriggerEvent("paycheck:server:add", src, cid, 425)
 		elseif job == "sheriff" then -- Police
-			TriggerEvent("paycheck:server:add", src, cid, 400)
-		elseif job == "towunion" then -- Police
+			TriggerEvent("paycheck:server:add", src, cid, 425)
+		elseif job == "towunion" then -- Tow
 			TriggerEvent("paycheck:server:add", src, cid, 150)
 		elseif job == "best_buds" or job == "burger_shot" or job == "bean_machine" or job == "vanilla_unicorn" then -- Civ Jobs
 			TriggerEvent("paycheck:server:add", src, cid, 100)
 		elseif job == "auto_bodies" or job == "tuner_shop" or job == "paleto_mech" or job == "auto_exotics" or job == "car_shop" then -- Mechanic Shops
 			TriggerEvent("paycheck:server:add", src, cid, 100)
 		elseif job == "ems" then -- EMS
-			TriggerEvent("paycheck:server:add", src, cid, 400)
+			TriggerEvent("paycheck:server:add", src, cid, 500)
 		elseif job == 'doj' then -- doj
+			TriggerEvent("paycheck:server:add", src, cid, 525)
+		elseif job == 'state' then -- state
+			TriggerEvent("paycheck:server:add", src, cid, 525)
+		elseif job == 'judge' then -- judge
+			TriggerEvent("paycheck:server:add", src, cid, 525)
+		elseif job == 'public_defender' then -- public defender
+			TriggerEvent("paycheck:server:add", src, cid, 450)
+		elseif job == 'district_attorney' then -- district attorney
 			TriggerEvent("paycheck:server:add", src, cid, 450)
 		end
 		
