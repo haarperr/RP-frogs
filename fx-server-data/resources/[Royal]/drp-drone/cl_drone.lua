@@ -32,7 +32,7 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(3)
         if isInDrone then
-            if GetVehicleEngineHealth(drone) <= 250 then
+            if GetVehicleEngineHealth(drone) <= 50 or GetVehicleBodyHealth <= 50 or GetVehicleWheelHealth <= 50 then
                 SetPlayerInvincible(GetPlayerPed(-1), false)
                 -- remove drone
                 SetVehicleAsNoLongerNeeded(drone)
