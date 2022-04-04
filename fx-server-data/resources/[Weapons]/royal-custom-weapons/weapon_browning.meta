@@ -203,9 +203,9 @@
           <RumbleIntensityFps value="0.700000" />
           <NetworkPlayerDamageModifier value="1.000000" />
           <NetworkPedDamageModifier value="1.000000" />
-          <NetworkHeadShotPlayerDamageModifier value="2.000000" />
+          <NetworkHeadShotPlayerDamageModifier value="1.750000" />
           <LockOnRange value="55.000000" />
-          <WeaponRange value="145.000000" />
+          <WeaponRange value="140.000000" />
           <BulletDirectionOffsetInDegrees value="0.000000" />
           <BulletDirectionPitchOffset value="0.000000" />
           <BulletDirectionPitchHomingOffset value="0.000000" />
