@@ -68,11 +68,11 @@ AddEventHandler('drp-garages:openBuyMenu', function()
 			params = {
 				event = "drp-garages:open:undercover"
 			}
-		},
+		}
 	})
 end)
 
-RegisterEvent("drp-garages:open:normal")
+RegisterNetEvent("drp-garages:open:normal")
 AddEventHandler("drp-garages:open:normal", function()
     TriggerEvent('drp-context:sendMenu', {
 		{
@@ -86,7 +86,7 @@ AddEventHandler("drp-garages:open:normal", function()
     })
 end)
 
-RegisterEvent("drp-garages:open:interceptor")
+RegisterNetEvent("drp-garages:open:interceptor")
 AddEventHandler("drp-garages:open:interceptor", function()
     TriggerEvent('drp-context:sendMenu', {
 		{
@@ -116,7 +116,7 @@ AddEventHandler("drp-garages:open:interceptor", function()
     })
 end)
 
-RegisterEvent("drp-garages:open:undercover")
+RegisterNetEvent("drp-garages:open:undercover")
 AddEventHandler("drp-garages:open:undercover", function()
     TriggerEvent('drp-context:sendMenu', {
 		{
