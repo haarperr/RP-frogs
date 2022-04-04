@@ -11,13 +11,13 @@ files {
 }
 
 server_scripts {
-    "@np-lib/server/sv_rpc.lua",
+    "@drp-lib/server/sv_rpc.lua",
     "server/sv_*.lua"
 }
 
 client_script {
-    "@np-lib/client/cl_ui.lua",
-    "@np-lib/client/cl_rpc.lua",
+    "@drp-lib/client/cl_ui.lua",
+    "@drp-lib/client/cl_rpc.lua",
     "client/cl_*.lua",
 }
 
