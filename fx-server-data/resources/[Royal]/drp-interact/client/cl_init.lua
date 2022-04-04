@@ -2893,16 +2893,10 @@ Citizen.CreateThread(function()
             event = "drp-jobs:break-grapes-purple:winery",
             id = "break_grapes_red",
             icon = "wine-glass-alt",
-            label = "Break down purple grapes",
-            parameters = {},
-        },
-        {
-            event = "drp-jobs:break-grapes-green:winery",
-            id = "break_grapes_green",
-            icon = "wine-glass-alt",
-            label = "Break down green grapes",
+            label = "Break down grapes",
             parameters = {},
         }
+       
     }, {
         distance = { radius = 2.5 },
     });

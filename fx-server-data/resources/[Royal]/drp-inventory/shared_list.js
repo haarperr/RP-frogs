@@ -2496,6 +2496,23 @@ itemList['grapes'] = {
   foodEnhancementFromMeta: false,
 };
 
+itemList['grapesp'] = {
+  fullyDegrades: false,
+  illegal: false,
+  decayrate: 0.75,
+  displayname: 'Grapes (Processed)',
+  price: 5,
+  weight: 1,
+  nonStack: false,
+  model: '',
+  image: 'np_grapesp.png',
+  information: '',
+  foodCategory: ['sugar'],
+  foodEnhancement: 1.0,
+  foodEnhancementFromMeta: false,
+};
+
+
 itemList['kiwi'] = {
   fullyDegrades: false,
   illegal: false,
@@ -9747,7 +9764,7 @@ itemList['whitewine'] = {
   information: 'Made from real crime free grapes',
 };
 
-itemList['wineglass'] = {
+itemList['wineglassf'] = {
   fullyDegrades: false,
   decayrate: 0.0,
   displayname: 'Glass of Wine',
@@ -19798,6 +19815,30 @@ itemList['wineglass'] = {
   model: '',
   image: 'np_wineglass_empty.png',
   information: 'Needs to be filled with something',
+};
+
+itemList['whitewineglass'] = {
+  fullyDegrades: false,
+  decayrate: 0.0,
+  displayname: 'Glass of White Wine',
+  price: 20,
+  weight: 1,
+  nonStack: false,
+  model: '',
+  image: 'whitewineglass.png',
+  information: 'A Glass of White Wine',
+};
+
+itemList['redwineglass'] = {
+  fullyDegrades: false,
+  decayrate: 0.0,
+  displayname: 'Glass of Red Wine',
+  price: 20,
+  weight: 1,
+  nonStack: false,
+  model: '',
+  image: 'np_wineglass_full.png',
+  information: 'A Glass of Red Wine',
 };
 
 itemList['winemilkshake'] = {

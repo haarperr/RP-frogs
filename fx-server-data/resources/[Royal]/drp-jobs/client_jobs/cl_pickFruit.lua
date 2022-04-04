@@ -55,9 +55,9 @@ AddEventHandler('drp-jobs:startpick', function()
                             local chance = math.random(0, 1)
                             FreezeEntityPosition(ped,false)
                             if chance == 0 then
-                                TriggerEvent('player:receiveItem', 'green_grapes')
+                                TriggerEvent('player:receiveItem', 'grapes')
                             elseif chance == 1 then 
-                                TriggerEvent('player:receiveItem', 'purple_grapes')
+                                TriggerEvent('player:receiveItem', 'grapes')
                             end
                         else
                             FreezeEntityPosition(ped,false)
