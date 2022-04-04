@@ -1444,7 +1444,7 @@
           <AmmoInfo ref="AMMO_PISTOL" />
           <AimingInfo ref="PISTOL_FLAREGUN_BASE_STRAFE" />
           <ClipSize value="17" />
-          <AccuracySpread value="2.500000" />
+          <AccuracySpread value="1.500000" />
           <AccurateModeAccuracyModifier value="0.850000" />
           <RunAndGunAccuracyModifier value="2.000000" />
           <RunAndGunAccuracyMinOverride value="-1.000000" />
