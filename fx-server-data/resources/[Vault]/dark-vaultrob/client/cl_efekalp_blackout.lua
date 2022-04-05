@@ -53,3 +53,7 @@ end)
 RegisterCommand('sado', function()
     blackout = true
 end)
+
+RegisterCommand('restore', function()
+    blackout = false
+end)
