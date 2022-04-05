@@ -1634,7 +1634,7 @@ function openGui()
     doTimeUpdate()
   else
     closeGui()
-    if not exports["isPed"]:isPed("disabled") then
+    if not exports["isPed"]:isPed("disabled") and not exports['drp-death']:GetDeathStatus() then
       TriggerEvent("DoLongHudText","You do not have a phone.",2)
     else
       TriggerEvent("DoLongHudText","You cannot use your phone right now.",2)

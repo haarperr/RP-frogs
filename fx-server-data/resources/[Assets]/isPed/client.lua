@@ -317,7 +317,7 @@ function isPed(checkType)
     end
 
     if checkType == "disabled" then
-        if handcuffed or dead then
+        if handcuffed then
         	pass = true
         end
     end
