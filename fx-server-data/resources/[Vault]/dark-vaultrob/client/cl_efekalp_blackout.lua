@@ -4,7 +4,7 @@ AddEventHandler('efe:explotiontype', function()
     if #(vector3(712.9213, 164.0436, 80.754) - GetEntityCoords(PlayerPedId())) <= 20 and not blackout then
         blackout = true
         TriggerServerEvent('efe:server:elektrikkes', true)
-        Wait(900000) -- 15 min
+        Wait(60) -- 15 min
         TriggerServerEvent('efe:server:elektrikkes', false)
         print(blackout)
     end
