@@ -2,7 +2,7 @@ is_corner_selling = false
 currently_selling = nil
 
 drugs_wanted = {
-    -- "weedq",
+    "weedq",
     "oxy",
     "methlabproduct"
 }
@@ -112,7 +112,7 @@ function sell_items()
                 local sellableItems = {
                     [1] = {name = 'oxy', amount = math.random(3,8), price=math.random(80,120)},
                     [2] = {name = 'methlabproduct', amount = math.random(1,5), price=math.random(450, 575)},
-                  --  [3] = {name = 'weedq', amount = math.random(3,10), price=420},  not enough weed in the game to have it in the table right now
+                    [3] = {name = 'weedq', amount = math.random(3,10), price=420}, 
                 }
 
                 local pog = false
@@ -128,7 +128,7 @@ function sell_items()
                         pog = true
                         break
                     else
-                        TriggerEvent("DoLongHudText", "Not enough product homie!", 2)
+                        TriggerEvent("DoLongHudText", "You dont got what I want!", 2)
                     end
                 end
                 if math.random(1, 100) >= 20 then
