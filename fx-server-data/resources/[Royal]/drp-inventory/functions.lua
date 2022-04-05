@@ -945,7 +945,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
             if itemid == "vodka" or itemid == "whiskey" or itemid == "yamazaki" or itemid == "shochu" then alcoholStrength = 1.0 end
             if itemid == "absinthe" then alcoholStrength = 2.5 end
             if itemid == "moonshine" or itemid == "redwineglass" or itemid == "whitewineglass" then 
-                alcoholStrength = 2.0
+                alcoholStrength = 0.7
             end
             if itemid == "drink1" or itemid == "drink2" or itemid == "drink3" or itemid == "drink4" or itemid == "drink5" or itemid == "drink6"
             or itemid == "drink7" or itemid == "drink8" or itemid == "drink9" or itemid == "drink10" then
@@ -1055,6 +1055,11 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
 
     if (itemid == "heistlaptop1") then
         TriggerEvent("dark-vaultrob:lower:firstdoor")
+        
+    end
+
+    if (itemid == "whitewineglass") or (itemid == "redwineglass") then
+        TriggerEvent("drinkwine")
         
     end
 

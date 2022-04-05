@@ -199,6 +199,16 @@ AddEventHandler('drp-jobs:pourWhiteWine', function()
     end
 end)
 
+RegisterNetEvent('drinkwine')
+AddEventHandler('drinkwine', function()
+        TriggerEvent("Evidence:StateSet",27,6000) -- Coffee Effect
+        SetPlayerMaxArmour(PlayerId(), 100 ) -- Armor
+        SetPedArmour( player, 100 )
+        TriggerEvent("drp-hud:updateStress",false,300)  -- Stress Relief
+        
+end)
+
+
 RegisterNetEvent('drp-jobs:pourRedWine')
 AddEventHandler('drp-jobs:pourRedWine', function()
     local rank = exports["isPed"]:GroupRank("winery")
