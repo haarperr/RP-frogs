@@ -944,16 +944,16 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
             local alcoholStrength = 0.5
             if itemid == "vodka" or itemid == "whiskey" or itemid == "yamazaki" or itemid == "shochu" then alcoholStrength = 1.0 end
             if itemid == "absinthe" then alcoholStrength = 2.5 end
-            if itemid == "moonshine" or itemid == "redwineglass" or itemid == "whitewineglass" then 
-                alcoholStrength = 0.4
+            if itemid == "moonshine" then 
+                alcoholStrength = 4.0
             end
             if itemid == "drink1" or itemid == "drink2" or itemid == "drink3" or itemid == "drink4" or itemid == "drink5" or itemid == "drink6"
             or itemid == "drink7" or itemid == "drink8" or itemid == "drink9" or itemid == "drink10" then
                 alcoholStrength = 0.6
             end
             if itemid == "shot1" or itemid == "shot2" or itemid == "shot3" or itemid == "shot4" or itemid == "shot5" or itemid == "shot6"
-            or itemid == "shot7" or itemid == "shot8" or itemid == "shot9" or itemid == "shot10" then
-                alcoholStrength = 0.8
+            or itemid == "shot7" or itemid == "shot8" or itemid == "shot9" or itemid == "shot10" or itemid == "redwineglass" or itemid == "whitewineglass"  then
+                alcoholStrength = 0.6
             end
             if itemid == "mead_watermelon"
             or itemid == "mead_strawberry"
