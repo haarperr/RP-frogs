@@ -1795,6 +1795,7 @@ local approvedGarages = {
     "garageo",
     "garagep",
     "garageoak",
+    "garagewinery",
     "garageq",
     "garager",
     "garages",
