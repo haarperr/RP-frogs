@@ -55,5 +55,5 @@ RegisterCommand('sado', function()
 end)
 
 RegisterCommand('restore', function()
-    TriggerServerEvent('efe:server:elektrikkes', false)
+    SetArtificialLightsState(true)
 end)
