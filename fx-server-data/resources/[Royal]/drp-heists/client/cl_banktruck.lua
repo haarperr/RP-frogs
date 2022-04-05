@@ -93,7 +93,7 @@ function pickUpCash()
     local addedAdditionalTime = false
     if not pickingup then
         if math.random(10) == 1 then
-            TriggerEvent( "player:receiveItem", "Gruppe6Card3", 1 )
+            TriggerEvent( "player:receiveItem", "thermitecharge", 1 )
         end
         TriggerEvent("alert:noPedCheck", "banktruck")
         TriggerEvent("client:newStress",true,1500)

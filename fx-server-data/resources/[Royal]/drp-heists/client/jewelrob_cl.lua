@@ -155,6 +155,10 @@ AddEventHandler("drp-jewelry:removePlease", function()
 	})
 end)
 
+RegisterCommand("jtest", function()
+    TriggerEvent("jewel:startrobberybitch")
+end)
+
 RegisterNetEvent("jewel:startrobberybitch")
 AddEventHandler("jewel:startrobberybitch", function() 
 	TriggerServerEvent('drp-jewelry:getHitSV')
@@ -163,12 +167,12 @@ AddEventHandler("jewel:startrobberybitch", function()
 	Citizen.Wait(1000)
 	local copcount = exports["isPed"]:isPed("countpolice")
 	if copcount >= -1 then 
-		if exports["drp-inventory"]:hasEnoughOfItem("orangelaptop",1,false) then
+		if exports["drp-inventory"]:hasEnoughOfItem("lockpick",1,false) then
 			if jewelryTimesHit2 > jewelryTimesHit then 
 				if jewelryBanksTimes >= 1 then
 					TriggerEvent('drp-robberies:hackinganim', true)
 					Citizen.Wait(7000)
-					exports["drp-hacking"]:StartHacking({
+					exports["drp-heists"]:StartHacking({
 						action = "open",
 						time = 6,
 						amount = 4,
