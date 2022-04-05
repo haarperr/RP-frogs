@@ -168,7 +168,7 @@ AddEventHandler("jewel:startrobberybitch", function()
 	local copcount = exports["isPed"]:isPed("countpolice")
 	if copcount >= -1 then 
 		if exports["drp-inventory"]:hasEnoughOfItem("lockpick",1,false) then
-			if jewelryTimesHit2 > jewelryTimesHit then 
+			--if jewelryTimesHit2 > jewelryTimesHit then 
 				if jewelryBanksTimes >= 1 then
 					TriggerEvent('drp-robberies:hackinganim', true)
 					Citizen.Wait(7000)
@@ -183,9 +183,9 @@ AddEventHandler("jewel:startrobberybitch", function()
 					TriggerEvent('DoLongHudText', 'Tablet is overloaded!', 2)
 					return
 				end
-			else
-				TriggerServerEvent('drp-jewelry:TimePoggers')
-			end
+		--	else
+			--	TriggerServerEvent('drp-jewelry:TimePoggers')
+			--end
 	   	else
 			TriggerEvent('DoLongHudText', 'You do not have the required item to continue!', 2)
 		end
