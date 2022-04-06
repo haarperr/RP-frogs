@@ -619,7 +619,7 @@ AddEventHandler('police:getArrested2', function(cuffer)
 		end
 	end
 
-	if #(GetEntityCoords( layerPedId()) - GetEntityCoords(cuffPed)) < 2.5 and finished ~= 100 then
+	if #(GetEntityCoords( PlayerPedId()) - GetEntityCoords(cuffPed)) < 2.5 and finished ~= 100 then
 		TriggerEvent('InteractSound_CL:PlayOnOne', 'handcuff', 0.4)
 		handcuffType = 16
 		handCuffed = true
