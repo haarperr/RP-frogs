@@ -172,7 +172,7 @@ RPC.register("drp-garages:selectSharedGarage", function(pGarage, pJob)
         if vehicles[1] ~= nil then
             for i = 1, #vehicles do
 				if vehicles[i].vehicle_state ~= "Out" then
-					if pType ~= "law" then
+					if pGarage ~= "garagepd" then
 						TriggerClientEvent('drp-context:sendMenu', pSrc, {
 							{
 								id = vehicles[i].id,
