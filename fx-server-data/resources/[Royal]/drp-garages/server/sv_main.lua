@@ -307,7 +307,8 @@ RPC.register("drp-garages:open:law", function(pGarage, pJob, type)
 			"npolchar",
 			"npolvic",
 			"npolexp",
-			"prangerold"
+			"prangerold",
+			"npolmm"
 		}
 	end
 
