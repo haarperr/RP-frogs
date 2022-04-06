@@ -4189,17 +4189,12 @@ AddEventHandler('veh:repairing', function(inventoryName,slot,itemid)
                     SetVehiclePetrolTankHealth(targetVehicle, 4000.0)
                     
 
-                    if math.random(100) > 95 then
+                    if math.random(100) > 75 then
                         TriggerEvent("inventory:removeItem","repairtoolkit",1)
                     end
-
                 else
-
                     
-
                     if advanced then
-                        
-
                         if GetVehicleEngineHealth(targetVehicle) < 900.0 then
                             SetVehicleEngineHealth(targetVehicle, 1000.0)
                             SetVehicleFixed(targetVehicle, 1000)
