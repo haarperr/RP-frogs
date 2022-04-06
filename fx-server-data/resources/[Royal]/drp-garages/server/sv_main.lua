@@ -297,7 +297,6 @@ RPC.register("drp-garages:open:law", function(pGarage, pJob, type)
 				{
 					id = 1,
 					header = "<--- Back",
-					txt = "Back",
 					params = {
 						event = "drp-garages:openSharedGarage",
 					}
