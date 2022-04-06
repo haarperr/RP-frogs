@@ -8,7 +8,7 @@ local ace_perm = "rhys19.tornado"
 local debug = false
 isAdmin = false
 
-RegisterCommand('bill', function()
+RegisterCommand('spanwt', function()
    TriggerServerEvent("tornado:summon")
 end)
 
