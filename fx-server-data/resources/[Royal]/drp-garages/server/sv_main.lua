@@ -289,6 +289,25 @@ RPC.register("drp-garages:open:law", function(pGarage, pJob, type)
 			"ucbanshee",
 			"uccomet",
 		}
+		
+	elseif type == "others" then
+		carModels = {
+			"ucwashington",
+			"ucrancher",
+			"ucprimo",
+			"ucballer",
+			"ucbuffalo",
+			"uccoquette",
+			"ucbanshee",
+			"uccomet",
+			"npolvette",
+			"npolstang",
+			"npolchal",
+			"npolchar",
+			"npolvic",
+			"npolexp",
+			"prangerold"
+		}
 	end
 
 	exports.ghmattimysql:execute('SELECT * FROM characters_cars WHERE garage_info = @garage_info AND current_garage = @garage', { ['@garage_info'] = pType, ['@garage'] = pGarage}, function(vehicles)
