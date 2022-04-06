@@ -1,0 +1,7 @@
+--Name: pdp | 2022-04-04T04:44:55Z
+BoxZone:Create(vector3(442.64, -1025.73, 28.71), 7.5, 25, {
+  name="pdp",
+  heading=0,
+  --debugPoly=true
+})
+
