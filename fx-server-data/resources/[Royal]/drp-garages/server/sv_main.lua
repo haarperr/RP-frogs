@@ -193,7 +193,7 @@ RPC.register("drp-garages:selectSharedGarage", function(pGarage, pJob)
 						}
 					}
 
-					if pType != "law" then
+					if pType ~= "law" then
 						TriggerClientEvent('drp-context:sendMenu', pSrc, {
 							{
 								id = vehicles[i].id,
