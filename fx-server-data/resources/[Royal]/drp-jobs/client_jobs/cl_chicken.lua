@@ -192,14 +192,14 @@ AddEventHandler("drp-civjobs:process-alive_chicken", function(position)
 					if exports["drp-inventory"]:getAmountOfItem("petchicken") >= 2 then
 						if math.random(2) == 2 then
 							TriggerEvent('inventory:removeItem', "petchicken", 2)
-							TriggerEvent('player:receiveItem', "freshmeat", math.random(6,12))	
+							TriggerEvent('player:receiveItem', "freshmeat", math.random(4,8))	
 						else
 							TriggerEvent('inventory:removeItem', "petchicken", 1)
-							TriggerEvent('player:receiveItem', "freshmeat", math.random(1,6))	
+							TriggerEvent('player:receiveItem', "freshmeat", math.random(1,3))	
 						end
 					else
 						TriggerEvent('inventory:removeItem', "petchicken", 1)
-						TriggerEvent('player:receiveItem', "freshmeat", math.random(1,6))	
+						TriggerEvent('player:receiveItem', "freshmeat", math.random(1,3))	
 					end
 				end
 			else
