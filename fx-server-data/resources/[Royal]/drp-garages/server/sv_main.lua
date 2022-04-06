@@ -223,16 +223,19 @@ RPC.register("drp-garages:selectSharedGarage", function(pGarage, pJob)
 					{
 						id = 1,
 						header = "Normal",
+						txt = "Check the normal vehicles",
 						event = "drp-garages:open:normal",
 					},
 					{
 						id = 2,
 						header = "Interceptor",
+						txt = "Check the Interceptor vehicles",
 						event = "drp-garages:open:interceptor",
 					},
 					{
 						id = 3,
 						header = "Others",
+						txt = "Check the other vehicles",
 						event = "drp-garages:open:interceptor",
 					}
 				})
