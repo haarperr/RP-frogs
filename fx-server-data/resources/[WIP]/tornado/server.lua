@@ -8,10 +8,6 @@ local ace_perm = "rhys19.tornado"
 local debug = false
 isAdmin = false
 
-RegisterCommand('spanwt', function()
-   TriggerServerEvent("tornado:summon")
-end)
-
 RegisterServerEvent("tornado:summon")
 AddEventHandler("tornado:summon", function()
     local start = x,y,z
@@ -31,11 +27,11 @@ AddEventHandler("tornado:move_here", function(x,y,z)
         TornadoDestination = x,y,z, heading
         if not IsTornadoActive then
             TornadoPosition = x,y,z, heading
-            print("[TORNADO WARNING!!] A tornado has been spotted at " .. TornadoPosition.x .. ", " .. TornadoPosition.y .. ", " .. TornadoPosition.z)
+           if debug then print("[TORNADO WARNING!!] A tornado has been spotted at " .. TornadoPosition.x .. ", " .. TornadoPosition.y .. ", " .. TornadoPosition.z) end
         end
         IsTornadoActive = true
         TriggerClientEvent("tornado:spawn", -1, TornadoPosition, TornadoDestination)
-        print("[TORNADO WARNING!!] A tornado is moving towards " .. x .. ", " .. y .. ", " .. z)
+       if debug then print("[TORNADO WARNING!!] A tornado is moving towards " .. x .. ", " .. y .. ", " .. z) end
     end
 end)
 
@@ -48,9 +44,26 @@ AddEventHandler("tornado:summon_right_here", function(x,y,z)
             TornadoDestination = x,y,z, heading
         end
         IsTornadoActive = true
-        TriggerClientEvent("tornado:spawn", -1, x,y,z, heading)
-        --print("[Tornado] A tornado has spawned at " .. x .. ", " .. y .. ", " .. z)
-		
+        TriggerClientEvent("tornado:spawn", -1, x,y,z, heading)		
+    end
+end)
+
+
+
+
+
+AddEventHandler("onResourceStart", function(name)
+    if name == GetCurrentResourceName() then
+        ProcessAces()
+        if debug then print("[DEBUG][" .. GetCurrentResourceName() .. "] ^6Resource [ " .. GetCurrentResourceName() .. " ] was (re)started, syncing aces to all players.^0") end
+    end
+end)
+
+
+Citizen.CreateThread(function()
+    while true do
+        ProcessAces()
+        Citizen.Wait(60000) -- lets check every minute
     end
 end)
 
@@ -69,30 +82,9 @@ function ProcessAces()
 	
 end
 
-Citizen.CreateThread(function()
-    while true do
-        ProcessAces()
-        Citizen.Wait(0) -- lets check every minute
-    end
-end)
-AddEventHandler("onResourceStart", function(name)
-    if name == GetCurrentResourceName() then
-        ProcessAces()
-        if debug then print("[DEBUG][" .. GetCurrentResourceName() .. "] ^6Resource [ " .. GetCurrentResourceName() .. " ] was (re)started, syncing aces to all players.^0") end
-    end
-end)
-
 RegisterNetEvent("admincheck")
 AddEventHandler("admincheck", function(state)
     isAdmin = state
-end)
-
-
-RegisterServerEvent("tornado:delete2")
-AddEventHandler("tornado:delete2", function()
-    IsTornadoActive = false
-    TriggerClientEvent("tornado:delete", -1)
-    print("^2[NATIONAL WEATHER SERVICE] ^0The Tornado has now went back into the clouds!")
 end)
 
 RegisterServerEvent("tornado:delete")
@@ -102,15 +94,15 @@ AddEventHandler("tornado:delete", function()
 end)
 
 RegisterCommand("tornado", function(source, args, raw)
-if IsPlayerAceAllowed(source, ace_perm) then
+    if IsPlayerAceAllowed(source, "rhys19.tornado")
 	if (args[1] == "summon") then
     TriggerEvent("tornado:summon")
 	elseif (args[1] == "delete") then
 	TriggerEvent("tornado:delete")
 	elseif #args < 1 then
-	return TriggerClientEvent('chat:addMessage', source, { color = { 255, 0, 0}, multiline = true, args = {"^1System", "Usage: /tornado summon & /tornado delete"} })
+	return TriggerClientEvent('chat:addMessage', source, { color = { 255, 0, 0}, multiline = true, args = {"^1System", "Invalid Arguments!"} })
 	end
-	else
-		return TriggerClientEvent('chat:addMessage', source, { color = { 255, 0, 0}, multiline = true, args = {"^1System", "You don't have permissions!"} })
-	end
+else
+    return TriggerClientEvent('chat:addMessage', source, { color = { 255, 0, 0}, multiline = true, args = {"^1System", "Not enough permissions!"} })
+end
 end)

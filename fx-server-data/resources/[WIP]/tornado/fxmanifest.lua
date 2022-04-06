@@ -4,7 +4,7 @@ games { 'rdr3', 'gta5' }
 
 author 'Rhys19'
 description 'Tornado Script for fivem by rhys19'
-version '1.0.4'
+version '2.1.3'
 
 client_scripts {
 	'soundfx/client/main.lua',
@@ -17,8 +17,7 @@ client_scripts {
     'tornado/TParticle.lua',
     'tornado/TScript.lua',
     'tornado/TVortex.lua',
-    'client.lua',
-    'gui_c.lua'
+    'client.lua'
 }
 
 server_scripts {

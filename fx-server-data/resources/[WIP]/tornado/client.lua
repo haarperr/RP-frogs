@@ -60,10 +60,10 @@ Citizen.CreateThread(function()
     end
 
 end)
---[[
+
 
 RegisterNetEvent("sendAcePermissionToClient")
 AddEventHandler("sendAcePermissionToClient", function(state)
     isAdmin = state
 end)
-]]
+
