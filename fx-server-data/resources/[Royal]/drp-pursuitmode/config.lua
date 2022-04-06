@@ -17,6 +17,9 @@ Veny.PursuitCars = {
     "npolblazer",
     "npolexp",
     "npolchar",
+    "66fastback",
+    "prangerold",
+    "tractorcv8"
 }
 
 Veny.MultiplierAPlus = 0.025 --- Fast
