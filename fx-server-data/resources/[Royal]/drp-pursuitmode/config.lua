@@ -20,7 +20,8 @@ Veny.PursuitCars = {
     "prangerold",
     "tractorcv8",
     "bcat",
-    "riot"
+    "riot",
+    "npolmm",
 }
 
 Veny.MultiplierAPlus = 0.025 --- Fast

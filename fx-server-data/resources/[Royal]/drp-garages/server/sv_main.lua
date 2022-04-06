@@ -269,7 +269,8 @@ RPC.register("drp-garages:open:law", function(pGarage, pJob, type)
 		carModels = {
 			"npolvic",
 			"npolexp",
-			"prangerold"
+			"prangerold",
+			"npolmm"
 		}
 	elseif type == "interceptor" then
 		carModels = {
