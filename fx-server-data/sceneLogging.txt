@@ -568,3 +568,5 @@ Player: [21] Placed Scene: [That may inhabit it.] At Coords = vector3(-783.9806,
 Player: [21] Placed Scene: [Doomsday is upon us... The day Satan returns is the day this land will be purged of all the filth that may inhabit it.] At Coords = vector3(-783.739, 6.157098, 41.76316)
 Player: [21] Placed Scene: [Doomsday is upon us... The day Satan returns is the day this land will be purged of all the filth] At Coords = vector3(-783.724, 6.151988, 41.76316)
 Player: [21] Placed Scene: [That may inhabit it.] At Coords = vector3(-783.9546, 6.545422, 41.79112)
+Player: [9] Placed Scene: [DO NOT SCUFF IMPOUND] At Coords = vector3(-80.96484, 6234.828, 30.99942)
+Player: [3] Placed Scene: [S.Winters | PD Lawyer | MCD] At Coords = vector3(452.8184, -995.934, 32.24606)
