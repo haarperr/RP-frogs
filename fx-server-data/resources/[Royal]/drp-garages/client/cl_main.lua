@@ -18,7 +18,27 @@ AddEventHandler("drp-garages:open:law:normal", function()
     local pGarage = exports['drp-menu']:currentGarage()
     RPC.execute("drp-garages:open:law", pGarage, pJob, "normal")
 end)
-)
+
+RegisterNetEvent("drp-garages:open:law:interceptor")
+AddEventHandler("drp-garages:open:law:interceptor", function()
+    local pJob = exports["isPed"]:isPed("myJob")
+    local pGarage = exports['drp-menu']:currentGarage()
+    RPC.execute("drp-garages:open:law", pGarage, pJob, "interceptor")
+end)
+
+RegisterNetEvent("drp-garages:open:law:uc")
+AddEventHandler("drp-garages:open:law:uc", function()
+    local pJob = exports["isPed"]:isPed("myJob")
+    local pGarage = exports['drp-menu']:currentGarage()
+    RPC.execute("drp-garages:open:law", pGarage, pJob, "uc")
+end)
+
+RegisterNetEvent("drp-garages:open:law:others")
+AddEventHandler("drp-garages:open:law:others", function()
+    local pJob = exports["isPed"]:isPed("myJob")
+    local pGarage = exports['drp-menu']:currentGarage()
+    RPC.execute("drp-garages:open:law", pGarage, pJob, "others")
+end)
 
 
 RegisterNetEvent("drp-garages:openPersonalGarage")
