@@ -293,6 +293,16 @@ RPC.register("drp-garages:open:law", function(pGarage, pJob, type)
 
 	exports.ghmattimysql:execute('SELECT * FROM characters_cars WHERE garage_info = @garage_info AND current_garage = @garage', { ['@garage_info'] = pType, ['@garage'] = pGarage}, function(vehicles)
 		if vehicles[1] ~= nil then
+			TriggerClientEvent('drp-context:sendMenu', pSrc, {
+				{
+					id = 1,
+					header = "<--- Back",
+					txt = "Back",
+					params = {
+						event = "drp-garages:openSharedGarage",
+					}
+				},
+			})
 			for i = 1, #vehicles do
 				if vehicles[i].vehicle_state ~= "Out" then
 					-- check if vehicles[i].model is in carModels
