@@ -157,7 +157,6 @@ RPC.register("drp-garages:select", function(pGarage)
 	end)
 end)
 
-RPC.register("drp-garages:")
 
 RPC.register("drp-garages:selectSharedGarage", function(pGarage, pJob)
     local pSrc = source
