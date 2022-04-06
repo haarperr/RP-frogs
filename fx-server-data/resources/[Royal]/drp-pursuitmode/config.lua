@@ -5,7 +5,6 @@ Veny.PursuitCars = {
     "npolvette",
     "npolstang",
     "npolchal",
-    "npolchal",
     "ucwashington",
     "ucrancher",
     "ucprimo",

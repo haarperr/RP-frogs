@@ -12,6 +12,15 @@ AddEventHandler("drp-garages:openSharedGarage", function()
     RPC.execute("drp-garages:selectSharedGarage", exports['drp-menu']:currentGarage(), pJob)
 end)
 
+RegisterNetEvent("drp-garages:open:law:normal")
+AddEventHandler("drp-garages:open:law:normal", function()
+    local pJob = exports["isPed"]:isPed("myJob")
+    local pGarage = exports['drp-menu']:currentGarage()
+    RPC.execute("drp-garages:open:law", pGarage, pJob, "normal")
+end)
+)
+
+
 RegisterNetEvent("drp-garages:openPersonalGarage")
 AddEventHandler("drp-garages:openPersonalGarage", function()
     exports['drp-garages']:DeleteViewedCar()
