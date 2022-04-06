@@ -246,6 +246,15 @@ RPC.register("drp-garages:selectSharedGarage", function(pGarage, pJob)
 	end)
 end)
 
+function table.contains(table, element)
+	for _, value in pairs(table) do
+	  if value == element then
+		return true
+	  end
+	end
+	return false
+  end
+
 RPC.register("drp-garages:open:law", function(pGarage, pJob, type)
 	local pSrc = source
     local user = exports["drp-base"]:getModule("Player"):GetUser(pSrc)
@@ -253,6 +262,8 @@ RPC.register("drp-garages:open:law", function(pGarage, pJob, type)
 	if pJob == 'police' or pJob == 'state' or pJob == 'sheriff' then
 		pType = 'law'
 	end 
+
+	local carModels = {}
 
 	if type == "normal" then
 		carModels = {
@@ -291,6 +302,7 @@ RPC.register("drp-garages:open:law", function(pGarage, pJob, type)
 		if vehicles[1] ~= nil then
 			for i = 1, #vehicles do
 				if vehicles[i].vehicle_state ~= "Out" then
+					-- check if vehicles[i].model is in carModels
 					if table.contains(carModels, vehicles[i].model) then
 						TriggerClientEvent('drp-context:sendMenu', pSrc, {
 							{
@@ -310,7 +322,7 @@ RPC.register("drp-garages:open:law", function(pGarage, pJob, type)
 										plate = vehicles[i].license_plate
 									}
 								}
-							}
+							},
 						})
 					end
 				end
