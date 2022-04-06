@@ -289,42 +289,59 @@ RPC.register("drp-garages:open:law", function(pGarage, pJob, type)
 			"ucbanshee",
 			"uccomet",
 		}
-	elseif type == "others" then
-		carModels = {
-			"npolblazer",
-			"66fastback",
-			"tractorcv8",
-			"bcat",
-			"riot",
-		}
 	end
+	
 	exports.ghmattimysql:execute('SELECT * FROM characters_cars WHERE garage_info = @garage_info AND current_garage = @garage', { ['@garage_info'] = pType, ['@garage'] = pGarage}, function(vehicles)
 		if vehicles[1] ~= nil then
 			for i = 1, #vehicles do
 				if vehicles[i].vehicle_state ~= "Out" then
 					-- check if vehicles[i].model is in carModels
-					if table.contains(carModels, vehicles[i].model) then
-						TriggerClientEvent('drp-context:sendMenu', pSrc, {
-							{
-								id = vehicles[i].id,
-								header = vehicles[i].name,
-								txt = "Plate: "..vehicles[i].license_plate,
-								params = {
-									event = "drp-garages:attempt:spawn",
-									args = {
-										id = vehicles[i].id,
-										engine_damage = vehicles[i].engine_damage,
-										current_garage = vehicles[i].current_garage,
-										body_damage = vehicles[i].body_damage,
-										model = vehicles[i].model,
-										fuel = vehicles[i].fuel, 
-										customized = vehicles[i].data,
-										plate = vehicles[i].license_plate
+					if type ~= "others" then
+						if table.contains(carModels, vehicles[i].model) then
+							TriggerClientEvent('drp-context:sendMenu', pSrc, {
+								{
+									id = vehicles[i].id,
+									header = vehicles[i].name,
+									txt = "Plate: "..vehicles[i].license_plate,
+									params = {
+										event = "drp-garages:attempt:spawn",
+										args = {
+											id = vehicles[i].id,
+											engine_damage = vehicles[i].engine_damage,
+											current_garage = vehicles[i].current_garage,
+											body_damage = vehicles[i].body_damage,
+											model = vehicles[i].model,
+											fuel = vehicles[i].fuel, 
+											customized = vehicles[i].data,
+											plate = vehicles[i].license_plate
+										}
 									}
-								}
-							},
-						})
-					end
+								},
+							})
+						end
+					else 
+						if not table.contains(carModels, vehicles[i].model) then
+							TriggerClientEvent('drp-context:sendMenu', pSrc, {
+								{
+									id = vehicles[i].id,
+									header = vehicles[i].name,
+									txt = "Plate: "..vehicles[i].license_plate,
+									params = {
+										event = "drp-garages:attempt:spawn",
+										args = {
+											id = vehicles[i].id,
+											engine_damage = vehicles[i].engine_damage,
+											current_garage = vehicles[i].current_garage,
+											body_damage = vehicles[i].body_damage,
+											model = vehicles[i].model,
+											fuel = vehicles[i].fuel, 
+											customized = vehicles[i].data,
+											plate = vehicles[i].license_plate
+										}
+									}
+								},
+							})
+						end
 				end
 			end 
 		else
