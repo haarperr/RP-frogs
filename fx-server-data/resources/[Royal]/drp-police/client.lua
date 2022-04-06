@@ -610,7 +610,7 @@ AddEventHandler('police:getArrested2', function(cuffer)
 
 	local finished = 0
 	if not exports['drp-death']:GetDeathStatus() then
-		local finished2 = exports["drp-bar"]:taskBar(3000,math.random(4,8))
+		local finished2 = exports["drp-bar"]:taskBar(1000,math.random(1,3))
         if (finished2 == 100) then
 			TriggerEvent('DoLongHudText', 'You slipped out of cuffs !',1)
 			TriggerEvent("handcuffed",false)
