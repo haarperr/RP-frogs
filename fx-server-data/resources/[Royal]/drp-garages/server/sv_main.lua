@@ -119,6 +119,16 @@ RPC.register("drp-garages:select", function(pGarage)
     local char = user:getCurrentCharacter()
 	exports.ghmattimysql:execute('SELECT * FROM characters_cars WHERE cid = @cid AND current_garage = @garage', { ['@cid'] = char.id, ['@garage'] = pGarage}, function(vehicles)
         if vehicles[1] ~= nil then
+			TriggerClientEvent('drp-context:sendMenu', pSrc, {
+				{
+					id = 1,
+					header = "<--- Back",
+					txt = "",
+					params = {
+						event = "drp-garages:selectMenu",
+					}
+				},
+			})
             for i = 1, #vehicles do
 				if vehicles[i].vehicle_state ~= "Out" then
 					TriggerClientEvent('drp-context:sendMenu', pSrc, {
