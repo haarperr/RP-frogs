@@ -296,7 +296,7 @@ RPC.register("drp-garages:open:law", function(pGarage, pJob, type)
 			TriggerClientEvent('drp-context:sendMenu', pSrc, {
 				{
 					id = 1,
-					header = "<--- Back",
+					txt = "<--- Back",
 					params = {
 						event = "drp-garages:openSharedGarage",
 					}
