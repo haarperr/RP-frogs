@@ -170,6 +170,16 @@ RPC.register("drp-garages:selectSharedGarage", function(pGarage, pJob)
 
 	exports.ghmattimysql:execute('SELECT * FROM characters_cars WHERE garage_info = @garage_info AND current_garage = @garage', { ['@garage_info'] = pType, ['@garage'] = pGarage}, function(vehicles)
         if vehicles[1] ~= nil then
+			TriggerClientEvent('drp-context:sendMenu', pSrc, {
+				{
+					id = 1,
+					header = "<--- Back",
+					txt = "",
+					params = {
+						event = "drp-garages:selectMenu",
+					}
+				},
+			})
             for i = 1, #vehicles do
 				if vehicles[i].vehicle_state ~= "Out" then
 					if pGarage ~= "garagepd" then
