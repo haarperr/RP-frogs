@@ -203,25 +203,33 @@ RPC.register("drp-garages:selectSharedGarage", function(pGarage, pJob)
 						id = 1,
 						header = "Normal",
 						txt = "Check the normal vehicles",
-						event = "drp-garages:open:law:normal",
+						params = {
+							event = "drp-garages:open:law:normal",
+						}
 					},
 					{
 						id = 2,
 						header = "Interceptor",
 						txt = "Check the Interceptor vehicles",
-						event = "drp-garages:open:law:interceptor",
+						params = {
+							event = "drp-garages:open:law:interceptor",
+						}
 					},
 					{
 						id = 3,
 						header = "Undercover",
 						txt = "Check the Undercover vehicles",
-						event = "drp-garages:open:law:uc",
+						params = {
+							event = "drp-garages:open:law:uc",
+						}
 					},
 					{
 						id = 4,
 						header = "Others",
 						txt = "Check the other vehicles",
-						event = "drp-garages:open:law:others",
+						parms = {
+							event = "drp-garages:open:law:others",
+						}
 					}
 				})
 			end
