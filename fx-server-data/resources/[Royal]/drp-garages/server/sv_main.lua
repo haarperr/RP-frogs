@@ -157,6 +157,8 @@ RPC.register("drp-garages:select", function(pGarage)
 	end)
 end)
 
+RPC.register("drp-garages:")
+
 RPC.register("drp-garages:selectSharedGarage", function(pGarage, pJob)
     local pSrc = source
     local user = exports["drp-base"]:getModule("Player"):GetUser(pSrc)
@@ -167,35 +169,76 @@ RPC.register("drp-garages:selectSharedGarage", function(pGarage, pJob)
 		pType = 'medical'
 	end
 
-	local vehList = {}
+	local table = {}
 
 	exports.ghmattimysql:execute('SELECT * FROM characters_cars WHERE garage_info = @garage_info AND current_garage = @garage', { ['@garage_info'] = pType, ['@garage'] = pGarage}, function(vehicles)
         if vehicles[1] ~= nil then
             for i = 1, #vehicles do
 				if vehicles[i].vehicle_state ~= "Out" then
-					TriggerClientEvent('drp-context:sendMenu', pSrc, {
-						{
-							id = vehicles[i].id,
-							header = vehicles[i].name,
-							txt = "Plate: "..vehicles[i].license_plate,
-							params = {
-								event = "drp-garages:attempt:spawn",
-								args = {
-									id = vehicles[i].id,
-									engine_damage = vehicles[i].engine_damage,
-									current_garage = vehicles[i].current_garage,
-									body_damage = vehicles[i].body_damage,
-									model = vehicles[i].model,
-									fuel = vehicles[i].fuel, 
-									customized = vehicles[i].data,
-									plate = vehicles[i].license_plate
-								}
+					table[i] = {
+						id = vehicles[i].id,
+						header = vehicles[i].model,
+						txt = "Plate: "..vehicles[i].license_plate,
+						params = {
+							event = "drp-garages:attempt:spawn",
+							args = {
+								id = vehicles[i].id,
+								engine_damage = vehicles[i].engine_damage,
+								current_garage = vehicles[i].current_garage,
+								body_damage = vehicles[i].body_damage,
+								model = vehicles[i].model,
+								fuel = vehicles[i].fuel, 
+								customized = vehicles[i].data,
+								plate = vehicles[i].license_plate
 							}
-						},
-					})
+						}
+					}
+
+					if pType != "law" then
+						TriggerClientEvent('drp-context:sendMenu', pSrc, {
+							{
+								id = vehicles[i].id,
+								header = vehicles[i].name,
+								txt = "Plate: "..vehicles[i].license_plate,
+								params = {
+									event = "drp-garages:attempt:spawn",
+									args = {
+										id = vehicles[i].id,
+										engine_damage = vehicles[i].engine_damage,
+										current_garage = vehicles[i].current_garage,
+										body_damage = vehicles[i].body_damage,
+										model = vehicles[i].model,
+										fuel = vehicles[i].fuel, 
+										customized = vehicles[i].data,
+										plate = vehicles[i].license_plate
+									}
+								}
+							},
+						})
+					end
 				end
             end
-        else
+
+			if pType == "law" then
+				TriggerClientEvent('drp-context:sendMenu', pSrc, {
+					{
+						id = 1,
+						header = "Normal",
+						event = "drp-garages:open:normal",
+					},
+					{
+						id = 2,
+						header = "Interceptor",
+						event = "drp-garages:open:interceptor",
+					},
+					{
+						id = 3,
+						header = "Others",
+						event = "drp-garages:open:interceptor",
+					}
+				})
+			end
+		else
 			TriggerClientEvent('drp-context:sendMenu', pSrc, {
 				{
 					id = 1,
