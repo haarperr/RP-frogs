@@ -166,6 +166,9 @@ RPC.register("drp-garages:selectSharedGarage", function(pGarage, pJob)
 	elseif pJob == 'ems' then
 		pType = 'medical'
 	end
+
+	local vehList = {}
+
 	exports.ghmattimysql:execute('SELECT * FROM characters_cars WHERE garage_info = @garage_info AND current_garage = @garage', { ['@garage_info'] = pType, ['@garage'] = pGarage}, function(vehicles)
         if vehicles[1] ~= nil then
             for i = 1, #vehicles do
@@ -190,7 +193,6 @@ RPC.register("drp-garages:selectSharedGarage", function(pGarage, pJob)
 							}
 						},
 					})
-					pPassed = json.encode(vehicles)
 				end
             end
         else
