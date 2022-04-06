@@ -94,29 +94,29 @@ AddEventHandler('paycheck:server:send', function(cid)
 	local job = user:getVar("job")
 	if user ~= false then
 		if job == "unemployed" then -- Bum Jobs 
-			TriggerEvent("paycheck:server:add", src, cid, 50)
+			TriggerEvent("paycheck:server:add", src, cid, math.random(25, 75))
 		elseif job == "police" then -- Police
-			TriggerEvent("paycheck:server:add", src, cid, 425)
+			TriggerEvent("paycheck:server:add", src, cid, math.random(450, 650))
 		elseif job == "sheriff" then -- Police
-			TriggerEvent("paycheck:server:add", src, cid, 425)
+			TriggerEvent("paycheck:server:add", src, cid, math.random(450, 650))
 		elseif job == "towunion" then -- Tow
-			TriggerEvent("paycheck:server:add", src, cid, 150)
+			TriggerEvent("paycheck:server:add", src, cid, math.random(100, 175))
 		elseif job == "best_buds" or job == "burger_shot" or job == "bean_machine" or job == "vanilla_unicorn" then -- Civ Jobs
-			TriggerEvent("paycheck:server:add", src, cid, 100)
+			TriggerEvent("paycheck:server:add", src, cid, math.random(50, 100))
 		elseif job == "auto_bodies" or job == "tuner_shop" or job == "paleto_mech" or job == "auto_exotics" or job == "car_shop" then -- Mechanic Shops
-			TriggerEvent("paycheck:server:add", src, cid, 100)
+			TriggerEvent("paycheck:server:add", src, cid, math.random(50, 100))
 		elseif job == "ems" then -- EMS
-			TriggerEvent("paycheck:server:add", src, cid, 500)
+			TriggerEvent("paycheck:server:add", src, cid, math.random(475, 700))
 		elseif job == 'doj' then -- doj
-			TriggerEvent("paycheck:server:add", src, cid, 525)
+			TriggerEvent("paycheck:server:add", src, cid, math.random(500, 700))
 		elseif job == 'state' then -- state
-			TriggerEvent("paycheck:server:add", src, cid, 525)
+			TriggerEvent("paycheck:server:add", src, cid, math.random(500, 700))
 		elseif job == 'judge' then -- judge
-			TriggerEvent("paycheck:server:add", src, cid, 525)
+			TriggerEvent("paycheck:server:add", src, cid, math.random(500, 700))
 		elseif job == 'public_defender' then -- public defender
-			TriggerEvent("paycheck:server:add", src, cid, 450)
+			TriggerEvent("paycheck:server:add", src, cid, math.random(400, 600))
 		elseif job == 'district_attorney' then -- district attorney
-			TriggerEvent("paycheck:server:add", src, cid, 450)
+			TriggerEvent("paycheck:server:add", src, cid, math.random(500, 675))
 		end
 		
 	end
