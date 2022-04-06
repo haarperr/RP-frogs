@@ -182,6 +182,8 @@ local vehicles = {
 	{name = "Freecrawler", sCode = "freecrawler", price = 47250, category = 'OffRoad'},
 	{name = "Rancher XL", sCode = "rancherxl", price = 38750, category = 'OffRoad'},
 	{name = "Kalahari", sCode = "kalahari", price = 31000, category = 'OffRoad'},
+	{name = "Rebel", sCode = "rebel", price = 35000, category = 'OffRoad'},
+	{name = "Rebel 2", sCode = "rebel2", price = 40000, category = 'OffRoad'},
 
     	--[[ SUV ]]--
 	{name = "Baller 2", sCode = "baller2", price = 38750, category = 'SUV'},
