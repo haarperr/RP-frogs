@@ -45,7 +45,7 @@
       <HudCapacity value="0" />
       <HudAccuracy value="0" />
       <HudRange value="0" />
-      <ClipSize value="2" />
+      <ClipSize value="1" />
       <ReloadData ref="RELOAD_DEFAULT" />
 	  <AmmoInfo />
       <TracerFx />
