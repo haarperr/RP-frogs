@@ -227,7 +227,7 @@ RPC.register("drp-garages:selectSharedGarage", function(pGarage, pJob)
 						id = 4,
 						header = "Others",
 						txt = "Check the other vehicles",
-						parms = {
+						params = {
 							event = "drp-garages:open:law:others",
 						}
 					}
