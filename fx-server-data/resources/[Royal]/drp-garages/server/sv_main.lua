@@ -308,7 +308,7 @@ RPC.register("drp-garages:open:law", function(pGarage, pJob, type)
 				end
 			end 
 		end
-	end
+	end)
 end)
 
 RPC.register("drp-garages:attempt:sv", function(data)
