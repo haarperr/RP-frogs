@@ -22,6 +22,7 @@ local helicam = false -- is in helicam
 local polmav_hash = GetHashKey("polmav")
 local bcso_hash = GetHashKey("polas350")
 local ems_hash = GetHashKey("emsaw139")
+local drone_hash = GetHashKey("rcmavic")
 local fov = (fov_max + fov_min) * 0.5
 local vision_state = 0 -- 0 is normal, 1 is night vision, 2 is thermal vision
 local rappelingB = false
@@ -52,7 +53,7 @@ end
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
-        if IsPlayerInPolmav() or IsPlayerInBCSO() or IsPlayerInEMS() then
+        if IsPlayerInPolmav() or IsPlayerInBCSO() or IsPlayerInEMS() or IsPlayerInDrone() then
             local lPed = GetPlayerPed(-1)
             local heli = GetVehiclePedIsIn(lPed)
 
@@ -303,6 +304,12 @@ function IsPlayerInEMS()
 	local lPed = PlayerPedId()
 	local vehicle = GetVehiclePedIsIn(lPed)
 	return IsVehicleModel(vehicle, ems_hash)
+end
+
+function IsPlayerInDrone()
+	local lPed = PlayerPedId()
+	local vehicle = GetVehiclePedIsIn(lPed)
+	return IsVehicleModel(vehicle, drone_hash)
 end
 
 function IsHeliHighEnough(heli)
