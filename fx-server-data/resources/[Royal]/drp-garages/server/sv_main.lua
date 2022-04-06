@@ -214,7 +214,7 @@ RPC.register("drp-garages:selectSharedGarage", function(pGarage, pJob)
 					{
 						id = 3,
 						header = "Undercover",
-						txt = "Check the other vehicles",
+						txt = "Check the Undercover vehicles",
 						event = "drp-garages:open:law:uc",
 					},
 					{
@@ -307,6 +307,15 @@ RPC.register("drp-garages:open:law", function(pGarage, pJob, type)
 					end
 				end
 			end 
+		else
+			TriggerClientEvent('drp-context:sendMenu', pSrc, {
+				{
+					id = 1,
+					header = "No Vehicles",
+					txt = "All vehicles are out!"
+				},
+			})
+			return
 		end
 	end)
 end)

@@ -23,6 +23,7 @@ RegisterNetEvent("drp-garages:open:law:interceptor")
 AddEventHandler("drp-garages:open:law:interceptor", function()
     local pJob = exports["isPed"]:isPed("myJob")
     local pGarage = exports['drp-menu']:currentGarage()
+    Citizen.Trace("Hello")
     RPC.execute("drp-garages:open:law", pGarage, pJob, "interceptor")
 end)
 
