@@ -16001,7 +16001,7 @@
       </Item>
       <Item type="CHandlingData">
          <handlingName>bf400</handlingName>
-         <fMass value="550.000000" />
+         <fMass value="250.000000" />
          <fInitialDragCoeff value="4.00000" />
          <fPercentSubmerged value="85.000000" />
          <vecCentreOfMassOffset x="0.000000" y="0.00000" z="-0.100000" />
