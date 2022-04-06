@@ -613,8 +613,8 @@ AddEventHandler('police:getArrested2', function(cuffer)
 		local finished2 = exports["drp-ui"]:taskBarSkill(1000, math.random(4, 8))
         if (finished2 == 100) then
 			if math.random(1, 10) >= 9 then
-				TriggerEvent('DoLongHudText', 'You slipped out of cuffs !',1)
-				TriggerEvent("handcuffed",false)
+				TriggerEvent('DoLongHudText', 'You slipped out of cuffs !', 1)
+				TriggerEvent("handcuffed", false)
 				return end
 			end
 		end
