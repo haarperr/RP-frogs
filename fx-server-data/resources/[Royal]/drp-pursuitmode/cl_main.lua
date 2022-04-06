@@ -9,6 +9,15 @@ Citizen.CreateThread(function()
     end
 end)
 
+function isPursuitCar(currentCar)
+    for i, v in pairs(Veny.PursuitCars) do
+        if currentCar == GetHashKey(v) then
+            return true
+        end
+    end
+    return false
+end
+
 local mode1 = false
 local mode2 = false
 local mode3 = false
@@ -20,7 +29,7 @@ CreateThread(function()
         if IsControlJustPressed(0, 178) then --delete
             if vehicle ~= 0 then
                 local vehiclehash = GetEntityModel(vehicle)
-                if vehiclehash == Veny.PursuitCar1 or vehiclehash == Veny.PursuitCar2 or vehiclehash == Veny.PursuitCar3 or vehiclehash == Veny.PursuitCar4 or vehiclehash == Veny.PursuitCar5 or vehiclehash == Veny.PursuitCar6  or vehiclehash == Veny.PursuitCar7 then
+                if isPursuitCar(vehiclehash) then
                     local defaultcarspeed = GetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fInitialDriveForce')
                     if mode4 then
                         mode1 = true

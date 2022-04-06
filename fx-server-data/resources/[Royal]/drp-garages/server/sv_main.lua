@@ -157,6 +157,7 @@ RPC.register("drp-garages:select", function(pGarage)
 	end)
 end)
 
+
 RPC.register("drp-garages:selectSharedGarage", function(pGarage, pJob)
     local pSrc = source
     local user = exports["drp-base"]:getModule("Player"):GetUser(pSrc)
@@ -165,35 +166,74 @@ RPC.register("drp-garages:selectSharedGarage", function(pGarage, pJob)
 		pType = 'law'
 	elseif pJob == 'ems' then
 		pType = 'medical'
-	end
+	end	
+
 	exports.ghmattimysql:execute('SELECT * FROM characters_cars WHERE garage_info = @garage_info AND current_garage = @garage', { ['@garage_info'] = pType, ['@garage'] = pGarage}, function(vehicles)
         if vehicles[1] ~= nil then
             for i = 1, #vehicles do
 				if vehicles[i].vehicle_state ~= "Out" then
-					TriggerClientEvent('drp-context:sendMenu', pSrc, {
-						{
-							id = vehicles[i].id,
-							header = vehicles[i].name,
-							txt = "Plate: "..vehicles[i].license_plate,
-							params = {
-								event = "drp-garages:attempt:spawn",
-								args = {
-									id = vehicles[i].id,
-									engine_damage = vehicles[i].engine_damage,
-									current_garage = vehicles[i].current_garage,
-									body_damage = vehicles[i].body_damage,
-									model = vehicles[i].model,
-									fuel = vehicles[i].fuel, 
-									customized = vehicles[i].data,
-									plate = vehicles[i].license_plate
+					if pType ~= "law" then
+						TriggerClientEvent('drp-context:sendMenu', pSrc, {
+							{
+								id = vehicles[i].id,
+								header = vehicles[i].name,
+								txt = "Plate: "..vehicles[i].license_plate,
+								params = {
+									event = "drp-garages:attempt:spawn",
+									args = {
+										id = vehicles[i].id,
+										engine_damage = vehicles[i].engine_damage,
+										current_garage = vehicles[i].current_garage,
+										body_damage = vehicles[i].body_damage,
+										model = vehicles[i].model,
+										fuel = vehicles[i].fuel, 
+										customized = vehicles[i].data,
+										plate = vehicles[i].license_plate
+									}
 								}
-							}
-						},
-					})
-					pPassed = json.encode(vehicles)
+							},
+						})
+					end
 				end
             end
-        else
+
+			if pType == "law" then
+				TriggerClientEvent('drp-context:sendMenu', pSrc, {
+					{
+						id = 1,
+						header = "Normal",
+						txt = "Check the normal vehicles",
+						params = {
+							event = "drp-garages:open:law:normal",
+						}
+					},
+					{
+						id = 2,
+						header = "Interceptor",
+						txt = "Check the Interceptor vehicles",
+						params = {
+							event = "drp-garages:open:law:interceptor",
+						}
+					},
+					{
+						id = 3,
+						header = "Undercover",
+						txt = "Check the Undercover vehicles",
+						params = {
+							event = "drp-garages:open:law:uc",
+						}
+					},
+					{
+						id = 4,
+						header = "Others",
+						txt = "Check the other vehicles",
+						params = {
+							event = "drp-garages:open:law:others",
+						}
+					}
+				})
+			end
+		else
 			TriggerClientEvent('drp-context:sendMenu', pSrc, {
 				{
 					id = 1,
@@ -206,6 +246,148 @@ RPC.register("drp-garages:selectSharedGarage", function(pGarage, pJob)
 	end)
 end)
 
+function table.contains(table, element)
+	for _, value in pairs(table) do
+	  if value == element then
+		return true
+	  end
+	end
+	return false
+  end
+
+RPC.register("drp-garages:open:law", function(pGarage, pJob, type)
+	local pSrc = source
+    local user = exports["drp-base"]:getModule("Player"):GetUser(pSrc)
+    local char = user:getCurrentCharacter()
+	if pJob == 'police' or pJob == 'state' or pJob == 'sheriff' then
+		pType = 'law'
+	end 
+
+	local carModels = {}
+
+	if type == "normal" then
+		carModels = {
+			"npolvic",
+			"npolexp",
+			"prangerold",
+			"npolmm"
+		}
+	elseif type == "interceptor" then
+		carModels = {
+			"npolvette",
+			"npolstang",
+			"npolchal",
+			"npolchar"
+		}
+	elseif type == "uc" then
+		carModels = {
+			"ucwashington",
+			"ucrancher",
+			"ucprimo",
+			"ucballer",
+			"ucbuffalo",
+			"uccoquette",
+			"ucbanshee",
+			"uccomet",
+		}
+		
+	elseif type == "others" then
+		carModels = {
+			"ucwashington",
+			"ucrancher",
+			"ucprimo",
+			"ucballer",
+			"ucbuffalo",
+			"uccoquette",
+			"ucbanshee",
+			"uccomet",
+			"npolvette",
+			"npolstang",
+			"npolchal",
+			"npolchar",
+			"npolvic",
+			"npolexp",
+			"prangerold",
+			"npolmm"
+		}
+	end
+
+	exports.ghmattimysql:execute('SELECT * FROM characters_cars WHERE garage_info = @garage_info AND current_garage = @garage', { ['@garage_info'] = pType, ['@garage'] = pGarage}, function(vehicles)
+		if vehicles[1] ~= nil then
+			TriggerClientEvent('drp-context:sendMenu', pSrc, {
+				{
+					id = 1,
+					header = "<--- Back",
+					txt = "",
+					params = {
+						event = "drp-garages:openSharedGarage",
+					}
+				},
+			})
+			for i = 1, #vehicles do
+				if vehicles[i].vehicle_state ~= "Out" then
+					-- check if vehicles[i].model is in carModels
+					if type ~= "others" then
+						if table.contains(carModels, vehicles[i].model) then
+							TriggerClientEvent('drp-context:sendMenu', pSrc, {
+								{
+									id = vehicles[i].id,
+									header = vehicles[i].name,
+									txt = "Plate: "..vehicles[i].license_plate,
+									params = {
+										event = "drp-garages:attempt:spawn",
+										args = {
+											id = vehicles[i].id,
+											engine_damage = vehicles[i].engine_damage,
+											current_garage = vehicles[i].current_garage,
+											body_damage = vehicles[i].body_damage,
+											model = vehicles[i].model,
+											fuel = vehicles[i].fuel, 
+											customized = vehicles[i].data,
+											plate = vehicles[i].license_plate
+										}
+									}
+								},
+							})
+						end
+					else 
+						if not table.contains(carModels, vehicles[i].model) then
+							TriggerClientEvent('drp-context:sendMenu', pSrc, {
+								{
+									id = vehicles[i].id,
+									header = vehicles[i].name,
+									txt = "Plate: "..vehicles[i].license_plate,
+									params = {
+										event = "drp-garages:attempt:spawn",
+										args = {
+											id = vehicles[i].id,
+											engine_damage = vehicles[i].engine_damage,
+											current_garage = vehicles[i].current_garage,
+											body_damage = vehicles[i].body_damage,
+											model = vehicles[i].model,
+											fuel = vehicles[i].fuel, 
+											customized = vehicles[i].data,
+											plate = vehicles[i].license_plate
+										}
+									}
+								},
+							})
+						end
+					end
+				end
+			end 
+		else
+			TriggerClientEvent('drp-context:sendMenu', pSrc, {
+				{
+					id = 1,
+					header = "No Vehicles",
+					txt = "All vehicles are out!"
+				},
+			})
+			return
+		end
+	end)
+end)
 
 RPC.register("drp-garages:attempt:sv", function(data)
     local pSrc = source

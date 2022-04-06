@@ -268,7 +268,31 @@ AddEventHandler('drp-garages:open:others', function()
 			params = {
 				event = "drp-garages:Purchasednpolblazer"
 			}
-		}	
+		},
+		{
+			id = 4,
+			header = "Purchase Ranger Vehicle",
+			txt = "$75,000",
+			params = {
+				event = "drp-garages:Purchasedprangerold"
+			}
+		},
+		{
+			id = 5,
+			header = "Purchase BCAT",
+			txt = "$125,000",
+			params = {
+				event = "drp-garages:Purchasedbcat"
+			}
+		},
+		{
+			id = 5,
+			header = "Purchase Riot",
+			txt = "$125,000",
+			params = {
+				event = "drp-garages:Purchasedriot"
+			}
+		}
 	})
 end)
 
@@ -403,6 +427,24 @@ RegisterNetEvent('drp-garages:Purchasednpolmm')
 AddEventHandler('drp-garages:Purchasednnpolmm', function()
 	local price = 150000
 	buyCar("npolmm", price)
+end)
+
+RegisterNetEvent('drp-garages:Purchasedprangerold')
+AddEventHandler('drp-garages:Purchasedprangerold', function()
+	local price = 75000
+	buyCar("prangerold", price)
+end)
+
+RegisterNetEvent('drp-garages:Purchasedbcat')
+AddEventHandler('drp-garages:Purchasedbcat', function()
+	local price = 125000
+	buyCar("bcat", price)
+end)
+
+RegisterNetEvent('drp-garages:Purchasedriot')
+AddEventHandler('drp-garages:Purchasedriot', function()
+	local price = 125000
+	buyCar("riot", price)
 end)
 
 
