@@ -23,8 +23,8 @@ Veny.PursuitCars = {
 }
 
 Veny.MultiplierAPlus = 0.025 --- Fast
-Veny.MultiplierS = 0.0525 --- Pretty Fast
-Veny.MultiplierSPlus = 0.0675 --- Fastest
+Veny.MultiplierS = 0.050 --- Pretty Fast
+Veny.MultiplierSPlus = 3.065 --- Fastest
 Veny.MultiplierA = 0.0 --- Default
 
 Veny.notify = "DoLongHudText" --- can be mythicnotify, notification(must use nopixel notification), qbcorenotify, esxshownotification ---
