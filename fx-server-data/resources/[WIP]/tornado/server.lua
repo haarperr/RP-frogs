@@ -94,7 +94,7 @@ AddEventHandler("tornado:delete", function()
 end)
 
 RegisterCommand("tornado", function(source, args, raw)
-    if IsPlayerAceAllowed(source, "rhys19.tornado")
+    if IsPlayerAceAllowed(source, "rhys19.tornado") then
 	if (args[1] == "summon") then
     TriggerEvent("tornado:summon")
 	elseif (args[1] == "delete") then
