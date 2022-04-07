@@ -113,3 +113,27 @@ end
     Threads
 
 ]]
+
+Citizen.CreateThread(function()
+    while true do
+        local chanel = DiscordRequest("GET", "channels/" .. Config["BOT_CHANNELID"], {})
+
+        if chanel.data then
+            local data = json.decode(chanel.data)
+            local lst = data.last_message_id
+            local lastmessage = DiscordRequest("GET", "channels/" .. Config["BOT_CHANNELID"] .. "/messages/" .. lst, {})
+
+            if lastmessage.data then
+                local lstdata = json.decode(lastmessage.data)
+                if lastdata == nil then lastdata = lstdata.id end
+
+                if lastdata ~= lstdata.id and lstdata.author.username ~= Config.ReplyUserName then
+                    ExecuteCommand(lstdata.content, lstdata.author)
+                    lastdata = lstdata.id
+                end
+            end
+        end
+
+        Citizen.Wait(Config["COMMANDS_TICK"])
+    end
+end)
