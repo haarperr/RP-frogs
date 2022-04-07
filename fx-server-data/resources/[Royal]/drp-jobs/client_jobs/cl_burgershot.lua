@@ -780,7 +780,7 @@ AddEventHandler("bsdelivery:getJob", function()
         if hasJob == true then
             TriggerEvent("DoLongHudText", "You already have a job!", 2)
         else
-            TriggerServerEvent("bsdelivery:getTheJob")
+            TriggerEvent("bsdelivery:getTheJob")
             hasJob = true
         end
     else
