@@ -663,10 +663,10 @@ Citizen.CreateThread(function()
         useZ = true
     })
 
-    exports["drp-polytarget"]:AddBoxZone("in_n_out-cash-in-receipts", vector3(241.34, 225.59, 106.29), 2, 2, {
-        heading=340,
-        minZ=104.49,
-        maxZ=108.49
+    exports["drp-polytarget"]:AddBoxZone("in_n_out-cash-in-receipts", vector3(-1178, -896, 14), 1, 1.6, {
+        heading=70,
+        minZ=13,
+        maxZ=16
     })
 
     exports["drp-polytarget"]:AddBoxZone("in_n_out_register_1", vector3(84.71, 283.26, 110.21), 0.5, 0.3, {
