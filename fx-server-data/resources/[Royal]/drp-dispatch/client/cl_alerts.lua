@@ -554,10 +554,10 @@ AddEventHandler('drp-dispatch:susact', function(targetCoords)
 	if exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' then	
 		local alpha = 360
 		local thiefBlip = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
-
-		SetBlipSprite(thiefBlip,  4)
-		SetBlipColour(thiefBlip,  4)
-		SetBlipScale(thiefBlip, 1.5)
+		SetBlipHighDetail(thiefBlip, true)
+		SetBlipSprite(thiefBlip,  66)
+		SetBlipColour(thiefBlip,  36)
+		SetBlipScale(thiefBlip, 1.3)
 		SetBlipAsShortRange(thiefBlip, true)
 		BeginTextCommandSetBlipName("STRING")
 		AddTextComponentString('10-26 Suspicious Activity')
