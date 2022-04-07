@@ -496,7 +496,7 @@ on('inventory-open-request', () => {
                                 }
                             });
 
-                            emitNet('server-inventory-open', startPosition, cid, '1', carInvName, [], null, vehWeightCalc);
+                            emitNet("server-inventory-open", startPosition, cid, "1", "Trunk-" + licensePlate);
                             SetVehicleDoorOpen(vehicleFound, front ? 4 : 5, 0, 0);
                             TaskTurnPedToFaceEntity(player, vehicleFound, 1.0);
                             emit('toggle-animation', true);
@@ -510,8 +510,8 @@ on('inventory-open-request', () => {
     } else {
         GroundInventoryScan();
     }
-}); 
-
+});
+ --   //emitNet("server-inventory-open", startPosition, cid, "1", "Trunk-" + licensePlate);
 function GroundInventoryScan() {
     let row = DroppedInventories.find(ScanClose);
     if (row) {
