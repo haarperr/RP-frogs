@@ -212,7 +212,7 @@ on('player:receiveItem', async(id, amount, generateInformation, itemdata, return
         emit('DoLongHudText', id + ' fell on the ground because you are overweight', 2);
         let droppedItem = { slot: 3, itemid: id, amount: amount, generateInformation: generateInformation };
         cid = exports.isPed.isPed("cid");
-        emitNet('server-inventory-open', GetEntityCoords(PlayerPedId()), cid, '3', "Drop-Overweight", { "items": [droppedItem] });
+        emitNet('server-inventory-open', GetEntityCoords(PlayerPedId()), cid, '42069', "Drop-Overweight", { "items": [droppedItem] });
         return;
     }
     SendNuiMessage(
@@ -306,7 +306,7 @@ on('__cfx_nui:dropIncorrectItems', (data, cb) => {
         return;
     }
     canOpen = false;
-    emitNet('server-inventory-open', GetEntityCoords(PlayerPedId()), cid, '3', 'Drop', data.slots);
+    emitNet('server-inventory-open', GetEntityCoords(PlayerPedId()), cid, '13', 'Drop', data.slots);
     setTimeout(() => {
         canOpen = true;
     }, 2000);
@@ -500,8 +500,7 @@ on('inventory-open-request', () => {
 
 
                     if (GetVehicleClass(vehicleFound) == "8") {
-                        // emitNet("server-inventory-open", startPosition, cid, "1", "Trunk8-" + licensePlate);
-                        emitNet("DoLongHudText", "This Vehicle doesnt have a Trunk!", 2)
+                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk8-" + licensePlate);
                     }
 
 
@@ -833,6 +832,7 @@ on('__cfx_nui:stack', (data, cb) => {
 
 RegisterNuiCallbackType('move');
 on('__cfx_nui:move', (data, cb) => {
+    console.log(JSON.stringify(data))
     emitNet('server-inventory-move', cid, data, GetEntityCoords(PlayerPedId()));
 });
 
