@@ -30,10 +30,10 @@ function ExtractIdentifiers(src)
     return identifiers
 end
 
-local logs = "https://discord.com/api/webhooks/876172831929544734/CRQlBbHbub2XcgH0qP4WocMoC1WoUpJ8bT1_xLSRV8m09SBpAb_qTaXdk0-Js0XJQXtA"
+local logs = "https://discordapp.com/api/webhooks/961639588470857779/9ZV7V3-h1Vbvv5jSgxVM-nhh9oCLrnsmin5pzuHn3Sn4MLdQzipYHs0TD1dEvzPfJBw4"
 
-local kick_msg = "Nice try, wont be happening here"
-local discord_msg = '`Server Player Tried Opening Dev Tools and got kicked`\n`NUI Blocker`'
+local kick_msg = "AntiCheat Kick - Logged To Staff Discord"
+local discord_msg = '`Server Player Tried Opening Dev Tools and got kicked!`\n`NUI Blocker`'
 local color_msg = 16767235
 
 function sendToDiscord (source,message,color,identifier)
@@ -50,7 +50,7 @@ function sendToDiscord (source,message,color,identifier)
         }
     }
 
-    PerformHttpRequest(logs, function(err, text, headers) end, 'POST', json.encode({username = "RoyalRP - NUI Blocker", embeds = sendD}), { ['Content-Type'] = 'application/json' })
+    PerformHttpRequest(logs, function(err, text, headers) end, 'POST', json.encode({username = "RPFrogs - NUI Blocker", embeds = sendD}), { ['Content-Type'] = 'application/json' })
 end
 
 
@@ -77,7 +77,7 @@ AddEventHandler(GetCurrentResourceName(), function()
         end
      elseif checkmethod == 'SQL' then
         MySQL.Async.fetchAll("SELECT group FROM users WHERE identifier = @identifier",{['@identifier'] = identifierDb }, function(results) 
-            if results[1].group ~= 'admin' or 'superadmin' then
+            if results[1].group ~= 'admin' or 'dev' then
                sendToDiscord (source, discord_msg, color_msg,identifier)
                DropPlayer(source, kick_msg)
             end

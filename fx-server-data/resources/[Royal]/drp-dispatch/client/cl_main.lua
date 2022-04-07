@@ -885,7 +885,7 @@ function OxyPing(coords)
     SetBlipAlpha(Blip, alpha)
     SetBlipAsShortRange(Blip, false)
     BeginTextCommandSetBlipName("STRING")              -- set the blip's legend caption
-    AddTextComponentString('10-26 Sussy Activity')              -- to 'supermarket'
+    AddTextComponentString('10-26 Suspicious Activity')              -- to 'supermarket'
     EndTextCommandSetBlipName(Blip)
     
     TriggerServerEvent('drp-dispatch:drugsale', currentPos)
@@ -1158,7 +1158,7 @@ LoadRoyalVersion = function()
         elseif alertType == "Suspicious" then
             AlertSuspicious()
         elseif alertType == "fight" and not underground then
-            -- AlertFight()
+             AlertFight()
         elseif (alertType == "gunshot" or alertType == "gunshotvehicle") then
             AlertGunShot(isHunting, sentWeapon)
         elseif alertType == "lockpick" then
