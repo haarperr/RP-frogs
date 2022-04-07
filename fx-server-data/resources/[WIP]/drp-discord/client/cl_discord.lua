@@ -11,9 +11,10 @@ Citizen.CreateThread(function()
             SetRichPresence(a .. "/48 | Milkin Snakes ")
         end
 
-       
+        SetDiscordRichPresenceAssetSmall('logo'') -- Name of the smaller image asset.
+		SetDiscordRichPresenceAssetSmallText('RPFrogs Community Server')
         SetDiscordAppId(949909010386124840)
-         SetDiscordRichPresenceAsset('1000x1000')
+        SetDiscordRichPresenceAsset('1000x1000')
         SetDiscordRichPresenceAsset('logo')
         SetDiscordRichPresenceAction(0, 'RPFrogs Discord', 'https://discord.gg/rpfrog')
 
