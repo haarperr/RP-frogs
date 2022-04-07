@@ -1158,7 +1158,7 @@ LoadRoyalVersion = function()
         elseif alertType == "Suspicious" then
             AlertSuspicious()
         elseif alertType == "fight" and not underground then
-            AlertFight()
+            -- AlertFight()
         elseif (alertType == "gunshot" or alertType == "gunshotvehicle") then
             AlertGunShot(isHunting, sentWeapon)
         elseif alertType == "lockpick" then
