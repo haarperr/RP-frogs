@@ -110,9 +110,9 @@ function sell_items()
                 giveAnim(PlayerPedId())
                 Citizen.Wait(1500)
                 local sellableItems = {
-                    [1] = {name = 'oxy', amount = math.random(3,8), price=math.random(80,120)},
-                    [2] = {name = 'methlabproduct', amount = math.random(1,5), price=math.random(450, 575)},
-                    [3] = {name = 'weedq', amount = math.random(3,10), price=420}, 
+                    [1] = {name = 'oxy', amount = math.random(1,3), price=math.random(80,120)},
+                    [2] = {name = 'methlabproduct', amount = math.random(1,2), price=math.random(450, 575)},
+                    [3] = {name = 'weedq', amount = math.random(1,3), price=420}, 
                 }
 
                 local pog = false
