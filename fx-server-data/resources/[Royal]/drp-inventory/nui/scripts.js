@@ -235,7 +235,7 @@ $(document).ready(function () {
 
         //Send post message with new settings
         $.post(
-            'https://caue-inventory/UpdateSettings',
+            'https://drp-inventory/UpdateSettings',
             JSON.stringify({
                 holdToDrag: holdToDrag,
                 closeOnClick: closeOnClick,
@@ -456,7 +456,7 @@ $(document).ready(function () {
         } else if (item.response == 'GiveItemChecks') {
             if (itemList[item.id]) {
                 $.post(
-                    'https://caue-inventory/GiveItem',
+                    'https://drp-inventory/GiveItem',
                     JSON.stringify([
                         item.id,
                         item.amount,
@@ -469,7 +469,7 @@ $(document).ready(function () {
                 );
             } else {
                 $.post(
-                    'https://caue-inventory/GiveItem',
+                    'https://drp-inventory/GiveItem',
                     JSON.stringify([
                         item.id,
                         item.amount,
@@ -780,7 +780,7 @@ function invStack(
         amountRemaining,
         shopId,
     ];
-    $.post('https://caue-inventory/stack', JSON.stringify(arr));
+    $.post('https://drp-inventory/stack', JSON.stringify(arr));
 }
 
 function invMove(
@@ -812,18 +812,18 @@ function invMove(
         PlayerStore,
         shopId,
     ];
-    $.post('https://caue-inventory/move', JSON.stringify(arr));
+    $.post('https://drp-inventory/move', JSON.stringify(arr));
 }
 
 function invSwap(targetSlot, targetInventory, originSlot, originInventory, itemid1, metainformation1, itemid2, metainformation2) {
     let arr = [targetSlot, targetInventory, originSlot, originInventory, itemid1, metainformation1, itemid2, metainformation2];
-    $.post('https://caue-inventory/swap', JSON.stringify(arr));
+    $.post('https://drp-inventory/swap', JSON.stringify(arr));
 }
 
 function removeCraftItems(itemid, moveAmount, CraftArrayID) {
     let arr = itemList[itemid].craft[CraftArrayID];
     let amount = moveAmount;
-    $.post('https://caue-inventory/removeCraftItems', JSON.stringify([arr, amount]));
+    $.post('https://drp-inventory/removeCraftItems', JSON.stringify([arr, amount]));
 }
 
 function CreateEmptyPersonalSlot(slotLimit) {
@@ -1145,7 +1145,7 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
 
 function BuildDrop(brokenSlots) {
     $.post(
-        'https://caue-inventory/dropIncorrectItems',
+        'https://drp-inventory/dropIncorrectItems',
         JSON.stringify({
             slots: brokenSlots,
         }),
@@ -1664,7 +1664,7 @@ function UpdateSetWeights(secondaryName) {
     }
 
     $.post(
-        'https://caue-inventory/Weight',
+        'https://drp-inventory/Weight',
         JSON.stringify({
             weight: personalWeight.toFixed(2),
         }),
@@ -1791,7 +1791,7 @@ function DragToggle(fromSlot, isUsing, mouseEvent) {
             isDragging = true;
             draggingid = fromSlot;
 
-            // $.post('https://caue-inventory/SlotInuse', JSON.stringify(parseInt(draggingid.replace(/\D/g, ''))));
+            // $.post('https://drp-inventory/SlotInuse', JSON.stringify(parseInt(draggingid.replace(/\D/g, ''))));
 
             let draggedItemHtml = document.getElementById(draggingid).innerHTML;
             document.getElementById('draggedItem').innerHTML = draggedItemHtml;
@@ -1833,7 +1833,7 @@ function DragToggle(fromSlot, isUsing, mouseEvent) {
         }
 
         if (!occupiedslot && isDragging) {
-            // $.post('https://caue-inventory/SlotInuse', JSON.stringify(parseInt(draggingid.replace(/\D/g, ''))));
+            // $.post('https://drp-inventory/SlotInuse', JSON.stringify(parseInt(draggingid.replace(/\D/g, ''))));
             /* Here we are droping an item to an open slot - I guess we should check waits etc to confirm this is allowed before doing so. */
             AttemptDropInEmptySlot(fromSlot, false);
         }
@@ -1879,7 +1879,7 @@ function FindNextSlotAndMove(half) {
         //Stack items
         AttemptDropInFilledSlot(stackSlot);
     } else if (firstEmpty) {
-        // $.post('https://caue-inventory/SlotInuse', JSON.stringify(parseInt(draggingid.replace(/\D/g, ''))));
+        // $.post('https://drp-inventory/SlotInuse', JSON.stringify(parseInt(draggingid.replace(/\D/g, ''))));
         AttemptDropInEmptySlot(firstEmpty, false, half);
     }
 }
@@ -1995,7 +1995,7 @@ function DropItem(slot, amountDropped) {
 
     //InventoryLog("Dropped: " + name + " x(" + amountDropped + ") from slot " + slotusing + " of " + inventoryUsedNameText)
 
-    // $.post('https://caue-inventory/dropitem', JSON.stringify({
+    // $.post('https://drp-inventory/dropitem', JSON.stringify({
     //  currentInventory: currentInventory,
     //  weight: weight,
     //  amount: amount,
@@ -2008,11 +2008,11 @@ function DropItem(slot, amountDropped) {
 }
 
 function ErrorMove() {
-    // $.post('https://caue-inventory/move:fail', JSON.stringify({}));
+    // $.post('https://drp-inventory/move:fail', JSON.stringify({}));
 }
 
 function SuccessMove() {
-    // $.post('https://caue-inventory/move:success', JSON.stringify({}));
+    // $.post('https://drp-inventory/move:success', JSON.stringify({}));
 }
 
 // we are splitting items from inv2,slot2,amount2 over to inv1,slot1,amount1
@@ -2049,7 +2049,7 @@ function CompileStacks(
     }
 
     $.post(
-        'https://caue-inventory/SlotJustUsed',
+        'https://drp-inventory/SlotJustUsed',
         JSON.stringify({
             targetslot: targetSlot,
             origin: originSlot,
@@ -2109,7 +2109,7 @@ function MoveStack(targetSlot, originSlot, inv1, inv2, purchase, itemCosts, item
     }
 
     $.post(
-        'https://caue-inventory/SlotJustUsed',
+        'https://drp-inventory/SlotJustUsed',
         JSON.stringify({
             targetslot: targetSlot,
             origin: originSlot,
@@ -2151,7 +2151,7 @@ function MoveStack(targetSlot, originSlot, inv1, inv2, purchase, itemCosts, item
 
 // slot2 is the object being moved originally, slot 1 is the item it is replacing with.
 function SwapStacks(targetSlot, originSlot, inv1, inv2, itemid1, metainformation1, itemid2, metainformation2) {
-    // $.post('https://caue-inventory/swapstack', JSON.stringify({
+    // $.post('https://drp-inventory/swapstack', JSON.stringify({
     //   slot1: slot1,
     //   slot2: slot2,
     //   inv1: inv1,
@@ -2174,7 +2174,7 @@ function SwapStacks(targetSlot, originSlot, inv1, inv2, itemid1, metainformation
 
     RequestItemData();
     $.post(
-        'https://caue-inventory/SlotJustUsed',
+        'https://drp-inventory/SlotJustUsed',
         JSON.stringify({
             targetslot: targetSlot,
             origin: originSlot,
@@ -2208,7 +2208,7 @@ function InsertItem(targetSlot, originSlot, inv1, inv2, itemid1, iteminfo1, item
     }
 
     $.post(
-        'https://caue-inventory/insert-item',
+        'https://drp-inventory/insert-item',
         JSON.stringify({
             originInventory,
             targetInventory,
@@ -2229,7 +2229,7 @@ function closeInv(pIsItemUsed = false) {
     if (isDragging) EndDrag(draggingid);
 
     $.post(
-        'https://caue-inventory/ServerCloseInventory',
+        'https://drp-inventory/ServerCloseInventory',
         JSON.stringify({
             name: TargetInventoryName,
         }),
@@ -2237,7 +2237,7 @@ function closeInv(pIsItemUsed = false) {
     TargetInventoryName = 'none';
 
     $.post(
-        'https://caue-inventory/Close',
+        'https://drp-inventory/Close',
         JSON.stringify({
             isItemUsed: pIsItemUsed,
         }),
@@ -2312,7 +2312,7 @@ function CheckCraftFail(itemid, moveAmount) {
             MyInventory = JSON.stringify(sqlInventory);
             MyItemCount = sqlInventory.length;
 
-            $.post('https://caue-inventory/craftProgression', JSON.stringify({
+            $.post('https://drp-inventory/craftProgression', JSON.stringify({
                 "inventory": TargetInventoryName,
                 "item": itemid,
                 "amount": moveAmount,
@@ -3204,7 +3204,7 @@ function useitem() {
     if (currentInventory == 1) {
         inventoryUsedName = PlayerInventoryName;
         let arr = [inventoryUsedName, itemid, slotusing, isWeapon, itemusinginfo];
-        $.post('https://caue-inventory/invuse', JSON.stringify(arr));
+        $.post('https://drp-inventory/invuse', JSON.stringify(arr));
         //InventoryLog("Using item: " + name + "(" + amount + ") from " + inventoryUsedName + " | slot " + slotusing)
     }
     EndDrag(slotusing);
