@@ -703,7 +703,7 @@ function BurgerShotReceipts()
 end
 
 
-Houses = { -- Houses entry and model
+dHouses = { -- Houses entry and model
 	{x = 31.492990493774, y = 6596.619140625, z = 32.81018447876},
 	{x = 11.572845458984, y = 6578.3662109375, z = 33.060623168945},
 	{x = -15.09232711792, y = 6557.7416992188, z = 33.240436553955},
@@ -766,8 +766,8 @@ Houses = { -- Houses entry and model
 }
 
 function Houses()
-	local ubicacion = math.random(1, #Houses)		
-	local c = Houses[ubicacion]
+	local ubicacion = math.random(1, #dHouses)		
+	local c = dHouses[ubicacion]
 	return c
 end
 
