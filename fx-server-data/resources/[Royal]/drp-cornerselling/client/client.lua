@@ -105,13 +105,10 @@ function sell_items()
     recent_ped = ped
     if (finished == 100) then
         if math.random(1, 100) >= 40 then 
-            giveAnim(ped)
-            giveAnim(PlayerPedId())
-            Citizen.Wait(1500)
             local sellableItems = {
-                [1] = {name = 'oxy', amount = math.random(1,3), price=math.random(80,120)},
+                [1] = {name = 'oxy', amount = math.random(1,2), price=math.random(80,120)},
                 [2] = {name = 'methlabproduct', amount = math.random(1,2), price=math.random(450, 575)},
-                [3] = {name = 'weedq', amount = math.random(1,3), price=420}, 
+                [3] = {name = 'weedq', amount = math.random(1,2), price=420}, 
             }
 
             local pog = false
@@ -122,6 +119,9 @@ function sell_items()
                 sellableItems[i] = sellableItems[randomIndex]
                 
                 if exports["drp-inventory"]:hasEnoughOfItem(sellableItems[i].name,sellableItems[i].amount,false) then
+                    giveAnim(ped)
+                    giveAnim(PlayerPedId())
+                    Citizen.Wait(1500)
                     TriggerEvent("inventory:removeItem",sellableItems[i].name,sellableItems[i].amount)
                     TriggerServerEvent('mission:completed', sellableItems[i].price * sellableItems[i].amount)
                     pog = true
@@ -129,8 +129,10 @@ function sell_items()
                 else
                     TriggerEvent("DoLongHudText", "You dont got what I want!", 2)
                 end
+                SetPedAsNoLongerNeeded(recent_ped)
+                TaskWanderStandard(recent_ped, 10.0, 10)
             end
-            if math.random(1, 100) >= 50 then
+            if math.random(1, 100) >= 33 then
                 local plyPos = GetEntityCoords(PlayerPedId(),  true)
                 local s1, s2 = Citizen.InvokeNative(0x2EB41072B4C1E4C0, plyPos.x, plyPos.y, plyPos.z, Citizen.PointerValueInt(), Citizen.PointerValueInt())
                 local street1 = GetStreetNameFromHashKey(s1)
@@ -143,7 +145,19 @@ function sell_items()
             end
         else
             SetPedAsNoLongerNeeded(recent_ped)
+            TaskWanderStandard(recent_ped, 10.0, 10)
             TriggerEvent("DoLongHudText", "They are not interested!", 2)
+            if math.random(1, 100) >= 33 then
+                local plyPos = GetEntityCoords(PlayerPedId(),  true)
+                local s1, s2 = Citizen.InvokeNative(0x2EB41072B4C1E4C0, plyPos.x, plyPos.y, plyPos.z, Citizen.PointerValueInt(), Citizen.PointerValueInt())
+                local street1 = GetStreetNameFromHashKey(s1)
+                local street2 = GetStreetNameFromHashKey(s2)
+                local player = PlayerPedId()
+        
+                if not IsPedDeadOrDying(recent_ped) then
+                    TriggerEvent('civilian:alertPolice', 8.0, 'drugsale', 0)
+                end
+            end
             
         local plyPos = GetEntityCoords(PlayerPedId(),  true)
         local s1, s2 = Citizen.InvokeNative(0x2EB41072B4C1E4C0, plyPos.x, plyPos.y, plyPos.z, Citizen.PointerValueInt(), Citizen.PointerValueInt())
