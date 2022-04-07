@@ -430,7 +430,16 @@ on('inventory-open-request', () => {
         let container = "hidden-container|" + x + "|" + y;
         emitNet("server-inventory-open", startPosition, cid, "1", container);
     } else if (vehicleFound != 0) {
-
+        let vehModel = GetEntityModel(vehicleFound);
+        let [trunkCoords, front] = GetEnginePosition(vehicleFound);
+        let distanceRear = GetDistanceBetweenCoords(
+            startPosition[0],
+            startPosition[1],
+            startPosition[2],
+            trunkCoords[0],
+            trunkCoords[1],
+            trunkCoords[2],
+        );
         let cock = GetEntityModel(vehicleFound)
         let coords = GetModelDimensions(cock);
 
