@@ -18,7 +18,7 @@ Citizen.CreateThread(function()
                         exports['drp-textui']:showInteraction("[E] Attempt Sale")
                     end
 
-                    if IsControlJustPressed(1, 86) and ReworkedHasItems() and not timeout then
+                    if IsControlJustPressed(1, 86) and ReworkedHasItems() and timeout == false then
                         sell_items()
                         exports['drp-textui']:hideInteraction()
                         timeout = true
