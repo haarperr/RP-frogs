@@ -433,9 +433,8 @@ function DoDropOff(requestMoney)
 
 	if DoesEntityExist(deliveryPed) and not IsEntityDead(deliveryPed) then
 
-		if math.random(1,3) == 1 then
+		if math.random(1) == 1 then
 			TriggerEvent("drp-dispatch:oxyping")
-			TriggerEvent("civilian:alertPolice", 15.0, "drugsale", 0)  -- 1/3 chance to ping PD
 		end
 
 		if math.random(30) == 1 then
