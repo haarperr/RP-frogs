@@ -499,22 +499,40 @@ onNet("server-inventory-open", async(coords, player, secondInventory, targetName
             }
             emitNet("Inventory-Dropped-Addition", -1, DroppedInventories[NewDroppedName])
 
-        } else if (secondInventory == "2") {
+        } else if (secondInventory == "42000") {
 
             var targetinvname = targetName;
+            var shopArray = CraftRifleStoreGangs();
+            var shopAmount = 5;
+            emitNet("inventory-open-target", src, [invArray, arrayCount, playerinvname, shopArray, shopAmount, targetinvname, 500, false]);
+
+        } else if (secondInventory == "43000") {
+            var targetinvname = targetName;
+            var shopArray = WarehouseCrafting();
+            var shopAmount = 11;
+            emitNet("inventory-open-target", src, [invArray, arrayCount, playerinvname, shopArray, shopAmount, targetinvname, 500, false]);
+
+        } else if (secondInventory == "2") {
+            var targetinvname = targetName;
             var shopArray = ConvenienceStore();
-            var shopAmount = 12;
+            var shopAmount = 17;
+            emitNet("inventory-open-target", src, [invArray, arrayCount, playerinvname, shopArray, shopAmount, targetinvname, 500, false]);
+
+        } else if (secondInventory == "4588") {
+            var targetinvname = targetName;
+            var shopArray = CivCrafting();
+            var shopAmount = 5;
             emitNet("inventory-open-target", src, [invArray, arrayCount, playerinvname, shopArray, shopAmount, targetinvname, 500, false]);
 
         } else if (secondInventory == "4") {
             var targetinvname = targetName;
             var shopArray = HardwareStore();
-            var shopAmount = 18;
+            var shopAmount = 25;
             emitNet("inventory-open-target", src, [invArray, arrayCount, playerinvname, shopArray, shopAmount, targetinvname, 500, false]);
         } else if (secondInventory == "5") {
             var targetinvname = targetName;
             var shopArray = GunStore();
-            var shopAmount = 8;
+            var shopAmount = 10;
             emitNet("inventory-open-target", src, [invArray, arrayCount, playerinvname, shopArray, shopAmount, targetinvname, 500, false]);
         } else if (secondInventory == "6") {
             var targetinvname = targetName;
@@ -524,7 +542,7 @@ onNet("server-inventory-open", async(coords, player, secondInventory, targetName
         } else if (secondInventory == "10") {
             var targetinvname = targetName;
             var shopArray = PoliceArmory();
-            var shopAmount = 36;
+            var shopAmount = 38;
             emitNet("inventory-open-target", src, [invArray, arrayCount, playerinvname, shopArray, shopAmount, targetinvname, 500, false]);
         } else if (secondInventory == "15") {
             var targetinvname = targetName;
@@ -672,11 +690,11 @@ onNet("server-inventory-open", async(coords, player, secondInventory, targetName
         } else if (secondInventory == "150") {
             var targetinvname = targetName;
             var shopArray = BurgerShotStore();
-            var shopAmount = 9;
+            var shopAmount = 10;
         } else if (secondInventory == "54") {
             var targetinvname = targetName;
             var shopArray = UwUCafeFridge();
-            var shopAmount = 8;    
+            var shopAmount = 11;    
             emitNet("inventory-open-target", src, [invArray, arrayCount, playerinvname, shopArray, shopAmount, targetinvname, 500, false]);
         } else if (secondInventory == "46") {
             var targetinvname = targetName;
