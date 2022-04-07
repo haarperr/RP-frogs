@@ -749,7 +749,15 @@ function Houses()
     return c
 end
 
+local menuList = {
+    {"bleederburger"}, {"water"}, {"softdrink"}, {"bscoffee"}, {"mshake"},
+    {"heartstopper"}, {"applepie"}, {"murdermeal"}, {"moneyshot"}, {"fries"},
+    {"fries"}, {"torpedo"}, {"meatfree"}
+}
+
 local hasJob = false
+local currentHouse = nil
+local currentMenu = nil
 
 RegisterNetEvent("bsdelivery:getJob")
 AddEventHandler("bsdelivery:getJob", function()
@@ -783,4 +791,5 @@ AddEventHandler("bsdelivery:getTheJob", function()
     SetBlipRouteColour(HouseRobberyLocation, 29)
     TriggerEvent('phone:robberynotif', 'Burgershot - Marty Shanks',
                  "Ive updated the location of the delivery house on your GPS.")
+
 end)
