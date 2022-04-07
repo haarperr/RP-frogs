@@ -561,7 +561,16 @@ end)
 
 RegisterNetEvent("drp-scoreboard:playerscount")
 AddEventHandler("drp-scoreboard:playerscount", function(a)
-    SetRichPresence(a .. "/50 | Simping For Pokimane ")
+
+	
+	local first_name = exports["caue-base"]:getChar("first_name")
+	local last_name = exports["caue-base"]:getChar("last_name")
+
+	if first_name then
+		SetRichPresence("Playing As " .. first_name .. " " .. last_name)
+	end
+
+    SetRichPresence(a .. "/48 | Milkin Snakes ")
     SetDiscordAppId(949909010386124840)
  	SetDiscordRichPresenceAsset('1000x1000')
     SetDiscordRichPresenceAsset('logo')
