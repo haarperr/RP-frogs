@@ -519,7 +519,7 @@ function AlertFight()
                 local newPos = GetEntityCoords(PlayerPedId())
                 local locationInfo = GetStreetAndZone()
                 TriggerServerEvent('dispatch:svNotify', {
-                    dispatchCode = 'CarEvading',
+                    dispatchCode = '',
                     relatedCode = dispatchCode,
                     firstStreet = locationInfo,
                     gender = gender,
@@ -570,7 +570,7 @@ function AlertGunShot(isHunting, sentWeapon)
                     local newPos = GetEntityCoords(PlayerPedId())
                     local locationInfo = GetStreetAndZone()
                     TriggerServerEvent('dispatch:svNotify', {
-                        dispatchCode = 'CarEvading',
+                        dispatchCode = '',
                         relatedCode = initialTenCode,
                         firstStreet = locationInfo,
                         gender = gender,
@@ -601,17 +601,17 @@ function DrugSale()
     local gender = IsPedMale(playerPed)
     local currentPos = GetEntityCoords(playerPed)
     local isInVehicle = IsPedInAnyVehicle(PlayerPedId())
-    local initialTenCode = "10-99"
-    TriggerServerEvent('drp-dispatch:drugsale', currentPos)
+    local initialTenCode = "10-26"
+    -- TriggerServerEvent('drp-dispatch:drugsale', currentPos)
     TriggerEvent("drp-dispatch:roboxyoxy")
-    TriggerServerEvent('dispatch:svNotify', {
-        dispatchCode = initialTenCode,
-        firstStreet = locationInfo,
-        gender = gender,
-        priority = 2,
-        origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
-        dispatchMessage = "Suspicious Activity"
-    })
+    --TriggerServerEvent('dispatch:svNotify', {
+    --    dispatchCode = initialTenCode,
+    --    firstStreet = locationInfo,
+    --    gender = gender,
+    --   priority = 2,
+    --    origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
+    --    dispatchMessage = "Suspicious Activity"
+    --})
     if math.random(10) > 5 and not isInVehicle then
         CreateThread(function()
             Wait(math.random(7500, 12500))
@@ -620,7 +620,7 @@ function DrugSale()
                 local newPos = GetEntityCoords(PlayerPedId())
                 local locationInfo = GetStreetAndZone()
                 TriggerServerEvent('dispatch:svNotify', {
-                    dispatchCode = 'CarEvading',
+                    dispatchCode = 'Car Evading',
                     relatedCode = initialTenCode,
                     firstStreet = locationInfo,
                     gender = gender,
@@ -694,7 +694,7 @@ function AlertCheckLockpick(object)
                 local newPos = GetEntityCoords(PlayerPedId())
                 local locationInfo = GetStreetAndZone()
                 TriggerServerEvent('dispatch:svNotify', {
-                    dispatchCode = 'CarEvading',
+                    dispatchCode = '',
                     relatedCode = initialTenCode,
                     firstStreet = locationInfo,
                     gender = gender,
@@ -761,7 +761,7 @@ function AlertJewelRob()
                 local newPos = GetEntityCoords(PlayerPedId())
                 local locationInfo = GetStreetAndZone()
                 TriggerServerEvent('dispatch:svNotify', {
-                    dispatchCode = 'CarEvading',
+                    dispatchCode = '',
                     relatedCode = dispatchCode,
                     firstStreet = locationInfo,
                     gender = gender,
@@ -848,7 +848,7 @@ function AlertFleecaRobbery()
                 local newPos = GetEntityCoords(PlayerPedId())
                 local locationInfo = GetStreetAndZone()
                 TriggerServerEvent('dispatch:svNotify', {
-                    dispatchCode = 'CarEvading',
+                    dispatchCode = '',
                     relatedCode = dispatchCode,
                     firstStreet = locationInfo,
                     gender = gender,
@@ -949,7 +949,7 @@ function AlertPacificRobbery()
                 local newPos = GetEntityCoords(PlayerPedId())
                 local locationInfo = GetStreetAndZone()
                 TriggerServerEvent('dispatch:svNotify', {
-                    dispatchCode = 'CarEvading',
+                    dispatchCode = '',
                     relatedCode = dispatchCode,
                     firstStreet = locationInfo,
                     gender = gender,
@@ -992,7 +992,7 @@ function AlertPowerplant()
                 local newPos = GetEntityCoords(PlayerPedId())
                 local locationInfo = GetStreetAndZone()
                 TriggerServerEvent('dispatch:svNotify', {
-                    dispatchCode = 'CarEvading',
+                    dispatchCode = '',
                     relatedCode = dispatchCode,
                     firstStreet = locationInfo,
                     gender = gender,

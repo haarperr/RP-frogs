@@ -163,6 +163,9 @@ AddEventHandler("oxydelivery:client", function()
 					Citizen.Wait(1500)
 					PlayAmbientSpeech1(deliveryPed, "Generic_Hi", "Speech_Params_Force")
 					PedGiveAnim()
+					if math.random(1) == 1 then
+						TriggerEvent("civilian:alertPolice", 15.0, "drugsale", 0)
+					end
 					local finished = exports["drp-taskbar"]:taskBar(22500,"Handing Over Package")
 					if finished == 100 then
 						DoDropOff()
@@ -432,10 +435,6 @@ function DoDropOff(requestMoney)
 	PlayAmbientSpeech1(deliveryPed, "Chat_State", "Speech_Params_Force")
 
 	if DoesEntityExist(deliveryPed) and not IsEntityDead(deliveryPed) then
-
-		if math.random(1) == 1 then
-			TriggerEvent("civilian:alertPolice", 15.0, "drugsale", 0)
-		end
 
 		if math.random(30) == 1 then
 			TriggerEvent( "player:receiveItem", "safecrackingkit", 1 )

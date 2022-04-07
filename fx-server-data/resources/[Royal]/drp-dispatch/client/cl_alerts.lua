@@ -74,43 +74,38 @@ end)
 
 -- ---- Fight ----
 
--- RegisterNetEvent('vrp-outlawalert:combatInProgress')
--- AddEventHandler('vrp-outlawalert:combatInProgress', function(targetCoords)
--- 	if PlayerData.job.name == 'police' then	
--- 		if Config.gunAlert then
--- 			local alpha = 360
--- 			local knife = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
-
--- 			SetBlipScale(knife, 1.3)
--- 			SetBlipSprite(knife,  437)
--- 			SetBlipColour(knife,  1)
--- 			SetBlipAlpha(knife, alpha)
--- 			SetBlipAsShortRange(knife, false)
--- 			BeginTextCommandSetBlipName("STRING")              -- set the blip's legend caption
--- 			AddTextComponentString('10-11 Fight In Progress')              -- to 'supermarket'
--- 			EndTextCommandSetBlipName(knife)
--- 			SetBlipAsShortRange(knife,  1)
--- 			PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
-
--- 			while alpha ~= 0 do
--- 				Citizen.Wait(Config.BlipGunTime * 4)
--- 				alpha = alpha - 1
--- 				SetBlipAlpha(knife, alpha)
-
--- 				if alpha == 0 then
--- 					RemoveBlip(knife)
--- 					return
--- 				end
--- 			end
-
--- 		end
--- 	end
--- end)
-
--- AddEventHandler('drp-dispatch:fight', function()
--- 	local pos = GetEntityCoords(PlayerPedId(), true)
--- 	TriggerServerEvent('drp-dispatch:figher', {x = pos.x, y = pos.y, z = pos.z})
--- end)
+RegisterNetEvent('vrp-outlawalert:combatInProgress')
+AddEventHandler('vrp-outlawalert:combatInProgress', function(targetCoords)
+	if PlayerData.job.name == 'police' then	
+		if Config.gunAlert then
+			local alpha = 360
+			local knife = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
+			SetBlipScale(knife, 1.3)
+			SetBlipSprite(knife,  437)
+			SetBlipColour(knife,  1)
+			SetBlipAlpha(knife, alpha)
+			SetBlipAsShortRange(knife, false)
+			BeginTextCommandSetBlipName("STRING")              -- set the blip's legend caption
+			AddTextComponentString('10-11 Fight In Progress')              -- to 'supermarket'
+			EndTextCommandSetBlipName(knife)
+			SetBlipAsShortRange(knife,  1)
+			PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
+			while alpha ~= 0 do
+				Citizen.Wait(Config.BlipGunTime * 4)
+				alpha = alpha - 1
+				SetBlipAlpha(knife, alpha)
+				if alpha == 0 then
+					RemoveBlip(knife)
+					return
+				end
+			end
+		end
+	end
+end)
+AddEventHandler('drp-dispatch:fight', function()
+	local pos = GetEntityCoords(PlayerPedId(), true)
+	TriggerServerEvent('drp-dispatch:figher', {x = pos.x, y = pos.y, z = pos.z})
+end)
 
 -- ---- 10-13s Officer Down ----
 
@@ -390,38 +385,34 @@ AddEventHandler('drp-dispatch:downguy', function()
 end)
 
 -- ---- assistance ----
--- RegisterNetEvent('drp-dispatch:assistance')
--- AddEventHandler('drp-dispatch:assistance', function(targetCoords)
--- if PlayerData.job.name == 'police' or PlayerData.job.name == 'ambulance' then	
--- 		local alpha = 360
--- 		local assistance = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
-
--- 		SetBlipSprite(assistance,  126)
--- 		SetBlipColour(assistance,  18)
--- 		SetBlipScale(assistance, 1.5)
--- 		SetBlipAsShortRange(assistance,  1)
--- 		BeginTextCommandSetBlipName("STRING")
--- 		AddTextComponentString('Assistance Needed')
--- 		EndTextCommandSetBlipName(assistance)
--- 		TriggerServerEvent('InteractSound_SV:PlayOnSource', 'dispatch', 0.1)
-
--- 		while alpha ~= 0 do
--- 			Citizen.Wait(120 * 4)
--- 			alpha = alpha - 1
--- 			SetBlipAlpha(assistance, alpha)
-
--- 		if alpha == 0 then
--- 			RemoveBlip(assistance)
--- 		return
---       end
---     end
---   end
--- end)
-
--- AddEventHandler('drp-dispatch:assistanceneeded', function()
--- 	local pos = GetEntityCoords(PlayerPedId(), true)
--- 	TriggerServerEvent('drp-dispatch:assistancen', {x = pos.x, y = pos.y, z = pos.z})
--- end)
+RegisterNetEvent('drp-dispatch:assistance')
+AddEventHandler('drp-dispatch:assistance', function(targetCoords)
+if PlayerData.job.name == 'police' or PlayerData.job.name == 'ambulance' then	
+		local alpha = 360
+		local assistance = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
+		SetBlipSprite(assistance,  126)
+		SetBlipColour(assistance,  18)
+		SetBlipScale(assistance, 1.5)
+		SetBlipAsShortRange(assistance,  1)
+		BeginTextCommandSetBlipName("STRING")
+		AddTextComponentString('Assistance Needed')
+		EndTextCommandSetBlipName(assistance)
+		TriggerServerEvent('InteractSound_SV:PlayOnSource', 'dispatch', 0.1)
+		while alpha ~= 0 do
+			Citizen.Wait(120 * 4)
+			alpha = alpha - 1
+			SetBlipAlpha(assistance, alpha)
+		if alpha == 0 then
+			RemoveBlip(assistance)
+		return
+      end
+    end
+  end
+end)
+AddEventHandler('drp-dispatch:assistanceneeded', function()
+	local pos = GetEntityCoords(PlayerPedId(), true)
+	TriggerServerEvent('drp-dispatch:assistancen', {x = pos.x, y = pos.y, z = pos.z})
+end)
 
 -- ---- Car Crash ----
 
