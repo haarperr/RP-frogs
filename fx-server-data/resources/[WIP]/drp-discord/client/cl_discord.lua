@@ -2,8 +2,8 @@ Citizen.CreateThread(function()
 	while true do
 		SetDiscordAppId(949909010386124840)
 
-        local first_name = exports["isPed"]:getChar("firstname")
-        local last_name = exports["isPed"]:getChar("lastname")
+        local first_name = exports["isPed"]:isPed("firstname")
+        local last_name = exports["isPed"]:isPed("lastname")
 
         if first_name then
             SetRichPresence("Playing as " .. first_name .. " " .. last_name)
