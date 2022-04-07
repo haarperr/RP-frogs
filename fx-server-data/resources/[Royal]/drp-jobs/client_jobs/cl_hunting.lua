@@ -328,10 +328,10 @@ local function sellAnimals()
   local totalBMarketCash = 0
 
   local carcasses = {
-    { name = "huntingcarcass1", price = math.random(100, 250), illegal = false },
-    { name = "huntingcarcass2", price = math.random(350, 500), illegal = false },
-    { name = "huntingcarcass3", price = math.random(600, 750), illegal = false },
-    { name = "huntingcarcass4", price = math.random(850, 1000), illegal = false },
+    { name = "huntingcarcass1", price = math.random(300, 550), illegal = false },
+    { name = "huntingcarcass2", price = math.random(550, 700), illegal = false },
+    { name = "huntingcarcass3", price = math.random(800, 950), illegal = false },
+    { name = "huntingcarcass4", price = math.random(1050, 1200), illegal = false },
   }
 
   for _, carcass in pairs(carcasses) do
