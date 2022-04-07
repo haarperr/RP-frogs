@@ -73,7 +73,7 @@ AddEventHandler("burgershot:retreive:receipt", function(regID)
                     local owner = exports["drp-base"]:getModule("Player"):GetUser(Registers[regID][i].owner)
                     local char = owner:getCurrentCharacter()
                     information = {
-                        ["Price"] = tonumber(amount),
+                        ["Price"] = tonumber(amount+math.random(1, 75)),
                         ["Creator"] = char.first_name .. " " ..char.last_name,
                         ["Comment"] = Registers[regID][i].comment
                     }
