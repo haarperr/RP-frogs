@@ -22,7 +22,7 @@ let purchase = false;
 let crafting = false;
 let clicking = false;
 let userCash = 0;
-let userWeaponLicense = false;
+let userWeaponLicense = true;
 let itemList = {};
 let exluded = {};
 let brought = false;
@@ -54,16 +54,12 @@ let customImageItems = [
     "newstape",
     "summonablepet",
     "tcgcard",
-    "book",
     "petaccessory",
     "resfooditem",
     "ressideitem",
     "resdessertitem",
     "resdrinkitem",
     "resalcoholitem",
-    "bentobox",
-    "spraycan",
-    "gallerygem",
 ];
 let customNameItems = [
     "customfooditem",
@@ -77,14 +73,12 @@ let customNameItems = [
     "tcgcard",
     "tcgpromobooster",
     "tcgbinder",
-    "book",
     "petaccessory",
     "resfooditem",
     "ressideitem",
     "resdessertitem",
     "resdrinkitem",
     "resalcoholitem",
-    "gallerygem",
 ];
 let customNameItemsDescriptions = {
     "customfooditem": "(FM) ",
@@ -94,8 +88,6 @@ let customNameItemsDescriptions = {
     "custommerchitem": "(FM) ",
     "customciggyitem": "(FM) ",
     "custombandageitem": "(FM) ",
-    "book": "(B) ",
-    "gallerygem": "(G) ",
 };
 let customDescriptionItems = [
     "customfooditem",
@@ -136,7 +128,7 @@ const foodCatMaps = {
     vegetables: 'Vegetables really improve your cardio.',
 }
 
-const ignoreMetaKeysInComparison = ["_remove_id", "_hideKeys", "_is_poisoned", "_foodEnhancements", "potency", "interval", "duration", "nonLethal", "quality", "foodEnhancement", "_foodEnhancement"];
+const ignoreMetaKeysInComparison = ["_remove_id", "_hideKeys", "_is_poisoned", "_foodEnhancements", "potency", "interval", "duration", "nonLethal"];
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -179,7 +171,7 @@ function getInvImage(item, info) {
     let imgSrc = `icons/${item.image}`;
     try {
         if (customImageItems.includes(item._name) && !!info) {
-            imgSrc = info._image_url || JSON.parse(info)._image_url || imgSrc;
+            imgSrc = info._image_url || JSON.parse(info)._image_url;
         }
     } catch (err) { }
     return imgSrc;
@@ -429,7 +421,7 @@ $(document).ready(function () {
             UpdateSetWeights(item.invName);
         } else if (item.response == 'cashUpdate') {
             userCash = item.amount;
-            userWeaponLicense = item.weaponlicence;
+            userWeaponLicense = true;
             brought = item.brought;
             isCop = item.cop;
         } else if (item.response == 'DisableMouse') {
@@ -500,7 +492,7 @@ function UpdateQuality(data, penis) {
     let inventory = data.inventory;
 
     let divslot = 'secondaryslot' + data.slot;
-    if (inventory.startsWith('ply-')) {
+    if (inventory.indexOf('ply-') > -1) {
         divslot = 'playerslot' + data.slot;
     }
 
@@ -749,7 +741,6 @@ function invStack(
     purchase,
     itemCosts,
     itemidsent,
-    metainformation,
     amountmoving,
     crafting,
     weapon,
@@ -764,7 +755,6 @@ function invStack(
         purchase,
         itemCosts,
         itemidsent,
-        metainformation,
         amountmoving,
         crafting,
         weapon,
@@ -782,7 +772,6 @@ function invMove(
     purchase,
     itemCosts,
     itemidsent,
-    metainformation,
     amountmoving,
     crafting,
     weapon,
@@ -795,7 +784,6 @@ function invMove(
         purchase,
         itemCosts,
         itemidsent,
-        metainformation,
         amountmoving,
         crafting,
         weapon,
@@ -897,8 +885,8 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
         PlayerStore = true;
         displayName = 'Player Store';
     } else if (targetinvName.indexOf('storage') > -1) {
-        secondaryMaxWeight = 2000.0;
-        slotLimitTarget = 200;
+        secondaryMaxWeight = 1500.0;
+        slotLimitTarget = 175;
     } else if (targetinvName.indexOf('office') > -1) {
         secondaryMaxWeight = 100.0;
         slotLimitTarget = 5;
@@ -921,6 +909,26 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
         secondaryMaxWeight = 50.0;
         slotLimitTarget = 5;
         displayName = 'Glovebox';
+    } else if (targetinvName.indexOf('MurderMeal') > -1) {
+        secondaryMaxWeight = 15.0;
+        slotLimitTarget = 5;
+        displayName = 'Murder Meal';
+    } else if (targetinvName.indexOf('pdevidencebag') > -1) {
+        secondaryMaxWeight = 0.0;
+        slotLimitTarget = 20;
+        displayName = 'Evidence Bag';
+    } else if (targetinvName.indexOf('keyholder') > -1) {
+        secondaryMaxWeight = 4.0;
+        slotLimitTarget = 4;
+        displayName = 'Key Holder';
+    } else if (targetinvName.indexOf('WAREHOUSE') > -1) {
+        secondaryMaxWeight = 2000.0;
+        slotLimitTarget = 250;
+        displayName = 'Stash';
+    } else if (targetinvName.indexOf('LabStash') > -1) {
+        secondaryMaxWeight = 2000.0;
+        slotLimitTarget = 500;
+        displayName = 'Stash';
     } else if (targetinvName.indexOf('Trunk') > -1) {
         secondaryMaxWeight = 650.0;
         slotLimitTarget = 65;
@@ -939,6 +947,10 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
         }
     } else if (targetinvName.indexOf('evidence') > -1) {
         secondaryMaxWeight = 12000.0;
+        slotLimitTarget = 400;
+        displayName = 'Evidence';
+    } else if (targetinvName.indexOf('CASE ID') > -1) {
+        secondaryMaxWeight = 4000.0;
         slotLimitTarget = 400;
         displayName = 'Evidence';
     } else if (targetinvName.indexOf('Case') > -1) {
@@ -978,7 +990,7 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
         displayName = 'Locked Compartment';
     } else if (targetinvName.indexOf('fisher-bucket-') > -1) {
         secondaryMaxWeight = 99.0;
-        slotLimitTarget = 99;
+        slotLimitTarget = 10;
         displayName = 'Fisher Bucket';
     } else if (targetinvName.indexOf('burgerjob_shelf') > -1 || targetinvName.startsWith('restaurants_shelf')) {
         secondaryMaxWeight = 300.0;
@@ -1005,7 +1017,7 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
         }
     } else if (targetinvName.indexOf('burgerjob_fridge') > -1) {
         secondaryMaxWeight = 1000.0;
-        slotLimitTarget = 100;
+        slotLimitTarget = 40;
         displayName = 'Ingredient Storage';
     } else if (targetinvName.indexOf('gallery_gemtrade') > -1) {
         secondaryMaxWeight = 10.0;
@@ -1093,10 +1105,6 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
         secondaryMaxWeight = 100.0;
         slotLimitTarget = 10;
         displayName = 'Bodybag';
-    } else if (targetinvName.startsWith('mobile-stash-fridge_')) {
-        secondaryMaxWeight = 10.0;
-        slotLimitTarget = 5;
-        displayName = 'Fridge';
     } else if (targetinvName.startsWith('mailbox')) {
         secondaryMaxWeight = 300.0;
         slotLimitTarget = 30;
@@ -1226,7 +1234,7 @@ function DisplayInventory(sqlInventory, itemCount, invName, main) {
                 inventoryName = inventory[slot].inventoryName;
 
                 let weight = parseFloat(itemList[itemid].weight);
-                let item_cost = itemList[itemid].priceWithTax;
+                let item_cost = itemList[itemid].price;
 
                 let stackable = !itemList[itemid].nonStack;
                 let image = getInvImage(itemList[itemid], inventory[i].information);
@@ -1262,7 +1270,7 @@ function DisplayInventory(sqlInventory, itemCount, invName, main) {
                 try {
                     const obj = JSON.parse(meta);
                     const keys = Object.keys(obj);
-                    const newMeta = keys.filter((k) => k !== '_hideKeys' && !keysToFilter.includes(k) && obj[k] !== null && typeof obj[k] !== 'undefined')
+                    const newMeta = keys.filter((k) => k !== '_hideKeys' && !keysToFilter.includes(k) && obj[k])
                         .map((k) => {
                             if (timestampColumns[k]) {
                                 return `${timestampColumns[k]}: ${calculateTimeDiff(obj[k])}`
@@ -1468,7 +1476,7 @@ function DisplayInventory(sqlInventory, itemCount, invName, main) {
                 }
 
                 if (TargetInventoryName.indexOf('Craft') > -1 && !main) {
-                    if (sqlInventory[i - 1] === undefined || sqlInventory[i - 1].amount === undefined) {
+                    if (sqlInventory[i - 1].amount === undefined) {
                         itemcount = 1;
                     } else {
                         itemcount = sqlInventory[i - 1].amount;
@@ -2006,7 +2014,6 @@ function CompileStacks(
     purchase,
     itemCosts,
     itemidsent,
-    metainformation,
     moveAmount,
     arraySlot
 ) {
@@ -2051,7 +2058,6 @@ function CompileStacks(
         purchase,
         itemCosts,
         itemidsent,
-        metainformation,
         moveAmount,
         crafting,
         isWeapon,
@@ -2376,7 +2382,7 @@ function AttemptDropInFilledSlot(slot) {
         [craftCheck, weightCheck, arraySlot] = CheckCraftFail(itemidsent, moveAmount);
 
         if (!craftCheck && !weightCheck && currentInventory == 2 && inventoryDropName == 'wrapmain') {
-            InventoryLog('[1] Attempted to craft item with itemid: ' + itemidsent);
+            InventoryLog('Attempted to craft item with itemid: ' + itemidsent);
             crafting = true;
             result = 'Success';
             result2 = 'Success';
@@ -2426,11 +2432,9 @@ function AttemptDropInFilledSlot(slot) {
         result = 'You can not drop items into the craft table!';
     }
 
-    if ((TargetInventoryName.startsWith("container") || TargetInventoryName.startsWith("fisher-bucket")) &&
-        (
-            ((inventoryReturnItemDropName == 'wrapmain' && inventoryDropName == 'wrapsecondary')) ||
-            (inventoryDropName == 'wrapmain' && inventoryReturnItemDropName == 'wrapsecondary')
-        )) {
+    if ((TargetInventoryName.startsWith("container") || TargetInventoryName.startsWith("fisher-bucket")) && (
+        (inventoryReturnItemDropName == 'wrapmain' && inventoryDropName == 'wrapsecondary')) ||
+        (inventoryDropName == 'wrapmain' && inventoryReturnItemDropName == 'wrapsecondary')) {
         let sqlInventory = JSON.parse(MyInventory);
         let hasInventoryKey = false;
         for (let i = 0; i < parseInt(MyItemCount); i++) {
@@ -2574,7 +2578,6 @@ function AttemptDropInFilledSlot(slot) {
                     purchase,
                     purchaseCost,
                     itemidsent,
-                    itemmetadata1,
                     moveAmount,
                     arraySlot,
                 );
@@ -2592,7 +2595,6 @@ function AttemptDropInFilledSlot(slot) {
                     purchase,
                     purchaseCost,
                     itemidsent,
-                    itemmetadata1,
                     moveAmount,
                     arraySlot,
                 );
@@ -2622,7 +2624,6 @@ function AttemptDropInFilledSlot(slot) {
                 )
                 && inventoryDropName === 'wrapmain' && inventoryDropName === inventoryReturnItemDropName
             ) {
-
                 InsertItem(
                     parseInt(slot.replace(/\D/g, '')),
                     parseInt(draggingid.replace(/\D/g, '')),
@@ -2830,7 +2831,7 @@ function AttemptDropInEmptySlot(slot, isDropped, half) {
     purchase = false;
     crafting = false;
     let itemidsent = item.dataset.itemid;
-    let metainformation = unescape(item.dataset.info);
+    let metainformation = item.dataset.metainformation;
     let moveAmount = parseInt(document.getElementById('move-amount').value);
 
     let closeOnMove = false;
@@ -2865,6 +2866,7 @@ function AttemptDropInEmptySlot(slot, isDropped, half) {
         let alteredAmount = moveAmount;
         movementWeight = weight * alteredAmount;
     }
+
 
     let result = 'Success';
     if (inventoryDropName === 'wrapmain' && inventoryReturnItemDropName === 'craftContainer' && TargetInventoryName.indexOf('Craft') > -1) {
@@ -3123,7 +3125,6 @@ function AttemptDropInEmptySlot(slot, isDropped, half) {
         }
     }
 }
-
 function CleanEndDrag() {
     $('#draggedItem').css('opacity', 0.0);
     document.getElementById('draggedItem').innerHTML = '';
