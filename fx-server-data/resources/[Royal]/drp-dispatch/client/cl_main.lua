@@ -603,7 +603,7 @@ function DrugSale()
     local isInVehicle = IsPedInAnyVehicle(PlayerPedId())
     local initialTenCode = "10-99"
     TriggerServerEvent('drp-dispatch:drugsale', currentPos)
-    TriggerClientEvent("drp-dispatch:roboxyoxy")
+    TriggerEvent("drp-dispatch:roboxyoxy")
     TriggerServerEvent('dispatch:svNotify', {
         dispatchCode = initialTenCode,
         firstStreet = locationInfo,
