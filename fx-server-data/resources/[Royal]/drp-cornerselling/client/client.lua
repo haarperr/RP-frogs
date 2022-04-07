@@ -1,6 +1,6 @@
 is_corner_selling = false
 currently_selling = nil
-
+local timeout = false
 drugs_wanted = {
     "weedq",
     "oxy",
@@ -18,9 +18,12 @@ Citizen.CreateThread(function()
                         exports['drp-textui']:showInteraction("[E] Attempt Sale")
                     end
 
-                    if IsControlJustPressed(1, 86) and ReworkedHasItems() then
+                    if IsControlJustPressed(1, 86) and ReworkedHasItems() and not timeout then
                         sell_items()
                         exports['drp-textui']:hideInteraction()
+                        timeout = true
+                        Citizen.Wait(25000)
+                        timeout = false
                     elseif not ReworkedHasItems() then
                         exports['drp-textui']:showInteraction("No Drugs")
                         Citizen.Wait(2000)
