@@ -55,7 +55,7 @@ AddEventHandler("drp-music:addMusicEntry", function(pParams)
 	  --	return
 	--end
 
-	local input = exports["drp-input"]:showInput({
+	local input = exports["drp-applications"]:KeyboardInput({
 		{
 			icon = "music",
 			label = "Soundcloud URL",
