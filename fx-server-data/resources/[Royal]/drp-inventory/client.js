@@ -449,7 +449,7 @@ on('inventory-open-request', () => {
                         TriggerEvent('DoLongHudText', 'This is a wheelchair, dummy.', 2);
                     } else {
                         if (!IsThisModelABicycle(vehModel) && vehModel !== GetHashKey('trash2')) {
-                            const vehId = exports['np-vehicles'].GetVehicleIdentifier(vehicleFound)
+                            const vehId = exports['drp-vehicles'].GetVehicleIdentifier(vehicleFound)
                             if (!vehId) {
                                 CloseGui();
                                 TriggerEvent('DoLongHudText', 'The trunk is locked.', 2);
@@ -496,7 +496,7 @@ on('inventory-open-request', () => {
                                 }
                             });
 
-                            emitNet('server-inventory-open', startPosition, cid, '1', Trunk, [], null, vehWeightCalc);
+                            emitNet('server-inventory-open', startPosition, cid, '1', carInvName, [], null, vehWeightCalc);
                             SetVehicleDoorOpen(vehicleFound, front ? 4 : 5, 0, 0);
                             TaskTurnPedToFaceEntity(player, vehicleFound, 1.0);
                             emit('toggle-animation', true);
