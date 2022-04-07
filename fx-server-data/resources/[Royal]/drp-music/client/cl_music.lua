@@ -55,30 +55,25 @@ AddEventHandler("drp-music:addMusicEntry", function(pParams)
 	  --	return
 	--end
 
-	local input = exports["drp-applications"]:KeyboardInput({
-		rows = {
+	local input = exports["drp-input"]:showInput({
 		{
-			id = 0, 
 			icon = "music",
 			label = "Soundcloud URL",
 			name = "url",
 		},
 		{
-			id = 1, 
 			icon = "user",
 			label = "Artist",
 			name = "artist",
 		},
 		{
-			id = 2, 
 			icon = "user-edit",
 			label = "Title",
 			name = "title",
 		},
-	}
 	})
 
-	if input[0].input["url"] and input[1].input["artist"] and input[2].input["title"] then
+	if input["url"] and input["artist"] and input["title"] then
 		RPC.execute("drp-music:addMusicEntry", input, pParams.group)
 	end
 end)
