@@ -33,12 +33,16 @@ async def resetall(ctx):
         
 @client.command()
 async def resetcid(ctx, cid):
-    if ctx.author.guild_permissions.administrator:
-        cursor = mysql.cursor()
-        cursor.execute("UPDATE characters_cars SET vehicle_state = 'In' WHERE cid = %s", (cid,))
-        mysql.commit()
-        await ctx.send("All vehicles have been reset for this character with the CID of " + cid + "!")
-    else:
-        await ctx.send("You do not have permission to use this command!")
+    cursor = mysql.cursor()
+    cursor.execute("UPDATE characters_cars SET vehicle_state = 'In' WHERE cid = %s", (cid,))
+    mysql.commit()
+    await ctx.send("All vehicles have been reset for this character with the CID of " + cid + "!")
+
+@client.command()
+async def resetpd(ctx):
+    cursor = mysql.cursor()
+    cursor.execute("UPDATE characters_cars SET vehicle_state = 'In' WHERE garage_info = %s", ("law",))
+    mysql.commit()
+    await ctx.send("All PD vehicles have been reset!")
 
 client.run("OTUzNTIxNzYyMjI4OTIwMzkw.YjFyVw.Kj71YBhfmYWt-Ox003O72yarMMA", bot=True)
