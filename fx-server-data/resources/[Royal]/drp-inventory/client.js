@@ -1305,6 +1305,7 @@ function BuildInventory(Inventory) {
     return [JSON.stringify(invArray), itemCount];
 }
 
+
 const TimeAllowed = 1000 * 60 * 40320; // 28 days,
 function ConvertQuality(itemID, creationDate) {
     let StartDate = new Date(creationDate).getTime();
