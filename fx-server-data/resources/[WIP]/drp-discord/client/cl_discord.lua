@@ -6,12 +6,12 @@ Citizen.CreateThread(function()
         local last_name = exports["isPed"]:isPed("lastname")
 
         if first_name then
-            SetRichPresence("Playing as " .. first_name .. " " .. last_name - a .. "/48 | Milkin Snakes ")
+            SetRichPresence("Playing as " .. first_name .. " " .. last_name)
         else
             SetRichPresence(a .. "/48 | Milkin Snakes ")
         end
 
-        SetDiscordRichPresenceAssetSmall('logo') -- Name of the smaller image asset.
+        SetDiscordRichPresenceAssetSmall('6e5') -- Name of the smaller image asset.
 		SetDiscordRichPresenceAssetSmallText('RPFrogs Community Server')
         SetDiscordAppId(949909010386124840)
         SetDiscordRichPresenceAsset('1000x1000')
