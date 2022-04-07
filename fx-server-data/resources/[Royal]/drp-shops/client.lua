@@ -559,14 +559,6 @@ end)
 --     exports['drp-menuinteract']:SubMenu("Hunting Menu" , "Click to select sell!" , "jobmenu")
 -- end
 
-RegisterNetEvent("drp-scoreboard:playerscount")
-AddEventHandler("drp-scoreboard:playerscount", function(a)
-    SetRichPresence(a .. "/50 | Simping For Pokimane ")
-    SetDiscordAppId(949909010386124840)
- 	SetDiscordRichPresenceAsset('1000x1000')
-    SetDiscordRichPresenceAsset('logo')
-    SetDiscordRichPresenceAction(0, 'RPFrogs Discord', 'https://discord.gg/rpfrog')
-end)
 
 RegisterNetEvent('bar:general')
 AddEventHandler('bar:general', function()
