@@ -817,7 +817,7 @@ function DoDropOff(requestMoney)
             TriggerEvent("player:receiveItem", "heistusb4", 1)
         end
 
-        if math.random(15) == 1 then
+        if math.random(20) == 1 then
             TriggerEvent("player:receiveItem", "lockpick", 1)
         end
 
