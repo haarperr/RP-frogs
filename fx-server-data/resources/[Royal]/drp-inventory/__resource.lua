@@ -41,6 +41,5 @@ exports{
 	'hasEnoughOfItem',
 	'getQuantity',
 	'GetCurrentWeapons',
-	'GetItemInfo',
-	'GetItemName',
+	'GetItemInfo'
 }
