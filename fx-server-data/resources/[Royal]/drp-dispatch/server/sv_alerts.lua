@@ -60,7 +60,7 @@ AddEventHandler("drp-dispatch:sveh",function(targetCoords)
 end)
 
 RegisterServerEvent("drp-dispatch:sact")
-AddEventHandler("drp-dispatch:ssactveh",function(targetCoords)
+AddEventHandler("drp-dispatch:sact",function(targetCoords)
     TriggerClientEvent('drp-dispatch:susact', -1, targetCoords)
 	return
 end)
