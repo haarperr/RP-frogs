@@ -468,8 +468,6 @@ let itemListWithTax = async () => {
     return itemList;
 };
 
-const getItemListWithTax = Cacheable(async () => [true, await itemListWithTax()], { timeToLive: 1000 * 60 * 120 });
-
 let isCuffed = false;
 RegisterNetEvent('police:currentHandCuffedState');
 on('police:currentHandCuffedState', (pIsHandcuffed, pIsHandcuffedAndWalking) => {
@@ -490,15 +488,9 @@ on('inventory:open_hidden_fail', (penis, vehicleFound) => {
     TriggerEvent('DoLongHudText', 'It rattles, it clanks, but it just doesnt come loose. Its almost as if the rust is holding it together.', 2);
 });
 
-RegisterNetEvent('inventory-open-request');
-on('inventory-open-request', async () => {
-    if (isCuffed) {
-        return;
-    }
-    setImmediate(async () => {
-        SendNuiMessage(JSON.stringify({ response: 'SendItemList', list: await getItemListWithTax() }));
-    });
-
+RegisterNetEvent('inventory-open-request')
+on('inventory-open-request', () => {
+    SendNuiMessage(JSON.stringify({ response: "SendItemList", list: itemList }))
     let player = PlayerPedId();
     let startPosition = GetOffsetFromEntityInWorldCoords(player, 0, 0.5, 0);
     let endPosition = GetOffsetFromEntityInWorldCoords(player, 0, 2.0, -0.4);
@@ -508,146 +500,198 @@ on('inventory-open-request', async () => {
     let nearTarget = false;
     let BinFound = ScanContainers();
     let JailBinFound = ScanJailContainers();
-    const apartmentFloor = exports["drp-apartments"].getModule("func").getApartment()
     let targetid = 0;
-    cid = exports.isPed.isPed("cid");
+    cid = exports.isPed.isPed("cid")
 
-    OpenGui();
+    if (openedInv) {
+        CloseGui()
+    }
+    emit("randPickupAnim")
 
-    emit('randPickupAnim');
+    OpenGui()
 
-    const currentTarget = exports['drp-target'].GetCurrentEntity()
+    let rayhandle = StartShapeTestRay(startPosition[0], startPosition[1], startPosition[2], endPosition[0], endPosition[1], endPosition[2], 10, player, 0)
+    let vehicleInfo = GetShapeTestResult(rayhandle)
+    let vehicleFound = vehicleInfo[4]
+    let jailDst = GetDistanceBetweenCoords(startPosition[0], startPosition[1], startPosition[2], 1700.2, 2536.8, 45.5)
 
-    let vehicleFound = IsModelAVehicle(GetEntityModel(currentTarget)) ? currentTarget : 0
+    let tacoShopDst = GetDistanceBetweenCoords(startPosition[0], startPosition[1], startPosition[2], 15.47, -1598.78, 29.38)
 
-    let jailDst = GetDistanceBetweenCoords(startPosition[0], startPosition[1], startPosition[2], 1700.2, 2536.8, 45.5);
 
-    let tacoShopDst = GetDistanceBetweenCoords(startPosition[0], startPosition[1], startPosition[2], 15.47, -1598.78, 29.38);
-    let tacoStorage = GetDistanceBetweenCoords(startPosition[0], startPosition[1], startPosition[2], 11.23, -1599.01, 29.38);
 
     let isInVehicle = IsPedInAnyVehicle(PlayerPedId(), false);
     if (isInVehicle) {
-        vehicleFound = GetVehiclePedIsIn(PlayerPedId(), false);
-        let vehicleModel = GetEntityModel(vehicleFound);
-        if (!IsThisModelABicycle(vehicleModel) && !IsThisModelABike(vehicleModel)) {
-            let licensePlate = GetVehicleNumberPlateText(vehicleFound);
-            const vehId = exports['drp-vehicles'].GetVehicleIdentifier(vehicleFound)
-            if (!vehId) {
-                TriggerEvent('DoLongHudText', 'The glovebox is locked.', 2);
-                GroundInventoryScan();
-                return;
-            }
-            const gloveboxName = "Glovebox-" + vehId
-            emitNet('server-inventory-open', startPosition, cid, '1', gloveboxName);
-        } else {
-            GroundInventoryScan();
-        }
+        vehicleFound = GetVehiclePedIsIn(PlayerPedId(), false)
+        let licensePlate = GetVehicleNumberPlateText(vehicleFound);
+        emitNet("server-inventory-open", startPosition, cid, "1", "Glovebox-" + licensePlate);
     } else if (tacoShopDst < 2.0) {
-        TriggerEvent('server-inventory-open', '18', 'Craft');
-    } else if (tacoStorage < 1.0) {
-        emitNet('server-inventory-open', startPosition, cid, '1', `hidden-container|${10}|${1599}`);
+        TriggerEvent("server-inventory-open", "18", "Craft");
     } else if (JailBinFound && jailDst < 80.0) {
+
         let x = parseInt(JailBinFound[0]);
         let y = parseInt(JailBinFound[1]);
-        let container = 'jail-container|' + x + '|' + y;
-        emit('inventory-jail', startPosition, cid, container);
+        let container = "jail-container|" + x + "|" + y;
+        emit("inventory-jail", startPosition, cid, container);
+
     } else if (BinFound) {
         let x = parseInt(BinFound[0]);
         let y = parseInt(BinFound[1]);
-        let serverCode = exports["drp-config"].GetServerCode();
-        let container = 'hidden-container|' + x + '|' + y + '|' + serverCode;
-        emitNet('server-inventory-open', startPosition, cid, '1', container);
-    } else if (apartmentFloor != null) {
-        let room = apartmentFloor.roomType;
-        let type = apartmentFloor.roomNumber;
-        let container = 'hidden-container|' + room + '|' + type + '|Apartments';
-        emitNet('server-inventory-open', startPosition, cid, '1', container);
+        let container = "hidden-container|" + x + "|" + y;
+        emitNet("server-inventory-open", startPosition, cid, "1", container);
     } else if (vehicleFound != 0) {
-        let vehModel = GetEntityModel(vehicleFound);
-        let [trunkCoords, front] = GetEnginePosition(vehicleFound);
-        let distanceRear = GetDistanceBetweenCoords(
-            startPosition[0],
-            startPosition[1],
-            startPosition[2],
-            trunkCoords[0],
-            trunkCoords[1],
-            trunkCoords[2],
-        );
 
-        let lockStatus = GetVehicleDoorLockStatus(vehicleFound)
-        if (lockStatus != 1 && lockStatus != 0 && lockStatus != 4 && distanceRear < 1.5) {
-            TriggerEvent('DoLongHudText', 'The vehicle is locked.', 2);
-            CloseGui();
+        let cock = GetEntityModel(vehicleFound)
+        let coords = GetModelDimensions(cock);
+
+        let back = GetOffsetFromEntityInWorldCoords(vehicleFound, 0.0, coords[0][1] - 0.5, 0.0);
+        let distanceRear = GetDistanceBetweenCoords(startPosition[0], startPosition[1], startPosition[2], back[0], back[1], back[2]);
+
+        if (GetVehicleDoorLockStatus(vehicleFound) == 2 && distanceRear < 1.5) {
+            CloseGui()
         } else {
             if (distanceRear > 1.5) {
-                GroundInventoryScan();
+                GroundInventoryScan()
             } else {
+
                 let licensePlate = GetVehicleNumberPlateText(vehicleFound);
                 if (licensePlate != null) {
-                    if (vehModel === GetHashKey('npwheelchair')) {
-                        TriggerEvent('DoLongHudText', 'This is a wheelchair, dummy.', 2);
+
+                    SetVehicleDoorOpen(vehicleFound, 5, 0, 0)
+                    TaskTurnPedToFaceEntity(player, vehicleFound, 1.0)
+                    emit("toggle-animation", true);
+
+                    let foodtruck = false
+                    if (exports.isPed.isPed("myjob") == "foodtruck") {
+                        foodtruck = true
+                    }
+
+                    if (GetEntityModel(vehicleFound) == GetHashKey('taxi')) {
+                        emitNet("server-inventory-open", startPosition, cid, "1", "TaxiTrunk-" + licensePlate);
+                    }
+
+
+                    if (GetVehicleClass(vehicleFound) == "0") {
+                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk1-" + licensePlate);
+                    }
+
+                    if (GetVehicleClass(vehicleFound) == "1") {
+                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk2-" + licensePlate);
+                    }
+
+                    if (GetVehicleClass(vehicleFound) == "2") {
+                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk3-" + licensePlate);
+                    }
+
+
+                    if (GetVehicleClass(vehicleFound) == "3") {
+                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk4-" + licensePlate);
+                    }
+
+
+                    if (GetVehicleClass(vehicleFound) == "4") {
+                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk0-" + licensePlate);
+                    }
+
+
+                    if (GetVehicleClass(vehicleFound) == "5") {
+                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk5-" + licensePlate);
+                    }
+
+
+                    if (GetVehicleClass(vehicleFound) == "6") {
+                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk6-" + licensePlate);
+                    }
+
+
+                    if (GetVehicleClass(vehicleFound) == "7") {
+                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk7-" + licensePlate);
+                    }
+
+
+                    if (GetVehicleClass(vehicleFound) == "8") {
+                        // emitNet("server-inventory-open", startPosition, cid, "1", "Trunk8-" + licensePlate);
+                        emitNet("DoLongHudText", "This Vehicle doesnt have a Trunk!", 2)
+                    }
+
+
+                    if (GetVehicleClass(vehicleFound) == "9") {
+                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk9-" + licensePlate);
+                    }
+
+
+                    if (GetVehicleClass(vehicleFound) == "10") {
+                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk10-" + licensePlate);
+                    }
+
+
+                    if (GetVehicleClass(vehicleFound) == "11") {
+                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk11-" + licensePlate);
+                    }
+
+
+                    if (GetVehicleClass(vehicleFound) == "12" && (GetEntityModel(vehicleFound) == GetHashKey('taco'))) {
+                        TriggerEvent("server-inventory-open", "18", "Craft");
                     } else {
-                        if (!IsThisModelABicycle(vehModel) && vehModel !== GetHashKey('trash2')) {
-                            const vehId = exports['drp-vehicles'].GetVehicleIdentifier(vehicleFound)
-                            if (!vehId) {
-                                CloseGui();
-                                TriggerEvent('DoLongHudText', 'The trunk is locked.', 2);
-                                return;
-                            }
-                            const carInvName = "Trunk-" + vehId
+                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk12-" + licensePlate);
+                    }
 
-                            const vehClass = GetVehicleClass(vehicleFound);
 
-                            //Vehicle weight calculations
-                            const [[minX, minY, minZ], [maxX, maxY, maxZ]] = GetModelDimensions(vehModel);
-                            const vehVolume = (maxX - minX) * (maxY - minY) * (maxZ - minZ);
+                    if (GetVehicleClass(vehicleFound) == "13") {
+                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk13-" + licensePlate);
+                    }
 
-                            const seats = GetVehicleModelNumberOfSeats(vehModel);
 
-                            const classModifier = VehicleWeightModifiers[vehClass][0];
-                            const classBaseWeight = VehicleWeightModifiers[vehClass][1];
-                            const classMaxWeight = VehicleWeightModifiers[vehClass][2];
 
-                            if (classBaseWeight === 0) {
-                                //do something
-                                return;
-                            }
 
-                            //Calculate seats / 3 (2 seats = 66% of base weight, 4 seats = 133% base weight)
-                            let vehSeatMod = (classBaseWeight * seats) / 3;
+                    if (GetVehicleClass(vehicleFound) == "14") {
+                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk14-" + licensePlate);
+                    }
 
-                            //Calculate based on volume, then add the seat modifier
-                            let vehWeightCalc = vehVolume * classModifier + vehSeatMod;
 
-                            //Round to nearest 50
-                            vehWeightCalc = Math.round(vehWeightCalc / 50) * 50;
 
-                            //console.log("veh weight calc: " + vehWeightCalc);
+                    if (GetVehicleClass(vehicleFound) == "15") {
+                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk15-" + licensePlate);
+                    }
 
-                            if (vehWeightCalc > classMaxWeight) {
-                                //Max weight
-                                vehWeightCalc = classMaxWeight;
-                            }
 
-                            Object.keys(VehicleWeightOverrides).forEach((modelName) => {
-                                if (vehModel === GetHashKey(modelName)) {
-                                    vehWeightCalc = VehicleWeightOverrides[modelName];
-                                }
-                            });
+                    if (GetVehicleClass(vehicleFound) == "16") {
+                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk16-" + licensePlate);
+                    }
 
-                            emitNet('server-inventory-open', startPosition, cid, '1', carInvName, [], null, vehWeightCalc);
-                            SetVehicleDoorOpen(vehicleFound, front ? 4 : 5, 0, 0);
-                            TaskTurnPedToFaceEntity(player, vehicleFound, 1.0);
-                            emit('toggle-animation', true);
-                        } else {
-                            GroundInventoryScan();
-                        }
+
+
+                    if (GetVehicleClass(vehicleFound) == "18") {
+                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk18-" + licensePlate);
+                    }
+
+
+
+                    if (GetVehicleClass(vehicleFound) == "19") {
+                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk19-" + licensePlate);
+                    }
+
+
+
+                    if (GetVehicleClass(vehicleFound) == "20") {
+                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk20-" + licensePlate);
+                    }
+
+
+                    if (GetVehicleClass(vehicleFound) == "21") {
+                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk21-" + licensePlate);
+                    }
+
+                    if (GetEntityModel(vehicleFound) == GetHashKey('wgtr')) {
+                        //emitNet("server-inventory-open", startPosition, cid, "1", "GTR-" + licensePlate);
+
+                    } else {
+                        //emitNet("server-inventory-open", startPosition, cid, "1", "Trunk-" + licensePlate);
                     }
                 }
             }
         }
     } else {
-        GroundInventoryScan();
+        GroundInventoryScan()
     }
 });
 
