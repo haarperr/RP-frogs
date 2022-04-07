@@ -16,11 +16,11 @@ shared_scripts {
 
 server_scripts {
     "@mysql-async/lib/MySQL.lua",
-    "@drp-rpc/server/sv_rpc.lua",
+    "@drp-rpc/server/sv_main.lua",
     "server/*"
 }
 
 client_scripts {
-    "@drp-rpc/client/cl_rpc.lua",
+    "@drp-rpc/client/cl_main.lua",
     "client/*"
 }
