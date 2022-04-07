@@ -817,7 +817,7 @@ function DoDropOff(requestMoney)
             TriggerEvent("player:receiveItem", "heistusb4", 1)
         end
 
-        if math.random(15) == 1 then
+        if math.random(20) == 1 then
             TriggerEvent("player:receiveItem", "lockpick", 1)
         end
 
@@ -831,7 +831,7 @@ function DoDropOff(requestMoney)
             local sellableItems = {
                 [1] = {
                     name = 'rollcash',
-                    amount = math.random(3, 10),
+                    amount = math.random(3, 8),
                     price = rollcashprice
                 },
                 [2] = {
@@ -846,7 +846,7 @@ function DoDropOff(requestMoney)
                 },
                 [4] = {
                     name = 'band',
-                    amount = math.random(3, 10),
+                    amount = math.random(2, 6),
                     price = bandprice
                 }
             }
