@@ -582,7 +582,7 @@ AddEventHandler('drp-dispatch:stolenveh', function()
 	TriggerServerEvent('drp-dispatch:sveh', {x = pos.x, y = pos.y, z = pos.z})
 end)
 
-
+RegisterNetEvent('drp-dispatch:susactivity')
 AddEventHandler('drp-dispatch:susactivity', function()
 	local pos = GetEntityCoords(PlayerPedId(), true)
 	TriggerServerEvent('drp-dispatch:sact', {x = pos.x, y = pos.y, z = pos.z})
