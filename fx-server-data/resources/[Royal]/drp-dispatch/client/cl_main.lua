@@ -596,56 +596,52 @@ AddEventHandler("drp-mdt:drugsale",function()
     DrugSale()
 end)
 
-function DrugSale()
+unction DrugSale(object)
     local locationInfo = GetStreetAndZone()
-    local gender = IsPedMale(PlayerPedId())
-    local currentPos = GetEntityCoords(PlayerPedId(), true)
+    local gender = IsPedMale(playerPed)
+    local currentPos = GetEntityCoords(playerPed)
     local isInVehicle = IsPedInAnyVehicle(PlayerPedId())
-
-    local dispatchCode = "10-34"
+    local vehicleData = GetVehicleDescription() or {}
+    local initialTenCode = "10-26""
     TriggerEvent('drp-dispatch:susactivity')
-    TriggerServerEvent("dispatch:svNotify", {
-        dispatchCode = dispatchCode,
+    TriggerServerEvent('dispatch:svNotify', {
+        dispatchCode = initialTenCode,
         firstStreet = locationInfo,
         gender = gender,
+        model = vehicleData.model,
+        plate = vehicleData.plate,
         priority = 2,
-        origin = {
-            x = currentPos.x,
-            y = currentPos.y,
-            z = currentPos.z
-        },
-        dispatchMessage = "Suspicious Activity",
-        blipSprite = 514,
-        blipColor = 0,
-        job = {"police"}
+        firstColor = vehicleData.firstColor,
+        secondColor = vehicleData.secondColor,
+        heading = vehicleData.heading,
+        origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
+        dispatchMessage = "Suspicious Activity"
     })
-
-    Wait(math.random(5000,15000))
-
-    if math.random(10) > 5 and IsPedInAnyVehicle(PlayerPedId()) and not isInVehicle then
-        local vehicleData = GetVehicleDescription() or {}
-        local currentPos = GetEntityCoords(PlayerPedId(), true)
-        local locationInfo = GetStreetAndZone()
-
-        TriggerServerEvent("dispatch:svNotify", {
-            dispatchCode = "CarEvading",
-            relatedCode = dispatchCode,
-            firstStreet = locationInfo,
-            gender = gender,
-            model = vehicleData.model,
-            plate = vehicleData.plate,
-            priority = 2,
-            firstColor = vehicleData.firstColor,
-            secondColor = vehicleData.secondColor,
-            heading = vehicleData.heading,
-            origin = {
-                x = currentPos.x,
-                y = currentPos.y,
-                z = currentPos.z
-            },
-            dispatchMessage = "Vehicle Evading" .. dispatchCode,
-            job = {"police"}
-        })
+    if math.random(1, 10) > 3 and not isInVehicle then
+        CreateThread(function()
+            Wait(math.random(5000, 10000))
+            if IsPedInAnyVehicle(PlayerPedId()) then
+                local vehicleData = GetVehicleDescription() or {}
+                local newPos = GetEntityCoords(PlayerPedId())
+                local locationInfo = GetStreetAndZone()
+                TriggerServerEvent('dispatch:svNotify', {
+                    dispatchCode = '',
+                    relatedCode = initialTenCode,
+                    firstStreet = locationInfo,
+                    gender = gender,
+                    model = vehicleData.model,
+                    plate = vehicleData.plate,
+                    priority = 2,
+                    firstColor = vehicleData.firstColor,
+                    secondColor = vehicleData.secondColor,
+                    heading = vehicleData.heading,
+                    origin = {x = newPos.x, y = newPos.y, z = newPos.z},
+                    dispatchMessage = "Car Fleeing 10-99"
+                })
+                TriggerEvent('drp-dispatch:susactivity')
+            end
+            return
+        end)
     end
 end
 
