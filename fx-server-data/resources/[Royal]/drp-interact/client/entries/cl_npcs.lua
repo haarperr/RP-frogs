@@ -344,7 +344,7 @@ Entries[#Entries + 1] = {
             id = "bsguy",
             label = "Get Delivery Job",
             icon = "circle",
-            event = "oxy:initialize",
+            event = "bsdelivery:getJob",
             parameters = {}
         }
     },
