@@ -91,13 +91,15 @@ function HasItems(amount)
 end
 
 function sell_items()
-    Citizen.Trace("Selling")
+    Citizen.Trace("Selling\n")
     local chance = math.random(1, 3)
-    Citizen.Trace(chance)
+    Citizen.Trace(chance .. "\n")
     local hasitems, amount = HasItems(chance)
-    Citizen.Trace(hasitems, amount)
+     
 
     if hasitems then
+        Citizen.Trace("Has items\n")
+        Citizen.Trace(amount .. "\n")
         local plycoords = GetEntityCoords(PlayerPedId())
         TaskTurnPedToFaceCoord(ped, plycoords.x, plycoords.y, plycoords.z, 1250)
         Citizen.Wait(1250)
