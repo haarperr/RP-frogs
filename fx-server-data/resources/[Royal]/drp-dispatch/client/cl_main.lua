@@ -602,7 +602,7 @@ function DrugSale(object)
     local currentPos = GetEntityCoords(playerPed)
     local isInVehicle = IsPedInAnyVehicle(PlayerPedId())
     local vehicleData = GetVehicleDescription() or {}
-    local initialTenCode = "10-26""
+    local initialTenCode = "10-26"
     TriggerEvent('drp-dispatch:susactivity')
     TriggerServerEvent('dispatch:svNotify', {
         dispatchCode = initialTenCode,
