@@ -1262,6 +1262,7 @@ end)
 
 RegisterNetEvent('enter:benny')
 AddEventHandler('enter:benny', function()
+    TriggerEvent("wk:disableRadar")
     TriggerEvent('event:control:bennys', 1)
     disabled = true
     disableControls()
@@ -1269,6 +1270,7 @@ end)
 
 RegisterNetEvent('enter:benny:mrpd')
 AddEventHandler('enter:benny:mrpd', function()
+    TriggerEvent("wk:disableRadar")
     local job = exports["isPed"]:isPed("myJob")
 	if (job == "police" or job == "sheriff" or job == "state" or exports["isPed"]:isPed("myJob") == 'ems') then
     TriggerEvent('event:control:bennys', 6)
@@ -1279,6 +1281,7 @@ end)
 
 RegisterNetEvent('enter:benny:airport')
 AddEventHandler('enter:benny:airport', function()
+    TriggerEvent("wk:disableRadar")
     local job = exports["isPed"]:isPed("myJob")
 	if (job == "police" or job == "sheriff" or job == "state" or exports["isPed"]:isPed("myJob") == 'ems') then
     TriggerEvent('event:control:bennys', 16)
@@ -1289,6 +1292,7 @@ end)
 
 RegisterNetEvent('enter:benny:pillbox')
 AddEventHandler('enter:benny:pillbox', function()
+    TriggerEvent("wk:disableRadar")
     local job = exports["isPed"]:isPed("myJob")
 	if (job == "police" or job == "sheriff" or job == "state" or exports["isPed"]:isPed("myJob") == 'ems') then
     TriggerEvent('event:control:bennys', 17)
@@ -1299,6 +1303,7 @@ end)
 
 RegisterNetEvent('enter:benny:tunershop')
 AddEventHandler('enter:benny:tunershop', function()
+    TriggerEvent("wk:disableRadar")
     TriggerEvent('event:control:bennys', 18)
     disabled = true
     disableControls() 
@@ -1306,6 +1311,7 @@ end)
 
 RegisterNetEvent('enter:benny:hayes')
 AddEventHandler('enter:benny:hayes', function()
+    TriggerEvent("wk:disableRadar")
     local job = exports["isPed"]:GroupRank("hayes_autos")
     if job > 1 then 
     TriggerEvent('event:control:bennys', 12)
@@ -1317,6 +1323,7 @@ end)
 
 RegisterNetEvent('enter:benny:hayes2')
 AddEventHandler('enter:benny:hayes2', function()
+    TriggerEvent("wk:disableRadar")
     local job = exports["isPed"]:GroupRank("hayes_autos")
     if job > 1 then 
     TriggerEvent('event:control:bennys', 2)
@@ -1328,6 +1335,7 @@ end)
 
 RegisterNetEvent('enter:benny:illegal')
 AddEventHandler('enter:benny:illegal', function()
+    TriggerEvent("wk:disableRadar")
     local job = exports["isPed"]:GroupRank("illegal_shop")
     if job > 2 then 
     TriggerEvent('event:control:bennys', 15)
@@ -1339,6 +1347,7 @@ end)
 
 RegisterNetEvent('enter:benny:harmony')
 AddEventHandler('enter:benny:harmony', function()
+    TriggerEvent("wk:disableRadar")
     local job = exports["isPed"]:GroupRank("harmony_autos")
     if job > 1 then 
     TriggerEvent('event:control:bennys', 11)
@@ -1351,6 +1360,7 @@ end)
 
 RegisterNetEvent('enter:benny:harmony2')
 AddEventHandler('enter:benny:harmony2', function()
+    TriggerEvent("wk:disableRadar")
     local job = exports["isPed"]:GroupRank("harmony_autos")
     if job > 1 then 
     TriggerEvent('event:control:bennys', 1)
@@ -1363,7 +1373,7 @@ end)
 
 RegisterNetEvent('enter:benny:civ')
 AddEventHandler('enter:benny:civ', function()
-   
+    TriggerEvent("wk:disableRadar")
     TriggerEvent('bennys:civ:repair:cl')
 
 end)

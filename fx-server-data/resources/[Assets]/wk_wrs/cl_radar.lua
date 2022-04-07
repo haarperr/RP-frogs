@@ -145,7 +145,6 @@ function isHotVehicle(plate)
     end
 end
 
-
 RegisterNetEvent( 'startSpeedo' )
 AddEventHandler( 'startSpeedo', function()
     local ped = GetPlayerPed( -1 )
