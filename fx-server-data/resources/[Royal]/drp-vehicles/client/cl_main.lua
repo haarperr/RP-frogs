@@ -195,6 +195,18 @@ AddEventHandler('towgarage:repairamount', function(data)
 	end
 end)
 
+function GetVehicleIdentifier(vehicle)
+    if not DoesEntityExist(vehicle) then
+		return false
+	end
+
+	if not DecorExistOn(vehicle, "Vehicle-Identifier") then
+		return false
+	end
+
+	return DecorGetInt(vehicle, "Vehicle-Identifier")
+end
+
 RegisterNetEvent('drp-towjob:StoreMaterialsMain')
 AddEventHandler('drp-towjob:StoreMaterialsMain', function()
 	if #(vector3(841.25274658203,-974.61096191406,26.482788085938) - GetEntityCoords(PlayerPedId())) < 35 or #(vector3(1179.3099365234, 2635.9252929688, 184.25196838379) - GetEntityCoords(PlayerPedId())) < 160 then
