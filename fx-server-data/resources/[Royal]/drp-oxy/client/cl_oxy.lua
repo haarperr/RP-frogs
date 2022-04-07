@@ -245,7 +245,7 @@ AddEventHandler("oxy:initialize", function()
 	if not OxyRun then
 		TriggerServerEvent("oxydelivery:server", 1500)
 	else
-		TriggerEvent("DoLongHudText","You must finish your current run to start a new one.")
+		TriggerEvent("DoLongHudText","Come back later.")
 	end
 end)
 
@@ -258,7 +258,8 @@ Citizen.CreateThread(function()
 	        end
 	        TriggerEvent("drugdelivery:client")  
 		    salecount = salecount + 1
-		    if salecount == 7 then
+		    if salecount == 6 then
+				TriggerEvent("chatMessage", "EMAIL - Drug Deliveries", 8, "You finished the run. You can start a new one later.")
 		    	Citizen.Wait(1200000)
 		    	drugdealer = false
 		    end
@@ -268,7 +269,7 @@ Citizen.CreateThread(function()
 			if (not DoesEntityExist(oxyVehicle) or GetVehicleEngineHealth(oxyVehicle) < 100.0) and vehspawn then
 				OxyRun = false
 				tasking = false
-				TriggerEvent("chatMessage", "EMAIL - Drug Deliveries", 8, "Dude! You fucked the car up, I canceled your run, asshole! ")
+				TriggerEvent("chatMessage", "EMAIL - Oxy Deliveries", 8, "Dude! You fucked the car up, I canceled your run, asshole! ")
 			else
 				if tasking then
 			        Citizen.Wait(30000)
@@ -276,6 +277,7 @@ Citizen.CreateThread(function()
 			        TriggerEvent("oxydelivery:client")  
 				    salecount = salecount + 1
 				    if salecount == 6 then
+						TriggerEvent("chatMessage", "EMAIL - Oxy Deliveries", 8, "You finished the run. You can start a new one later.")
 				    	Citizen.Wait(1200000)
 				    	OxyRun = false
 				    end
@@ -432,6 +434,7 @@ function DoDropOff(requestMoney)
 	if DoesEntityExist(deliveryPed) and not IsEntityDead(deliveryPed) then
 
 		if math.random(1,3) == 1 then
+			TriggerEvent("drp-dispatch:oxyping")
 			TriggerEvent("civilian:alertPolice", 15.0, "drugsale", 0)  -- 1/3 chance to ping PD
 		end
 

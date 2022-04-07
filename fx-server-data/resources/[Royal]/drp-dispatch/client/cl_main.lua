@@ -513,7 +513,7 @@ function AlertFight()
     TriggerServerEvent('drp-dispatch:combatAlert', currentPos)
     if math.random(10) > 5 and not isInVehicle then
         CreateThread(function()
-            Wait(math.random(5000, 10000))
+            Wait(math.random(5000, 12500))
             if IsPedInAnyVehicle(PlayerPedId()) then
                 local vehicleData = GetVehicleDescription() or {}
                 local newPos = GetEntityCoords(PlayerPedId())

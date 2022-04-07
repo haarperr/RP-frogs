@@ -46,11 +46,11 @@ AddEventHandler("drp-dispatch:downperson",function(targetCoords)
 	return
 end)
 
--- RegisterServerEvent("drp-dispatch:assistancen")
--- AddEventHandler("drp-dispatch:assistancen",function(targetCoords)
---     TriggerClientEvent('drp-dispatch:assistance', -1, targetCoords)
--- 	return
--- end)
+RegisterServerEvent("drp-dispatch:assistancen")
+AddEventHandler("drp-dispatch:assistancen",function(targetCoords)
+    TriggerClientEvent('drp-dispatch:assistance', -1, targetCoords)
+	return
+end)
 
 
 RegisterServerEvent("drp-dispatch:sveh")
@@ -75,11 +75,11 @@ AddEventHandler("drp-dispatch:shoot",function(targetCoords)
 	return
 end)
 
--- RegisterServerEvent("drp-dispatch:figher")
--- AddEventHandler("drp-dispatch:figher",function(targetCoords)
---     TriggerClientEvent('vrp-outlawalert:combatInProgress', -1, targetCoords)
--- 	return
--- end)
+RegisterServerEvent("drp-dispatch:figher")
+AddEventHandler("drp-dispatch:figher",function(targetCoords)
+    TriggerClientEvent('vrp-outlawalert:combatInProgress', -1, targetCoords)
+return
+end)
 
 RegisterServerEvent("drp-dispatch:storerob")
 AddEventHandler("drp-dispatch:storerob",function(targetCoords)
@@ -105,11 +105,11 @@ AddEventHandler("drp-dispatch:robjew",function()
 	return
 end)
 
--- RegisterServerEvent("drp-dispatch:bjail")
--- AddEventHandler("drp-dispatch:bjail",function()
---     TriggerClientEvent('drp-dispatch:jewelrobbey', -1)
--- 	return
--- end)
+RegisterServerEvent("drp-dispatch:bjail")
+AddEventHandler("drp-dispatch:bjail",function()
+    TriggerClientEvent('drp-dispatch:jewelrobbey', -1)
+	return
+end)
 
 
 RegisterServerEvent("drp-dispatch:bankrobberyfuck")
