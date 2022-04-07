@@ -452,8 +452,7 @@ on('inventory-open-request', () => {
                     } else {
                         if (!IsThisModelABicycle(vehModel) && vehModel !== GetHashKey('trash2')) {
                             
-                            const carInvName = "Trunk-" + licensePlate
-
+                            const carInvName = "Trunk-" 
                             const vehClass = GetVehicleClass(vehicleFound);
 
                             //Vehicle weight calculations
