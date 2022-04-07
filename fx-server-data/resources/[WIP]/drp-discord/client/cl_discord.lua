@@ -17,7 +17,7 @@ Citizen.CreateThread(function()
         SetDiscordRichPresenceAsset('1000x1000')
         SetDiscordRichPresenceAsset('logo')
         SetDiscordRichPresenceAction(0, 'RPFrogs Discord', 'https://discord.gg/rpfrog')
-       -- SetDiscordRichPresenceAction(1, 'Play Now', 'fivem://62.171.159.104:30120')
+     
       
 
 		Citizen.Wait(60000)
