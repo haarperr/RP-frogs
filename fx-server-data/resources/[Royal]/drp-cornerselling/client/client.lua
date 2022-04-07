@@ -130,15 +130,30 @@ function sell_items()
                     TriggerEvent("DoLongHudText", "You dont got what I want!", 2)
                 end
             end
-            if math.random(1, 100) >= 5 then
-                TriggerEvent("civilian:alertPolice", 15.0, "drugsale", 0)
+            if math.random(1, 100) >= 50 then
+                local plyPos = GetEntityCoords(PlayerPedId(),  true)
+                local s1, s2 = Citizen.InvokeNative(0x2EB41072B4C1E4C0, plyPos.x, plyPos.y, plyPos.z, Citizen.PointerValueInt(), Citizen.PointerValueInt())
+                local street1 = GetStreetNameFromHashKey(s1)
+                local street2 = GetStreetNameFromHashKey(s2)
+                local player = PlayerPedId()
+        
+                if not IsPedDeadOrDying(recent_ped) then
+                    TriggerEvent('civilian:alertPolice', 8.0, 'drugsale', 0)
+                end
             end
         else
             SetPedAsNoLongerNeeded(recent_ped)
             TriggerEvent("DoLongHudText", "They are not interested!", 2)
-            if math.random(1, 100) >= 22 then
-                TriggerEvent("civilian:alertPolice", 15.0, "drugsale", 0)
-            end
+            
+        local plyPos = GetEntityCoords(PlayerPedId(),  true)
+        local s1, s2 = Citizen.InvokeNative(0x2EB41072B4C1E4C0, plyPos.x, plyPos.y, plyPos.z, Citizen.PointerValueInt(), Citizen.PointerValueInt())
+        local street1 = GetStreetNameFromHashKey(s1)
+        local street2 = GetStreetNameFromHashKey(s2)
+		local player = PlayerPedId()
+
+        if not IsPedDeadOrDying(recent_ped) then
+		    TriggerEvent('civilian:alertPolice', 8.0, 'drugsale', 0)
+		end
         end
     end
 end

@@ -527,7 +527,13 @@ AddEventHandler("oxydelivery:client", function()
                         Citizen.Wait(1500)
                         PlayAmbientSpeech1(deliveryPed, "Generic_Hi", "Speech_Params_Force")
                         PedGiveAnim()
-                        if math.random(1) == 1 then
+                        if math.random(1,3) == 1 then
+                            local plyPos = GetEntityCoords(PlayerPedId(),  true)
+                            local s1, s2 = Citizen.InvokeNative(0x2EB41072B4C1E4C0, plyPos.x, plyPos.y, plyPos.z, Citizen.PointerValueInt(), Citizen.PointerValueInt())
+                            local street1 = GetStreetNameFromHashKey(s1)
+                            local street2 = GetStreetNameFromHashKey(s2)
+                            local player = PlayerPedId()
+                    
                             TriggerEvent("civilian:alertPolice", 15.0, "drugsale", 0)
                         end
                         local finished = exports["drp-taskbar"]:taskBar(22500, "Handing Over Package")
