@@ -701,3 +701,14 @@ function BurgerShotReceipts()
 		end
 	end)
 end
+
+
+
+RegisterNetEvent("bsdelivery:getJob")
+AddEventHandler("bsdelivery:getJob", function()
+    local rank = exports["isPed"]:GroupRank("burger_shot")
+    if not rank >= 1 then 
+        TriggerEvent('DoLongHudText', 'You dont work here.', 2)
+        return
+    end
+end)
