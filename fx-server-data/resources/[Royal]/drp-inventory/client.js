@@ -405,7 +405,7 @@ on('inventory-open-request', () => {
     let vehicleInfo = GetShapeTestResult(rayhandle)
     let vehicleFound = vehicleInfo[4]
     let jailDst = GetDistanceBetweenCoords(startPosition[0], startPosition[1], startPosition[2], 1700.2, 2536.8, 45.5)
-
+    let vehicleFound1 = IsModelAVehicle(GetEntityModel(currentTarget)) ? currentTarget : 0
     let tacoShopDst = GetDistanceBetweenCoords(startPosition[0], startPosition[1], startPosition[2], 15.47, -1598.78, 29.38)
 
 
@@ -445,15 +445,15 @@ on('inventory-open-request', () => {
             if (distanceRear > 1.5) {
                 GroundInventoryScan()
             } else {
-                let licensePlate = GetVehicleNumberPlateText(vehicleFound);
+                let licensePlate = GetVehicleNumberPlateText(vehicleFound1);
                 if (licensePlate != null) {
                     if (vehModel === GetHashKey('npwheelchair')) {
                         TriggerEvent('DoLongHudText', 'This is a wheelchair, dummy.', 2);
                     } else {
                         if (!IsThisModelABicycle(vehModel) && vehModel !== GetHashKey('trash2')) {
                             
-                            const carInvName = "Trunk-" 
-                            const vehClass = GetVehicleClass(vehicleFound);
+                            const carInvName = "Trunk-" +vehicleFound1
+                            const vehClass = GetVehicleClass(vehicleFound1);
 
                             //Vehicle weight calculations
                             const [[minX, minY, minZ], [maxX, maxY, maxZ]] = GetModelDimensions(vehModel);
@@ -493,8 +493,8 @@ on('inventory-open-request', () => {
                             });
 
                             emitNet('server-inventory-open', startPosition, cid, '1', carInvName, [], null, vehWeightCalc);
-                            SetVehicleDoorOpen(vehicleFound, front ? 4 : 5, 0, 0);
-                            TaskTurnPedToFaceEntity(player, vehicleFound, 1.0);
+                            SetVehicleDoorOpen(vehicleFound1, front ? 4 : 5, 0, 0);
+                            TaskTurnPedToFaceEntity(player, vehicleFound1, 1.0);
                             emit('toggle-animation', true);
                         } else {
                             GroundInventoryScan();
