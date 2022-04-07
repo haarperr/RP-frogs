@@ -13,16 +13,16 @@ RegisterNUICallback('callback', function(data, cb)
     cb('ok')
 end)
 
-RegisterCommand('hack', function(source, args)
-    -- Please check the parameters below for exports
-    exports["hacking"]:hacking(
-    function() -- success
-        print("success")
-    end,
-    function() -- failure
-        print("failure")
-    end)
-end)
+-- RegisterCommand('hack', function(source, args)
+--     -- Please check the parameters below for exports
+--     exports["hacking"]:hacking(
+--     function() -- success
+--      print("success")
+--     end,
+--     function() -- failure
+--      print("failure")
+--     end)
+-- end)
 
 exports('hacking', function(success, fail)
     resultReceived = false
