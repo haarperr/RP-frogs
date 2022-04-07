@@ -336,6 +336,24 @@ Entries[#Entries + 1] = {
     }
 }
 
+Entries[#Entries + 1] = {
+    type = 'flag',
+    group = { 'isNPC' },
+    data = {
+        {
+            id = "bsguy",
+            label = "Get Delivery Job",
+            icon = "circle",
+            event = "oxy:initialize",
+            parameters = {}
+        }
+    },
+    options = {
+        distance = { radius = 3.0 },
+        npcIds = {"bsguy"}
+    }
+}
+
 
 Entries[#Entries + 1] = {
     type = 'flag',
