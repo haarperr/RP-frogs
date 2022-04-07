@@ -912,7 +912,9 @@ end
 
 RegisterNetEvent('drp-dispatch:oxyping')
 AddEventHandler("drp-dispatch:oxyping",function(coords)
-    OxyPing(coords)
+    if exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' then	
+        OxyPing(coords)
+    end
 end)
 
 RegisterNetEvent('drp-dispatch:bankrobbery')

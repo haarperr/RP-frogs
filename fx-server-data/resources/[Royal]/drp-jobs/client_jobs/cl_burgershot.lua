@@ -776,8 +776,27 @@ end)
 RegisterNetEvent("bsdelivery:getTheJob")
 AddEventHandler("bsdelivery:getTheJob", function()
     hasJob = true
+
+    local totalCount = math.random(2,5)
+    if math.random(1, 10) == 1 then 
+        totalCount = math.random(2,10)
+    end
+
+    -- get totalCount amount of menuList
+    local menu = {}
+    for i = 1, totalCount do
+        local random = math.random(1, #menuList)
+        table.insert(menu, menuList[random])
+    end
+
+    -- get every item name
+    local items = {}
+    
+
+
+
     TriggerEvent('phone:robberynotif', 'Burgershot - Marty Shanks',
-                 "Ill have a job for you shortly.")
+                 "One new Order\n\n")
     Citizen.Wait(math.random(1) * 60 * 1000)
     PlaySoundFrontend(-1, "Menu_Accept", "Phone_SoundSet_Default", true)
     enterCoords = Houses()
