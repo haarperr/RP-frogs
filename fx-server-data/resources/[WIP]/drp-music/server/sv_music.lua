@@ -1,5 +1,5 @@
 RPC.register("drp-music:addMusicEntry", function(src, pData, pGroup)
-    MySQL.insert.await([[
+    exports.ghmattimysql:execute([[
         INSERT INTO musics (title, artist, url)
         VALUES (?, ?, ?)
     ]],
@@ -11,7 +11,7 @@ RPC.register("drp-music:addMusicEntry", function(src, pData, pGroup)
 end)
 
 RPC.register("drp-music:getSongOptions", function(src, pGroup)
-    local musics = MySQL.query.await([[
+    local musics =  exports.ghmattimysql:execute([[
         SELECT *
         FROM musics
         WHERE musics.group = ?
