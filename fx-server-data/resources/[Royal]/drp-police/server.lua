@@ -1026,6 +1026,7 @@ RegisterCommand('bill', function(source, args)
 			TriggerClientEvent("police:billpd", src, tonumber(args[2]))
 			user2:addMoney(amount)
 		else
+			TriggerClientEvent('DoLongHudText', "x", 2)
 		end
 	end)
 end)
