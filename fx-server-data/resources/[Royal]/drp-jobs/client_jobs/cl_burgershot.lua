@@ -761,16 +761,17 @@ local currentMenu = nil
 
 RegisterNetEvent("bsdelivery:getJob")
 AddEventHandler("bsdelivery:getJob", function()
-    local rank = exports["isPed"]:GroupRank("burger_shot")
-    if rank <= 1 then
-        if hasJob == true then
-            TriggerEvent("DoLongHudText", "You already have a job!", 2)
-        else
-            TriggerEvent("bsdelivery:getTheJob")
-        end
-    else
-        TriggerEvent("DoLongHudText", "You dont work here", 2)
-    end
+    TriggerEvent("DoLongHudText", "Come back later.", 2)
+    -- local rank = exports["isPed"]:GroupRank("burger_shot")
+    -- if rank <= 1 then
+    --     if hasJob == true then
+    --         TriggerEvent("DoLongHudText", "You already have a job!", 2)
+    --     else
+    --         TriggerEvent("bsdelivery:getTheJob")
+    --     end
+    -- else
+    --     TriggerEvent("DoLongHudText", "You dont work here", 2)
+    -- end
 end)
 
 RegisterNetEvent("bsdelivery:getTheJob")
@@ -791,7 +792,7 @@ AddEventHandler("bsdelivery:getTheJob", function()
 
     -- get every item name
     local items = {}
-    
+
 
 
 
