@@ -951,7 +951,7 @@ onNet("server-inventory-move", async(player, data, coords) => {
             }
         } else if (crafting) {
 
-            info - await GenerateInformation(src, player, itemidsent)
+            info = await GenerateInformation(src, player, itemidsent)
             for (let i = 0; i < parseInt(amount); i++) {
                 db(`INSERT INTO user_inventory2 (item_id, name, information, slot, creationDate) VALUES ('${itemidsent}','${targetName}','${info}','${targetslot}','${creationDate}' );`);
             }
