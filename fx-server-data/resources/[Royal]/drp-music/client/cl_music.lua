@@ -75,7 +75,7 @@ AddEventHandler("drp-music:addMusicEntry", function(pParams)
 	}
 	})
 
-	if input["url"] and input["artist"] and input["title"] then
+	if input[1].input["url"] and input[2].input["artist"] and input[3].input["title"] then
 		RPC.execute("drp-music:addMusicEntry", input, pParams.group)
 	end
 end)
