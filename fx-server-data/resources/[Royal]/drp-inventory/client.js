@@ -443,147 +443,74 @@ on('inventory-open-request', () => {
             if (distanceRear > 1.5) {
                 GroundInventoryScan()
             } else {
-
                 let licensePlate = GetVehicleNumberPlateText(vehicleFound);
                 if (licensePlate != null) {
-
-                    SetVehicleDoorOpen(vehicleFound, 5, 0, 0)
-                    TaskTurnPedToFaceEntity(player, vehicleFound, 1.0)
-                    emit("toggle-animation", true);
-
-                    let foodtruck = false
-                    if (exports.isPed.isPed("myjob") == "foodtruck") {
-                        foodtruck = true
-                    }
-
-                    if (GetEntityModel(vehicleFound) == GetHashKey('taxi')) {
-                        emitNet("server-inventory-open", startPosition, cid, "1", "TaxiTrunk-" + licensePlate);
-                    }
-
-
-                    if (GetVehicleClass(vehicleFound) == "0") {
-                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk1-" + licensePlate);
-                    }
-
-                    if (GetVehicleClass(vehicleFound) == "1") {
-                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk2-" + licensePlate);
-                    }
-
-                    if (GetVehicleClass(vehicleFound) == "2") {
-                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk3-" + licensePlate);
-                    }
-
-
-                    if (GetVehicleClass(vehicleFound) == "3") {
-                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk4-" + licensePlate);
-                    }
-
-
-                    if (GetVehicleClass(vehicleFound) == "4") {
-                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk0-" + licensePlate);
-                    }
-
-
-                    if (GetVehicleClass(vehicleFound) == "5") {
-                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk5-" + licensePlate);
-                    }
-
-
-                    if (GetVehicleClass(vehicleFound) == "6") {
-                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk6-" + licensePlate);
-                    }
-
-
-                    if (GetVehicleClass(vehicleFound) == "7") {
-                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk7-" + licensePlate);
-                    }
-
-
-                    if (GetVehicleClass(vehicleFound) == "8") {
-                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk8-" + licensePlate);
-                    }
-
-
-                    if (GetVehicleClass(vehicleFound) == "9") {
-                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk9-" + licensePlate);
-                    }
-
-
-                    if (GetVehicleClass(vehicleFound) == "10") {
-                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk10-" + licensePlate);
-                    }
-
-
-                    if (GetVehicleClass(vehicleFound) == "11") {
-                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk11-" + licensePlate);
-                    }
-
-
-                    if (GetVehicleClass(vehicleFound) == "12" && (GetEntityModel(vehicleFound) == GetHashKey('taco'))) {
-                        TriggerEvent("server-inventory-open", "18", "Craft");
+                    if (vehModel === GetHashKey('npwheelchair')) {
+                        TriggerEvent('DoLongHudText', 'This is a wheelchair, dummy.', 2);
                     } else {
-                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk12-" + licensePlate);
-                    }
+                        if (!IsThisModelABicycle(vehModel) && vehModel !== GetHashKey('trash2')) {
+                            const vehId = exports['np-vehicles'].GetVehicleIdentifier(vehicleFound)
+                            if (!vehId) {
+                                CloseGui();
+                                TriggerEvent('DoLongHudText', 'The trunk is locked.', 2);
+                                return;
+                            }
+                            const carInvName = "Trunk-" + vehId
 
+                            const vehClass = GetVehicleClass(vehicleFound);
 
-                    if (GetVehicleClass(vehicleFound) == "13") {
-                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk13-" + licensePlate);
-                    }
+                            //Vehicle weight calculations
+                            const [[minX, minY, minZ], [maxX, maxY, maxZ]] = GetModelDimensions(vehModel);
+                            const vehVolume = (maxX - minX) * (maxY - minY) * (maxZ - minZ);
 
+                            const seats = GetVehicleModelNumberOfSeats(vehModel);
 
+                            const classModifier = VehicleWeightModifiers[vehClass][0];
+                            const classBaseWeight = VehicleWeightModifiers[vehClass][1];
+                            const classMaxWeight = VehicleWeightModifiers[vehClass][2];
 
+                            if (classBaseWeight === 0) {
+                                //do something
+                                return;
+                            }
 
-                    if (GetVehicleClass(vehicleFound) == "14") {
-                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk14-" + licensePlate);
-                    }
+                            //Calculate seats / 3 (2 seats = 66% of base weight, 4 seats = 133% base weight)
+                            let vehSeatMod = (classBaseWeight * seats) / 3;
 
+                            //Calculate based on volume, then add the seat modifier
+                            let vehWeightCalc = vehVolume * classModifier + vehSeatMod;
 
+                            //Round to nearest 50
+                            vehWeightCalc = Math.round(vehWeightCalc / 50) * 50;
 
-                    if (GetVehicleClass(vehicleFound) == "15") {
-                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk15-" + licensePlate);
-                    }
+                            //console.log("veh weight calc: " + vehWeightCalc);
 
+                            if (vehWeightCalc > classMaxWeight) {
+                                //Max weight
+                                vehWeightCalc = classMaxWeight;
+                            }
 
-                    if (GetVehicleClass(vehicleFound) == "16") {
-                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk16-" + licensePlate);
-                    }
+                            Object.keys(VehicleWeightOverrides).forEach((modelName) => {
+                                if (vehModel === GetHashKey(modelName)) {
+                                    vehWeightCalc = VehicleWeightOverrides[modelName];
+                                }
+                            });
 
-
-
-                    if (GetVehicleClass(vehicleFound) == "18") {
-                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk18-" + licensePlate);
-                    }
-
-
-
-                    if (GetVehicleClass(vehicleFound) == "19") {
-                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk19-" + licensePlate);
-                    }
-
-
-
-                    if (GetVehicleClass(vehicleFound) == "20") {
-                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk20-" + licensePlate);
-                    }
-
-
-                    if (GetVehicleClass(vehicleFound) == "21") {
-                        emitNet("server-inventory-open", startPosition, cid, "1", "Trunk21-" + licensePlate);
-                    }
-
-                    if (GetEntityModel(vehicleFound) == GetHashKey('wgtr')) {
-                        //emitNet("server-inventory-open", startPosition, cid, "1", "GTR-" + licensePlate);
-
-                    } else {
-                        //emitNet("server-inventory-open", startPosition, cid, "1", "Trunk-" + licensePlate);
+                            emitNet('server-inventory-open', startPosition, cid, '1', carInvName, [], null, vehWeightCalc);
+                            SetVehicleDoorOpen(vehicleFound, front ? 4 : 5, 0, 0);
+                            TaskTurnPedToFaceEntity(player, vehicleFound, 1.0);
+                            emit('toggle-animation', true);
+                        } else {
+                            GroundInventoryScan();
+                        }
                     }
                 }
             }
         }
     } else {
-        GroundInventoryScan()
+        GroundInventoryScan();
     }
-});
+}); 
 
 function GroundInventoryScan() {
     let row = DroppedInventories.find(ScanClose);
