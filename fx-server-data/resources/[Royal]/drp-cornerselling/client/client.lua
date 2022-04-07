@@ -91,9 +91,11 @@ function HasItems(amount)
 end
 
 function sell_items()
+    Citizen.Trace("Selling")
     local chance = math.random(1, 3)
+    Citizen.Trace(chance)
     local hasitems, amount = HasItems(chance)
-
+    Citizen.Trace(hasitems, amount)
 
     if hasitems then
         local plycoords = GetEntityCoords(PlayerPedId())
