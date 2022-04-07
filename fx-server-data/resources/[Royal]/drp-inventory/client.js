@@ -400,7 +400,7 @@ on('inventory-open-request', () => {
     emit("randPickupAnim")
 
     OpenGui()
-
+    const currentTarget = exports['drp-targetinteract'].GetCurrentEntity()
     let rayhandle = StartShapeTestRay(startPosition[0], startPosition[1], startPosition[2], endPosition[0], endPosition[1], endPosition[2], 10, player, 0)
     let vehicleInfo = GetShapeTestResult(rayhandle)
     let vehicleFound = vehicleInfo[4]
