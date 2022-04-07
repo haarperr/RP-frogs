@@ -586,3 +586,5 @@ Player: [1] Placed Scene: [boring google docs] At Coords = vector3(240.9268, -10
 Player: [8] Placed Scene: [HOSTAGE] At Coords = vector3(-110.1512, 6463.74, 30.62672)
 Player: [8] Placed Scene: [Hostage] At Coords = vector3(150.605, -1038.462, 28.3828)
 Player: [8] Placed Scene: [HOSTAGE] At Coords = vector3(-109.9816, 6464.172, 30.62672)
+Player: [11] Placed Scene: [Shane Winters | PD Lawyer | MCD] At Coords = vector3(452.793, -995.9086, 32.23344)
+Player: [11] Placed Scene: [^ Shawn] At Coords = vector3(453.042, -996.1216, 32.03814)
