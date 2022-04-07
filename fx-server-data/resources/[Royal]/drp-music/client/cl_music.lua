@@ -72,6 +72,7 @@ AddEventHandler("drp-music:addMusicEntry", function(pParams)
 			label = "Title",
 			name = "title",
 		},
+	}
 	})
 
 	if input["url"] and input["artist"] and input["title"] then
