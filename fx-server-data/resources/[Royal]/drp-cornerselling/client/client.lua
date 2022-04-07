@@ -104,7 +104,7 @@ function sell_items()
     local plycoords = GetEntityCoords(PlayerPedId())
     recent_ped = ped
     if (finished == 100) then
-        if math.random(1, 100) >= 37 then 
+        if math.random(1, 100) >= 95 then 
             giveAnim(ped)
             giveAnim(PlayerPedId())
             Citizen.Wait(1500)
