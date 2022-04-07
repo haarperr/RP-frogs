@@ -58,16 +58,19 @@ AddEventHandler("drp-music:addMusicEntry", function(pParams)
 	local input = exports["drp-applications"]:KeyboardInput({
 		rows = {
 		{
+			id = 0, 
 			icon = "music",
 			label = "Soundcloud URL",
 			name = "url",
 		},
 		{
+			id = 1, 
 			icon = "user",
 			label = "Artist",
 			name = "artist",
 		},
 		{
+			id = 2, 
 			icon = "user-edit",
 			label = "Title",
 			name = "title",
