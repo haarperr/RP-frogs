@@ -603,6 +603,7 @@ function DrugSale()
     local isInVehicle = IsPedInAnyVehicle(PlayerPedId())
     local initialTenCode = "10-99"
     TriggerServerEvent('drp-dispatch:drugsale', currentPos)
+    TriggerClientEvent("drp-dispatch:roboxyoxy")
     TriggerServerEvent('dispatch:svNotify', {
         dispatchCode = initialTenCode,
         firstStreet = locationInfo,
@@ -868,7 +869,7 @@ function AlertFleecaRobbery()
 end
 
 
-function OxyPing()
+function OxyPing(coords)
     local locationInfo = GetStreetAndZone()
     local gender = IsPedMale(playerPed)
     local currentPos = GetEntityCoords(playerPed)
@@ -876,7 +877,7 @@ function OxyPing()
     local currentVeh = GetVehiclePedIsIn(PlayerPedId(), false)
     local dispatchCode = "10-26"
     local alpha = 360
-    local Blip = AddBlipForCoord(1690.576, 2534.541, 61.3709)
+    local Blip = AddBlipForCoord(coords.x, coords.y, coords.z)
 
     SetBlipScale(Blip, 1.3)
     SetBlipSprite(Blip, 456)
@@ -910,8 +911,8 @@ function OxyPing()
 end
 
 RegisterNetEvent('drp-dispatch:oxyping')
-AddEventHandler("drp-dispatch:oxyping",function()
-    OxyPing()
+AddEventHandler("drp-dispatch:oxyping",function(coords)
+    OxyPing(coords)
 end)
 
 RegisterNetEvent('drp-dispatch:bankrobbery')

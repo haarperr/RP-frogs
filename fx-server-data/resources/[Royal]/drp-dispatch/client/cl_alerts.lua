@@ -635,6 +635,12 @@ AddEventHandler('drp-dispatch:robhouse', function()
 	TriggerServerEvent('drp-dispatch:houserob', {x = pos.x, y = pos.y, z = pos.z})
 end)
 
+
+AddEventHandler('drp-dispatch:roboxyoxy', function()
+	local pos = GetEntityCoords(PlayerPedId(), true)
+	TriggerServerEvent('drp-dispatch:triggeroxy', {x = pos.x, y = pos.y, z = pos.z})
+end)
+
 -- ---- Bank Truck ----
 
 RegisterNetEvent('drp-dispatch:banktruck')

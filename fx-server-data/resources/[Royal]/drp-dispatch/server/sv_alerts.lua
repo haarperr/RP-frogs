@@ -87,6 +87,12 @@ AddEventHandler("drp-dispatch:storerob",function(targetCoords)
 	return
 end)
 
+RegisterServerEvent("drp-dispatch:triggeroxy")
+AddEventHandler("drp-dispatch:triggeroxy",function(targetCoords)
+    TriggerClientEvent('drp-dispatch:oxyping', -1, targetCoords)
+	return
+end)
+
 RegisterServerEvent("drp-dispatch:houserob")
 AddEventHandler("drp-dispatch:houserob",function(targetCoords)
     TriggerClientEvent('drp-dispatch:houserobbery2', -1, targetCoords)
