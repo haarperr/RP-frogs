@@ -711,4 +711,5 @@ AddEventHandler("bsdelivery:getJob", function()
         TriggerEvent('DoLongHudText', 'You dont work here.', 2)
         return
     end
+    TriggerEvent('DoLongHudText', 'You don342423423423t work here.', 2)
 end)
