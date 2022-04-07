@@ -563,8 +563,8 @@ RegisterNetEvent("drp-scoreboard:playerscount")
 AddEventHandler("drp-scoreboard:playerscount", function(a)
 
 	
-	local first_name = exports["caue-base"]:getChar("first_name")
-	local last_name = exports["caue-base"]:getChar("last_name")
+	local first_name = exports["isPed"]:isPed("firstname")
+	local last_name = exports["isPed"]:isPed("lastname")
 
 	if first_name then
 		SetRichPresence("Playing As " .. first_name .. " " .. last_name)
