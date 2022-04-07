@@ -135,11 +135,10 @@ function sell_items()
             end
         else
             SetPedAsNoLongerNeeded(recent_ped)
+            TriggerEvent("DoLongHudText", "They are not interested!", 2)
             if math.random(1, 100) >= 22 then
                 TriggerEvent("civilian:alertPolice", 15.0, "drugsale", 0)
             end
-            TriggerEvent("DoLongHudText", "They are not interested!", 2)
-            
         end
     end
 end
