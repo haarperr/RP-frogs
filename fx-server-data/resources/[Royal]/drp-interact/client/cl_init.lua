@@ -783,7 +783,7 @@ Citizen.CreateThread(function()
     })
 
     -- Burger Shot Guy
-    exports["drp-polytarget"]:AddBoxZone("bsguy", vector3(-1190.1145, -905.4796, 12.9847), 1, 1.4, {
+    exports["drp-polytarget"]:AddBoxZone("bsguy", vector3(-1190.1145, -905.4796, 13.9847), 1, 1.4, {
         heading=70.9786,
     })
 
