@@ -766,8 +766,8 @@ Houses = { -- Houses entry and model
 }
 
 function Houses()
-	local ubicacion = math.random(1, #Config.Houses)		
-	local c = Config.Houses[ubicacion]
+	local ubicacion = math.random(1, #Houses)		
+	local c = Houses[ubicacion]
 	return c
 end
 
