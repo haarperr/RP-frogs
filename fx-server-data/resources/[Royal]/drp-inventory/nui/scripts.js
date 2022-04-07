@@ -1226,7 +1226,7 @@ function DisplayInventory(sqlInventory, itemCount, invName, main) {
                 inventoryName = inventory[slot].inventoryName;
 
                 let weight = parseFloat(itemList[itemid].weight);
-                let item_cost = itemList[itemid].priceWithTax;
+                let item_cost = itemList[itemid].price;
 
                 let stackable = !itemList[itemid].nonStack;
                 let image = getInvImage(itemList[itemid], inventory[i].information);
