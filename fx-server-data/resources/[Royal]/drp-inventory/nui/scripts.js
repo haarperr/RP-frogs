@@ -1983,7 +1983,6 @@ function DropItem(slot, amountDropped) {
     //  amountDropped: amountDropped,
     // }));
 }
-
 function ErrorMove() {
     // $.post('https://drp-inventory/move:fail', JSON.stringify({}));
 }
@@ -2830,7 +2829,7 @@ function AttemptDropInEmptySlot(slot, isDropped, half) {
     purchase = false;
     crafting = false;
     let itemidsent = item.dataset.itemid;
-    let metainformation = unescape(item.dataset.info);
+    let metainformation = item.dataset.metainformation;
     let moveAmount = parseInt(document.getElementById('move-amount').value);
 
     let closeOnMove = false;
@@ -2865,6 +2864,7 @@ function AttemptDropInEmptySlot(slot, isDropped, half) {
         let alteredAmount = moveAmount;
         movementWeight = weight * alteredAmount;
     }
+
 
     let result = 'Success';
     if (inventoryDropName === 'wrapmain' && inventoryReturnItemDropName === 'craftContainer' && TargetInventoryName.indexOf('Craft') > -1) {
