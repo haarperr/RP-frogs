@@ -118,7 +118,7 @@ Citizen.CreateThread(function()
     while true do
         local chanel = DiscordRequest("GET", "channels/" .. Config["BOT_CHANNELID"], {})
 
-        if chanel.data then
+      --  if chanel.data then
             local data = json.decode(chanel.data)
             local lst = data.last_message_id
             local lastmessage = DiscordRequest("GET", "channels/" .. Config["BOT_CHANNELID"] .. "/messages/" .. lst, {})
@@ -132,7 +132,7 @@ Citizen.CreateThread(function()
                     lastdata = lstdata.id
                 end
             end
-        end
+      --  end
 
         Citizen.Wait(Config["COMMANDS_TICK"])
     end

@@ -1,0 +1,16 @@
+{
+    "token": "OTUzMTM2NjY0ODQ5NTcxODYw.YjALsQ.KyNOMGugxKlUzKBXu3BjfzMI6Ss",
+    "prefix": "!",
+    "fivem_server_ip_port": "62.171.159.104:30120",
+    "fivem_server_logo_url": "https://cdn.discordapp.com/attachments/956069154555834409/960953116851834941/feelsgoodman.png",
+    "server_name": "RPFrogs Community Server",
+    "cfx_connect_url": "fivem://62.171.159.104:30120",
+    "embed_thumbnail": "https://cdn.discordapp.com/attachments/956069154555834409/960953116851834941/feelsgoodman.png",
+    "embed_footer": "RPFrogs Team",
+    "moderation_logs": true,
+    "logs_channel": "957057643149664266",
+    "welcome_message": false,
+    "welcome_channel": "",
+    "server_status_data": true,
+    "server_status_channel": "961113419094843432"
+  }
