@@ -130,12 +130,12 @@ function sell_items()
                     TriggerEvent("DoLongHudText", "You dont got what I want!", 2)
                 end
             end
-            if math.random(1, 100) >= 20 then
+            if math.random(1, 100) >= 5 then
                 TriggerEvent("civilian:alertPolice", 15.0, "drugsale", 0)
             end
         else
             SetPedAsNoLongerNeeded(recent_ped)
-            if math.random(1,100) >= 20 then
+            if math.random(1,100) >= 22 then
                 SetPedAsNoLongerNeeded(recent_ped)
                 TriggerEvent("DoLongHudText", "They are not interested and called the cops!", 2)
                 TriggerEvent("civilian:alertPolice", 15.0, "drugsale", 0)
