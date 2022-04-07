@@ -547,11 +547,46 @@ AddEventHandler('drp-dispatch:vehiclesteal', function(targetCoords)
   end
 end)
 
+
+
+RegisterNetEvent('drp-dispatch:susact')
+AddEventHandler('drp-dispatch:susact', function(targetCoords)
+	if exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' then	
+		local alpha = 360
+		local thiefBlip = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
+
+		SetBlipSprite(thiefBlip,  4)
+		SetBlipColour(thiefBlip,  4)
+		SetBlipScale(thiefBlip, 1.5)
+		SetBlipAsShortRange(thiefBlip, false)
+		BeginTextCommandSetBlipName("STRING")
+		AddTextComponentString('10-26 Suspicious Activity')
+		EndTextCommandSetBlipName(thiefBlip)
+		PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
+
+		while alpha ~= 0 do
+			Citizen.Wait(120 * 4)
+			alpha = alpha - 1
+			SetBlipAlpha(thiefBlip, alpha)
+
+		if alpha == 0 then
+			RemoveBlip(thiefBlip)
+		return
+      end
+    end
+  end
+end)
+
 AddEventHandler('drp-dispatch:stolenveh', function()
 	local pos = GetEntityCoords(PlayerPedId(), true)
 	TriggerServerEvent('drp-dispatch:sveh', {x = pos.x, y = pos.y, z = pos.z})
 end)
 
+
+AddEventHandler('drp-dispatch:susactivity', function()
+	local pos = GetEntityCoords(PlayerPedId(), true)
+	TriggerServerEvent('drp-dispatch:sact', {x = pos.x, y = pos.y, z = pos.z})
+end)
 
 
 -- ---- Store Robbery ----

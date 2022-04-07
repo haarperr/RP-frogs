@@ -59,6 +59,12 @@ AddEventHandler("drp-dispatch:sveh",function(targetCoords)
 	return
 end)
 
+RegisterServerEvent("drp-dispatch:sact")
+AddEventHandler("drp-dispatch:ssactveh",function(targetCoords)
+    TriggerClientEvent('drp-dispatch:susact', -1, targetCoords)
+	return
+end)
+
 RegisterServerEvent("drp-dispatch:svCarBoost")
 AddEventHandler("drp-dispatch:svCarBoost", function(targetCoords)
     TriggerClientEvent("drp-dispatch:carBoostBlip", -1, targetCoords)
