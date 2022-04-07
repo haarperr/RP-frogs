@@ -6,7 +6,7 @@ Citizen.CreateThread(function()
         local last_name = exports["isPed"]:isPed("lastname")
 
         if first_name then
-            SetRichPresence("Playing as " .. first_name .. " " .. last_name)
+            SetRichPresence("Playing as " .. first_name .. " " .. last_name - a .. "/48 | Milkin Snakes ")
         else
             SetRichPresence(a .. "/48 | Milkin Snakes ")
         end
