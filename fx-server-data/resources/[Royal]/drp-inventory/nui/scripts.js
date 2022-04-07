@@ -938,6 +938,26 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
     } else if (targetinvName.indexOf('motel-3') > -1) {
         secondaryMaxWeight = 1000.0;
         slotLimitTarget = 90;
+    } else if (targetinvName.indexOf('MurderMeal') > -1) {
+        secondaryMaxWeight = 15.0;
+        slotLimitTarget = 5;
+        displayName = 'Murder Meal';
+    } else if (targetinvName.indexOf('pdevidencebag') > -1) {
+        secondaryMaxWeight = 0.0;
+        slotLimitTarget = 20;
+        displayName = 'Evidence Bag';
+    } else if (targetinvName.indexOf('keyholder') > -1) {
+        secondaryMaxWeight = 4.0;
+        slotLimitTarget = 4;
+        displayName = 'Key Holder';
+    } else if (targetinvName.indexOf('WAREHOUSE') > -1) {
+        secondaryMaxWeight = 2000.0;
+        slotLimitTarget = 250;
+        displayName = 'Stash';
+    } else if (targetinvName.indexOf('LabStash') > -1) { 
+        secondaryMaxWeight = 200.0;
+        slotLimitTarget = 500;
+        displayName = 'Stash';
     } else if (targetinvName.indexOf('Glovebox') > -1) {
         secondaryMaxWeight = 50.0;
         slotLimitTarget = 5;
@@ -1485,7 +1505,7 @@ function DisplayInventory(sqlInventory, itemCount, invName, main) {
                 }
 
                 if (TargetInventoryName.indexOf('Craft') > -1 && !main) {
-                    if (sqlInventory[i - 1].amount === undefined) {
+                    if (sqlInventory[i - 1] === undefined || sqlInventory[i - 1].amount === undefined) {
                         itemcount = 1;
                     } else {
                         itemcount = sqlInventory[i - 1].amount;
