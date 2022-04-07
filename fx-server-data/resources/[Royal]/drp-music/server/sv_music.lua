@@ -1,9 +1,9 @@
 RPC.register("drp-music:addMusicEntry", function(src, pData, pGroup)
     MySQL.insert.await([[
-        INSERT INTO musics (title, artist, url, musics.group)
-        VALUES (?, ?, ?, ?)
+        INSERT INTO musics (title, artist, url)
+        VALUES (?, ?, ?)
     ]],
-    { pData.title, pData.artist, pData.url, pGroup })
+    { pData.title, pData.artist, pData.url})
 
     TriggerClientEvent("DoLongHudText", src, "Music entry created!")
 
