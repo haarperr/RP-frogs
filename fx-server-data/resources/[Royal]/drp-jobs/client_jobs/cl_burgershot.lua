@@ -781,7 +781,6 @@ AddEventHandler("bsdelivery:getJob", function()
             TriggerEvent("DoLongHudText", "You already have a job!", 2)
         else
             TriggerEvent("bsdelivery:getTheJob")
-            hasJob = true
         end
     else
         TriggerEvent("DoLongHudText", "You dont work here", 2)
@@ -790,6 +789,7 @@ end)
 
 RegisterNetEvent("bsdelivery:getTheJob")
 AddEventHandler("bsdelivery:getTheJob", function()
+    hasJob = true
     TriggerEvent('phone:robberynotif', 'Burgershot - Marty Shanks', "Ill have a job for you shortly.")
     Citizen.Wait(math.random(1) * 60 * 1000)
     PlaySoundFrontend(-1, "Menu_Accept", "Phone_SoundSet_Default", true)
