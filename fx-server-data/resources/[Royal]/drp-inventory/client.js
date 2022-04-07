@@ -451,13 +451,8 @@ on('inventory-open-request', () => {
                         TriggerEvent('DoLongHudText', 'This is a wheelchair, dummy.', 2);
                     } else {
                         if (!IsThisModelABicycle(vehModel) && vehModel !== GetHashKey('trash2')) {
-                            const vehId = exports['drp-vehicles'].GetVehicleIdentifier(vehicleFound)
-                            if (!vehId) {
-                                CloseGui();
-                                TriggerEvent('DoLongHudText', 'The trunk is locked.', 2);
-                                return;
-                            }
-                            const carInvName = "Trunk-" + vehId
+                            
+                            const carInvName = "Trunk-" + licensePlate
 
                             const vehClass = GetVehicleClass(vehicleFound);
 
