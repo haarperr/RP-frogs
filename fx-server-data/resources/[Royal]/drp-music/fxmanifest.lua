@@ -10,17 +10,17 @@ files {
 }
 
 shared_scripts {
-    "@caue-lib/shared/sh_util.lua",
+    "@drp-lib/shared/sh_util.lua",
     "shared/*"
 }
 
 server_scripts {
     "@oxmysql/lib/MySQL.lua",
-    "@caue-lib/server/sv_rpc.lua",
+    "@drp-lib/server/sv_rpc.lua",
     "server/*"
 }
 
 client_scripts {
-    "@caue-lib/client/cl_rpc.lua",
+    "@drp-lib/client/cl_rpc.lua",
     "client/*"
 }
