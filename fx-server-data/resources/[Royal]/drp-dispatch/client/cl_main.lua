@@ -603,7 +603,7 @@ function DrugSale()
     local isInVehicle = IsPedInAnyVehicle(PlayerPedId())
 
     local dispatchCode = "10-34"
-
+    TriggerEvent('drp-dispatch:susactivity')
     TriggerServerEvent("dispatch:svNotify", {
         dispatchCode = dispatchCode,
         firstStreet = locationInfo,
