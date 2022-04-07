@@ -596,7 +596,7 @@ AddEventHandler("drp-mdt:drugsale",function()
     DrugSale()
 end)
 
-unction DrugSale(object)
+function DrugSale(object)
     local locationInfo = GetStreetAndZone()
     local gender = IsPedMale(playerPed)
     local currentPos = GetEntityCoords(playerPed)
