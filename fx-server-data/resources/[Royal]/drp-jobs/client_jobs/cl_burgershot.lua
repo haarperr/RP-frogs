@@ -802,6 +802,4 @@ AddEventHandler("bsdelivery:getTheJob", function()
     SetBlipRoute(HouseRobberyLocation, true)
     SetBlipRouteColour(HouseRobberyLocation, 29)
     TriggerEvent('phone:robberynotif', 'Burgershot - Marty Shanks', "Ive updated the location of the delivery house on your GPS.")
-    
-    
 end)
