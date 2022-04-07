@@ -43,5 +43,4 @@ exports{
 	'GetCurrentWeapons',
 	'GetItemInfo',
 	'GetItemName',
-	'getAmountOfItem',
 }
