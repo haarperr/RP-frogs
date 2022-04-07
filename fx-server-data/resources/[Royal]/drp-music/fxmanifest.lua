@@ -10,17 +10,17 @@ files {
 }
 
 shared_scripts {
-    "@drp-rpc/shared/sh_util.lua",
+    "@drp-lib/shared/sh_util.lua",
     "shared/*"
 }
 
 server_scripts {
     "@mysql-async/lib/MySQL.lua",
-    "@drp-rpc/server/sv_main.lua",
+    "@drp-lib/server/sv_rpc.lua",
     "server/*"
 }
 
 client_scripts {
-    "@drp-rpc/client/cl_main.lua",
+    "@drp-lib/client/cl_rpc.lua",
     "client/*"
 }
