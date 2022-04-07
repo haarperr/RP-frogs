@@ -22,7 +22,7 @@ let purchase = false;
 let crafting = false;
 let clicking = false;
 let userCash = 0;
-let userWeaponLicense = true;
+let userWeaponLicense = false;
 let itemList = {};
 let exluded = {};
 let brought = false;
@@ -42,6 +42,7 @@ let showTooltips = true;
 let enableBlur = true;
 
 let customImageItems = [
+    "custommiscitem",
     "musicmerch",
     "customfooditem",
     "customwateritem",
@@ -54,14 +55,19 @@ let customImageItems = [
     "newstape",
     "summonablepet",
     "tcgcard",
+    "book",
     "petaccessory",
     "resfooditem",
     "ressideitem",
     "resdessertitem",
     "resdrinkitem",
     "resalcoholitem",
+    "bentobox",
+    "spraycan",
+    "gallerygem",
 ];
 let customNameItems = [
+    "custommiscitem",
     "customfooditem",
     "customwateritem",
     "customjointitem",
@@ -73,12 +79,14 @@ let customNameItems = [
     "tcgcard",
     "tcgpromobooster",
     "tcgbinder",
+    "book",
     "petaccessory",
     "resfooditem",
     "ressideitem",
     "resdessertitem",
     "resdrinkitem",
     "resalcoholitem",
+    "gallerygem",
 ];
 let customNameItemsDescriptions = {
     "customfooditem": "(FM) ",
@@ -88,8 +96,11 @@ let customNameItemsDescriptions = {
     "custommerchitem": "(FM) ",
     "customciggyitem": "(FM) ",
     "custombandageitem": "(FM) ",
+    "book": "(B) ",
+    "gallerygem": "(G) ",
 };
 let customDescriptionItems = [
+    "custommiscitem",
     "customfooditem",
     "customwateritem",
     "customjointitem",
@@ -128,7 +139,7 @@ const foodCatMaps = {
     vegetables: 'Vegetables really improve your cardio.',
 }
 
-const ignoreMetaKeysInComparison = ["_remove_id", "_hideKeys", "_is_poisoned", "_foodEnhancements", "potency", "interval", "duration", "nonLethal"];
+const ignoreMetaKeysInComparison = ["_remove_id", "_hideKeys", "_is_poisoned", "_foodEnhancements", "potency", "interval", "duration", "nonLethal", "quality", "foodEnhancement", "_foodEnhancement"];
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -171,7 +182,7 @@ function getInvImage(item, info) {
     let imgSrc = `icons/${item.image}`;
     try {
         if (customImageItems.includes(item._name) && !!info) {
-            imgSrc = info._image_url || JSON.parse(info)._image_url;
+            imgSrc = info._image_url || JSON.parse(info)._image_url || imgSrc;
         }
     } catch (err) { }
     return imgSrc;
@@ -224,7 +235,7 @@ $(document).ready(function () {
 
         //Send post message with new settings
         $.post(
-            'https://drp-inventory/UpdateSettings',
+            'https://caue-inventory/UpdateSettings',
             JSON.stringify({
                 holdToDrag: holdToDrag,
                 closeOnClick: closeOnClick,
@@ -394,6 +405,7 @@ $(document).ready(function () {
             $('#app').fadeIn();
             $('#containers-wrapper').css({ display: "flex" }).slideDown(400).style;
             // $(".wrapsecondary").css({ height: "93%" });
+            $('#move-amount').val(0);
         } else if (item.response == 'closeGui') {
             $('#app').fadeOut(100);
             $('#containers-wrapper').fadeOut(10);
@@ -411,7 +423,8 @@ $(document).ready(function () {
                 item.cash,
                 item.StoreOwner,
                 item.targetInvWeight,
-                item.targetInvSlots
+                item.targetInvSlots,
+                item.shopId,
             );
         } else if (item.response == 'PopulateSingle') {
             personalWeight = 0;
@@ -421,7 +434,7 @@ $(document).ready(function () {
             UpdateSetWeights(item.invName);
         } else if (item.response == 'cashUpdate') {
             userCash = item.amount;
-            userWeaponLicense = true;
+            userWeaponLicense = item.weaponlicence;
             brought = item.brought;
             isCop = item.cop;
         } else if (item.response == 'DisableMouse') {
@@ -443,7 +456,7 @@ $(document).ready(function () {
         } else if (item.response == 'GiveItemChecks') {
             if (itemList[item.id]) {
                 $.post(
-                    'https://drp-inventory/GiveItem',
+                    'https://caue-inventory/GiveItem',
                     JSON.stringify([
                         item.id,
                         item.amount,
@@ -456,7 +469,7 @@ $(document).ready(function () {
                 );
             } else {
                 $.post(
-                    'https://drp-inventory/GiveItem',
+                    'https://caue-inventory/GiveItem',
                     JSON.stringify([
                         item.id,
                         item.amount,
@@ -482,6 +495,8 @@ $(document).ready(function () {
             $('input[name="enableBlur"]').prop('checked', enableBlur);
         } else if (item.response === 'playerWeight') {
             personalMaxWeight = parseFloat(item.personalMaxWeight)
+        } else if (item.response === 'log') {
+            InventoryLog(item.log)
         }
     });
 });
@@ -492,7 +507,7 @@ function UpdateQuality(data, penis) {
     let inventory = data.inventory;
 
     let divslot = 'secondaryslot' + data.slot;
-    if (inventory.indexOf('ply-') > -1) {
+    if (inventory.startsWith('ply-')) {
         divslot = 'playerslot' + data.slot;
     }
 
@@ -681,7 +696,7 @@ function ToggleBar(toggle, boundItems, boundItemsAmmo) {
             image = itemList[boundItems[1]].image;
             name = itemList[boundItems[1]].displayname;
 
-            if (boundItemsAmmo[1]) {
+            if (boundItemsAmmo[1] !== undefined) {
                 name = name + ' - (' + boundItemsAmmo[1] + ')';
             }
 
@@ -701,7 +716,7 @@ function ToggleBar(toggle, boundItems, boundItemsAmmo) {
                 image = itemList[boundItems[i]].image;
                 name = itemList[boundItems[i]].displayname;
 
-                if (boundItemsAmmo[i]) {
+                if (boundItemsAmmo[i] !== undefined) {
                     name = name + ' - (' + boundItemsAmmo[i] + ')';
                 }
 
@@ -741,10 +756,12 @@ function invStack(
     purchase,
     itemCosts,
     itemidsent,
+    metainformation,
     amountmoving,
     crafting,
     weapon,
     amountRemaining,
+    shopId,
 ) {
     let arr = [
         targetSlot,
@@ -755,13 +772,15 @@ function invStack(
         purchase,
         itemCosts,
         itemidsent,
+        metainformation,
         amountmoving,
         crafting,
         weapon,
         PlayerStore,
         amountRemaining,
+        shopId,
     ];
-    $.post('https://drp-inventory/stack', JSON.stringify(arr));
+    $.post('https://caue-inventory/stack', JSON.stringify(arr));
 }
 
 function invMove(
@@ -772,9 +791,11 @@ function invMove(
     purchase,
     itemCosts,
     itemidsent,
+    metainformation,
     amountmoving,
     crafting,
     weapon,
+    shopId,
 ) {
     let arr = [
         targetSlot,
@@ -784,23 +805,25 @@ function invMove(
         purchase,
         itemCosts,
         itemidsent,
+        metainformation,
         amountmoving,
         crafting,
         weapon,
         PlayerStore,
+        shopId,
     ];
-    $.post('https://drp-inventory/move', JSON.stringify(arr));
+    $.post('https://caue-inventory/move', JSON.stringify(arr));
 }
 
 function invSwap(targetSlot, targetInventory, originSlot, originInventory, itemid1, metainformation1, itemid2, metainformation2) {
     let arr = [targetSlot, targetInventory, originSlot, originInventory, itemid1, metainformation1, itemid2, metainformation2];
-    $.post('https://drp-inventory/swap', JSON.stringify(arr));
+    $.post('https://caue-inventory/swap', JSON.stringify(arr));
 }
 
 function removeCraftItems(itemid, moveAmount, CraftArrayID) {
     let arr = itemList[itemid].craft[CraftArrayID];
     let amount = moveAmount;
-    $.post('https://drp-inventory/removeCraftItems', JSON.stringify([arr, amount]));
+    $.post('https://caue-inventory/removeCraftItems', JSON.stringify([arr, amount]));
 }
 
 function CreateEmptyPersonalSlot(slotLimit) {
@@ -862,11 +885,13 @@ let MyInventory = {};
 let MyItemCount = 0;
 let StoreOwner = false;
 let PlayerStore = false;
+let StoreId = "0";
 // weights are done here, based on the string of the inventory name
-function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinventory, targetitemCount, targetinvName, cash, Owner, targetInvWeight = 0, targetInvSlots = 40) {
+function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinventory, targetitemCount, targetinvName, cash, Owner, targetInvWeight = 0, targetInvSlots = 40, shopId) {
     secondaryWeight = 0;
     StoreOwner = Owner;
     PlayerStore = false;
+    StoreId = shopId;
     userCash = parseInt(cash);
     DisplayInventory(playerinventory, itemCount, invName, true);
     MyInventory = playerinventory;
@@ -885,8 +910,8 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
         PlayerStore = true;
         displayName = 'Player Store';
     } else if (targetinvName.indexOf('storage') > -1) {
-        secondaryMaxWeight = 1500.0;
-        slotLimitTarget = 175;
+        secondaryMaxWeight = 2000.0;
+        slotLimitTarget = 200;
     } else if (targetinvName.indexOf('office') > -1) {
         secondaryMaxWeight = 100.0;
         slotLimitTarget = 5;
@@ -909,26 +934,6 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
         secondaryMaxWeight = 50.0;
         slotLimitTarget = 5;
         displayName = 'Glovebox';
-    } else if (targetinvName.indexOf('MurderMeal') > -1) {
-        secondaryMaxWeight = 15.0;
-        slotLimitTarget = 5;
-        displayName = 'Murder Meal';
-    } else if (targetinvName.indexOf('pdevidencebag') > -1) {
-        secondaryMaxWeight = 0.0;
-        slotLimitTarget = 20;
-        displayName = 'Evidence Bag';
-    } else if (targetinvName.indexOf('keyholder') > -1) {
-        secondaryMaxWeight = 4.0;
-        slotLimitTarget = 4;
-        displayName = 'Key Holder';
-    } else if (targetinvName.indexOf('WAREHOUSE') > -1) {
-        secondaryMaxWeight = 2000.0;
-        slotLimitTarget = 250;
-        displayName = 'Stash';
-    } else if (targetinvName.indexOf('LabStash') > -1) {
-        secondaryMaxWeight = 2000.0;
-        slotLimitTarget = 500;
-        displayName = 'Stash';
     } else if (targetinvName.indexOf('Trunk') > -1) {
         secondaryMaxWeight = 650.0;
         slotLimitTarget = 65;
@@ -947,10 +952,6 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
         }
     } else if (targetinvName.indexOf('evidence') > -1) {
         secondaryMaxWeight = 12000.0;
-        slotLimitTarget = 400;
-        displayName = 'Evidence';
-    } else if (targetinvName.indexOf('CASE ID') > -1) {
-        secondaryMaxWeight = 4000.0;
         slotLimitTarget = 400;
         displayName = 'Evidence';
     } else if (targetinvName.indexOf('Case') > -1) {
@@ -979,7 +980,7 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
     } else if (targetinvName.indexOf('Shop') > -1) {
         displayName = 'Shop';
         secondaryMaxWeight = 2000.0;
-        slotLimitTarget = 40;
+        slotLimitTarget = 100;
     } else if (targetinvName.startsWith('ply')) {
         secondaryMaxWeight = 250.0;
         slotLimitTarget = 40;
@@ -990,7 +991,7 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
         displayName = 'Locked Compartment';
     } else if (targetinvName.indexOf('fisher-bucket-') > -1) {
         secondaryMaxWeight = 99.0;
-        slotLimitTarget = 10;
+        slotLimitTarget = 99;
         displayName = 'Fisher Bucket';
     } else if (targetinvName.indexOf('burgerjob_shelf') > -1 || targetinvName.startsWith('restaurants_shelf')) {
         secondaryMaxWeight = 300.0;
@@ -1015,18 +1016,22 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
         if (splitName[2] && typeof parseInt(splitName[2]) === "number") {
             secondaryMaxWeight = parseInt(splitName[2]);
         }
-    } else if (targetinvName.indexOf('burgerjob_fridge') > -1) {
+    } else if (targetinvName.indexOf('tacoshop_fridge') > -1) {
         secondaryMaxWeight = 1000.0;
         slotLimitTarget = 40;
-        displayName = 'Ingredient Storage';
+        displayName = 'Geladeira de Ingredientes';
+    } else if (targetinvName.indexOf('drusillas_fridge') > -1) {
+        secondaryMaxWeight = 1000.0;
+        slotLimitTarget = 40;
+        displayName = 'Geladeira de Ingredientes';
     } else if (targetinvName.indexOf('gallery_gemtrade') > -1) {
         secondaryMaxWeight = 10.0;
         slotLimitTarget = 10;
         displayName = 'Gem Table';
-    } else if (targetinvName.indexOf('casino bag') > -1) {
-        secondaryMaxWeight = 10.0;
-        slotLimitTarget = 10;
-        displayName = 'Casino Bag';
+    } else if (targetinvName.indexOf('vanilla_fridge') > -1) {
+        secondaryMaxWeight = 1000.0;
+        slotLimitTarget = 40;
+        displayName = 'Geladeira de Bebidas';
     } else if (targetinvName.startsWith('container')) {
         let invname = targetinvName.split("-");
         displayName = invname[2];
@@ -1050,6 +1055,10 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
         secondaryMaxWeight = 500.0;
         slotLimitTarget = 5;
         displayName = 'Tailgate';
+    } else if (targetinvName.startsWith('tcg_binder_')) {
+        secondaryMaxWeight = 5000.0;
+        slotLimitTarget = 200;
+        displayName = 'Binder';
     } else if (targetinvName.startsWith('comic_shop_appraisal_')) {
         secondaryMaxWeight = 10.0;
         slotLimitTarget = 50;
@@ -1081,6 +1090,10 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
     } else if (targetinvName.indexOf('prison:stash') > -1) {
         displayName = 'Stash';
         secondaryMaxWeight = 250.0;
+    } else if (targetinvName.indexOf('jail') > -1) {
+        displayName = 'Possessions';
+        secondaryMaxWeight = 0.0;
+        slotLimitTarget = 50;
     } else if (targetinvName === 'gooddropoff') {
         displayName = 'Dropoff'
         secondaryMaxWeight = 500.0;
@@ -1105,6 +1118,10 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
         secondaryMaxWeight = 100.0;
         slotLimitTarget = 10;
         displayName = 'Bodybag';
+    } else if (targetinvName.startsWith('mobile-stash-fridge_')) {
+        secondaryMaxWeight = 10.0;
+        slotLimitTarget = 5;
+        displayName = 'Fridge';
     } else if (targetinvName.startsWith('mailbox')) {
         secondaryMaxWeight = 300.0;
         slotLimitTarget = 30;
@@ -1128,7 +1145,7 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
 
 function BuildDrop(brokenSlots) {
     $.post(
-        'https://drp-inventory/dropIncorrectItems',
+        'https://caue-inventory/dropIncorrectItems',
         JSON.stringify({
             slots: brokenSlots,
         }),
@@ -1136,8 +1153,6 @@ function BuildDrop(brokenSlots) {
 }
 
 // THIS IS A SHIT COPY PASTE JUST TIO UPDATE BECAUSE I COULDNT BE BOTHERED ADDING A VARIABLE TO LIKE 2 EVENTS :)
-
-// NOPIXEL BTW
 
 function produceInfo(data) {
     let string = '';
@@ -1234,7 +1249,7 @@ function DisplayInventory(sqlInventory, itemCount, invName, main) {
                 inventoryName = inventory[slot].inventoryName;
 
                 let weight = parseFloat(itemList[itemid].weight);
-                let item_cost = itemList[itemid].price;
+                let item_cost = itemList[itemid].priceWithTax;
 
                 let stackable = !itemList[itemid].nonStack;
                 let image = getInvImage(itemList[itemid], inventory[i].information);
@@ -1270,7 +1285,7 @@ function DisplayInventory(sqlInventory, itemCount, invName, main) {
                 try {
                     const obj = JSON.parse(meta);
                     const keys = Object.keys(obj);
-                    const newMeta = keys.filter((k) => k !== '_hideKeys' && !keysToFilter.includes(k) && obj[k])
+                    const newMeta = keys.filter((k) => k !== '_hideKeys' && !keysToFilter.includes(k) && obj[k] !== null && typeof obj[k] !== 'undefined')
                         .map((k) => {
                             if (timestampColumns[k]) {
                                 return `${timestampColumns[k]}: ${calculateTimeDiff(obj[k])}`
@@ -1476,7 +1491,7 @@ function DisplayInventory(sqlInventory, itemCount, invName, main) {
                 }
 
                 if (TargetInventoryName.indexOf('Craft') > -1 && !main) {
-                    if (sqlInventory[i - 1].amount === undefined) {
+                    if (sqlInventory[i - 1] === undefined || sqlInventory[i - 1].amount === undefined) {
                         itemcount = 1;
                     } else {
                         itemcount = sqlInventory[i - 1].amount;
@@ -1649,7 +1664,7 @@ function UpdateSetWeights(secondaryName) {
     }
 
     $.post(
-        'https://drp-inventory/Weight',
+        'https://caue-inventory/Weight',
         JSON.stringify({
             weight: personalWeight.toFixed(2),
         }),
@@ -1776,7 +1791,7 @@ function DragToggle(fromSlot, isUsing, mouseEvent) {
             isDragging = true;
             draggingid = fromSlot;
 
-            // $.post('https://drp-inventory/SlotInuse', JSON.stringify(parseInt(draggingid.replace(/\D/g, ''))));
+            // $.post('https://caue-inventory/SlotInuse', JSON.stringify(parseInt(draggingid.replace(/\D/g, ''))));
 
             let draggedItemHtml = document.getElementById(draggingid).innerHTML;
             document.getElementById('draggedItem').innerHTML = draggedItemHtml;
@@ -1818,7 +1833,7 @@ function DragToggle(fromSlot, isUsing, mouseEvent) {
         }
 
         if (!occupiedslot && isDragging) {
-            // $.post('https://drp-inventory/SlotInuse', JSON.stringify(parseInt(draggingid.replace(/\D/g, ''))));
+            // $.post('https://caue-inventory/SlotInuse', JSON.stringify(parseInt(draggingid.replace(/\D/g, ''))));
             /* Here we are droping an item to an open slot - I guess we should check waits etc to confirm this is allowed before doing so. */
             AttemptDropInEmptySlot(fromSlot, false);
         }
@@ -1864,7 +1879,7 @@ function FindNextSlotAndMove(half) {
         //Stack items
         AttemptDropInFilledSlot(stackSlot);
     } else if (firstEmpty) {
-        // $.post('https://drp-inventory/SlotInuse', JSON.stringify(parseInt(draggingid.replace(/\D/g, ''))));
+        // $.post('https://caue-inventory/SlotInuse', JSON.stringify(parseInt(draggingid.replace(/\D/g, ''))));
         AttemptDropInEmptySlot(firstEmpty, false, half);
     }
 }
@@ -1980,7 +1995,7 @@ function DropItem(slot, amountDropped) {
 
     //InventoryLog("Dropped: " + name + " x(" + amountDropped + ") from slot " + slotusing + " of " + inventoryUsedNameText)
 
-    // $.post('https://drp-inventory/dropitem', JSON.stringify({
+    // $.post('https://caue-inventory/dropitem', JSON.stringify({
     //  currentInventory: currentInventory,
     //  weight: weight,
     //  amount: amount,
@@ -1993,11 +2008,11 @@ function DropItem(slot, amountDropped) {
 }
 
 function ErrorMove() {
-    // $.post('https://drp-inventory/move:fail', JSON.stringify({}));
+    // $.post('https://caue-inventory/move:fail', JSON.stringify({}));
 }
 
 function SuccessMove() {
-    // $.post('https://drp-inventory/move:success', JSON.stringify({}));
+    // $.post('https://caue-inventory/move:success', JSON.stringify({}));
 }
 
 // we are splitting items from inv2,slot2,amount2 over to inv1,slot1,amount1
@@ -2014,6 +2029,7 @@ function CompileStacks(
     purchase,
     itemCosts,
     itemidsent,
+    metainformation,
     moveAmount,
     arraySlot
 ) {
@@ -2033,13 +2049,14 @@ function CompileStacks(
     }
 
     $.post(
-        'https://drp-inventory/SlotJustUsed',
+        'https://caue-inventory/SlotJustUsed',
         JSON.stringify({
             targetslot: targetSlot,
             origin: originSlot,
             itemid: itemidsent,
             move: false,
             MyInvMove: targetInventory === PlayerInventoryName,
+            metadata: metainformation,
         }),
     );
 
@@ -2058,10 +2075,12 @@ function CompileStacks(
         purchase,
         itemCosts,
         itemidsent,
+        metainformation,
         moveAmount,
         crafting,
         isWeapon,
         remainingAmount,
+        StoreId,
     );
 
     //("Changed Slot: " + targetSlot + "(" + targetAmount + ") of " + inv2 + " to " + originSlot + "(" + originAmount + ") of " + inv1 + " ")
@@ -2090,13 +2109,14 @@ function MoveStack(targetSlot, originSlot, inv1, inv2, purchase, itemCosts, item
     }
 
     $.post(
-        'https://drp-inventory/SlotJustUsed',
+        'https://caue-inventory/SlotJustUsed',
         JSON.stringify({
             targetslot: targetSlot,
             origin: originSlot,
             itemid: itemidsent,
             move: true,
             MyInvMove: targetInventory === PlayerInventoryName,
+            metadata: metainformation,
         }),
     );
 
@@ -2118,6 +2138,7 @@ function MoveStack(targetSlot, originSlot, inv1, inv2, purchase, itemCosts, item
         moveAmount,
         crafting,
         isWeapon,
+        StoreId,
     );
     //InventoryLog("Moved Slot " + targetSlot + " of " + targetInventory + " to " + originSlot + " of " + originInventory + " #" + itemidsent + " Information :" + metainformation)
     if (crafting) {
@@ -2130,7 +2151,7 @@ function MoveStack(targetSlot, originSlot, inv1, inv2, purchase, itemCosts, item
 
 // slot2 is the object being moved originally, slot 1 is the item it is replacing with.
 function SwapStacks(targetSlot, originSlot, inv1, inv2, itemid1, metainformation1, itemid2, metainformation2) {
-    // $.post('https://drp-inventory/swapstack', JSON.stringify({
+    // $.post('https://caue-inventory/swapstack', JSON.stringify({
     //   slot1: slot1,
     //   slot2: slot2,
     //   inv1: inv1,
@@ -2153,13 +2174,14 @@ function SwapStacks(targetSlot, originSlot, inv1, inv2, itemid1, metainformation
 
     RequestItemData();
     $.post(
-        'https://drp-inventory/SlotJustUsed',
+        'https://caue-inventory/SlotJustUsed',
         JSON.stringify({
             targetslot: targetSlot,
             origin: originSlot,
             itemid: itemid,
             move: false,
             MyInvMove: targetInventory === PlayerInventoryName,
+            metadata: metainformation1,
         }),
     );
 
@@ -2186,7 +2208,7 @@ function InsertItem(targetSlot, originSlot, inv1, inv2, itemid1, iteminfo1, item
     }
 
     $.post(
-        'https://drp-inventory/insert-item',
+        'https://caue-inventory/insert-item',
         JSON.stringify({
             originInventory,
             targetInventory,
@@ -2207,7 +2229,7 @@ function closeInv(pIsItemUsed = false) {
     if (isDragging) EndDrag(draggingid);
 
     $.post(
-        'https://drp-inventory/ServerCloseInventory',
+        'https://caue-inventory/ServerCloseInventory',
         JSON.stringify({
             name: TargetInventoryName,
         }),
@@ -2215,7 +2237,7 @@ function closeInv(pIsItemUsed = false) {
     TargetInventoryName = 'none';
 
     $.post(
-        'https://drp-inventory/Close',
+        'https://caue-inventory/Close',
         JSON.stringify({
             isItemUsed: pIsItemUsed,
         }),
@@ -2290,7 +2312,7 @@ function CheckCraftFail(itemid, moveAmount) {
             MyInventory = JSON.stringify(sqlInventory);
             MyItemCount = sqlInventory.length;
 
-            $.post('https://drp-inventory/craftProgression', JSON.stringify({
+            $.post('https://caue-inventory/craftProgression', JSON.stringify({
                 "inventory": TargetInventoryName,
                 "item": itemid,
                 "amount": moveAmount,
@@ -2353,10 +2375,10 @@ function AttemptDropInFilledSlot(slot) {
     if (inventoryReturnItemDropName === 'wrapsecondary' && TargetInventoryName === 'Shop') {
         if ((moveAmount > 1 && !stackable)) moveAmount = 1;
         if (moveAmount > 50) moveAmount = 50;
-        if (itemid2 === 'jailfood' || itemid2 === "slushy") {
-            moveAmount = 1;
-            closeOnMove = true;
-        }
+        // if (itemid2 === 'jailfood' || itemid2 === "slushy") {
+        //     moveAmount = 1;
+        //     closeOnMove = true;
+        // }
     }
 
     if (itemid1 == itemid2 && stackable) {
@@ -2382,7 +2404,7 @@ function AttemptDropInFilledSlot(slot) {
         [craftCheck, weightCheck, arraySlot] = CheckCraftFail(itemidsent, moveAmount);
 
         if (!craftCheck && !weightCheck && currentInventory == 2 && inventoryDropName == 'wrapmain') {
-            InventoryLog('Attempted to craft item with itemid: ' + itemidsent);
+            InventoryLog('[1] Attempted to craft item with itemid: ' + itemidsent);
             crafting = true;
             result = 'Success';
             result2 = 'Success';
@@ -2432,9 +2454,11 @@ function AttemptDropInFilledSlot(slot) {
         result = 'You can not drop items into the craft table!';
     }
 
-    if ((TargetInventoryName.startsWith("container") || TargetInventoryName.startsWith("fisher-bucket")) && (
-        (inventoryReturnItemDropName == 'wrapmain' && inventoryDropName == 'wrapsecondary')) ||
-        (inventoryDropName == 'wrapmain' && inventoryReturnItemDropName == 'wrapsecondary')) {
+    if ((TargetInventoryName.startsWith("container") || TargetInventoryName.startsWith("fisher-bucket")) &&
+        (
+            ((inventoryReturnItemDropName == 'wrapmain' && inventoryDropName == 'wrapsecondary')) ||
+            (inventoryDropName == 'wrapmain' && inventoryReturnItemDropName == 'wrapsecondary')
+        )) {
         let sqlInventory = JSON.parse(MyInventory);
         let hasInventoryKey = false;
         for (let i = 0; i < parseInt(MyItemCount); i++) {
@@ -2473,7 +2497,11 @@ function AttemptDropInFilledSlot(slot) {
     }
 
     if (TargetInventoryName.startsWith('mailbox') && ((inventoryDropName == 'wrapsecondary') || (inventoryReturnItemDropName == 'wrapsecondary') && !stacking)) {
-        result = 'Cannot place into mailboxes.'
+        result = 'Não é possível colocar em caixas de correio.'
+    }
+
+    if (TargetInventoryName.startsWith('tcg_binder_') && ((inventoryDropName == 'wrapsecondary') && itemidsent != "tcgcard" || (inventoryReturnItemDropName == 'wrapsecondary') && !stacking)) {
+        result = 'Só é possível colocar cartas aqui.'
     }
 
     if (result == 'Success' && result2 == 'Success') {
@@ -2578,6 +2606,7 @@ function AttemptDropInFilledSlot(slot) {
                     purchase,
                     purchaseCost,
                     itemidsent,
+                    itemmetadata1,
                     moveAmount,
                     arraySlot,
                 );
@@ -2595,6 +2624,7 @@ function AttemptDropInFilledSlot(slot) {
                     purchase,
                     purchaseCost,
                     itemidsent,
+                    itemmetadata1,
                     moveAmount,
                     arraySlot,
                 );
@@ -2624,6 +2654,7 @@ function AttemptDropInFilledSlot(slot) {
                 )
                 && inventoryDropName === 'wrapmain' && inventoryDropName === inventoryReturnItemDropName
             ) {
+
                 InsertItem(
                     parseInt(slot.replace(/\D/g, '')),
                     parseInt(draggingid.replace(/\D/g, '')),
@@ -2641,9 +2672,9 @@ function AttemptDropInFilledSlot(slot) {
                     inventoryDropName,
                     inventoryReturnItemDropName,
                     itemid1,
-                    metainformation1,
+                    itemmetadata1,
                     itemid2,
-                    metainformation2,
+                    itemmetadata2,
                 );
 
                 item.dataset.currentslot = parseInt(slot.replace(/\D/g, ''));
@@ -2831,7 +2862,7 @@ function AttemptDropInEmptySlot(slot, isDropped, half) {
     purchase = false;
     crafting = false;
     let itemidsent = item.dataset.itemid;
-    let metainformation = item.dataset.metainformation;
+    let metainformation = unescape(item.dataset.info);
     let moveAmount = parseInt(document.getElementById('move-amount').value);
 
     let closeOnMove = false;
@@ -2840,10 +2871,10 @@ function AttemptDropInEmptySlot(slot, isDropped, half) {
     if (inventoryReturnItemDropName === 'wrapsecondary' && TargetInventoryName === 'Shop') {
         if (moveAmount > 1 && !JSON.parse(item.dataset.stackable)) moveAmount = 1;
         if (moveAmount > 50) moveAmount = 50;
-        if (itemidsent === 'jailfood' || itemidsent === "slushy") {
-            moveAmount = 1;
-            closeOnMove = true;
-        }
+        // if (itemidsent === 'jailfood' || itemidsent === "slushy") {
+        //     moveAmount = 1;
+        //     closeOnMove = true;
+        // }
     }
 
     if (!moveAmount) {
@@ -2866,7 +2897,6 @@ function AttemptDropInEmptySlot(slot, isDropped, half) {
         let alteredAmount = moveAmount;
         movementWeight = weight * alteredAmount;
     }
-
 
     let result = 'Success';
     if (inventoryDropName === 'wrapmain' && inventoryReturnItemDropName === 'craftContainer' && TargetInventoryName.indexOf('Craft') > -1) {
@@ -2956,6 +2986,10 @@ function AttemptDropInEmptySlot(slot, isDropped, half) {
 
     if (TargetInventoryName.startsWith('mailbox') && inventoryDropName == 'wrapsecondary') {
         result = 'Cannot place into mailboxes.'
+    }
+
+    if (TargetInventoryName.startsWith('tcg_binder_') && inventoryDropName == 'wrapsecondary' && itemidsent != "tcgcard") {
+        result = 'Só é possível colocar cartas aqui.'
     }
 
     if (result == 'Success') {
@@ -3125,6 +3159,7 @@ function AttemptDropInEmptySlot(slot, isDropped, half) {
         }
     }
 }
+
 function CleanEndDrag() {
     $('#draggedItem').css('opacity', 0.0);
     document.getElementById('draggedItem').innerHTML = '';
@@ -3169,7 +3204,7 @@ function useitem() {
     if (currentInventory == 1) {
         inventoryUsedName = PlayerInventoryName;
         let arr = [inventoryUsedName, itemid, slotusing, isWeapon, itemusinginfo];
-        $.post('https://drp-inventory/invuse', JSON.stringify(arr));
+        $.post('https://caue-inventory/invuse', JSON.stringify(arr));
         //InventoryLog("Using item: " + name + "(" + amount + ") from " + inventoryUsedName + " | slot " + slotusing)
     }
     EndDrag(slotusing);
