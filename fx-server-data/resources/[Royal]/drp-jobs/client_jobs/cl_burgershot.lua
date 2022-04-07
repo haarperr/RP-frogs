@@ -707,5 +707,9 @@ end
 RegisterNetEvent("bsdelivery:getJob")
 AddEventHandler("bsdelivery:getJob", function()
     local rank = exports["isPed"]:GroupRank("burger_shot")
-    TriggerEvent('DoLongHudText', rank, 2)
+    if rank >= 1 then 
+        -- TriggerServerEvent("bsdelivery:getJob")
+    else
+        TriggerEvent("DoLongHudText", "You dont work here", 2)
+    end
 end)
