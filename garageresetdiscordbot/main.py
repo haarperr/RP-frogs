@@ -499,24 +499,37 @@ async def mute(ctx, member: discord.Member=None, time=None, *, reason=None):
         await ctx.send(embed=unmute_embed)
 
 @bot.command()
-async def userinfo(ctx, *, user:discord.Member = None):
-    if user is None:
-        user = ctx.author      
-    date_format = "%a, %d %b %Y %I:%M %p"
-    embed = discord.Embed(color=0xdfa3ff, description=user.mention)
-    embed.set_author(name=str(user), icon_url=user.avatar_url)
-    embed.set_thumbnail(url=user.avatar_url)
-    embed.add_field(name="Joined", value=user.joined_at.strftime(date_format))
-    members = sorted(ctx.guild.members, key=lambda m: m.joined_at)
-    embed.add_field(name="Join position", value=str(members.index(user)+1))
-    embed.add_field(name="Registered", value=user.created_at.strftime(date_format))
-    if len(user.roles) > 1:
-        role_string = ' '.join([r.mention for r in user.roles][1:])
-        embed.add_field(name="Roles [{}]".format(len(user.roles)-1), value=role_string, inline=False)
-    perm_string = ', '.join([str(p[0]).replace("_", " ").title() for p in user.guild_permissions if p[1]])
-    embed.add_field(name="Guild permissions", value=perm_string, inline=False)
-    embed.set_footer(text='ID: ' + str(user.id))
-    return await ctx.send(embed=embed)
+async def userinfo(ctx,member: discord.Member = None):
+  if member == None:
+    member = ctx.author
+  try:
+    roles = [role for role in member.roles[1:]]
+    embed = discord.Embed(
+    color = discord.Color(0xff3400),
+    title = f"{ctx.author}")
+    embed.add_field(name="**•ID•**", value=f"{member.id}", inline=True)
+    embed.add_field(name="**•Status•**", value=str(member.status).replace("dnd", "Do Not Disturb"), inline=True)
+    embed.set_thumbnail(url=f"{member.avatar_url}")
+    embed.add_field(name=f"**•Roles• ({len(ctx.author.roles) - 1})**", value='• '.join([role.mention for role in roles]), inline=False)
+    embed.add_field(name="**•Account Created At•**", value=f"{member.created_at.date()}".replace("-", "/"), inline=True)
+    embed.add_field(name="**•Joined Server At•**", value=f"{member.joined_at.date()}".replace("-", "/"), inline = True)
+    embed.set_footer(icon_url = f"{ctx.author.avatar_url}", text = f"Requested by {ctx.author}")
+    embed.timestamp = datetime.datetime.utcnow()
+    await ctx.send(embed=embed)
+  except:
+    roles = [role for role in member.roles[1:]]
+    embed = discord.Embed(
+    color = discord.Color(0xff3400),
+    title = f"{member}")
+    embed.add_field(name="**•ID•**", value=f"{member.id}", inline=True)
+    embed.add_field(name="**•Status•**", value=str(member.status).replace("dnd", "Do Not Disturb") , inline=True)
+    embed.set_thumbnail(url=f"{member.avatar_url}")
+    embed.add_field(name=f"**•Roles• (0)**", value="No roles", inline=False)
+    embed.add_field(name="**•Account Created At•**", value=f"{member.created_at.date()}".replace("-", "/"), inline=True)
+    embed.add_field(name="**•Joined Server At•**", value=f"{member.joined_at.date()}".replace("-", "/"), inline = True)
+    embed.set_footer(icon_url = f"{ctx.author.avatar_url}", text = f"Requested by {ctx.author}")
+    embed.timestamp = datetime.datetime.utcnow()
+    await ctx.send(embed=embed)
 
 @bot.command()
 @commands.has_permissions(manage_messages = True)
