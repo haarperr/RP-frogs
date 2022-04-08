@@ -118,7 +118,7 @@ function sell_items()
     local plycoords = GetEntityCoords(PlayerPedId())
     recent_ped = ped
     if (finished == 100) then
-        if math.random(1, 100) >= 50 then 
+        if math.random(1, 100) >= 55 then 
             local sellableItems = {
                 [1] = {name = 'oxy', amount = math.random(1,2), price=math.random(100,140)},
                 [2] = {name = 'methlabproduct', amount = math.random(1,2), price=math.random(450, 575)},
