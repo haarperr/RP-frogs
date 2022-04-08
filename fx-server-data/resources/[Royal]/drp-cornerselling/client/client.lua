@@ -120,7 +120,7 @@ function sell_items()
     if (finished == 100) then
         if math.random(1, 100) >= 50 then 
             local sellableItems = {
-                [1] = {name = 'oxy', amount = math.random(1,2), price=math.random(100,1)},
+                [1] = {name = 'oxy', amount = math.random(1,2), price=math.random(100,140)},
                 [2] = {name = 'methlabproduct', amount = math.random(1,2), price=math.random(450, 575)},
                 [3] = {name = 'weedq', amount = math.random(1,2), price=420}, 
             }
@@ -151,7 +151,7 @@ function sell_items()
         else
             SetPedAsNoLongerNeeded(recent_ped)
             TaskWanderStandard(recent_ped, 10.0, 10)
-            TriggerEvent("DoLongHudText", "They are not interested!", 2)
+            TriggerEvent("DoLongHudText", "I am not interested!", 2)
         end
         local plyPos = GetEntityCoords(PlayerPedId(),  true)
         local s1, s2 = Citizen.InvokeNative(0x2EB41072B4C1E4C0, plyPos.x, plyPos.y, plyPos.z, Citizen.PointerValueInt(), Citizen.PointerValueInt())
