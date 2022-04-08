@@ -120,13 +120,16 @@ function sell_items()
                 sellableItems[i] = sellableItems[randomIndex]
                 
                 if exports["drp-inventory"]:hasEnoughOfItem(sellableItems[i].name,sellableItems[i].amount,false) then
-                    local finished2 = exports['drp-taskbar']:taskBar(2500, "Selling Products")
                     giveAnim(ped)
                     giveAnim(PlayerPedId())
-                    Citizen.Wait(1500)
-                    TriggerEvent("inventory:removeItem",sellableItems[i].name,sellableItems[i].amount)
-                    TriggerServerEvent('mission:completed', sellableItems[i].price * sellableItems[i].amount)
-                    pog = true
+                    local finished2 = exports['drp-taskbar']:taskBar(2500, "Selling Products")
+                    if (finished == 100) then
+                        TriggerEvent("inventory:removeItem",sellableItems[i].name,sellableItems[i].amount)
+                        TriggerServerEvent('mission:completed', sellableItems[i].price * sellableItems[i].amount)
+                        pog = true
+                        break
+                    end
+                    pog = false
                     break
                 else
                     TriggerEvent("DoLongHudText", "You dont got what I want!", 2)
@@ -134,7 +137,7 @@ function sell_items()
                 SetPedAsNoLongerNeeded(recent_ped)
                 TaskWanderStandard(recent_ped, 10.0, 10)
             end
-            if math.random(1, 100) >= 33 then
+            if math.random(1, 100) >= 35 then
                 local plyPos = GetEntityCoords(PlayerPedId(),  true)
                 local s1, s2 = Citizen.InvokeNative(0x2EB41072B4C1E4C0, plyPos.x, plyPos.y, plyPos.z, Citizen.PointerValueInt(), Citizen.PointerValueInt())
                 local street1 = GetStreetNameFromHashKey(s1)
@@ -149,7 +152,7 @@ function sell_items()
             SetPedAsNoLongerNeeded(recent_ped)
             TaskWanderStandard(recent_ped, 10.0, 10)
             TriggerEvent("DoLongHudText", "They are not interested!", 2)
-            if math.random(1, 100) >= 33 then
+            if math.random(1, 100) >= 35 then
                 local plyPos = GetEntityCoords(PlayerPedId(),  true)
                 local s1, s2 = Citizen.InvokeNative(0x2EB41072B4C1E4C0, plyPos.x, plyPos.y, plyPos.z, Citizen.PointerValueInt(), Citizen.PointerValueInt())
                 local street1 = GetStreetNameFromHashKey(s1)
