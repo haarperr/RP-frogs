@@ -120,6 +120,9 @@ function taskBarSkillCheck(difficulty, skillGapSent, cb, reverse, usePrev)
         for i=140,143 do
             DisableControlAction(0, i, true)
         end
+        for i=157,165 do
+            DisableControlAction(0, i, true)
+        end
 
         skillTick = moveCursor and skillTick + (delta * speed * (reverse and -1 or 1)) or skillTick
         cursorRot = skillTick / 100 * 360
