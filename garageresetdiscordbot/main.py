@@ -491,21 +491,19 @@ async def mute(ctx, member: discord.Member=None, time=None, *, reason=None):
             await channel.set_permissions(Muted, speak=False, send_messages=False, read_message_history=True, read_messages=False)
     else:
         await member.add_roles(Muted, reason=reason)
-        muted_embed = discord.Embed(title="Muted a user", description=f"{member.mention} Was muted by {ctx.author.mention} for {reason} to {time}")
+        muted_embed = discord.Embed(title="Muted User", description=f"{member.mention} wasas muted by {ctx.author.mention} for {reason} - The mute will expire in {time}")
         await ctx.send(embed=muted_embed)
         await asyncio.sleep(int(time_interval))
         await member.remove_roles(Muted)
-        unmute_embed = discord.Embed(title='Mute over!', description=f'{ctx.author.mention} muted to {member.mention} for {reason} is over after {time}')
+        unmute_embed = discord.Embed(title='Mute Expired', description=f'{ctx.author.mention} muted to {member.mention} for {reason} is over after {time}')
         await ctx.send(embed=unmute_embed)
 
 @bot.command()
-@commands.has_permissions(manage_messages = True)
-async def userinfo(ctx, *, user: discord.Member = None):
-    await ctx.message.delete()
+async def userinfo(ctx, *, user:discord.Member = None):
     if user is None:
         user = ctx.author      
     date_format = "%a, %d %b %Y %I:%M %p"
-    embed = discord.Embed(description=user.mention, color=color)
+    embed = discord.Embed(color=0xdfa3ff, description=user.mention)
     embed.set_author(name=str(user), icon_url=user.avatar_url)
     embed.set_thumbnail(url=user.avatar_url)
     embed.add_field(name="Joined", value=user.joined_at.strftime(date_format))
@@ -517,10 +515,8 @@ async def userinfo(ctx, *, user: discord.Member = None):
         embed.add_field(name="Roles [{}]".format(len(user.roles)-1), value=role_string, inline=False)
     perm_string = ', '.join([str(p[0]).replace("_", " ").title() for p in user.guild_permissions if p[1]])
     embed.add_field(name="Guild permissions", value=perm_string, inline=False)
-    embed.set_footer(text=embed_footer)
-    message = await ctx.channel.send(embed=embed)
-    await asyncio.sleep(60)
-    await message.delete()
+    embed.set_footer(text='ID: ' + str(user.id))
+    return await ctx.send(embed=embed)
 
 @bot.command()
 @commands.has_permissions(manage_messages = True)
