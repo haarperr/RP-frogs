@@ -109,10 +109,12 @@ Citizen.CreateThread(function()
                         if (canwork == 100) then
                             local la1 = exports["drp-ui"]:taskBarSkill(math.random(750, 1500),math.random(25,75))
                             if (la1 == 100) then
+                                TriggerEvent("animation:PlayAnimation","welding")
                                 local canwork2 = exports['drp-taskbar']:taskBar(5000, 'Fixing Neutral Bus Bar')
                                 if (canwork2 == 100) then
                                     local la2 = exports["drp-ui"]:taskBarSkill(math.random(750, 1500),math.random(25,75))
                                     if (la2 == 100) then
+                                        TriggerEvent("animation:PlayAnimation","welding")
                                         local canwork3 = exports['drp-taskbar']:taskBar(5000, 'Finishing Up')
                                         if (canwork3 == 100) then
                                             local la3 = exports["drp-ui"]:taskBarSkill(math.random(750, 1500),math.random(25,75))
