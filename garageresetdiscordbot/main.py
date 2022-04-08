@@ -298,9 +298,7 @@ async def on_message(message):
     if any(word in message.content for word in banned_words):
         await message.delete()
         await message.channel.send('User tried to use banned phrase: {}'.format(message.author.mention))
-    else:
-        await bot.process_commands(message)
-
+   
 
 
 load_dotenv()
@@ -537,3 +535,4 @@ try:
     bot.run(configtoken)
 except:
     print('The bot token is either none or invalid, please enter a token in the config.json')
+
