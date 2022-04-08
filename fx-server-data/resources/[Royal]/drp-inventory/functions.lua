@@ -3663,7 +3663,7 @@ AddEventHandler('inv:lockPick', function(isForced,inventoryName,slot)
                 skill = {3500, 10}
             end
 
-            local finished = exports["caue-taskbarskill"]:taskBarSkill(skill[1],  skill[2])
+            local finished = exports["drp-taskbarskill"]:taskBarSkill(skill[1],  skill[2])
             if finished ~= 100 then
                 lockpicking = false
                 return
