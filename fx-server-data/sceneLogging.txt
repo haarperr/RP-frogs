@@ -600,3 +600,5 @@ Player: [33] Placed Scene: [HARTS BLOODY HAIR] At Coords = vector3(-53.54254, -1
 Player: [42] Placed Scene: [<font size="75">Chris Hadfields mom as a hostage</font>] At Coords = vector3(-1213.886, -328.2578, 36.79576)
 Player: [42] Placed Scene: [sleeping] At Coords = vector3(488.4024, -1007.448, 25.27322)
 Player: [60] Placed Scene: [TEARS OF A FAILED CRIMINAL] At Coords = vector3(487.6736, -1007.422, 25.57078)
+Player: [2] Placed Scene: [ripbozo] At Coords = vector3(478.2438, -995.5074, 30.57632)
+Player: [13] Placed Scene: [bullet hole] At Coords = vector3(478.478, -994.773, 29.69198)
