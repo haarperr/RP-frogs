@@ -264,9 +264,9 @@ async def unban(context, id : int):
 @commands.has_permissions(ban_members = True)
 async def help(ctx):
     
-    embed=discord.Embed(title="RPFrogs Bot Commands", description="", color=0xfff700)
+    embed=discord.Embed(title="ChadBot - Helpful Commands", description="", color=0xfff700)
     embed.set_author(name="", url="https://www.twitch.tv/xqcow", icon_url="")
-    embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/956069154555834409/960953116851834941/feelsgoodman.png")
+    embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/961436816425246750/961841157057437696/download-removebg-preview.png")
     embed.add_field(name="!tempmute", value="Use followed by a time, then a reson. Temp mutes a user.", inline=False)
     embed.add_field(name="!ban", value="Bans specified user", inline=False)
     embed.add_field(name="!kick", value="Kicks specified user", inline=False)
@@ -276,7 +276,7 @@ async def help(ctx):
     embed.add_field(name="!resetpd", value="Resets all police vehicles", inline=False)
     embed.add_field(name="!resetall", value="Resets all garages", inline=False)
     embed.add_field(name="!chadsay", value="Say something as ChadBot", inline=False)
-    embed.set_footer(text="Made with love by Vopori")
+    embed.set_footer(text="<3 Vopori")
     await ctx.send(embed=embed)
 
 
