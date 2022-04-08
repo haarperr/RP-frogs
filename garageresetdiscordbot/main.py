@@ -461,7 +461,7 @@ async def mute(ctx, user:discord.Member=None, time):
         time = seconds[:-1]
     elif 'm' in time:
 
-    if user == None:
+     if user == None:
         await ctx.send('You need to provide a user to mute.')
     muted = discord.utils.get(user.server.roles, name="Muted")
     try:
