@@ -595,3 +595,5 @@ Player: [33] Placed Scene: [Hostage] At Coords = vector3(376.6036, 324.286, 102.
 Player: [12] Placed Scene: [HOSTAGE] At Coords = vector3(150.8664, -1037.642, 29.32208)
 Player: [12] Placed Scene: [HOSTAGE] At Coords = vector3(-2965.736, 482.8644, 14.75924)
 Player: [12] Placed Scene: [HOSTAGE] At Coords = vector3(1175.062, 2703.714, 37.5343)
+Player: [17] Placed Scene: [HARTS BEARD HAIR] At Coords = vector3(-53.30144, -1009.62, 28.5316)
+Player: [33] Placed Scene: [HARTS BLOODY HAIR] At Coords = vector3(-53.54254, -1010.72, 28.59684)
