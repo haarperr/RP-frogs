@@ -452,32 +452,51 @@ async def nuke(ctx, amount:int):
     await asyncio.sleep(60)
     await message.delete()
 
-@bot.command()
-@commands.has_any_role('956067314401443891', '956067315072507935')
-async def mute(ctx, member: discord.Member):
-    role = discord.utils.get(ctx.guild.roles, name="Muted")
-    guild = ctx.guild
-    if role not in guild.roles:
-        perms = discord.Permissions(send_messages=False, speak=False)
-        await guild.create_role(name="Muted", permissions=perms)
-        await member.add_roles(role)
-        embed=discord.Embed(title="User Muted!", description="**{0}** was muted by **{1}**!".format(member, ctx.message.author), color=0xff00f6)
-        await ctx.channel.send(embed=embed)
+@bot.command(aliases=['mute'])
+@commands.has_permissions(manage_messages=True)
+async def mute(ctx, member: discord.Member=None, time=None, *, reason=None):
+    if not member:
+        await ctx.send("You must mention a member to mute!")
+        return
+    elif not time:
+        await ctx.send("You must mention a time!")
+        return
     else:
-        await member.add_roles(role)
-        embed=discord.Embed(title="User Muted!", description="**{0}** was muted by **{1}**!".format(member, ctx.message.author), color=0xff00f6)
-        await ctx.channel.send(embed=embed)
-
-@mute.error
-async def mute_error(ctx, error):
-    if isinstance(error, commands.MissingRole):
-        embed=discord.Embed(title="Permission Denied.", description="You don't have permission to use this command.", color=0xff00f6)
-        await ctx.channel.send(embed=embed)
-@mute.error
-async def mute_error(ctx, error):
-    if isinstance(error, commands.BadArgument):
-        embed=discord.Embed(title="Permission Denied.", description="That is not a valid member.", color=0xff00f6)
-        await ctx.channel.send(embed=embed)
+        if not reason:
+            reason="No reason given"
+        #Now timed mute manipulation
+    try:
+        time_interval = time[:-1] #Gets the numbers from the time argument, start to -1
+        duration = time[-1] #Gets the timed manipulation, s, m, h, d
+        if duration == "s":
+            time_interval = time_interval * 1
+        elif duration == "m":
+            time_interval = time_interval * 60
+        elif duration == "h":
+            time_interval = time_interval * 60 * 60
+        elif duration == "d":
+            time_interval = time_interval * 86400
+        else:
+            await ctx.send("Invalid duration input")
+            return
+    except Exception as e:
+        print(e)
+        await ctx.send("Invalid time input")
+        return
+    guild = ctx.guild
+    Muted = discord.utils.get(guild.roles, name="Muted")
+    if not Muted:
+        Muted = await guild.create_role(name="Muted")
+        for channel in guild.channels:
+            await channel.set_permissions(Muted, speak=False, send_messages=False, read_message_history=True, read_messages=False)
+    else:
+        await member.add_roles(Muted, reason=reason)
+        muted_embed = discord.Embed(title="Muted a user", description=f"{member.mention} Was muted by {ctx.author.mention} for {reason} to {time}")
+        await ctx.send(embed=muted_embed)
+        await asyncio.sleep(int(time_interval))
+        await member.remove_roles(Muted)
+        unmute_embed = discord.Embed(title='Mute over!', description=f'{ctx.author.mention} muted to {member.mention} for {reason} is over after {time}')
+        await ctx.send(embed=unmute_embed)
 
 @bot.command()
 @commands.has_permissions(manage_messages = True)
