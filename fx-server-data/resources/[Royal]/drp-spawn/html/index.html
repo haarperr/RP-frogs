@@ -138,12 +138,13 @@
             <div class="new-character-container" v-if="showNewChar">
                 <div class="new-character-box">
                     <form id="new-character-form" @submit.prevent="onSubmit">
+                        <h6>Choose Gender:</h6>
                         <div class="new-character-gender-selection">
-                            <input id="male" type="radio" name="gender" value="M" checked />
+                            <input id="male" type="radio" name="gender" value="M" required />
                             <label for="male">
                                 <img class="new-character-image" src="images/male.png" draggable="false" />
                             </label>
-                            <input id="female" type="radio" name="gender" value="F" />
+                            <input id="female" type="radio" name="gender" value="F" required />
                             <label for="female">
                                 <img class="new-character-image" src="images/female.png" draggable="false" />
                             </label>
