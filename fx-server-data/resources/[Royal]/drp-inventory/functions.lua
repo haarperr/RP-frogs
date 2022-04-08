@@ -3651,12 +3651,24 @@ AddEventHandler('inv:lockPick', function(isForced,inventoryName,slot)
 
 
  
-            local finished = exports["drp-bar"]:taskBar(25000,3)
+           
+        for i = 1, 4 do
+            local skill = {25000, 15}
 
+            if i == 2 then
+                skill = {4500, 13}
+            elseif i == 3 then
+                skill = {4000, 13}
+            elseif i == 4 then
+                skill = {3500, 10}
+            end
+
+            local finished = exports["caue-taskbarskill"]:taskBarSkill(skill[1],  skill[2])
             if finished ~= 100 then
-                 lockpicking = false
+                lockpicking = false
                 return
             end
+        end
 
 
             if finished == 100 then
