@@ -452,25 +452,32 @@ async def nuke(ctx, amount:int):
     await asyncio.sleep(60)
     await message.delete()
 
-@bot.command(name='mute')
-@commands.has_permissions(manage_messages = True)
-async def mute(ctx, user:discord.Member=None, time):
-    if 's' in time:
-        numbers = time
-        seconds = list(time)
-        time = seconds[:-1]
-    elif 'm' in time:
+@bot.command()
+@commands.has_any_role('956067314401443891', '956067315072507935')
+async def mute(ctx, member: discord.Member):
+    role = discord.utils.get(ctx.guild.roles, name="Muted")
+    guild = ctx.guild
+    if role not in guild.roles:
+        perms = discord.Permissions(send_messages=False, speak=False)
+        await guild.create_role(name="Muted", permissions=perms)
+        await member.add_roles(role)
+        embed=discord.Embed(title="User Muted!", description="**{0}** was muted by **{1}**!".format(member, ctx.message.author), color=0xff00f6)
+        await ctx.channel.send(embed=embed)
+    else:
+        await member.add_roles(role)
+        embed=discord.Embed(title="User Muted!", description="**{0}** was muted by **{1}**!".format(member, ctx.message.author), color=0xff00f6)
+        await ctx.channel.send(embed=embed)
 
-     if user == None:
-        await ctx.send('You need to provide a user to mute.')
-    muted = discord.utils.get(user.server.roles, name="Muted")
-    try:
-        await bot.add_roles(user, muted)
-    except:
-        print('Muted role not found, therefore I cant mute that user.')
-        return
-    embed = discord.Embed(title='User Muted', color=color)
-
+@mute.error
+async def mute_error(ctx, error):
+    if isinstance(error, commands.MissingRole):
+        embed=discord.Embed(title="Permission Denied.", description="You don't have permission to use this command.", color=0xff00f6)
+        await ctx.channel.send(embed=embed)
+@mute.error
+async def mute_error(ctx, error):
+    if isinstance(error, commands.BadArgument):
+        embed=discord.Embed(title="Permission Denied.", description="That is not a valid member.", color=0xff00f6)
+        await ctx.channel.send(embed=embed)
 
 @bot.command()
 @commands.has_permissions(manage_messages = True)
