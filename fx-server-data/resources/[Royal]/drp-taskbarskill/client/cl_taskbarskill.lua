@@ -108,17 +108,19 @@ function taskBarSkillCheck(difficulty, skillGapSent, cb, reverse, usePrev)
     local timer = GetGameTimer()
     tbsListening = true
     local minigameResult = 0
-    exports["drp-inventory"]:disableActionBar(true)
+    guiEnabled = true
+    SetNuiFocus(true, true)
     while tbsListening do
         local delta = GetGameTimer() - timer
         timer = GetGameTimer()
 
-        for i=8,32 do
-            DisableControlAction(0, i, true)
-        end
-        for i=140,143 do
-            DisableControlAction(0, i, true)
-        end
+        DisableControlAction(0, 157, true)
+        DisableControlAction(0, 158, true)
+        DisableControlAction(0, 159, true)
+        DisableControlAction(0, 160, true)
+        DisableControlAction(0, 161, true)
+        DisableControlAction(0, 162, true)
+
 
         skillTick = moveCursor and skillTick + (delta * speed * (reverse and -1 or 1)) or skillTick
         cursorRot = skillTick / 100 * 360
@@ -182,7 +184,8 @@ function taskBarSkillCheck(difficulty, skillGapSent, cb, reverse, usePrev)
 
     SetTimeout(500, function()
         if not tbsListening then
-            exports["drp-inventory"]:disableActionBar(false)
+            guiEnabled = false
+            SetNuiFocus(false, false)
             SetStreamedTextureDictAsNoLongerNeeded("caue_sprites")
         end
     end)
