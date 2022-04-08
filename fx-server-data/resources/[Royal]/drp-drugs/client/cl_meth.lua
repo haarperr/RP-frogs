@@ -158,10 +158,10 @@ AddEventHandler("meth:finish", function()
 			scaling = true
 			if scaling == true then
 				TriggerEvent("DoLongHudText", "You Successfully Packed!")
-				TriggerEvent("player:receiveItem","methlabproduct",math.random(3,6))
+				TriggerEvent("player:receiveItem","methlabproduct",math.random(8,15))
 				local rng = math.random(1,8)
 				if rng == 8 then
-					TriggerEvent("player:receiveItem","methlabproduct",math.random(1,5))
+					TriggerEvent("player:receiveItem","methlabproduct",math.random(1,8))
 					TriggerEvent("DoLongHudText", "You managed to pack some extra product!")
 				end
 				ongoing = false

@@ -105,17 +105,49 @@ Citizen.CreateThread(function()
                         exports['drp-textui']:hideInteraction()
                         FreezeEntityPosition(GetPlayerPed(-1), true)
                         TriggerEvent("animation:PlayAnimation","welding")
-                        local canwork = exports['drp-taskbar']:taskBar(15000, 'Fixing Electricals')
+                        local canwork = exports['drp-taskbar']:taskBar(5000, 'Fixing Circuits')
                         if (canwork == 100) then
-                            FreezeEntityPosition(GetPlayerPed(-1), false)
-                            exports['drp-textui']:hideInteraction()
-                            isOnTheWayToWaterNPowerJob = false
-                            isOnWaterNPowerJob = true
-                            RemoveBlip(JobBlip)
-                            TriggerEvent('DoLongHudText', 'Good Work ! Keep it up or return to depo and clock out !', 2)
-                            TriggerServerEvent('drp-civjobs:water-power-payme')
-                            Citizen.Wait(math.random(30000, 80000))
-                            TriggerEvent('drp-civjobs:waternpower:givejob')
+                            local la1 = exports["drp-ui"]:taskBarSkill(math.random(750, 1500),math.random(25,75))
+                            if (la1 == 100) then
+                                TriggerEvent("animation:PlayAnimation","welding")
+                                local canwork2 = exports['drp-taskbar']:taskBar(5000, 'Fixing Neutral Bus Bar')
+                                if (canwork2 == 100) then
+                                    local la2 = exports["drp-ui"]:taskBarSkill(math.random(750, 1500),math.random(25,75))
+                                    if (la2 == 100) then
+                                        TriggerEvent("animation:PlayAnimation","welding")
+                                        local canwork3 = exports['drp-taskbar']:taskBar(5000, 'Finishing Up')
+                                        if (canwork3 == 100) then
+                                            local la3 = exports["drp-ui"]:taskBarSkill(math.random(750, 1500),math.random(25,75))
+                                            if (la3 == 100) then
+                                                FreezeEntityPosition(GetPlayerPed(-1), false)
+                                                exports['drp-textui']:hideInteraction()
+                                                isOnTheWayToWaterNPowerJob = false
+                                                isOnWaterNPowerJob = true
+                                                RemoveBlip(JobBlip)
+                                                TriggerEvent('DoLongHudText', 'Good Work ! Keep it up or return to depo and clock out !', 2)
+                                                TriggerServerEvent('drp-civjobs:water-power-payme')
+                                                Citizen.Wait(math.random(30000, 80000))
+                                                TriggerEvent('drp-civjobs:waternpower:givejob')
+                                            else
+                                                FreezeEntityPosition(GetPlayerPed(-1), false)
+                                                TriggerEvent('DoLongHudText', 'Something went wrong try again...', 2)
+                                            end
+                                        else
+                                            FreezeEntityPosition(GetPlayerPed(-1), false)
+                                            TriggerEvent('DoLongHudText', 'Something went wrong try again...', 2)
+                                        end
+                                    else
+                                        FreezeEntityPosition(GetPlayerPed(-1), false)
+                                        TriggerEvent('DoLongHudText', 'Something went wrong try again...', 2)
+                                    end
+                                else
+                                    FreezeEntityPosition(GetPlayerPed(-1), false)
+                                    TriggerEvent('DoLongHudText', 'Something went wrong try again...', 2)
+                                end
+                            else
+                                FreezeEntityPosition(GetPlayerPed(-1), false)
+                                TriggerEvent('DoLongHudText', 'Something went wrong try again...', 2)
+                            end
                         else
                             FreezeEntityPosition(GetPlayerPed(-1), false)
                             TriggerEvent('DoLongHudText', 'Something went wrong try again...', 2)

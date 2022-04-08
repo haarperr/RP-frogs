@@ -192,14 +192,14 @@ AddEventHandler("drp-civjobs:process-alive_chicken", function(position)
 					if exports["drp-inventory"]:getAmountOfItem("petchicken") >= 2 then
 						if math.random(2) == 2 then
 							TriggerEvent('inventory:removeItem', "petchicken", 2)
-							TriggerEvent('player:receiveItem', "freshmeat", math.random(4,8))	
+							TriggerEvent('player:receiveItem', "freshmeat", math.random(2,6))	
 						else
 							TriggerEvent('inventory:removeItem', "petchicken", 1)
-							TriggerEvent('player:receiveItem', "freshmeat", math.random(1,3))	
+							TriggerEvent('player:receiveItem', "freshmeat", math.random(1,2))	
 						end
 					else
 						TriggerEvent('inventory:removeItem', "petchicken", 1)
-						TriggerEvent('player:receiveItem', "freshmeat", math.random(1,3))	
+						TriggerEvent('player:receiveItem', "freshmeat", math.random(1,2))	
 					end
 				end
 			else
@@ -399,7 +399,7 @@ AddEventHandler("drp-chickens:sell", function()
 			
 			if exports["drp-inventory"]:getQuantity("lqprotein") >= 1 then
 				TriggerEvent('inventory:removeItem', 'lqprotein', toSell)
-				TriggerServerEvent('chickenpayment:pay', math.random(115, 165) * toSell)
+				TriggerServerEvent('chickenpayment:pay', math.random(75, 115) * toSell)
 				ClearPedTasksImmediately(PlayerPedId())
 			else 
 				TriggerEvent('DoLongHudText', 'Your chickens are bad!', 2)
