@@ -41,16 +41,17 @@ function Login.CreatePlayerCharacterPeds(characterModelData,isReset)
             return
         end
 
+
         local pedCoords = GetEntityCoords(PlayerPedId())
-       
+        
         if isReset then
             Login.ClearSpawnedPeds()
         end
         Login.CreatedPeds = {}
         local PlusOneEmpty = false
-		
+
         local noCharacters = true
-		
+
         for _=1,#Login.spawnLoc do
             local isCustom = false
             local character = nil
@@ -58,7 +59,9 @@ function Login.CreatePlayerCharacterPeds(characterModelData,isReset)
 
 
             local cModelHash = GetHashKey("np_m_character_select")
-            if data[_] ~= nil then 
+            local isBlocked = false
+
+            if data[_] ~= nil then
                 character = data[_]
 
                 local gender = `mp_male`
@@ -68,9 +71,9 @@ function Login.CreatePlayerCharacterPeds(characterModelData,isReset)
                     gender = `mp_female`
                 else
                     cModelHash = GetHashKey("mp_m_freemode_01")
-                    
+
                 end
-                
+
                 cid = character.id
 
                 if characterModelData[cid] ~= nil then cModelHash = tonumber(characterModelData[cid].model) end
@@ -92,6 +95,11 @@ function Login.CreatePlayerCharacterPeds(characterModelData,isReset)
                 PlusOneEmpty = _
             end
 
+            local function CreatePedPCall(pHash, pX, pY, pZ)
+                local ped = CreatePed(3, pHash, pX, pY, pZ, 0.72, false, false)
+                return ped
+            end
+
             Login.RequestModel(cModelHash, function(loaded, model, modelHash)
                 if loaded then
 
@@ -107,9 +115,9 @@ function Login.CreatePlayerCharacterPeds(characterModelData,isReset)
                             DecorSetBool(newPed, 'ScriptedPed', true)
                         end
                     end
-                    
-                    
-                    
+
+
+
                     if newPed == nil then
                         goto skip_to_next
                     end
@@ -160,7 +168,8 @@ function Login.CreatePlayerCharacterPeds(characterModelData,isReset)
         SetNuiFocus(true, true)
         SendNUIMessage({
             open = true,
-           chars = data
+            extraCharData = extraCharData,
+            chars = data
         })
 		
 		--If no characters, open Creation menu
@@ -176,6 +185,50 @@ RegisterNetEvent("login:CreatePlayerCharacterPeds")
 AddEventHandler("login:CreatePlayerCharacterPeds", Login.CreatePlayerCharacterPeds)
 
 
+function Login.changeChar(isLeft)
+    
+    
+    
+    local position = 0
+
+    if Login.CurrentPedInfo ~= nil then position = Login.CurrentPedInfo.position end
+    
+    
+    pedData = findCharPed(pedCaught,false)
+
+    local maxPedAmount = 0
+    for k,v in pairs(Login.CreatedPeds) do
+        maxPedAmount = maxPedAmount + 1
+    end
+    
+    if position == nil then position = 1 end
+
+    if isLeft then
+        position = position-1 
+
+        if position <= 0 then position = maxPedAmount end
+    else
+        position = position+1 
+
+        if position > maxPedAmount then position = 1 end
+    end
+
+    if Login.CreatedPeds[position] ~= nil then
+        Login.CurrentPedInfo = {
+            charId = Login.CreatedPeds[position].charId,
+            position = position
+        }
+    end
+    
+    if Login.CurrentPedInfo ~= nil then
+        SendNUIMessage({
+            update = true,
+            currentSelect = Login.CurrentPedInfo,
+            fadeHover = false,
+            forceHover = true
+        })
+    end
+end
 --[[
     Functions below: base attachment
     Description: dealing with drp-base functionality in order to set/get the correct information for chars
@@ -185,7 +238,7 @@ AddEventHandler("login:CreatePlayerCharacterPeds", Login.CreatePlayerCharacterPe
 
 function Login.getCharacters(isReset)
     local events = exports["drp-base"]:getModule("Events")
-    
+
     if not isReset then
         TransitionFromBlurred(500)
         events:Trigger("drp-base:loginPlayer", nil, function(data)
@@ -282,7 +335,7 @@ function Login.setClothingForChar()
         SetSkin(GetHashKey("mp_m_freemode_01"), true)
     end
 
-    TriggerEvent("raid_clothes:openClothing")
+    TriggerEvent("raid_clothes:openClothing", false, false, true)
     TriggerEvent("raid_clothes:inSpawn", true)
 
     SetEntityHeading(PlayerPedId(),64.71)

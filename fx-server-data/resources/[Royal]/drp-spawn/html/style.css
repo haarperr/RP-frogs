@@ -1,4 +1,4 @@
-
+@@ -1,268 +0,0 @@
 html {
   box-sizing: border-box;
 }
@@ -351,17 +351,11 @@ body {
 }
 
 .new-character-gender-selection input:checked + label {
-  -webkit-filter: none;
-  -moz-filter: none;
-  filter: none;
+  filter: drop-shadow(0 0 5px #00f8ba57);
 }
 
 .new-character-gender-selection label {
-  -webkit-transition: all 100ms ease-in;
-  -moz-transition: all 100ms ease-in;
   transition: all 100ms ease-in;
-  -webkit-filter: brightness(1) grayscale(1) opacity(0.3);
-  -moz-filter: brightness(1) grayscale(1) opacity(0.3);
   filter: brightness(1) grayscale(1) opacity(0.3);
 }
 
@@ -404,6 +398,12 @@ body {
 .form-group > input {
   flex: 2;
   color: rgba(142, 142, 142, 0.9);
+}
+
+.form-group > select {
+  flex: 2;
+  display: block;
+  background-color: transparent;
 }
 
 .new-character-information input:focus {
@@ -519,17 +519,17 @@ body {
   -ms-animation: animatedBackground 2s linear;
   -o-animation: animatedBackground 2s linear;
 }
-/* White bars on loading */
+
 .Transistion-left {
-  background-color: rgba(107, 107, 107, 0.685);
-  border: 1px solid rgba(107, 107, 107, 0.685);
+  background-color: rgba(135, 135, 135, 0.55);
+  border: 1px solid rgba(107, 107, 107, 0.55);
   border-right: none;
 }
-/* White bars on loading */
+
 .Transistion-right {
   right: 0%;
-  background-color: rgba(107, 107, 107, 0.685);
-  border: 1px solid rgba(107, 107, 107, 0.685);
+  background-color: rgba(135, 135, 135, 0.55);
+  border: 1px solid rgba(107, 107, 107, 0.55);
   border-left: none;
 }
 
@@ -859,6 +859,10 @@ body {
   font-size: 0.7em;
 }
 
+.crash {
+  color:rgb(255, 124, 163);
+}
+
 .spawn-help h3 {
   margin: 0;
   font-size: 3vh;
@@ -892,14 +896,35 @@ body {
   padding: 0 2vh;
 }
 
-input#dob {
+input#dob, input#first_name, input#last_name {
   font-size: 1.6vh;
 }
 
-input#last_name {
-  font-size: 1.6vh;
+.new-character-type {
+  flex: 2;
+  font-size: 1.2vh;
+  margin-bottom: 10px;
 }
 
-input#first_name {
-  font-size: 1.6vh;
+.new-character-type > .form-group > input:checked + label {
+  color: #00f8ba;
+}
+
+.extra-character-select {
+  left: 0;
+  top: 0;
+  margin: 0;
+}
+
+.extra-characters-button {
+  border-radius: 0;
+  border-bottom-right-radius: 1vh;
+}
+
+.extra-characters-select {
+  display: block;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  font-size: 1rem;
 }

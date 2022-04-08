@@ -28,6 +28,8 @@ let v = new Vue({
 	  longName: false,
 	  fadeHover: false,
 	  refreshClicked: false,
+	  showLiferCharacterType: false,
+	  extraCharData: {},
 	},
 	methods: {
 		onSubmit(event) {
@@ -165,7 +167,7 @@ let v = new Vue({
 			    this.trackingX = this.normilize(relativeX,document.body.scrollWidth)
 			    this.trackingY = this.normilize(relativeY,document.body.scrollHeight)
 
-			    if(!this.inState){
+			    if(!this.inState && (this.fadeHover || !this.currentCharData)){
 			    	this.inState = true
 			    	this.hoveringChar();
 			    	this.timer = setTimeout(function() {
@@ -209,12 +211,12 @@ let v = new Vue({
 		},
 
 		confirmDelete(){
-			this.showDeleteConfirmation = null
-			this.inState = false
+			this.showDeleteConfirmation = null;
 			sendNuiMessage({
 				action: "deleteCharacter",
 				actionData: this.currentCharData.id
 			})
+			this.currentCharData = null;
 		},
 
 		exitCharSelect(){
@@ -226,6 +228,26 @@ let v = new Vue({
 			if (this.running){
 				if (e.keyCode == 72 && !this.showNewChar){
 					this.showHelp = !this.showHelp
+				}
+
+				if (e.keyCode == 39){ // Right Arrow
+					sendNuiMessage({
+						action: "changeChar",
+						isLeft: false
+					})
+				}
+
+				if (e.keyCode == 37){ // Left Arrow
+					sendNuiMessage({
+						action: "changeChar",
+						isLeft: true
+					})
+				}
+
+				if (e.keyCode == 13){ // Enter
+					sendNuiMessage({
+						action: "takeCurrentChar",
+					})
 				}
 			}
 		},
@@ -326,25 +348,6 @@ let v = new Vue({
 			}
 			this.currentSpawnHovering = -1
 
-		},
-
-		// Add arrow keys to select currentSpawnSelected
-		keypress(e){
-			if (e.keyCode == 37){
-				this.currentSpawnSelected--
-				if (this.currentSpawnSelected < 0){
-					this.currentSpawnSelected = this.spawns.length-1
-				}
-			}
-			if (e.keyCode == 39){
-				this.currentSpawnSelected++
-				if (this.currentSpawnSelected > this.spawns.length-1){
-					this.currentSpawnSelected = 0
-				}
-			}
-			if (e.keyCode == 13){
-				this.selectSpawn(this.spawns[this.currentSpawnSelected])
-			}
 		},
 
 		spawnClickInput(spawnInfo,spawnID) {
@@ -478,7 +481,12 @@ let v = new Vue({
 					this.spawns[i].posY = xyReturn[1]
 				}
 			}
-	    }
+		},
+
+		onExtraCharChange(event) {
+			v.$data.currentCharData = v.$data.extraCharData.find((char) => char.id === Number(event.target.value));
+			v.$data.fadeHover = false;
+		}
 	},
 
 	created: function () {
@@ -570,6 +578,11 @@ function receivedNuiMessage(event) {
 		v.$data.canShow = true
 	}
 
+  if(data.displayInfo) {
+    window.invokeNative('openUrl', 'https://www.nopixel.net/upload/index.php?threads/gta-public-server-rules.209062/');
+    window.invokeNative('openUrl', 'https://www.nopixel.net/upload/index.php?threads/using-the-gta-public-server-store.209058/')
+  }
+
 	if (data.updateSpawnMenu){
 		
 		var spawns = data.spawns
@@ -610,6 +623,13 @@ function receivedNuiMessage(event) {
 		v.$data.spawns = spawns
 	}
 
+	if (data.showLiferCharacterType) {
+		v.$data.showLiferCharacterType = data.showLiferCharacterType;
+	}
+
+	if (data.extraCharData) {
+		v.$data.extraCharData = data.extraCharData;
+	}
 }
 
 function isInJail(char){
