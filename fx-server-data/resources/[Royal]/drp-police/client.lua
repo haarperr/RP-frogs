@@ -612,10 +612,9 @@ AddEventHandler('police:getArrested2', function(cuffer)
 	if not exports['drp-death']:GetDeathStatus() then
 		local finished2 = exports["drp-ui"]:taskBarSkill(1000, math.random(4, 8))
         if (finished2 == 100) then
-			if math.random(1, 10) >= 9 then
-				TriggerEvent('DoLongHudText', 'You slipped out of cuffs !', 1)
-				TriggerEvent("handcuffed", false)
-				return end
+			TriggerEvent('DoLongHudText', 'You slipped out of cuffs !', 1)
+			TriggerEvent("handcuffed", false)
+			return end
 		end
 	end
 
