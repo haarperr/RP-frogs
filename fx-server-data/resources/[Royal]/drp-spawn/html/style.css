@@ -25,6 +25,11 @@ body {
   font-style: normal;
   font-weight: 400;
   text-rendering: optimizeLegibility;
+  @media screen and (min-width: 1921px) and (max-width: 1081px) {
+    .view {
+        width: 1080px;
+    }
+}
 }
 
 #app {
