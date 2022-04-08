@@ -108,7 +108,7 @@ function taskBarSkillCheck(difficulty, skillGapSent, cb, reverse, usePrev)
     local timer = GetGameTimer()
     tbsListening = true
     local minigameResult = 0
-    exports["drp-inventory"]:disableActionBar(true)
+   -- exports["drp-inventory"]:disableActionBar(true)
     while tbsListening do
         local delta = GetGameTimer() - timer
         timer = GetGameTimer()
@@ -182,7 +182,7 @@ function taskBarSkillCheck(difficulty, skillGapSent, cb, reverse, usePrev)
 
     SetTimeout(500, function()
         if not tbsListening then
-            exports["drp-inventory"]:disableActionBar(false)
+           -- exports["drp-inventory"]:disableActionBar(false)
             SetStreamedTextureDictAsNoLongerNeeded("caue_sprites")
         end
     end)
