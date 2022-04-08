@@ -102,7 +102,7 @@ function sell_items()
     TaskStandStill(ped, 9.0)
     TaskTurnPedToFaceEntity(ped, PlayerPedId(), -1)
 
-    if math.random(1, 100) >= 35 then
+    if math.random(1, 100) >= 15 then
         local plyPos = GetEntityCoords(PlayerPedId(),  true)
         local s1, s2 = Citizen.InvokeNative(0x2EB41072B4C1E4C0, plyPos.x, plyPos.y, plyPos.z, Citizen.PointerValueInt(), Citizen.PointerValueInt())
         local street1 = GetStreetNameFromHashKey(s1)
