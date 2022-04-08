@@ -117,6 +117,11 @@ function Login.ShowMenu(toggle)
 
 end
 
+RegisterNetEvent("nui-toggle")
+AddEventHandler("nui-toggle", function(toggle)
+	if toggle then return end
+	SetNuiFocus(false, false)
+end)
 
 function Login.SetCharacterLoginCam()
 	LoginSafe.Cam = CreateCam("DEFAULT_SCRIPTED_CAMERA", 1)
@@ -204,6 +209,20 @@ function Login.NUICallback(data)
 		Login.HasTransistionFinished = false
 	end
 
+	if data.action == "changeChar" then
+		Login.changeChar(data.isLeft)
+	end
+
+	if data.action == "takeCurrentChar" then
+		if Login.CurrentPedInfo ~= nil then
+			if Login.CurrentPedInfo.charId == 0 then return end
+			local construct = {
+				actionData = Login.CurrentPedInfo.charId
+			}
+			Login.SelectedChar(construct)
+		end
+	end
+	
 	if data.action == "currentHover" then
 		local offset = vector2(data.x,data.y)
 		local coords = exports["drp-base"]:getModule("Util"):ScreenRelToWorld(GetCamCoord(LoginSafe.Cam), GetCamRot(LoginSafe.Cam,2),offset)
@@ -262,7 +281,7 @@ function Login.NUICallback(data)
 		Login.actionsBlocked = true
 		local events = exports["drp-base"]:getModule("Events")
 		events:Trigger("drp-base:deleteCharacter", data.actionData, function(deleted)
-            Login.getCharacters(true)
+			Login.getCharacters(true)
         end)
 	end
 
