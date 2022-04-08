@@ -100,7 +100,8 @@ function sell_items()
     Citizen.Wait(1250)
     SetEntityAsMissionEntity(ped)
     TaskStandStill(ped, 9.0)
-    local finished = exports['drp-taskbar']:taskBar(5000, "Atempting Sale")
+    TaskTurnPedToFaceEntity(ped, PlayerPedId(), -1)
+    local finished = exports['drp-taskbar']:taskBar(7500, "Offering Products")
     local plycoords = GetEntityCoords(PlayerPedId())
     recent_ped = ped
     if (finished == 100) then
@@ -119,6 +120,7 @@ function sell_items()
                 sellableItems[i] = sellableItems[randomIndex]
                 
                 if exports["drp-inventory"]:hasEnoughOfItem(sellableItems[i].name,sellableItems[i].amount,false) then
+                    local finished2 = exports['drp-taskbar']:taskBar(2500, "Selling Products")
                     giveAnim(ped)
                     giveAnim(PlayerPedId())
                     Citizen.Wait(1500)
