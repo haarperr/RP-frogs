@@ -5112,7 +5112,7 @@ itemList['chips'] = {
       amount: 1
     }]
   ],
-  price: 175,
+  price: 350,
   weight: 1,
   nonStack: false,
   model: '',
@@ -5130,7 +5130,7 @@ itemList['chocobar'] = {
       amount: 1
     }]
   ],
-  price: 75,
+  price: 315,
   weight: 1,
   nonStack: false,
   model: '',
@@ -5706,7 +5706,7 @@ itemList['hamburger'] = {
   fullyDegrades: true,
   decayrate: 0.01,
   displayname: 'Hamburger',
-  price: 5,
+  price: 500,
   weight: 1,
   nonStack: false,
   model: '',
@@ -23340,7 +23340,7 @@ itemList['poisonedsandwich'] = {
   fullyDegrades: true,
   decayrate: 0.05,
   displayname: 'Sandwich',
-  price: 150,
+  price: 450,
   weight: 1,
   craft: [
     [{
