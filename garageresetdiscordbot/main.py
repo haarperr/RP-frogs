@@ -452,7 +452,7 @@ async def nuke(ctx, amount:int):
     await asyncio.sleep(60)
     await message.delete()
 
-@bot.command(aliases=['mute'])
+@bot.command(aliases=['tempmute'])
 @commands.has_permissions(manage_messages=True)
 async def mute(ctx, member: discord.Member=None, time=None, *, reason=None):
     if not member:
