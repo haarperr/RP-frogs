@@ -452,7 +452,7 @@ async def nuke(ctx, amount:int):
     await asyncio.sleep(60)
     await message.delete()
 
-'''@bot.command(name='mute')
+@bot.command(name='mute')
 @commands.has_permissions(manage_messages = True)
 async def mute(ctx, user:discord.Member=None, time):
     if 's' in time:
@@ -469,8 +469,8 @@ async def mute(ctx, user:discord.Member=None, time):
     except:
         print('Muted role not found, therefore I cant mute that user.')
         return
-    embed = discord.Embed(title='User muted', color=color)
-'''
+    embed = discord.Embed(title='User Muted', color=color)
+
 
 @bot.command()
 @commands.has_permissions(manage_messages = True)
