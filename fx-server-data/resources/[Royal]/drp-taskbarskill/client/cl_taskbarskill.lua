@@ -109,7 +109,7 @@ function taskBarSkillCheck(difficulty, skillGapSent, cb, reverse, usePrev)
     tbsListening = true
     local minigameResult = 0
     guiEnabled = true
-    SetNuiFocus(guiEnabled,false)
+    SetNuiFocus(true, true)
     while tbsListening do
         local delta = GetGameTimer() - timer
         timer = GetGameTimer()
@@ -185,7 +185,7 @@ function taskBarSkillCheck(difficulty, skillGapSent, cb, reverse, usePrev)
     SetTimeout(500, function()
         if not tbsListening then
             guiEnabled = false
-            SetNuiFocus(guiEnabled,false)
+            SetNuiFocus(false, false)
             SetStreamedTextureDictAsNoLongerNeeded("caue_sprites")
         end
     end)
