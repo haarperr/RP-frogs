@@ -498,37 +498,25 @@ async def mute(ctx, member: discord.Member=None, time=None, *, reason=None):
         unmute_embed = discord.Embed(title='Mute Expired', description=f'{ctx.author.mention} muted to {member.mention} for {reason} is over after {time}')
         await ctx.send(embed=unmute_embed)
 
-@bot.command()
-async def userinfo(ctx,member: discord.Member = None):
-  if member == None:
-    member = ctx.author
-  try:
-    roles = [role for role in member.roles[1:]]
-    embed = discord.Embed(
-    color = discord.Color(0xff3400),
-    title = f"{ctx.author}")
-    embed.add_field(name="**•ID•**", value=f"{member.id}", inline=True)
-    embed.add_field(name="**•Status•**", value=str(member.status).replace("dnd", "Do Not Disturb"), inline=True)
-    embed.set_thumbnail(url=f"{member.avatar_url}")
-    embed.add_field(name=f"**•Roles• ({len(ctx.author.roles) - 1})**", value='• '.join([role.mention for role in roles]), inline=False)
-    embed.add_field(name="**•Account Created At•**", value=f"{member.created_at.date()}".replace("-", "/"), inline=True)
-    embed.add_field(name="**•Joined Server At•**", value=f"{member.joined_at.date()}".replace("-", "/"), inline = True)
-    embed.set_footer(icon_url = f"{ctx.author.avatar_url}", text = f"Requested by {ctx.author}")
-    embed.timestamp = datetime.datetime.utcnow()
-    await ctx.send(embed=embed)
-  except:
-    roles = [role for role in member.roles[1:]]
-    embed = discord.Embed(
-    color = discord.Color(0xff3400),
-    title = f"{member}")
-    embed.add_field(name="**•ID•**", value=f"{member.id}", inline=True)
-    embed.add_field(name="**•Status•**", value=str(member.status).replace("dnd", "Do Not Disturb") , inline=True)
-    embed.set_thumbnail(url=f"{member.avatar_url}")
-    embed.add_field(name=f"**•Roles• (0)**", value="No roles", inline=False)
-    embed.add_field(name="**•Account Created At•**", value=f"{member.created_at.date()}".replace("-", "/"), inline=True)
-    embed.add_field(name="**•Joined Server At•**", value=f"{member.joined_at.date()}".replace("-", "/"), inline = True)
-    embed.set_footer(icon_url = f"{ctx.author.avatar_url}", text = f"Requested by {ctx.author}")
-    embed.timestamp = datetime.datetime.utcnow()
+@bot.command(aliases=["whois"])
+async def userinfo(ctx, member: discord.Member = None):
+    if not member:  # if member is no mentioned
+        member = ctx.message.author  # set member as the author
+    roles = [role for role in member.roles]
+    embed = discord.Embed(colour=discord.Colour.purple(), timestamp=ctx.message.created_at,
+                          title=f"User Info - {member}")
+    embed.set_thumbnail(url=member.avatar_url)
+    embed.set_footer(text=f"Requested by {ctx.author}")
+
+    embed.add_field(name="ID:", value=member.id)
+    embed.add_field(name="Display Name:", value=member.display_name)
+
+    embed.add_field(name="Created Account On:", value=member.created_at.strftime("%a, %#d %B %Y, %I:%M %p UTC"))
+    embed.add_field(name="Joined Server On:", value=member.joined_at.strftime("%a, %#d %B %Y, %I:%M %p UTC"))
+
+    embed.add_field(name="Roles:", value="".join([role.mention for role in roles]))
+    embed.add_field(name="Highest Role:", value=member.top_role.mention)
+    print(member.top_role.mention)
     await ctx.send(embed=embed)
 
 @bot.command()
