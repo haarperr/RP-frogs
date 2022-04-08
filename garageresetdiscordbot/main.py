@@ -298,9 +298,7 @@ async def on_message(message):
     if any(word in message.content for word in banned_words):
         await message.delete()
         await message.channel.send('User tried to use banned phrase: {}'.format(message.author.mention))
-    else:
-        await bot.process_commands(message)
-
+   
 
 
 load_dotenv()
@@ -454,7 +452,7 @@ async def nuke(ctx, amount:int):
     await asyncio.sleep(60)
     await message.delete()
 
-'''@bot.command(name='mute')
+@bot.command(name='mute')
 @commands.has_permissions(manage_messages = True)
 async def mute(ctx, user:discord.Member=None, time):
     if 's' in time:
@@ -463,7 +461,7 @@ async def mute(ctx, user:discord.Member=None, time):
         time = seconds[:-1]
     elif 'm' in time:
 
-    if user == None:
+     if user == None:
         await ctx.send('You need to provide a user to mute.')
     muted = discord.utils.get(user.server.roles, name="Muted")
     try:
@@ -471,8 +469,8 @@ async def mute(ctx, user:discord.Member=None, time):
     except:
         print('Muted role not found, therefore I cant mute that user.')
         return
-    embed = discord.Embed(title='User muted', color=color)
-'''
+    embed = discord.Embed(title='User Muted', color=color)
+
 
 @bot.command()
 @commands.has_permissions(manage_messages = True)
@@ -537,3 +535,4 @@ try:
     bot.run(configtoken)
 except:
     print('The bot token is either none or invalid, please enter a token in the config.json')
+
