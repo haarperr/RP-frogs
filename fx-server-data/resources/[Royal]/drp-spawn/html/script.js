@@ -331,16 +331,13 @@ let v = new Vue({
 		// Add arrow keys to select currentSpawnSelected
 		keypress(e){
 			if (e.keyCode == 37){
-				this.currentSpawnSelected--
+				this.currentSpawnSelected = this.currentSpawnSelected - 1
 				if (this.currentSpawnSelected < 0){
-					this.currentSpawnSelected = this.spawns.length-1
+					this.currentSpawnSelected = this.currentSpawnSelected = 0
 				}
 			}
 			if (e.keyCode == 39){
-				this.currentSpawnSelected++
-				if (this.currentSpawnSelected > this.spawns.length-1){
-					this.currentSpawnSelected = 0
-				}
+				this.currentSpawnSelected = this.currentSpawnSelected + 1
 			}
 			if (e.keyCode == 13){
 				this.selectSpawn(this.spawns[this.currentSpawnSelected])
