@@ -5528,7 +5528,7 @@ itemList['water'] = {
   fullyDegrades: true,
   decayrate: 0.01,
   displayname: 'Water',
-  price: 125,
+  price: 225,
   weight: 1,
   craft: [
     [{
