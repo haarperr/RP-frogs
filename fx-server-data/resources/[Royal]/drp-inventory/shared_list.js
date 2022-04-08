@@ -2991,8 +2991,8 @@ itemList['repairkit'] = {
       amount: 10
     }]
   ],
-  price: 250,
-  weight: 10,
+  price: 325,
+  weight: 20,
   nonStack: false,
   model: '',
   image: 'np_basic_repair-kit.png',
@@ -6588,7 +6588,7 @@ itemList['bikearmor'] = {
 
 itemList['armor'] = {
   fullyDegrades: true,
-  decayrate: 0.25,
+  decayrate: 0.15,
   displayname: 'Chest Armor',
   craft: [
     [{
@@ -6605,8 +6605,8 @@ itemList['armor'] = {
       },
     ]
   ],
-  price: 400,
-  weight: 37,
+  price: 425,
+  weight: 40,
   nonStack: false,
   model: '',
   image: 'np_chest-armor.png',
@@ -6632,8 +6632,8 @@ itemList['pdarmor'] = {
       },
     ]
   ],
-  price: 50,
-  weight: 37,
+  price: 75,
+  weight: 35,
   nonStack: false,
   model: '',
   image: 'np_chest-armor.png',
@@ -6716,8 +6716,8 @@ itemList['advrepairkit'] = {
       amount: 25
     }]
   ],
-  price: 125,
-  weight: 20,
+  price: 500,
+  weight: 25,
   nonStack: false,
   model: '',
   image: 'np_repair-toolkit.png',
@@ -6743,8 +6743,8 @@ itemList['tirerepairkit'] = {
       },
     ]
   ],
-  price: 325,
-  weight: 5,
+  price: 350,
+  weight: 15,
   nonStack: false,
   blockScrap: true,
   model: '',
