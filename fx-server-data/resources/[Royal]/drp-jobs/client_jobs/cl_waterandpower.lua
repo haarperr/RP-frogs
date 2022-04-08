@@ -107,15 +107,15 @@ Citizen.CreateThread(function()
                         TriggerEvent("animation:PlayAnimation","welding")
                         local canwork = exports['drp-taskbar']:taskBar(5000, 'Fixing Circuits')
                         if (canwork == 100) then
-                            local la1 = exports["drp-ui"]:taskBarSkill(math.random(750, 1500),math.random(50,75))
+                            local la1 = exports["drp-ui"]:taskBarSkill(math.random(750, 1500),math.random(25,75))
                             if (la1 == 100) then
                                 local canwork2 = exports['drp-taskbar']:taskBar(5000, 'Fixing Neutral Bus Bar')
                                 if (canwork2 == 100) then
-                                    local la3 = exports["drp-ui"]:taskBarSkill(math.random(750, 1500),math.random(50,75))
+                                    local la2 = exports["drp-ui"]:taskBarSkill(math.random(750, 1500),math.random(25,75))
                                     if (la2 == 100) then
                                         local canwork3 = exports['drp-taskbar']:taskBar(5000, 'Finishing Up')
                                         if (canwork3 == 100) then
-                                            local la3 = exports["drp-ui"]:taskBarSkill(math.random(750, 1500),math.random(50,75))
+                                            local la3 = exports["drp-ui"]:taskBarSkill(math.random(750, 1500),math.random(25,75))
                                             if (la3 == 100) then
                                                 FreezeEntityPosition(GetPlayerPed(-1), false)
                                                 exports['drp-textui']:hideInteraction()
