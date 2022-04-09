@@ -852,7 +852,7 @@ function DoDropOff(requestMoney)
                 [5] = {
                     name = 'cashroll',
                     amount = math.random(3, 8),
-                    price = rollcashprice
+                    price = cashrollprice
                 }
             }
 
