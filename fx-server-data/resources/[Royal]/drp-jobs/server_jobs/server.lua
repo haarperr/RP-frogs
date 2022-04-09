@@ -6,7 +6,6 @@ AddEventHandler('drp-civjobs:post-op-payment', function()
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
     local payment = math.random(325, 450)
     user:addBank(payment)
-    TriggerEvent('drp-base:postopLog', src, payment)
     TriggerClientEvent('DoLongHudText', src, 'You completed the delivery and got $'..payment , 1)
 end)
 
@@ -15,9 +14,8 @@ RegisterServerEvent('drp-civjobs:water-power-payme')
 AddEventHandler('drp-civjobs:water-power-payme', function()
     local src = source
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
-    local payment = math.random(180, 315)
+    local payment = math.random(200, 375)
     user:addBank(payment)
-    TriggerEvent('drp-base:waterpowerLog', src, payment)
     TriggerClientEvent('DoLongHudText', src, 'You completed the delivery and got $'..payment , 1)
 end)
 
