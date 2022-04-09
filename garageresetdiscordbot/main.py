@@ -391,7 +391,7 @@ async def resetall(ctx):
         await ctx.send("You do not have permission to use this command!")
         
 @bot.command()
-@commands.cooldown(1, 600, commands.BucketType.user)
+@commands.cooldown(1, 14400, commands.BucketType.user)
 async def resetcid(ctx, cid):
     sql = mysql.connector.connect(
             host = "62.171.159.104",
@@ -406,7 +406,7 @@ async def resetcid(ctx, cid):
     await ctx.send("All vehicles have been reset for this character with the State ID of " + cid + "!")
 
 @bot.command()
-@commands.cooldown(1, 60, commands.BucketType.user)
+@commands.cooldown(1, 14400, commands.BucketType.user)
 async def resetpd(ctx):
     sql = mysql.connector.connect(
             host = "62.171.159.104",
