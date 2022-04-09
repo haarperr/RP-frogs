@@ -848,6 +848,11 @@ function DoDropOff(requestMoney)
                     name = 'band',
                     amount = math.random(2, 6),
                     price = bandprice
+                },
+                [5] = {
+                    name = 'cashroll',
+                    amount = math.random(3, 8),
+                    price = rollcashprice
                 }
             }
 
