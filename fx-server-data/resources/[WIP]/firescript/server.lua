@@ -16,7 +16,7 @@ print("Fire Script has loaded! Coded by Rjross2013")
 -- end)
 RegisterServerEvent('fire:chatAlert')
 AddEventHandler('fire:chatAlert', function( text )  
-    TriggerClientEvent('chatMessage', -1, 'FIRE', {255, 0, 0}, 'A fire has been spotted at: ' .. text)
+    -- TriggerClientEvent('chatMessage', -1, 'FIRE', {255, 0, 0}, 'A fire has been spotted at: ' .. text)
 end)
  RegisterServerEvent("lol:firesyncs")
  AddEventHandler("lol:firesyncs", function( firec, lastamnt, deletedfires, original )
@@ -42,7 +42,7 @@ end)
 	TriggerClientEvent("lol:fireremovess", -1, x, y, z, test)
 	--TriggerClientEvent("lol:firesync3", -1)
  end)
- 
+
 AddEventHandler("chatMessage", function(p, color, msg)
     if msg:sub(1, 1) == "/" then
         fullcmd = stringSplit(msg, " ")
