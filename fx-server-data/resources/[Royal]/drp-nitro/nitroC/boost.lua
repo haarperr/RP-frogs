@@ -78,7 +78,7 @@ Citizen.CreateThread(function ()
       local vehicleModel = GetEntityModel(vehicle)
       local currentSpeed = GetEntitySpeed(vehicle)
       local maximumSpeed = GetVehicleModelMaxSpeed(vehicleModel)
-      local multiplier = 0.75 * maximumSpeed / currentSpeed
+      local multiplier = 0.775   * maximumSpeed / currentSpeed
 
       SetVehicleEngineTorqueMultiplier(vehicle, multiplier)
     end
