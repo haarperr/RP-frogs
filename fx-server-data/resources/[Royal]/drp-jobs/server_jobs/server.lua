@@ -231,7 +231,9 @@ AddEventHandler('drp-rentals:attemptPurchase', function(car)
         else
             TriggerClientEvent('drp-rentals:attemptvehiclespawnfail', source)
         end
+    end
 end)
+
 
 RegisterServerEvent('drp-rentals:attemptPurchase')
 AddEventHandler('drp-rentals:attemptPurchase', function(car)
