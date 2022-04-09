@@ -8,7 +8,7 @@ local timer = false
 local model
 local housecoords
 local items = {}
-local working = true
+local working = false
 local interior = {}
 local noise = 0
 local within = false
