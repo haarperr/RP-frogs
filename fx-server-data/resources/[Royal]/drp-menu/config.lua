@@ -37,7 +37,7 @@ rootMenuConfig =  {
         displayName = "Police Actions",
         icon = "#police-action",
         enableMenu = function()
-            return (exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' and isPlayerNearby() and not exports['drp-death']:GetDeathStatus())
+            return (not exports['drp-death']:GetDeathStatus() and exports["isPed"]:isPed("myJob") == 'police') or (not exports['drp-death']:GetDeathStatus() and exports["isPed"]:isPed("myJob") == 'sheriff') or (not exports['drp-death']:GetDeathStatus() and exports["isPed"]:isPed("myJob") == 'state')
         end,
         --"police:runplate", "police:toggleradar"
         subMenus = {'police:checkInventory', 'police:revive', 'police:remmask', 'police:checkBank', 'police:checkLicenses', 'police:gsr', 'police:dnaSwab'}
@@ -49,7 +49,7 @@ rootMenuConfig =  {
         icon = "#police-action-panic",
         functionName = "police:policePanic",
         enableMenu = function()
-            return (exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' and not exports['drp-death']:GetDeathStatus() and not exports['drp-death']:GetDeathStatus())
+            return (not exports['drp-death']:GetDeathStatus() and exports["isPed"]:isPed("myJob") == 'police') or (not exports['drp-death']:GetDeathStatus() and exports["isPed"]:isPed("myJob") == 'sheriff') or (not exports['drp-death']:GetDeathStatus() and exports["isPed"]:isPed("myJob") == 'state')
         end
     },
     {
