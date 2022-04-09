@@ -43,8 +43,8 @@ AddEventHandler("drp-rental:openPlaneMenu", function()
         params = {
             event = ""
         }
-    },
-  end)
+    }
+  })
 end)
 
 
