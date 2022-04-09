@@ -45,7 +45,8 @@ AddEventHandler("drp-rental:openPlaneMenu", function()
         }
     },
   end)
-)
+end)
+
 
 RegisterNetEvent("drp-rentals:vehicles")
 AddEventHandler("drp-rentals:vehicles", function()
