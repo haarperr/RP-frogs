@@ -412,6 +412,26 @@ Entries[#Entries + 1] = {
 
 
 Entries[#Entries + 1] = {
+    type = 'flag',
+    group = { 'isNPC' },
+    data = {
+        {
+            id = "rentplaneguy",
+            label = "Rent a Plane/Heli",
+            icon = "circle",
+            event = "drp-rental:openPlaneMenu",
+            parameters = {}
+        }
+    },
+    options = {
+        distance = { radius = 3.0 },
+        npcIds = {"rentplaneguy"}
+    }
+}
+
+
+
+Entries[#Entries + 1] = {
   type = 'flag',
   group = { 'isNPC' },
   data = {
