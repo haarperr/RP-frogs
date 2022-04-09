@@ -341,6 +341,24 @@ Entries[#Entries + 1] = {
     group = { 'isNPC' },
     data = {
         {
+            id = "fenceguy",
+            label = "Sell your Shit",
+            icon = "circle",
+            event = "fenceguy:menu",
+            parameters = {}
+        }
+    },
+    options = {
+        distance = { radius = 7.0 },
+        npcIds = {"fenceguy"}
+    }
+}
+
+Entries[#Entries + 1] = {
+    type = 'flag',
+    group = { 'isNPC' },
+    data = {
+        {
             id = "bsguy",
             label = "Get Delivery Job",
             icon = "circle",
