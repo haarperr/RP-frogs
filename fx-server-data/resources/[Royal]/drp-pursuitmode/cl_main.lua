@@ -29,7 +29,6 @@ CreateThread(function()
         if IsControlJustPressed(0, 178) then --delete
             -- check if driver
             if GetPedInVehicleSeat(vehicle, -1) == PlayerPedId() then
-                
                 if vehicle ~= 0 then
                     local vehiclehash = GetEntityModel(vehicle)
                     if isPursuitCar(vehiclehash) then
