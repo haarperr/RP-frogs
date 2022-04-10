@@ -615,7 +615,7 @@ AddEventHandler('police:getArrested2', function(cuffer)
 			TriggerEvent('DoLongHudText', 'You slipped out of cuffs !',1)
 			TriggerEvent("handcuffed",false)
 			return end
-		end
+	end
 
 	if #(GetEntityCoords( PlayerPedId()) - GetEntityCoords(cuffPed)) < 2.5 and finished ~= 100 then
 		TriggerEvent('InteractSound_CL:PlayOnOne', 'handcuff', 0.4)
