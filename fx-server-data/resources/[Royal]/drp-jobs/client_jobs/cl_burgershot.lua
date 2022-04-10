@@ -767,6 +767,7 @@ local menuList = {
 local hasJob = false
 local currentHouse = nil
 local currentMenu = nil
+local deliverVehicle = nil
 
 RegisterNetEvent("bsdelivery:getJob")
 AddEventHandler("bsdelivery:getJob", function()
@@ -812,22 +813,38 @@ AddEventHandler("bsdelivery:getTheJob", function()
         end
     end
 
-    
     TriggerEvent('phone:robberynotif', 'Burgershot - Marty Shanks',
                  "A customer just called me and want these products:\n" .. productString .. ".")
 
-    Citizen.Wait(math.random(1) * 60 * 1000)
-    PlaySoundFrontend(-1, "Menu_Accept", "Phone_SoundSet_Default", true)
-    enterCoords = Houses()
-    FoodDeliveryLocation = AddBlipForCoord(enterCoords.x, enterCoords.y,
-                                           enterCoords.z)
-    SetBlipSprite(FoodDeliveryLocation, 40)
-    BeginTextCommandSetBlipName("STRING")
-    AddTextComponentString("Food Delivery")
-    EndTextCommandSetBlipName(FoodDeliveryLocation)
-    SetBlipRoute(FoodDeliveryLocation, true)
-    SetBlipRouteColour(FoodDeliveryLocation, 29)
-    TriggerEvent('phone:robberynotif', 'Burgershot - Marty Shanks',
-                 "Ive updated the location of the delivery house on your GPS.")
-
+    currentMenu = products
 end)
+
+
+Citizen.CreateThread(function()
+    while True do
+        Citizen.Wait(250)
+        if hasJob == true then
+            -- if ped is in vehicle and driver seat
+            if IsPedInAnyVehicle(GetPlayerPed(-1), false) and GetPedInVehicleSeat(GetVehiclePedIsIn(GetPlayerPed(-1), false), -1) == GetPlayerPed(-1) then
+                deliveryVehicle = GetVehiclePedIsIn(GetPlayerPed(-1), false)
+                
+                PlaySoundFrontend(-1, "Menu_Accept", "Phone_SoundSet_Default", true)
+                enterCoords = Houses()
+                currentHouse = enterCoords
+            
+                FoodDeliveryLocation = AddBlipForCoord(enterCoords.x, enterCoords.y,
+                                                       enterCoords.z)
+                SetBlipSprite(FoodDeliveryLocation, 40)
+                BeginTextCommandSetBlipName("STRING")
+                AddTextComponentString("Food Delivery")
+                EndTextCommandSetBlipName(FoodDeliveryLocation)
+                SetBlipRoute(FoodDeliveryLocation, true)
+                SetBlipRouteColour(FoodDeliveryLocation, 29)
+                TriggerEvent('phone:robberynotif', 'Burgershot - Marty Shanks',
+                             "Ive updated the location of the delivery house on your GPS.")
+                SetBlipAsShortRange(FoodDeliveryLocation, false)
+            end
+        end
+    end
+end)
+
