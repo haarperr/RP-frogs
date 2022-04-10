@@ -785,14 +785,13 @@ end)
 RegisterNetEvent("bsdelivery:getTheJob")
 AddEventHandler("bsdelivery:getTheJob", function()
     hasJob = true
+    local amountOfProducts = math.random(2, 5)
 
-    if math.random(1,15) >= 14 then
-        local amountOfProducts = math.random(2, 5)
-    else
+    if math.random(1,15) <= 14 then
         if math.random(1, 2) == 1 then
             local amountOfProducts = math.random(2, 10)
         else
-            local amountOfProducts = math.random(5, 15)
+            local amountOfProducts = math.random(5, 20) -- Big Delivery Jobs
         end
     end
 
