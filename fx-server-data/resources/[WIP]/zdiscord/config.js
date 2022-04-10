@@ -11,9 +11,9 @@
 const LanguageLocaleCode = "en";
 
 // PUBLIC VALUES
-const FiveMServerName = "My FiveM Server";
-const DiscordInviteLink = "https://discord.gg/fivem";
-const FiveMServerIP = "127.0.0.1";
+const FiveMServerName = "RP Frogs Community Server";
+const DiscordInviteLink = "https://discord.gg/rpfrog";
+const FiveMServerIP = "62.171.159.104:40120";
 
 // This spams the console, only enable for testing if needed
 const DebugLogs = false;
@@ -26,25 +26,25 @@ const DebugLogs = false;
 const EnableDiscordBot = true;
 
 // DISCORD BOT
-const DiscordBotToken = "CHANGE";
-const DiscordGuildId = "000000000000000000";
+const DiscordBotToken = "OTYyNTcxMDc4MDQyMDI2MDA0.YlJeLA.VSzCuW8UhtWCC-SIOIKctNP2qQs";
+const DiscordGuildId = "868624444661309441";
 
 // STAFF CHAT
 const EnableStaffChatForwarding = false;
-const DiscordStaffChannelId = "000000000000000000";
+const DiscordStaffChannelId = "956069154555834409";
 const AdditionalStaffChatRoleIds = [
     // "000000000000000",
 ];
 
 // WHITELISTING / ALLOWLISTING
 const EnableWhitelistChecking = true;
-const DiscordWhitelistRoleIds = "000000000000000000, 000000000000000000";
+const DiscordWhitelistRoleIds = "956067351567159336, 956067314401443891";
 
 // SLASH COMMANDS / DISCORD PERMISSIONS
 const EnableDiscordSlashCommands = true;
-const DiscordModRoleId = "000000000000000000";
-const DiscordAdminRoleId = "000000000000000000";
-const DiscordGodRoleId = "000000000000000000";
+const DiscordModRoleId = "956067315072507935";
+const DiscordAdminRoleId = "956067318620905472";
+const DiscordGodRoleId = "956067314401443891";
 
 // DISCORD BOT STATUS
 const EnableBotStatusMessages = true;
@@ -69,7 +69,7 @@ const SaveScreenshotsToServer = false;
 **************************/
 
 const EnableLoggingWebhooks = false;
-const LoggingWebhookName = "zLogs";
+const LoggingWebhookName = "Loggies";
 // put "&" in front of the id if you're to ping a role
 const LoggingAlertPingId = "&000000000000000000";
 // example: "bank": "https://discord.com/webhook/...",
