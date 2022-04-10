@@ -33,7 +33,7 @@ onNet('nns_weather:client:weather:request', () => {
 RegisterCommand('weather', (source: string, args: string[]) => {
   const module = NPX.getModule('Player');
   const user = module.GetUser(source);
-  if (!user.group === "admin" && !user.group === "owner") {
+  if (!user.group === "admin" && !user.group === "dev") {
     return emitNet('DoLongHudText', source, 'You do not have permissions to use this command.', 2)
   }
 
