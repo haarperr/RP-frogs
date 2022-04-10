@@ -142,12 +142,12 @@
           <Speed value="2000.000000" />
           <BulletsInBatch value="2" />
           <BatchSpread value="0.000000" />
-          <ReloadTimeMP value="8.000000" />
-          <ReloadTimeSP value="8.000000" />
-          <VehicleReloadTime value="6.000000" />
-          <AnimReloadRate value="0.400000" />
+          <ReloadTimeMP value="2.000000" />
+          <ReloadTimeSP value="2.000000" />
+          <VehicleReloadTime value="1.000000" />
+          <AnimReloadRate value="0.200000" />
           <BulletsPerAnimLoop value="1" />
-          <TimeBetweenShots value="7.500000" />
+          <TimeBetweenShots value="12.500000" />
           <TimeLeftBetweenShotsWhereShouldFireIsCached value="-1.000000" />
           <SpinUpTime value="0.000000" />
           <SpinTime value="0.000000" />

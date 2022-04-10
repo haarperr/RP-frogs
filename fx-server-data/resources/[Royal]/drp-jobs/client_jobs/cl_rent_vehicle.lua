@@ -31,6 +31,23 @@ function loaddict(dict)
   end
 end
 
+
+RegisterNetEvent("drp-rental:openPlaneMenu")
+AddEventHandler("drp-rental:openPlaneMenu", function()
+  TriggerEvent('drp-context:sendMenu', {
+    {
+        id = 1,
+        header = "Rent a Nimbus",
+        txt = "",
+        url = "https://static.wikia.nocookie.net/gtawiki/images/7/76/Nimbus-GTAO-front.png/revision/latest/scale-to-width-down/350?cb=20160609145048",
+        params = {
+            event = ""
+        }
+    }
+  })
+end)
+
+
 RegisterNetEvent("drp-rentals:vehicles")
 AddEventHandler("drp-rentals:vehicles", function()
 
@@ -129,6 +146,18 @@ local vehicleList = {
   { name = "Faggio", model = "faggio", price = 350 },
 }
 
+RegisterNetEvent("drp-rentals:attemptplanespawn")
+AddEventHandler("drp-rentals:attemptplanespawn", function(data)
+  local vehicle = data.vehicle
+  if IsAnyVehicleNearPoint(117.84, -1079.95, 29.23, 3.0) then
+    TriggerEvent("DoLongHudText", "There's a vehicle in the way!", 2)
+    return
+  else
+    TriggerServerEvent("drp-rentals:attemptPlanePurchase",vehicle)
+  end 
+end)
+
+
 RegisterNetEvent("drp-rentals:attemptvehiclespawn")
 AddEventHandler("drp-rentals:attemptvehiclespawn", function(data)
   local vehicle = data.vehicle
@@ -139,6 +168,8 @@ AddEventHandler("drp-rentals:attemptvehiclespawn", function(data)
     TriggerServerEvent("drp-rentals:attemptPurchase",vehicle)
   end 
 end)
+
+
 
 RegisterNetEvent("drp-rentals:attemptvehiclespawnfail")
 AddEventHandler("drp-rentals:attemptvehiclespawnfail", function()

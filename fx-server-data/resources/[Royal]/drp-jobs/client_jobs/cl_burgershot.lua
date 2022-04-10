@@ -750,9 +750,19 @@ function Houses()
 end
 
 local menuList = {
-    {"bleederburger"}, {"water"}, {"softdrink"}, {"bscoffee"}, {"mshake"},
-    {"heartstopper"}, {"applepie"}, {"murdermeal"}, {"moneyshot"}, {"fries"},
-    {"fries"}, {"torpedo"}, {"meatfree"}
+    {"bleederburger"},
+    {"water"},
+    {"softdrink"},
+    {"bscoffee"},
+    {"mshake"},
+    {"heartstopper"},
+    {"applepie"},
+    {"murdermeal"},
+    {"moneyshot"},
+    {"fries"},
+    {"fries"}, 
+    {"torpedo"}, 
+    {"meatfree"}
 }
 
 local hasJob = false
@@ -778,17 +788,19 @@ AddEventHandler("bsdelivery:getTheJob", function()
     hasJob = true
     TriggerEvent('phone:robberynotif', 'Burgershot - Marty Shanks',
                  "Ill have a job for you shortly.")
+
+
     Citizen.Wait(math.random(1) * 60 * 1000)
     PlaySoundFrontend(-1, "Menu_Accept", "Phone_SoundSet_Default", true)
     enterCoords = Houses()
-    HouseRobberyLocation = AddBlipForCoord(enterCoords.x, enterCoords.y,
+    FoodDeliveryLocation = AddBlipForCoord(enterCoords.x, enterCoords.y,
                                            enterCoords.z)
-    SetBlipSprite(HouseRobberyLocation, 40)
+    SetBlipSprite(FoodDeliveryLocation, 40)
     BeginTextCommandSetBlipName("STRING")
-    AddTextComponentString("House Robbery")
-    EndTextCommandSetBlipName(HouseRobberyLocation)
-    SetBlipRoute(HouseRobberyLocation, true)
-    SetBlipRouteColour(HouseRobberyLocation, 29)
+    AddTextComponentString("Food Delivery")
+    EndTextCommandSetBlipName(FoodDeliveryLocation)
+    SetBlipRoute(FoodDeliveryLocation, true)
+    SetBlipRouteColour(FoodDeliveryLocation, 29)
     TriggerEvent('phone:robberynotif', 'Burgershot - Marty Shanks',
                  "Ive updated the location of the delivery house on your GPS.")
 

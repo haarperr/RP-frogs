@@ -1159,7 +1159,7 @@ Citizen.CreateThread(function()
 			if attachPropList[holding] ~= nil and attachPropList[holding].destroyOnDamage then
 				if lastObjectHealth == 0 then lastObjectHealth = GetEntityHealth(carryObject) end
 
-				if GetEntityHealth(carryObject) ~= lastObjectHealth and GetEntityHealth(carryObject) <= 940 then
+				if GetEntityHealth(carryObject) ~= lastObjectHealth and GetEntityHealth(carryObject) <= 250 then -- Why was this so high?
 					destroyObject()
 				end
 

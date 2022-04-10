@@ -104,6 +104,10 @@ RegisterNetEvent("play:song", function(SongURL, coords, place)
     PlayUrlPos(place, SongURL, 0.2, coords, false, false)
 end)
 
+RegisterCommand("play", function()
+    TriggerEvent("attemt:play:song")
+end)
+
 RegisterNetEvent("attemt:play:song", function()
     local pUrl = exports["drp-applications"]:KeyboardInput({
         header = "Place the song URL below.",

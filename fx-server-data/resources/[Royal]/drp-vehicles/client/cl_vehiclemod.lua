@@ -958,7 +958,7 @@ Citizen.CreateThread(function()
                     lastCurrentVehicleSpeed = GetEntitySpeed(currentVehicle)
                     lastCurrentVehicleBodyHealth = GetVehicleBodyHealth(currentVehicle)
                     veloc = GetEntityVelocity(currentVehicle)
-                    if currentEngineHealth > 10.0 and (currentEngineHealth < 175.0 or lastCurrentVehicleBodyHealth < 50.0) then
+                    if currentEngineHealth > 15.0 and (currentEngineHealth < 200.0 or lastCurrentVehicleBodyHealth < 60.0) then
                         carCrash()
                         stalled = true
                         Citizen.Wait(1000)
@@ -967,8 +967,8 @@ Citizen.CreateThread(function()
                     Citizen.Wait(100)
                     local currentVehicleBodyHealth = GetVehicleBodyHealth(currentVehicle)
                     local currentVehicleSpeed = GetEntitySpeed(currentVehicle)
-                    if currentEngineHealth > 0.0 and lastCurrentVehicleBodyHealth - currentVehicleBodyHealth > 15 then
-                        if lastCurrentVehicleSpeed > 30.5 and currentVehicleSpeed < (lastCurrentVehicleSpeed * 0.75) then
+                    if currentEngineHealth > 0.0 and lastCurrentVehicleBodyHealth - currentVehicleBodyHealth > 20 then
+                        if lastCurrentVehicleSpeed > 35.5 and currentVehicleSpeed < (lastCurrentVehicleSpeed * 0.75) then
                             if not IsThisModelABike(GetEntityModel(currentVehicle)) then
                                 carCrash()
                                 stalled = true
@@ -998,7 +998,7 @@ Citizen.CreateThread(function()
                                 carCrash()
                                 local stallchance = math.random(1,3)
                                 if stallchance == 3 then
-                                stalled = true
+                                    stalled = true
                                 end -- 1/3 stall chance on bikes maybe?
                                 Citizen.Wait(1000)
                                 lastCurrentVehicleSpeed = 0.0
@@ -1006,7 +1006,7 @@ Citizen.CreateThread(function()
                             end
                         end
                     else
-                        if currentEngineHealth > 10.0 and (currentEngineHealth < 195.0 or currentVehicleBodyHealth < 50.0) then
+                        if currentEngineHealth > 15.0 and (currentEngineHealth < 200.0 or currentVehicleBodyHealth < 60.0) then
                             carCrash()
                             stalled = true
                             Citizen.Wait(1000)

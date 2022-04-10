@@ -6,7 +6,6 @@ AddEventHandler('drp-civjobs:post-op-payment', function()
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
     local payment = math.random(325, 450)
     user:addBank(payment)
-    TriggerEvent('drp-base:postopLog', src, payment)
     TriggerClientEvent('DoLongHudText', src, 'You completed the delivery and got $'..payment , 1)
 end)
 
@@ -15,9 +14,8 @@ RegisterServerEvent('drp-civjobs:water-power-payme')
 AddEventHandler('drp-civjobs:water-power-payme', function()
     local src = source
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
-    local payment = math.random(180, 315)
+    local payment = math.random(200, 375)
     user:addBank(payment)
-    TriggerEvent('drp-base:waterpowerLog', src, payment)
     TriggerClientEvent('DoLongHudText', src, 'You completed the delivery and got $'..payment , 1)
 end)
 
@@ -40,9 +38,8 @@ AddEventHandler('chickensell:log', function()
     local pName = GetPlayerName(source)
     local pDiscord = GetPlayerIdentifiers(src)[3]
     local DISCORD_NAME5 = "Chicken Selling Logs"
-
- local STEAM_KEY = "D01BB33086A760AE0098638CB73C7224"
- local DISCORD_IMAGE = "https://i.imgur.com/zviw6oW.png"
+    local STEAM_KEY = "D01BB33086A760AE0098638CB73C7224"
+    local DISCORD_IMAGE = "https://i.imgur.com/zviw6oW.png"
     local LogData = {
         {
            ['description'] = string.format("`%s`\n\n`• Server Id: %s`\n\n━━━━━━━━━━━━━━━━━━\n`• Steam: %s`\n\n`• Discord: %s`\n━━━━━━━━━━━━━━━━━━", "is selling chickens!", src, hexId, pDiscord),
@@ -93,8 +90,8 @@ RegisterServerEvent('drp-fishing:PayPlayer')
 AddEventHandler('drp-fishing:PayPlayer', function(money)
     local src = source
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
-    user:addMoney(money)
-    TriggerEvent('drp-base:fishingLog', src, money)
+    user:addMoney(money+15)
+    TriggerEvent('drp-base:fishingLog', src, money+15)
 end)
 
 --// Garbage Server Side
@@ -221,6 +218,22 @@ AddEventHandler('complete:job', function(totalCash)
 end)
 
 --// Rentals Server Side
+
+
+RegisterServerEvent('drp-rentals:attemptPurchase')
+AddEventHandler('drp-rentals:attemptPurchase', function(car)
+	local src = source
+	local user = exports["drp-base"]:getModule("Player"):GetUser(src)
+    if car == "bison" then
+        if user:getCash() >= 15000 then
+            user:removeMoney(15000)
+            TriggerClientEvent('drp-rentals:vehiclespawn', source, car)
+        else
+            TriggerClientEvent('drp-rentals:attemptvehiclespawnfail', source)
+        end
+    end
+end)
+
 
 RegisterServerEvent('drp-rentals:attemptPurchase')
 AddEventHandler('drp-rentals:attemptPurchase', function(car)

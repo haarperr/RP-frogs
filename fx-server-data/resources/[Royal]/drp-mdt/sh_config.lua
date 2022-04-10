@@ -385,6 +385,8 @@ Config["Offenses"] = {
         [346] = {title = 'Accomplice to Poaching', class = 'Poaching', id = '346', months = 15, fine = 1080, color = 'orange'},
         [347] = {title = 'Hunting/Fishing Without a License', class = 'Misdemeanor', id = '347', months = 5, fine = 375, color = 'orange'},
         [348] = {title = 'Hunting in an Unregulated Area', class = 'Infraction', id = '348', months = 0, fine = 500, color = 'orange'},
+        [349] = {title = 'Criminal Rampage And Nonspecific Executions', class = 'Felony', id = '349', months = 210, fine = 22500, color = 'orange'},
+
     }
 }
 
