@@ -39,7 +39,7 @@ async function statusUpdater(client) {
     setInterval(function() {
         try {
             const msg = client.utils.replaceGlobals(client, client.config.BotStatusMessages[Math.floor(Math.random() * client.config.BotStatusMessages.length)]);
-            client.user.setActivity({ name: msg, type: "PLAYING" });
+            client.user.setActivity({ name: msg, type: "WATCHING" });
         } catch (e) {
             // Just gonna void these errors..
         }

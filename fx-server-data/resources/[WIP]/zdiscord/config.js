@@ -11,7 +11,7 @@
 const LanguageLocaleCode = "en";
 
 // PUBLIC VALUES
-const FiveMServerName = "RP Frogs Community Server";
+const FiveMServerName = "RPFrogs Server";
 const DiscordInviteLink = "https://discord.gg/rpfrog";
 const FiveMServerIP = "62.171.159.104:40120";
 
@@ -50,7 +50,8 @@ const DiscordGodRoleId = "956067314401443891";
 const EnableBotStatusMessages = true;
 const BotStatusMessages = [
     "{servername}",
-    "{playercount} online",
+    "{playercount} / 48 Players Online!",
+    "Amouranth",
 ];
 
 // ACE PERMISSIONS
