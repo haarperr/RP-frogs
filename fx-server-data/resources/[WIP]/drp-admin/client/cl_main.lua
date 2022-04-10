@@ -22,6 +22,38 @@ AddEventHandler('drp-adminmenu:CloseMouse', function()
   SetNuiFocus(false, false)
 end)
 
+RegisterCommand("lights", function()
+  if exports["drp-base"]:getModule("LocalPlayer"):getVar("rank") == ('dev' or 'admin' or 'superadmin' or 'mod' or 'owner') then
+dark = false
+if dark == false then
+    dark = true
+    SetBlackout(true)
+else
+  dark = false
+  SetBlackout(false)
+end
+end
+end)
+
+RegisterCommand("model", function()
+  if exports["drp-base"]:getModule("LocalPlayer"):getVar("rank") == ('dev' or 'admin' or 'superadmin' or 'mod' or 'owner') then
+
+    local model = exports["drp-applications"]:KeyboardInput({
+        header = "Become Model",
+        rows = {
+        {
+            id = 0,
+            txt = "Enter Model Spawn"
+        }}
+    })
+    if model[1] ~= nil then
+        TriggerEvent('raid_clothes:AdminSetModel', model[1].input)
+        TriggerEvent('drp-admin:raid_clothes:model', model[1].input)
+    end
+end
+ --- IM LAZY AS FUCK
+end)
+
 RegisterNUICallback('getplayercoords', function(data, cb)
   TriggerEvent('DoLongHudText', 'Players Current Coordinates Saved To [coords.txt]', 1)
   ExecuteCommand('pos')
