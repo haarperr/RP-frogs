@@ -23412,7 +23412,7 @@ itemList['methbag'] = {
   fullyDegrades: false,
   decayrate: 1.0,
   displayname: 'Big Meth Bag (100g)',
-  price: 1,
+  price: 225,
   weight: 10,
   nonStack: true,
   model: '',
