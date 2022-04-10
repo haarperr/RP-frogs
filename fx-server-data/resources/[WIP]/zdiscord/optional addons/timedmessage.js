@@ -21,7 +21,7 @@ class TimedMessage {
         // Minutes
         this.timerDelay = 5;
         // Channel id to send server status updates
-        this.channelId = "00000000000000000";
+        this.channelId = "961113419094843432";
 
         this.z = z;
         on("zdiscord:ready", async () => {
