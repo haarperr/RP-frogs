@@ -756,7 +756,6 @@ local menuList = {
     {"bscoffee"},
     {"mshake"},
     {"heartstopper"},
-    {"applepie"},
     {"murdermeal"},
     {"moneyshot"},
     {"fries"},
@@ -786,9 +785,37 @@ end)
 RegisterNetEvent("bsdelivery:getTheJob")
 AddEventHandler("bsdelivery:getTheJob", function()
     hasJob = true
-    TriggerEvent('phone:robberynotif', 'Burgershot - Marty Shanks',
-                 "Ill have a job for you shortly.")
 
+    if math.random(1,15) >= 14 then
+        local amountOfProducts = math.random(2, 5)
+    else
+        if math.random(1, 2) == 1 then
+            local amountOfProducts = math.random(2, 10)
+        else
+            local amountOfProducts = math.random(5, 15)
+        end
+    end
+
+    -- get random products by amount of products
+    local products = {}
+    for i = 1, amountOfProducts do
+        local product = math.random(1, #menuList)
+        table.insert(products, product)
+    end
+
+    -- make a nice string of products
+    local productString = ""
+    for i = 1, #products do
+        if i == #products then
+            productString = productString .. menuList[products[i]][1]
+        else
+            productString = productString .. menuList[products[i]][1] .. ", "
+        end
+    end
+
+    
+    TriggerEvent('phone:robberynotif', 'Burgershot - Marty Shanks',
+                 "A customer just called me and want these products:\n" .. productString .. ".")
 
     Citizen.Wait(math.random(1) * 60 * 1000)
     PlaySoundFrontend(-1, "Menu_Accept", "Phone_SoundSet_Default", true)
