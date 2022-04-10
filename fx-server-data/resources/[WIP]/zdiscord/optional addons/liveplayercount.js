@@ -17,7 +17,7 @@
 class LivePlayerCount {
     constructor(z) {
         // Id for the voice channel name to update
-        this.voiceChannelId = "00000000000000000";
+        this.voiceChannelId = "962604259482927114";
 
         this.z = z;
         on("zdiscord:ready", async () => {
