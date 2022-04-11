@@ -4783,22 +4783,46 @@ itemList['bfsandwich'] = {
 
 itemList['cbballs'] = {
   fullyDegrades: false,
-  decayrate: 0.0,
+  decayrate: 0.01,
   displayname: 'Cluckin Balls',
   price: 1,
-  weight: 0,
+  weight: 2,
   nonStack: false,
   model: '',
   image: 'np_cluckin-balls.png',
   information: 'Ooh..salty. 440Cal',
 };
 
+itemList['cbsmoothie'] = {
+  fullyDegrades: false,
+  decayrate: 0.01,
+  displayname: 'Cluckin Protein Smoothie',
+  price: 1,
+  weight: 2,
+  nonStack: false,
+  model: '',
+  image: 'cluckin-protein-smoothie.png',
+  information: 'Ooh..thats good. 440Cal + Protein',
+};
+
+itemList['cbchickenfries'] = {
+  fullyDegrades: false,
+  decayrate: 0.01,
+  displayname: 'Cluckin Chicken Fries',
+  price: 1,
+  weight: 2,
+  nonStack: false,
+  model: '',
+  image: 'cluckin-chicken-fries.png',
+  information: 'Ooh..thats good. 440Cal + Protein',
+};
+
 itemList['cbbucket'] = {
   fullyDegrades: false,
-  decayrate: 0.0,
+  decayrate: 0.01,
   displayname: 'Chicken Bucket',
   price: 1,
-  weight: 0,
+  weight: 2,
   nonStack: false,
   model: '',
   image: 'np_chicken-bucket.png',
@@ -4807,10 +4831,10 @@ itemList['cbbucket'] = {
 
 itemList['cbclucker'] = {
   fullyDegrades: false,
-  decayrate: 0.0,
+  decayrate: 0.01,
   displayname: 'Little Clucker',
   price: 1,
-  weight: 0,
+  weight: 2,
   nonStack: false,
   model: '',
   image: 'np_little-clucker.png',
@@ -4819,10 +4843,10 @@ itemList['cbclucker'] = {
 
 itemList['cbdrink'] = {
   fullyDegrades: false,
-  decayrate: 0.0,
+  decayrate: 0.01,
   displayname: 'Cluckin Drink',
   price: 1,
-  weight: 0,
+  weight: 2,
   nonStack: false,
   model: '',
   image: 'np_cluckin-drink.png',
@@ -4831,10 +4855,10 @@ itemList['cbdrink'] = {
 
 itemList['cbfarmers'] = {
   fullyDegrades: false,
-  decayrate: 0.0,
+  decayrate: 0.01,
   displayname: "Farmer's Surprise",
   price: 1,
-  weight: 0,
+  weight: 2,
   nonStack: false,
   model: '',
   image: 'np_farmers-surprise.png',
@@ -4843,10 +4867,10 @@ itemList['cbfarmers'] = {
 
 itemList['cbfowl'] = {
   fullyDegrades: false,
-  decayrate: 0.0,
+  decayrate: 0.01,
   displayname: 'Fowl Burger',
   price: 1,
-  weight: 0,
+  weight: 2,
   nonStack: false,
   model: '',
   image: 'np_fowl-burger.png',
@@ -4855,10 +4879,10 @@ itemList['cbfowl'] = {
 
 itemList['cbfries'] = {
   fullyDegrades: false,
-  decayrate: 0.0,
+  decayrate: 0.01,
   displayname: 'Cluckin Fries',
   price: 1,
-  weight: 0,
+  weight: 2,
   nonStack: false,
   model: '',
   image: 'np_cluckin-fries.png',
@@ -4867,15 +4891,40 @@ itemList['cbfries'] = {
 
 itemList['cbrings'] = {
   fullyDegrades: false,
-  decayrate: 0.0,
+  decayrate: 0.01,
   displayname: 'Cluckin Rings',
   price: 1,
-  weight: 0,
+  weight: 2,
   nonStack: false,
   model: '',
   image: 'np_cluckin-rings.png',
   information: 'Suffering never tasted so good! 850Cal',
 };
+
+itemList['cbveggy'] = {
+  fullyDegrades: false,
+  decayrate: 0.01,
+  displayname: 'Veggy Salad',
+  price: 1,
+  weight: 2,
+  nonStack: false,
+  model: '',
+  image: 'np_veggy-salad.png',
+  information: 'Mystery chewy bits included. 750Cal',
+};
+
+itemList['cbveggy'] = {
+  fullyDegrades: false,
+  decayrate: 0.01,
+  displayname: 'Veggy Salad',
+  price: 1,
+  weight: 2,
+  nonStack: false,
+  model: '',
+  image: 'np_veggy-salad.png',
+  information: 'Mystery chewy bits included. 750Cal',
+};
+
 
 itemList['cbrownie'] = {
   fullyDegrades: false,
@@ -4887,18 +4936,6 @@ itemList['cbrownie'] = {
   model: '',
   image: 'np_cannabis-brownie.png',
   information: 'Dude...',
-};
-
-itemList['cbveggy'] = {
-  fullyDegrades: false,
-  decayrate: 0.0,
-  displayname: 'Veggy Salad',
-  price: 1,
-  weight: 0,
-  nonStack: false,
-  model: '',
-  image: 'np_veggy-salad.png',
-  information: 'Mystery chewy bits included. 750Cal',
 };
 
 itemList['cocoab'] = {

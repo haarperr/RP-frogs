@@ -946,6 +946,10 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
         secondaryMaxWeight = 15.0;
         slotLimitTarget = 5;
         displayName = 'Little Clucker Box';
+    } else if (targetinvName.indexOf('cbfarmers') > -1) {
+        secondaryMaxWeight = 5.0;
+        slotLimitTarget = 5;
+        displayName = 'Cluckin Bell Bag';
     } else if (targetinvName.indexOf('pdevidencebag') > -1) {
         secondaryMaxWeight = 0.0;
         slotLimitTarget = 20;

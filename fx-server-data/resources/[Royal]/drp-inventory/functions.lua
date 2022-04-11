@@ -2579,6 +2579,9 @@ end
     if itemid == "cbclucker" then
         TriggerEvent("cbclucker", ItemInfo.id)
     end
+    if itemid == "cbfarmers" then
+        TriggerEvent("cbfarmers", ItemInfo.id)
+    end
 
     if itemid == "pdevidencebag" then
         TriggerEvent("pdevidencebag", ItemInfo.id)
