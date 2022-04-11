@@ -786,7 +786,7 @@ Citizen.CreateThread(function()
     exports["drp-polytarget"]:AddBoxZone("bsguy", vector3(-1190.1145, -905.4796, 13.9847), 1, 1.4, {
         heading=70.9786,
     })
-    
+
     -- house guy
 
     exports["drp-polytarget"]:AddBoxZone("houseguy", vector3(-156.5230, -603.8885, 48.2422), 1, 1.4, {
@@ -2331,6 +2331,17 @@ Citizen.CreateThread(function()
         id = "cluckinbell_warmer",
         icon = "circle",
         label = "Open Food Warmer",
+        parameters = {},
+    }}, {
+        distance = { radius = 3 },
+    });
+
+    -- CluckinBell Stash
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_stash", {{
+        event = "drp-cluckinbell:openstash",
+        id = "cluckinbell_stash",
+        icon = "circle",
+        label = "Open Stash",
         parameters = {},
     }}, {
         distance = { radius = 3 },
