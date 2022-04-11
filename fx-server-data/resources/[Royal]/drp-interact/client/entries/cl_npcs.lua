@@ -342,14 +342,14 @@ Entries[#Entries + 1] = {
     group = { 'isNPC' },
     data = {
         {
-            id = "chickenguy",
+            id = "chickenguy1",
             label = "Sell Protein",
             icon = "circle",
             event = "drp-chickens:sellprotein",
             parameters = {}
         },
         {
-            id = "chickenguy",
+            id = "chickenguy2",
             label = "Sell Cutted Chicken",
             icon = "circle",
             event = "drp-chickens:sellcuttedchicken",
