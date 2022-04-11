@@ -4841,6 +4841,18 @@ itemList['cbbowl'] = {
   information: 'Ooh..Kreygasm. 969Cal',
 };
 
+itemList['cbcontroller'] = {
+  fullyDegrades: false,
+  decayrate: 0.01,
+  displayname: 'Cluckin Bell Minigame',
+  price: 1,
+  weight: 2,
+  nonStack: false,
+  model: '',
+  image: 'cluckin-bowl.png',
+  information: '⚠️ Low Battery ⚠️ | Recharge me soon',
+};
+
 itemList['cbsmoothie'] = {
   fullyDegrades: false,
   decayrate: 0.01,
