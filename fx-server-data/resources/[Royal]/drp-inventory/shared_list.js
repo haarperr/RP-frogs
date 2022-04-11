@@ -4911,7 +4911,7 @@ itemList['cbjr'] = {
   model: '',
   craft: [
     [{
-      itemid: 'cbpad',
+      itemid: 'cbpatty',
       amount: 1
     }],
     [{
