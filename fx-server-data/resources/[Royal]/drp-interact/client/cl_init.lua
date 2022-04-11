@@ -799,6 +799,9 @@ Citizen.CreateThread(function()
     exports["drp-polytarget"]:AddBoxZone("cluckinbell_stash", vector3(-514.8957, -702.8467, 33.3285), 1, 1.4, {
     })
 
+    exports["drp-polytarget"]:AddBoxZone("cluckinbell_frie", vector3(-521.2682, -701.4075, 32.8389), 1, 1.4, {
+    })
+
     
     exports["drp-polytarget"]:AddBoxZone("taxiguy", vector3(894.9174, -179.3615, 74.7003), 1, 1.4, {
         heading=239.7525,
@@ -2345,6 +2348,17 @@ Citizen.CreateThread(function()
         id = "cluckinbell_stash",
         icon = "circle",
         label = "Open Stash",
+        parameters = {},
+    }}, {
+        distance = { radius = 3 },
+    });
+    
+    -- CluckinBell Frie
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_frie", {{
+        event = "drp-cluckinbell:openfrie",
+        id = "cluckinbell_frie",
+        icon = "circle",
+        label = "Frie Food",
         parameters = {},
     }}, {
         distance = { radius = 3 },
