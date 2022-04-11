@@ -250,10 +250,7 @@ end
 
 function Spawn.getPDSpawn()
 	local spawn = nil
-
-
-	local police = exports["isPed"]:GroupRank("police")
-	if police >= 2 then
+	if (exports['isPed']:isPed("myjob") == "police" or exports['isPed']:isPed("myjob") == 'sheriff') then
 		spawn = { ["pos"] = vector4(-172.83,331.17,93.76,266.08), ['info'] = ' MRPD'}
 	end
 
