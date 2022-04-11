@@ -4837,13 +4837,23 @@ itemList['cbbowl'] = {
   weight: 2,
   nonStack: false,
   model: '',
+  craft: [
+    [{
+      itemid: 'cbfriedchickenpiece',
+      amount: 2
+      },
+      {
+        itemid: 'lettuce',
+        amount: 2
+    }]
+  ],
   image: 'cluckin-bowl.png',
   information: 'Ooh..Kreygasm. 969Cal',
 };
 
 itemList['cbcontroller'] = {
   fullyDegrades: false,
-  decayrate: 0.01,
+  decayrate: 0.5,
   displayname: 'Cluckin Gameboy',
   price: 30,
   weight: 15,
@@ -4855,14 +4865,26 @@ itemList['cbcontroller'] = {
 
 itemList['cbcoupon'] = {
   fullyDegrades: false,
-  decayrate: 0.01,
+  decayrate: 0.5,
   displayname: 'Cluckin Coupon',
   price: 150,
   weight: 3,
   nonStack: false,
   model: '',
   image: 'cb-coupon.png',
-  information: 'Redeem it for a Free Food Item',
+  information: 'Redeem it for Free Food at Cluckin Bell',
+};
+
+itemList['cbcoupongolden'] = {
+  fullyDegrades: false,
+  decayrate: 0.5,
+  displayname: 'Golden Cluckin Coupon',
+  price: 750,
+  weight: 3,
+  nonStack: false,
+  model: '',
+  image: 'cb-coupongolden.png',
+  information: '2 Weeks of Free Food at Cluckin Bell',
 };
 
 itemList['cbsmoothie'] = {
@@ -4910,11 +4932,6 @@ itemList['cbjr'] = {
   nonStack: false,
   model: '',
   craft: [
-    [{
-      itemid: 'cbcoupon',
-      amount: '1'
-    }
-    ],
     [  
       {
       itemid: 'cbpatty',
@@ -5022,6 +5039,14 @@ itemList['cbveggy'] = {
   weight: 2,
   nonStack: false,
   model: '',
+  craft: [
+    [  
+      {
+      itemid: 'lettuce',
+      amount: 2
+      }
+    ]
+  ],
   image: 'np_veggy-salad.png',
   information: 'Mystery chewy bits included. 750Cal',
 };
@@ -22287,7 +22312,7 @@ itemList['lettuce'] = {
   fullyDegrades: true,
   decayrate: 0.025,
   displayname: 'Lettuce',
-  price: 1,
+  price: 7,
   weight: 1,
   nonStack: false,
   model: '',
@@ -22311,7 +22336,7 @@ itemList['cheese'] = {
   fullyDegrades: true,
   decayrate: 0.025,
   displayname: 'Cheese',
-  price: 1,
+  price: 7,
   weight: 1,
   nonStack: false,
   model: '',
@@ -22359,7 +22384,7 @@ itemList['coffeebeans'] = {
   fullyDegrades: true,
   decayrate: 0.025,
   displayname: 'Coffee Beans',
-  price: 1,
+  price: 5,
   weight: 1,
   nonStack: false,
   model: '',
@@ -22383,7 +22408,7 @@ itemList['tomato'] = {
   fullyDegrades: true,
   decayrate: 0.025,
   displayname: 'Tomato',
-  price: 1,
+  price: 7,
   weight: 1,
   nonStack: false,
   model: '',
@@ -28045,7 +28070,7 @@ itemList['lqsugar'] = {
   fullyDegrades: true,
   decayrate: 0.02,
   displayname: '(LQ) Sugar',
-  price: 1,
+  price: 5,
   weight: 1.0,
   nonStack: false,
   model: '',
