@@ -939,15 +939,15 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
         secondaryMaxWeight = 1000.0;
         slotLimitTarget = 90;
     } else if (targetinvName.indexOf('MurderMeal') > -1) {
-        secondaryMaxWeight = 15.0;
+        secondaryMaxWeight = 20.0;
         slotLimitTarget = 5;
         displayName = 'Murder Meal';
     } else if (targetinvName.indexOf('cbclucker') > -1) {
-        secondaryMaxWeight = 15.0;
+        secondaryMaxWeight = 20.0;
         slotLimitTarget = 5;
         displayName = 'Little Clucker Box';
     } else if (targetinvName.indexOf('cbfarmers') > -1) {
-        secondaryMaxWeight = 5.0;
+        secondaryMaxWeight = 10.0;
         slotLimitTarget = 5;
         displayName = 'Cluckin Bell Bag';
     } else if (targetinvName.indexOf('pdevidencebag') > -1) {
