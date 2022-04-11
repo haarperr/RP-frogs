@@ -392,6 +392,7 @@ local BusinessNames = {
 	["recycle_shop"] = "Recycle Centre",
 	["car_shop"] = "Car Shop",
   ["burger_shot"] = "Burger Shot",
+  ["cluckin_bell"] = "Cluckin Bell",
 	["repairs_harmony"] = "Harmony Repairs",
 	['tuner_carshop'] = "Tuner Carshop",
 	['dock_worker'] = "Dock Worker",

@@ -796,6 +796,9 @@ Citizen.CreateThread(function()
 
     exports["drp-polytarget"]:AddBoxZone("houseguy", vector3(-156.5230, -603.8885, 48.2422), 1, 1.4, {
         heading=130.1756,
+    })  
+
+    exports["drp-polytarget"]:AddBoxZone("cluckinbell_warmer", vector3(-518.4861, -700.2580, 33.4477), 1, 1.4, {
     })
 
     
@@ -1848,13 +1851,6 @@ Citizen.CreateThread(function()
             icon = "search",
             label = "Open Fridge",
             parameters = {},
-        },
-        {
-            event = "drp-burgershot:store",
-            id = "burgershot_stash_2",
-            icon = "circle",
-            label = "Get Ingridients",
-            parameters = {},
         }
     }, {
         distance = { radius = 2.5 },
@@ -2279,21 +2275,6 @@ Citizen.CreateThread(function()
         distance = { radius = 7 },
     });
 
-
-
-    
-    -- Chicken Guy
-    
-    exports["drp-interact"]:AddPeekEntryByPolyTarget("chickenguy", {{
-        event = "drp-chickens:sell",
-        id = "chickenguy",
-        icon = "circle",
-        label = "Sell your Chickens",
-        parameters = {},
-    }}, {
-        distance = { radius = 5 },
-    });
-
     
     --  Burgershot Shit
     exports["drp-interact"]:AddPeekEntryByPolyTarget("royal_burgershot_make_drinks", {{
@@ -2349,12 +2330,12 @@ Citizen.CreateThread(function()
         distance = { radius = 2.5 },
     });
 
-    -- Fryer
-    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_fryer", {{
-        event = "drp-cluckinbell:startfryer",
-        id = "cluckinbell_fryer",
+    -- CluckinBell Warmer
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_warmer", {{
+        event = "drp-cluckinbell:openwarmer",
+        id = "cluckinbell_warmer",
         icon = "circle",
-        label = "Make Fries",
+        label = "Open Foodwarmer",
         parameters = {},
     }}, {
         distance = { radius = 2.5 },
@@ -2367,13 +2348,6 @@ Citizen.CreateThread(function()
             id = "cluckinbell_stash_1",
             icon = "search",
             label = "Open Fridge",
-            parameters = {},
-        },
-        {
-            event = "drp-cluckinbell:store",
-            id = "cluckinbell_stash_2",
-            icon = "circle",
-            label = "Get Ingridients",
             parameters = {},
         }
     }, {
@@ -3531,7 +3505,7 @@ Citizen.CreateThread(function()
             id = "radical_coffee_seat_12",
             icon = "chair",
             label = "Take A Seat",
-            parameters = {},
+            parameters = {}, 
         }
     }, {
         distance = { radius = 1.5 },

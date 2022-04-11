@@ -6133,14 +6133,14 @@ itemList["chickennoodles"] = {
 
 itemList["cut_chicken"] = {
   fullyDegrades: false,
-  decayrate: 0.1,
-  displayname: "Cooked Chicken",
+  decayrate: 0.3,
+  displayname: "Cutted Chicken",
   price: 5,
-  weight: 1,
+  weight: 2,
   nonStack: false,
   model: "",
   image: "slaughtered_chicken.png",
-  information: "Rooster Rest Produce",
+  information: "Cluckin Bell Product",
   deg: false
 }
 
@@ -27935,7 +27935,7 @@ itemList['lqvegetables'] = {
 
 itemList['lqprotein'] = {
   fullyDegrades: true,
-  decayrate: 0.004,
+  decayrate: 0.25,
   displayname: '(LQ) Protein',
   price: 1,
   weight: 2,
@@ -29261,12 +29261,23 @@ itemList['heistduffelbag'] = {
 
 itemList['chickenslammer'] = {
   fullyDegrades: true,
-  decayrate: 0.0,
+  decayrate: 0.25,
   displayname: 'Chicken Slammer',
   price: 0,
   weight: 20,
   nonStack: true,
   model: '',
+  craft: [
+    [{
+        itemid: '4191993645',
+        amount: 1
+      },
+      {
+        itemid: 'refinedaluminium',
+        amount: 25
+      }, 
+    ],
+  ],
   image: 'chicken-slammer.png',
-  information: 'Maddi Memory Axe',
+  information: 'Cluckin Bell Employ Tool',
 };

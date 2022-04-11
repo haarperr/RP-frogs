@@ -101,7 +101,7 @@ AddEventHandler('paycheck:server:send', function(cid)
 			TriggerEvent("paycheck:server:add", src, cid, math.random(450, 650))
 		elseif job == "towunion" then -- Tow
 			TriggerEvent("paycheck:server:add", src, cid, math.random(100, 175))
-		elseif job == "best_buds" or job == "burger_shot" or job == "bean_machine" or job == "vanilla_unicorn" then -- Civ Jobs
+		elseif job == "best_buds" or job == "burger_shot" or job == "cluckin_bell" or job == "bean_machine" or job == "vanilla_unicorn" then -- Civ Jobs
 			TriggerEvent("paycheck:server:add", src, cid, math.random(50, 100))
 		elseif job == "auto_bodies" or job == "tuner_shop" or job == "paleto_mech" or job == "auto_exotics" or job == "car_shop" then -- Mechanic Shops
 			TriggerEvent("paycheck:server:add", src, cid, math.random(50, 100))

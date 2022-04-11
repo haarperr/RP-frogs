@@ -108,6 +108,7 @@ Entries[#Entries + 1] = {
         distance = { radius = 2.5 },
         isEnabled = function()
             local isEmployedAtBurgerShot = exports["mizrp-business"]:IsEmployedAt("burger_shot")
+            local isEmployedAtCluckinBell = exports["mizrp-business"]:IsEmployedAt("cluckin_bell")
             local isEmployedAtRoosters = exports["mizrp-business"]:IsEmployedAt("rooster")
             local publicTradeIn = exports["mizrp-config"]:GetMiscConfig("jobs.receipts.public")
             return isEmployedAtBurgerShot or isEmployedAtRoosters or publicTradeIn
@@ -341,6 +342,31 @@ Entries[#Entries + 1] = {
     group = { 'isNPC' },
     data = {
         {
+            id = "chickenguy1",
+            label = "Sell Protein",
+            icon = "circle",
+            event = "drp-chickens:sellprotein",
+            parameters = {}
+        },
+        {
+            id = "chickenguy2",
+            label = "Sell Cutted Chicken",
+            icon = "circle",
+            event = "drp-chickens:sellcuttedchicken",
+            parameters = {}
+        },
+    },
+    options = {
+        distance = { radius = 3.0 },
+        npcIds = {"chickenguy"}
+    }
+}
+
+Entries[#Entries + 1] = {
+    type = 'flag',
+    group = { 'isNPC' },
+    data = {
+        {
             id = "fenceguy",
             label = "Sell your Shit",
             icon = "circle",
@@ -364,6 +390,13 @@ Entries[#Entries + 1] = {
             icon = "circle",
             event = "bsdelivery:getJob",
             parameters = {}
+        },
+        {
+            event = "drp-burgershot:store",
+            id = "burgershot_stash_2",
+            icon = "circle",
+            label = "Get Ingridients",
+            parameters = {},
         }
     },
     options = {
