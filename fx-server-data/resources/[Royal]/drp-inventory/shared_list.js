@@ -4844,13 +4844,25 @@ itemList['cbbowl'] = {
 itemList['cbcontroller'] = {
   fullyDegrades: false,
   decayrate: 0.01,
-  displayname: 'Cluckin Bell Minigame',
+  displayname: 'Cluckin Gameboy',
   price: 150,
   weight: 15,
-  nonStack: false,
+  nonStack: true,
   model: '',
   image: 'cb-controller.png',
   information: '⚠️ Low Battery ⚠️ | Recharge me soon',
+};
+
+itemList['cbcoupon'] = {
+  fullyDegrades: false,
+  decayrate: 0.01,
+  displayname: 'Cluckin Coupon',
+  price: 150,
+  weight: 3,
+  nonStack: false,
+  model: '',
+  image: 'cb-coupon.png',
+  information: 'Redeem it for a Free Food Item',
 };
 
 itemList['cbsmoothie'] = {
