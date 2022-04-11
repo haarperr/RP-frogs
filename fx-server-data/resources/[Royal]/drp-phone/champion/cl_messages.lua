@@ -50,15 +50,15 @@ RegisterNetEvent('phone:newSMS')
 AddEventHandler('phone:newSMS', function(id, number, pname, message, mypn, date, recip)
   print(id, number, message, mypn, date, recip)
   lastnumber = number
-  if exports["fox-phone"]:phasPhone() then
+  if exports["drp-phone"]:phasPhone() then
     SendNUIMessage({
         openSection = "newsms"
     })
     --TriggerServerEvent('phone:getSMS', exports['isPed']:isPed('cid')) 
-    if exports['fox-phone']:pNotify() == true then
+    if exports['drp-phone']:pNotify() == true then
       TriggerEvent("DoLongHudText", "You just received a new SMS.", 1)
       SendNUIMessage({openSection = "messagenotify", pMNumber = pname, pMMessage = message})
-      if exports['fox-phone']:pOpen() == false then 
+      if exports['drp-phone']:pOpen() == false then 
         SendNUIMessage({openSection = "phonemedio", timeout = "5200"}) 
       end
     end

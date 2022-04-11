@@ -54,14 +54,14 @@ end)
 RegisterNUICallback('newTwatSubmit', function(data, cb)
     local handle = exports["isPed"]:isPed("twitterhandle")
     TriggerServerEvent('Tweet', handle, data.twat, data.time)
-    TriggerServerEvent('fox-phone:twatSendNotification', handle, data.twat, data.time)   
+    TriggerServerEvent('drp-phone:twatSendNotification', handle, data.twat, data.time)   
 end)
 
 
-RegisterNetEvent('fox-phone:TwatNotify')
-AddEventHandler('fox-phone:TwatNotify', function(tHandle, pTwat, pTime)
+RegisterNetEvent('drp-phone:TwatNotify')
+AddEventHandler('drp-phone:TwatNotify', function(tHandle, pTwat, pTime)
     SendNUIMessage({openSection = "tweetnotify", ptwat = pTwat, phandle = tHandle, ptime =pTime})
-    if exports['fox-phone']:pOpen() == false then 
+    if exports['drp-phone']:pOpen() == false then 
         SendNUIMessage({openSection = "phonemedio", timeout = "5200"}) 
     end
 end)

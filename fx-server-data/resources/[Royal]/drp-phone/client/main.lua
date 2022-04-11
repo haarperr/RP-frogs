@@ -60,13 +60,13 @@ CreateThread(function ()
 end)
 
 
-RegisterNetEvent("fox-phone:grabBackground")
-AddEventHandler("fox-phone:grabBackground", function(link)
+RegisterNetEvent("drp-phone:grabBackground")
+AddEventHandler("drp-phone:grabBackground", function(link)
     wallPaper = link
 end)
 
-RegisterNetEvent("fox-jobmanager:playerBecameJob")
-AddEventHandler("fox-jobmanager:playerBecameJob", function(job)
+RegisterNetEvent("drp-jobmanager:playerBecameJob")
+AddEventHandler("drp-jobmanager:playerBecameJob", function(job)
     if job == "trucker" then
         trucker = true
     end
@@ -124,7 +124,7 @@ RegisterNUICallback('wallpaper', function(data, cb)
   wallPaper = ""
   Wait(5)
   local wallPaperSelecionado = data.wallpaper
-  TriggerEvent('fox-phone:grabBackground', wallPaperSelecionado)
+  TriggerEvent('drp-phone:grabBackground', wallPaperSelecionado)
   TriggerServerEvent("phone:saveWallpaper", exports['isPed']:isPed('cid'), wallPaperSelecionado)
 end)
 
@@ -144,7 +144,7 @@ AddEventHandler('phone:reset', function(cidsent)
     inPhone = false
     wallPaper = ""
     Wait(1)
-    TriggerServerEvent('fox-phone:grabWallpaper')
+    TriggerServerEvent('drp-phone:grabWallpaper')
 end)
 
 RegisterNetEvent('Yougotpaid')
@@ -844,7 +844,7 @@ function SpawnVehicle(vehicle, x,y,z, Fuel, customized, plate, IsViewing, engine
         SetNetworkIdCanMigrate(id, true)
         if not IsViewing then    
             CurrentDisplayVehicle = nil
-            RPC.execute("fox-garages:states", "Out", plate, exports['fox-menu']:currentGarage(), pUpdatedFuel)
+            RPC.execute("drp-garages:states", "Out", plate, exports['drp-menu']:currentGarage(), pUpdatedFuel)
         end
     end)
 end
@@ -1527,7 +1527,7 @@ function isRealEstateAgent()
 end
 
 function hasDecrypt2()
-    if exports["fox-inventory"]:hasEnoughOfItem("vpnxj",1,false) and not exports["isPed"]:isPed("disabled") then
+    if exports["drp-inventory"]:hasEnoughOfItem("vpnxj",1,false) and not exports["isPed"]:isPed("disabled") then
       return true
     else
       return false
@@ -1535,7 +1535,7 @@ function hasDecrypt2()
 end
 
 function hasTrucker()
-    if exports["fox-base"]:getModule("LocalPlayer"):getVar("job") == "trucker"  then
+    if exports["drp-base"]:getModule("LocalPlayer"):getVar("job") == "trucker"  then
       return true
     else
       return false
@@ -1543,7 +1543,7 @@ function hasTrucker()
 end
 
 function hasDecrypt()
-    if exports["fox-inventory"]:hasEnoughOfItem("vpnxj",1,false) and not exports["isPed"]:isPed("disabled") then
+    if exports["drp-inventory"]:hasEnoughOfItem("vpnxj",1,false) and not exports["isPed"]:isPed("disabled") then
       return true
     else
       return false
@@ -1551,7 +1551,7 @@ function hasDecrypt()
 end
 
 function hasDevice()
-    if exports["fox-inventory"]:hasEnoughOfItem("mk2usbdevice",1,false) and not exports["isPed"]:isPed("disabled") then
+    if exports["drp-inventory"]:hasEnoughOfItem("mk2usbdevice",1,false) and not exports["isPed"]:isPed("disabled") then
       return true
     else
       return false
@@ -1561,13 +1561,13 @@ end
 function hasPhone()
     if
       (
-      (exports["fox-inventory"]:hasEnoughOfItem("mobilephone",1,false) or 
-      exports["fox-inventory"]:hasEnoughOfItem("stoleniphone",1,false) or 
-      exports["fox-inventory"]:hasEnoughOfItem("stolens8",1,false) or
-      exports["fox-inventory"]:hasEnoughOfItem("stolennokia",1,false) or
-      exports["fox-inventory"]:hasEnoughOfItem("stolenpixel3",1,false) or
-      exports["fox-inventory"]:hasEnoughOfItem("assphone",1,false) or
-      exports["fox-inventory"]:hasEnoughOfItem("boomerphone",1,false))
+      (exports["drp-inventory"]:hasEnoughOfItem("mobilephone",1,false) or 
+      exports["drp-inventory"]:hasEnoughOfItem("stoleniphone",1,false) or 
+      exports["drp-inventory"]:hasEnoughOfItem("stolens8",1,false) or
+      exports["drp-inventory"]:hasEnoughOfItem("stolennokia",1,false) or
+      exports["drp-inventory"]:hasEnoughOfItem("stolenpixel3",1,false) or
+      exports["drp-inventory"]:hasEnoughOfItem("assphone",1,false) or
+      exports["drp-inventory"]:hasEnoughOfItem("boomerphone",1,false))
       and not exports["isPed"]:isPed("disabled") and not exports["isPed"]:isPed("handcuffed")
       ) 
     then
@@ -1578,7 +1578,7 @@ function hasPhone()
 end
 
 function hasRadio()
-    if exports["fox-inventory"]:hasEnoughOfItem("radio",1,false) and not exports["isPed"]:isPed("disabled") then
+    if exports["drp-inventory"]:hasEnoughOfItem("radio",1,false) and not exports["isPed"]:isPed("disabled") then
       return true
     else
       return false
@@ -1714,7 +1714,7 @@ function closeGui()
   guiEnabled = false
   TriggerEvent('animation:sms',false)
   TriggerEvent('phoneEnabled',false)
-  TriggerEvent('fox-phone:UpdateStatePhone')
+  TriggerEvent('drp-phone:UpdateStatePhone')
   pPhoneOpen = false
   recentopen = true
   Citizen.Wait(3000)
@@ -1722,8 +1722,8 @@ function closeGui()
   insideDelivers = false
 end
 
-RegisterNetEvent('fox-phone:UpdateStatePhone')
-AddEventHandler('fox-phone:UpdateStatePhone', function()
+RegisterNetEvent('drp-phone:UpdateStatePhone')
+AddEventHandler('drp-phone:UpdateStatePhone', function()
     Wait(5)
     if callStatus == isCallInProgress then 
       SendNUIMessage({openSection = "phonemedio"}) 
@@ -1836,7 +1836,7 @@ end)
 RegisterNUICallback('updateMyWallpaper', function(data, cb)
   wallPaper = ""
   Wait(5)
-  TriggerEvent('fox-phone:grabBackground', data.name .."?auto=compress&cs=tinysrgb&h=350")
+  TriggerEvent('drp-phone:grabBackground', data.name .."?auto=compress&cs=tinysrgb&h=350")
   TriggerServerEvent("phone:saveWallpaper",exports['isPed']:isPed('cid'), data.name .."?auto=compress&cs=tinysrgb&h=350")
   cb('ok')
 end)
@@ -1998,7 +1998,7 @@ RegisterNUICallback('callContact', function(data, cb)
       openSection = 'callnotify',
       pCNumber = dialingName
     })
-    if exports['fox-phone']:pOpen() == false then 
+    if exports['drp-phone']:pOpen() == false then 
         SendNUIMessage({openSection = "phonemedio"}) 
     end
     TriggerEvent('phone:setCallState', isDialing, data.name == "" and data.number or data.name)
@@ -2098,8 +2098,8 @@ end)
 
 RegisterNetEvent('phone:addToCall')
 AddEventHandler('phone:addToCall', function(voipchannel)
-  exports['fox-voice']:addPlayerToCall(tonumber(voipchannel))
-  if exports['fox-phone']:pOpen() == false then 
+  exports['drp-voice']:addPlayerToCall(tonumber(voipchannel))
+  if exports['drp-phone']:pOpen() == false then 
     SendNUIMessage({openSection = "phonemedio"}) 
   end
 end)
@@ -2195,7 +2195,7 @@ AddEventHandler('phone:receiveCall', function(phoneNumber, srcID, calledNumber)
     pCNumber = callFrom
   })
 
-  if exports['fox-phone']:pOpen() == false then 
+  if exports['drp-phone']:pOpen() == false then 
     SendNUIMessage({openSection = "phonemedio"}) 
   end
   
@@ -2243,8 +2243,8 @@ function receivingCall(callFrom)
   end
 end
 
-RegisterNetEvent('fox-phone:RemoveCall')
-AddEventHandler('fox-phone:RemoveCall', function()
+RegisterNetEvent('drp-phone:RemoveCall')
+AddEventHandler('drp-phone:RemoveCall', function()
     SendNUIMessage({
       openSection = 'callnotifyEnd'
     })
@@ -2268,7 +2268,7 @@ end
 
 RegisterNetEvent('phone:removefromToko')
 AddEventHandler('phone:removefromToko', function(playerRadioChannel)
-  exports['fox-voice']:removePlayerFromCall()
+  exports['drp-voice']:removePlayerFromCall()
 end)
 
 function endCall()
@@ -2284,7 +2284,7 @@ function endCall()
   myID = 0
   mySourceID = 0
   TriggerEvent('phone:setCallState', isNotInCall)
-  TriggerEvent('fox-phone:RemoveCall')
+  TriggerEvent('drp-phone:RemoveCall')
   onhold = false
   mySourceHoldStatus = false
   callid = 0
@@ -2397,9 +2397,9 @@ curNotifications = {}
 RegisterNetEvent('phone:addnotification')
 AddEventHandler('phone:addnotification', function(name, message)
     SendNUIMessage({openSection = "emailnotify", pEHandle = 'Email Received.', pEMessages = message})
-    if exports['fox-phone']:pOpen() == false then 
+    if exports['drp-phone']:pOpen() == false then 
       SendNUIMessage({openSection = "emailnotify", pEHandle = 'Email Received.', pEMessages = message})
-      SendNUIMessage({openSection = "phonemedio", timeout = "5200", pOpen = exports['fox-phone']:pOpen()}) 
+      SendNUIMessage({openSection = "phonemedio", timeout = "5200", pOpen = exports['drp-phone']:pOpen()}) 
     end
     curNotifications[#curNotifications+1] = { ["name"] = name, ["message"] = message, ['time'] = time }
 end)
@@ -2407,9 +2407,9 @@ end)
 RegisterNetEvent('phone:robberynotif')
 AddEventHandler('phone:robberynotif', function(name, message)
     SendNUIMessage({openSection = "robnotify", pEHandle = 'From The Boss', pEMessages = message})
-    if exports['fox-phone']:pOpen() == false then 
+    if exports['drp-phone']:pOpen() == false then 
       SendNUIMessage({openSection = "robnotify", pEHandle = 'From The Boss', pEMessages = message})
-      SendNUIMessage({openSection = "phonemedio", timeout = "5200", pOpen = exports['fox-phone']:pOpen()}) 
+      SendNUIMessage({openSection = "phonemedio", timeout = "5200", pOpen = exports['drp-phone']:pOpen()}) 
     end
     curNotifications[#curNotifications+1] = { ["name"] = name, ["message"] = message, ['time'] = time }
 end)
@@ -2877,13 +2877,13 @@ function RRP.SettingsData.getSettingsTable()
 end
 
 RegisterNUICallback('settings', function()
-  local controls = exports["fox-base"]:getModule("DataControls"):getBindTable()
-  local settings = exports["fox-base"]:getModule("SettingsData"):getSettingsTable()
+  local controls = exports["drp-base"]:getModule("DataControls"):getBindTable()
+  local settings = exports["drp-base"]:getModule("SettingsData"):getSettingsTable()
   SendNUIMessage({openSection = "settings", currentControls = controls, currentSettings = settings})
 end)
 
 RegisterNUICallback('settingsResetControls', function()
-  TriggerEvent("fox-base:cl:player_control", nil)
+  TriggerEvent("drp-base:cl:player_control", nil)
 end)
 RegisterNetEvent('sendMessagePhoneN')
 AddEventHandler('sendMessagePhoneN', function(phonenumberlol)

@@ -110,7 +110,7 @@ class PhotoGallery{
       item.addEventListener("click", function(){
         document.getElementById("tela").style.backgroundImage = "url("+photo.src.medium + "&w=1366&h=768" +")";
         console.log(photo.src.medium)
-        $.post('http://fox-phone/wallpaper', JSON.stringify({wallpaper: photo.src.medium}));
+        $.post('http://drp-phone/wallpaper', JSON.stringify({wallpaper: photo.src.medium}));
       })
       item.classList.add('item');
       item.innerHTML = `
