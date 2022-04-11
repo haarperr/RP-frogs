@@ -796,6 +796,9 @@ Citizen.CreateThread(function()
 
     exports["drp-polytarget"]:AddBoxZone("houseguy", vector3(-156.5230, -603.8885, 48.2422), 1, 1.4, {
         heading=130.1756,
+    })  
+
+    exports["drp-polytarget"]:AddBoxZone("cluckinbell_fryer", vector3(-518.4861, -700.0580, 33.4477), 1, 1.4, {
     })
 
     
@@ -2346,13 +2349,6 @@ Citizen.CreateThread(function()
             icon = "search",
             label = "Open Fridge",
             parameters = {},
-        },
-        {
-            event = "drp-cluckinbell:store",
-            id = "cluckinbell_stash_2",
-            icon = "circle",
-            label = "Get Ingridients",
-            parameters = {},
         }
     }, {
         distance = { radius = 2.5 },
@@ -3509,7 +3505,7 @@ Citizen.CreateThread(function()
             id = "radical_coffee_seat_12",
             icon = "chair",
             label = "Take A Seat",
-            parameters = {},
+            parameters = {}, 
         }
     }, {
         distance = { radius = 1.5 },
