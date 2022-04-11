@@ -14,8 +14,8 @@ const { MessageButton } = require("discord.js");
 module.exports = {
     name: "players",
     description: "Get list of current players in city",
-    default_permission: false,
-    role: "mod",
+    default_permission: true,
+   // role: "mod",
 
     run: async (client, interaction) => {
         if (GetNumPlayerIndices() === 0) return interaction.reply({ content: "Nobody is currently online to pull", ephemeral: false });
