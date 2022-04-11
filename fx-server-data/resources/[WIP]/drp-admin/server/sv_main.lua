@@ -86,6 +86,6 @@ end)
 
 
 RegisterServerEvent("drp-admin:changeForPed")
-AddEventHandler("drp-admin:changeForPed", function(input, src)
-    TriggerClientEvent('raid_clothes:AdminSetModel', src, input)
+AddEventHandler("drp-admin:changeForPed", function(input, src2)
+    TriggerClientEvent('raid_clothes:AdminSetModel', src2, input)
 end)

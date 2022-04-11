@@ -52,7 +52,7 @@ RegisterCommand("model", function()
       }
     })
     if model[1] ~= nil then
-      if model[2] ~= nil then
+      if model[2] == nil then
         TriggerEvent('raid_clothes:AdminSetModel', model[1].input)
         TriggerEvent('drp-admin:raid_clothes:model', model[1].input)
       else
