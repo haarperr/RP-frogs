@@ -500,7 +500,7 @@ function CbGetSomeStuff() {
 
 function CbFrier() {
     var shopItems = [
-        { item_id: "cbpad", id: 0, name: "craft", information: "{}", slot: 1, amount: 3 },
+        { item_id: "cbpaddy", id: 0, name: "craft", information: "{}", slot: 1, amount: 1 },
     ];
     return JSON.stringify(shopItems);
 };
