@@ -396,7 +396,7 @@ AddEventHandler("drp-chickens:sell", function()
 		if exports["drp-inventory"]:hasEnoughOfItem("lqprotein",toSell,false) and GetDistanceBetweenCoords(x, y, z, GetEntityCoords(GetPlayerPed(-1)).x, GetEntityCoords(GetPlayerPed(-1)).y, GetEntityCoords(GetPlayerPed(-1)).z, true) <= 25 then
 			if exports["drp-inventory"]:getQuantity("lqprotein") >= 1 then
 				TriggerEvent('inventory:removeItem', 'lqprotein', toSell)
-				TriggerServerEvent('chickenpayment:pay', math.random(250, 450) * toSell)
+				TriggerServerEvent('chickenpayment:pay', math.random(200, 450) * toSell)
 				ClearPedTasksImmediately(PlayerPedId())
 			else 
 				TriggerEvent('DoLongHudText', 'Your proteins are bad!', 2)
@@ -405,6 +405,8 @@ AddEventHandler("drp-chickens:sell", function()
 	end
 	DeleteEntity(prop)
 end)
+
+
 RegisterNetEvent("drp-chickens:sellcuttedchicken")
 AddEventHandler("drp-chickens:sell", function()
 	local x,y,z = table.unpack(GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0.0, 0.9, -0.98))
