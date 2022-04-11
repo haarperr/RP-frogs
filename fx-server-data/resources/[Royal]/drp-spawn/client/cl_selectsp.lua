@@ -61,7 +61,7 @@ AddEventHandler('spawn:clientSpawnData', function(spawnData)
 		local currentCheckList = {}
 
 		currentSpawns[#currentSpawns + 1] = Spawn.getDevSpawn()
-		currentSpawns[#currentSpawns + 1] = Spawn.getRoosterSpawn()
+		currentSpawns[#currentSpawns + 1] = Spawn.getWinerySpawn()
 		currentSpawns[#currentSpawns + 1] = Spawn.getPDSpawn()
 		currentSpawns[#currentSpawns + 1] = Spawn.motel[spawnData.motelRoom.roomType]
 		Spawn.defaultApartmentSpawn = spawnData.motelRoom
@@ -236,13 +236,13 @@ function Spawn.getDevSpawn()
 end
 
 
-function Spawn.getRoosterSpawn()
+function Spawn.getWinerySpawn()
 	local spawn = nil
 
 
-	local rooster = exports["isPed"]:GroupRank("rooster_academy")
-	if rooster >= 2 then
-		spawn = { ["pos"] = vector4(-172.83,331.17,93.76,266.08), ['info'] = ' Rooster Cab'}
+	local rooster = exports["isPed"]:GroupRank("winery")
+	if rooster >= 0 then
+		spawn = { ["pos"] = vector4(-1874.85546875, 2068.3393554688, 145.57389831543,266.08), ['info'] = ' Winery'}
 	end
 
 	return spawn
@@ -250,7 +250,18 @@ end
 
 function Spawn.getPDSpawn()
 	local spawn = nil
-	if (exports['isPed']:isPed("myjob") == "police" or exports['isPed']:isPed("myjob") == 'sheriff') then
+	local rank = exports["isPed"]:GroupRank("police")
+	if rank > 0 then 
+		spawn = { ["pos"] = vector4(-172.83,331.17,93.76,266.08), ['info'] = ' MRPD'}
+	end
+
+	return spawn
+end
+
+function Spawn.getPDSpawn()
+	local spawn = nil
+	local rank = exports["isPed"]:GroupRank("sheriff")
+	if rank > 0 then 
 		spawn = { ["pos"] = vector4(-172.83,331.17,93.76,266.08), ['info'] = ' MRPD'}
 	end
 

@@ -244,7 +244,7 @@ function Spawn.obtainWorldSpawnPos(spawnInfo)
     end
 
     local dev = Spawn.getDevSpawn()
-    local rooster = Spawn.getRoosterSpawn()
+    local rooster = Spawn.getWinerySpawn()
 
     if dev and dev.info == spawnInfo then 
         found = dev.pos
