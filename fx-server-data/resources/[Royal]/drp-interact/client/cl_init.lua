@@ -2272,21 +2272,6 @@ Citizen.CreateThread(function()
         distance = { radius = 7 },
     });
 
-
-
-    
-    -- Chicken Guy
-    
-    exports["drp-interact"]:AddPeekEntryByPolyTarget("chickenguy", {{
-        event = "drp-chickens:sell",
-        id = "chickenguy",
-        icon = "circle",
-        label = "Sell your Chickens",
-        parameters = {},
-    }}, {
-        distance = { radius = 5 },
-    });
-
     
     --  Burgershot Shit
     exports["drp-interact"]:AddPeekEntryByPolyTarget("royal_burgershot_make_drinks", {{
