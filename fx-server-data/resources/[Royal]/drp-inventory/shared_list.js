@@ -10194,7 +10194,7 @@ itemList['onion'] = {
     }]
   ],
   price: 10,
-  weight: 12,
+  weight: 1,
   nonStack: false,
   model: '',
   image: 'np_onion.png',

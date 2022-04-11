@@ -374,6 +374,32 @@ Entries[#Entries + 1] = {
     }
 }
 
+
+Entries[#Entries + 1] = {
+    type = 'flag',
+    group = { 'isNPC' },
+    data = {
+        {
+            id = "cluckin1",
+            label = "Get a delivery Job",
+            icon = "circle",
+            event = "drp-cluckin:getdelivery",
+            parameters = {}
+        },
+        {
+            id = "cluckin2",
+            label = "Get extra Ingridients",
+            icon = "circle",
+            event = "drp-cluckin:getextraingridients",
+            parameters = {}
+        }
+    },
+    options = {
+        distance = { radius = 3.0 },
+        npcIds = {"cluckingirl"}
+    }
+}
+
 Entries[#Entries + 1] = {
     type = 'flag',
     group = { 'isNPC' },
