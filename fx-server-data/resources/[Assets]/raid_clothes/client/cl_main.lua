@@ -393,15 +393,15 @@ end
 function SetSkinPP(model, setDefault, PP)
     -- TODO: If not isCop and model not in copModellist, do below.
     -- Model is a hash, GetHashKey(modelName)
-    SetEntityInvincible(PP, true)
+    SetEntityInvincible(GetPlayerPed(PP), true)
     if IsModelInCdimage(model) and IsModelValid(model) then
         RequestModel(model)
         while (not HasModelLoaded(model)) do
             Citizen.Wait(0)
         end
-        SetPlayerModel(PP, model)
+        SetPlayerModel(GetPlayerPed(PP), model)
         SetModelAsNoLongerNeeded(model)
-        player = PP
+        player = GetPlayerPed(PP)
         FreezePedCameraRotation(player, true)
         SetPedMaxHealth(player, 200)
         ToggleClothingToLoadPed()
@@ -424,7 +424,7 @@ function SetSkinPP(model, setDefault, PP)
             SetPedHairColor(player, 1, 1)
         end
     end
-    SetEntityInvincible(PP, false)
+    SetEntityInvincible(GetPlayerPed(PP), false)
     TriggerEvent("Animation:Set:Reset")
 end
 
