@@ -42,13 +42,13 @@ RegisterCommand("model", function()
         header = "Become Model",
         rows = {
         {
-            id = 0,
+            id = 1,
             txt = "Enter Model Spawn"
         },
         {
-          id = 1,
-          txt = "Enter a PayPal"
-      }
+            id = 2,
+            txt = "Enter a PayPal"
+        }
       }
     })
     if model[1] ~= nil then
