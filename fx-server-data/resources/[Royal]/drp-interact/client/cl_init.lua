@@ -798,7 +798,7 @@ Citizen.CreateThread(function()
         heading=130.1756,
     })  
 
-    exports["drp-polytarget"]:AddBoxZone("cluckinbell_fryer", vector3(-518.4861, -700.0580, 33.4477), 1, 1.4, {
+    exports["drp-polytarget"]:AddBoxZone("cluckinbell_warmer", vector3(-518.4861, -700.2580, 33.4477), 1, 1.4, {
     })
 
     
@@ -2330,12 +2330,12 @@ Citizen.CreateThread(function()
         distance = { radius = 2.5 },
     });
 
-    -- Fryer
-    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_fryer", {{
-        event = "drp-cluckinbell:startfryer",
-        id = "cluckinbell_fryer",
+    -- CluckinBell Warmer
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_warmer", {{
+        event = "drp-cluckinbell:openwarmer",
+        id = "cluckinbell_warmer",
         icon = "circle",
-        label = "Make Fries",
+        label = "Open Foodwarmer",
         parameters = {},
     }}, {
         distance = { radius = 2.5 },
