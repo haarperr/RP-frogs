@@ -4801,7 +4801,7 @@ itemList['cbbowl'] = {
   weight: 2,
   nonStack: false,
   model: '',
-  image: 'cluckin-chicken-bowl.png',
+  image: 'cluckin-bowl.png',
   information: 'Ooh..Kreygasm. 969Cal',
 };
 
