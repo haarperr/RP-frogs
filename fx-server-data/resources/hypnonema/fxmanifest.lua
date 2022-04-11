@@ -48,8 +48,6 @@ files {
     'client/html/*.js'
 }
 
-export "play"
-
 author 'simpled-dev'
 version '1.9.0'
 description 'a Media Player Resource for FiveM'

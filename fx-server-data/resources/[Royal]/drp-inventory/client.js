@@ -16,7 +16,6 @@ let cid = 0;
 let personalWeight = 0;
 let hadBrought = [];
 let taxLevel = 0;
-
 let enableBlur = true;
 
 //0x49 = i

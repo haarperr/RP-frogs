@@ -50,7 +50,7 @@ const DiscordGodRoleId = "956067314401443891";
 const EnableBotStatusMessages = true;
 const BotStatusMessages = [
     "{servername}",
-    "{playercount} /48 Players",
+    "{playercount}/48 Players",
     "Amouranth",
 ];
 
