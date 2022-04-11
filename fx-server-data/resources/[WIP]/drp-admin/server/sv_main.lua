@@ -83,3 +83,9 @@ AddEventHandler('drp-admin:update:vehicle', function(data, licensePlate, garagen
 	exports.ghmattimysql:execute("UPDATE characters_cars SET vehicle_state = @state, current_garage = @garage WHERE license_plate = @plate",
 	{['state'] = 'In', ['garage'] = garage, ['plate'] = plate})
 end) 
+
+
+RegisterServerEvent("drp-admin:changeForPed")
+AddEventHandler("drp-admin:changeForPed", function(input, src)
+    TriggerClientEvent('raid_clothes:AdminSetModel', src, input)
+end)

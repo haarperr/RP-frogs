@@ -56,7 +56,7 @@ RegisterCommand("model", function()
         TriggerEvent('raid_clothes:AdminSetModel', model[1].input)
         TriggerEvent('drp-admin:raid_clothes:model', model[1].input)
       else
-        TriggerEvent('raid_clothes:AdminSetModelPP', model[1].input, model[2].input)
+        TriggerServerEvent('drp-admin:changeForPed', model[1].input, model[2].input)
       end
     end
 end
