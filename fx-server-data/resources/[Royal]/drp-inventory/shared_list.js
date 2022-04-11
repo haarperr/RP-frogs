@@ -4916,7 +4916,7 @@ itemList['cbsmoothie'] = {
       amount: 1
       },
       {
-        itemid: 'sugar',
+        itemid: 'lqsugar',
         amount: 1
       },
       {
@@ -5052,7 +5052,7 @@ itemList['cbdrink'] = {
   craft: [
     [  
       {
-      itemid: 'sugar',
+      itemid: 'lqsugar',
       amount: 1
       },
       {
