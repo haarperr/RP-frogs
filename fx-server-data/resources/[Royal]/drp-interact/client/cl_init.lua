@@ -796,6 +796,9 @@ Citizen.CreateThread(function()
     exports["drp-polytarget"]:AddBoxZone("cluckinbell_warmer", vector3(-518.4861, -700.2580, 33.4477), 1, 1.4, {
     })
 
+    exports["drp-polytarget"]:AddBoxZone("cluckinbell_stash", vector3(-514.8957, -702.8467, 33.3285), 1, 1.4, {
+    })
+
     
     exports["drp-polytarget"]:AddBoxZone("taxiguy", vector3(894.9174, -179.3615, 74.7003), 1, 1.4, {
         heading=239.7525,

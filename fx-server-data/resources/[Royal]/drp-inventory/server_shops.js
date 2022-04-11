@@ -492,7 +492,7 @@ function UwUCafeFridge() {
 };
 
 
-function CbFrige() {
+function CbFridge() {
     var shopItems = [
         { item_id: "murdermeal", id: 0, name: "Shop", information: "{}", slot: 1, amount: 15 },
     ];
