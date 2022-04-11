@@ -2341,32 +2341,6 @@ Citizen.CreateThread(function()
         distance = { radius = 3 },
     });
 
-    -- Stash Ect
-    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_stash", {
-        {
-            event = "drp-cluckinbell:stash",
-            id = "cluckinbell_stash_1",
-            icon = "search",
-            label = "Open Fridge",
-            parameters = {},
-        }
-    }, {
-        distance = { radius = 2.5 },
-    });
-
-    -- Assemble Burgers
-    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_assemble", {{
-        event = "drp-civjobs:cluckinbell-make-burgers",
-        id = "cluckinbell_assemble",
-        icon = "hand-holding",
-        label = "Assemble Burger",
-        parameters = {},
-    }}, {
-        distance = { radius = 2.5 },
-    });
-
-
-
     -- House Guy
     
     exports["drp-interact"]:AddPeekEntryByPolyTarget("houseguy", {{
