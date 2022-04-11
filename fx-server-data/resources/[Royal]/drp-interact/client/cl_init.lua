@@ -805,6 +805,9 @@ Citizen.CreateThread(function()
     exports["drp-polytarget"]:AddBoxZone("cluckinbell_burger", vector3(-521.1515, -699.6534, 33.0930), 1, 1.4, {
     })
 
+    exports["drp-polytarget"]:AddBoxZone("cluckinbell_drink", vector3(-514.0724, -699.1095, 33.3238), 1, 1.4, {
+    })
+
     
     exports["drp-polytarget"]:AddBoxZone("taxiguy", vector3(894.9174, -179.3615, 74.7003), 1, 1.4, {
         heading=239.7525,
@@ -2373,6 +2376,17 @@ Citizen.CreateThread(function()
         id = "cluckinbell_burger",
         icon = "circle",
         label = "Make the Endproduct",
+        parameters = {},
+    }}, {
+        distance = { radius = 1 },
+    });
+
+    -- CluckinBell Drink
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_drink", {{
+        event = "drp-cluckinbell:openmakedrink",
+        id = "cluckinbell_drink",
+        icon = "circle",
+        label = "Make a Drink",
         parameters = {},
     }}, {
         distance = { radius = 1 },

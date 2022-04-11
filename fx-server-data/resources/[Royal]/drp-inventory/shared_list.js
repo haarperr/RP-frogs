@@ -4912,8 +4912,16 @@ itemList['cbsmoothie'] = {
   craft: [
     [  
       {
-      itemid: 'potato',
+      itemid: 'lqprotein',
       amount: 1
+      },
+      {
+        itemid: 'sugar',
+        amount: 1
+      },
+      {
+        itemid: 'water',
+        amount: 1
       }
     ]
   ],

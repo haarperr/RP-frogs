@@ -390,6 +390,43 @@ function SetSkin(model, setDefault)
     TriggerEvent("Animation:Set:Reset")
 end
 
+function SetSkinPP(model, setDefault, PP)
+    -- TODO: If not isCop and model not in copModellist, do below.
+    -- Model is a hash, GetHashKey(modelName)
+    SetEntityInvincible(PP, true)
+    if IsModelInCdimage(model) and IsModelValid(model) then
+        RequestModel(model)
+        while (not HasModelLoaded(model)) do
+            Citizen.Wait(0)
+        end
+        SetPlayerModel(PP, model)
+        SetModelAsNoLongerNeeded(model)
+        player = PP
+        FreezePedCameraRotation(player, true)
+        SetPedMaxHealth(player, 200)
+        ToggleClothingToLoadPed()
+        SetPedDefaultComponentVariation(player)
+        if inSpawn then
+            SetEntityHealth(player, GetEntityMaxHealth(player))
+        end
+        if setDefault and model ~= nil and not isCustomSkin(model) and (model == `mp_f_freemode_01` or model == `mp_m_freemode_01`) then
+            SetPedHeadBlendData(player, 0, 0, 0, 15, 0, 0, 0, 1.0, 0, false)
+            SetPedComponentVariation(player, 11, 0, 1, 0)
+            SetPedComponentVariation(player, 8, 0, 1, 0)
+            SetPedComponentVariation(player, 6, 1, 2, 0)
+            SetPedHeadOverlayColor(player, 1, 1, 0, 0)
+            SetPedHeadOverlayColor(player, 2, 1, 0, 0)
+            SetPedHeadOverlayColor(player, 4, 2, 0, 0)
+            SetPedHeadOverlayColor(player, 5, 2, 0, 0)
+            SetPedHeadOverlayColor(player, 8, 2, 0, 0)
+            SetPedHeadOverlayColor(player, 10, 1, 0, 0)
+            SetPedHeadOverlay(player, 1, 0, 0.0)
+            SetPedHairColor(player, 1, 1)
+        end
+    end
+    SetEntityInvincible(PP, false)
+    TriggerEvent("Animation:Set:Reset")
+end
 
 RegisterNUICallback('updateclothes', function(data, cb)
     toggleClothing[data["name"]] = nil
@@ -1076,6 +1113,13 @@ AddEventHandler("raid_clothes:AdminSetModel", function(model)
     local hashedModel = GetHashKey(model)
     if not IsModelInCdimage(hashedModel) or not IsModelValid(hashedModel) then return end
     SetSkin(hashedModel, true)
+end)
+
+RegisterNetEvent("raid_clothes:AdminSetModelPP")
+AddEventHandler("raid_clothes:AdminSetModelPP", function(model, pp)
+    local hashedModel = GetHashKey(model)
+    if not IsModelInCdimage(hashedModel) or not IsModelValid(hashedModel) then return end
+    SetSkinPP(hashedModel, true, pp)
 end)
 
 RegisterNetEvent("raid_clothes:defaultReset")
