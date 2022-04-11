@@ -4829,6 +4829,30 @@ itemList['cbchickenfries'] = {
   information: 'Ooh..thats good. 440Cal + Protein',
 };
 
+itemList['cbzinger'] = {
+  fullyDegrades: false,
+  decayrate: 0.01,
+  displayname: 'Cluckin Zinger Burger',
+  price: 1,
+  weight: 2,
+  nonStack: false,
+  model: '',
+  image: 'cluckin-zinger-burger.png',
+  information: 'Ooh..thats good. 469Cal + Protein',
+};
+
+itemList['cbjr'] = {
+  fullyDegrades: false,
+  decayrate: 0.01,
+  displayname: 'Cluckin Jr. Burger',
+  price: 1,
+  weight: 2,
+  nonStack: false,
+  model: '',
+  image: 'cluckin-jr-burger.png',
+  information: 'Ooh..thats good. 269Cal + Protein',
+};
+
 itemList['cbbucket'] = {
   fullyDegrades: false,
   decayrate: 0.01,
@@ -4911,18 +4935,6 @@ itemList['cbrings'] = {
   model: '',
   image: 'np_cluckin-rings.png',
   information: 'Suffering never tasted so good! 850Cal',
-};
-
-itemList['cbveggy'] = {
-  fullyDegrades: false,
-  decayrate: 0.01,
-  displayname: 'Veggy Salad',
-  price: 1,
-  weight: 2,
-  nonStack: false,
-  model: '',
-  image: 'np_veggy-salad.png',
-  information: 'Mystery chewy bits included. 750Cal',
 };
 
 itemList['cbveggy'] = {
