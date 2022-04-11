@@ -4825,7 +4825,7 @@ itemList['cbfriedchickenpiece'] = {
       amount: 1
     }]
   ],
-  image: 'cb-fried-pad.png',
+  image: 'cb-fried-sticks.png',
   information: 'Used to make food',
 };
 
