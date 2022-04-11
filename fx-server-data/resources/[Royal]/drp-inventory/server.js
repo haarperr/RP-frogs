@@ -515,6 +515,12 @@ onNet("server-inventory-open", async(coords, player, secondInventory, targetName
         } else if (secondInventory == "44000") {
             var targetinvname = targetName;
             var shopArray = CbFrier();
+            var shopAmount = 2;
+            emitNet("inventory-open-target", src, [invArray, arrayCount, playerinvname, shopArray, shopAmount, targetinvname, 500, false]);
+
+        } else if (secondInventory == "45000") {
+            var targetinvname = targetName;
+            var shopArray = CbBurger();
             var shopAmount = 1;
             emitNet("inventory-open-target", src, [invArray, arrayCount, playerinvname, shopArray, shopAmount, targetinvname, 500, false]);
 

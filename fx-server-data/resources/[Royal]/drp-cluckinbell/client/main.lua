@@ -31,6 +31,17 @@ AddEventHandler("drp-cluckinbell:openfrier", function()
     end
 end)
 
+RegisterNetEvent("drp-cluckinbell:openmakeburger")
+AddEventHandler("drp-cluckinbell:openmakeburger", function()
+    local job = exports["isPed"]:GroupRank('cluckin_bell')
+    if job >= 1 then
+        TriggerEvent("server-inventory-open", "45000", "Craft");
+        Wait(1000)
+    else
+        TriggerEvent('DoLongHudText', 'You do not work here !', 2)
+    end
+end)
+
 
 
 

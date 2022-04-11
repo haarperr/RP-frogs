@@ -501,6 +501,7 @@ function CbGetSomeStuff() {
 function CbFrier() {
     var shopItems = [
         { item_id: "cbpaddy", id: 0, name: "craft", information: "{}", slot: 1, amount: 1 },
+        { item_id: "cbfriedchickenpiece", id: 0, name: "craft", information: "{}", slot: 1, amount: 1 },
     ];
     return JSON.stringify(shopItems);
 };
@@ -508,7 +509,6 @@ function CbFrier() {
 function CbBurger() {
     var shopItems = [
         { item_id: "cbjr", id: 0, name: "craft", information: "{}", slot: 1, amount: 1 },
-        { item_id: "cbpad", id: 0, name: "craft", information: "{}", slot: 2, amount: 1 },
     ];
     return JSON.stringify(shopItems);
 };

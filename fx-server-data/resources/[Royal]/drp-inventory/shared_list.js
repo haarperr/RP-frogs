@@ -4793,10 +4793,28 @@ itemList['cbballs'] = {
   information: 'Ooh..salty. 440Cal',
 };
 
-itemList['cbpad'] = {
+itemList['cbpatty'] = {
   fullyDegrades: false,
   decayrate: 0.01,
-  displayname: 'Cluckin Paddie',
+  displayname: 'Cluckin Patty',
+  price: 1,
+  weight: 2,
+  nonStack: false,
+  model: '',
+  craft: [
+    [{
+      itemid: 'cut_chicken',
+      amount: 1
+    }]
+  ],
+  image: 'cb-fried-pad.png',
+  information: 'Used to make food',
+};
+
+itemList['cbfriedchickenpiece'] = {
+  fullyDegrades: false,
+  decayrate: 0.01,
+  displayname: 'Cluckin Cutted Chicken Pieces',
   price: 1,
   weight: 2,
   nonStack: false,
