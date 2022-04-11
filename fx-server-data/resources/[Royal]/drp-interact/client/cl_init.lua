@@ -2342,7 +2342,7 @@ Citizen.CreateThread(function()
         label = "Open Food Warmer",
         parameters = {},
     }}, {
-        distance = { radius = 3 },
+        distance = { radius = 1.75 },
     });
 
     -- CluckinBell Stash
@@ -2353,7 +2353,7 @@ Citizen.CreateThread(function()
         label = "Open Stash",
         parameters = {},
     }}, {
-        distance = { radius = 3 },
+        distance = { radius = 1.75 },
     });
 
     -- CluckinBell Frie
@@ -2364,7 +2364,7 @@ Citizen.CreateThread(function()
         label = "Fry Food",
         parameters = {},
     }}, {
-        distance = { radius = 3 },
+        distance = { radius = 1.75 },
     });
 
     -- CluckinBell Burger
@@ -2375,7 +2375,7 @@ Citizen.CreateThread(function()
         label = "Make the Endproduct",
         parameters = {},
     }}, {
-        distance = { radius = 3 },
+        distance = { radius = 1.75 },
     });
 
     -- House Guy
