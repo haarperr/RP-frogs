@@ -698,3 +698,5 @@ Player: [51] Placed Scene: [HOSTAGFAWEAWDF] At Coords = vector3(315.0658, -277.0
 Player: [51] Placed Scene: [HOSTAGE@@#] At Coords = vector3(314.7642, -277.1568, 53.17952)
 Player: [50] Placed Scene: [HOSTAGE] At Coords = vector3(315.1076, -277.416, 54.11512)
 Player: [50] Placed Scene: [hostage] At Coords = vector3(315.2408, -275.9558, 54.4361)
+Player: [53] Placed Scene: [Vent (imposter hiding in it)] At Coords = vector3(-259.3152, -1588.488, 30.85462)
+Player: [54] Placed Scene: [SUSSY IMPOSTER 😱] At Coords = vector3(-655.5046, -729.1954, 26.65714)
