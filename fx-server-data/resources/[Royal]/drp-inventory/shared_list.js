@@ -4849,7 +4849,7 @@ itemList['cbcontroller'] = {
   weight: 2,
   nonStack: false,
   model: '',
-  image: 'cluckin-bowl.png',
+  image: 'cb-controller.png',
   information: '⚠️ Low Battery ⚠️ | Recharge me soon',
 };
 
