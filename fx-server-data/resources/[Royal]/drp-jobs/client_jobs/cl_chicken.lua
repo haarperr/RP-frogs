@@ -138,7 +138,11 @@ AddEventHandler("drp-civjobs:package-chicken", function(position)
 					if exports["drp-inventory"]:hasEnoughOfItem("freshmeat", 6) then
 						FreezeEntityPosition(GetPlayerPed(-1),false)
 						TriggerEvent('inventory:removeItem', "freshmeat", math.random(3,6))
-						TriggerEvent('player:receiveItem', "cut_chicken", math.random(1,2))	
+						if math.random(1,6) == 1 then
+							TriggerEvent('player:receiveItem', "lqprotein", math.random(1,2))	
+						else
+							TriggerEvent('player:receiveItem', "cut_chicken", math.random(1,2))	
+						end
 						TriggerEvent('DoLongHudText', 'Keep processing the chicken.', 1)
 						ClearPedTasks(GetPlayerPed(-1))
 					end

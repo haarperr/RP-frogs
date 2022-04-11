@@ -4941,6 +4941,34 @@ itemList['cbzinger'] = {
   weight: 2,
   nonStack: false,
   model: '',
+  craft: [
+    [  
+      {
+      itemid: 'cbpatty',
+      amount: 1
+      },
+      {
+        itemid: 'hamburgerbuns',
+        amount: 1
+      },
+      {
+        itemid: 'tomato',
+        amount: 1
+      },
+      {
+        itemid: 'cheese',
+        amount: 1
+      },
+      {
+        itemid: 'lettuce',
+        amount: 1
+      },
+      {
+        itemid: 'lqprotein',
+        amount: 1
+      }
+    ]
+  ],
   image: 'cluckin-zinger-burger.png',
   information: 'Ooh..thats good. 469Cal + Protein',
 };
