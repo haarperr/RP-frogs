@@ -108,6 +108,7 @@ Entries[#Entries + 1] = {
         distance = { radius = 2.5 },
         isEnabled = function()
             local isEmployedAtBurgerShot = exports["mizrp-business"]:IsEmployedAt("burger_shot")
+            local isEmployedAtCluckinBell = exports["mizrp-business"]:IsEmployedAt("cluckin_bell")
             local isEmployedAtRoosters = exports["mizrp-business"]:IsEmployedAt("rooster")
             local publicTradeIn = exports["mizrp-config"]:GetMiscConfig("jobs.receipts.public")
             return isEmployedAtBurgerShot or isEmployedAtRoosters or publicTradeIn
