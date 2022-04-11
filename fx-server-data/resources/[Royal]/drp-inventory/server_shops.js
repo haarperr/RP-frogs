@@ -509,6 +509,14 @@ function CbFrier() {
     return JSON.stringify(shopItems);
 };
 
+function CbDrink() {
+    var shopItems = [
+        { item_id: "cbdrink", id: 0, name: "craft", information: "{}", slot: 1, amount: 2 },
+        { item_id: "cbsmoothie", id: 0, name: "craft", information: "{}", slot: 2, amount: 2 },
+    ];
+    return JSON.stringify(shopItems);
+};
+
 function CbBurger() {
     var shopItems = [
         { item_id: "cbjr", id: 0, name: "craft", information: "{}", slot: 1, amount: 2 },
