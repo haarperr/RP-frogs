@@ -2342,7 +2342,7 @@ Citizen.CreateThread(function()
         label = "Open Food Warmer",
         parameters = {},
     }}, {
-        distance = { radius = 1.75 },
+        distance = { radius = 1 },
     });
 
     -- CluckinBell Stash
@@ -2375,7 +2375,7 @@ Citizen.CreateThread(function()
         label = "Make the Endproduct",
         parameters = {},
     }}, {
-        distance = { radius = 1.75 },
+        distance = { radius = 1 },
     });
 
     -- House Guy
