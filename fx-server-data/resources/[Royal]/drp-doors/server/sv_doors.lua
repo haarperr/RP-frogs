@@ -8778,40 +8778,6 @@ DOOR_CONFIG = {
       info = "CluckIn Bell Door 1",
       active = true,
       id = 532,
-      coords = vector3(-510.1316, -683.8816, 33.38879),
-      model = 9266180,
-      lock = true,
-      keyFob = true,
-      desc = "Door Left",
-      access = {
-        job = {
-          ["cluckin_bell"] = true,
-        },
-        cid = {
-        }
-      }
-    },
-    {
-      info = "CluckIn Bell Door 2",
-      active = true,
-      id = 534,
-      coords = vector3(-513.0078, -683.8605, 32.32133),
-      model = 9362692,
-      lock = true,
-      keyFob = true,
-      desc = "Door Right",
-      access = {
-        job = {
-          ["cluckin_bell"] = true,
-        },
-        cid = {
-        }
-      }
-    },
-    {
-      info = "CluckIn Bell Door 1",
-      active = true,
-      id = 532,
       coords = vector3(-510.1299, -683.8661, 33.41278),
       model = 903328250,
       lock = true,
@@ -8831,6 +8797,23 @@ DOOR_CONFIG = {
       id = 534,
       coords = vector3(-513.1303, -683.8661, 33.41278),
       model = -1432609915,
+      lock = true,
+      keyFob = true,
+      desc = "Door Right",
+      access = {
+        job = {
+          ["cluckin_bell"] = true,
+        },
+        cid = {
+        }
+      }
+    },
+    {
+      info = "CluckIn Bell Door 3",
+      active = true,
+      id = 535,
+      coords = vector3(-510.9052, -697.2418, 33.41287),
+      model = -738011261,
       lock = true,
       keyFob = true,
       desc = "Door Right",
