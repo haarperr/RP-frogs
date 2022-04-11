@@ -1533,6 +1533,9 @@ function DisplayInventory(sqlInventory, itemCount, invName, main) {
                             let requirements = requirementsArray[ArrayX]
 
                             for (let xx = 0; xx < requirements.length; xx++) {
+                                // print itemid in console
+                                console.log(requirements[xx].itemid)
+                                
                                 let requirementName = itemList[requirements[xx].itemid].displayname;
                                 let requiredClasses = 'requirementSmall';
 
