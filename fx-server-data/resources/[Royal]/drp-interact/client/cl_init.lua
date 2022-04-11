@@ -2372,7 +2372,7 @@ Citizen.CreateThread(function()
         event = "drp-cluckinbell:openmakeburger",
         id = "cluckinbell_burger",
         icon = "circle",
-        label = "Make a Burger",
+        label = "Make the Endproduct",
         parameters = {},
     }}, {
         distance = { radius = 3 },
