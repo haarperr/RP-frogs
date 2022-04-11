@@ -36,8 +36,8 @@
 
 
         <div id="racing-hud" class="row no-padding">
-            <div class="racing-text"></div>
-            <div class="race-teste" id="Posicao"></div>
+            <div class="racing-text">Pos</div>
+            <div class="race-teste" id="Posicao">7/10</div>
 
 
             <div class="racing-text">Lap</div>
@@ -126,7 +126,7 @@
                 </div>
                 <div class="col s4 right-align">
                     <i class="status-bar-weather" style="font-size:12px"></i> &nbsp; <i id="status-bar-time" style="font-size:12px"></i> &nbsp;</i>
-                    <i class="1status-bar-weather" style="font-size:12px" aria-label="5G" data-action="wifi" data-balloon-pos="down-right"><i class="fas fa-wifi" style="font-size:12px"></i></i> 
+                    <i class="1status-bar-weather" style="font-size:12px" aria-label="5G" data-balloon-pos="down-right"><i class="fas fa-wifi" style="font-size:12px"></i></i> 
                 </div>
             </div>
           </div>
@@ -195,15 +195,15 @@
                       </div>
                      
 
-                     <div class="col s3">
+                    <!-- <div class="col s3">
                         <div class="jss35 jss38 phone-button callcs phone-button" style="background: linear-gradient(180deg, #e96011 0%, #e99d47 100%); color: rgb(255, 255, 255);"   data-action-button="browser"
-                        data-site="https://listenonrepeat.com/" aria-label="Music"
+                        data-site="https://listenonrepeat.com/" aria-label="Musica"
                         ><i class="fab fa-soundcloud" style="font-size:28px"></i></div>
-                      </div> 
+                      </div> -->
                       
 
                     <div class="col s3">
-                        <div class="jss35 jss38 phone-button" data-action="settings" aria-label="Settings" style="background: url('https://cdn.iconscout.com/icon/free/png-256/apple-settings-1-493162.png') 0% 0% / cover no-repeat;"></div>
+                        <div class="jss35 jss38 phone-button" data-action="settings" aria-label="Settings" style="background: url('https://cdn.discordapp.com/attachments/899383691019706388/940250982649065522/settings.png') 0% 0% / cover no-repeat;"></div>
                       </div>
 
                       <div class="col s3">
@@ -211,13 +211,16 @@
                       </div>
 
                       <div class="col s3">
-                        <div class="jss35 jss38 phone-button" data-action="btnTaskGroups" style="background: url('https://gta-assets.nopixel.net/images/phone-icons/employment.png') 0% 0% / cover no-repeat;" aria-label="Groups "></div>
+                        <div class="jss35 jss38 phone-button" data-action="btnProperty2" style="background: url('https://cdn.discordapp.com/attachments/899383691019706388/951214227098591292/Keys.png') 0% 0% / cover no-repeat;" aria-label="House Keys"></div>
                       </div>
 
                       <div class="col s3">
                         <div class="jss35 jss38 phone-button" data-action="btnProperty" style="background: url('https://cdn.discordapp.com/attachments/899383691019706388/951213092434477106/Housing.png') 0% 0% / cover no-repeat;" aria-label="Real-Estate"></div>
                       </div>
 
+                      <div class="col s3">
+                        <div class="jss35 jss38 phone-button" data-action="btnTaskGroups" style="background: url('https://gta-assets.nopixel.net/images/phone-icons/employment.png') 0% 0% / cover no-repeat;" aria-label="Manage Group"></div>
+                      </div>
 
                       <div class="col s3">
                         <div class="jss35 jss38 phone-button phone-button" style="background: linear-gradient(180deg, #e96011 0%, #e99d47 100%); color: rgb(255, 255, 255);" data-action="racing:events:list" aria-label="Racing"
@@ -228,12 +231,13 @@
                       <div class="col s3">
                         <div class="jss35 jss38 phone-button" data-action="calculadoraInformation" aria-label="Calculator" style="background: url('https://gta-assets.nopixel.net/images/phone-icons/calculator.png') 0% 0% / cover no-repeat;"></div>
                       </div>
-
-                    <div class="col s3 hidden-buttons btn-decrypt">
+                      
+                      <div class="col s3 hidden-buttons btn-decrypt">
                         <div class="jss35 jss38 blue darken-4 phone-button" data-action="btnDecrypt" aria-label="VPN Network Search" data-balloon-pos="up-left">
                           <i class="fas fa-wifi"></i></div>
                       </div>
                     </div>
+                     
                      
                     <div class="row app-row">
         
@@ -584,8 +588,7 @@
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <i class="fas fa-address-book prefix white-text"></i>
-                                        <input id="gps-search" type="text" class="validate white-text" />
-                                        <label for="gps-search">Search</label>
+                                        <input id="gps-search" type="text" placeholder="Search" class="validate white-text" />
                                     </div>
                                 </div>
                                 <div class="row center-align">
@@ -758,8 +761,8 @@
                                 <div class="row no-padding ">
                                     <div class="input-field col s12">
                                         <i class="fas fa-home prefix white-text"></i>
-                                        <input id="keys-search" type="text" class="validate white-text" />
-                                        <label for="keys-search">Search</label>
+                                        <input id="keys-search" type="text" placeholder="Search" class="validate white-text" />
+  
                                     </div>
                                 </div>
                                 <div class="row no-padding center-align">
@@ -913,12 +916,12 @@
                         </div>
                         <div class="real-estate-footer real-estate-header">
                             <div class="row no-padding">
-                                <div class="col s12">
-                                    <button data-target="real-estate-transfer-modal" aria-label="Transfer House" data-balloon-pos="up-left" class="btn-small modal-trigger blue btn-transfer-house"><i
+                                <div class="col-12">
+                                    <button style="margin-top:-150px;" data-target="real-estate-transfer-modal" aria-label="Transfer House" data-balloon-pos="up-left" class="btn-small modal-trigger blue btn-transfer-house"><i
                                     class="fas fa-exchange-alt icon"></i></button>
-                                    <button data-target="real-estate-sell-modal" aria-label="Sell House" data-balloon-pos="up" class="btn-small modal-trigger green"><i
+                                    <button style="margin-top:-150px;" data-target="real-estate-sell-modal" aria-label="Sell House" data-balloon-pos="up" class="btn-small modal-trigger green"><i
                                     class="fas fa-dollar-sign icon"></i>Sell</button>
-                                    <button data-target="real-estate-evict-modal" aria-label="Evict" data-balloon-pos="up-right" class="btn-small modal-trigger red btn-evict-house"><i
+                                    <button style="margin-top:-150px;" data-target="real-estate-evict-modal" aria-label="Evict" data-balloon-pos="up-right" class="btn-small modal-trigger red btn-evict-house"><i
                                     class="fas fa-trash-alt icon"></i></button>
                                 </div>
                             </div>
