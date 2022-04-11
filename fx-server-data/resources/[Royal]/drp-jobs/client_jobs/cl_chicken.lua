@@ -126,7 +126,7 @@ AddEventHandler("drp-civjobs:package-chicken", function(position)
 			local finishedpacktime = 5000
 
 			if exports['drp-inventory']:hasEnoughOfItem('chickenslammer', 1, false) then
-				finishedpacktime = math.random(3000, 5000)
+				finishedpacktime = math.random(1500, 5000)
 			end
 
 			local finishedpacking = exports['drp-taskbar']:taskBar(finishedpacktime, 'Processing Meat')
@@ -177,7 +177,7 @@ AddEventHandler("drp-civjobs:process-alive_chicken", function(position)
 		local finishedtime = 5000
 
 		if exports['drp-inventory']:hasEnoughOfItem('chickenslammer', 1, false) then
-			finishedtime = math.random(3000, 5000)
+			finishedtime = math.random(1500, 5000)
 		end
 
 		local finished = exports['drp-taskbar']:taskBar(finishedtime, 'Cutting the Chicken')

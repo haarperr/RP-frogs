@@ -364,6 +364,13 @@ Entries[#Entries + 1] = {
             icon = "circle",
             event = "bsdelivery:getJob",
             parameters = {}
+        },
+        {
+            event = "drp-burgershot:store",
+            id = "burgershot_stash_2",
+            icon = "circle",
+            label = "Get Ingridients",
+            parameters = {},
         }
     },
     options = {

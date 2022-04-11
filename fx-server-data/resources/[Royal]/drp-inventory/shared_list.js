@@ -29261,12 +29261,23 @@ itemList['heistduffelbag'] = {
 
 itemList['chickenslammer'] = {
   fullyDegrades: true,
-  decayrate: 0.0,
+  decayrate: 0.25,
   displayname: 'Chicken Slammer',
   price: 0,
   weight: 20,
   nonStack: true,
   model: '',
+  craft: [
+    [{
+        itemid: '4191993645',
+        amount: 1
+      },
+      {
+        itemid: 'refinedaluminium',
+        amount: 30
+      }, 
+    ],
+  ],
   image: 'chicken-slammer.png',
-  information: 'Maddi Memory Axe',
+  information: 'Cluckin Bell Employ Tool',
 };

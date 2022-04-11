@@ -1848,13 +1848,6 @@ Citizen.CreateThread(function()
             icon = "search",
             label = "Open Fridge",
             parameters = {},
-        },
-        {
-            event = "drp-burgershot:store",
-            id = "burgershot_stash_2",
-            icon = "circle",
-            label = "Get Ingridients",
-            parameters = {},
         }
     }, {
         distance = { radius = 2.5 },

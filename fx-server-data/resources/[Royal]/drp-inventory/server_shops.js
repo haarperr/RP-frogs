@@ -235,6 +235,15 @@ function ConvenienceStore() {
         { item_id: "glucose", id: 0, name: "Shop", information: "{}", slot: 15, amount: 50 },
         { item_id: "cigar", id: 0, name: "Shop", information: "{}", slot: 16, amount: 50 },
         { item_id: "hairtie", id: 0, name: "Shop", information: "{}", slot: 17, amount: 1 },
+        { item_id: "questionablemeat", id: 0, name: "Shop", information: "{}", slot: 18, amount: 15 },
+        { item_id: "lqsugar", id: 0, name: "Shop", information: "{}", slot: 19, amount: 15 },
+        { item_id: "hamburgerbuns", id: 0, name: "Shop", information: "{}", slot: 20, amount: 15 },
+        { item_id: "milk", id: 0, name: "Shop", information: "{}", slot: 21, amount: 15 },
+        { item_id: "lettuce", id: 0, name: "Shop", information: "{}", slot: 22, amount: 15 },
+        { item_id: "tomato", id: 0, name: "Shop", information: "{}", slot: 23, amount: 15 },
+        { item_id: "cheese", id: 0, name: "Shop", information: "{}", slot: 24, amount: 15 },
+        { item_id: "water", id: 0, name: "Shop", information: "{}", slot: 25, amount: 15 },
+        { item_id: "potato", id: 0, name: "Shop", information: "{}", slot: 26, amount: 15 },
     ];
     return JSON.stringify(shopItems);
 }
@@ -476,18 +485,8 @@ function PearlsStore() {
 
 function UwUCafeFridge() {
     var shopItems = [
-        { item_id: "questionablemeat", id: 0, name: "Shop", information: "{}", slot: 1, amount: 15 },
-        { item_id: "lqsugar", id: 0, name: "Shop", information: "{}", slot: 2, amount: 15 },
-        { item_id: "hamburgerbuns", id: 0, name: "Shop", information: "{}", slot: 3, amount: 15 },
-        { item_id: "milk", id: 0, name: "Shop", information: "{}", slot: 4, amount: 15 },
-        { item_id: "lettuce", id: 0, name: "Shop", information: "{}", slot: 5, amount: 15 },
-        { item_id: "tomato", id: 0, name: "Shop", information: "{}", slot: 6, amount: 15 },
-        { item_id: "cheese", id: 0, name: "Shop", information: "{}", slot: 7, amount: 15 },
-        { item_id: "water", id: 0, name: "Shop", information: "{}", slot: 8, amount: 15 },
-        { item_id: "potato", id: 0, name: "Shop", information: "{}", slot: 9, amount: 15 },
-        { item_id: "randomtoy", id: 0, name: "Shop", information: "{}", slot: 10, amount: 15 },
-        { item_id: "murdermeal", id: 0, name: "Shop", information: "{}", slot: 11, amount: 15 },
- 
+        { item_id: "randomtoy", id: 0, name: "Shop", information: "{}", slot: 1, amount: 15 },
+        { item_id: "murdermeal", id: 0, name: "Shop", information: "{}", slot: 2, amount: 15 },
     ];
     return JSON.stringify(shopItems);
 };
