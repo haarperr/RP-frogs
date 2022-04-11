@@ -390,7 +390,6 @@ function SetSkin(model, setDefault)
     TriggerEvent("Animation:Set:Reset")
 end
 
-
 RegisterNUICallback('updateclothes', function(data, cb)
     toggleClothing[data["name"]] = nil
     selectedValue = has_value(drawable_names, data["name"])

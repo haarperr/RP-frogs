@@ -939,9 +939,21 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
         secondaryMaxWeight = 1000.0;
         slotLimitTarget = 90;
     } else if (targetinvName.indexOf('MurderMeal') > -1) {
-        secondaryMaxWeight = 15.0;
+        secondaryMaxWeight = 20.0;
         slotLimitTarget = 5;
         displayName = 'Murder Meal';
+    } else if (targetinvName.indexOf('cbclucker') > -1) {
+        secondaryMaxWeight = 20.0;
+        slotLimitTarget = 5;
+        displayName = 'Little Clucker Box';
+    } else if (targetinvName.indexOf('cbfarmers') > -1) {
+        secondaryMaxWeight = 10.0;
+        slotLimitTarget = 5;
+        displayName = 'Cluckin Bell Bag';
+    } else if (targetinvName.indexOf('storage-cluckin_warmer') > -1) {
+        secondaryMaxWeight = 150.0;
+        slotLimitTarget = 75;
+        displayName = 'Foos Warmer';
     } else if (targetinvName.indexOf('pdevidencebag') > -1) {
         secondaryMaxWeight = 0.0;
         slotLimitTarget = 20;
@@ -1521,6 +1533,9 @@ function DisplayInventory(sqlInventory, itemCount, invName, main) {
                             let requirements = requirementsArray[ArrayX]
 
                             for (let xx = 0; xx < requirements.length; xx++) {
+                                // print itemid in console
+                                console.log(requirements[xx].itemid)
+                                
                                 let requirementName = itemList[requirements[xx].itemid].displayname;
                                 let requiredClasses = 'requirementSmall';
 

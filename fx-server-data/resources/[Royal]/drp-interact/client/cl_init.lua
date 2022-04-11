@@ -787,11 +787,6 @@ Citizen.CreateThread(function()
         heading=70.9786,
     })
 
-    -- Chicken Stash
-    exports["drp-polytarget"]:AddBoxZone("chickenstash", vector3(-518.4832, -700.2421, 33.1997), 1, 1.4, {
-        heading=359.0948,
-    })
-
     -- house guy
 
     exports["drp-polytarget"]:AddBoxZone("houseguy", vector3(-156.5230, -603.8885, 48.2422), 1, 1.4, {
@@ -799,6 +794,18 @@ Citizen.CreateThread(function()
     })  
 
     exports["drp-polytarget"]:AddBoxZone("cluckinbell_warmer", vector3(-518.4861, -700.2580, 33.4477), 1, 1.4, {
+    })
+
+    exports["drp-polytarget"]:AddBoxZone("cluckinbell_stash", vector3(-514.8957, -702.8467, 33.3285), 1, 1.4, {
+    })
+
+    exports["drp-polytarget"]:AddBoxZone("cluckinbell_frie", vector3(-521.2682, -701.4075, 32.8389), 1, 1.4, {
+    })
+
+    exports["drp-polytarget"]:AddBoxZone("cluckinbell_burger", vector3(-521.1515, -699.6534, 33.0930), 1, 1.4, {
+    })
+
+    exports["drp-polytarget"]:AddBoxZone("cluckinbell_drink", vector3(-514.0724, -699.1095, 33.3238), 1, 1.4, {
     })
 
     
@@ -2338,34 +2345,52 @@ Citizen.CreateThread(function()
         label = "Open Food Warmer",
         parameters = {},
     }}, {
-        distance = { radius = 3 },
+        distance = { radius = 1 },
     });
 
-    -- Stash Ect
-    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_stash", {
-        {
-            event = "drp-cluckinbell:stash",
-            id = "cluckinbell_stash_1",
-            icon = "search",
-            label = "Open Fridge",
-            parameters = {},
-        }
-    }, {
-        distance = { radius = 2.5 },
-    });
-
-    -- Assemble Burgers
-    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_assemble", {{
-        event = "drp-civjobs:cluckinbell-make-burgers",
-        id = "cluckinbell_assemble",
-        icon = "hand-holding",
-        label = "Assemble Burger",
+    -- CluckinBell Stash
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_stash", {{
+        event = "drp-cluckinbell:openstash",
+        id = "cluckinbell_stash",
+        icon = "circle",
+        label = "Open Stash",
         parameters = {},
     }}, {
-        distance = { radius = 2.5 },
+        distance = { radius = 1.75 },
     });
 
+    -- CluckinBell Frie
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_frie", {{
+        event = "drp-cluckinbell:openfrier",
+        id = "cluckinbell_frie",
+        icon = "circle",
+        label = "Fry Food",
+        parameters = {},
+    }}, {
+        distance = { radius = 1.75 },
+    });
 
+    -- CluckinBell Burger
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_burger", {{
+        event = "drp-cluckinbell:openmakeburger",
+        id = "cluckinbell_burger",
+        icon = "circle",
+        label = "Make the Endproduct",
+        parameters = {},
+    }}, {
+        distance = { radius = 1 },
+    });
+
+    -- CluckinBell Drink
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_drink", {{
+        event = "drp-cluckinbell:openmakedrink",
+        id = "cluckinbell_drink",
+        icon = "circle",
+        label = "Make a Drink",
+        parameters = {},
+    }}, {
+        distance = { radius = 1 },
+    });
 
     -- House Guy
     

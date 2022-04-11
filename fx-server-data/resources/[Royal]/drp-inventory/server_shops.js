@@ -202,15 +202,15 @@ function WarehouseCrafting() {
     var shopItems = [
         { item_id: "lockpick", id: 0, name: "Craft", information: "{}", slot: 1, amount: 5 },
         { item_id: "advlockpick", id: 0, name: "Craft", information: "{}", slot: 2, amount: 3 },
-        { item_id: "repairkit", id: 0, name: "Craft", information: "{}", slot: 3, amount: 1 },
-        { item_id: "advrepairkit", id: 0, name: "Craft", information: "{}", slot: 4, amount: 1 },
-        { item_id: "civradio", id: 0, name: "Craft", information: "{}", slot: 5, amount: 1 },
-        { item_id: "cuffs", id: 0, name: "Craft", information: "{}", slot: 6, amount: 1 },
-        { item_id: "rifleammo", id: 0, name: "craft", information: "{}", slot: 7, amount: 1 },
-        { item_id: "pistolammo", id: 0, name: "craft", information: "{}", slot: 8, amount: 1 },
-        { item_id: "subammo", id: 0, name: "craft", information: "{}", slot: 9, amount: 1 },
-        { item_id: "148457251", id: 0, name: "craft", information: "{}", slot: 10, amount: 1 },
-        { item_id: "-134995899", id: 0, name: "craft", information: "{}", slot: 11, amount: 1 },
+        { item_id: "repairkit", id: 0, name: "Craft", information: "{}", slot: 3, amount: 2 },
+        { item_id: "advrepairkit", id: 0, name: "Craft", information: "{}", slot: 4, amount: 2 },
+        { item_id: "civradio", id: 0, name: "Craft", information: "{}", slot: 5, amount: 2 },
+        { item_id: "cuffs", id: 0, name: "Craft", information: "{}", slot: 6, amount: 2 },
+        { item_id: "rifleammo", id: 0, name: "craft", information: "{}", slot: 7, amount: 2 },
+        { item_id: "pistolammo", id: 0, name: "craft", information: "{}", slot: 8, amount: 2 },
+        { item_id: "subammo", id: 0, name: "craft", information: "{}", slot: 9, amount: 2 },
+        { item_id: "148457251", id: 0, name: "craft", information: "{}", slot: 10, amount: 2 },
+        { item_id: "-134995899", id: 0, name: "craft", information: "{}", slot: 11, amount: 2 },
          ];
     return JSON.stringify(shopItems);
 }
@@ -231,18 +231,18 @@ function ConvenienceStore() {
         { item_id: "emptybaggies", id: 0, name: "Shop", information: "{}", slot: 11, amount: 50 },
         { item_id: "rollingpaper", id: 0, name: "Shop", information: "{}", slot: 12, amount: 50 },
         { item_id: "methlabbaggy", id: 0, name: "Shop", information: "{}", slot: 13, amount: 10 },
-        { item_id: "glucose", id: 0, name: "Shop", information: "{}", slot: 14, amount: 50 },
-        { item_id: "cigar", id: 0, name: "Shop", information: "{}", slot: 15, amount: 50 },
-        { item_id: "hairtie", id: 0, name: "Shop", information: "{}", slot: 16, amount: 1 },
-        { item_id: "questionablemeat", id: 0, name: "Shop", information: "{}", slot: 17, amount: 15 },
-        { item_id: "lqsugar", id: 0, name: "Shop", information: "{}", slot: 18, amount: 15 },
-        { item_id: "hamburgerbuns", id: 0, name: "Shop", information: "{}", slot: 19, amount: 15 },
-        { item_id: "milk", id: 0, name: "Shop", information: "{}", slot: 20, amount: 15 },
-        { item_id: "lettuce", id: 0, name: "Shop", information: "{}", slot: 21, amount: 15 },
-        { item_id: "tomato", id: 0, name: "Shop", information: "{}", slot: 22, amount: 15 },
-        { item_id: "cheese", id: 0, name: "Shop", information: "{}", slot: 23, amount: 15 },
-        { item_id: "potato", id: 0, name: "Shop", information: "{}", slot: 24, amount: 15 },
-        { item_id: "coffeebeans", id: 0, name: "Shop", information: "{}", slot: 25, amount: 15 },
+        { item_id: "cigar", id: 0, name: "Shop", information: "{}", slot: 14, amount: 50 },
+        { item_id: "hairtie", id: 0, name: "Shop", information: "{}", slot: 15, amount: 1 },
+        { item_id: "questionablemeat", id: 0, name: "Shop", information: "{}", slot: 16, amount: 15 },
+        { item_id: "lqsugar", id: 0, name: "Shop", information: "{}", slot: 17, amount: 15 },
+        { item_id: "hamburgerbuns", id: 0, name: "Shop", information: "{}", slot: 18, amount: 15 },
+        { item_id: "milk", id: 0, name: "Shop", information: "{}", slot: 19, amount: 15 },
+        { item_id: "lettuce", id: 0, name: "Shop", information: "{}", slot: 20, amount: 15 },
+        { item_id: "tomato", id: 0, name: "Shop", information: "{}", slot: 21, amount: 15 },
+        { item_id: "cheese", id: 0, name: "Shop", information: "{}", slot: 22, amount: 15 },
+        { item_id: "potato", id: 0, name: "Shop", information: "{}", slot: 23, amount: 15 },
+        { item_id: "coffeebeans", id: 0, name: "Shop", information: "{}", slot: 24, amount: 15 },
+        { item_id: "onion", id: 0, name: "Shop", information: "{}", slot: 25, amount: 15 },
 
     ];
     return JSON.stringify(shopItems);
@@ -487,6 +487,44 @@ function UwUCafeFridge() {
     var shopItems = [
         { item_id: "randomtoy", id: 0, name: "Shop", information: "{}", slot: 1, amount: 15 },
         { item_id: "murdermeal", id: 0, name: "Shop", information: "{}", slot: 2, amount: 15 },
+    ];
+    return JSON.stringify(shopItems);
+};
+
+
+function CbGetSomeStuff() {
+    var shopItems = [
+        { item_id: "cbclucker", id: 0, name: "Shop", information: "{}", slot: 1, amount: 15 },
+        { item_id: "cbfarmers", id: 0, name: "Shop", information: "{}", slot: 2, amount: 15 },
+        { item_id: "cbcontroller", id: 0, name: "Shop", information: "{}", slot: 3, amount: 15 },
+    ];
+    return JSON.stringify(shopItems);
+};
+
+function CbFrier() {
+    var shopItems = [
+        { item_id: "cbpatty", id: 0, name: "craft", information: "{}", slot: 1, amount: 2 },
+        { item_id: "cbfriedchickenpiece", id: 0, name: "craft", information: "{}", slot: 2, amount: 2 },
+    ];
+    return JSON.stringify(shopItems);
+};
+
+function CbDrink() {
+    var shopItems = [
+        { item_id: "cbdrink", id: 0, name: "craft", information: "{}", slot: 1, amount: 2 },
+        { item_id: "cbsmoothie", id: 0, name: "craft", information: "{}", slot: 2, amount: 2 },
+    ];
+    return JSON.stringify(shopItems);
+};
+
+function CbBurger() {
+    var shopItems = [
+        { item_id: "cbjr", id: 0, name: "craft", information: "{}", slot: 1, amount: 2 },
+        { item_id: "cbfowl", id: 0, name: "craft", information: "{}", slot: 2, amount: 2 },
+        { item_id: "cbbucket", id: 0, name: "craft", information: "{}", slot: 3, amount: 2 },
+        { item_id: "cbzinger", id: 0, name: "craft", information: "{}", slot: 4, amount: 2 },
+        { item_id: "cbbowl", id: 0, name: "craft", information: "{}", slot: 5, amount: 2 },
+        { item_id: "cbveggy", id: 0, name: "craft", information: "{}", slot: 6, amount: 2 }
     ];
     return JSON.stringify(shopItems);
 };

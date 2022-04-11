@@ -4783,34 +4783,258 @@ itemList['bfsandwich'] = {
 
 itemList['cbballs'] = {
   fullyDegrades: false,
-  decayrate: 0.0,
+  decayrate: 0.01,
   displayname: 'Cluckin Balls',
   price: 1,
-  weight: 0,
+  weight: 2,
   nonStack: false,
   model: '',
+  craft: [
+    [  
+      {
+      itemid: 'cbfriedchickenpiece',
+      amount: 1
+      }
+    ]
+  ],
   image: 'np_cluckin-balls.png',
   information: 'Ooh..salty. 440Cal',
 };
 
-itemList['cbbucket'] = {
+itemList['cbpatty'] = {
   fullyDegrades: false,
-  decayrate: 0.0,
-  displayname: 'Chicken Bucket',
+  decayrate: 0.01,
+  displayname: 'Chicken Patty',
   price: 1,
-  weight: 0,
+  weight: 2,
   nonStack: false,
   model: '',
+  craft: [
+    [{
+      itemid: 'cut_chicken',
+      amount: 1
+    }]
+  ],
+  image: 'cb-fried-pad.png',
+  information: 'Used to make food',
+};
+
+itemList['cbfriedchickenpiece'] = {
+  fullyDegrades: false,
+  decayrate: 0.01,
+  displayname: 'Fried Chicken Stripes',
+  price: 1,
+  weight: 2,
+  nonStack: false,
+  model: '',
+  craft: [
+    [{
+      itemid: 'cut_chicken',
+      amount: 1
+    }]
+  ],
+  image: 'cb-fried-sticks.png',
+  information: 'Used to make food',
+};
+
+itemList['cbbowl'] = {
+  fullyDegrades: false,
+  decayrate: 0.01,
+  displayname: 'Cluckin Bowl',
+  price: 1,
+  weight: 2,
+  nonStack: false,
+  model: '',
+  craft: [
+    [{
+      itemid: 'cbfriedchickenpiece',
+      amount: 2
+      },
+      {
+        itemid: 'lettuce',
+        amount: 2
+    }]
+  ],
+  image: 'cluckin-bowl.png',
+  information: 'Ooh..Kreygasm. 969Cal',
+};
+
+itemList['cbcontroller'] = {
+  fullyDegrades: false,
+  decayrate: 0.5,
+  displayname: 'Cluckin Gameboy',
+  price: 30,
+  weight: 15,
+  nonStack: true,
+  model: '',
+  craft: [
+    [{
+      itemid: 'electronics',
+      amount: 1
+    }],
+  ],
+  image: 'cb-controller.png',
+  information: '⚠️ Low Battery ⚠️',
+};
+
+itemList['cbcoupon'] = {
+  fullyDegrades: false,
+  decayrate: 0.5,
+  displayname: 'Cluckin Coupon',
+  price: 150,
+  weight: 3,
+  nonStack: false,
+  model: '',
+  image: 'cb-coupon.png',
+  information: 'Redeem it for Free Food at Cluckin Bell',
+};
+
+itemList['cbcoupongolden'] = {
+  fullyDegrades: false,
+  decayrate: 0.5,
+  displayname: 'Golden Cluckin Coupon',
+  price: 750,
+  weight: 3,
+  nonStack: false,
+  model: '',
+  image: 'cb-coupongolden.png',
+  information: '2 Weeks of Free Food at Cluckin Bell',
+};
+
+itemList['cbsmoothie'] = {
+  fullyDegrades: false,
+  decayrate: 0.01,
+  displayname: 'Cluckin Protein Smoothie',
+  price: 1,
+  weight: 2,
+  nonStack: false,
+  model: '',
+  craft: [
+    [  
+      {
+      itemid: 'lqprotein',
+      amount: 1
+      },
+      {
+        itemid: 'sugar',
+        amount: 1
+      },
+      {
+        itemid: 'water',
+        amount: 1
+      }
+    ]
+  ],
+  image: 'cluckin-protein-smoothie.png',
+  information: 'Ooh..thats good. 440Cal + Protein',
+};
+
+itemList['cbchickenfries'] = {
+  fullyDegrades: false,
+  decayrate: 0.01,
+  displayname: 'Cluckin Chicken Fries',
+  price: 1,
+  weight: 2,
+  nonStack: false,
+  model: '',
+  image: 'cluckin-chicken-fries.png',
+  information: 'Ooh..thats good. 440Cal + Protein',
+};
+
+itemList['cbzinger'] = {
+  fullyDegrades: false,
+  decayrate: 0.01,
+  displayname: 'Cluckin Zinger Burger',
+  price: 1,
+  weight: 2,
+  nonStack: false,
+  model: '',
+  craft: [
+    [  
+      {
+      itemid: 'cbpatty',
+      amount: 1
+      },
+      {
+        itemid: 'hamburgerbuns',
+        amount: 1
+      },
+      {
+        itemid: 'tomato',
+        amount: 1
+      },
+      {
+        itemid: 'cheese',
+        amount: 1
+      },
+      {
+        itemid: 'lettuce',
+        amount: 1
+      },
+      {
+        itemid: 'lqprotein',
+        amount: 1
+      }
+    ]
+  ],
+  image: 'cluckin-zinger-burger.png',
+  information: 'Ooh..thats good. 469Cal + Protein',
+};
+
+itemList['cbjr'] = {
+  fullyDegrades: false,
+  decayrate: 0.01,
+  displayname: 'Cluckin Jr. Burger',
+  price: 1,
+  weight: 2,
+  nonStack: false,
+  model: '',
+  craft: [
+    [  
+      {
+      itemid: 'cbpatty',
+      amount: 1
+      },
+      {
+        itemid: 'hamburgerbuns',
+        amount: 1
+      }
+    ]
+  ],
+  image: 'cluckin-jr-burger.png',
+  information: 'Ooh..thats good. 269Cal + Protein',
+};
+
+itemList['cbbucket'] = {
+  fullyDegrades: false,
+  decayrate: 0.01,
+  displayname: 'Chicken Bucket',
+  price: 1,
+  weight: 2,
+  nonStack: false,
+  model: '',
+  craft: [
+    [  
+      {
+      itemid: 'cbfriedchickenpiece',
+      amount: 1
+      },
+      {
+        itemid: 'lqprotein',
+        amount: 1
+      }
+    ]
+  ],
   image: 'np_chicken-bucket.png',
   information: 'I like chicken! 2350Cal',
 };
 
 itemList['cbclucker'] = {
   fullyDegrades: false,
-  decayrate: 0.0,
+  decayrate: 0.01,
   displayname: 'Little Clucker',
   price: 1,
-  weight: 0,
+  weight: 2,
   nonStack: false,
   model: '',
   image: 'np_little-clucker.png',
@@ -4819,22 +5043,34 @@ itemList['cbclucker'] = {
 
 itemList['cbdrink'] = {
   fullyDegrades: false,
-  decayrate: 0.0,
+  decayrate: 0.01,
   displayname: 'Cluckin Drink',
   price: 1,
-  weight: 0,
+  weight: 2,
   nonStack: false,
   model: '',
+  craft: [
+    [  
+      {
+      itemid: 'sugar',
+      amount: 1
+      },
+      {
+        itemid: 'water',
+        amount: 1
+      }
+    ]
+  ],
   image: 'np_cluckin-drink.png',
   information: 'Hell Cluckin Yeah',
 };
 
 itemList['cbfarmers'] = {
   fullyDegrades: false,
-  decayrate: 0.0,
-  displayname: "Farmer's Surprise",
+  decayrate: 0.01,
+  displayname: 'Cluckin Bag',
   price: 1,
-  weight: 0,
+  weight: 2,
   nonStack: false,
   model: '',
   image: 'np_farmers-surprise.png',
@@ -4843,39 +5079,100 @@ itemList['cbfarmers'] = {
 
 itemList['cbfowl'] = {
   fullyDegrades: false,
-  decayrate: 0.0,
+  decayrate: 0.01,
   displayname: 'Fowl Burger',
   price: 1,
-  weight: 0,
+  weight: 2,
   nonStack: false,
   model: '',
+  craft: [
+    [  
+      {
+      itemid: 'hamburgerpatty',
+      amount: 1
+      },
+      {
+        itemid: 'cbpatty',
+        amount: 1
+      },
+      {
+        itemid: 'lettuce',
+        amount: 1
+      },
+      {
+        itemid: 'cheese',
+        amount: 1
+      },
+      {
+        itemid: 'tomato',
+        amount: 1
+      }
+    ]
+  ],
   image: 'np_fowl-burger.png',
   information: 'If you enjoyed it, the chicken didnt die in vain! 900Cal',
 };
 
 itemList['cbfries'] = {
   fullyDegrades: false,
-  decayrate: 0.0,
+  decayrate: 0.01,
   displayname: 'Cluckin Fries',
   price: 1,
-  weight: 0,
+  weight: 2,
   nonStack: false,
   model: '',
+  craft: [
+    [  
+      {
+      itemid: 'potato',
+      amount: 1
+      }
+    ]
+  ],
   image: 'np_cluckin-fries.png',
   information: 'Cluckinsize included. 680Cal',
 };
 
 itemList['cbrings'] = {
   fullyDegrades: false,
-  decayrate: 0.0,
+  decayrate: 0.01,
   displayname: 'Cluckin Rings',
   price: 1,
-  weight: 0,
+  weight: 2,
   nonStack: false,
+  craft: [
+    [  
+      {
+      itemid: 'onion',
+      amount: 1
+      }
+    ]
+  ],
   model: '',
   image: 'np_cluckin-rings.png',
   information: 'Suffering never tasted so good! 850Cal',
 };
+
+itemList['cbveggy'] = {
+  fullyDegrades: false,
+  decayrate: 0.01,
+  displayname: 'Veggy Salad',
+  price: 1,
+  weight: 2,
+  nonStack: false,
+  model: '',
+  craft: [
+    [  
+      {
+      itemid: 'lettuce',
+      amount: 2
+      }
+    ]
+  ],
+  image: 'np_veggy-salad.png',
+  information: 'Mystery chewy bits included. 750Cal',
+};
+
 
 itemList['cbrownie'] = {
   fullyDegrades: false,
@@ -4887,18 +5184,6 @@ itemList['cbrownie'] = {
   model: '',
   image: 'np_cannabis-brownie.png',
   information: 'Dude...',
-};
-
-itemList['cbveggy'] = {
-  fullyDegrades: false,
-  decayrate: 0.0,
-  displayname: 'Veggy Salad',
-  price: 1,
-  weight: 0,
-  nonStack: false,
-  model: '',
-  image: 'np_veggy-salad.png',
-  information: 'Mystery chewy bits included. 750Cal',
 };
 
 itemList['cocoab'] = {
@@ -5304,6 +5589,10 @@ itemList['coffee'] = {
     [{
       itemid: 'foodingredient',
       amount: 2
+    }],
+    [{
+      itemid: 'coffeebeans',
+      amount: 1
     }]
   ],
   price: 400,
@@ -22149,7 +22438,7 @@ itemList['lettuce'] = {
   fullyDegrades: true,
   decayrate: 0.025,
   displayname: 'Lettuce',
-  price: 1,
+  price: 7,
   weight: 1,
   nonStack: false,
   model: '',
@@ -22173,7 +22462,7 @@ itemList['cheese'] = {
   fullyDegrades: true,
   decayrate: 0.025,
   displayname: 'Cheese',
-  price: 1,
+  price: 7,
   weight: 1,
   nonStack: false,
   model: '',
@@ -22221,7 +22510,7 @@ itemList['coffeebeans'] = {
   fullyDegrades: true,
   decayrate: 0.025,
   displayname: 'Coffee Beans',
-  price: 1,
+  price: 5,
   weight: 1,
   nonStack: false,
   model: '',
@@ -22245,7 +22534,7 @@ itemList['tomato'] = {
   fullyDegrades: true,
   decayrate: 0.025,
   displayname: 'Tomato',
-  price: 1,
+  price: 7,
   weight: 1,
   nonStack: false,
   model: '',
@@ -27907,7 +28196,7 @@ itemList['lqsugar'] = {
   fullyDegrades: true,
   decayrate: 0.02,
   displayname: '(LQ) Sugar',
-  price: 1,
+  price: 5,
   weight: 1.0,
   nonStack: false,
   model: '',

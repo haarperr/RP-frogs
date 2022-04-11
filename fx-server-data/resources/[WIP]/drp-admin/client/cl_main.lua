@@ -42,13 +42,22 @@ RegisterCommand("model", function()
         header = "Become Model",
         rows = {
         {
-            id = 0,
+            id = 1,
             txt = "Enter Model Spawn"
-        }}
+        },
+        {
+            id = 2,
+            txt = "Enter a PayPal"
+        }
+      }
     })
     if model[1] ~= nil then
+      if model[2] ~= nil then
+        TriggerServerEvent('drp-admin:changeForPed', model[1].input, model[2].input)
+      else
         TriggerEvent('raid_clothes:AdminSetModel', model[1].input)
         TriggerEvent('drp-admin:raid_clothes:model', model[1].input)
+      end
     end
 end
  --- IM LAZY AS FUCK

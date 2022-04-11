@@ -749,6 +749,17 @@ AddEventHandler('murdermeal', function(itemid)
 	TriggerEvent("server-inventory-open", "1", "MurderMeal -"..itemid)
 end)
 
+RegisterNetEvent('cbclucker')
+AddEventHandler('cbclucker', function(itemid)
+	TriggerEvent("server-inventory-open", "1", "cbclucker -"..itemid)
+end)
+
+RegisterNetEvent('cbfarmers')
+AddEventHandler('cbfarmers', function(itemid)
+	TriggerEvent("server-inventory-open", "1", "cbfarmers -"..itemid)
+end)
+
+
 
 RegisterNetEvent('pdevidencebag')
 AddEventHandler('pdevidencebag', function(itemid)
