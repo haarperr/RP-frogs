@@ -492,6 +492,14 @@ function UwUCafeFridge() {
 };
 
 
+function CbFrige() {
+    var shopItems = [
+        { item_id: "murdermeal", id: 0, name: "Shop", information: "{}", slot: 1, amount: 15 },
+    ];
+    return JSON.stringify(shopItems);
+};
+
+
 function DigitelDenShop() {
     var shopItems = [
         { item_id: "civradio", id: 0, name: "Shop", information: "{}", slot: 1, amount: 5 },
