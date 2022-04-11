@@ -4796,7 +4796,7 @@ itemList['cbballs'] = {
 itemList['cbpatty'] = {
   fullyDegrades: false,
   decayrate: 0.01,
-  displayname: 'Cluckin Patty',
+  displayname: 'Chicken Patty',
   price: 1,
   weight: 2,
   nonStack: false,
@@ -4814,7 +4814,7 @@ itemList['cbpatty'] = {
 itemList['cbfriedchickenpiece'] = {
   fullyDegrades: false,
   decayrate: 0.01,
-  displayname: 'Cluckin Cutted Chicken Pieces',
+  displayname: 'Fried Chicken Stripes',
   price: 1,
   weight: 2,
   nonStack: false,
