@@ -8707,7 +8707,7 @@ DOOR_CONFIG = {
         job = {},
         cid = {
           [1] = true,
-		[8] = true
+		      [8] = true
         }
       }
     },
@@ -8724,7 +8724,7 @@ DOOR_CONFIG = {
         job = {},
         cid = {
           [1] = true,
-		[8] = true
+		      [8] = true
         }
       }
     },
@@ -8774,7 +8774,29 @@ DOOR_CONFIG = {
         }
       }
     },
-
+    {
+      info = "CluckIn Bell Door 1",
+      active = true,
+      id = 531,
+      coords = vector3(-675.538, -878.9228, 24.4615),
+      model = 245838764,
+      lock = true,
+      keyFob = true,
+      desc = "Door Left",
+      access = {
+        job = {},
+        cid = {
+          [1] = true,
+          [47] = true,
+          [35] = true,
+          [13] = true,
+          [48] = true,
+          [84] = true,
+          [12] = true,
+          [68] = true
+        }
+      }
+    }
 
 
     

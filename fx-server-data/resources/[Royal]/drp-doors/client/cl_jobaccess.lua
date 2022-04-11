@@ -2,6 +2,7 @@ local myJob = nil
 local isPolice = false
 local isEMS = false
 local isBurger = false
+local isCluckin = false
 local isArtGal = false
 local isredCir = false
 local isTow = false
@@ -48,6 +49,7 @@ Citizen.CreateThread(function()
 		local job = exports["isPed"]:isPed("myJob")
         local pRadicalCoffee = exports["isPed"]:GroupRank('radical_coffee')
         local pBurger = exports["isPed"]:GroupRank('burger_shot')
+        local pCluckin = exports["isPed"]:GroupRank('cluckin_bell')
         local pBeanMachine = exports["isPed"]:GroupRank('radical_coffee')
         local pArtGal = exports["isPed"]:GroupRank('art_gallery')
         local pRedCircle = exports["isPed"]:GroupRank('red_circle')
@@ -83,6 +85,11 @@ Citizen.CreateThread(function()
             isBurger = true 
         else
             isBurger = false
+        end
+        if pCluckin >= 1 then 
+            isCluckin = true 
+        else
+            isCluckin = false
         end
         if pBeanMachine >= 1 then 
             isBeanMachine = true 
@@ -209,6 +216,10 @@ function isBurgerActive()
     return isBurger
 end
 
+function isCluckinActive()
+    return isCluckin
+end
+
 function artGal()
     return isArtGal
 end
@@ -321,6 +332,7 @@ function hasSecuredAccess(pId, pType)
         or  (authorized.access.job["EMS"] ~= nil and isEMSActive())
         or  (authorized.access.job["DR"] ~= nil and isDoc())
         or  (authorized.access.job["burger_shot"] ~= nil and isBurgerActive())
+        or  (authorized.access.job["cluckin_bell"] ~= nil and isCluckinActive())
         or  (authorized.access.job["radical_coffee"] ~= nil and isBeanMachineActive())
         or  (authorized.access.job["art_gallery"] ~= nil and artGal())
         or  (authorized.access.job["redcircle"] ~= nil and isRedActive())

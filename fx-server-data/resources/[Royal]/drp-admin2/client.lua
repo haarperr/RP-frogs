@@ -62,6 +62,11 @@ RegisterNUICallback('jobburgershot', function(data, cb)
   TriggerEvent("DoLongHudText","Job changed.")
 end)
 
+RegisterNUICallback('jobcluckinbell', function(data, cb)
+  TriggerServerEvent("jobssystem:jobs", "cluckin_bell")
+  TriggerEvent("DoLongHudText","Job changed.")
+end)
+
 RegisterNUICallback('jobtokyos', function(data, cb)
   TriggerServerEvent("jobssystem:jobs", "rooster_rest")
   TriggerEvent("DoLongHudText","Job changed.")

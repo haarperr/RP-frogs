@@ -251,6 +251,7 @@ passnames = {
   ["sanders_shop"] = "Sanders Shop",
   ["import_shop"] = "Import Shop",
   ["burger_shot"] = "Burger Shot",
+  ["cluckin_bell"] = "Cluckin Bell",
   ["pearls"] = "Pearls",
   ["art_gallery"] = "Art Gallery",
   ["repairs_harmony"] = "Harmony Repairs",
