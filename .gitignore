@@ -10,6 +10,7 @@
 !*.gif
 !*.ico
 !*.mp3
+!*.mp4
 !*.log
 !*.ttf
 !*.gitignore

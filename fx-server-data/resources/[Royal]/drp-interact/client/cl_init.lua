@@ -2335,10 +2335,10 @@ Citizen.CreateThread(function()
         event = "drp-cluckinbell:openwarmer",
         id = "cluckinbell_warmer",
         icon = "circle",
-        label = "Open Foodwarmer",
+        label = "Open Food Warmer",
         parameters = {},
     }}, {
-        distance = { radius = 2.5 },
+        distance = { radius = 3 },
     });
 
     -- Stash Ect
