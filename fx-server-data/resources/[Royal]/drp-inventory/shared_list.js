@@ -4789,6 +4789,14 @@ itemList['cbballs'] = {
   weight: 2,
   nonStack: false,
   model: '',
+  craft: [
+    [  
+      {
+      itemid: 'cbfriedchickenpiece',
+      amount: 1
+      }
+    ]
+  ],
   image: 'np_cluckin-balls.png',
   information: 'Ooh..salty. 440Cal',
 };
@@ -4859,6 +4867,12 @@ itemList['cbcontroller'] = {
   weight: 15,
   nonStack: true,
   model: '',
+  craft: [
+    [{
+      itemid: 'electronics',
+      amount: 1
+    }],
+  ],
   image: 'cb-controller.png',
   information: '⚠️ Low Battery ⚠️',
 };
@@ -4895,6 +4909,14 @@ itemList['cbsmoothie'] = {
   weight: 2,
   nonStack: false,
   model: '',
+  craft: [
+    [  
+      {
+      itemid: 'potato',
+      amount: 1
+      }
+    ]
+  ],
   image: 'cluckin-protein-smoothie.png',
   information: 'Ooh..thats good. 440Cal + Protein',
 };
@@ -4955,6 +4977,22 @@ itemList['cbbucket'] = {
   weight: 2,
   nonStack: false,
   model: '',
+  craft: [
+    [  
+      {
+      itemid: 'cbfriedchickenpiece',
+      amount: 1
+      },
+      {
+        itemid: 'plastic',
+        amount: 1
+      },
+      {
+        itemid: 'lqprotein',
+        amount: 1
+      }
+    ]
+  ],
   image: 'np_chicken-bucket.png',
   information: 'I like chicken! 2350Cal',
 };
@@ -4979,6 +5017,18 @@ itemList['cbdrink'] = {
   weight: 2,
   nonStack: false,
   model: '',
+  craft: [
+    [  
+      {
+      itemid: 'sugar',
+      amount: 1
+      },
+      {
+        itemid: 'water',
+        amount: 1
+      }
+    ]
+  ],
   image: 'np_cluckin-drink.png',
   information: 'Hell Cluckin Yeah',
 };
@@ -5003,6 +5053,30 @@ itemList['cbfowl'] = {
   weight: 2,
   nonStack: false,
   model: '',
+  craft: [
+    [  
+      {
+      itemid: 'hamburgerpatty',
+      amount: 1
+      },
+      {
+        itemid: 'cbpatty',
+        amount: 1
+      },
+      {
+        itemid: 'lettuce',
+        amount: 1
+      },
+      {
+        itemid: 'cheese',
+        amount: 1
+      },
+      {
+        itemid: 'tomato',
+        amount: 1
+      }
+    ]
+  ],
   image: 'np_fowl-burger.png',
   information: 'If you enjoyed it, the chicken didnt die in vain! 900Cal',
 };
@@ -5015,6 +5089,14 @@ itemList['cbfries'] = {
   weight: 2,
   nonStack: false,
   model: '',
+  craft: [
+    [  
+      {
+      itemid: 'potato',
+      amount: 1
+      }
+    ]
+  ],
   image: 'np_cluckin-fries.png',
   information: 'Cluckinsize included. 680Cal',
 };
@@ -5026,6 +5108,14 @@ itemList['cbrings'] = {
   price: 1,
   weight: 2,
   nonStack: false,
+  craft: [
+    [  
+      {
+      itemid: 'onion',
+      amount: 1
+      }
+    ]
+  ],
   model: '',
   image: 'np_cluckin-rings.png',
   information: 'Suffering never tasted so good! 850Cal',
@@ -5467,6 +5557,10 @@ itemList['coffee'] = {
     [{
       itemid: 'foodingredient',
       amount: 2
+    }],
+    [{
+      itemid: 'coffeebeans',
+      amount: 1
     }]
   ],
   price: 400,
