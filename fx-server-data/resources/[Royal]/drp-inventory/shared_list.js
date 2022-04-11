@@ -4984,10 +4984,6 @@ itemList['cbbucket'] = {
       amount: 1
       },
       {
-        itemid: 'plastic',
-        amount: 1
-      },
-      {
         itemid: 'lqprotein',
         amount: 1
       }
