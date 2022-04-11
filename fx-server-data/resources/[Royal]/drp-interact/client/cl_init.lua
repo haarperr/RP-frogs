@@ -2352,13 +2352,13 @@ Citizen.CreateThread(function()
     }}, {
         distance = { radius = 3 },
     });
-    
+
     -- CluckinBell Frie
     exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_frie", {{
-        event = "drp-cluckinbell:openfrie",
+        event = "drp-cluckinbell:openfrier",
         id = "cluckinbell_frie",
         icon = "circle",
-        label = "Frie Food",
+        label = "Fry Food",
         parameters = {},
     }}, {
         distance = { radius = 3 },

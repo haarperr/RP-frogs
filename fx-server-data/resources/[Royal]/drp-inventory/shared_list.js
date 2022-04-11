@@ -4793,6 +4793,24 @@ itemList['cbballs'] = {
   information: 'Ooh..salty. 440Cal',
 };
 
+itemList['cbpad'] = {
+  fullyDegrades: false,
+  decayrate: 0.01,
+  displayname: 'Cluckin Paddie',
+  price: 1,
+  weight: 2,
+  nonStack: false,
+  model: '',
+  craft: [
+    [{
+      itemid: 'cut_chicken',
+      amount: 1
+    }]
+  ],
+  image: 'cb-fried-pad.png',
+  information: 'Used to make food',
+};
+
 itemList['cbbowl'] = {
   fullyDegrades: false,
   decayrate: 0.01,
@@ -4849,6 +4867,16 @@ itemList['cbjr'] = {
   weight: 2,
   nonStack: false,
   model: '',
+  craft: [
+    [{
+      itemid: 'cbpad',
+      amount: 1
+    }],
+    [{
+      itemid: 'hamburgerbuns',
+      amount: 1
+    }]
+  ],
   image: 'cluckin-jr-burger.png',
   information: 'Ooh..thats good. 269Cal + Protein',
 };

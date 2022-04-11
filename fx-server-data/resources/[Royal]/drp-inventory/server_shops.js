@@ -492,9 +492,24 @@ function UwUCafeFridge() {
 };
 
 
-function CbFridge() {
+function CbGetSomeStuff() {
     var shopItems = [
         { item_id: "murdermeal", id: 0, name: "Shop", information: "{}", slot: 1, amount: 15 },
+    ];
+    return JSON.stringify(shopItems);
+};
+
+function CbFrier() {
+    var shopItems = [
+        { item_id: "cbpad", id: 0, name: "craft", information: "{}", slot: 1, amount: 3 },
+    ];
+    return JSON.stringify(shopItems);
+};
+
+function CbBurger() {
+    var shopItems = [
+        { item_id: "cbjr", id: 0, name: "craft", information: "{}", slot: 1, amount: 1 },
+        { item_id: "cbpad", id: 0, name: "craft", information: "{}", slot: 2, amount: 1 },
     ];
     return JSON.stringify(shopItems);
 };
