@@ -4962,7 +4962,7 @@ itemList['cbdrink'] = {
 itemList['cbfarmers'] = {
   fullyDegrades: false,
   decayrate: 0.01,
-  displayname: "Cluckin Bag",
+  displayname: 'Cluckin Bag',
   price: 1,
   weight: 2,
   nonStack: false,
