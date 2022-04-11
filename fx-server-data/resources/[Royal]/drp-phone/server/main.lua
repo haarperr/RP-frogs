@@ -31,7 +31,7 @@ end)
 RegisterNetEvent('Server:GetHandle')
 AddEventHandler('Server:GetHandle', function()
   local src = source
-local user = exports["drp-base"]:getModule("Player"):GetUser(src)
+local user = exports["fox-base"]:getModule("Player"):GetUser(src)
 local char = user:getCurrentCharacter()
   fal = "@" .. char.first_name .. "_" .. char.last_name
   local handle = fal
@@ -44,7 +44,7 @@ end)
 RegisterNetEvent('phone:addContact')
 AddEventHandler('phone:addContact', function(name, number)
   local src = source
-local user = exports["drp-base"]:getModule("Player"):GetUser(src)
+local user = exports["fox-base"]:getModule("Player"):GetUser(src)
   local char = user:getCurrentCharacter()
   local characterId = user:getVar("character").id
   local handle = handle
@@ -63,7 +63,7 @@ end)
 RegisterNetEvent('deleteContact')
 AddEventHandler('deleteContact', function(name, number)
   local src = source
-local user = exports["drp-base"]:getModule("Player"):GetUser(src)
+local user = exports["fox-base"]:getModule("Player"):GetUser(src)
   local char = user:getCurrentCharacter()
   local characterId = user:getVar("character").id
 
@@ -113,7 +113,7 @@ end
 RegisterNetEvent('getNM')
 AddEventHandler('getNM', function(pNumber)
   local src = source
-local user = exports["drp-base"]:getModule("Player"):GetUser(src)
+local user = exports["fox-base"]:getModule("Player"):GetUser(src)
   local char = user:getCurrentCharacter()
   local characterId = user:getVar("character").id
   local pNumber = getNumberPhone(characterId)
@@ -124,7 +124,7 @@ end)
 RegisterNetEvent('phone:deleteYP')
 AddEventHandler('phone:deleteYP', function(number)
   local src = source
-local user = exports["drp-base"]:getModule("Player"):GetUser(src)
+local user = exports["fox-base"]:getModule("Player"):GetUser(src)
   local characterId = user:getVar("character").id
   local myNumber = getNumberPhone(characterId)
   exports.ghmattimysql:execute('DELETE FROM phone_yp WHERE phoneNumber = @phoneNumber', {
@@ -175,36 +175,7 @@ function getIdentifierByPhoneNumber(phone_number)
   end
 end
 
--- RegisterServerEvent('ReturnHouseKeys')
--- AddEventHandler('ReturnHouseKeys', function(cid)
---   local src = source
---   local houses = {}
---   local shared = {}
---   exports.ghmattimysql:execute("SELECT * FROM __housedata WHERE cid= ? ", {cid}, function(chicken)
---       for k, v in pairs(chicken) do
---           if v ~= nil then
---               if v.housename ~= nil then
---                   local random = math.random(1111,9999)
---                   houses[random] = {}
---                   table.insert(houses[random], {["house_name"] = v.housename, ["house_model"] = v.house_model, ["house_id"] = v.house_id, ["days"]= v.days, ["overall"] = v.overall, ["payments"] = v.payments, ["amountdue"] = v.due})
---                   TriggerClientEvent('returnPlayerKeys', src, houses, shared)
---               end
---           end
---       end
---   end)
---   exports.ghmattimysql:execute('SELECT * FROM __housekeys WHERE `cid`= ?', {cid}, function(returnData)
---       for k, r in pairs(returnData) do
---           if r ~= nil then
---               if r.housename ~= nil then
---                   local random = math.random(1111,9999)
---                   shared[random] = {}
---                   table.insert(shared[random], {["house_name"] = r.housename, ["house_model"] = r.house_model, ["house_id"] = r.house_id})
---                  TriggerClientEvent('returnPlayerKeys', src, houses, shared)
---               end
---           end
---       end
---   end)
--- end)
+
 
 RegisterServerEvent('requestPing')
 AddEventHandler('requestPing', function(target, x,y,z, pIsAnon)
@@ -235,7 +206,7 @@ AddEventHandler('phone:callContact', function(cid, targetnumber, toggle)
   if not toggle then
       TriggerClientEvent('phone:initiateCall', src)
       for _, player in ipairs(GetPlayers()) do
-          local user = exports["drp-base"]:getModule("Player"):GetUser(tonumber(player))
+          local user = exports["fox-base"]:getModule("Player"):GetUser(tonumber(player))
           local char = user:getVar("character")
           if char.id == targetIdentifier then
               TriggerClientEvent('phone:receiveCall', tonumber(player), targetnumber, src, getPhoneRandomNumber())
@@ -245,7 +216,7 @@ AddEventHandler('phone:callContact', function(cid, targetnumber, toggle)
       TriggerClientEvent('phone:initiateCall', src)
       
     for _, player in ipairs(GetPlayers()) do
-        local user = exports["drp-base"]:getModule("Player"):GetUser(tonumber(player))
+        local user = exports["fox-base"]:getModule("Player"):GetUser(tonumber(player))
         local char = user:getVar("character")
         if char.id == targetIdentifier then
           TriggerClientEvent('phone:receiveCall', tonumber(player), targetnumber, src, srcPhone)
@@ -350,7 +321,7 @@ AddEventHandler('phone:sendSMS', function(cid, receiver, message)
   print(target)
   
   for _, player in ipairs(GetPlayers()) do
-    local user = exports["drp-base"]:getModule("Player"):GetUser(tonumber(player))
+    local user = exports["fox-base"]:getModule("Player"):GetUser(tonumber(player))
     local characterId = user:getVar("character").id
     if characterId ~= nil then
         if characterId == target then
@@ -372,7 +343,7 @@ end)
 RegisterNetEvent('phone:serverGetMessagesBetweenParties')
 AddEventHandler('phone:serverGetMessagesBetweenParties', function(sender, receiver, displayName)
   local src = source
-local user = exports["drp-base"]:getModule("Player"):GetUser(src)
+local user = exports["fox-base"]:getModule("Player"):GetUser(src)
   local characterId = user:getVar("character").id
   local mynumber = getNumberPhone(characterId)
   exports.ghmattimysql:execute("SELECT * FROM user_messages WHERE (sender = @sender AND receiver = @receiver) OR (sender = @receiver AND receiver = @sender) ORDER BY id ASC",
@@ -405,7 +376,7 @@ RegisterNetEvent('phone:EndCall')
 AddEventHandler('phone:EndCall', function(mySourceID, stupidcallnumberidk, somethingextra)
   local src = source
   TriggerClientEvent('phone:removefromToko', src, stupidcallnumberidk)
-  TriggerClientEvent('drp-phone:RemoveCall', src)
+  TriggerClientEvent('fox-phone:RemoveCall', src)
 
   if mySourceID ~= 0 or mySourceID ~= nil then
       TriggerClientEvent('phone:removefromToko', mySourceID, stupidcallnumberidk)
@@ -460,7 +431,7 @@ end)
 function getOrGeneratePhoneNumber (sourcePlayer, identifier, cb)
   local sourcePlayer = sourcePlayer
   local identifier = identifier
-  local user = exports["drp-base"]:getModule("Player"):GetUser(sourcePlayer)
+  local user = exports["fox-base"]:getModule("Player"):GetUser(sourcePlayer)
   local char = user:getVar("character")
   local myPhoneNumber = getNumberPhone(char.id)
   if myPhoneNumber == '0' or myPhoneNumber == nil then
@@ -510,7 +481,7 @@ RegisterNetEvent('phone:updatePhoneJob')
 AddEventHandler('phone:updatePhoneJob', function(advert)
   --local handle = handle
   local src = source
-local user = exports["drp-base"]:getModule("Player"):GetUser(src)
+local user = exports["fox-base"]:getModule("Player"):GetUser(src)
   local char = user:getCurrentCharacter()
   local mynumber = char.phone_number
 
@@ -564,25 +535,25 @@ AddEventHandler('racing-global-race', function(map, laps, counter, reverseTrack,
   local waitperiod = (counter * 1000)
   Wait(waitperiod)
   Races[uniqueid]["open"] = false
-  if(math.random(1, 10) >= 5) then
-      TriggerEvent("dispatch:svNotify", {
-          dispatchCode = "10-94",
-          firstStreet = street1,
-          secondStreet = street2,
-          origin = {
-              x = BuiltMaps[map]["checkpoints"][1].x,
-              y = BuiltMaps[map]["checkpoints"][1].y,
-              z = BuiltMaps[map]["checkpoints"][1].z
-          }
-  })
-  end
+  -- if(math.random(1, 10) >= 5) then
+  --     TriggerEvent("dispatch:svNotify", {
+  --         dispatchCode = "10-94",
+  --         firstStreet = street1,
+  --         secondStreet = street2,
+  --         origin = {
+  --             x = BuiltMaps[map]["checkpoints"][1].x,
+  --             y = BuiltMaps[map]["checkpoints"][1].y,
+  --             z = BuiltMaps[map]["checkpoints"][1].z
+  --         }
+  -- })
+  -- end
   TriggerEvent('racing:server:sendData', uniqueid, -1, 'event', 'close')
 end)
 
 RegisterServerEvent('racing-join-race')
 AddEventHandler('racing-join-race', function(identifier)
   local src = source
-  local player = exports["drp-base"]:getModule("Player"):GetUser(src)
+  local player = exports["fox-base"]:getModule("Player"):GetUser(src)
   local char = player:getCurrentCharacter()
   local cid = char.id
   local playername = ""..char.first_name.." "..char.last_name..""
@@ -593,7 +564,7 @@ end)
 RegisterServerEvent('race:completed2')
 AddEventHandler('race:completed2', function(fastestLap, overall, sprint, identifier)
   local src = source
-  local player = exports["drp-base"]:getModule("Player"):GetUser(src)
+  local player = exports["fox-base"]:getModule("Player"):GetUser(src)
   local char = player:getCurrentCharacter()
   local cid = char.id
   local playername = ""..char.first_name.." "..char.last_name..""
@@ -690,7 +661,7 @@ end)
 RegisterServerEvent('racing-save-map')
 AddEventHandler('racing-save-map', function(currentMap,name,description,distanceMap)
   local src = source
-  local player = exports['drp-base']:getModule("Player"):GetUser(src)
+  local player = exports['fox-base']:getModule("Player"):GetUser(src)
   local char = player:getCurrentCharacter()
   local playername = char.first_name .." ".. char.last_name
 
@@ -707,7 +678,7 @@ end)
 RegisterServerEvent('phone:RemovePayPhoneMoney')
 AddEventHandler('phone:RemovePayPhoneMoney', function()
   local src = source
-local user = exports["drp-base"]:getModule("Player"):GetUser(src)
+local user = exports["fox-base"]:getModule("Player"):GetUser(src)
   user:removeMoney(25)
 end)
 
@@ -731,7 +702,7 @@ end)
 RegisterNetEvent('phone:deleteYP')
 AddEventHandler('phone:deleteYP', function(number)
   local src = source
-  local user = exports["drp-base"]:getModule("Player"):GetUser(src)
+  local user = exports["fox-base"]:getModule("Player"):GetUser(src)
   local char = user:getCurrentCharacter()
   local cid = char.id
   local mynumber = getNumberPhone(cid)
@@ -742,41 +713,42 @@ AddEventHandler('phone:deleteYP', function(number)
   end)
 end)
 
- RegisterServerEvent("stocks:clientvalueupdate")
- AddEventHandler("stocks:clientvalueupdate", function(table)
-     local src = source
-     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
-     local char = user:getCurrentCharacter()
-     local tableinsert =  json.encode(table)
-     exports.ghmattimysql:execute("UPDATE characters SET stocks = @stock WHERE id = @cid",{
-         ['@stock'] = tableinsert,
-         ['@cid'] = char.id
-       }, function(data)
-     end)
- end)
- RegisterServerEvent("stocks:retrieve")
- AddEventHandler("stocks:retrieve", function()
-     local src = source
-     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
-     local char = user:getCurrentCharacter()
+-- RegisterServerEvent("stocks:clientvalueupdate")
+-- AddEventHandler("stocks:clientvalueupdate", function(table)
+--     local src = source
+--     local user = exports["fox-base"]:getModule("Player"):GetUser(src)
+--     local char = user:getCurrentCharacter()
+--     local tableinsert =  json.encode(table)
+--     exports.ghmattimysql:execute("UPDATE characters SET stocks = @stock WHERE id = @cid",{
+--         ['@stock'] = tableinsert,
+--         ['@cid'] = char.id
+--       }, function(data)
+--     end)
+-- end)
 
-     exports.ghmattimysql:execute("SELECT stocks FROM characters WHERE id = @id", {['id'] = char.id}, function(result)
-         if result[1].stocks then
-         TriggerClientEvent("stocks:clientvalueupdate", src, json.decode(result[1].stocks))
-         end
-     end)
- end)
+-- RegisterServerEvent("stocks:retrieve")
+-- AddEventHandler("stocks:retrieve", function()
+--     local src = source
+--     local user = exports["fox-base"]:getModule("Player"):GetUser(src)
+--     local char = user:getCurrentCharacter()
 
- RegisterServerEvent("phone:stockTradeAttempt")
- AddEventHandler("phone:stockTradeAttempt", function(index, id, sending)
-     local src = source
-     local user = exports["drp-base"]:getModule("Player"):GetUser(tonumber(id))
-    local char = user:getCurrentCharacter()
+--     exports.ghmattimysql:execute("SELECT stocks FROM characters WHERE id = @id", {['id'] = char.id}, function(result)
+--         if result[1].stocks then
+--         TriggerClientEvent("stocks:clientvalueupdate", src, json.decode(result[1].stocks))
+--         end
+--     end)
+-- end)
 
-     if user ~= nil then
-         TriggerClientEvent("'Crypto:GiveGNE", id, sending)
-     end
- end)
+-- RegisterServerEvent("phone:stockTradeAttempt")
+-- AddEventHandler("phone:stockTradeAttempt", function(index, id, sending)
+--     local src = source
+--     local user = exports["fox-base"]:getModule("Player"):GetUser(tonumber(id))
+--     local char = user:getCurrentCharacter()
+
+--     if user ~= nil then
+--         TriggerClientEvent("Crypto:GivePixerium", id, sending)
+--     end
+-- end)
 
 RegisterServerEvent('phone:triggerPager')
 AddEventHandler('phone:triggerPager', function()
@@ -807,7 +779,7 @@ end)
 
 RegisterCommand("pnum", function(source, args, rawCommand)
   local src = source
-  local user = exports["drp-base"]:getModule("Player"):GetUser(src)
+  local user = exports["fox-base"]:getModule("Player"):GetUser(src)
   local char = user:getVar("character")
   local srcPhone = getNumberPhone(char.id)
   TriggerClientEvent('sendMessagePhoneN', src, srcPhone)
@@ -861,14 +833,14 @@ end)
 RegisterServerEvent('server:currentpasses')
 AddEventHandler('server:currentpasses', function()
   local src = source
-  local user = exports["drp-base"]:getModule("Player"):GetUser(src)
+  local user = exports["fox-base"]:getModule("Player"):GetUser(src)
   local ply = user:getCurrentCharacter()
   exports.ghmattimysql:execute("SELECT * FROM character_passes WHERE cid = @cid", {['cid'] = ply.id}, function(result)
       if result[1] ~= nil then
           TriggerClientEvent("client:passes", src, result)
           if result[1].pass_type == "police" or result[1].pass_type == "ems" then
           else
-              TriggerClientEvent("drp-jobmanager:playerBecameJob", src, result[1].pass_type, result[1].pass_type, false)
+              TriggerClientEvent("fox-jobmanager:playerBecameJob", src, result[1].pass_type, result[1].pass_type, false)
           end
       end
   end)
@@ -877,7 +849,7 @@ end)
 RegisterServerEvent('server:givepass')
 AddEventHandler('server:givepass', function(pass_type, rank, cid)
   local src = source
-  local user = exports["drp-base"]:getModule("Player"):GetUser(src)
+  local user = exports["fox-base"]:getModule("Player"):GetUser(src)
   local ply = user:getCurrentCharacter()
   local SrcName = ply.first_name .. " " ..ply.last_name
   exports.ghmattimysql:execute("SELECT * FROM character_passes WHERE pass_type = ? AND cid = ?", {pass_type, cid}, function(data)
@@ -939,7 +911,7 @@ end)
 RegisterServerEvent('server:gankGroup')
 AddEventHandler('server:gankGroup', function(groupid, amount)
   local src = source
-  local user = exports["drp-base"]:getModule("Player"):GetUser(src)
+  local user = exports["fox-base"]:getModule("Player"):GetUser(src)
   if user:getCash() >= tonumber(amount) then
       exports.ghmattimysql:execute("SELECT * FROM group_banking WHERE group_type = @id", {['id'] = groupid}, function(result)
           exports.ghmattimysql:execute("UPDATE group_banking SET `bank` = @bank WHERE `group_type` = @id", { ['id'] = groupid, ['bank'] = result[1].bank + amount})
@@ -998,22 +970,34 @@ AddEventHandler("phone:saveWallpaper", function(cid, wall)
     exports.ghmattimysql:execute("UPDATE characters SET `wallpaper` = @wallpaper WHERE `id` = @cid", { ['cid'] = cid, ['wallpaper'] = wall})
 end)
 
-RegisterServerEvent("drp-phone:grabWallpaper")
-AddEventHandler("drp-phone:grabWallpaper", function()
+RegisterServerEvent("fox-phone:grabWallpaper")
+AddEventHandler("fox-phone:grabWallpaper", function()
   local src = source
-  local player = exports["drp-base"]:getModule("Player"):GetUser(src)
+  local player = exports["fox-base"]:getModule("Player"):GetUser(src)
   local char = player:getCurrentCharacter()
   local cid = char.id
     exports.ghmattimysql:execute("SELECT `wallpaper` FROM characters WHERE id = @id",{['id'] = cid}, function(data)
       if data[1].wallpaper ~= nil then
-          TriggerClientEvent('drp-phone:grabBackground', src, data[1].wallpaper)
+          TriggerClientEvent('fox-phone:grabBackground', src, data[1].wallpaper)
       else
-          TriggerClientEvent('drp-phone:grabBackground', src, "https://i.imgur.com/JVPavDg.jpg")
+          TriggerClientEvent('fox-phone:grabBackground', src, "https://i.imgur.com/JVPavDg.jpg")
       end
     end)
 end)
 
-RegisterNetEvent('drp-phone:twatSendNotification')
-AddEventHandler('drp-phone:twatSendNotification', function(handle, twat, time)
-      TriggerClientEvent('drp-phone:TwatNotify', -1, handle, twat, time)
+RegisterNetEvent('fox-phone:twatSendNotification')
+AddEventHandler('fox-phone:twatSendNotification', function(handle, twat, time)
+      TriggerClientEvent('fox-phone:TwatNotify', -1, handle, twat, time)
+end)
+
+RegisterServerEvent('ReturnHouseKeys')
+AddEventHandler('ReturnHouseKeys', function()
+    local src = source
+    local user = exports["fox-base"]:getModule("Player"):GetUser(src)
+    local char = user:getCurrentCharacter()
+    exports.ghmattimysql:execute('SELECT * FROM __housedata WHERE cid = @cid', { ['@cid'] = char.id}, function(result)
+        exports.ghmattimysql:execute('SELECT * FROM __housekeys WHERE cid= @cid', {['@cid'] = char.id}, function(returnData)
+            TriggerClientEvent('returnPlayerKeys', src, result, returnData)
+        end)
+    end)
 end)

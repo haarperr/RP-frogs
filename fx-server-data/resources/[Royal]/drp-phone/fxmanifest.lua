@@ -3,7 +3,7 @@ game 'gta5'
 
 resource_manifest_version '05cfa83c-a124-4cfa-a768-c24a5811d8f9'
 
-client_script "@drp-errorlog/client/cl_errorlog.lua"
+client_script "@fox-errorlog/client/cl_errorlog.lua"
 
 ui_page 'html/ui.html'
 files {
@@ -45,15 +45,15 @@ files {
 }
 
 client_scripts {
-	'@drp-lib/client/cl_rpc.lua',
+	'@fox-lib/client/cl_rpc.lua',
 	'client/assistance.lua',
 	'client/stocks.lua',
 	'client/main.lua',
 	'champion/cl_*.lua',
 }
 
-server_script '@drp-lib/server/sv_rpc.lua'
-server_script '@drp-lib/server/sv_sqlother.lua'
+server_script '@fox-lib/server/sv_rpc.lua'
+server_script '@fox-lib/server/sv_sqlother.lua'
 server_script "server/main.lua"
 
 export "pOpen"

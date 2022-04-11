@@ -437,11 +437,11 @@ function SaveMap(name,description)
 end
 
 RegisterNUICallback('racing:events:list', function()
-
+  local rank = exports["isPed"]:GroupRank("ug_racing")
   SendNUIMessage({
     openSection = "racing:events:list",
       races = currentRaces,
-      canMakeMap = (true or false)
+      canMakeMap = (rank >= 4 and true or false)
     });
     TriggerServerEvent("racing-retreive-maps")
 end)

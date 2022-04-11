@@ -60,13 +60,13 @@ CreateThread(function ()
 end)
 
 
-RegisterNetEvent("drp-phone:grabBackground")
-AddEventHandler("drp-phone:grabBackground", function(link)
+RegisterNetEvent("fox-phone:grabBackground")
+AddEventHandler("fox-phone:grabBackground", function(link)
     wallPaper = link
 end)
 
-RegisterNetEvent("drp-jobmanager:playerBecameJob")
-AddEventHandler("drp-jobmanager:playerBecameJob", function(job)
+RegisterNetEvent("fox-jobmanager:playerBecameJob")
+AddEventHandler("fox-jobmanager:playerBecameJob", function(job)
     if job == "trucker" then
         trucker = true
     end
@@ -124,7 +124,7 @@ RegisterNUICallback('wallpaper', function(data, cb)
   wallPaper = ""
   Wait(5)
   local wallPaperSelecionado = data.wallpaper
-  TriggerEvent('drp-phone:grabBackground', wallPaperSelecionado)
+  TriggerEvent('fox-phone:grabBackground', wallPaperSelecionado)
   TriggerServerEvent("phone:saveWallpaper", exports['isPed']:isPed('cid'), wallPaperSelecionado)
 end)
 
@@ -144,7 +144,7 @@ AddEventHandler('phone:reset', function(cidsent)
     inPhone = false
     wallPaper = ""
     Wait(1)
-    TriggerServerEvent('drp-phone:grabWallpaper')
+    TriggerServerEvent('fox-phone:grabWallpaper')
 end)
 
 RegisterNetEvent('Yougotpaid')
@@ -844,7 +844,7 @@ function SpawnVehicle(vehicle, x,y,z, Fuel, customized, plate, IsViewing, engine
         SetNetworkIdCanMigrate(id, true)
         if not IsViewing then    
             CurrentDisplayVehicle = nil
-            RPC.execute("drp-garages:states", "Out", plate, exports['drp-menu']:currentGarage(), pUpdatedFuel)
+            RPC.execute("fox-garages:states", "Out", plate, exports['fox-menu']:currentGarage(), pUpdatedFuel)
         end
     end)
 end
@@ -1527,7 +1527,7 @@ function isRealEstateAgent()
 end
 
 function hasDecrypt2()
-    if exports["drp-inventory"]:hasEnoughOfItem("vpnxj",1,false) and not exports["isPed"]:isPed("disabled") then
+    if exports["fox-inventory"]:hasEnoughOfItem("vpnxj",1,false) and not exports["isPed"]:isPed("disabled") then
       return true
     else
       return false
@@ -1535,7 +1535,7 @@ function hasDecrypt2()
 end
 
 function hasTrucker()
-    if exports["drp-base"]:getModule("LocalPlayer"):getVar("job") == "trucker"  then
+    if exports["fox-base"]:getModule("LocalPlayer"):getVar("job") == "trucker"  then
       return true
     else
       return false
@@ -1543,7 +1543,7 @@ function hasTrucker()
 end
 
 function hasDecrypt()
-    if exports["drp-inventory"]:hasEnoughOfItem("vpnxj",1,false) and not exports["isPed"]:isPed("disabled") then
+    if exports["fox-inventory"]:hasEnoughOfItem("vpnxj",1,false) and not exports["isPed"]:isPed("disabled") then
       return true
     else
       return false
@@ -1551,7 +1551,7 @@ function hasDecrypt()
 end
 
 function hasDevice()
-    if exports["drp-inventory"]:hasEnoughOfItem("mk2usbdevice",1,false) and not exports["isPed"]:isPed("disabled") then
+    if exports["fox-inventory"]:hasEnoughOfItem("mk2usbdevice",1,false) and not exports["isPed"]:isPed("disabled") then
       return true
     else
       return false
@@ -1561,13 +1561,13 @@ end
 function hasPhone()
     if
       (
-      (exports["drp-inventory"]:hasEnoughOfItem("mobilephone",1,false) or 
-      exports["drp-inventory"]:hasEnoughOfItem("stoleniphone",1,false) or 
-      exports["drp-inventory"]:hasEnoughOfItem("stolens8",1,false) or
-      exports["drp-inventory"]:hasEnoughOfItem("stolennokia",1,false) or
-      exports["drp-inventory"]:hasEnoughOfItem("stolenpixel3",1,false) or
-      exports["drp-inventory"]:hasEnoughOfItem("assphone",1,false) or
-      exports["drp-inventory"]:hasEnoughOfItem("boomerphone",1,false))
+      (exports["fox-inventory"]:hasEnoughOfItem("mobilephone",1,false) or 
+      exports["fox-inventory"]:hasEnoughOfItem("stoleniphone",1,false) or 
+      exports["fox-inventory"]:hasEnoughOfItem("stolens8",1,false) or
+      exports["fox-inventory"]:hasEnoughOfItem("stolennokia",1,false) or
+      exports["fox-inventory"]:hasEnoughOfItem("stolenpixel3",1,false) or
+      exports["fox-inventory"]:hasEnoughOfItem("assphone",1,false) or
+      exports["fox-inventory"]:hasEnoughOfItem("boomerphone",1,false))
       and not exports["isPed"]:isPed("disabled") and not exports["isPed"]:isPed("handcuffed")
       ) 
     then
@@ -1578,7 +1578,7 @@ function hasPhone()
 end
 
 function hasRadio()
-    if exports["drp-inventory"]:hasEnoughOfItem("radio",1,false) and not exports["isPed"]:isPed("disabled") then
+    if exports["fox-inventory"]:hasEnoughOfItem("radio",1,false) and not exports["isPed"]:isPed("disabled") then
       return true
     else
       return false
@@ -1634,7 +1634,7 @@ function openGui()
     doTimeUpdate()
   else
     closeGui()
-    if not exports["isPed"]:isPed("disabled") and not exports['drp-death']:GetDeathStatus() then
+    if not exports["isPed"]:isPed("disabled") then
       TriggerEvent("DoLongHudText","You do not have a phone.",2)
     else
       TriggerEvent("DoLongHudText","You cannot use your phone right now.",2)
@@ -1714,7 +1714,7 @@ function closeGui()
   guiEnabled = false
   TriggerEvent('animation:sms',false)
   TriggerEvent('phoneEnabled',false)
-  TriggerEvent('drp-phone:UpdateStatePhone')
+  TriggerEvent('fox-phone:UpdateStatePhone')
   pPhoneOpen = false
   recentopen = true
   Citizen.Wait(3000)
@@ -1722,8 +1722,8 @@ function closeGui()
   insideDelivers = false
 end
 
-RegisterNetEvent('drp-phone:UpdateStatePhone')
-AddEventHandler('drp-phone:UpdateStatePhone', function()
+RegisterNetEvent('fox-phone:UpdateStatePhone')
+AddEventHandler('fox-phone:UpdateStatePhone', function()
     Wait(5)
     if callStatus == isCallInProgress then 
       SendNUIMessage({openSection = "phonemedio"}) 
@@ -1836,7 +1836,7 @@ end)
 RegisterNUICallback('updateMyWallpaper', function(data, cb)
   wallPaper = ""
   Wait(5)
-  TriggerEvent('drp-phone:grabBackground', data.name .."?auto=compress&cs=tinysrgb&h=350")
+  TriggerEvent('fox-phone:grabBackground', data.name .."?auto=compress&cs=tinysrgb&h=350")
   TriggerServerEvent("phone:saveWallpaper",exports['isPed']:isPed('cid'), data.name .."?auto=compress&cs=tinysrgb&h=350")
   cb('ok')
 end)
@@ -1998,7 +1998,7 @@ RegisterNUICallback('callContact', function(data, cb)
       openSection = 'callnotify',
       pCNumber = dialingName
     })
-    if exports['drp-phone']:pOpen() == false then 
+    if exports['fox-phone']:pOpen() == false then 
         SendNUIMessage({openSection = "phonemedio"}) 
     end
     TriggerEvent('phone:setCallState', isDialing, data.name == "" and data.number or data.name)
@@ -2098,8 +2098,8 @@ end)
 
 RegisterNetEvent('phone:addToCall')
 AddEventHandler('phone:addToCall', function(voipchannel)
-  exports['drp-voice']:addPlayerToCall(tonumber(voipchannel))
-  if exports['drp-phone']:pOpen() == false then 
+  exports['fox-voice']:addPlayerToCall(tonumber(voipchannel))
+  if exports['fox-phone']:pOpen() == false then 
     SendNUIMessage({openSection = "phonemedio"}) 
   end
 end)
@@ -2195,7 +2195,7 @@ AddEventHandler('phone:receiveCall', function(phoneNumber, srcID, calledNumber)
     pCNumber = callFrom
   })
 
-  if exports['drp-phone']:pOpen() == false then 
+  if exports['fox-phone']:pOpen() == false then 
     SendNUIMessage({openSection = "phonemedio"}) 
   end
   
@@ -2243,8 +2243,8 @@ function receivingCall(callFrom)
   end
 end
 
-RegisterNetEvent('drp-phone:RemoveCall')
-AddEventHandler('drp-phone:RemoveCall', function()
+RegisterNetEvent('fox-phone:RemoveCall')
+AddEventHandler('fox-phone:RemoveCall', function()
     SendNUIMessage({
       openSection = 'callnotifyEnd'
     })
@@ -2268,7 +2268,7 @@ end
 
 RegisterNetEvent('phone:removefromToko')
 AddEventHandler('phone:removefromToko', function(playerRadioChannel)
-  exports['drp-voice']:removePlayerFromCall()
+  exports['fox-voice']:removePlayerFromCall()
 end)
 
 function endCall()
@@ -2284,7 +2284,7 @@ function endCall()
   myID = 0
   mySourceID = 0
   TriggerEvent('phone:setCallState', isNotInCall)
-  TriggerEvent('drp-phone:RemoveCall')
+  TriggerEvent('fox-phone:RemoveCall')
   onhold = false
   mySourceHoldStatus = false
   callid = 0
@@ -2397,19 +2397,19 @@ curNotifications = {}
 RegisterNetEvent('phone:addnotification')
 AddEventHandler('phone:addnotification', function(name, message)
     SendNUIMessage({openSection = "emailnotify", pEHandle = 'Email Received.', pEMessages = message})
-    if exports['drp-phone']:pOpen() == false then 
+    if exports['fox-phone']:pOpen() == false then 
       SendNUIMessage({openSection = "emailnotify", pEHandle = 'Email Received.', pEMessages = message})
-      SendNUIMessage({openSection = "phonemedio", timeout = "5200", pOpen = exports['drp-phone']:pOpen()}) 
+      SendNUIMessage({openSection = "phonemedio", timeout = "5200", pOpen = exports['fox-phone']:pOpen()}) 
     end
     curNotifications[#curNotifications+1] = { ["name"] = name, ["message"] = message, ['time'] = time }
 end)
 
 RegisterNetEvent('phone:robberynotif')
 AddEventHandler('phone:robberynotif', function(name, message)
-    SendNUIMessage({openSection = "robnotify", pEHandle = name, pEMessages = message})
-    if exports['drp-phone']:pOpen() == false then 
-      SendNUIMessage({openSection = "robnotify", pEHandle = name, pEMessages = message})
-      SendNUIMessage({openSection = "phonemedio", timeout = "5200", pOpen = exports['drp-phone']:pOpen()}) 
+    SendNUIMessage({openSection = "robnotify", pEHandle = 'From The Boss', pEMessages = message})
+    if exports['fox-phone']:pOpen() == false then 
+      SendNUIMessage({openSection = "robnotify", pEHandle = 'From The Boss', pEMessages = message})
+      SendNUIMessage({openSection = "phonemedio", timeout = "5200", pOpen = exports['fox-phone']:pOpen()}) 
     end
     curNotifications[#curNotifications+1] = { ["name"] = name, ["message"] = message, ['time'] = time }
 end)
@@ -2877,13 +2877,13 @@ function RRP.SettingsData.getSettingsTable()
 end
 
 RegisterNUICallback('settings', function()
-  local controls = exports["drp-base"]:getModule("DataControls"):getBindTable()
-  local settings = exports["drp-base"]:getModule("SettingsData"):getSettingsTable()
+  local controls = exports["fox-base"]:getModule("DataControls"):getBindTable()
+  local settings = exports["fox-base"]:getModule("SettingsData"):getSettingsTable()
   SendNUIMessage({openSection = "settings", currentControls = controls, currentSettings = settings})
 end)
 
 RegisterNUICallback('settingsResetControls', function()
-  TriggerEvent("drp-base:cl:player_control", nil)
+  TriggerEvent("fox-base:cl:player_control", nil)
 end)
 RegisterNetEvent('sendMessagePhoneN')
 AddEventHandler('sendMessagePhoneN', function(phonenumberlol)
@@ -2995,4 +2995,174 @@ end)
 RegisterNUICallback('SetHuntingSalesLocation', function()
   TriggerEvent('DoLongHudText', 'A new waypoint has been set to Hunting Sales by southside', 1)
   SetNewWaypoint(12.237363815308,-1299.9296875,29.229248046875)
+end)
+
+------------------------------------------------------------------------------------------------------
+
+
+----------------------- Housing -----------------------
+
+
+------------------------------------------------------------------------------------------------------
+
+
+RegisterNUICallback('btnGiveKey', function(data, cb)
+  TriggerEvent("houses:GiveKey")
+end)
+
+RegisterNetEvent("returnPlayerKeys")
+AddEventHandler("returnPlayerKeys", function(ownedkeys,sharedkeys)
+    local houses = {}
+    local shared = {}
+
+    for k, v in pairs(ownedkeys) do
+      if v ~= nil then
+          if v.housename ~= nil then
+          local random = math.random(1111,9999)
+          houses[random] = {}
+          table.insert(houses[random], {["house_name"] = v.housename, ["house_model"] = v.house_model, ["house_id"] = v.house_id})
+        end
+      end
+    end
+
+    for b, g in pairs(sharedkeys) do
+      if g ~= nil then
+          if g.housename ~= nil then
+          local random = math.random(1111,9999)
+          shared[random] = {}
+          table.insert(shared[random], {["house_name"] = g.housename, ["house_model"] = g.house_model, ["house_id"] = g.house_id})
+        end
+      end
+    end
+
+    if not guiEnabled then
+      return
+    end
+
+    SendNUIMessage({
+      openSection = "keys",
+      keys = {
+        sharedKeys = shared,
+        ownedKeys = houses
+      }
+    })
+end)
+
+RegisterNetEvent("house:returnKeys")
+AddEventHandler("house:returnKeys", function(pSharedKeys)
+  SendNUIMessage({
+    openSection = "manageKeys",
+    sharedKeys = pSharedKeys
+  })
+end)
+
+RegisterNUICallback('btnProperty', function(data, cb)
+  loading()
+  local pHouse = exports["isPed"]:GroupRank('real_estate')
+  if pHouse >= 1 then
+    SendNUIMessage({
+        openSection = "RealEstate",
+        RERank = pHouse
+    })        
+  end
+end)
+
+RegisterNUICallback('btnProperty2', function(data, cb)
+  loading()
+  TriggerServerEvent("ReturnHouseKeys", exports["isPed"]:isPed("cid"))
+end)
+
+RegisterNUICallback('btnPayMortgage', function(data, cb)
+  loading()
+  TriggerEvent("housing:attemptpay")
+end)
+
+RegisterNUICallback('retrieveHouseKeys', function(data, cb)
+  TriggerEvent("houses:retrieveHouseKeys")
+  cb('ok')
+end)
+
+RegisterNUICallback('btnFurniture', function(data, cb)
+  closeGui()
+  TriggerEvent("openFurniture")
+end)
+
+RegisterNUICallback('btnPropertyModify', function(data, cb)
+TriggerEvent("housing:info:realtor","modify")
+end)
+
+RegisterNUICallback('removeHouseKey', function(data, cb)
+  TriggerEvent("houses:removeHouseKey", data.targetId)
+  cb('ok')
+end)
+
+
+RegisterNUICallback('removeSharedKey', function(data, cb)
+  local cid = exports["isPed"]:isPed("cid")
+  TriggerServerEvent("houses:removeSharedKey", data.house_id, cid)
+  cb('ok')
+end)
+
+RegisterNUICallback('btnPropertyReset', function(data, cb)
+TriggerEvent("housing:info:realtor","reset")
+end)
+
+RegisterNUICallback('btnPropertyClothing', function(data, cb)
+TriggerEvent("housing:info:realtor","setclothing")
+end)
+
+RegisterNUICallback('btnPropertyStorage', function(data, cb)
+TriggerEvent("housing:info:realtor","setstorage")
+end)
+
+RegisterNUICallback('btnPropertySetGarage', function(data, cb)
+TriggerEvent("housing:info:realtor","setgarage")
+end)
+
+RegisterNUICallback('btnPropertyWipeGarages', function(data, cb)
+TriggerEvent("housing:info:realtor","wipegarages")
+end)
+
+RegisterNUICallback('btnPropertySetBackdoorInside', function(data, cb)
+TriggerEvent("housing:info:realtor","backdoorinside")
+end)
+
+RegisterNUICallback('btnPropertySetBackdoorOutside', function(data, cb)
+TriggerEvent("housing:info:realtor","backdooroutside")
+end)
+
+RegisterNUICallback('btnPropertyUpdateHouse', function(data, cb)
+TriggerEvent("housing:info:realtor","update")
+end)
+
+RegisterNUICallback('btnRemoveSharedKey', function(data, cb)
+TriggerEvent("housing:info:realtor","update")
+end)
+
+RegisterNUICallback('btnPropertyOutstanding', function(data, cb)
+  TriggerEvent("housing:info:realtor","PropertyOutstanding")
+  end)
+
+RegisterNUICallback('btnPropertyUnlock', function(data, cb)
+  TriggerEvent("housing:info:realtor","unlock")
+end)
+
+RegisterNUICallback('btnPropertyUnlock2', function(data, cb)
+  TriggerEvent("housing:info:realtor","unlock2")
+end)
+
+RegisterNUICallback('btnPropertyHouseCreationPoint', function(data, cb)
+  TriggerEvent("housing:info:realtor","creationpoint")
+end)
+RegisterNUICallback('btnPropertyStopHouse', function(data, cb)
+  TriggerEvent("housing:info:realtor","stop")
+end)
+RegisterNUICallback('btnAttemptHouseSale', function(data, cb)
+  TriggerEvent("housing:sendPurchaseAttempt",data.cid,data.price)
+end)
+RegisterNUICallback('btnTransferHouse', function(data, cb)
+TriggerEvent("housing:transferHouseAttempt", data.cid)
+end)
+RegisterNUICallback('btnEvictHouse', function(data, cb)
+  TriggerEvent("housing:evictHouseAttempt")
 end)

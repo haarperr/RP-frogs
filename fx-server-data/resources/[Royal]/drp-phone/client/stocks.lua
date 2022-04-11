@@ -1,36 +1,27 @@
 local serverstockvalues = {
-  [1] = { ["name"] = "Guinea", ["value"] = 1.0, ["identifier"] = "GNE", ["icon"] = "fas fa-horse-head", ["lastchange"] = 0.00, ["amountavailable"] = 10000.0 },
-  [2] = { ["name"] = "Shungite", ["value"] = 1.0, ["identifier"] = "SHU", ["icon"] = "fas fa-caret-square-up", ["lastchange"] = 0.00, ["amountavailable"] = 100.0 },
+  [1] = { ["name"] = "Guinea", ["value"] = 0.0, ["identifier"] = "Guinea", ["lastchange"] = 0.00, ["amountavailable"] = 0.0 },
+  [2] = { ["name"] = "Shungite", ["value"] = 250.0, ["identifier"] = "Shungite", ["lastchange"] = 0.00, ["amountavailable"] = 100.0 },
 }
 
 clientstockamount = {
-  [1] = { ["value"] = 1.00 },
-  [2] = { ["value"] = 1.00 },
-  [3] = { ["value"] = 0.00 },
-  [4] = { ["value"] = 0.00 },
-  [5] = { ["value"] = 0.00 },
-  [6] = { ["value"] = 0.00 },
+  [1] = { ["value"] = 0.00 },
+  [2] = { ["value"] = 0.00 },
 }
 
 
-RegisterNetEvent("Crypto:GiveGNE")
-AddEventHandler("Crypto:GiveGNE", function(amount)
+RegisterNetEvent("Crypto:GivePixerium")
+AddEventHandler("Crypto:GivePixerium", function(amount)
   clientstockamount[1]["value"] = clientstockamount[1]["value"] + amount
   Citizen.Trace("Retreived crypto")
   updateServerClientStocks()
- TriggerEvent("customNotification", "GNE has been wired to your account")
+  TriggerEvent("customNotification", "You have received Pixerium")
 end)
-RegisterNetEvent("Crypto:RemoveGNE")
-AddEventHandler("Crypto:RemoveGNE", function(amount)
+RegisterNetEvent("Crypto:RemovePixerium")
+AddEventHandler("Crypto:RemovePixerium", function(amount)
   clientstockamount[1]["value"] = clientstockamount[1]["value"] - amount
   updateServerClientStocks()
   Citizen.Trace("Lost crypto")
 end)
---[[
-RegisterCommand("omglol", function(source, args)
-TriggerServerEvent('stocksreplace', json.encode(clientstockamount))
-end)
---]]
 
 RegisterNetEvent('stocks:payupdate');
 AddEventHandler('stocks:payupdate', function()
@@ -114,75 +105,19 @@ end
 
 
 
-RegisterNetEvent('gne:check');
-AddEventHandler('gne:check', function(costs,functionCall,server)
-  if clientstockamount[1]["value"] == nil then
-    clientstockamount[1]["value"] = 0
-    updateServerClientStocks()
-  end
-
-  if tonumber(clientstockamount[1]["value"]) >= costs then
-    clientstockamount[1]["value"] = tonumber(clientstockamount[1]["value"]) - costs
-    updateServerClientStocks()
-    if server then
-      TriggerServerEvent(functionCall)
-    else
-      TriggerEvent(functionCall)
-    end    
-  else
-    TriggerEvent("chatMessagess", "EMAIL ", 8, "You need " .. costs .."  GNE!")
-  end
-
-end)
-
-RegisterNetEvent('shungite:check');
-AddEventHandler('shungite:check', function(costs,functionCall,server)
-  if clientstockamount[2]["value"] == nil then
-    clientstockamount[2]["value"] = 0
-    updateServerClientStocks()
-  end
-
-  if tonumber(clientstockamount[2]["value"]) >= costs then
-    clientstockamount[2]["value"] = tonumber(clientstockamount[1]["value"]) - costs
-    updateServerClientStocks()
-    if server then
-      TriggerServerEvent(functionCall)
-    else
-      TriggerEvent(functionCall)
-    end    
-  else
-    TriggerEvent("chatMessagess", "EMAIL ", 8, "You need " .. costs .."  shungite!")
-  end
-
-end)
-
-
-
-
-
-
-RegisterNetEvent('stocks:buyitem');
-AddEventHandler('stocks:buyitem', function(typeSent)
-  local costs = 15
-
-  if typeSent == "weapon" then
-    costs = 5
-  end
-
-  if typeSent == "bigweapon" then
-    costs = 25
-  end
-
-  if typeSent == "crack" then
-    costs = 10
-  end 
+RegisterNetEvent('pixerium:check');
+AddEventHandler('pixerium:check', function(costs,functionCall,server)
 
   if clientstockamount[1]["value"] >= costs then
     clientstockamount[1]["value"] = clientstockamount[1]["value"] - costs
     updateServerClientStocks()
-    TriggerEvent("stocks:timedEvent",typeSent)   
+    if server then
+      TriggerServerEvent(functionCall)
+    else
+      TriggerEvent(functionCall)
+    end    
   else
-    TriggerEvent("chatMessagess", "EMAIL ", 8, "You need 25 pixerium for big guns or 5 for small, come back when you have it, Pepega.")
+    TriggerEvent("chatMessagess", "EMAIL ", 8, "You need " .. costs .."  pixerium!")
   end
 
 end)
@@ -205,7 +140,7 @@ RegisterNUICallback('stocksTradeToPlayer', function(data, cb)
   end
   if amount < tonumber(data.amount) then
     -- not enough to do the trade
-    TriggerEvent("DoShortHudText","Not enough crypto.",2)
+    TriggerEvent("DoShortHudText","Not enough stock.",2)
     TriggerEvent("stocks:refreshstocks")
     return
   end
@@ -216,40 +151,10 @@ RegisterNUICallback('stocksTradeToPlayer', function(data, cb)
   TriggerEvent("stocks:refreshstocks")
 
 end)
-
-RegisterNUICallback('stocksTradeToPlayer2', function(data, cb)
-  local index = 0
-  local amount = 0
-  local sending = math.ceil(tonumber(data.amount) * 100) / 100
-  for i=1,#serverstockvalues do
-    if data.identifier == serverstockvalues[i]["identifier"] then
-      index = i
-      amount = clientstockamount[i]["value"]
-    end
-  end
-  if index == 0 then
-    -- not enough to do the trade
-    TriggerEvent("DoShortHudText","Incorrect Identifier.",2)
-    TriggerEvent("stocks:refreshstocks")
-    return
-  end
-  if amount < tonumber(data.amount) then
-    -- not enough to do the trade
-    TriggerEvent("DoShortHudText","Not enough crypto.",2)
-    TriggerEvent("stocks:refreshstocks")
-    return
-  end
-  clientstockamount[index]["value"] = clientstockamount[index]["value"] - sending
-  Citizen.Trace("removing " .. sending .. " shares from index " .. index )
-  TriggerServerEvent('phone:stockTradeAttempt', index, data.playerid, sending )
-  Citizen.Wait(500)
-  TriggerEvent("stocks:refreshstocks")
-end)
-
 
 RegisterNetEvent('stocks:refreshstocks');
 AddEventHandler('stocks:refreshstocks', function()
-    for i = 1, #serverstockvalues do
+    --[[for i = 1, #serverstockvalues do
       local colortype = 1
       if i == 1 or i == 3 or i == 5 then
         colortype = 2
@@ -263,7 +168,6 @@ AddEventHandler('stocks:refreshstocks', function()
         openSection = "addstock",
         namesent = serverstockvalues[i]["name"],
         identifier = serverstockvalues[i]["identifier"],
-        icon = serverstockvalues[i]["icon"],
         lastchange = lastchangestock,
         valuesent = serverstockvalues[i]["value"],
         amountsold = serverstockvalues[i]["amountsold"],
@@ -271,7 +175,7 @@ AddEventHandler('stocks:refreshstocks', function()
         colorsent = colortype,
         available = serverstockvalues[i]["amountavailable"]
       })
-    end
+    end--]]
     sendStocksToPhone(true);
 end)
 
@@ -281,7 +185,6 @@ function sendStocksToPhone(isRefresh)
     table.insert(stocksData, {
       identifier = serverstockvalues[i]["identifier"],
       name = serverstockvalues[i]["name"],
-      icon = serverstockvalues[i]["icon"],
       value = serverstockvalues[i]["value"],
       change = serverstockvalues[i]["lastchange"],
       available = serverstockvalues[i]["amountavailable"],
@@ -298,7 +201,7 @@ end
 RegisterNUICallback('btnStocks', function()
   TriggerServerEvent('stocks:retrieve')
   sendStocksToPhone();
-  
+  --[[
     for i = 1, #serverstockvalues do
       local colortype = 1
       if i == 1 or i == 3 or i == 5 then
@@ -313,7 +216,6 @@ RegisterNUICallback('btnStocks', function()
         openSection = "addstock",
         namesent = serverstockvalues[i]["name"],
         identifier = serverstockvalues[i]["identifier"],
-        icon = serverstockvalues[i]["icon"],
         lastchange = lastchangestock,
         valuesent = serverstockvalues[i]["value"],
         amountsold = serverstockvalues[i]["amountsold"],
@@ -321,7 +223,7 @@ RegisterNUICallback('btnStocks', function()
         colorsent = colortype,
         available = serverstockvalues[i]["amountavailable"]
       })
-    end
+    end--]]
 end)
 
 function requestUpdate()

@@ -1553,6 +1553,7 @@ body {
     overflow-y: auto;
     height: 75%;
     position: relative;
+    overflow: unset !important;
 }
 
 .keys-entries {
@@ -1594,7 +1595,6 @@ body {
 }
 
 .recent-apps-entries {
-    overflow-y: auto;
     height: 100%;
     position: relative;
 }
@@ -1603,12 +1603,13 @@ body {
 
 .real-estate-container {
     height: calc(5px + 100%);
+    border-color: transparent;
 }
 
 .real-estate-entries-wrapper {
-    overflow-y: auto;
     height: 90%;
     position: relative;
+    border-color: transparent;
 }
 
 .real-estate-entries {
@@ -1616,20 +1617,22 @@ body {
     padding-bottom: 0px;
     margin-top: 0px;
     padding-top: 0px;
+    border-color: transparent;
 }
 
 .real-estate-footer {
-    position: relative;
     bottom: 0px;
     height: 10%;
     justify-content: center;
     display: flex;
     align-items: center;
+    border-color: transparent;
 }
 
 .real-estate-header {
     margin-top: 5px;
     font-size: 16px !important;
+    border-color: transparent;
 }
 
 /* Outstanding Payments */
@@ -1644,7 +1647,6 @@ body {
 
 .outstanding-payments-entries {
 
-    overflow-y: auto;
     height: 80%;
     position: relative;
 }
