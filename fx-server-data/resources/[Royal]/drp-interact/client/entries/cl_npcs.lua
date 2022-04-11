@@ -342,6 +342,31 @@ Entries[#Entries + 1] = {
     group = { 'isNPC' },
     data = {
         {
+            id = "chickenguy",
+            label = "Sell Protein",
+            icon = "circle",
+            event = "drp-chickens:sellprotein",
+            parameters = {}
+        },
+        {
+            id = "chickenguy",
+            label = "Sell Cutted Chicken",
+            icon = "circle",
+            event = "drp-chickens:sellcuttedchicken",
+            parameters = {}
+        },
+    },
+    options = {
+        distance = { radius = 3.0 },
+        npcIds = {"chickenguy"}
+    }
+}
+
+Entries[#Entries + 1] = {
+    type = 'flag',
+    group = { 'isNPC' },
+    data = {
+        {
             id = "fenceguy",
             label = "Sell your Shit",
             icon = "circle",
