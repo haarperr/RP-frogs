@@ -27,6 +27,18 @@ Config.Zones = {
 			heading=1,
 		}),
 
+	
+	 -- Garage LS --
+	
+			BoxZone:Create(vector3(-685.97894287109, -982.13201904297, 19.871116638184), 8.4, 13.8, {
+				name="garagels",
+				heading=337,
+				--debugPoly=true
+			}),
+	
+			
+			
+
 		-- Garage B --
   
   		BoxZone:Create(vector3(-341.99, -758.46, 33.97), 23.35, 8.6, {
