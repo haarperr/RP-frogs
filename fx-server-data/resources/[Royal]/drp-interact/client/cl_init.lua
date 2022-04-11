@@ -786,12 +786,7 @@ Citizen.CreateThread(function()
     exports["drp-polytarget"]:AddBoxZone("bsguy", vector3(-1190.1145, -905.4796, 13.9847), 1, 1.4, {
         heading=70.9786,
     })
-
-    -- Chicken Stash
-    exports["drp-polytarget"]:AddBoxZone("chickenstash", vector3(-518.4832, -700.2421, 33.1997), 1, 1.4, {
-        heading=359.0948,
-    })
-
+    
     -- house guy
 
     exports["drp-polytarget"]:AddBoxZone("houseguy", vector3(-156.5230, -603.8885, 48.2422), 1, 1.4, {

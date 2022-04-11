@@ -2573,7 +2573,7 @@ end
         TriggerEvent("murdermeal:toys1")
     end
 
-    if itemid == "murdermeal" then
+    if itemid == "murdermeal" or itemid == "cbclucker" then
          TriggerEvent("murdermeal", ItemInfo.id)
     end
 
