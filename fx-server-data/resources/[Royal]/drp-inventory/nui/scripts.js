@@ -942,6 +942,10 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
         secondaryMaxWeight = 15.0;
         slotLimitTarget = 5;
         displayName = 'Murder Meal';
+    } else if (targetinvName.indexOf('cbclucker') > -1) {
+        secondaryMaxWeight = 15.0;
+        slotLimitTarget = 5;
+        displayName = 'Little Clucker Box';
     } else if (targetinvName.indexOf('pdevidencebag') > -1) {
         secondaryMaxWeight = 0.0;
         slotLimitTarget = 20;
