@@ -4911,13 +4911,20 @@ itemList['cbjr'] = {
   model: '',
   craft: [
     [{
+      itemid: 'cbcoupon',
+      amount: '1'
+    }
+    ],
+    [  
+      {
       itemid: 'cbpatty',
       amount: 1
-    }],
-    [{
-      itemid: 'hamburgerbuns',
-      amount: 1
-    }]
+      },
+      {
+        itemid: 'hamburgerbuns',
+        amount: 1
+      }
+    ]
   ],
   image: 'cluckin-jr-burger.png',
   information: 'Ooh..thats good. 269Cal + Protein',
