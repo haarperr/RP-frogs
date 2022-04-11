@@ -4845,12 +4845,12 @@ itemList['cbcontroller'] = {
   fullyDegrades: false,
   decayrate: 0.01,
   displayname: 'Cluckin Gameboy',
-  price: 150,
+  price: 30,
   weight: 15,
   nonStack: true,
   model: '',
   image: 'cb-controller.png',
-  information: '⚠️ Low Battery ⚠️ | Recharge me soon',
+  information: '⚠️ Low Battery ⚠️',
 };
 
 itemList['cbcoupon'] = {
