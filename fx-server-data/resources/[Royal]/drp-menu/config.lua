@@ -1782,6 +1782,7 @@ local approvedGarages = {
     "garagea",
     "garageb",
     "garagec",
+    "garagels",
     "garaged",
     "garagee",
     "garagef",
