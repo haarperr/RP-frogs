@@ -517,7 +517,7 @@ function CbBurger() {
         { item_id: "cbchickenfries", id: 0, name: "craft", information: "{}", slot: 5, amount: 2 },
         { item_id: "cbbowl", id: 0, name: "craft", information: "{}", slot: 6, amount: 2 },
         { item_id: "cbballs", id: 0, name: "craft", information: "{}", slot: 7, amount: 2 },
-        { item_id: "cbveggy", id: 0, name: "craft", information: "{}", slot: 8, amount: 2 },
+        { item_id: "cbveggy", id: 0, name: "craft", information: "{}", slot: 8, amount: 2 }
     ];
     return JSON.stringify(shopItems);
 };
