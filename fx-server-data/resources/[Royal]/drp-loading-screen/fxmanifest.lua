@@ -1,17 +1,11 @@
-fx_version 'cerulean'
-games {'gta5'}
+fx_version "cerulean"
+game "gta5"
 
-files {
-    'index.html',
-    'style.css',
-    'logo.png',
-    'background.jpg',
-}
+lua54 "yes"
+client_script "client/client.lua"
 
-client_script "client.lua"
+files { "assets/**", "html/*", }
 
-loadscreen 'index.html'
-
+loadscreen { "html/index.html" }
+loadscreen_cursor "yes"
 loadscreen_manual_shutdown "yes"
-
-resource_manifest_version '77731fab-63ca-442c-a67b-abc70f28dfa5'
