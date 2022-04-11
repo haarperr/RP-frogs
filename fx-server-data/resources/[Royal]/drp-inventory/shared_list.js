@@ -4793,6 +4793,18 @@ itemList['cbballs'] = {
   information: 'Ooh..salty. 440Cal',
 };
 
+itemList['cbbowl'] = {
+  fullyDegrades: false,
+  decayrate: 0.01,
+  displayname: 'Cluckin Bowl',
+  price: 1,
+  weight: 2,
+  nonStack: false,
+  model: '',
+  image: 'cluckin-chicken-bowl.png',
+  information: 'Ooh..Kreygasm. 969Cal',
+};
+
 itemList['cbsmoothie'] = {
   fullyDegrades: false,
   decayrate: 0.01,
