@@ -242,6 +242,8 @@ function ConvenienceStore() {
         { item_id: "tomato", id: 0, name: "Shop", information: "{}", slot: 22, amount: 15 },
         { item_id: "cheese", id: 0, name: "Shop", information: "{}", slot: 23, amount: 15 },
         { item_id: "potato", id: 0, name: "Shop", information: "{}", slot: 24, amount: 15 },
+        { item_id: "coffeebeans", id: 0, name: "Shop", information: "{}", slot: 25, amount: 15 },
+
     ];
     return JSON.stringify(shopItems);
 }
