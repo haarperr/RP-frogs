@@ -123,6 +123,17 @@ end)
 
 
 
+RegisterNetEvent("cluckinbell:Tray-1")
+AddEventHandler("cluckinbell:Tray-1", function()
+    TriggerEvent("server-inventory-open", "1", "cluckinbell_counter_1");
+end)
+
+RegisterNetEvent("cluckinbell:Tray-2")
+AddEventHandler("cluckinbell:Tray-2", function()
+    TriggerEvent("server-inventory-open", "1", "cluckinbell_counter_2");
+end)
+
+
 
 
     
