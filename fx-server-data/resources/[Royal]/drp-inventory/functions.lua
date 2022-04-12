@@ -922,8 +922,8 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
       or itemid == "shot10" 
       or itemid == "moonshine"
       or itemid == "poisonedcocktail"
-      or itemid == "redwineglass"
-      or itemid == "whitewineglass"
+      or itemid == "kennyred"
+      or itemid == "kennywhite"
       or itemid == "mead_watermelon"
       or itemid == "mead_strawberry"
       or itemid == "mead_potato"
@@ -952,7 +952,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
                 alcoholStrength = 0.6
             end
             if itemid == "shot1" or itemid == "shot2" or itemid == "shot3" or itemid == "shot4" or itemid == "shot5" or itemid == "shot6"
-            or itemid == "shot7" or itemid == "shot8" or itemid == "shot9" or itemid == "shot10" or itemid == "redwineglass" or itemid == "whitewineglass"  then
+            or itemid == "shot7" or itemid == "shot8" or itemid == "shot9" or itemid == "shot10" or itemid == "kennyred" or itemid == "kennywhite"  then
                 alcoholStrength = 0.6
             end
             if itemid == "mead_watermelon"
@@ -1058,10 +1058,11 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
         
     end
 
-    if (itemid == "whitewineglass") or (itemid == "redwineglass") then
+    if (itemid == "kennyred") or (itemid == "kennywhite") then
         TriggerEvent("Evidence:StateSet",27,6000)
         SetPedArmour(player, GetPedArmour(player) + 20)
         TriggerEvent("drp-hud:updateStress",false,200)
+        TriggerEvent("DoLongHudText","The power of kenny throbs through you ")
     end
 
     if (itemid == "miningpickaxe") then
@@ -2772,9 +2773,9 @@ function AttachPropAndPlayAnimation(dictionary,animation,typeAnim,timer,message,
         TriggerEvent("attachItem", "shotglass")
     elseif itemid == "fishtaco" or itemid == "taco" then
         TriggerEvent("attachItem", "taco")
-    elseif itemid == "whitewineglass" then
+    elseif itemid == "kennywhite" then
         TriggerEvent("attachItem", "wineglassw")
-    elseif itemid == "redwineglass" then
+    elseif itemid == "kennyred" then
         TriggerEvent("attachItem", "wineglassr")
     elseif itemid == "greencow" or itemid == "franksmonster" or itemid == "chuhai" then
         TriggerEvent("attachItem", "energydrink")
