@@ -25,9 +25,11 @@ module.exports = {
     ],
 
     run: async (client, interaction, args) => {
-        if (!GetPlayerName(args.id)) return interaction.reply({ content: "This ID seems invalid.", ephemeral: true });
-        emitNet("hospital:client:Revive", args.id);
+        if (!GetPlayerName(args.id)) return interaction.reply({ content: "Invalid PayPal ID", ephemeral: true });
+        emitNet("drp-admin:ReviveInDistance", args.id);
         client.utils.log.info(`[${interaction.member.displayName}] revived ${GetPlayerName(args.id)} (${args.id})`);
         return interaction.reply({ content: `${GetPlayerName(args.id)} (${args.id}) has been fully healed.`, ephemeral: false });
     },
 };
+
+
