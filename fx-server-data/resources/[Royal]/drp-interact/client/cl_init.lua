@@ -811,9 +811,17 @@ Citizen.CreateThread(function()
     exports["drp-polytarget"]:AddBoxZone("cluckinbell_register_1", vector3(-520.2220, -697.6124, 33.3579), 1, 1.4, {
     })
 
-    exports["drp-polytarget"]:AddBoxZone("cluckinbell_register_2", vector3(-516.9193, -697.6238, 33.3630), 1, 1.4, {
+    exports["drp-polytarget"]:AddBoxZone("cluckinbell_register_2", vector3(-515.2864, -697.5712, 33.4029), 1, 1.4, {
+    })
+
+    exports["drp-polytarget"]:AddBoxZone("cluckinbell_tray_1", vector3(-515.9899, -697.6581, 33.1969), 1, 1.4, {
+    })
+
+    exports["drp-polytarget"]:AddBoxZone("cluckinbell_tray_2", vector3(-519.4189, -697.7476, 33.2132), 1, 1.4, {
     })
     
+
+
     exports["drp-polytarget"]:AddBoxZone("taxiguy", vector3(894.9174, -179.3615, 74.7003), 1, 1.4, {
         heading=239.7525,
     })
@@ -2434,6 +2442,30 @@ Citizen.CreateThread(function()
             parameters = 'cluckinbell_register_2',
         },
     }, {
+        distance = { radius = 2.5 },
+    });
+
+
+    -- Tray 1
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_tray_1", {{
+        event = "cluckinbell:Tray-1",
+        id = "cluckinbell_tray_1",
+        icon = "hand-holding",
+        label = "Grab Order",
+        parameters = {},
+    }}, {
+        distance = { radius = 2.5 },
+    });
+
+
+    -- Tray 1
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_tray_2", {{
+        event = "cluckinbell:Tray-2",
+        id = "cluckinbell_tray_2",
+        icon = "hand-holding",
+        label = "Grab Order",
+        parameters = {},
+    }}, {
         distance = { radius = 2.5 },
     });
 
