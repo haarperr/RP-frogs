@@ -54,6 +54,17 @@ AddEventHandler("drp-cluckinbell:openmakedrink", function()
 end)
 
 
+RegisterNetEvent("drp-cluckin:tradein")
+AddEventHandler("drp-cluckin:tradein", function()
+    local job = exports["isPed"]:GroupRank('cluckin_bell')
+    if job >= 1 then
+        TriggerEvent("server-inventory-open", "47000", "Craft");
+        Wait(1000)
+    else
+        TriggerEvent('DoLongHudText', 'You do not work here !', 2)
+    end
+end)
+
 
 RegisterNetEvent("drp-cluckin:getextraingridients")
 AddEventHandler("drp-cluckin:getextraingridients", function()
