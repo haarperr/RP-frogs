@@ -278,7 +278,7 @@ function sendStocksToPhone(isRefresh)
       value = serverstockvalues[i]["value"],
       change = serverstockvalues[i]["lastchange"],
       available = serverstockvalues[i]["amountavailable"],
-      clientStockValue = clientstockamount[i]["value"]
+      clientstock = clientstockamount[i]["value"]
     })
   end
 
@@ -310,7 +310,7 @@ RegisterNUICallback('btnStocks', function()
         lastchange = lastchangestock,
         valuesent = serverstockvalues[i]["value"],
         amountsold = serverstockvalues[i]["amountsold"],
-        clientStockValue = clientstockamount[i]["value"],
+        clientstock = clientstockamount[i]["value"],
         colorsent = colortype,
         available = serverstockvalues[i]["amountavailable"]
       })
