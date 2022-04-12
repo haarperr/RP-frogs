@@ -58,14 +58,14 @@ function AtPoliceBuy()
                         Citizen.Wait(500)
                         ClearPedTasksImmediately(ped)
                         TaskPlayAnim(ped, "mp_common_heist", 'use_terminal_loop', 2.0, 2.0, -1, 1, 0, true, true, true)
-                        local finished = exports['drp-taskbar']:taskBar(math.random(5000, 10000), 'Picking Grapes')
+                        local finished = exports['drp-taskbar']:taskBar(math.random(10000, 25000), 'Picking Grapes') -- 10s to 25s to harvest
                         if (finished == 100) then
                             local chance = math.random(0, 1)
                             FreezeEntityPosition(ped,false)
                             if chance == 0 then
                                 TriggerEvent('player:receiveItem', 'grapes')
                             elseif chance == 1 then 
-                                TriggerEvent('player:receiveItem', 'grapes', math.random(2,4))
+                                TriggerEvent('player:receiveItem', 'grapes', math.random(1,2))
                             end
                         else
                             FreezeEntityPosition(ped,false)
@@ -96,7 +96,7 @@ function PickTaters()
                         ClearPedTasksImmediately(ped)
                         --TaskPlayAnim( player, "pickup_object", "pickup_low", 8.0, 1.0, -1, 16, 0, 0, 0, 0 )
                         TaskPlayAnim(ped, "pickup_object", "pickup_low", 2.0, 2.0, -1, 1, 0, true, true, true)
-                        local finished = exports['drp-taskbar']:taskBar(math.random(5000, 10000), 'Harvesting Potatos')
+                        local finished = exports['drp-taskbar']:taskBar(math.random(20000, 60000), 'Harvesting Potatos') --20S TO 1MIN TO HARVEST
                         if (finished == 100) then
                             local chance = math.random(0, 1)
                             FreezeEntityPosition(ped,false)
