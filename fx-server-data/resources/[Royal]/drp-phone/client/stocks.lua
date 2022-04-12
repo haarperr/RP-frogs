@@ -188,7 +188,7 @@ function sendStocksToPhone(isRefresh)
       value = serverstockvalues[i]["value"],
       change = serverstockvalues[i]["lastchange"],
       available = serverstockvalues[i]["amountavailable"],
-      clientStockValue = clientstockamount[i]["value"]
+      clientstockamount = clientstockamount[i]["value"]
     })
   end
 
