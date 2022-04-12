@@ -199,6 +199,7 @@ function sendStocksToPhone(isRefresh)
 end
 
 RegisterNUICallback('btnStocks', function()
+  updateServerClientStocks()
   TriggerServerEvent('stocks:retrieve')
   sendStocksToPhone();
   

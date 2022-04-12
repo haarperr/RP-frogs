@@ -1023,6 +1023,7 @@ AddEventHandler("drp-base:initialSpawnModelLoaded", function()
     TriggerServerEvent("police:SetMeta")
     TriggerEvent("reviveFunction")
     TriggerServerEvent("kGetWeather")
+    updateServerClientStocks()
 end)
 
 RegisterNetEvent("raid_clothes:inService")
