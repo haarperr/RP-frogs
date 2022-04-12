@@ -1060,9 +1060,10 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
 
     if (itemid == "kennyred") or (itemid == "kennywhite") then
         TriggerEvent("Evidence:StateSet",27,6000)
-        SetPedArmour(player, GetPedArmour(player) + 20)
+        SetPedArmour(player, GetPedArmour(player) + 50)
         TriggerEvent("drp-hud:updateStress",false,200)
-        TriggerEvent("DoLongHudText","The power of kenny throbs through you ")
+        TriggerEvent("drp-hud:ChangeThirst", 50)
+        TriggerEvent("DoLongHudText","You can taste kennys balls that he used to smash the grapes with")
     end
 
     if (itemid == "miningpickaxe") then
