@@ -1281,13 +1281,13 @@ function addStocks(stocksData) {
         let stockElement = `
         <li>
         <div class="collapsible-header" style="color: white;">
-                    ${stockEntry.identifier} <span class="new ${stockEntry.change > -0.01 ? 'stockgreen' : 'red'} badge" data-badge-caption="">Wallet:  ${stockEntry.clientstock}</span>
+                    ${stockEntry.identifier} <span class="new ${stockEntry.change > -0.01 ? 'stockgreen' : 'red'} badge" data-badge-caption="">Wallet:  ${stockEntry.clientStockValue}</span>
                 </div>
         </div>
         <div class="collapsible-body garage-body" style="height: 269px; margin-top: 10px">
         <ul class="collection" style="background-color: #31455E;">
                     <li class="collection-item" style="background-color: #31455E; font-size: 17px">Name: ${stockEntry.name}</li>
-                        <li class="collection-item" style="background-color: #31455E; font-size: 17px">Wallet: ${stockEntry.clientstock}</li>
+                        <li class="collection-item" style="background-color: #31455E; font-size: 17px">Wallet: ${stockEntry.clientStockValue}</li>
                         <li class="collection-item center-align" style="background-color: #31455E;">
                         <button class="waves-effect waves-light btn-small garage-spawn teal darken-1 stocks-exchange" data-stock-id="${stockEntry.identifier}"><i class="fas fa-exchange-alt"></i> Exchange</button> 
                         </li>
