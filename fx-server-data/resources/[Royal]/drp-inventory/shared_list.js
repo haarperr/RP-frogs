@@ -4961,6 +4961,14 @@ itemList['cbchickenfries'] = {
   weight: 2,
   nonStack: false,
   model: '',
+  craft: [
+    [  
+      {
+      itemid: 'cbfriedchickenpiece',
+      amount: 1
+      },
+    ]
+  ],
   image: 'cluckin-chicken-fries.png',
   information: 'Ooh..thats good. 440Cal + Protein',
 };
@@ -5176,7 +5184,7 @@ itemList['cbfries'] = {
 itemList['cbrings'] = {
   fullyDegrades: false,
   decayrate: 0.01,
-  displayname: 'Cluckin Rings',
+  displayname: 'Cluckin Onion Rings',
   price: 1,
   weight: 2,
   nonStack: false,
