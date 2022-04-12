@@ -5,9 +5,6 @@ Citizen.CreateThread(function()
 		name="winery_picking",
 		heading=177,
     }) 
-end)
--- -1840.65234375, 2113.3491210938, 133.95695495605 Heading: 183.00193786621
-Citizen.CreateThread(function()
     exports["drp-polyzone"]:AddBoxZone("potatoslol", vector3(-1840.65234375, 2113.3491210938, 133.95695495605), 18.8, 46.6,  {
 		name="potatoslol",
 		heading=177,
@@ -28,7 +25,7 @@ AddEventHandler('drp-polyzone:enter', function(name)
         local rank = exports["isPed"]:GroupRank("winery")
 		if rank > 0 then 
             nearPicking = true
-            AtPoliceBuy()
+            PickTaters()
 			exports['drp-textui']:showInteraction(("[E] %s"):format("Harvest Potatos"))
         end
     end
