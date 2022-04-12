@@ -55,8 +55,8 @@ end)
 
 
 
-RegisterNetEvent("drp-cluckinbell:getextraingridients")
-AddEventHandler("drp-cluckinbell:getextraingridients", function()
+RegisterNetEvent("drp-cluckin:getextraingridients")
+AddEventHandler("drp-cluckin:getextraingridients", function()
     local job = exports["isPed"]:GroupRank('cluckin_bell')
     if job >= 1 then
         TriggerEvent("server-inventory-open", "47000", "Craft");
