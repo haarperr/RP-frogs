@@ -209,9 +209,9 @@
                         <i class="fas fa-chevron-circle-right" v-if="spawn.stacked"></i>
                         <i class="fas fa-star favorite" v-else-if="currentSpawnFav && spawn.info.trim() == currentSpawnFav.trim()"></i>
                         <i class="fas fa-building" :class="[spawn.info.trim().replace(' ', '')]" v-else-if="spawn.info.includes('Apartments')"></i>
-                        <i class="fas fa-taxi" v-else-if="spawn.info.includes('Rooster Cab')"></i>
+                        <i class="fas fa-taxi" v-else-if="spawn.info.includes('Winery')"></i>
                         <i class="fab fa-dev"  v-else-if="spawn.info.includes('Dev Spawn')"></i>
-                        <i class="fas fa-siren-on" v-else-if="spawn.info.includes('MRPD')"></i>
+                        <i class="fas fa-siren-on" v-else-if="spawn.info.includes('Police Spawn')"></i>
                         <!-- Default places -->
                         <i class="fas fa-map-marker-alt" v-else-if="spawn.info.includes('Vinewood Blvd Taxi Stand')"></i>
                         <i class="fas fa-map-marker-alt" v-else-if="spawn.info.includes('The Boardwalk')"></i>

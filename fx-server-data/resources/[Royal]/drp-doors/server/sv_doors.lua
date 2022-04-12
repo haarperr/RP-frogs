@@ -2247,12 +2247,15 @@ DOOR_CONFIG = {
     lock = true,
     desc = "winerysecretbasementdoor1",
     access = {
-      job = {
-        ["winery"] = true,
+      cid = {
+        [1] = true,
+        [35] = true,
       },
+      job = {},
       business = {},
     },
     forceUnlocked = false,
+    hidden = true,
   },
   {
     info = "",
@@ -2263,12 +2266,15 @@ DOOR_CONFIG = {
     lock = true,
     desc = "winerysecretbasementdoor2",
     access = {
-      job = {
-        ["winery"] = true,
+      cid = {
+        [1] = true,
+        [35] = true,
       },
+      job = {},
       business = {},
     },
     forceUnlocked = false,
+    hidden = true,
   },
   {
     info = "",
