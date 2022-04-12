@@ -551,11 +551,6 @@ on('inventory-open-request', async () => {
         if (!IsThisModelABicycle(vehicleModel) && !IsThisModelABike(vehicleModel)) {
             let licensePlate = GetVehicleNumberPlateText(vehicleFound);
             const vehId = exports['drp-vehicles'].GetVehicleIdentifier(vehicleFound)
-            if (!vehId) {
-                TriggerEvent('DoLongHudText', 'The glovebox is locked.', 2);
-                GroundInventoryScan();
-                return;
-            }
             const gloveboxName = "Glovebox-" + vehId
             emitNet('server-inventory-open', startPosition, cid, '1', gloveboxName);
         } else {
