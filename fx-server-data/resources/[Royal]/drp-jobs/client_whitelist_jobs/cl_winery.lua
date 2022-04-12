@@ -6,6 +6,13 @@ Citizen.CreateThread(function()
 		heading=177,
     }) 
 end)
+-- -1840.65234375, 2113.3491210938, 133.95695495605 Heading: 183.00193786621
+Citizen.CreateThread(function()
+    exports["drp-polyzone"]:AddBoxZone("potatoslol", vector3(-1840.65234375, 2113.3491210938, 133.95695495605), 18.8, 46.6,  {
+		name="potatoslol",
+		heading=177,
+    }) 
+end)
 
 RegisterNetEvent('drp-polyzone:enter')
 AddEventHandler('drp-polyzone:enter', function(name)
@@ -14,10 +21,20 @@ AddEventHandler('drp-polyzone:enter', function(name)
 		if rank > 0 then 
             nearPicking = true
             AtPoliceBuy()
-			exports['drp-textui']:showInteraction(("[E] %s"):format("Start Picking"))
+			exports['drp-textui']:showInteraction(("[E] %s"):format("Pick Grapes"))
+        end
+    end
+    if name == "potato" then
+        local rank = exports["isPed"]:GroupRank("winery")
+		if rank > 0 then 
+            nearPicking = true
+            AtPoliceBuy()
+			exports['drp-textui']:showInteraction(("[E] %s"):format("Harvest Potatos"))
         end
     end
 end)
+
+
 
 
 RegisterNetEvent('drp-polyzone:exit')
@@ -51,7 +68,7 @@ function AtPoliceBuy()
                             if chance == 0 then
                                 TriggerEvent('player:receiveItem', 'grapes')
                             elseif chance == 1 then 
-                                TriggerEvent('player:receiveItem', 'grapes', 2)
+                                TriggerEvent('player:receiveItem', 'grapes', math.random(2,4))
                             end
                         else
                             FreezeEntityPosition(ped,false)
@@ -65,6 +82,43 @@ function AtPoliceBuy()
     end)
 end
 
+function PickTaters()
+	Citizen.CreateThread(function()
+        while nearPicking do
+            Citizen.Wait(5)
+            local plate = GetVehicleNumberPlateText(vehicle)
+            local rank = exports["isPed"]:GroupRank("winery")
+            if rank > 0 then 
+                if IsControlJustReleased(0, 38) then
+                    local ped = PlayerPedId()
+                    local rank = exports["isPed"]:GroupRank("winery")
+                    if rank > 0 then 
+                        LoadAnim('mp_common_heist')
+                        FreezeEntityPosition(ped,true)
+                        Citizen.Wait(500)
+                        ClearPedTasksImmediately(ped)
+                        --TaskPlayAnim( player, "pickup_object", "pickup_low", 8.0, 1.0, -1, 16, 0, 0, 0, 0 )
+                        TaskPlayAnim(ped, "pickup_object", "pickup_low", 2.0, 2.0, -1, 1, 0, true, true, true)
+                        local finished = exports['drp-taskbar']:taskBar(math.random(5000, 10000), 'Harvesting Potatos')
+                        if (finished == 100) then
+                            local chance = math.random(0, 1)
+                            FreezeEntityPosition(ped,false)
+                            if chance == 0 then
+                                TriggerEvent('player:receiveItem', 'potato')
+                            elseif chance == 1 then 
+                                TriggerEvent('player:receiveItem', 'potato', math.random(2,4))
+                            end
+                        else
+                            FreezeEntityPosition(ped,false)
+                        end
+                    else
+                        TriggerEvent('DoLongHudText', 'You cant do that', 2)
+                    end
+                end
+            end
+        end
+    end)
+end
 
 function LoadAnim(animDict)
 	RequestAnimDict(animDict)
@@ -147,7 +201,7 @@ AddEventHandler('drp-jobs:cook-grapes-green:winery', function()
                 TriggerEvent('DoLongHudText', 'You burnt yourself scream for help', 2)
             end
         else
-            TriggerEvent('DoLongHudText', 'Required: 3x Clunky Green Grapes')
+            TriggerEvent('DoLongHudText', 'Required: 3x Processed Grapes')
         end
     else
         TriggerEvent('DoLongHudText', 'You cant do that', 2)
@@ -177,22 +231,22 @@ RegisterNetEvent('drp-jobs:pourWhiteWine')
 AddEventHandler('drp-jobs:pourWhiteWine', function()
     local rank = exports["isPed"]:GroupRank("winery")
     if rank > 0 then 
-        if exports['drp-inventory']:hasEnoughOfItem('kennywhite', 1) and exports['drp-inventory']:hasEnoughOfItem('wineglass', 1) then
+        if exports['drp-inventory']:hasEnoughOfItem('kennywhitebottle', 1) and exports['drp-inventory']:hasEnoughOfItem('wineglass', 1) then
             FreezeEntityPosition(GetPlayerPed(-1),true)
             TriggerEvent("animation:PlayAnimation","cokecut")
-            local cooking = exports['drp-taskbar']:taskBar(5000, 'Pouring White Wine')
+            local cooking = exports['drp-taskbar']:taskBar(5000, 'Pouring A Glass Of Kenny White')
             if (cooking == 100) then
-                TriggerEvent("inventory:removeItem","kennywhite", 1)
+                TriggerEvent("inventory:removeItem","kennywhitebottle", 1)
                 TriggerEvent("inventory:removeItem","wineglass", 1)
                 Wait(1000)
                 FreezeEntityPosition(GetPlayerPed(-1),false)
-                TriggerEvent('player:receiveItem', 'whitewineglass', 1)
+                TriggerEvent('player:receiveItem', 'kennywhite', math.random(2,4))
             else
                 FreezeEntityPosition(GetPlayerPed(-1),false)
                 TriggerEvent('DoLongHudText', 'You burnt yourself scream for help!', 2)
             end
         else
-            TriggerEvent('DoLongHudText', 'Required: 1x White Wine | x1 Empty Wine Glass')
+            TriggerEvent('DoLongHudText', 'Required: 1x Kenny White Bottle | x1 Empty Wine Glass')
         end
     else
         TriggerEvent('DoLongHudText', 'You cant do that', 2)
@@ -213,22 +267,22 @@ RegisterNetEvent('drp-jobs:pourRedWine')
 AddEventHandler('drp-jobs:pourRedWine', function()
     local rank = exports["isPed"]:GroupRank("winery")
     if rank > 0 then 
-        if exports['drp-inventory']:hasEnoughOfItem('kennyred', 1) and exports['drp-inventory']:hasEnoughOfItem('wineglass', 1) then
+        if exports['drp-inventory']:hasEnoughOfItem('kennyredbottle', 1) and exports['drp-inventory']:hasEnoughOfItem('wineglass', 1) then
             FreezeEntityPosition(GetPlayerPed(-1),true)
             TriggerEvent("animation:PlayAnimation","cokecut")
-            local cooking = exports['drp-taskbar']:taskBar(5000, 'Pouring Red Wine')
+            local cooking = exports['drp-taskbar']:taskBar(5000, 'Pouring A Glass Of Kenny Red')
             if (cooking == 100) then
-                TriggerEvent("inventory:removeItem","kennyred", 1)
+                TriggerEvent("inventory:removeItem","kennyredbottle", 1)
                 TriggerEvent("inventory:removeItem","wineglass", 1)
                 Wait(1000)
                 FreezeEntityPosition(GetPlayerPed(-1),false)
-                TriggerEvent('player:receiveItem', 'redwineglass', 1)
+                TriggerEvent('player:receiveItem', 'kennyred', math.random(2,4))
             else
                 FreezeEntityPosition(GetPlayerPed(-1),false)
                 TriggerEvent('DoLongHudText', 'You burnt yourself scream for help!', 2)
             end
         else
-            TriggerEvent('DoLongHudText', 'Required: 1x Red Wine | x1 Empty Wine Glass')
+            TriggerEvent('DoLongHudText', 'Required: 1x Kenny Red Bottle | x1 Empty Wine Glass')
         end
     else
         TriggerEvent('DoLongHudText', 'You cant do that', 2)

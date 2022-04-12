@@ -4596,7 +4596,31 @@ itemList['kennyred'] = {
   nonStack: false,
   model: '',
   image: 'kennyred.png',
-  information: '"All you need is ERP and wine."',
+  information: 'A glass of red wine from WineTime Winery.',
+};
+
+itemList['kennyredbottle'] = {
+  fullyDegrades: false,
+  decayrate: 0.0,
+  displayname: 'Kenny Red (B)',
+  price: 1,
+  weight: 5,
+  nonStack: false,
+  model: '',
+  image: 'np_honest_wine.png',
+  information: 'A bottle of red wine from WineTime Winery.',
+};
+
+itemList['kennywhitebottle'] = {
+  fullyDegrades: false,
+  decayrate: 0.0,
+  displayname: 'Kenny White (B)',
+  price: 1,
+  weight: 5,
+  nonStack: false,
+  model: '',
+  image: 'np_honest_wine.png',
+  information: 'A bottle of red wine from WineTime Winery.',
 };
 
 itemList['rum'] = {
@@ -12027,7 +12051,7 @@ itemList['kennywhite'] = {
   nonStack: false,
   model: '',
   image: 'kennywhite.png',
-  information: '"All you need is ERP and wine."',
+  information: 'A glass of white wine from WineTime Winery.',
 };
 
 itemList['wineglassf'] = {
