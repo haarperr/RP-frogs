@@ -122,6 +122,11 @@ end)
 
 
 
+RegisterNetEvent("cluckinbell:get:receipt")
+AddEventHandler("cluckinbell:get:receipt", function(registerid)
+    TriggerServerEvent('cluckinbell:retreive:receipt', registerid)
+end)
+
 
 RegisterNetEvent("cluckinbell:Tray-1")
 AddEventHandler("cluckinbell:Tray-1", function()
