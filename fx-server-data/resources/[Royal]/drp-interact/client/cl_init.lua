@@ -2422,7 +2422,7 @@ Citizen.CreateThread(function()
             parameters = 'cluckinbell_register_1',
         },
     }, {
-        distance = { radius = 2.5 },
+        distance = { radius = 1.5 },
     });
 
     --Burger Shot Register 2
@@ -2442,7 +2442,7 @@ Citizen.CreateThread(function()
             parameters = 'cluckinbell_register_2',
         },
     }, {
-        distance = { radius = 2.5 },
+        distance = { radius = 1.5 },
     });
 
 
@@ -2454,7 +2454,7 @@ Citizen.CreateThread(function()
         label = "Grab Order",
         parameters = {},
     }}, {
-        distance = { radius = 2.5 },
+        distance = { radius = 1.5 },
     });
 
 
@@ -2466,7 +2466,7 @@ Citizen.CreateThread(function()
         label = "Grab Order",
         parameters = {},
     }}, {
-        distance = { radius = 2.5 },
+        distance = { radius = 1.5 },
     });
 
 
