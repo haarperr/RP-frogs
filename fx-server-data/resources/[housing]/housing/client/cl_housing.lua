@@ -125,7 +125,7 @@ function GetHouseInformation()
 		houseinfo = { [1] = house_id, [2] = house_model }
 		return houseinfo
 	else
-		TriggerEvent("DoLongHudText","No house found!",2)
+		-- TriggerEvent("DoLongHudText","No house found!",2)
 	end
 end
 
