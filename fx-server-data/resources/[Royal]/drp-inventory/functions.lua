@@ -1812,9 +1812,9 @@ end
         CreateCraftOption("1gcocaine", 100, true)
     end    
     
-    if (itemid == "bakingsoda") then
-        CreateCraftOption("1gcrack", 80, true)
-    end
+    -- if (itemid == "bakingsoda") then
+    --     CreateCraftOption("1gcrack", 80, true)
+    -- end
 
     if (itemid == "glucose") then
         CreateCraftOption("1gcocaine", 80, true)
