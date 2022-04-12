@@ -819,6 +819,12 @@ Citizen.CreateThread(function()
 
     exports["drp-polytarget"]:AddBoxZone("cluckinbell_tray_2", vector3(-516.0284, -697.4990, 33.1941), 1, 1.4, {
     })
+
+    exports["drp-polytarget"]:AddBoxZone("cluckinbell_door_up", vector3(-501.6068, -693.7198, 33.2182), 1, 1.4, {
+    })
+
+    exports["drp-polytarget"]:AddBoxZone("cluckinbell_door_down", vector3(-510.4387, -695.2125, 44.7534), 1, 1.4, {
+    })
     
 
 
@@ -2404,6 +2410,29 @@ Citizen.CreateThread(function()
     }}, {
         distance = { radius = 1 },
     });
+
+    -- CluckinBell Door to Up
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_door_up", {{
+        event = "drp-cluckinbell:goup",
+        id = "cluckinbell_door_up",
+        icon = "circle",
+        label = "Go up",
+        parameters = {},
+    }}, {
+        distance = { radius = 2 },
+    });
+
+    -- CluckinBell Door to Down
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_door_down", {{
+        event = "drp-cluckinbell:godown",
+        id = "cluckinbell_door_down",
+        icon = "circle",
+        label = "Go down",
+        parameters = {},
+    }}, {
+        distance = { radius = 2 },
+    });
+
 
     --Burger Shot Register 1
     exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_register_1", {

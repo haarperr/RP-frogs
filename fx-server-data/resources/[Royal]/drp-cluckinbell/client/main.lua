@@ -137,3 +137,28 @@ RegisterNetEvent("cluckinbell:Tray-2")
 AddEventHandler("cluckinbell:Tray-2", function()
     TriggerEvent("server-inventory-open", "1", "cluckinbell_counter_2");
 end)
+
+RegisterNetEvent("drp-cluckinbell:goup")
+AddEventHandler("drp-cluckinbell:goup", function()
+    local job = exports["isPed"]:GroupRank('cluckin_bell')
+    if job >= 1 then
+        local finished = exports['drp-taskbar']:taskBar(7500, "Unlocking the Door")
+        if finished == 100 then
+            SetEntityCoords(GetPlayerPed(-1), -510.9648, -695.0436, 44.0345, 87.0089)
+        end
+    else
+        TriggerEvent('DoLongHudText', 'You do not work here !', 2)
+    end
+end)
+
+
+
+RegisterNetEvent("drp-cluckinbell:godown")
+AddEventHandler("drp-cluckinbell:godown", function()
+    local job = exports["isPed"]:GroupRank('cluckin_bell')
+    if job >= 1 then
+        SetEntityCoords(GetPlayerPed(-1), -510.3046, -695.6692, 33.2178, 274.0302)
+    else
+        TriggerEvent('DoLongHudText', 'You do not work here !', 2)
+    end
+end)
