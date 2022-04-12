@@ -93,7 +93,7 @@ RegisterServerEvent("cluckinbell:request:song:sv", function(url)
     TriggerClientEvent("play:song", -1, url, Speaker3, "BU")
     local data = {
         soundId = "CB",
-        distance =  15,
+        distance =  25,
     }
     TriggerClientEvent("drp-musicplayer:stateSound", -1, "distance", data)
 end)
