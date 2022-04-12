@@ -117,7 +117,6 @@ Garages = {
            
         },
         ShowBlip = false
-        
     },
     
     ["garagecluckin"] = {
