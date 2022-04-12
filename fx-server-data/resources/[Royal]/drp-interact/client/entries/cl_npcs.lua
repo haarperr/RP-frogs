@@ -380,6 +380,13 @@ Entries[#Entries + 1] = {
             icon = "circle",
             event = "drp-cluckin:getextraingridients",
             parameters = {}
+        },
+        {
+            id = "cluckin3",
+            label = "Trade in reciepes",
+            icon = "circle",
+            event = "drp-cluckin:tradein",
+            parameters = {}
         }
     },
     options = {
