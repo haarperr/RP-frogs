@@ -5031,7 +5031,7 @@ itemList['cbbucket'] = {
 
 itemList['cbclucker'] = {
   fullyDegrades: false,
-  decayrate: 0.01,
+  decayrate: 0.5,
   displayname: 'Little Clucker',
   price: 1,
   weight: 2,
@@ -5075,7 +5075,7 @@ itemList['cbdrink'] = {
 
 itemList['cbfarmers'] = {
   fullyDegrades: false,
-  decayrate: 0.01,
+  decayrate: 0.5,
   displayname: 'Cluckin Bag',
   price: 1,
   weight: 2,
@@ -6646,7 +6646,7 @@ itemList['plastic'] = {
     }]
   ],
   fullyDegrades: true,
-  decayrate: 0.5,
+  decayrate: 0.75,
   displayname: 'Plastic',
   price: 11,
   weight: 0,
