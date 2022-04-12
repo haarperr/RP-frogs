@@ -42,6 +42,7 @@ AddEventHandler('car:dopayment', function(plateNumber)
     local pSrc = source
     local user = exports["drp-base"]:getModule("Player"):GetUser(pSrc)
     exports.ghmattimysql:execute("SELECT * FROM `characters_cars` WHERE license_plate = ?", {plateNumber}, function(data)
+    if data[1].payments_left > 0 then
         if data[1] then
             local CurrentPayment = math.floor(data[1].financed/data[1].payments_left)
             if user:getBalance() >= CurrentPayment then
@@ -60,6 +61,10 @@ AddEventHandler('car:dopayment', function(plateNumber)
                 TriggerClientEvent("DoLongHudText", pSrc, "You need $"..CurrentPayment.. " in your bank account to afford this car payment!")
             end                
         end
+    else
+        TriggerClientEvent("DoLongHudText", pSrc, "This car is already paid off!")
+    end
+    
     end)
 end)
 
