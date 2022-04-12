@@ -808,6 +808,11 @@ Citizen.CreateThread(function()
     exports["drp-polytarget"]:AddBoxZone("cluckinbell_drink", vector3(-514.6924, -699.1755, 33.2878), 1, 1.4, {
     })
 
+    exports["drp-polytarget"]:AddBoxZone("cluckinbell_register_1", vector3(-520.2220, -697.6124, 33.3579), 1, 1.4, {
+    })
+
+    exports["drp-polytarget"]:AddBoxZone("cluckinbell_register_2", vector3(-516.9193, -697.6238, 33.3630), 1, 1.4, {
+    })
     
     exports["drp-polytarget"]:AddBoxZone("taxiguy", vector3(894.9174, -179.3615, 74.7003), 1, 1.4, {
         heading=239.7525,
@@ -2391,6 +2396,47 @@ Citizen.CreateThread(function()
     }}, {
         distance = { radius = 1 },
     });
+
+    --Burger Shot Register 1
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_register_1", {
+        {
+            event = "cluckinbell:get:receipt",
+            id = "cluckinbell_register_1",
+            icon = "cash-register",
+            label = "Make Payment",
+            parameters = 'cluckinbell_register_1',
+        },
+        {
+            event = "cluckinbell:register",
+            id = "cluckinbell_register_1_charge",
+            icon = "cash-register",
+            label = "Charge Customer",
+            parameters = 'cluckinbell_register_1',
+        },
+    }, {
+        distance = { radius = 2.5 },
+    });
+
+    --Burger Shot Register 2
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_register_2", {
+        {
+            event = "cluckinbell:get:receipt",
+            id = "cluckinbell_register_2",
+            icon = "cash-register",
+            label = "Make Payment",
+            parameters = 'cluckinbell_register_2',
+        },
+        {
+            event = "cluckinbell:register",
+            id = "cluckinbell_register_2_charge",
+            icon = "cash-register",
+            label = "Charge Customer",
+            parameters = 'cluckinbell_register_2',
+        },
+    }, {
+        distance = { radius = 2.5 },
+    });
+
 
     -- House Guy
     
