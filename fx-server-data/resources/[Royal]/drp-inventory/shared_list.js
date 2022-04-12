@@ -4921,7 +4921,7 @@ itemList['cbcoupongolden'] = {
   weight: 3,
   nonStack: false,
   model: '',
-  image: 'cb-coupongolden.png',
+  image: 'cluckin-goldencoupon.png',
   information: '2 Weeks of Free Food at Cluckin Bell',
 };
 
@@ -5084,7 +5084,7 @@ itemList['cbclucker'] = {
 itemList['cbdrink'] = {
   fullyDegrades: false,
   decayrate: 0.01,
-  displayname: 'Cluckin Drink',
+  displayname: 'Cluckin Softdrink',
   price: 1,
   weight: 2,
   nonStack: false,
