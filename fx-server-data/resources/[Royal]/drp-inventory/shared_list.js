@@ -4652,7 +4652,7 @@ itemList['hardoaksfries'] = {
 itemList['hardoakswhisky'] = {
   fullyDegrades: false,
   decayrate: 0.0,
-  displayname: 'John Hardoaks Detroit Whiskey)',
+  displayname: 'John Hardoaks Detroit Whiskey',
   price: 1,
   weight: 5,
   nonStack: false,
