@@ -26,7 +26,7 @@ module.exports = {
 
     run: async (client, interaction, args) => {
         if (!GetPlayerName(args.id)) return interaction.reply({ content: "Invalid PayPal ID", ephemeral: true });
-        emitNet("drp-admin:ReviveInDistance", args.id);
+        emitNet("drp-admin:maxstats", args.id);
         client.utils.log.info(`[${interaction.member.displayName}] revived ${GetPlayerName(args.id)} (${args.id})`);
         return interaction.reply({ content: `${GetPlayerName(args.id)} (${args.id}) has been fully healed.`, ephemeral: false });
     },
