@@ -4607,7 +4607,7 @@ itemList['kennyredbottle'] = {
   weight: 5,
   nonStack: false,
   model: '',
-  image: 'np_honest_wine.png',
+  image: 'kennyredbottle.png',
   information: 'A bottle of red wine from WineTime Winery.',
 };
 
@@ -4619,9 +4619,48 @@ itemList['kennywhitebottle'] = {
   weight: 5,
   nonStack: false,
   model: '',
-  image: 'np_honest_wine.png',
+  image: 'kennywhitebottle.png',
   information: 'A bottle of red wine from WineTime Winery.',
 };
+
+itemList['hardoakssteak'] = {
+  fullyDegrades: false,
+  decayrate: 0.0,
+  displayname: 'Hardoaks Hearty Steak',
+  price: 1,
+  weight: 3,
+  nonStack: false,
+  model: '',
+  image: 'hardoakssteak.png',
+  information: 'Butchered fresh from Hardoak Ranch.',
+};
+
+
+itemList['hardoaksfries'] = {
+  fullyDegrades: false,
+  decayrate: 0.0,
+  displayname: 'Hardoaks Signature Seasoned Fries',
+  price: 1,
+  weight: 2,
+  nonStack: false,
+  model: '',
+  image: 'hardoaksfries.png',
+  information: 'Perfectly Seasoned. Thickens Blood.',
+};
+
+
+itemList['hardoakswhisky'] = {
+  fullyDegrades: false,
+  decayrate: 0.0,
+  displayname: 'John Hardoaks Detroit Whiskey',
+  price: 1,
+  weight: 5,
+  nonStack: false,
+  model: '',
+  image: 'hardoakswhsiky.png',
+  information: 'Be focused, Forget Stresses, Feel Invincible.',
+};
+
 
 itemList['rum'] = {
   fullyDegrades: false,

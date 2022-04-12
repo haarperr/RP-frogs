@@ -51,31 +51,14 @@ module.exports = {
     ],
 
     run: async (client, interaction, args) => {
-        if (!GetPlayerName(args.id)) return interaction.reply({ content: "This ID seems invalid.", ephemeral: true });
+        if (!GetPlayerName(args.id)) return interaction.reply({ content: "Invalid PayPal ID", ephemeral: true });
         if (args.sentence) {
-            if (args.time < 5) return interaction.reply({ content: "Jail time need to be more than 5 seconds", ephemeral: true });
-            const player = client.QBCore.Functions.GetPlayer(args.id);
-            const d = new Date();
-            // Stupid hack to replicate lua's os.date("*t") for the prison jail script is stupid..
-            const currentDate = {
-                ["month"]: d.getDate(),
-                ["sec"]: d.getSeconds(),
-                ["year"]: d.getFullYear(),
-                ["day"]: (d.getDate() > 30) ? 30 : d.getDate(),
-                ["min"]: d.getMinutes(),
-                ["wday"]: d.getDay() + 1,
-                ["isdst"]: false,
-                ["yday"]: (Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) - Date.UTC(d.getFullYear(), 0, 0)) / 24 / 60 / 60 / 1000,
-                ["hour"]: d.getHours(),
-            };
-            player.Functions.SetMetaData("injail", args.time);
-            player.Functions.SetMetaData("criminalrecord", { ["hasRecord"]: true, ["date"]: currentDate });
-            emitNet("police:client:SendToJail", args.id, parseInt(args.time));
-            emitNet("QBCore:Notify", args.id, `You were sent to prison for ${args.time} months`);
-            client.utils.log.info(`[${interaction.member.displayName}] jailed ${GetPlayerName(args.id)} (${args.id}) for ${args.time} seconds`);
+            emitNet("police:jailing2", args.id, args.time);
+            emitNet("DoLongHudText", args.id, `You were sent to prison for ${args.time} months`);
+            client.utils.log.info(`[${interaction.member.displayName}] jailed ${GetPlayerName(args.id)} (${args.id}) for ${args.time} months!`);
             return interaction.reply({ content: `${GetPlayerName(args.id)} (${args.id}) was jailed for ${args.time} months.`, ephemeral: false });
         } else if (args.free) {
-            emitNet("prison:client:UnjailPerson", args.id);
+            emitNet("endJailTime", args.id);
             client.utils.log.info(`[${interaction.member.displayName}] freed ${GetPlayerName(args.id)} (${args.id}) from jail`);
             return interaction.reply({ content: `${GetPlayerName(args.id)} (${args.id}) was set free`, ephemeral: false });
         }

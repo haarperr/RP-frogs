@@ -1015,12 +1015,12 @@ AddEventHandler("drp-base:initialSpawnModelLoaded", function()
     TriggerServerEvent("police:getAnimData")
     TriggerServerEvent("police:getEmoteData")
     TriggerServerEvent("police:getMeta")
-    TriggerServerEvent("stocks:retrieveclientstocks")
     TriggerServerEvent("drp-weapons:getAmmo")
     TriggerServerEvent("trucker:returnCurrentJobs")
     TriggerServerEvent("police:SetMeta")
     TriggerEvent("reviveFunction")
     TriggerServerEvent("kGetWeather")
+
 end)
 
 RegisterNetEvent("raid_clothes:inService")

@@ -408,6 +408,9 @@ $(document).ready(function () {
             case "emailnotify":
                 addNotiEmail(item.pEMessages, item.pEHandle);
                 break;
+                case "robnotify":
+                    addNotiRob(item.pEMessages, item.pEHandle);
+                    break;   
             case "messagenotify":
                 addNotiMessage(item.pMMessage, item.pMNumber);
                 break;
@@ -1279,19 +1282,18 @@ function addStocks(stocksData) {
     for (let stock of Object.keys(stocksData)) {
         let stockEntry = stocksData[stock];
         let stockElement = `
-        <li>
-        <div class="collapsible-header" style="color: white;">
-                    ${stockEntry.identifier} <span class="new ${stockEntry.change > -0.01 ? 'stockgreen' : 'red'} badge" data-badge-caption="">${stockEntry.change > -0.01 ? '▲' : '▼'} ${stockEntry.change}%</span>
+            <li>
+            <li style="background-color: #31455E;">
+            <div class="collapsible-header" style="background-color: #31455E; color: white">
+                     <i class="${stockEntry.icon}"></i> <span class="new badge" data-badge-caption="">${stockEntry.identifier}</span>
                 </div>
-        </div>
-        <div class="collapsible-body garage-body" style="height: 269px; margin-top: 10px">
-        <ul class="collection" style="background-color: #31455E;">
-                    <li class="collection-item" style="background-color: #31455E; font-size: 17px">Name: ${stockEntry.name}</li>
-                        <li class="collection-item" style="background-color: #31455E; font-size: 17px">Shares: ${stockEntry.clientStockValue}</li>
-                        <li class="collection-item" style="background-color: #31455E; font-size: 17px">Float: ${stockEntry.available}</li>
-                        <li class="collection-item" style="background-color: #31455E; font-size: 17px">Value: ${stockEntry.value}</li>
+                <div class="collapsible-body garage-body" style="background-color: #31455E; color: white">
+                    <ul class="collection" style="background-color: #31455E;">
+                    <li class="collection-item" style="background-color: #31455E;">Name: ${stockEntry.name}</li>
+                        <li class="collection-item" style="background-color: #31455E;">Wallet: ${stockEntry.clientstock}</li>
+                       
                         <li class="collection-item center-align" style="background-color: #31455E;">
-                        <button class="waves-effect waves-light btn-small garage-spawn teal darken-1 stocks-exchange" data-stock-id="${stockEntry.identifier}"><i class="fas fa-exchange-alt"></i> Exchange</button> 
+                        <button class="waves-effect waves-light btn-small garage-spawn teal darken-1 stocks-exchange" data-stock-id="${stockEntry.identifier}"><i class="fas fa-exchange-alt"></i> Exchange</button> <button class="waves-effect waves-light btn-small garage-spawn teal darken-1 stocks-purchase" data-stock-id="${stockEntry.identifier}"><i class="fas fa-dollar-sign icon"></i> Purchase</button>
                         </li>
                     </ul>
                 </div>
@@ -1321,57 +1323,55 @@ function addVehicles(vehicleData, showCarPayments) {
        
     <h3>
     `
-        if (vehicleData[vehicle].canSpawn)
-            // vehicleElement += `<button id="hovercorridas" class=" garage-spawn" aria-label="Spawn" data-plate="${vehicleData[vehicle].plate}"><i class="fas fa-magic"></i> </button> `
-            vehicleElement += `<button id="hovercorridas" class="" aria-label=""><i class=""></i> </button>
-        
-        <button style="margin-left: 15px" id="hovercorridas" class="" aria-label="Garage - ${vehicleData[vehicle].garage}" data-balloon-pos="up"><i  class="fas fa-oil-can"></i> </button>
-        <button id="hovercorridas" class="" aria-label=" Car Plate - ${vehicleData[vehicle].plate}" data-balloon-pos="up"><i  class="fas fa-closed-captioning"></i> </button>
-        <button id="hovercorridas" class="" aria-label="Engine Health - ${vehicleData[vehicle].enginePercent}" data-balloon-pos="up"><i  class="fas fa-oil-can"></i> </button>
-        <button id="hovercorridas" class="" aria-label="Body Health - ${vehicleData[vehicle].bodyPercent}" data-balloon-pos="up"><i  class="fas fa-car-crash"></i> </button>
+    if (vehicleData[vehicle].canSpawn)
+    vehicleElement += `<button id="hovercorridas" class=" garage-spawn" aria-label="Track" data-plate="${vehicleData[vehicle].plate}"><i class="fas fa-magic"></i> </button>
+    <button id="hovercorridas" class=" garage-pay" aria-label="${vehicleData[vehicle].payments} payments remaining" data-plate="${vehicleData[vehicle].plate}"><i class="fas fa-hand-holding-usd"></i></button>  
+   <button id="hovercorridas" class="" aria-label=" Car Plate - ${vehicleData[vehicle].plate}" data-balloon-pos="up"><i  class="fas fa-closed-captioning"></i> </button>
+   <button id="hovercorridas" class="" aria-label="Engine Health - ${vehicleData[vehicle].enginePercent}" data-balloon-pos="up"><i  class="fas fa-oil-can"></i> </button>
+   <button id="hovercorridas" class="" aria-label="Body Health - ${vehicleData[vehicle].bodyPercent}" data-balloon-pos="up"><i  class="fas fa-car-crash"></i> </button>
+   <button id="hovercorridas" class="" aria-label="Amount Due - ${vehicleData[vehicle].amountDue} " data-balloon-pos="up"><i  class="fas fa-dollar-sign"></i> </button>
+</h3>
+           <div class="collapsible-header">
+               <i class="fas fa-car " style="font-size: 60px; color:${carIconColor}"> </i>
+               <i class="name-car" style="font-size: 18px;">${vehicleData[vehicle].name}</i>
+               <span  class="new-badge">(${vehicleData[vehicle].state}) ${vehicleData[vehicle].garage}</span>
+           </div>
+           <div class="collapsible-body garage-body">
+           <div class="collapsible-body garage-body">
+           <div class="row">
+               <div class="col s12"> 
+                   <ul class="collection">
+                       <li class="collection-item"><i class="fas fa-map-marker-alt"></i>  ${vehicleData[vehicle].garage}</li>
+                       <li class="collection-item"><i class="fas fa-closed-captioning"></i> ${vehicleData[vehicle].plate}</li>
+                       <li class="collection-item"><i class="fas fa-oil-can"></i> ${vehicleData[vehicle].enginePercent}% Engine</li>
+                       <li class="collection-item"><i class="fas fa-car-crash"></i> ${vehicleData[vehicle].bodyPercent}% Body</li>
+                       <li class="collection-item"><i class="fas fa-hourglass-half"></i> ${vehicleData[vehicle].payments == 0 ? 'No remaining payments.' : Math.ceil(parseFloat(vehicleData[vehicle].lastPayment)) + ' days until payment is due.'}</li>
+                       `
+                   if (vehicleData[vehicle].payments != 0) {
+                       vehicleElement += `
+                       <li class="collection-item"><i class="fas fa-credit-card"></i> ${vehicleData[vehicle].payments} payments left.</li>
+                       <li class="collection-item"><i class="fas fa-dollar-sign"></i> <span class="car-payment-due">${Math.ceil(parseFloat(vehicleData[vehicle].amountDue /12))}</span> amount due.</li>
+                       `
+                       }
+                       vehicleElement += `
+                   </ul>
+               </div>
+           </div>
+           <div class="row">
+               <div class="col s12 center-align">`
+          
+                   vehicleElement += `<button class="waves-effect waves-light btn-small garage-spawn" data-plate="${vehicleData[vehicle].plate}"><i class="fas fa-magic"></i> Spawn</button> `
 
-    </h3>
-                <div class="collapsible-header">
-                    <i class="fas fa-car " style="font-size: 60px; color:${carIconColor}"> </i>
-                    <i class="name-car" style="font-size: 18px;">${vehicleData[vehicle].name}</i>
-                    <span  class="new-badge">(${vehicleData[vehicle].state}) ${vehicleData[vehicle].garage}</span>
-                </div>
-                <div class="collapsible-body garage-body">
-                <div class="collapsible-body garage-body">
-                <div class="row">
-                    <div class="col s12"> 
-                        <ul class="collection">
-                            <li class="collection-item"><i class="fas fa-map-marker-alt"></i>  ${vehicleData[vehicle].garage}</li>
-                            <li class="collection-item"><i class="fas fa-closed-captioning"></i> ${vehicleData[vehicle].plate}</li>
-                            <li class="collection-item"><i class="fas fa-oil-can"></i> ${vehicleData[vehicle].enginePercent}% Engine</li>
-                            <li class="collection-item"><i class="fas fa-car-crash"></i> ${vehicleData[vehicle].bodyPercent}% Body</li>
-                            <li class="collection-item"><i class="fas fa-hourglass-half"></i> ${vehicleData[vehicle].payments == 0 ? 'No remaining payments.' : Math.ceil(parseFloat(vehicleData[vehicle].lastPayment)) + ' days until payment is due.'}</li>
-                            `
-                        if (vehicleData[vehicle].payments != 0) {
-                            vehicleElement += `
-                            <li class="collection-item"><i class="fas fa-credit-card"></i> ${vehicleData[vehicle].payments} payments left.</li>
-                            <li class="collection-item"><i class="fas fa-dollar-sign"></i> <span class="car-payment-due">${Math.ceil(parseFloat(vehicleData[vehicle].amountDue /12))}</span> amount due.</li>
-                            `
-                            }
-                            vehicleElement += `
-                        </ul>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s12 center-align">`
-                    if (vehicleData[vehicle].canSpawn)
-                        vehicleElement += `<button class="waves-effect waves-light btn-small garage-spawn" data-plate="${vehicleData[vehicle].plate}"><i class="fas fa-magic"></i> Spawn</button> `
+              
+                   vehicleElement += `<button class="waves-effect waves-light btn-small red garage-pay" data-plate="${vehicleData[vehicle].plate}"><i class="fas fa-hand-holding-usd"></i> Pay</button> `
 
-                    if (vehicleData[vehicle].payments > 0 && vehicleData[vehicle].amountDue > 0)
-                        vehicleElement += `<button class="waves-effect waves-light btn-small red garage-pay" data-plate="${vehicleData[vehicle].plate}"><i class="fas fa-hand-holding-usd"></i> Pay</button> `
-
-                        vehicleElement += `<button class="waves-effect waves-light btn-small garage-track" data-plate="${vehicleData[vehicle].plate}"><i class="fas fa-map-marker-alt"></i> Track</button>
-                    </div>
-                </div>
-            </div>
-        </li>
-    `
-    $('.garage-entries').append(vehicleElement);
+                   vehicleElement += `<button class="waves-effect waves-light btn-small garage-track" data-plate="${vehicleData[vehicle].plate}"><i class="fas fa-map-marker-alt"></i> Track</button>
+               </div>
+           </div>
+       </div>
+   </li>
+`
+$('.garage-entries').append(vehicleElement);
 }
 }
 
@@ -1543,6 +1543,26 @@ function addNoti(tweets, myHandle, pTime) {
 
 function addNotiEmail(email, myHandle) {
     var notiElement = $(`</div><div class="top-notifications-email" style="max-height: 80px; display: flex;  ;"><div class="notification-container-email slideoutnotify slideinnotify" style="display: block; right: 55px;"><div class="app-bar-email"><div class="icon-twitter"><div class="emailicon" title="Email" id="icon-noti" style="background: url('https://gta-assets.nopixel.net/images/phone-icons/email.png') 0% 0% / cover no-repeat;height: 18px; width: 18px; bottom: 10px; left: 2px;">
+                
+    </div>
+    </div><div class="name"><p class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary" style="margin-left: 0.5vw; color: white; word-break: break-word;">${myHandle}</p></div><p class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary" style="word-break: break-word; color: white;" id="notificaçao-time">${("now")}</p></div><div class="content"><div class="text"><p class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary" style="word-break: break-word; margin-top: -16px; color: white; overflow: hidden; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;" id="notificaçaotweet-mensagem">${email}</p>
+    </div></div></div></div>`);
+    $('.notificaçaoch').prepend(notiElement);
+    setTimeout(() => {
+        $(".notificaçaoch").empty();
+    }, 5000);
+    setTimeout(() => {
+        if(pPhoneOpen === false) {
+            $(".jss13").removeClass("slidein").addClass("slideout").fadeOut()
+            $(".phone-screen").removeClass("slidein").addClass("slideout").fadeOut()
+            $(".phone-app").removeClass("slidein").addClass("slideout").fadeOut()
+            $(".phone-app").css("bottom" , "10px")
+        }
+    }, 5200)
+}
+
+function addNotiRob(email, myHandle) {
+    var notiElement = $(`</div><div class="top-notifications-email" style="max-height: 80px; display: flex;  ;"><div class="notification-container-email slideoutnotify slideinnotify" style="display: block; right: 55px;"><div class="app-bar-email"><div class="icon-twitter"><div class="emailicon" title="Email" id="icon-noti" style="background: url('https://gta-assets.nopixel.net/images/phone-icons/jobs.png') 0% 0% / cover no-repeat;height: 18px; width: 18px; bottom: 10px; left: 2px;">
                 
     </div>
     </div><div class="name"><p class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary" style="margin-left: 0.5vw; color: white; word-break: break-word;">${myHandle}</p></div><p class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary" style="word-break: break-word; color: white;" id="notificaçao-time">${("now")}</p></div><div class="content"><div class="text"><p class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary" style="word-break: break-word; margin-top: -16px; color: white; overflow: hidden; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;" id="notificaçaotweet-mensagem">${email}</p>
