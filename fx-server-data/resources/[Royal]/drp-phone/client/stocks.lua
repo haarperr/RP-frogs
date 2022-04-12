@@ -154,54 +154,6 @@ end)
 
 RegisterNetEvent('stocks:refreshstocks');
 AddEventHandler('stocks:refreshstocks', function()
-    --[[for i = 1, #serverstockvalues do
-      local colortype = 1
-      if i == 1 or i == 3 or i == 5 then
-        colortype = 2
-      end
-      local lastchangestock = "<div class='change stockred'>▼" .. serverstockvalues[i]["lastchange"] .. "</div>"
-      if serverstockvalues[i]["lastchange"] > -0.01 then
-        lastchangestock = "<div class='change stockgreen'>▲" .. serverstockvalues[i]["lastchange"] .. "</div>"
-      end 
-
-      SendNUIMessage({
-        openSection = "addstock",
-        namesent = serverstockvalues[i]["name"],
-        identifier = serverstockvalues[i]["identifier"],
-        lastchange = lastchangestock,
-        valuesent = serverstockvalues[i]["value"],
-        amountsold = serverstockvalues[i]["amountsold"],
-        clientstock = clientstockamount[i]["value"],
-        colorsent = colortype,
-        available = serverstockvalues[i]["amountavailable"]
-      })
-    end--]]
-    sendStocksToPhone(true);
-end)
-
-function sendStocksToPhone(isRefresh)
-  local stocksData = {}
-  for i = 1, #serverstockvalues do
-    table.insert(stocksData, {
-      identifier = serverstockvalues[i]["identifier"],
-      name = serverstockvalues[i]["name"],
-      value = serverstockvalues[i]["value"],
-      change = serverstockvalues[i]["lastchange"],
-      available = serverstockvalues[i]["amountavailable"],
-      clientStockValue = clientstockamount[i]["value"]
-    })
-  end
-
-  SendNUIMessage({ openSection = "addStocks", stocksData = stocksData})
-  if isRefresh then
-    updateServerClientStocks()
-  end
-end
-
-RegisterNUICallback('btnStocks', function()
-  TriggerServerEvent('stocks:retrieve')
-  sendStocksToPhone();
-  --[[
     for i = 1, #serverstockvalues do
       local colortype = 1
       if i == 1 or i == 3 or i == 5 then
@@ -223,7 +175,55 @@ RegisterNUICallback('btnStocks', function()
         colorsent = colortype,
         available = serverstockvalues[i]["amountavailable"]
       })
-    end--]]
+    end
+    sendStocksToPhone(true);
+end)
+
+function sendStocksToPhone(isRefresh)
+  local stocksData = {}
+  for i = 1, #serverstockvalues do
+    table.insert(stocksData, {
+      identifier = serverstockvalues[i]["identifier"],
+      name = serverstockvalues[i]["name"],
+      value = serverstockvalues[i]["value"],
+      change = serverstockvalues[i]["lastchange"],
+      available = serverstockvalues[i]["amountavailable"],
+      clientstock = clientstockamount[i]["value"]
+    })
+  end
+
+  SendNUIMessage({ openSection = "addStocks", stocksData = stocksData})
+  if isRefresh then
+    updateServerClientStocks()
+  end
+end
+
+RegisterNUICallback('btnStocks', function()
+  TriggerServerEvent('stocks:retrieve')
+  sendStocksToPhone();
+  
+    for i = 1, #serverstockvalues do
+      local colortype = 1
+      if i == 1 or i == 3 or i == 5 then
+        colortype = 2
+      end
+      local lastchangestock = "<div class='change stockred'>▼" .. serverstockvalues[i]["lastchange"] .. "</div>"
+      if serverstockvalues[i]["lastchange"] > -0.01 then
+        lastchangestock = "<div class='change stockgreen'>▲" .. serverstockvalues[i]["lastchange"] .. "</div>"
+      end 
+
+      SendNUIMessage({
+        openSection = "addstock",
+        namesent = serverstockvalues[i]["name"],
+        identifier = serverstockvalues[i]["identifier"],
+        lastchange = lastchangestock,
+        valuesent = serverstockvalues[i]["value"],
+        amountsold = serverstockvalues[i]["amountsold"],
+        clientstock = clientstockamount[i]["value"],
+        colorsent = colortype,
+        available = serverstockvalues[i]["amountavailable"]
+      })
+    end
 end)
 
 function requestUpdate()
