@@ -106,13 +106,10 @@ AddEventHandler("drp-cluckin:startMinigame", function()
                         if finished6 == 100 then
                             local finished7 = exports["drp-bar"]:taskBar(5000,math.random(4,8))
                             if finished7 == 100 then
-                                local finished8 = exports["drp-bar"]:taskBar(5000,math.random(4,8))
-                                if finished8 == 100 then
-                                    if math.random(1,50) == 1 then
-                                        TriggerEvent('player:receiveItem', "cbcoupongolden", math.random(1))	
-                                    else
-                                        TriggerEvent('player:receiveItem', "cbcoupon", math.random(1,2))	
-                                    end
+                                if math.random(1,50) == 1 then
+                                    TriggerEvent('player:receiveItem', "cbcoupongolden", math.random(1))	
+                                else
+                                    TriggerEvent('player:receiveItem', "cbcoupon", math.random(1,2))	
                                 end
                             end
                         end
