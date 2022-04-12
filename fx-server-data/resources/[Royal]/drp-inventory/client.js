@@ -1147,7 +1147,7 @@ async function CloseGui(pIsItemUsed = false) {
     emit('inventory:wepDropCheck')
 }
 
-const getWeaponsLicense = Cacheable(async (ctx, cid) => [true, await RPC.execute("CheckLicenseForCharacter", cid, "Weapons License")], { timeToLive: 300000 * 12 })
+const getWeaponsLicense = (async (ctx, cid) => [true, await RPC.execute("CheckLicenseForCharacter", cid, "Weapons License")], { timeToLive: 300000 * 12 })
 
 async function OpenGui() {
     openedInv = true;
