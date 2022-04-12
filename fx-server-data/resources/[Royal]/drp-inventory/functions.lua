@@ -2578,6 +2578,11 @@ end
     if itemid == "murdermeal" then
          TriggerEvent("murdermeal", ItemInfo.id)
     end
+
+    if itemid == "cbcontroller" then
+         TriggerEvent("drp-cluckin:startMinigame")
+    end
+
     if itemid == "cbclucker" then
         TriggerEvent("cbclucker", ItemInfo.id)
     end

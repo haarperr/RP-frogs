@@ -66,7 +66,34 @@ AddEventHandler("drp-cluckin:getextraingridients", function()
     end
 end)
 
+RegisterNetEvent("drp-cluckin:startMinigame")
+AddEventHandler("drp-cluckin:startMinigame", function()
+    local finished1 = exports["drp-bar"]:taskBar(1000,math.random(1,2))
+    if finished1 == 100 then 
+        local finished2 = exports["drp-bar"]:taskBar(1000,math.random(1,2))
+        if finished2 == 100 then
+            local finished3 = exports["drp-bar"]:taskBar(1000,math.random(1,2))
+            if finished3 == 100 then
+                local finished4 = exports["drp-bar"]:taskBar(1000,math.random(1,2))
+                if finished4 == 100 then
+                    local finished5 = exports["drp-bar"]:taskBar(1000,math.random(1,2))
+                    if finished5 == 100 then
+                        if math.random(1,100) == 1 then
+						    TriggerEvent('player:receiveItem', "cbcoupongolden", math.random(1))	
+                        else
+                            TriggerEvent('player:receiveItem', "cbcoupon", math.random(1,3))	
+                        end
+                    end
+                end
+            end
+        end
+    end
 
+    if math.random(1, 100) >= 70 then
+        TriggerEvent('inventory:removeItem', "petchicken", 1)
+    end
+    
+end)
 
 
 
