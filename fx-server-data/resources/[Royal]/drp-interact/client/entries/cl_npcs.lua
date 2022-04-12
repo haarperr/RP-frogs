@@ -342,11 +342,18 @@ Entries[#Entries + 1] = {
     group = { 'isNPC' },
     data = {
         {
-            id = "chickenguy1",
-            label = "Sell your Protein",
+            id = "cuttedchicken3",
+            label = "Sell cutted Chicken",
             icon = "circle",
-            event = "drp-chickens:sellprotein",
+            event = "drp-chickens:sellcuttedchicken",
             parameters = {}
+        },
+        {
+            event = "drp-chickens:sellprotein",
+            id = "sellproteirdfnjsdnfs",
+            icon = "circle",
+            label = "Sell Protein",
+            parameters = {},
         }
     },
     options = {
@@ -361,16 +368,23 @@ Entries[#Entries + 1] = {
     group = { 'isNPC' },
     data = {
         {
-            id = "chickenguy2",
-            label = "Sell your cutted Chickens",
+            id = "cluckin1",
+            label = "Get a delivery Job",
             icon = "circle",
-            event = "drp-chickens:sellcuttedchicken",
+            event = "drp-cluckin:getdelivery",
+            parameters = {}
+        },
+        {
+            id = "cluckin2",
+            label = "Get extra Ingridients",
+            icon = "circle",
+            event = "drp-cluckin:getextraingridients",
             parameters = {}
         }
     },
     options = {
         distance = { radius = 3.0 },
-        npcIds = {"chickenguy"}
+        npcIds = {"cluckingirl"}
     }
 }
 

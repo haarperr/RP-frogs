@@ -382,7 +382,7 @@ Citizen.CreateThread(function()
 end)
 
 RegisterNetEvent("drp-chickens:sellprotein")
-AddEventHandler("drp-chickens:sell", function()
+AddEventHandler("drp-chickens:sellprotein", function()
 	local x,y,z = table.unpack(GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0.0, 0.9, -0.98))
 	local prop = CreateObject(GetHashKey('hei_prop_heist_box'), x, y, z,  true,  false, false)
 	SetEntityHeading(prop, GetEntityHeading(GetPlayerPed(-1)))
@@ -396,7 +396,7 @@ AddEventHandler("drp-chickens:sell", function()
 		if exports["drp-inventory"]:hasEnoughOfItem("lqprotein",toSell,false) and GetDistanceBetweenCoords(x, y, z, GetEntityCoords(GetPlayerPed(-1)).x, GetEntityCoords(GetPlayerPed(-1)).y, GetEntityCoords(GetPlayerPed(-1)).z, true) <= 25 then
 			if exports["drp-inventory"]:getQuantity("lqprotein") >= 1 then
 				TriggerEvent('inventory:removeItem', 'lqprotein', toSell)
-				TriggerServerEvent('chickenpayment:pay', math.random(200, 450) * toSell)
+				TriggerServerEvent('chickenpayment:pay', math.random(175, 300) * toSell)
 				ClearPedTasksImmediately(PlayerPedId())
 			else 
 				TriggerEvent('DoLongHudText', 'Your proteins are bad!', 2)
@@ -408,21 +408,21 @@ end)
 
 
 RegisterNetEvent("drp-chickens:sellcuttedchicken")
-AddEventHandler("drp-chickens:sell", function()
+AddEventHandler("drp-chickens:sellcuttedchicken", function()
 	local x,y,z = table.unpack(GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0.0, 0.9, -0.98))
 	local prop = CreateObject(GetHashKey('hei_prop_heist_box'), x, y, z,  true,  false, false)
 	SetEntityHeading(prop, GetEntityHeading(GetPlayerPed(-1)))
 	LoadDict('amb@medic@standing@tendtodead@idle_a')
 	TaskPlayAnim(GetPlayerPed(-1), 'amb@medic@standing@tendtodead@idle_a', 'idle_a', 8.0, -8.0, -1, 1, 0.0, 0, 0, 0)
 	local toSell = exports["drp-inventory"]:getAmountOfItem("cut_chicken")
-	local finished = exports['drp-taskbar']:taskBar(7500*toSell/5, 'Selling Chickens')
+	local finished = exports['drp-taskbar']:taskBar(7500*toSell/5, 'Selling cutted Chickens')
 	LoadDict('amb@medic@standing@tendtodead@exit')
 	TaskPlayAnim(GetPlayerPed(-1), 'amb@medic@standing@tendtodead@exit', 'exit', 8.0, -8.0, -1, 1, 0.0, 0, 0, 0)
 	if (finished == 100) then		
 		if exports["drp-inventory"]:hasEnoughOfItem("cut_chicken",toSell,false) and GetDistanceBetweenCoords(x, y, z, GetEntityCoords(GetPlayerPed(-1)).x, GetEntityCoords(GetPlayerPed(-1)).y, GetEntityCoords(GetPlayerPed(-1)).z, true) <= 25 then
 			if exports["drp-inventory"]:getQuantity("cut_chicken") >= 1 then
 				TriggerEvent('inventory:removeItem', 'cut_chicken', toSell)
-				TriggerServerEvent('chickenpayment:pay', math.random(200, 300) * toSell)
+				TriggerServerEvent('chickenpayment:pay', math.random(125, 200) * toSell)
 				ClearPedTasksImmediately(PlayerPedId())
 			else 
 				TriggerEvent('DoLongHudText', 'Your chickens are bad!', 2)

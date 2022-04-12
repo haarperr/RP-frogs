@@ -805,7 +805,7 @@ Citizen.CreateThread(function()
     exports["drp-polytarget"]:AddBoxZone("cluckinbell_burger", vector3(-521.1515, -699.6534, 33.0930), 1, 1.4, {
     })
 
-    exports["drp-polytarget"]:AddBoxZone("cluckinbell_drink", vector3(-514.0724, -699.1095, 33.3238), 1, 1.4, {
+    exports["drp-polytarget"]:AddBoxZone("cluckinbell_drink", vector3(-514.6924, -699.1755, 33.2878), 1, 1.4, {
     })
 
     

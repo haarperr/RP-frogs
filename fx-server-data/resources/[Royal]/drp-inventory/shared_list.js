@@ -4916,7 +4916,7 @@ itemList['cbsmoothie'] = {
       amount: 1
       },
       {
-        itemid: 'sugar',
+        itemid: 'lqsugar',
         amount: 1
       },
       {
@@ -5052,7 +5052,7 @@ itemList['cbdrink'] = {
   craft: [
     [  
       {
-      itemid: 'sugar',
+      itemid: 'lqsugar',
       amount: 1
       },
       {
@@ -5817,7 +5817,7 @@ itemList['water'] = {
   fullyDegrades: true,
   decayrate: 0.01,
   displayname: 'Water',
-  price: 225,
+  price: 10,
   weight: 1,
   craft: [
     [{
@@ -10194,7 +10194,7 @@ itemList['onion'] = {
     }]
   ],
   price: 10,
-  weight: 12,
+  weight: 1,
   nonStack: false,
   model: '',
   image: 'np_onion.png',
