@@ -39,6 +39,9 @@ AddEventHandler('drp-polyzone:exit', function(name)
     if name == "winery_picking" then
         nearPicking = false
     end
+    if name == "potatoslol" then
+        nearPicking = false
+    end
     exports['drp-textui']:hideInteraction()
 end)
 
