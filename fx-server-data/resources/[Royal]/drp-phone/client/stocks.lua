@@ -1,6 +1,6 @@
 local serverstockvalues = {
   [1] = { ["name"] = "Guinea", ["value"] = 10.0, ["identifier"] = "Guinea", ["lastchange"] = 0.00, ["amountavailable"] = 500.0 },
-  [2] = { ["name"] = "Shungite", ["value"] = 250.0, ["identifier"] = "Shungite", ["lastchange"] = 0.00, ["amountavailable"] = 100.0 },
+  [2] = { ["name"] = "Shungite", ["value"] = 10.0, ["identifier"] = "Shungite", ["lastchange"] = 0.00, ["amountavailable"] = 100.0 },
 }
 
 clientstockamount = {
