@@ -310,7 +310,7 @@ RegisterNUICallback('btnStocks', function()
         lastchange = lastchangestock,
         valuesent = serverstockvalues[i]["value"],
         amountsold = serverstockvalues[i]["amountsold"],
-        clientstock = clientstockamount[i]["value"],
+        clientStockValue = clientstockamount[i]["value"],
         colorsent = colortype,
         available = serverstockvalues[i]["amountavailable"]
       })
