@@ -394,6 +394,7 @@ local outfitPlaces = {
   vector3(350.92, 3568.95, 22.79), -- Starscream lab
   vector3(2296.24, 4850.33, 33.91), -- Optimus Prime lab
   vector3(459.4229, -998.9232, 30.6848), -- MRPD
+  vector3(-509.9892, -700.2755, 33.1676), -- Cluzckin bell
   vector3(-1874.85546875, 2068.3393554688, 145.57389831543)  -- Winery Bathroom
 }
 function nearClothing()

@@ -66,6 +66,27 @@ AddEventHandler("drp-cluckin:getextraingridients", function()
     end
 end)
 
+
+-- // Registers
+
+RegisterNetEvent("cluckinbell:register")
+AddEventHandler("cluckinbell:register", function(registerID)
+    local rank = exports["isPed"]:GroupRank("cluckin_bell")
+    if rank >= 1 then
+        local order = exports["drp-applications"]:KeyboardInput({
+            header = "Create Receipt",
+            rows = {{id = 0, txt = "Amount"}, {id = 1, txt = "Comment"}}
+        })
+        if order then
+            TriggerServerEvent("cluckinbell:OrderComplete", registerID,
+                               order[1].input, order[2].input)
+        end
+    else
+        TriggerEvent("DoLongHudText", "You cant use this", 2)
+    end
+end)
+
+
 RegisterNetEvent("drp-cluckin:startMinigame")
 AddEventHandler("drp-cluckin:startMinigame", function()
     if math.random(1, 100) >= 70 then
@@ -90,7 +111,7 @@ AddEventHandler("drp-cluckin:startMinigame", function()
                                     if math.random(1,50) == 1 then
                                         TriggerEvent('player:receiveItem', "cbcoupongolden", math.random(1))	
                                     else
-                                        TriggerEvent('player:receiveItem', "cbcoupon", math.random(1,3))	
+                                        TriggerEvent('player:receiveItem', "cbcoupon", math.random(1,2))	
                                     end
                                 end
                             end
