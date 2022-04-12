@@ -57,7 +57,11 @@ AddEventHandler("burger_shot:OrderComplete", function(regID, price, comment)
     }
     Registers[regID] = {}
     table.insert(Registers[regID], insert)
+
+    TriggerClientEvent("bs:payment", pSrc, price)
 end)
+
+
 
 RegisterServerEvent("burgershot:retreive:receipt")
 AddEventHandler("burgershot:retreive:receipt", function(regID)

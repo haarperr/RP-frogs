@@ -603,6 +603,11 @@ end)
 
 -- // Registers
 
+RegisterNetEvent("bs:payment")
+AddEventHandler("bs:payment", function(price)
+    TriggerServerEvent("server:GroupPayment","burger_shot", price)
+end)
+
 RegisterNetEvent("burgershot:register")
 AddEventHandler("burgershot:register", function(registerID)
     local rank = exports["isPed"]:GroupRank("burger_shot")
@@ -614,10 +619,18 @@ AddEventHandler("burgershot:register", function(registerID)
         if order then
             TriggerServerEvent("burger_shot:OrderComplete", registerID,
                                order[1].input, order[2].input)
+
+            
         end
     else
         TriggerEvent("DoLongHudText", "You cant use this", 2)
     end
+end)
+
+RegisterNetEvent("pdm:payment")
+AddEventHandler("pdm:payment", function(CurrentPayment)
+	local pdmbank = CurrentPayment / 10
+    TriggerServerEvent("server:GroupPayment","pdm", pdmbank)
 end)
 
 RegisterNetEvent("burgershot:get:receipt")
