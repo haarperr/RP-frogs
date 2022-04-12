@@ -4889,7 +4889,7 @@ itemList['cbcontroller'] = {
   displayname: 'Cluckin Gameboy',
   price: 30,
   weight: 3,
-  nonStack: true,
+  nonStack: false,
   model: '',
   craft: [
     [{
