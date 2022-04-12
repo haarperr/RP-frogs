@@ -599,12 +599,7 @@ on('inventory-open-request', async () => {
                     } else {
                         if (!IsThisModelABicycle(vehModel) && vehModel !== GetHashKey('trash2')) {
                             const vehId = exports['drp-vehicles'].GetVehicleIdentifier(vehicleFound)
-                            if (!vehId) {
-                                CloseGui();
-                                TriggerEvent('DoLongHudText', 'The trunk is locked.', 2);
-                                return;
-                            }
-                            const carInvName = "Trunk-" + vehId
+                            const carInvName = "Trunk-" + licensePlate
 
                             const vehClass = GetVehicleClass(vehicleFound);
 
