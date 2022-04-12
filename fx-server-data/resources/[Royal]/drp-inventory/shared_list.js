@@ -4888,7 +4888,7 @@ itemList['cbcontroller'] = {
   decayrate: 0.5,
   displayname: 'Cluckin Gameboy',
   price: 30,
-  weight: 15,
+  weight: 3,
   nonStack: true,
   model: '',
   craft: [
