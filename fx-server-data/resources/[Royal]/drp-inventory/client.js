@@ -535,7 +535,7 @@ on('inventory-open-request', async () => {
 
     emit('randPickupAnim');
 
-    const currentTarget = exports['drp-target'].GetCurrentEntity()
+    const currentTarget = exports['drp-targetinteract'].GetCurrentEntity()
 
     let vehicleFound = IsModelAVehicle(GetEntityModel(currentTarget)) ? currentTarget : 0
 
