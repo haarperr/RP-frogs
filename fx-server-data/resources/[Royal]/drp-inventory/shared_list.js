@@ -5037,6 +5037,14 @@ itemList['cbclucker'] = {
   weight: 2,
   nonStack: false,
   model: '',
+  craft: [
+    [  
+      {
+      itemid: 'plastic',
+      amount: 2
+      }
+    ]
+  ],
   image: 'np_little-clucker.png',
   information: 'Cluckin toy not included',
 };
@@ -5073,6 +5081,14 @@ itemList['cbfarmers'] = {
   weight: 2,
   nonStack: false,
   model: '',
+  craft: [
+    [  
+      {
+      itemid: 'plastic',
+      amount: 1
+      }
+    ]
+  ],
   image: 'np_farmers-surprise.png',
   information: 'The chewy bits arent harmful',
 };
