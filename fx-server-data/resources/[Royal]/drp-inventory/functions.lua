@@ -921,6 +921,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
       or itemid == "shot9" 
       or itemid == "shot10" 
       or itemid == "moonshine"
+      or itemid == "hardoakswhisky"
       or itemid == "poisonedcocktail"
       or itemid == "kennyred"
       or itemid == "kennywhite"
@@ -943,7 +944,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
             TriggerEvent("Evidence:StateSet", 8, 600)
             local alcoholStrength = 0.5
             if itemid == "vodka" or itemid == "whiskey" or itemid == "yamazaki" or itemid == "shochu" then alcoholStrength = 1.0 end
-            if itemid == "absinthe" then alcoholStrength = 2.5 end
+            if itemid == "absinthe" or itemid == "hardoakswhisky" then alcoholStrength = 2.5 end
             if itemid == "moonshine" then 
                 alcoholStrength = 4.0
             end
@@ -2767,7 +2768,7 @@ function AttachPropAndPlayAnimation(dictionary,animation,typeAnim,timer,message,
             or itemid == "customwateritem"
             ) and "water" or itemid)
     elseif itemid == "drink1" or itemid == "drink2" or itemid == "drink3" or itemid == "drink4" or itemid == "drink5" or itemid == "drink6"
-        or itemid == "drink7" or itemid == "drink8" or itemid == "drink9" or itemid == "drink10" or itemid == "absinthe" or itemid == "moonshine" then
+        or itemid == "drink7" or itemid == "drink8" or itemid == "drink9" or itemid == "drink10" or itemid == "absinthe" or itemid == "moonshine" or itemid == "hardoakswhisky" then
         TriggerEvent("attachItem", "whiskeyglass")
     elseif itemid == "shot1" or itemid == "shot2" or itemid == "shot3" or itemid == "shot4" or itemid == "shot5" or itemid == "shot6"
         or itemid == "shot7" or itemid == "shot8" or itemid == "shot9" or itemid == "shot10" then
@@ -2782,7 +2783,7 @@ function AttachPropAndPlayAnimation(dictionary,animation,typeAnim,timer,message,
         TriggerEvent("attachItem", "energydrink")
     elseif itemid == "slushy" then
         TriggerEvent("attachItem", "cup")
-    elseif itemid == "blue_rare_steak" or itemid == "rare_steak" or itemid == "medium_rare_steak" or itemid == "medium_steak" or itemid == "medium_well_steak" or itemid == "well_done_steak" then
+    elseif itemid == "blue_rare_steak" or itemid == "rare_steak" or itemid == "medium_rare_steak" or itemid == "medium_steak" or itemid == "medium_well_steak" or itemid == "hardoakssteak" then
         TriggerEvent("attachItem", "steak")
     elseif has_value(fruits, itemid) then
         TriggerEvent("attachItem", "fruit")
@@ -2809,6 +2810,19 @@ AddEventHandler("drp-inventory:attachPropPlayAnim", function(pType)
         )
     end
     if pType == "fries" then
+        success = AttachPropAndPlayAnimation(
+            "mp_player_inteat@burger",
+            "mp_player_int_eat_burger",
+            49,
+            15000,
+            "Eating",
+            "",
+            false,
+            "fries",
+            vehicle
+        )
+    end
+    if pType == "hardoaksfries" then
         success = AttachPropAndPlayAnimation(
             "mp_player_inteat@burger",
             "mp_player_int_eat_burger",
