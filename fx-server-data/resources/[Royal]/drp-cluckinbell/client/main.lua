@@ -88,6 +88,11 @@ AddEventHandler("drp-cluckin:startMinigame", function()
             end
         end
     end
+
+    if math.random(1, 100) >= 70 then
+        TriggerEvent('inventory:removeItem', "petchicken", 1)
+    end
+    
 end)
 
 
