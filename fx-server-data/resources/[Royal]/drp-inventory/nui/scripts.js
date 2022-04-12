@@ -920,6 +920,10 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
     } else if (targetinvName.indexOf('storage') > -1) {
         secondaryMaxWeight = 2000.0;
         slotLimitTarget = 200;
+    } else if (targetinvName.indexOf('counter_') > -1) {
+        secondaryMaxWeight = 15.0;
+        slotLimitTarget = 5;
+        displayName = 'Food Tray';
     } else if (targetinvName.indexOf('office') > -1) {
         secondaryMaxWeight = 100.0;
         slotLimitTarget = 5;
