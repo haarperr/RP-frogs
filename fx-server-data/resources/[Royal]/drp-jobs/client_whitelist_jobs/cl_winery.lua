@@ -186,13 +186,13 @@ RegisterNetEvent('drp-jobs:cook-grapes-green:winery')
 AddEventHandler('drp-jobs:cook-grapes-green:winery', function()
     local rank = exports["isPed"]:GroupRank("winery")
     if rank > 0 then 
-        if exports['drp-inventory']:hasEnoughOfItem('grapesp', 3) then
+        if exports['drp-inventory']:hasEnoughOfItem('grapesp', 6) then
             FreezeEntityPosition(GetPlayerPed(-1),true)
             TriggerEvent("animation:PlayAnimation","cokecut")
             SetEntityHeading(GetPlayerPed(-1), 274.96063232422)
             local cooking = exports['drp-taskbar']:taskBar(5000, 'Cooking Down Grapes')
             if (cooking == 100) then
-                TriggerEvent("inventory:removeItem","grapesp", 3)
+                TriggerEvent("inventory:removeItem","grapesp", 6)
                 Wait(1000)
                 FreezeEntityPosition(GetPlayerPed(-1),false)
                 TriggerEvent('player:receiveItem', 'kennywhitebottle', 1)
@@ -201,7 +201,7 @@ AddEventHandler('drp-jobs:cook-grapes-green:winery', function()
                 TriggerEvent('DoLongHudText', 'You burnt yourself scream for help', 2)
             end
         else
-            TriggerEvent('DoLongHudText', 'Required: 3x Processed Grapes')
+            TriggerEvent('DoLongHudText', 'Required: 6x Processed Grapes')
         end
     else
         TriggerEvent('DoLongHudText', 'You cant do that', 2)
