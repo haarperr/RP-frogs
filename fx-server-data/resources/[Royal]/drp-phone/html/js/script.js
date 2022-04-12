@@ -1323,57 +1323,54 @@ function addVehicles(vehicleData, showCarPayments) {
        
     <h3>
     `
-        if (vehicleData[vehicle].canSpawn)
-            // vehicleElement += `<button id="hovercorridas" class=" garage-spawn" aria-label="Spawn" data-plate="${vehicleData[vehicle].plate}"><i class="fas fa-magic"></i> </button> `
-            vehicleElement += `<button id="hovercorridas" class="" aria-label=""><i class=""></i> </button>
-        
-        <button style="margin-left: 15px" id="hovercorridas" class="" aria-label="Garage - ${vehicleData[vehicle].garage}" data-balloon-pos="up"><i  class="fas fa-oil-can"></i> </button>
-        <button id="hovercorridas" class="" aria-label=" Car Plate - ${vehicleData[vehicle].plate}" data-balloon-pos="up"><i  class="fas fa-closed-captioning"></i> </button>
-        <button id="hovercorridas" class="" aria-label="Engine Health - ${vehicleData[vehicle].enginePercent}" data-balloon-pos="up"><i  class="fas fa-oil-can"></i> </button>
-        <button id="hovercorridas" class="" aria-label="Body Health - ${vehicleData[vehicle].bodyPercent}" data-balloon-pos="up"><i  class="fas fa-car-crash"></i> </button>
+    if (vehicleData[vehicle].canSpawn)
+    vehicleElement += `<button id="hovercorridas" class=" garage-spawn" aria-label="Track" data-plate="${vehicleData[vehicle].plate}"><i class="fas fa-magic"></i> </button>
+    <button id="hovercorridas" class=" garage-pay" aria-label="${vehicleData[vehicle].payments} payments remaining" data-plate="${vehicleData[vehicle].plate}"><i class="fas fa-hand-holding-usd"></i></button>  
+   <button id="hovercorridas" class="" aria-label=" Car Plate - ${vehicleData[vehicle].plate}" data-balloon-pos="up"><i  class="fas fa-closed-captioning"></i> </button>
+   <button id="hovercorridas" class="" aria-label="Engine Health - ${vehicleData[vehicle].enginePercent}" data-balloon-pos="up"><i  class="fas fa-oil-can"></i> </button>
+   <button id="hovercorridas" class="" aria-label="Body Health - ${vehicleData[vehicle].bodyPercent}" data-balloon-pos="up"><i  class="fas fa-car-crash"></i> </button>
+</h3>
+           <div class="collapsible-header">
+               <i class="fas fa-car " style="font-size: 60px; color:${carIconColor}"> </i>
+               <i class="name-car" style="font-size: 18px;">${vehicleData[vehicle].name}</i>
+               <span  class="new-badge">(${vehicleData[vehicle].state}) ${vehicleData[vehicle].garage}</span>
+           </div>
+           <div class="collapsible-body garage-body">
+           <div class="collapsible-body garage-body">
+           <div class="row">
+               <div class="col s12"> 
+                   <ul class="collection">
+                       <li class="collection-item"><i class="fas fa-map-marker-alt"></i>  ${vehicleData[vehicle].garage}</li>
+                       <li class="collection-item"><i class="fas fa-closed-captioning"></i> ${vehicleData[vehicle].plate}</li>
+                       <li class="collection-item"><i class="fas fa-oil-can"></i> ${vehicleData[vehicle].enginePercent}% Engine</li>
+                       <li class="collection-item"><i class="fas fa-car-crash"></i> ${vehicleData[vehicle].bodyPercent}% Body</li>
+                       <li class="collection-item"><i class="fas fa-hourglass-half"></i> ${vehicleData[vehicle].payments == 0 ? 'No remaining payments.' : Math.ceil(parseFloat(vehicleData[vehicle].lastPayment)) + ' days until payment is due.'}</li>
+                       `
+                   if (vehicleData[vehicle].payments != 0) {
+                       vehicleElement += `
+                       <li class="collection-item"><i class="fas fa-credit-card"></i> ${vehicleData[vehicle].payments} payments left.</li>
+                       <li class="collection-item"><i class="fas fa-dollar-sign"></i> <span class="car-payment-due">${Math.ceil(parseFloat(vehicleData[vehicle].amountDue /12))}</span> amount due.</li>
+                       `
+                       }
+                       vehicleElement += `
+                   </ul>
+               </div>
+           </div>
+           <div class="row">
+               <div class="col s12 center-align">`
+          
+                   vehicleElement += `<button class="waves-effect waves-light btn-small garage-spawn" data-plate="${vehicleData[vehicle].plate}"><i class="fas fa-magic"></i> Spawn</button> `
 
-    </h3>
-                <div class="collapsible-header">
-                    <i class="fas fa-car " style="font-size: 60px; color:${carIconColor}"> </i>
-                    <i class="name-car" style="font-size: 18px;">${vehicleData[vehicle].name}</i>
-                    <span  class="new-badge">(${vehicleData[vehicle].state}) ${vehicleData[vehicle].garage}</span>
-                </div>
-                <div class="collapsible-body garage-body">
-                <div class="collapsible-body garage-body">
-                <div class="row">
-                    <div class="col s12"> 
-                        <ul class="collection">
-                            <li class="collection-item"><i class="fas fa-map-marker-alt"></i>  ${vehicleData[vehicle].garage}</li>
-                            <li class="collection-item"><i class="fas fa-closed-captioning"></i> ${vehicleData[vehicle].plate}</li>
-                            <li class="collection-item"><i class="fas fa-oil-can"></i> ${vehicleData[vehicle].enginePercent}% Engine</li>
-                            <li class="collection-item"><i class="fas fa-car-crash"></i> ${vehicleData[vehicle].bodyPercent}% Body</li>
-                            <li class="collection-item"><i class="fas fa-hourglass-half"></i> ${vehicleData[vehicle].payments == 0 ? 'No remaining payments.' : Math.ceil(parseFloat(vehicleData[vehicle].lastPayment)) + ' days until payment is due.'}</li>
-                            `
-                        if (vehicleData[vehicle].payments != 0) {
-                            vehicleElement += `
-                            <li class="collection-item"><i class="fas fa-credit-card"></i> ${vehicleData[vehicle].payments} payments left.</li>
-                            <li class="collection-item"><i class="fas fa-dollar-sign"></i> <span class="car-payment-due">${Math.ceil(parseFloat(vehicleData[vehicle].amountDue /12))}</span> amount due.</li>
-                            `
-                            }
-                            vehicleElement += `
-                        </ul>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s12 center-align">`
-                    if (vehicleData[vehicle].canSpawn)
-                        vehicleElement += `<button class="waves-effect waves-light btn-small garage-spawn" data-plate="${vehicleData[vehicle].plate}"><i class="fas fa-magic"></i> Spawn</button> `
+              
+                   vehicleElement += `<button class="waves-effect waves-light btn-small red garage-pay" data-plate="${vehicleData[vehicle].plate}"><i class="fas fa-hand-holding-usd"></i> Pay</button> `
 
-                    if (vehicleData[vehicle].payments > 0 && vehicleData[vehicle].amountDue > 0)
-                        vehicleElement += `<button class="waves-effect waves-light btn-small red garage-pay" data-plate="${vehicleData[vehicle].plate}"><i class="fas fa-hand-holding-usd"></i> Pay</button> `
-
-                        vehicleElement += `<button class="waves-effect waves-light btn-small garage-track" data-plate="${vehicleData[vehicle].plate}"><i class="fas fa-map-marker-alt"></i> Track</button>
-                    </div>
-                </div>
-            </div>
-        </li>
-    `
-    $('.garage-entries').append(vehicleElement);
+                   vehicleElement += `<button class="waves-effect waves-light btn-small garage-track" data-plate="${vehicleData[vehicle].plate}"><i class="fas fa-map-marker-alt"></i> Track</button>
+               </div>
+           </div>
+       </div>
+   </li>
+`
+$('.garage-entries').append(vehicleElement);
 }
 }
 
