@@ -1279,17 +1279,18 @@ function addStocks(stocksData) {
     for (let stock of Object.keys(stocksData)) {
         let stockEntry = stocksData[stock];
         let stockElement = `
-        <li>
-        <div class="collapsible-header" style="color: white;">
-                    ${stockEntry.identifier} <span class="new ${stockEntry.change > -0.01 ? 'stockgreen' : 'red'} badge" data-badge-caption="">Wallet:  ${stockEntry.clientstock}</span>
+            <li>
+            <li style="background-color: #31455E;">
+            <div class="collapsible-header" style="background-color: #31455E; color: white">
+                     <i class="${stockEntry.icon}"></i> <span class="new badge" data-badge-caption="">${stockEntry.identifier}</span>
                 </div>
-        </div>
-        <div class="collapsible-body garage-body" style="height: 269px; margin-top: 10px">
-        <ul class="collection" style="background-color: #31455E;">
-                    <li class="collection-item" style="background-color: #31455E; font-size: 17px">Name: ${stockEntry.name}</li>
-                        <li class="collection-item" style="background-color: #31455E; font-size: 17px">Wallet: ${stockEntry.clientstock}</li>
+                <div class="collapsible-body garage-body" style="background-color: #31455E; color: white">
+                    <ul class="collection" style="background-color: #31455E;">
+                    <li class="collection-item" style="background-color: #31455E;">Name: ${stockEntry.name}</li>
+                        <li class="collection-item" style="background-color: #31455E;">Wallet: ${stockEntry.clientStockValue}</li>
+                       
                         <li class="collection-item center-align" style="background-color: #31455E;">
-                        <button class="waves-effect waves-light btn-small garage-spawn teal darken-1 stocks-exchange" data-stock-id="${stockEntry.identifier}"><i class="fas fa-exchange-alt"></i> Exchange</button> 
+                        <button class="waves-effect waves-light btn-small garage-spawn teal darken-1 stocks-exchange" data-stock-id="${stockEntry.identifier}"><i class="fas fa-exchange-alt"></i> Exchange</button> <button class="waves-effect waves-light btn-small garage-spawn teal darken-1 stocks-purchase" data-stock-id="${stockEntry.identifier}"><i class="fas fa-dollar-sign icon"></i> Purchase</button>
                         </li>
                     </ul>
                 </div>
