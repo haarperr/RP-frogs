@@ -494,9 +494,10 @@ function UwUCafeFridge() {
 
 function CbGetSomeStuff() {
     var shopItems = [
-        { item_id: "cbclucker", id: 0, name: "Shop", information: "{}", slot: 1, amount: 15 },
-        { item_id: "cbfarmers", id: 0, name: "Shop", information: "{}", slot: 2, amount: 15 },
-        { item_id: "cbcontroller", id: 0, name: "Shop", information: "{}", slot: 3, amount: 15 },
+        { item_id: "cbclucker", id: 0, name: "craft", information: "{}", slot: 1, amount: 15 },
+        { item_id: "cbfarmers", id: 0, name: "craft", information: "{}", slot: 2, amount: 15 },
+        { item_id: "cbcontroller", id: 0, name: "craft", information: "{}", slot: 3, amount: 15 },
+        { item_id: "chickenslammer", id: 0, name: "craft", information: "{}", slot: 4, amount: 15 },
     ];
     return JSON.stringify(shopItems);
 };
