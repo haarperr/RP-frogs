@@ -528,7 +528,6 @@ on('inventory-open-request', async () => {
     let nearTarget = false;
     let BinFound = ScanContainers();
     let JailBinFound = ScanJailContainers();
-    const apartmentFloor = exports["drp-apartments"].getModule("func").getApartment()
     let targetid = 0;
     cid = exports.isPed.isPed("cid");
 
@@ -577,12 +576,8 @@ on('inventory-open-request', async () => {
         let serverCode = exports["drp-config"].GetServerCode();
         let container = 'hidden-container|' + x + '|' + y + '|' + serverCode;
         emitNet('server-inventory-open', startPosition, cid, '1', container);
-    } else if (apartmentFloor != null) {
-        let room = apartmentFloor.roomType;
-        let type = apartmentFloor.roomNumber;
-        let container = 'hidden-container|' + room + '|' + type + '|Apartments';
-        emitNet('server-inventory-open', startPosition, cid, '1', container);
-    } else if (vehicleFound != 0) {
+    }
+     else if (vehicleFound != 0) {
         let vehModel = GetEntityModel(vehicleFound);
         let [trunkCoords, front] = GetEnginePosition(vehicleFound);
         let distanceRear = GetDistanceBetweenCoords(
