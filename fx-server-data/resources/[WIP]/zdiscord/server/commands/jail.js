@@ -53,7 +53,7 @@ module.exports = {
     run: async (client, interaction, args) => {
         if (!GetPlayerName(args.id)) return interaction.reply({ content: "Invalid PayPal ID", ephemeral: true });
         if (args.sentence) {
-            emitNet("police:jailing", args.id, args.time);
+            emitNet("police:jailing2", args.id, args.time);
             emitNet("DoLongHudText", args.id, `You were sent to prison for ${args.time} months`);
             client.utils.log.info(`[${interaction.member.displayName}] jailed ${GetPlayerName(args.id)} (${args.id}) for ${args.time} months!`);
             return interaction.reply({ content: `${GetPlayerName(args.id)} (${args.id}) was jailed for ${args.time} months.`, ephemeral: false });
