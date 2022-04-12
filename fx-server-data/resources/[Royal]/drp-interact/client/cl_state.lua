@@ -279,7 +279,7 @@ end)
 
 function getVehicleOwner(pEntity)
   if VehicleOwnerShipCache[pEntity] ~= nil then return VehicleOwnerShipCache[pEntity] end
-  local vin = exports['drp-vehicledegrade']:GetVehicleIdentifier(pEntity)
+  local vin = exports['drp-vehicle']:GetVehicleIdentifier(pEntity)
   local vehicleOwner = RPC.execute("mizrp-ottosauto:getVehicleOwner", vin)
   VehicleOwnerShipCache[pEntity] = vehicleOwner
   return vehicleOwner

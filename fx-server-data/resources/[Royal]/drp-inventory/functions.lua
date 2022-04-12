@@ -139,6 +139,9 @@ local validWaterItem = {
     ["cola"] = true,
     ["jailfood"] = true,
     ["bleederburger"] = true,
+    ["cbzinger"] = true,
+    ["cbjr"] = true,
+    ["cbfowl"] = true,
     ["heartstopper"] = true,
     ["torpedo"] = true,
     ["meatfree"] = true,
@@ -1813,9 +1816,9 @@ end
         CreateCraftOption("1gcocaine", 100, true)
     end    
     
-    if (itemid == "bakingsoda") then
-        CreateCraftOption("1gcrack", 80, true)
-    end
+    -- if (itemid == "bakingsoda") then
+    --     CreateCraftOption("1gcrack", 80, true)
+    -- end
 
     if (itemid == "glucose") then
         CreateCraftOption("1gcocaine", 80, true)
@@ -2098,6 +2101,9 @@ end
       or itemid == "pizza"
       or itemid == "pancakes"
       or itemid == "wings"
+      or itemid == "cbzinger"
+      or itemid == "cbjr"
+      or itemid == "cbfowl" 
     ) then
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","inv:wellfed",true,itemid,playerVeh)
         --attachPropsToAnimation(itemid, 6000)
@@ -2550,7 +2556,7 @@ end
     end
 
 
-    if itemid == "softdrink" then
+    if itemid == "softdrink" or itemid == "cbdrink" then
         AttachPropAndPlayAnimation("amb@world_human_drinking@coffee@male@idle_a", "idle_c", 49,15000,"Drink","food:SoftDrink",true,itemid,playerVeh)
     end
 
@@ -2558,7 +2564,7 @@ end
         AttachPropAndPlayAnimation("amb@world_human_drinking@coffee@male@idle_a", "idle_c", 49,15000,"Drink","drp-roostersrest:drinkTea",true,itemid,playerVeh)
     end
  
-    if itemid == "fries" or itemid == "chips" then
+    if itemid == "fries" or itemid == "chips" or itemid == "cbfries" or itemid == "cbchickenfries" or itemid == "cbrings" then
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,15000,"Eating","inv:fed2",true,itemid,playerVeh)
     end
 
@@ -2754,7 +2760,7 @@ end
 end)
 
 function AttachPropAndPlayAnimation(dictionary,animation,typeAnim,timer,message,func,remove,itemid,vehicle)
-    if itemid == "hamburger" or itemid == "heartstopper" or itemid == "bleederburger" or itemid == "moneyshot" or itemid == "torpedo" or itemid == "questionablemeatburger" then
+    if itemid == "hamburger" or itemid == "heartstopper" or itemid == "bleederburger" or itemid == "moneyshot" or itemid == "torpedo" or itemid == "questionablemeatburger" or itemid == "cbzinger" or itemid == "cbjr" or itemid == "cbfowl" then
         TriggerEvent("attachItem", "hamburger")
     elseif sandwichItems[itemid] then
         TriggerEvent("attachItem", "sandwich")

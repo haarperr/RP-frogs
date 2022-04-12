@@ -808,7 +808,29 @@ Citizen.CreateThread(function()
     exports["drp-polytarget"]:AddBoxZone("cluckinbell_drink", vector3(-514.6924, -699.1755, 33.2878), 1, 1.4, {
     })
 
+    exports["drp-polytarget"]:AddBoxZone("cluckinbell_register_1", vector3(-520.2220, -697.6124, 33.3579), 1, 1.4, {
+    })
+
+    exports["drp-polytarget"]:AddBoxZone("cluckinbell_register_2", vector3(-515.2864, -697.5712, 33.4029), 1, 1.4, {
+    })
+
+    exports["drp-polytarget"]:AddBoxZone("cluckinbell_tray_1", vector3(-519.5075, -697.5837, 33.1790), 1, 1.4, {
+    })
+
+    exports["drp-polytarget"]:AddBoxZone("cluckinbell_tray_2", vector3(-516.0284, -697.4990, 33.1941), 1, 1.4, {
+    })
+
+    exports["drp-polytarget"]:AddBoxZone("cluckinbell_door_up", vector3(-501.6068, -693.7198, 33.2182), 1, 1.4, {
+    })
+
+    exports["drp-polytarget"]:AddBoxZone("cluckinbell_door_down", vector3(-510.4387, -695.2125, 44.7534), 1, 1.4, {
+    })
+
+    exports["drp-polytarget"]:AddBoxZone("cluckinbell_sink", vector3(-512.6628, -702.7142, 33), 1, 1.4, {
+    })
     
+
+
     exports["drp-polytarget"]:AddBoxZone("taxiguy", vector3(894.9174, -179.3615, 74.7003), 1, 1.4, {
         heading=239.7525,
     })
@@ -2359,6 +2381,17 @@ Citizen.CreateThread(function()
         distance = { radius = 1.75 },
     });
 
+    -- CluckinBell Sink
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_sink", {{
+        event = "drp-cluckinbell:getwater",
+        id = "cluckinbell_sink",
+        icon = "circle",
+        label = "Use Sink",
+        parameters = {},
+    }}, {
+        distance = { radius = 1.75 },
+    });
+
     -- CluckinBell Frie
     exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_frie", {{
         event = "drp-cluckinbell:openfrier",
@@ -2391,6 +2424,94 @@ Citizen.CreateThread(function()
     }}, {
         distance = { radius = 1 },
     });
+
+    -- CluckinBell Door to Up
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_door_up", {{
+        event = "drp-cluckinbell:goup",
+        id = "cluckinbell_door_up",
+        icon = "circle",
+        label = "Go up",
+        parameters = {},
+    }}, {
+        distance = { radius = 2 },
+    });
+
+    -- CluckinBell Door to Down
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_door_down", {{
+        event = "drp-cluckinbell:godown",
+        id = "cluckinbell_door_down",
+        icon = "circle",
+        label = "Go down",
+        parameters = {},
+    }}, {
+        distance = { radius = 2 },
+    });
+
+
+    --Burger Shot Register 1
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_register_1", {
+        {
+            event = "cluckinbell:get:receipt",
+            id = "cluckinbell_register_1",
+            icon = "cash-register",
+            label = "Make Payment",
+            parameters = 'cluckinbell_register_1',
+        },
+        {
+            event = "cluckinbell:register",
+            id = "cluckinbell_register_1_charge",
+            icon = "cash-register",
+            label = "Charge Customer",
+            parameters = 'cluckinbell_register_1',
+        },
+    }, {
+        distance = { radius = 1.5 },
+    });
+
+    --Burger Shot Register 2
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_register_2", {
+        {
+            event = "cluckinbell:get:receipt",
+            id = "cluckinbell_register_2",
+            icon = "cash-register",
+            label = "Make Payment",
+            parameters = 'cluckinbell_register_2',
+        },
+        {
+            event = "cluckinbell:register",
+            id = "cluckinbell_register_2_charge",
+            icon = "cash-register",
+            label = "Charge Customer",
+            parameters = 'cluckinbell_register_2',
+        },
+    }, {
+        distance = { radius = 1.5 },
+    });
+
+
+    -- Tray 1
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_tray_1", {{
+        event = "cluckinbell:Tray-1",
+        id = "cluckinbell_tray_1",
+        icon = "hand-holding",
+        label = "Grab Order",
+        parameters = {},
+    }}, {
+        distance = { radius = 1.5 },
+    });
+
+
+    -- Tray 1
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_tray_2", {{
+        event = "cluckinbell:Tray-2",
+        id = "cluckinbell_tray_2",
+        icon = "hand-holding",
+        label = "Grab Order",
+        parameters = {},
+    }}, {
+        distance = { radius = 1.5 },
+    });
+
 
     -- House Guy
     

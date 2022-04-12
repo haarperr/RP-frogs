@@ -14,8 +14,10 @@ let cash = 0;
 let openedInv = false;
 let cid = 0;
 let personalWeight = 0;
+let maxPlayerWeight = 250;
 let hadBrought = [];
 let taxLevel = 0;
+
 let enableBlur = true;
 
 //0x49 = i
@@ -38,6 +40,41 @@ let objectPermDumps = [
     { objectID: -41273338, Description: 'Small Bin Food Room' },
     { objectID: -686494084, Description: 'Small Bin Food Room' },
 ];
+
+// please forgive me.
+const ignoreMetaKeysInComparison = ["_remove_id", "_hideKeys", "_is_poisoned", "_foodEnhancements", "potency", "interval", "duration", "nonLethal", "quality",  "foodEnhancement", "_foodEnhancement"];
+
+const isObject = (object) => object != null && typeof object === 'object';
+const deepEqual = (object1, object2) => {
+  const keys1 = Object.keys(object1);
+  const keys2 = Object.keys(object2);
+  if (keys1.length !== keys2.length) {
+    return false;
+  }
+  for (const key of keys1) {
+    const val1 = object1[key];
+    const val2 = object2[key];
+    const areObjects = isObject(val1) && isObject(val2);
+    if (
+      areObjects && !deepEqual(val1, val2) ||
+      !areObjects && val1 !== val2
+    ) {
+      return false;
+    }
+  }
+  return true;
+}
+const isMetadataEqual = (obj1, obj2) => {
+  const removedKeys = ignoreMetaKeysInComparison.reduce((acc, key) => {
+    acc[key] = undefined;
+    return acc;
+  }, {});
+
+  return deepEqual(
+    { ...obj1, ...removedKeys },
+    { ...obj2, ...removedKeys }
+  );
+}
 
 function ScanContainers() {
     let player = PlayerPedId();
@@ -113,6 +150,7 @@ function ScanJailContainers() {
     }
 }
 
+let watch = [];
 RegisterNetEvent('drp-base:playerSpawned')
 on('drp-base:playerSpawned', (broughtData) => {
     let cid = exports.isPed.isPed("cid")
@@ -137,19 +175,29 @@ on('drp-base:update:settings', (data) => {
     );
 })
 
-RegisterNuiCallbackType("updateMyQuality");
-on("__cfx_nui:updateMyQuality", (data, cb) => {
-    let cid = exports.isPed.isPed("cid")
-    emitNet("server-item-quality-update", cid, data)
-})
+RegisterNetEvent('watch-inventory');
+on('watch-inventory', (src, cash, name) => {
+    watch = [src, name]
+    emit('chatMessage', 'SEARCH ', 2, "Player had cash in the amount of: " + cash, 5000);
+});
+
+RegisterNetEvent('drp-base:playerSpawned');
+on('drp-base:playerSpawned', async (broughtData) => {
+    emitNet('server-request-update', cid);
+    SendNuiMessage(JSON.stringify({ response: 'SendItemList', list: await itemListWithTax() }));
+    //Send updated settings
+    UpdateSettings();
+});
 
 RegisterNuiCallbackType('Weight');
 on('__cfx_nui:Weight', (data, cb) => {
     personalWeight = data.weight;
+    cb({});
 });
 RegisterNuiCallbackType('Close');
 on('__cfx_nui:Close', (data, cb) => {
     CloseGui(data.isItemUsed);
+    cb({});
 });
 
 RegisterNuiCallbackType('GiveItem');
@@ -166,6 +214,7 @@ on('__cfx_nui:GiveItem', (data, cb) => {
 
     emit('hud-display-item', id, 'Received', amount);
     GiveItem(id, amount, generateInformation, nonStacking, itemdata, data[6]);
+    cb({});
 });
 
 RegisterNuiCallbackType('UpdateSettings');
@@ -181,6 +230,7 @@ on('__cfx_nui:UpdateSettings', (data, cb) => {
     SetResourceKvpInt('inventorySettings-ShowTooltips', showTooltips ? 0 : 1);
     SetResourceKvpInt('inventorySettings-EnableBlur', enableBlur ? 0 : 1);
     emitNet("drp-inventory:update:settings", data)
+    cb({});
 });
 
 RegisterNetEvent('Inventory-brought-update');
@@ -189,7 +239,7 @@ on('Inventory-brought-update', (broughtData) => {
 });
 
 RegisterNetEvent('player:receiveItem');
-on('player:receiveItem', async(id, amount, generateInformation, itemdata, returnData = '{}', devItem = false) => {
+on('player:receiveItem', async (id, amount, generateInformation, itemdata, returnData = '{}', devItem = false) => {
     if (!(id in itemList)) {
         //Try to hash the ID
         let hashed = GetHashKey(id);
@@ -197,7 +247,7 @@ on('player:receiveItem', async(id, amount, generateInformation, itemdata, return
             id = hashed;
         } else {
             //If item is still not found, try to find by name
-            Object.keys(itemList).forEach(function(key) {
+            Object.keys(itemList).forEach(function (key) {
                 if (itemList[key].displayname.toLowerCase().trim().replace(' ', '') === id.toLowerCase().trim().replace(' ', '')) {
                     id = key;
                     return;
@@ -207,9 +257,9 @@ on('player:receiveItem', async(id, amount, generateInformation, itemdata, return
     }
 
     let combined = parseFloat(itemList[id].weight) * parseFloat(amount);
-    if ((parseFloat(personalWeight) > 250 || parseFloat(personalWeight) + combined > 250) && !devItem) {
-        emit('DoLongHudText', id + ' fell on the ground because you are overweight', 2);
-        let droppedItem = { slot: 3, itemid: id, amount: amount, generateInformation: generateInformation };
+    if ((parseFloat(personalWeight) > maxPlayerWeight || parseFloat(personalWeight) + combined > maxPlayerWeight) && !devItem) {
+        emit('DoLongHudText', 'Items fell on the ground because you are overweight', 2);
+        let droppedItem = { slot: 3, itemid: id, amount: amount, generateInformation: generateInformation, data: Object.assign({}, itemdata), returnData: returnData };
         cid = exports.isPed.isPed("cid");
         emitNet('server-inventory-open', GetEntityCoords(PlayerPedId()), cid, '42069', "Drop-Overweight", { "items": [droppedItem] });
         return;
@@ -221,9 +271,13 @@ on('player:receiveItem', async(id, amount, generateInformation, itemdata, return
             amount: amount,
             generateInformation: generateInformation,
             data: Object.assign({}, itemdata),
-            returnData: returnData,
+            returnData: typeof returnData === 'string' ? returnData : JSON.stringify(returnData || {}),
         }),
     );
+});
+
+exports('itemListInfo', (item_id) => {
+    return JSON.stringify(itemList[item_id]);
 });
 
 exports('getCurrentWeight', () => {
@@ -249,9 +303,42 @@ on('inventory:removeItem', (id, amount) => {
     emit('hud-display-item', id, 'Removed', amount);
 });
 
+RegisterNetEvent('inventory:removeItemBySlot');
+on('inventory:removeItemBySlot', (id, amount, slotId) => {
+    RemoveItemSlot(id, amount, slotId);
+    emit('hud-display-item', id, 'Removed', amount);
+});
+
+RegisterNetEvent('inventory:removeItemByMetaKV');
+on('inventory:removeItemByMetaKV', (id, amount, metaKey, metaValue) => {
+    RemoveItemKV(id, amount, metaKey, metaValue);
+    emit('hud-display-item', id, 'Removed', amount);
+});
+
+RegisterNetEvent('inventory:removeItemByMultipleMetaKV');
+on('inventory:removeItemByMultipleMetaKV', (id, amount, kvs, checkQuality = false) => {
+    RemoveItemMultipleKV(id, amount, kvs, checkQuality);
+    emit('hud-display-item', id, 'Removed', amount);
+});
+
 function RemoveItem(id, amount) {
     cid = exports.isPed.isPed("cid");
     emitNet('server-remove-item', cid, id, amount, openedInv);
+}
+
+function RemoveItemSlot(id, amount, slotId) {
+    cid = exports.isPed.isPed("cid");
+    emitNet('server-remove-item-slot', cid, id, amount, slotId);
+}
+
+function RemoveItemKV(id, amount, metaKey, metaValue) {
+    cid = exports.isPed.isPed("cid");
+    emitNet('server-remove-item-kv', cid, id, amount, metaKey, metaValue);
+}
+
+function RemoveItemMultipleKV(id, amount, kvs, checkQuality = false) {
+  cid = exports.isPed.isPed("cid");
+  emitNet('server-remove-item-multiple-kv', cid, id, amount, kvs, checkQuality);
 }
 
 function UpdateItem(id, slot, data) {
@@ -272,6 +359,12 @@ on('CreateCraftOption', (id, add, craft) => {
 
 function CreateCraftOption(id, add, craft) {
     let itemArray = [{ itemid: id, amount: add }];
+    if (typeof id === 'object') {
+        itemArray = Object.keys(id).map((key) => { return { itemid: id[key], amount: add } });
+    } else {
+        itemArray = [{ itemid: id, amount: add }];
+    }
+    
     if (craft === true) {
         emitNet('server-inventory-open', GetEntityCoords(PlayerPedId()), cid, '7', 'Craft', JSON.stringify(itemArray));
     } else {
@@ -309,6 +402,7 @@ on('__cfx_nui:dropIncorrectItems', (data, cb) => {
     setTimeout(() => {
         canOpen = true;
     }, 2000);
+    cb({});
 });
 
 //  $.post("http://drp-inventory/SlotJustUsed", JSON.stringify({target: targetSlot, origin: originSlot, itemid: itemidsent }));
@@ -325,6 +419,7 @@ on('__cfx_nui:SlotJustUsed', (data, cb) => {
     recentused.push(data.origin);
     recentused.push(data.targetslot);
     usedSlots = [];
+    cb({});
 });
 
 function doubleCheck(slotcheck) {
@@ -336,41 +431,66 @@ function doubleCheck(slotcheck) {
     }
 }
 
-function findSlot(ItemIdToCheck, amount, nonStacking) {
-    let sqlInventory = JSON.parse(MyInventory);
+function findSlot(ItemIdToCheck, amount, nonStacking, itemdata) {
+  let sqlInventory = JSON.parse(MyInventory);
 
-    let itemCount = parseInt(MyItemCount);
-    let foundslot = 0;
+  let itemCount = parseInt(MyItemCount);
+  let foundslot = 0;
 
-    for (let i = 0; i < itemCount; i++) {
-        if (sqlInventory[i].item_id == ItemIdToCheck && nonStacking == false) {
-            if (doubleCheck(sqlInventory[i].slot)) {
-                foundslot = sqlInventory[i].slot;
-            }
-        }
-    }
+  for (let i = 0; i < itemCount; i++) {
+      const item = sqlInventory[i];
+      let metadata = {};
+      try {
+        metadata = JSON.parse(item.information);
+      } catch (e) {
+      }
+      if (
+        item.item_id == ItemIdToCheck &&
+        nonStacking == false &&
+        doubleCheck(item.slot) &&
+        isMetadataEqual(itemdata, metadata)
+      ) {
+        foundslot = item.slot;
+      }
+      if (foundslot) {
+        break;
+      }
+  }
 
-    if (usedSlots[ItemIdToCheck] && nonStacking == false) {
-        foundslot = usedSlots[ItemIdToCheck];
-        slotsAvailable = slotsAvailable.filter((x) => x != foundslot);
-    }
+  const key = `${ItemIdToCheck}|${JSON.stringify(itemdata)}`
 
-    for (let i = 0; i < itemCount; i++) {
-        slotsAvailable = slotsAvailable.filter((x) => x != sqlInventory[i].slot);
-    }
+  if (usedSlots[key] && nonStacking == false) {
+      foundslot = usedSlots[key];
+      slotsAvailable = slotsAvailable.filter((x) => x != foundslot);
+  }
 
-    if (foundslot == 0 && slotsAvailable[0] != undefined && slotsAvailable.length > 0) {
-        foundslot = slotsAvailable[0];
-        usedSlots[ItemIdToCheck] = foundslot;
-        slotsAvailable = slotsAvailable.filter((x) => x != foundslot);
-    }
+  for (let i = 0; i < itemCount; i++) {
+      slotsAvailable = slotsAvailable.filter((x) => x != sqlInventory[i].slot);
+  }
 
-    if (foundslot == 0) {
-        emit('DoLongHudText', 'Failed to give ' + ItemIdToCheck + ' because you were full!', 2);
-    }
+  if (foundslot == 0 && slotsAvailable[0] != undefined && slotsAvailable.length > 0) {
+      foundslot = slotsAvailable[0];
+      usedSlots[key] = foundslot;
+      slotsAvailable = slotsAvailable.filter((x) => x != foundslot);
+  }
 
-    return foundslot;
+  if (foundslot == 0) {
+      emit('DoLongHudText', 'Failed to give item because you were full!', 2);
+  }
+  return foundslot;
 }
+
+let itemListWithTax = async () => {
+    const [tax] = await RPC.execute("GetTaxLevel", "Goods");
+
+    for (const key in itemList) {
+        let value = itemList[key];
+        value.tax = Math.ceil(value.price - value.price / (1 + tax / 100));
+        value.priceWithTax = value.price + value.tax;
+    }
+
+    return itemList;
+};
 
 let isCuffed = false;
 RegisterNetEvent('police:currentHandCuffedState');
@@ -378,9 +498,27 @@ on('police:currentHandCuffedState', (pIsHandcuffed, pIsHandcuffedAndWalking) => 
     isCuffed = pIsHandcuffed || pIsHandcuffedAndWalking;
 });
 
-RegisterNetEvent('inventory-open-request')
-on('inventory-open-request', () => {
+RegisterNetEvent('inventory:open_hidden');
+on('inventory:open_hidden', (penis, vehicleFound) => {
+    let vehId = exports['drp-vehicles'].GetVehicleIdentifier(vehicleFound)
+    emitNet('server-inventory-open', GetEntityCoords(PlayerPedId()), cid, '1', `hidden-container|${vehId}`);
+    TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 3.0, 'lockpick', 2.0)
+    TriggerEvent('DoLongHudText', 'It rattles, it clanks, and now opens a hidden compartment.', 2);
+});
+
+RegisterNetEvent('inventory:open_hidden_fail');
+on('inventory:open_hidden_fail', (penis, vehicleFound) => {
+    TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 3.0, 'lockpick', 2.0)
+    TriggerEvent('DoLongHudText', 'It rattles, it clanks, but it just doesnt come loose. Its almost as if the rust is holding it together.', 2);
+});
+
+RegisterNetEvent('inventory-open-request');
+on('inventory-open-request', async () => {
+    if (isCuffed) {
+        return;
+    }
     SendNuiMessage(JSON.stringify({ response: "SendItemList", list: itemList }))
+
     let player = PlayerPedId();
     let startPosition = GetOffsetFromEntityInWorldCoords(player, 0, 0.5, 0);
     let endPosition = GetOffsetFromEntityInWorldCoords(player, 0, 2.0, -0.4);
@@ -391,68 +529,84 @@ on('inventory-open-request', () => {
     let BinFound = ScanContainers();
     let JailBinFound = ScanJailContainers();
     let targetid = 0;
-    cid = exports.isPed.isPed("cid")
+    cid = exports.isPed.isPed("cid");
 
-    if (openedInv) {
-        CloseGui()
-    }
-    emit("randPickupAnim")
+    OpenGui();
 
-    OpenGui()
+    emit('randPickupAnim');
+
     const currentTarget = exports['drp-targetinteract'].GetCurrentEntity()
-    let rayhandle = StartShapeTestRay(startPosition[0], startPosition[1], startPosition[2], endPosition[0], endPosition[1], endPosition[2], 10, player, 0)
-    let vehicleInfo = GetShapeTestResult(rayhandle)
-    let vehicleFound = vehicleInfo[4]
-    let jailDst = GetDistanceBetweenCoords(startPosition[0], startPosition[1], startPosition[2], 1700.2, 2536.8, 45.5)
-    let vehicleFound1 = IsModelAVehicle(GetEntityModel(currentTarget)) ? currentTarget : 0
-    let tacoShopDst = GetDistanceBetweenCoords(startPosition[0], startPosition[1], startPosition[2], 15.47, -1598.78, 29.38)
 
+    let vehicleFound = IsModelAVehicle(GetEntityModel(currentTarget)) ? currentTarget : 0
 
+    let jailDst = GetDistanceBetweenCoords(startPosition[0], startPosition[1], startPosition[2], 1700.2, 2536.8, 45.5);
+
+    let tacoShopDst = GetDistanceBetweenCoords(startPosition[0], startPosition[1], startPosition[2], 15.47, -1598.78, 29.38);
+    let tacoStorage = GetDistanceBetweenCoords(startPosition[0], startPosition[1], startPosition[2], 11.23, -1599.01, 29.38);
 
     let isInVehicle = IsPedInAnyVehicle(PlayerPedId(), false);
     if (isInVehicle) {
-        vehicleFound = GetVehiclePedIsIn(PlayerPedId(), false)
-        let licensePlate = GetVehicleNumberPlateText(vehicleFound);
-        emitNet("server-inventory-open", startPosition, cid, "1", "Glovebox-" + licensePlate);
+        vehicleFound = GetVehiclePedIsIn(PlayerPedId(), false);
+        let vehicleModel = GetEntityModel(vehicleFound);
+        if (!IsThisModelABicycle(vehicleModel) && !IsThisModelABike(vehicleModel)) {
+            let licensePlate = GetVehicleNumberPlateText(vehicleFound);
+            const vehId = exports['drp-vehicles'].GetVehicleIdentifier(vehicleFound)
+            const gloveboxName = "Glovebox-" + vehId
+            emitNet('server-inventory-open', startPosition, cid, '1', gloveboxName);
+        } else {
+            GroundInventoryScan();
+        }
     } else if (tacoShopDst < 2.0) {
-        TriggerEvent("server-inventory-open", "18", "Craft");
+        TriggerEvent('server-inventory-open', '18', 'Craft');
+    } else if (tacoStorage < 1.0) {
+        emitNet('server-inventory-open', startPosition, cid, '1', `hidden-container|${10}|${1599}`);
     } else if (JailBinFound && jailDst < 80.0) {
-
         let x = parseInt(JailBinFound[0]);
         let y = parseInt(JailBinFound[1]);
-        let container = "jail-container|" + x + "|" + y;
-        emit("inventory-jail", startPosition, cid, container);
-
+        let container = 'jail-container|' + x + '|' + y;
+        emit('inventory-jail', startPosition, cid, container);
     } else if (BinFound) {
         let x = parseInt(BinFound[0]);
         let y = parseInt(BinFound[1]);
-        let container = "hidden-container|" + x + "|" + y;
-        emitNet("server-inventory-open", startPosition, cid, "1", container);
-    } else if (vehicleFound != 0) {
+        let serverCode = exports["drp-config"].GetServerCode();
+        let container = 'hidden-container|' + x + '|' + y + '|' + serverCode;
+        emitNet('server-inventory-open', startPosition, cid, '1', container);
+    }
+     else if (vehicleFound != 0) {
         let vehModel = GetEntityModel(vehicleFound);
         let [trunkCoords, front] = GetEnginePosition(vehicleFound);
+        let distanceRear = GetDistanceBetweenCoords(
+            startPosition[0],
+            startPosition[1],
+            startPosition[2],
+            trunkCoords[0],
+            trunkCoords[1],
+            trunkCoords[2],
+        );
 
-        let cock = GetEntityModel(vehicleFound)
-        let coords = GetModelDimensions(cock);
-
-        let back = GetOffsetFromEntityInWorldCoords(vehicleFound, 0.0, coords[0][1] - 0.5, 0.0);
-        let distanceRear = GetDistanceBetweenCoords(startPosition[0], startPosition[1], startPosition[2], back[0], back[1], back[2]);
-
-        if (GetVehicleDoorLockStatus(vehicleFound) == 2 && distanceRear < 1.5) {
-            CloseGui()
+        let lockStatus = GetVehicleDoorLockStatus(vehicleFound)
+        if (lockStatus != 1 && lockStatus != 0 && lockStatus != 4 && distanceRear < 1.5) {
+            TriggerEvent('DoLongHudText', 'The vehicle is locked.', 2);
+            CloseGui();
         } else {
             if (distanceRear > 1.5) {
-                GroundInventoryScan()
+                GroundInventoryScan();
             } else {
-                let licensePlate = GetVehicleNumberPlateText(vehicleFound1);
+                let licensePlate = GetVehicleNumberPlateText(vehicleFound);
                 if (licensePlate != null) {
                     if (vehModel === GetHashKey('npwheelchair')) {
                         TriggerEvent('DoLongHudText', 'This is a wheelchair, dummy.', 2);
                     } else {
                         if (!IsThisModelABicycle(vehModel) && vehModel !== GetHashKey('trash2')) {
-                            
-                            const carInvName = "Trunk-" +vehicleFound1
-                            const vehClass = GetVehicleClass(vehicleFound1);
+                            const vehId = exports['drp-vehicles'].GetVehicleIdentifier(vehicleFound)
+                            if (!vehId) {
+                                CloseGui();
+                                TriggerEvent('DoLongHudText', 'The trunk is locked.', 2);
+                                return;
+                            }
+                            const carInvName = "Trunk-" + vehId
+
+                            const vehClass = GetVehicleClass(vehicleFound);
 
                             //Vehicle weight calculations
                             const [[minX, minY, minZ], [maxX, maxY, maxZ]] = GetModelDimensions(vehModel);
@@ -492,8 +646,8 @@ on('inventory-open-request', () => {
                             });
 
                             emitNet('server-inventory-open', startPosition, cid, '1', carInvName, [], null, vehWeightCalc);
-                            SetVehicleDoorOpen(vehicleFound1, front ? 4 : 5, 0, 0);
-                            TaskTurnPedToFaceEntity(player, vehicleFound1, 1.0);
+                            SetVehicleDoorOpen(vehicleFound, front ? 4 : 5, 0, 0);
+                            TaskTurnPedToFaceEntity(player, vehicleFound, 1.0);
                             emit('toggle-animation', true);
                         } else {
                             GroundInventoryScan();
@@ -638,14 +792,19 @@ on('drp-items:SetAmmo', (sentammoTable) => {
     if (sentammoTable) {
         ammoTable = sentammoTable;
     }
-    CacheBinds(JSON.parse(MyInventory));
+    if (MyInventory) {
+        CacheBinds(JSON.parse(MyInventory));
+    }
 });
 
 function CacheBinds(sqlInventory) {
     boundItems = {};
     boundItemsInfo = {};
+    itemCount = Number(MyItemCount)
     let Ped = PlayerPedId();
     for (let i = 0; i < itemCount; i++) {
+        if (typeof sqlInventory[i] === "undefined") continue; //Temp fix? 
+
         let slot = sqlInventory[i].slot;
         if (slot < 5) {
             boundItems[slot] = sqlInventory[i].item_id;
@@ -700,6 +859,9 @@ on('nui-toggle', (toggle) => {
 
 RegisterNetEvent('inventory-bind');
 on('inventory-bind', (slot) => {
+    if (exports.isPed.isPed('dead')) {
+        return;
+    }
     let cid = exports.isPed.isPed("cid");
     let inventoryUsedName = 'ply-' + cid;
     let itemid = boundItems[slot];
@@ -728,12 +890,15 @@ on('closeInventoryGui', () => {
 });
 
 RegisterNuiCallbackType('ServerCloseInventory');
+
 on('__cfx_nui:ServerCloseInventory', (data, cb) => {
     let cid = exports.isPed.isPed("cid");
     if (data.name != 'none') {
-        emitNet("server-inventory-close", cid, data.name)
+        emitNet("server-inventory-close", cid, data.name);
         emitNet("server-inventory-refresh", cid);
+        emit('drp-inventory:closed', data.name);
     }
+    cb({});
 });
 
 RegisterNuiCallbackType('removeCraftItems');
@@ -745,28 +910,57 @@ on('__cfx_nui:removeCraftItems', (data, cb) => {
         RemoveItem(requirements[xx].itemid, Math.ceil(requirements[xx].amount * amountCrafted));
     }
     //emitNet("server-inventory-removeCraftItems", cid, data, GetEntityCoords(PlayerPedId()),openedInv)
+    cb({});
+});
+
+RegisterNuiCallbackType('craftProgression');
+on('__cfx_nui:craftProgression', (data, cb) => {
+    cb("ok");
+    emit("drp-inventory:craftProgression", data);
+    emitNet("drp-inventory:craftProgression", data);
 });
 
 RegisterNuiCallbackType('stack');
 on('__cfx_nui:stack', (data, cb) => {
     emitNet('server-inventory-stack', cid, data, GetEntityCoords(PlayerPedId()));
+    cb({});
 });
 
 RegisterNuiCallbackType('move');
 on('__cfx_nui:move', (data, cb) => {
     console.log(JSON.stringify(data))
     emitNet('server-inventory-move', cid, data, GetEntityCoords(PlayerPedId()));
+    cb({});
 });
 
 RegisterNuiCallbackType('swap');
 on('__cfx_nui:swap', (data, cb) => {
     emitNet('server-inventory-swap', cid, data, GetEntityCoords(PlayerPedId()));
+    cb({});
+});
+
+RegisterNuiCallbackType('insert-item')
+on('__cfx_nui:insert-item', (data, cb) => {
+    const {
+        originInventory, targetInventory,
+        originSlot, targetSlot,
+        originItemId, targetItemId,
+        originItemInfo, targetItemInfo,
+    } = data
+    if (
+        (itemList[originItemId].insertTo && itemList[originItemId].insertTo.includes(targetItemId))
+        ||
+        (itemList[targetItemId].insertFrom && itemList[targetItemId].insertFrom.includes(originItemId))
+    ) {
+        emit(`${targetItemId}:insert`, originInventory, targetInventory, originSlot, targetSlot, originItemId, targetItemId, originItemInfo, targetItemInfo)
+    }
+    cb({});
 });
 
 RegisterNetEvent('server-inventory-open');
-on('server-inventory-open', (target, name) => {
+on('server-inventory-open', (target, name, targetWeight, targetSlots) => {
     cid = exports.isPed.isPed("cid");
-    emitNet('server-inventory-open', GetEntityCoords(PlayerPedId()), cid, target, name);
+    emitNet('server-inventory-open', GetEntityCoords(PlayerPedId()), cid, target, name, null, null, targetWeight, targetSlots);
 });
 
 RegisterNetEvent('client-inventory-remove-any');
@@ -810,7 +1004,6 @@ on('inventory-update-player', (information) => {
     let returnInv = BuildInventory(information[0]);
     let playerinventory = returnInv[0];
     let itemCount = returnInv[1];
-
     let invName = information[2];
 
     MyInventory = playerinventory;
@@ -825,8 +1018,11 @@ on('inventory-update-player', (information) => {
     //misc.UpdateInventory(playerinventory, itemCount, "inv update player");
 });
 
+let storageNames = ['storage', 'stash', 'office', 'housing', 'warehouse', 'hidden', 'paynless', 'hotel', 'craft'];
+let inStashOrStorage = false;
+
 RegisterNetEvent('inventory-open-target');
-on('inventory-open-target', (information) => {
+on('inventory-open-target', async (information) => {
     //misc.UpdateInventory(playerinventory, itemCount, "inv target player");
 
     let returnInv = BuildInventory(information[0]);
@@ -853,11 +1049,31 @@ on('inventory-open-target', (information) => {
         MyInventory = playerinventory;
         MyItemCount = information[0].length;
         if (!openedInv) OpenGui();
+        // if (targetinvName.indexOf("Shop") > -1) {
+        //     const [fetchCash] = await RPC.execute("GetCurrentCash");
+        //     cash = fetchCash;
+        //     setImmediate(async () => {
+        //         const [hasWeaponsLicense] = await getWeaponsLicense(cid);
+        //         let brought = hadBrought[cid];
+        //         let cop = false;
+        //         if (exports.isPed.isPed('myjob') == 'police' || exports.isPed.isPed('myjob') == 'doc') {
+        //             cop = true;
+        //         }
+        //         await Delay(250);
+        // 
+        //         SendNuiMessage(JSON.stringify({ response: 'cashUpdate', amount: cash, weaponlicence: hasWeaponsLicense, brought: brought, cop: cop }));
+        //     })
+        // }
 
         let targetInvWeight = information[8];
         if (!targetInvWeight) targetInvWeight = 0;
         let targetInvSlots = information[9];
         if (!targetInvSlots) targetInvSlots = 40;
+
+        if (storageNames.some(v => targetinvName.toLowerCase().includes(v)) && !IsPedInAnyVehicle(PlayerPedId(), false) && !targetinvName.toLowerCase().includes('apartments')) {
+            inStashOrStorage = true;
+            TaskStartScenarioInPlace(PlayerPedId(), 'PROP_HUMAN_BUM_BIN', 0, true)
+        }
 
         PopulateGui(playerinventory, returnInv[1], invName, targetinventory, targetitemCount, targetinvName, cash, targetInvWeight, targetInvSlots);
         SendNuiMessage(JSON.stringify({ response: 'EnableMouse' }));
@@ -869,7 +1085,8 @@ let timer = 0;
 let timeFunction = false;
 
 function GiveItem(itemid, amount, generateInformation, nonStacking, itemdata, returnData = '{}') {
-    let slot = findSlot(itemid, amount, nonStacking);
+    const metadata = JSON.stringify(itemdata) !== "{}" ? itemdata : JSON.parse(returnData);
+    let slot = findSlot(itemid, amount, nonStacking, metadata);
     if (!isNaN(itemid)) {
         generateInformation = true;
     }
@@ -891,10 +1108,10 @@ function GiveItem(itemid, amount, generateInformation, nonStacking, itemdata, re
 }
 
 async function CloseGui(pIsItemUsed = false) {
-    // if (watch[0] !== undefined) {
-    //     emitNet("inventory-update-other", watch)
-    //     watch = []
-    // }
+    if (watch[0] !== undefined) {
+        emitNet("inventory-update-other", watch)
+        watch = []
+    }
 
     if (!pIsItemUsed) {
         emit('randPickupAnim');
@@ -912,13 +1129,15 @@ async function CloseGui(pIsItemUsed = false) {
     //Remove blur
     TriggerScreenblurFadeOut(400);
 
-    // if (inStashOrStorage) {
-    //     ClearPedTasks(PlayerPedId());
-    //     inStashOrStorage = false
-    // }
+    if (inStashOrStorage) {
+        ClearPedTasks(PlayerPedId());
+        inStashOrStorage = false
+    }
 
     emit('inventory:wepDropCheck')
 }
+
+const getWeaponsLicense = (async (ctx, cid) => [true, await RPC.execute("CheckLicenseForCharacter", cid, "Weapons License")], { timeToLive: 300000 * 12 })
 
 async function OpenGui() {
     openedInv = true;
@@ -929,9 +1148,8 @@ async function OpenGui() {
     if (enableBlur) TriggerScreenblurFadeIn(400);
 
     //Center cursor
-    SetCursorLocation(0.5, 0.5);
-
-	cash = exports.isPed.isPed("mycash")
+   
+    cash = exports.isPed.isPed("mycash")
 	weaponsLicence = exports.isPed.isPed("weaponslicence")
     let brought = hadBrought[cid];
     let cop = false;
@@ -950,7 +1168,6 @@ function PopulateGuiSingle(playerinventory, itemCount, invName) {
 }
 
 let TrapOwner = false;
-
 function PopulateGui(playerinventory, itemCount, invName, targetinventory, targetitemCount, targetinvName, cash, targetInvWeight, targetInvSlots) {
     let cid = exports.isPed.isPed("cid");
     let StoreOwner = false;
@@ -1083,7 +1300,7 @@ function ConvertQuality(itemID, creationDate) {
 }
 
 RegisterNuiCallbackType('invuse');
-on('__cfx_nui:invuse', (data) => {
+on('__cfx_nui:invuse', (data, cb) => {
     let inventoryUsedName = data[0];
     let itemid = data[1];
     let slotusing = data[2];
@@ -1091,22 +1308,23 @@ on('__cfx_nui:invuse', (data) => {
     let iteminfo = data[4];
 
     emit('RunUseItem', itemid, slotusing, inventoryUsedName, isWeapon, iteminfo);
+    cb({});
 });
 
-RegisterNetEvent('toggle-animation')
+RegisterNetEvent('toggle-animation');
 on('toggle-animation', (toggleAnimation) => {
-    let lPed = PlayerPedId()
+    let lPed = PlayerPedId();
     if (toggleAnimation) {
-        TriggerEvent("animation:load")
-        if (!IsEntityPlayingAnim(lPed, "mini@repair", "fixing_a_player", 3))
-            TaskPlayAnim(lPed, "mini@repair", "fixing_a_player", 8.0, -8, -1, 16, 0, 0, 0, 0)
+        TriggerEvent('animation:load');
+        if (!IsEntityPlayingAnim(lPed, 'mini@repair', 'fixing_a_player', 3))
+            TaskPlayAnim(lPed, 'mini@repair', 'fixing_a_player', 8.0, -8, -1, 16, 0, 0, 0, 0);
     } else {
-        StopAnimTask(lPed, "mini@repair", "fixing_a_player", -4.0);
+        StopAnimTask(lPed, 'mini@repair', 'fixing_a_player', -4.0);
     }
 });
 
 RegisterNetEvent('inventory-open-container');
-on('inventory-open-container', async(inventoryId, slots, weight) => {
+on('inventory-open-container', async (inventoryId, slots, weight) => {
     const playerPos = GetEntityCoords(PlayerPedId());
     const cid = exports.isPed.isPed("cid");
     emitNet('server-inventory-open', playerPos, cid, '1', inventoryId, [], null, weight, slots);
@@ -1162,7 +1380,66 @@ let EndingFocus = false;
 let ControlThread;
 
 function SetCustomNuiFocus(hasKeyboard, hasMouse) {
+    // HasNuiFocus = hasKeyboard || hasMouse;
+
     SetNuiFocus(hasKeyboard, hasMouse);
+    // SetNuiFocusKeepInput(HasNuiFocus);
+
+    //   if (HasNuiFocus === true) {
+    //   	emit("drp-voice:focus:set", HasNuiFocus, hasKeyboard, hasMouse);
+    //   } else {
+    // 	  setTimeout(() => {if (HasNuiFocus !== true) emit("drp-voice:focus:set", false, false, false);}, 1000)
+    //   }
 }
 
+//like Citizen.Wait, usage: await Delay(<amount>);
 const Delay = (ms) => new Promise((res) => setTimeout(res, ms));
+
+exports('setPlayerWeight', (cid, weight) => {
+    maxPlayerWeight = weight;
+    emitNet('drp-inventory:server:weightChange', cid, weight);
+    SendNuiMessage(JSON.stringify({ response: 'playerWeight', personalMaxWeight: weight }));
+});
+
+exports('getPlayerMaxWeight', () => {
+    return maxPlayerWeight
+});
+
+
+exports('getItemListNames', () => {
+    let itemListSend = []
+    for (const key in itemList) {
+        const item = itemList[key];
+        itemListSend.push({ id: key, name: item.displayname })
+    }
+
+    return itemListSend
+});
+
+exports('getFullItemList', () => {
+    return itemList;
+});
+
+let doTranslationsFirstRun = true;
+const doTranslations = async () => {
+    for (const key of Object.keys(itemList)) {
+        if (doTranslationsFirstRun) {
+            itemList[key].__og_displayname = itemList[key].displayname;
+            itemList[key].__og_information = itemList[key].information;
+        }
+    }
+    doTranslationsFirstRun = false;
+}
+
+setTimeout(doTranslations, 10000);
+
+on('drp-i18n:languageChanged', doTranslations);
+
+setTimeout(async () => {
+    for (const item of Object.values(itemList)) {
+        emit('i18n:translate', item.displayname || '', 'inv:item:name');
+        await Delay(500);
+        emit('i18n:translate', item.information || '', 'inv:item:desc');
+        await Delay(500);
+    }
+}, 60000 * 5);

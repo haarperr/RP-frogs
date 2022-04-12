@@ -494,38 +494,42 @@ function UwUCafeFridge() {
 
 function CbGetSomeStuff() {
     var shopItems = [
-        { item_id: "cbfarmers", id: 0, name: "craft", information: "{}", slot: 1, amount: 15 },
-        { item_id: "cbclucker", id: 0, name: "craft", information: "{}", slot: 2, amount: 15 },
-        { item_id: "cbcontroller", id: 0, name: "craft", information: "{}", slot: 3, amount: 15 },
-        { item_id: "chickenslammer", id: 0, name: "craft", information: "{}", slot: 4, amount: 15 },
+        { item_id: "cbfarmers", id: 0, name: "craft", information: "{}", slot: 1, amount: 50 },
+        { item_id: "cbclucker", id: 0, name: "craft", information: "{}", slot: 2, amount: 50 },
+        { item_id: "cbcontroller", id: 0, name: "craft", information: "{}", slot: 3, amount: 50 },
+        { item_id: "chickenslammer", id: 0, name: "craft", information: "{}", slot: 4, amount: 50 },
     ];
     return JSON.stringify(shopItems);
 };
 
 function CbFrier() {
     var shopItems = [
-        { item_id: "cbpatty", id: 0, name: "craft", information: "{}", slot: 1, amount: 2 },
-        { item_id: "cbfriedchickenpiece", id: 0, name: "craft", information: "{}", slot: 2, amount: 2 },
+        { item_id: "cbpatty", id: 0, name: "craft", information: "{}", slot: 1, amount: 50 },
+        { item_id: "cbfriedchickenpiece", id: 0, name: "craft", information: "{}", slot: 2, amount: 50 },
+        { item_id: "cbballs", id: 0, name: "craft", information: "{}", slot: 3, amount: 50 },
+        { item_id: "cbfries", id: 0, name: "craft", information: "{}", slot: 4, amount: 50 },
+        { item_id: "cbrings", id: 0, name: "craft", information: "{}", slot: 5, amount: 50 },
+        { item_id: "cbchickenfries", id: 0, name: "craft", information: "{}", slot: 6, amount: 50 },
     ];
     return JSON.stringify(shopItems);
 };
 
 function CbDrink() {
     var shopItems = [
-        { item_id: "cbdrink", id: 0, name: "craft", information: "{}", slot: 1, amount: 2 },
-        { item_id: "cbsmoothie", id: 0, name: "craft", information: "{}", slot: 2, amount: 2 },
+        { item_id: "cbdrink", id: 0, name: "craft", information: "{}", slot: 1, amount: 50 },
+        { item_id: "cbsmoothie", id: 0, name: "craft", information: "{}", slot: 2, amount: 50 },
     ];
     return JSON.stringify(shopItems);
 };
 
 function CbBurger() {
     var shopItems = [
-        { item_id: "cbjr", id: 0, name: "craft", information: "{}", slot: 1, amount: 2 },
-        { item_id: "cbfowl", id: 0, name: "craft", information: "{}", slot: 2, amount: 2 },
-        { item_id: "cbbucket", id: 0, name: "craft", information: "{}", slot: 3, amount: 2 },
-        { item_id: "cbzinger", id: 0, name: "craft", information: "{}", slot: 4, amount: 2 },
-        { item_id: "cbbowl", id: 0, name: "craft", information: "{}", slot: 5, amount: 2 },
-        { item_id: "cbveggy", id: 0, name: "craft", information: "{}", slot: 6, amount: 2 }
+        { item_id: "cbjr", id: 0, name: "craft", information: "{}", slot: 1, amount: 50 },
+        { item_id: "cbfowl", id: 0, name: "craft", information: "{}", slot: 2, amount: 50 },
+        { item_id: "cbbucket", id: 0, name: "craft", information: "{}", slot: 3, amount: 50 },
+        { item_id: "cbzinger", id: 0, name: "craft", information: "{}", slot: 4, amount: 50 },
+        { item_id: "cbbowl", id: 0, name: "craft", information: "{}", slot: 5, amount: 50 },
+        { item_id: "cbveggy", id: 0, name: "craft", information: "{}", slot: 6, amount: 50 }
     ];
     return JSON.stringify(shopItems);
 };

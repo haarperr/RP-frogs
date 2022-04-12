@@ -4928,7 +4928,7 @@ itemList['cbcontroller'] = {
   displayname: 'Cluckin Gameboy',
   price: 30,
   weight: 3,
-  nonStack: true,
+  nonStack: false,
   model: '',
   craft: [
     [{
@@ -4960,7 +4960,7 @@ itemList['cbcoupongolden'] = {
   weight: 3,
   nonStack: false,
   model: '',
-  image: 'cb-coupongolden.png',
+  image: 'cluckin-goldencoupon.png',
   information: '2 Weeks of Free Food at Cluckin Bell',
 };
 
@@ -5000,6 +5000,14 @@ itemList['cbchickenfries'] = {
   weight: 2,
   nonStack: false,
   model: '',
+  craft: [
+    [  
+      {
+      itemid: 'cbfriedchickenpiece',
+      amount: 1
+      },
+    ]
+  ],
   image: 'cluckin-chicken-fries.png',
   information: 'Ooh..thats good. 440Cal + Protein',
 };
@@ -5115,7 +5123,7 @@ itemList['cbclucker'] = {
 itemList['cbdrink'] = {
   fullyDegrades: false,
   decayrate: 0.01,
-  displayname: 'Cluckin Drink',
+  displayname: 'Cluckin Softdrink',
   price: 1,
   weight: 2,
   nonStack: false,
@@ -5215,7 +5223,7 @@ itemList['cbfries'] = {
 itemList['cbrings'] = {
   fullyDegrades: false,
   decayrate: 0.01,
-  displayname: 'Cluckin Rings',
+  displayname: 'Cluckin Onion Rings',
   price: 1,
   weight: 2,
   nonStack: false,

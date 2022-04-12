@@ -1,23 +1,23 @@
---RPC.register("getCurrentCashPlayer",function(pSource)
---    local src = pSource
---    local user = exports["drp-base"]:getModule("Player"):GetUser(src)
---    local cash = user:getCash()
---    return cash
---end)
---
---RPC.register("clothing:purchase",function(pSource,pPrice)
---    local user = exports["drp-base"]:getModule("Player"):GetUser(pSource)
---    user:removeMoney(pPrice.param)
---    return true
---end)
---
---RPC.register("PriceWithTaxString",function(pSource,pPrice,pType)
---    local data = {
---        total = pPrice.param,
---        text = pPrice.param.." + "..pType.param
---    }
---    return data
---end)
+RPC.register("getCurrentCashPlayer",function(pSource)
+    local src = pSource
+    local user = exports["drp-base"]:getModule("Player"):GetUser(src)
+    local cash = user:getCash()
+    return cash
+end)
+
+RPC.register("clothing:purchase",function(pSource,pPrice)
+    local user = exports["drp-base"]:getModule("Player"):GetUser(pSource)
+    user:removeMoney(pPrice.param)
+    return true
+end)
+
+RPC.register("PriceWithTaxString",function(pSource,pPrice,pType)
+    local data = {
+        total = pPrice.param,
+        text = pPrice.param.." + "..pType.param
+    }
+    return data
+end)
 
 local function checkExistenceClothes(cid, cb)
     exports.ghmattimysql:execute("SELECT cid FROM character_current WHERE cid = @cid LIMIT 1;", {["cid"] = cid}, function(result)
