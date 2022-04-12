@@ -405,7 +405,7 @@ on('__cfx_nui:dropIncorrectItems', (data, cb) => {
     cb({});
 });
 
-//  $.post("http://np-inventory/SlotJustUsed", JSON.stringify({target: targetSlot, origin: originSlot, itemid: itemidsent }));
+//  $.post("http://drp-inventory/SlotJustUsed", JSON.stringify({target: targetSlot, origin: originSlot, itemid: itemidsent }));
 let recentused = [];
 RegisterNuiCallbackType('SlotJustUsed');
 on('__cfx_nui:SlotJustUsed', (data, cb) => {
@@ -500,7 +500,7 @@ on('police:currentHandCuffedState', (pIsHandcuffed, pIsHandcuffedAndWalking) => 
 
 RegisterNetEvent('inventory:open_hidden');
 on('inventory:open_hidden', (penis, vehicleFound) => {
-    let vehId = exports['np-vehicles'].GetVehicleIdentifier(vehicleFound)
+    let vehId = exports['drp-vehicles'].GetVehicleIdentifier(vehicleFound)
     emitNet('server-inventory-open', GetEntityCoords(PlayerPedId()), cid, '1', `hidden-container|${vehId}`);
     TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 3.0, 'lockpick', 2.0)
     TriggerEvent('DoLongHudText', 'It rattles, it clanks, and now opens a hidden compartment.', 2);
@@ -528,7 +528,7 @@ on('inventory-open-request', async () => {
     let nearTarget = false;
     let BinFound = ScanContainers();
     let JailBinFound = ScanJailContainers();
-    const apartmentFloor = exports["np-apartments"].getModule("func").getApartment()
+    const apartmentFloor = exports["drp-apartments"].getModule("func").getApartment()
     let targetid = 0;
     cid = exports.isPed.isPed("cid");
 
@@ -536,7 +536,7 @@ on('inventory-open-request', async () => {
 
     emit('randPickupAnim');
 
-    const currentTarget = exports['np-target'].GetCurrentEntity()
+    const currentTarget = exports['drp-target'].GetCurrentEntity()
 
     let vehicleFound = IsModelAVehicle(GetEntityModel(currentTarget)) ? currentTarget : 0
 
@@ -551,7 +551,7 @@ on('inventory-open-request', async () => {
         let vehicleModel = GetEntityModel(vehicleFound);
         if (!IsThisModelABicycle(vehicleModel) && !IsThisModelABike(vehicleModel)) {
             let licensePlate = GetVehicleNumberPlateText(vehicleFound);
-            const vehId = exports['np-vehicles'].GetVehicleIdentifier(vehicleFound)
+            const vehId = exports['drp-vehicles'].GetVehicleIdentifier(vehicleFound)
             if (!vehId) {
                 TriggerEvent('DoLongHudText', 'The glovebox is locked.', 2);
                 GroundInventoryScan();
@@ -574,7 +574,7 @@ on('inventory-open-request', async () => {
     } else if (BinFound) {
         let x = parseInt(BinFound[0]);
         let y = parseInt(BinFound[1]);
-        let serverCode = exports["np-config"].GetServerCode();
+        let serverCode = exports["drp-config"].GetServerCode();
         let container = 'hidden-container|' + x + '|' + y + '|' + serverCode;
         emitNet('server-inventory-open', startPosition, cid, '1', container);
     } else if (apartmentFloor != null) {
@@ -608,7 +608,7 @@ on('inventory-open-request', async () => {
                         TriggerEvent('DoLongHudText', 'This is a wheelchair, dummy.', 2);
                     } else {
                         if (!IsThisModelABicycle(vehModel) && vehModel !== GetHashKey('trash2')) {
-                            const vehId = exports['np-vehicles'].GetVehicleIdentifier(vehicleFound)
+                            const vehId = exports['drp-vehicles'].GetVehicleIdentifier(vehicleFound)
                             if (!vehId) {
                                 CloseGui();
                                 TriggerEvent('DoLongHudText', 'The trunk is locked.', 2);
@@ -797,8 +797,8 @@ function Scan(row) {
     return distancea < checkDistance;
 }
 
-RegisterNetEvent('np-items:SetAmmo');
-on('np-items:SetAmmo', (sentammoTable) => {
+RegisterNetEvent('drp-items:SetAmmo');
+on('drp-items:SetAmmo', (sentammoTable) => {
     if (sentammoTable) {
         ammoTable = sentammoTable;
     }
@@ -926,8 +926,8 @@ on('__cfx_nui:removeCraftItems', (data, cb) => {
 RegisterNuiCallbackType('craftProgression');
 on('__cfx_nui:craftProgression', (data, cb) => {
     cb("ok");
-    emit("np-inventory:craftProgression", data);
-    emitNet("np-inventory:craftProgression", data);
+    emit("drp-inventory:craftProgression", data);
+    emitNet("drp-inventory:craftProgression", data);
 });
 
 RegisterNuiCallbackType('stack');
@@ -1396,9 +1396,9 @@ function SetCustomNuiFocus(hasKeyboard, hasMouse) {
     // SetNuiFocusKeepInput(HasNuiFocus);
 
     //   if (HasNuiFocus === true) {
-    //   	emit("np-voice:focus:set", HasNuiFocus, hasKeyboard, hasMouse);
+    //   	emit("drp-voice:focus:set", HasNuiFocus, hasKeyboard, hasMouse);
     //   } else {
-    // 	  setTimeout(() => {if (HasNuiFocus !== true) emit("np-voice:focus:set", false, false, false);}, 1000)
+    // 	  setTimeout(() => {if (HasNuiFocus !== true) emit("drp-voice:focus:set", false, false, false);}, 1000)
     //   }
 }
 
@@ -1407,7 +1407,7 @@ const Delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
 exports('setPlayerWeight', (cid, weight) => {
     maxPlayerWeight = weight;
-    emitNet('np-inventory:server:weightChange', cid, weight);
+    emitNet('drp-inventory:server:weightChange', cid, weight);
     SendNuiMessage(JSON.stringify({ response: 'playerWeight', personalMaxWeight: weight }));
 });
 
@@ -1432,25 +1432,25 @@ exports('getFullItemList', () => {
 
 let doTranslationsFirstRun = true;
 const doTranslations = async () => {
-    let isReady = exports['np-i18n'].IsReady();
+    let isReady = exports['drp-i18n'].IsReady();
     while (!isReady) {
         await Delay(1000);
-        isReady = exports['np-i18n'].IsReady();
+        isReady = exports['drp-i18n'].IsReady();
     }
     for (const key of Object.keys(itemList)) {
         if (doTranslationsFirstRun) {
             itemList[key].__og_displayname = itemList[key].displayname;
             itemList[key].__og_information = itemList[key].information;
         }
-        itemList[key].displayname = exports['np-i18n'].GetStringSwap(itemList[key].__og_displayname || itemList[key].displayname);
-        itemList[key].information = exports['np-i18n'].GetStringSwap(itemList[key].__og_information || itemList[key].information);
+        itemList[key].displayname = exports['drp-i18n'].GetStringSwap(itemList[key].__og_displayname || itemList[key].displayname);
+        itemList[key].information = exports['drp-i18n'].GetStringSwap(itemList[key].__og_information || itemList[key].information);
     }
     doTranslationsFirstRun = false;
 }
 
 setTimeout(doTranslations, 10000);
 
-on('np-i18n:languageChanged', doTranslations);
+on('drp-i18n:languageChanged', doTranslations);
 
 setTimeout(async () => {
     for (const item of Object.values(itemList)) {
