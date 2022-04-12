@@ -382,7 +382,7 @@ Citizen.CreateThread(function()
 end)
 
 RegisterNetEvent("drp-chickens:sellprotein")
-AddEventHandler("drp-chickens:sell", function()
+AddEventHandler("drp-chickens:sellprotein", function()
 	local x,y,z = table.unpack(GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0.0, 0.9, -0.98))
 	local prop = CreateObject(GetHashKey('hei_prop_heist_box'), x, y, z,  true,  false, false)
 	SetEntityHeading(prop, GetEntityHeading(GetPlayerPed(-1)))
@@ -408,7 +408,7 @@ end)
 
 
 RegisterNetEvent("drp-chickens:sellcuttedchicken")
-AddEventHandler("drp-chickens:sell", function()
+AddEventHandler("drp-chickens:sellcuttedchicken", function()
 	local x,y,z = table.unpack(GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0.0, 0.9, -0.98))
 	local prop = CreateObject(GetHashKey('hei_prop_heist_box'), x, y, z,  true,  false, false)
 	SetEntityHeading(prop, GetEntityHeading(GetPlayerPed(-1)))
