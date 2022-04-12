@@ -800,7 +800,7 @@ local deliverVehicle = nil
 RegisterNetEvent("bsdelivery:getJob")
 AddEventHandler("bsdelivery:getJob", function()
     local rank = exports["isPed"]:GroupRank("burger_shot")
-    if rank <= 1 then
+    if rank >= 1 then
         if hasJob == true then
             TriggerEvent("DoLongHudText", "You already have a job!", 2)
         else
