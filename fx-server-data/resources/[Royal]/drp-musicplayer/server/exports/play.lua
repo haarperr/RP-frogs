@@ -89,7 +89,7 @@ RegisterServerEvent("burgershot:change:volume", function(volume)
 end)
 
 RegisterServerEvent("cluckinbell:request:song:sv", function(url)
-    local Speaker3 = vector3(-514.4218, -696.3133, 35.7011, 175.2990)
+    local Speaker3 = vector3(-514.4218, -696.3133, 35.7011)
     TriggerClientEvent("play:song", -1, url, Speaker3, "BU")
     local data = {
         soundId = "CB",
@@ -100,7 +100,7 @@ end)
 
 
 RegisterServerEvent("cluckinbell:change:volume", function(volume)
-    local Speaker3 = vector3(-514.4218, -696.3133, 35.7011, 175.2990)
+    local Speaker3 = vector3(-514.4218, -696.3133, 35.7011)
     local data = {
         soundId = "CB",
         volume =  volume/100,
