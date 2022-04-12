@@ -506,6 +506,10 @@ function CbFrier() {
     var shopItems = [
         { item_id: "cbpatty", id: 0, name: "craft", information: "{}", slot: 1, amount: 2 },
         { item_id: "cbfriedchickenpiece", id: 0, name: "craft", information: "{}", slot: 2, amount: 2 },
+        { item_id: "cbballs", id: 0, name: "craft", information: "{}", slot: 3, amount: 2 },
+        { item_id: "cbfries", id: 0, name: "craft", information: "{}", slot: 4, amount: 2 },
+        { item_id: "cbrings", id: 0, name: "craft", information: "{}", slot: 5, amount: 2 },
+        { item_id: "cbchickenfries", id: 0, name: "craft", information: "{}", slot: 6, amount: 2 },
     ];
     return JSON.stringify(shopItems);
 };
