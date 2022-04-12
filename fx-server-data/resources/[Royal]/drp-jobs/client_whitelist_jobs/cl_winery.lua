@@ -21,7 +21,7 @@ AddEventHandler('drp-polyzone:enter', function(name)
 			exports['drp-textui']:showInteraction(("[E] %s"):format("Pick Grapes"))
         end
     end
-    if name == "potato" then
+    if name == "potatoslol" then
         local rank = exports["isPed"]:GroupRank("winery")
 		if rank > 0 then 
             nearPicking = true
