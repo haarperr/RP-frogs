@@ -57,6 +57,7 @@ AddEventHandler('car:dopayment', function(plateNumber)
                 user:removeBank(CurrentPayment)
                
                 TriggerClientEvent("pdm:payment", pSrc, CurrentPayment)
+                TriggerClientEvent("DoLongHudText", pSrc, "You have made a car payment of $"..CurrentPayment..)
             else
                 TriggerClientEvent("DoLongHudText", pSrc, "You need $"..CurrentPayment.. " in your bank account to afford this car payment!")
             end                
