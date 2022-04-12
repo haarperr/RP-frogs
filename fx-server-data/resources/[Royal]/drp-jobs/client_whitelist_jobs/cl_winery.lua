@@ -66,9 +66,9 @@ function AtPoliceBuy()
                             local chance = math.random(0, 1)
                             FreezeEntityPosition(ped,false)
                             if chance == 0 then
-                                TriggerEvent('player:receiveItem', 'grapes')
+                                TriggerEvent('player:receiveItem', 'grapes', math.random(3,5))
                             elseif chance == 1 then 
-                                TriggerEvent('player:receiveItem', 'grapes', math.random(1,2))
+                                TriggerEvent('player:receiveItem', 'grapes', math.random(2,3))
                             end
                         else
                             FreezeEntityPosition(ped,false)
