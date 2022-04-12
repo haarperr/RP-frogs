@@ -4,8 +4,8 @@ local serverstockvalues = {
 }
 
 clientstockamount = {
-  [1] = { ["value"] = 0.00 },
-  [2] = { ["value"] = 0.00 },
+  [1] = { ["value"] = 10.00 },
+  [2] = { ["value"] = 10.00 },
 }
 
 
@@ -154,7 +154,7 @@ end)
 
 RegisterNetEvent('stocks:refreshstocks');
 AddEventHandler('stocks:refreshstocks', function()
-    --[[for i = 1, #serverstockvalues do
+    for i = 1, #serverstockvalues do
       local colortype = 1
       if i == 1 or i == 3 or i == 5 then
         colortype = 2
@@ -175,7 +175,7 @@ AddEventHandler('stocks:refreshstocks', function()
         colorsent = colortype,
         available = serverstockvalues[i]["amountavailable"]
       })
-    end--]]
+    end
     sendStocksToPhone(true);
 end)
 
@@ -201,7 +201,7 @@ end
 RegisterNUICallback('btnStocks', function()
   TriggerServerEvent('stocks:retrieve')
   sendStocksToPhone();
-  --[[
+  
     for i = 1, #serverstockvalues do
       local colortype = 1
       if i == 1 or i == 3 or i == 5 then
@@ -223,7 +223,7 @@ RegisterNUICallback('btnStocks', function()
         colorsent = colortype,
         available = serverstockvalues[i]["amountavailable"]
       })
-    end--]]
+    end
 end)
 
 function requestUpdate()
