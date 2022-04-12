@@ -2768,9 +2768,9 @@ function AttachPropAndPlayAnimation(dictionary,animation,typeAnim,timer,message,
         TriggerEvent("attachItem", "shotglass")
     elseif itemid == "fishtaco" or itemid == "taco" then
         TriggerEvent("attachItem", "taco")
-    elseif itemid == "whitewineglass" then
+    elseif itemid == "kennywhite" then
         TriggerEvent("attachItem", "wineglassw")
-    elseif itemid == "redwineglass" then
+    elseif itemid == "kennyred" then
         TriggerEvent("attachItem", "wineglassr")
     elseif itemid == "greencow" or itemid == "franksmonster" or itemid == "chuhai" then
         TriggerEvent("attachItem", "energydrink")
