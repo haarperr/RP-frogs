@@ -53,6 +53,19 @@ AddEventHandler("drp-cluckinbell:openmakedrink", function()
     end
 end)
 
+RegisterNetEvent("drp-cluckinbell:getwater")
+AddEventHandler("drp-cluckinbell:getwater", function()
+    local job = exports["isPed"]:GroupRank('cluckin_bell')
+    if job >= 1 then
+        local finished = exports['drp-taskbar']:taskBar(math.random(4000, 7500), "Filling up water...")
+        if finished == 100 then
+            TriggerEvent("player:receiveItem", "water", 1)
+        end
+    else
+        TriggerEvent('DoLongHudText', 'You do not work here !', 2)
+    end
+end)
+
 
 RegisterNetEvent("drp-cluckin:tradein")
 AddEventHandler("drp-cluckin:tradein", function()

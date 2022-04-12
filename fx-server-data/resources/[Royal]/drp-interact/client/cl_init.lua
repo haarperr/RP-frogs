@@ -825,6 +825,9 @@ Citizen.CreateThread(function()
 
     exports["drp-polytarget"]:AddBoxZone("cluckinbell_door_down", vector3(-510.4387, -695.2125, 44.7534), 1, 1.4, {
     })
+
+    exports["drp-polytarget"]:AddBoxZone("cluckinbell_sink", vector3(-512.6628, -702.7142, 33), 1, 1.4, {
+    })
     
 
 
@@ -2373,6 +2376,17 @@ Citizen.CreateThread(function()
         id = "cluckinbell_stash",
         icon = "circle",
         label = "Open Stash",
+        parameters = {},
+    }}, {
+        distance = { radius = 1.75 },
+    });
+
+    -- CluckinBell Sink
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("cluckinbell_sink", {{
+        event = "drp-cluckinbell:getwater",
+        id = "cluckinbell_sink",
+        icon = "circle",
+        label = "Use Sink",
         parameters = {},
     }}, {
         distance = { radius = 1.75 },
