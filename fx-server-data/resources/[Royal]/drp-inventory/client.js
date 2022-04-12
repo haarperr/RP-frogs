@@ -1427,18 +1427,11 @@ exports('getFullItemList', () => {
 
 let doTranslationsFirstRun = true;
 const doTranslations = async () => {
-    let isReady = exports['drp-i18n'].IsReady();
-    while (!isReady) {
-        await Delay(1000);
-        isReady = exports['drp-i18n'].IsReady();
-    }
     for (const key of Object.keys(itemList)) {
         if (doTranslationsFirstRun) {
             itemList[key].__og_displayname = itemList[key].displayname;
             itemList[key].__og_information = itemList[key].information;
         }
-        itemList[key].displayname = exports['drp-i18n'].GetStringSwap(itemList[key].__og_displayname || itemList[key].displayname);
-        itemList[key].information = exports['drp-i18n'].GetStringSwap(itemList[key].__og_information || itemList[key].information);
     }
     doTranslationsFirstRun = false;
 }
