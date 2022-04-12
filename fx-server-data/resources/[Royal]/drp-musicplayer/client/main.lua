@@ -12,7 +12,7 @@ function getDefaultInfo()
         playing = false,
         paused = false,
         loop = true,
-        isDynamic = true,
+        isDynamic = false,
         timeStamp = 0,
         maxDuration = 0,
         destroyOnFinish = true,
