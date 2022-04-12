@@ -57,9 +57,15 @@ RegisterNetEvent("drp-cluckinbell:getwater")
 AddEventHandler("drp-cluckinbell:getwater", function()
     local job = exports["isPed"]:GroupRank('cluckin_bell')
     if job >= 1 then
+        -- freeze player 
+        local player = GetPlayerPed(-1)
+        FreezeEntityPosition(player, true)
         local finished = exports['drp-taskbar']:taskBar(math.random(4000, 7500), "Filling up water...")
         if finished == 100 then
             TriggerEvent("player:receiveItem", "water", 1)
+            FreezeEntityPosition(player, false)
+        else
+            FreezeEntityPosition(player, false)
         end
     else
         TriggerEvent('DoLongHudText', 'You do not work here !', 2)
