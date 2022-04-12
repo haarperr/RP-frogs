@@ -149,7 +149,7 @@ Currentstates = {
 RegisterNetEvent("Evidence:StateSet")
 AddEventHandler("Evidence:StateSet",function(stateId,stateLength)
 	if Currentstates[stateId]["timer"] < 10 and stateLength ~= 0 then
-		TriggerEvent('chatMessage', 'STATUS ', 1, Currentstates[stateId]["text"])
+		--TriggerEvent('chatMessage', 'STATUS ', 1, Currentstates[stateId]["text"]) -- Disabled Chat Message
 	end
 	Currentstates[stateId]["timer"] = stateLength
 end)
