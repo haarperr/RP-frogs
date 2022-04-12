@@ -157,8 +157,11 @@ RegisterNetEvent("drp-cluckinbell:godown")
 AddEventHandler("drp-cluckinbell:godown", function()
     local job = exports["isPed"]:GroupRank('cluckin_bell')
     if job >= 1 then
-        SetEntityCoords(GetPlayerPed(-1), -510.3046, -695.6692, 33.2178, 274.0302)
-    else
+        local finished = exports['drp-taskbar']:taskBar(300, "Going down")
+        if finished == 100 then
+            SetEntityCoords(GetPlayerPed(-1), -501.2915, -693.7147, 33.2178)
+            end 
+        else
         TriggerEvent('DoLongHudText', 'You do not work here !', 2)
     end
 end)
