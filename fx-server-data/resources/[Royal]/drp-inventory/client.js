@@ -492,8 +492,6 @@ let itemListWithTax = async () => {
     return itemList;
 };
 
-const getItemListWithTax = Cacheable(async () => [true, await itemListWithTax()], { timeToLive: 1000 * 60 * 120 });
-
 let isCuffed = false;
 RegisterNetEvent('police:currentHandCuffedState');
 on('police:currentHandCuffedState', (pIsHandcuffed, pIsHandcuffedAndWalking) => {
@@ -519,9 +517,7 @@ on('inventory-open-request', async () => {
     if (isCuffed) {
         return;
     }
-    setImmediate(async () => {
-        SendNuiMessage(JSON.stringify({ response: 'SendItemList', list: await getItemListWithTax() }));
-    });
+    SendNuiMessage(JSON.stringify({ response: "SendItemList", list: itemList }))
 
     let player = PlayerPedId();
     let startPosition = GetOffsetFromEntityInWorldCoords(player, 0, 0.5, 0);
