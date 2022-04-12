@@ -603,6 +603,21 @@ end)
 
 -- // Registers
 
+RegisterCommand('bsmusic', function()
+    local job = exports["isPed"]:GroupRank('burger_shot')
+    if job >= 1 then
+    TriggerEvent("burgershot:request:song")
+    end
+     end)
+
+     RegisterCommand('bsmusicv', function()
+        local job = exports["isPed"]:GroupRank('burger_shot')
+        if job >= 1 then
+        TriggerEvent("burgershot:change:volume")
+        end
+         end)
+
+
 RegisterNetEvent("bs:payment")
 AddEventHandler("bs:payment", function(price)
     TriggerServerEvent("server:GroupPayment","burger_shot", price)
