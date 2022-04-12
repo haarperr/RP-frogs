@@ -1054,21 +1054,21 @@ on('inventory-open-target', async (information) => {
         MyInventory = playerinventory;
         MyItemCount = information[0].length;
         if (!openedInv) OpenGui();
-        if (targetinvName.indexOf("Shop") > -1) {
-            const [fetchCash] = await RPC.execute("GetCurrentCash");
-            cash = fetchCash;
-            setImmediate(async () => {
-                const [hasWeaponsLicense] = await getWeaponsLicense(cid);
-                let brought = hadBrought[cid];
-                let cop = false;
-                if (exports.isPed.isPed('myjob') == 'police' || exports.isPed.isPed('myjob') == 'doc') {
-                    cop = true;
-                }
-                await Delay(250);
-
-                SendNuiMessage(JSON.stringify({ response: 'cashUpdate', amount: cash, weaponlicence: hasWeaponsLicense, brought: brought, cop: cop }));
-            })
-        }
+        // if (targetinvName.indexOf("Shop") > -1) {
+        //     const [fetchCash] = await RPC.execute("GetCurrentCash");
+        //     cash = fetchCash;
+        //     setImmediate(async () => {
+        //         const [hasWeaponsLicense] = await getWeaponsLicense(cid);
+        //         let brought = hadBrought[cid];
+        //         let cop = false;
+        //         if (exports.isPed.isPed('myjob') == 'police' || exports.isPed.isPed('myjob') == 'doc') {
+        //             cop = true;
+        //         }
+        //         await Delay(250);
+        // 
+        //         SendNuiMessage(JSON.stringify({ response: 'cashUpdate', amount: cash, weaponlicence: hasWeaponsLicense, brought: brought, cop: cop }));
+        //     })
+        // }
 
         let targetInvWeight = information[8];
         if (!targetInvWeight) targetInvWeight = 0;
