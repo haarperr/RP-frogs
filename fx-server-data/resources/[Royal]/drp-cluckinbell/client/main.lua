@@ -61,7 +61,6 @@ AddEventHandler("drp-cluckinbell:getwater", function()
         local player = GetPlayerPed(-1)
         FreezeEntityPosition(player, true)
         -- animation
-        TaskStartScenarioInPlace(player, "pose_b_idle_g_water_bottle", 0, true)
         local finished = exports['drp-taskbar']:taskBar(math.random(4000, 7500), "Filling up water...")
         if finished == 100 then
             TriggerEvent("player:receiveItem", "water", 1)
