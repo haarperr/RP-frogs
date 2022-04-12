@@ -1,5 +1,5 @@
 local serverstockvalues = {
-  [1] = { ["name"] = "Guinea", ["value"] = 0.0, ["identifier"] = "Guinea", ["lastchange"] = 0.00, ["amountavailable"] = 0.0 },
+  [1] = { ["name"] = "Guinea", ["value"] = 10.0, ["identifier"] = "Guinea", ["lastchange"] = 0.00, ["amountavailable"] = 500.0 },
   [2] = { ["name"] = "Shungite", ["value"] = 250.0, ["identifier"] = "Shungite", ["lastchange"] = 0.00, ["amountavailable"] = 100.0 },
 }
 
@@ -9,12 +9,12 @@ clientstockamount = {
 }
 
 
-RegisterNetEvent("Crypto:GivePixerium")
-AddEventHandler("Crypto:GivePixerium", function(amount)
+RegisterNetEvent("Crypto:GiveGNE")
+AddEventHandler("Crypto:GiveGNE", function(amount)
   clientstockamount[1]["value"] = clientstockamount[1]["value"] + amount
   Citizen.Trace("Retreived crypto")
   updateServerClientStocks()
-  TriggerEvent("customNotification", "You have received Pixerium")
+  TriggerEvent("customNotification", "You have received" ..amount..  "GNE")
 end)
 RegisterNetEvent("Crypto:RemovePixerium")
 AddEventHandler("Crypto:RemovePixerium", function(amount)
@@ -105,8 +105,8 @@ end
 
 
 
-RegisterNetEvent('pixerium:check');
-AddEventHandler('pixerium:check', function(costs,functionCall,server)
+RegisterNetEvent('gne:check');
+AddEventHandler('gne:check', function(costs,functionCall,server)
 
   if clientstockamount[1]["value"] >= costs then
     clientstockamount[1]["value"] = clientstockamount[1]["value"] - costs
@@ -216,11 +216,7 @@ RegisterNUICallback('btnStocks', function()
         openSection = "addstock",
         namesent = serverstockvalues[i]["name"],
         identifier = serverstockvalues[i]["identifier"],
-        lastchange = lastchangestock,
-        valuesent = serverstockvalues[i]["value"],
-        amountsold = serverstockvalues[i]["amountsold"],
         clientstock = clientstockamount[i]["value"],
-        colorsent = colortype,
         available = serverstockvalues[i]["amountavailable"]
       })
     end
