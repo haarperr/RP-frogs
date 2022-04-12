@@ -88,6 +88,26 @@ RegisterServerEvent("burgershot:change:volume", function(volume)
     TriggerClientEvent("drp-musicplayer:stateSound", -1, "volume", data)
 end)
 
+RegisterServerEvent("cluckinbell:request:song:sv", function(url)
+    local Speaker3 = vector3(-517.4330, -696.8008, 35.9928)
+    TriggerClientEvent("play:song", -1, url, Speaker3, "BU")
+    local data = {
+        soundId = "CB",
+        distance =  15,
+    }
+    TriggerClientEvent("drp-musicplayer:stateSound", -1, "distance", data)
+end)
+
+
+RegisterServerEvent("cluckinbell:change:volume", function(volume)
+    local Speaker3 = vector3(-517.4330, -696.8008, 35.9928)
+    local data = {
+        soundId = "CB",
+        volume =  volume/100,
+    }
+    TriggerClientEvent("drp-musicplayer:stateSound", -1, "volume", data)
+end)
+
 RegisterServerEvent("bahamas:request:song:sv", function(url)
     local Speaker3 = vector3(-1379.6644287109, -627.27758789062, 29.926954269409)
     TriggerClientEvent("play:song", -1, url, Speaker3, "BH")

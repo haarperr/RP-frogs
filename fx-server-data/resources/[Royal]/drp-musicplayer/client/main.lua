@@ -196,6 +196,50 @@ RegisterNetEvent("burgershot:request:song", function()
 end)
 
 
+
+
+RegisterNetEvent("cluckinbell:change:volume", function()
+    local job = exports["isPed"]:GroupRank('burger_shot')
+    if job >= 1 then
+        local url = exports["drp-applications"]:KeyboardInput({
+            header = "Settings: 0 - 100",
+            rows = {
+                {
+                    id = 0,
+                    txt = "Volume of the music"
+                },
+            }
+        })
+        if url then
+            TriggerServerEvent("cluckinbell:change:volume", url[1].input)
+        else
+            TriggerEvent("DoLongHudText", "You need a song URL", 2)
+        end
+    end
+end)
+
+     
+RegisterNetEvent("cluckinbell:request:song", function()
+    local job = exports["isPed"]:GroupRank('burger_shot')
+    if job >= 1 then
+        local url = exports["drp-applications"]:KeyboardInput({
+            header = "Place the song URL below.",
+            rows = {
+                {
+                    id = 0,
+                    txt = "Song URL"
+                },
+            }
+        })
+        if url then
+            TriggerEvent("DoLongHudText", "Song is begining to play!")
+            TriggerServerEvent("cluckinbell:request:song:sv", url[1].input)
+        else
+            TriggerEvent("DoLongHudText", "You need a song URL", 2)
+        end
+    end
+end)
+
 RegisterNetEvent("vanilla:change:volume", function()
     local job = exports["isPed"]:GroupRank('vanilla_unicorn')
     if job >= 1 then

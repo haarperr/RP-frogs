@@ -165,3 +165,15 @@ AddEventHandler("drp-cluckinbell:godown", function()
         TriggerEvent('DoLongHudText', 'You do not work here !', 2)
     end
 end)
+
+
+
+RegisterCommand('cbmusic', function()
+    local job = exports["isPed"]:GroupRank('cluckin_bell')
+    if job >= 1 then TriggerEvent("cluckinbell:request:song") end
+end)
+
+RegisterCommand('cbmusicv', function()
+    local job = exports["isPed"]:GroupRank('cluckin_bell')
+    if job >= 1 then TriggerEvent("cluckinbell:change:volume") end
+end)
