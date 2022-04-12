@@ -1329,6 +1329,7 @@ function addVehicles(vehicleData, showCarPayments) {
    <button id="hovercorridas" class="" aria-label=" Car Plate - ${vehicleData[vehicle].plate}" data-balloon-pos="up"><i  class="fas fa-closed-captioning"></i> </button>
    <button id="hovercorridas" class="" aria-label="Engine Health - ${vehicleData[vehicle].enginePercent}" data-balloon-pos="up"><i  class="fas fa-oil-can"></i> </button>
    <button id="hovercorridas" class="" aria-label="Body Health - ${vehicleData[vehicle].bodyPercent}" data-balloon-pos="up"><i  class="fas fa-car-crash"></i> </button>
+   <button id="hovercorridas" class="" aria-label="${Math.ceil(parseFloat(vehicleData[vehicle].amountDue /12))}</span> amount due." data-balloon-pos="up"><i  class="fa-dollar-sign"></i> </button>
 </h3>
            <div class="collapsible-header">
                <i class="fas fa-car " style="font-size: 60px; color:${carIconColor}"> </i>
