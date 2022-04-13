@@ -2569,7 +2569,7 @@ end
         AttachPropAndPlayAnimation("amb@world_human_drinking@coffee@male@idle_a", "idle_c", 49,15000,"Drink","drp-roostersrest:drinkTea",true,itemid,playerVeh)
     end
  
-    if itemid == "fries" or itemid == "chips" or itemid == "cbfries" or itemid == "cbchickenfries" or itemid == "cbrings" itemid == "hardoakfries" then
+    if itemid == "fries" or itemid == "chips" or itemid == "cbfries" or itemid == "cbchickenfries" or itemid == "cbrings" or itemid == "hardoakfries" then
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,15000,"Eating","inv:fed2",true,itemid,playerVeh)
     end
 
