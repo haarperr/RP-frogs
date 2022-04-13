@@ -8,6 +8,7 @@ Config.PolyZoneScriptName = "drp-polyzone"
 ----------------------------------------
 
 Config.BallObject = `prop_bowling_ball`
+-- Config.BallObject = `denis3d_bowling_ball_01`
 Config.StandAnimDict = 'weapons@projectile@'
 Config.StandAnim = 'aimlive_l'
 Config.ThrowAnim = 'throw_l_fb_stand'
