@@ -603,24 +603,9 @@ end)
 
 -- // Registers
 
-RegisterCommand('bsmusic', function()
-    local job = exports["isPed"]:GroupRank('burger_shot')
-    if job >= 1 then
-    TriggerEvent("burgershot:request:song")
-    end
-     end)
-
-     RegisterCommand('bsmusicv', function()
-        local job = exports["isPed"]:GroupRank('burger_shot')
-        if job >= 1 then
-        TriggerEvent("burgershot:change:volume")
-        end
-         end)
-
-
 RegisterNetEvent("bs:payment")
-AddEventHandler("bs:payment", function(price)
-    TriggerServerEvent("server:GroupPayment","burger_shot", price)
+AddEventHandler("bs:payment", function(amount)
+    TriggerServerEvent("server:GroupPayment","burger_shot", amount)
 end)
 
 RegisterNetEvent("burgershot:register")
@@ -800,7 +785,7 @@ local deliverVehicle = nil
 RegisterNetEvent("bsdelivery:getJob")
 AddEventHandler("bsdelivery:getJob", function()
     local rank = exports["isPed"]:GroupRank("burger_shot")
-    if rank >= 1 then
+    if rank <= 1 then
         if hasJob == true then
             TriggerEvent("DoLongHudText", "You already have a job!", 2)
         else

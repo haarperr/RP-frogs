@@ -58,7 +58,7 @@ AddEventHandler("burger_shot:OrderComplete", function(regID, price, comment)
     Registers[regID] = {}
     table.insert(Registers[regID], insert)
 
-    TriggerClientEvent("bs:payment", pSrc, price)
+    
 end)
 
 
@@ -85,6 +85,7 @@ AddEventHandler("burgershot:retreive:receipt", function(regID)
                     TriggerClientEvent("player:receiveItem", Registers[regID][i].owner, "burgerReceipt", 1, true, information)
                     TriggerClientEvent("player:receiveItem", src, "receipt", 1, true, {["Comment"] = "Thanks for your order at Burger Shot"})
                     TriggerEvent("burger_shot:update:registers", regID)
+                    TriggerClientEvent("bs:payment", pSrc, amount)
                 else
                     TriggerClientEvent("DoLongHudText", src, "You cant afford this payment", 2)
                 end
