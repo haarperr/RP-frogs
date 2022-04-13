@@ -1000,6 +1000,10 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
         remove = customMarketItems[itemid]
     end
 
+    if (itemid == "cbdrink" or itemid == "cbsmoothie") then
+        AttachPropAndPlayAnimation("mp_player_inteat@drink", "loop_bottle", 49, 6000, "Drink", "changethirst", true, itemid, playerVeh)
+
+
     if (itemid == "fishtaco") then
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","food:FishTaco",true,itemid,playerVeh)
     end

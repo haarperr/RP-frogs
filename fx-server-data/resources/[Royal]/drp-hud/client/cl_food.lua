@@ -141,6 +141,11 @@ AddEventHandler('food:IceCream', function()
 	TriggerEvent("drp-hud:updateStress", false, 35)
 end)
 
+RegisterNetEvent('cluckinBell:drink')
+AddEventHandler('cluckinBell:drink', function()
+	TriggerEvent("drp-hud:updateStress", false, 20)
+end)
+
 RegisterNetEvent('food:FishTaco')
 AddEventHandler('food:FishTaco', function()
 	dstamina = 0

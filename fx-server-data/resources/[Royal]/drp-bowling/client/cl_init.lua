@@ -5,25 +5,19 @@ local totalDowned = 0
 local lastBall = 0
 local lanes = Config.BowlingLanes
 local inBowlingZone = false
+
 local function canUseLane(pLaneId)
-    local shit = false
-    local response = RPC.execute("drp-bowling:getLaneAccess",pLaneId)
-    if(response == true) then
-        shit = true
-    end
-    Citizen.Wait(300)
-    return shit
+    local info = (exports["drp-inventory"]:GetInfoForFirstItemOfName("bowlingreceipt") or { information = "{}" })
+    local laneId = json.decode(info.information).lane
 
+    return (exports['drp-inventory']:hasEnoughOfItem("bowlingreceipt", 1, false, true)) and (laneId == pLaneId)
 end
-
-
-
 
 Citizen.CreateThread(function()
     for k, v in pairs(lanes) do
         if (not v.enabled) then goto continueBox end
 
-        exports[Config.PolyZoneScriptName]:AddBoxZone("drp-bowling:lane_"..k, v.pos, 1.8, 2.0, {
+        exports["drp-polyzone"]:AddBoxZone("drp-bowling:lane_"..k, v.pos, 1.8, 2.0, {
             heading=0,
             minZ=23.85,
             maxZ=27.85
@@ -32,8 +26,8 @@ Citizen.CreateThread(function()
         ::continueBox::
     end
   
-    exports[Config.PolyZoneScriptName]:AddBoxZone("bowling_alley", vector3(743.95, -774.54, 26.34), 16.8, 30.4, {
-        heading=0.0,
+    exports["drp-polyzone"]:AddBoxZone("bowling_alley", vector3(743.95, -774.54, 26.34), 16.8, 30.4, {
+        heading=0,
         minZ=23.85,
         maxZ=28.85
     })
@@ -57,177 +51,110 @@ Citizen.CreateThread(function()
             isNPC = true,
         },
     }
-    RequestModel(GetHashKey(data.model))
-	while not HasModelLoaded(GetHashKey(data.model)) do
-		Citizen.Wait( 1 )
-	end
-    created_ped = CreatePed(data.pedType, data.model , data.position.coords.x,data.position.coords.y,data. position.coords.z, data.position.heading, data.networked, false)
-	FreezeEntityPosition(created_ped, true)
-	SetEntityInvincible(created_ped, true)
-	SetBlockingOfNonTemporaryEvents(created_ped, true)
 
+    local bowlingVendor = exports["drp-npcs"]:RegisterNPC(data, "drp-bowling:bowlingVendor")
+    exports["drp-npcs"]:EnableNPC(bowlingVendor)
 
-    local BowlingPed = {
-        GetHashKey("a_m_o_salton_01"),
-    }
+    for k, v in pairs(lanes) do
+        if (not v.enabled) then goto continuePeak end
 
-    exports[Config.TargetScriptName]:AddTargetModel(BowlingPed, {
-        options = {
-            {
-                event = 'drp-bowling:client:openMenu',
-                icon = 'fas fa-bowling-ball',
-                label = 'View Store'
-            }
-        },
-        job = {"all"},
-        distance = 1.5
-    })
-   
+        exports['drp-interact']:AddPeekEntryByPolyTarget('drp-bowling:lane_'..k, {{
+            event = "drp-bowling:setupPins",
+            id = "bowling_pins_"..k,
+            icon = "bowling-ball",
+            label = _L("bowling-lane-target", "Setup Pins"),
+            parameters = {lane = k}
+        }}, { distance = { radius = 3.5 }, isEnabled = function(pEntity, pContext) return (not hasActivePins) and (canUseLane(k)) end })
 
         ::continuePeak::
-    
+    end
 
-
+    exports["drp-interact"]:AddPeekEntryByFlag({'isNPC'}, {{
+            id = 'buy_bowling_ball',
+            label = _L("bowling-vendor-target", "View Store"),
+            icon = "bowling-ball",
+            event = 'drp-bowling:handleVendorPurchase',
+    }}, { distance = { radius = 2.5 }, npcIds = { 'bowling_npc_vendor' }})
 end)
 
 local function drawStatusHUD(state, pValues)
-    local title = "Bowling - Lane #" .. currentLane
+    local title = _L("bowling-ui-title", "Bowling - Lane #") .. currentLane
     local values = {}
   
-    table.insert(values, "Throws: " .. totalThrown)
-    table.insert(values, "Downed: " .. totalDowned)
+    table.insert(values, _L("bowling-ui-throws", "Throws") .. ": " .. totalThrown)
+    table.insert(values, _L("bowling-ui-downed", "Downed") .. ": " .. totalDowned)
 
     if (pValues) then
         for k, v in pairs(pValues) do
         table.insert(values, v)
         end
     end
-    
-    SendNUIMessage({show = state , t = title , v = values})
+  
+    exports["drp-ui"]:sendAppEvent("status-hud", {
+      show = state,
+      title = title,
+      values = values
+    })
 end
-RegisterNetEvent('drp-bowling:client:openMenu')
-AddEventHandler('drp-bowling:client:openMenu' , function()
+
+AddEventHandler('drp-bowling:handleVendorPurchase', function(pParams)
     local options = Config.BowlingVendor
     local data = {}
+
     for itemId, item in pairs(options) do
+        if (itemId == 'bowlingreceipt') then
+            local lanesSorted = {}
 
-        TriggerEvent('drp-storage:sendMenu', {
-            {
-                id = itemId,
-                header = item.name,
-                txt = "Price "..item.price.."$",
-                params = {
-                    event = "drp-bowling:openMenu2",
-                    args = {
-                        data = itemId,
-                    }
-                }
-            },
-        })
-    end
-end)
-
-
-RegisterNetEvent('drp-bowling:openMenu2')
-AddEventHandler('drp-bowling:openMenu2' , function(data)
-    if(data.data == 'bowlingreceipt') then
-        local lanesSorted = {}
-        for k, v in ipairs(lanes) do
-            if(lanes[k].enabled == false) then
-                return
+            for k, v in ipairs(lanes) do
+                table.insert(lanesSorted, { title = "Lane #" .. k, action = "drp-ui:bowlingPurchase", key = k, disabled = not v.enabled })
             end
 
-            TriggerEvent('drp-storage:sendMenu', {
-                {
-                    id = k,
-                    header = "Lane #"..k,
-                    txt = "",
-                    params = {
-                        event = "drp-bowling:bowlingPurchase",
-                        args = {
-                            key = k
-                        }
-                    }
-                },
-            })
-        end
-
-    else
-        TriggerEvent("drp-bowling:bowlingPurchase" , 'd')
-    end
-end)
-
-local sheesh = false
-function shit(k,v) 
-    Citizen.CreateThread(function()
-        while sheesh == true do
-            exports[Config.TargetScriptName]:AddBoxZone("drp-bowling:lane_"..k, v.pos, 1.8, 2.0, {
-                name = "drp-bowling:lane_"..k,
-                heading = 0.0,
-                minZ=20.85,
-                maxZ=28.85,
-                debugPoly = false
-            }, {
-                options = {
-                    {      
-                        event = 'drp-bowling:setupPins',
-                        icon = 'fas fa-arrow-circle-down',
-                        label = 'Setup Pins',
-                        parms = { v = k }
-                    },
-                },
-                job = {"all"},
-                distance = 1.5
-            })
-            sheesh = false
-            Citizen.Wait(0)
-        end
-    end)
-
-end
-
-local lastlane = 0
-
-RegisterNetEvent('drp-bowling:bowlingPurchase')
-AddEventHandler("drp-bowling:bowlingPurchase", function(data)
-    local isLane = type(data.key) == "number"
-    local response = RPC.execute("drp-bowling:purchaseItem",data.key , isLane)
-
-    if response == true then
-        if(isLane == true) then
-            for k, v in pairs(lanes) do
-
-                if(canUseLane(k) == true) then
-                    sheesh = true
-                    shit(k , v)
-                end
-            end
-            lanes[data.key].enabled = false
-            lastlane = data.key
-            TriggerEvent("DoLongHudText","You've successfuly bought lane access | Lane: "..data.key.."#")
+            data[#data + 1] = {
+                title = item.name,
+                description = "$" .. item.price .. "",
+                item = itemId,
+                children = lanesSorted,
+            }
         else
-            TriggerEvent("DoLongHudText","You've successfuly bought a Bowling Ball")
+            data[#data + 1] = {
+                title = item.name,
+                description = "$" .. item.price .. "",
+                key = itemId,
+                children = {
+                    { title = _L("bowling-ui-confirmpurchase", "Confirm Purchase"), action = "drp-ui:bowlingPurchase", key = itemId },
+                },
+            }
         end
-        return
-    end  
-end)
-
-AddEventHandler('drp-bowling:setupPins', function(pParameters)
-    local response = RPC.execute("drp-bowling:getLaneAccess",pParameters.v)
-    if response == true then
-        local lane = pParameters.v
-        if (not lanes[lane]) then return end
-        if (hasActivePins) then return end
-        hasActivePins = true
-        currentLane = lane
-        drawStatusHUD(true)
-        createPins(lanes[lane].pins)
-    else
-        TriggerEvent("DoLongHudText","No access to this lane",2)
     end
+    exports["drp-ui"]:showContextMenu(data)
 end)
 
+RegisterUICallback("drp-ui:bowlingPurchase", function(data, cb)
+    local isLane = type(data.key) == "number"
 
+    local success, message = NPX.Procedures.execute("drp-bowling:purchaseItem", data.key, isLane)
+    if not success then
+        cb({ data = {}, meta = { ok = success, message = message } })
+        TriggerEvent("DoLongHudText", _L(message, "You can't afford that."), 2)
+        return
+    end
+
+    cb({ data = {}, meta = { ok = true, message = "done" } })
+end)
+
+AddEventHandler('drp-bowling:setupPins', function(pParameters, pEntity, pContext)
+    local lane = pParameters.lane
+
+    if (not lanes[lane]) then return end
+    if (hasActivePins) then return end
+
+    hasActivePins = true
+    currentLane = lane
+
+    drawStatusHUD(true)
+
+    createPins(lanes[lane].pins)
+end)
 
 local function canUseBall()
     return (lastBall == 0 or lastBall + 6000 < GetGameTimer()) and (inBowlingZone)
@@ -243,9 +170,8 @@ local gameState = {}
 gameState[1] = {
     onState = function()
         if (totalDowned >= 10) then
-            TriggerEvent("DoLongHudText","Strike!")
-
-            drawStatusHUD(true, {"Strike!"})
+            TriggerEvent("DoLongHudText", _L('bowling-ui-strike', "Strike!"))
+            drawStatusHUD(true, {_L('bowling-ui-strike', "Strike!")})
 
             Citizen.Wait(1500)
 
@@ -254,22 +180,21 @@ gameState[1] = {
             totalThrown = 0
         elseif (totalDowned < 10) then
             removeDownedPins()
-            drawStatusHUD(true, {"Throw again!"})
+            drawStatusHUD(true, {_L('bowling-ui-again', "Throw again!")})
         end
     end
 }
 gameState[2] = {
     onState = function()
         if (totalDowned >= 10) then
-            drawStatusHUD(true, {"Spare!"})
-            TriggerEvent("DoLongHudText","Spare!")
-
+            TriggerEvent("DoLongHudText", _L('bowling-ui-spare', "Spare!"))
+            drawStatusHUD(true, {_L('bowling-ui-spare', "Spare!")})
 
             Citizen.Wait(500)
 
             resetBowling()
         elseif (totalDowned < 10) then
-            TriggerEvent("You downed " .. totalDowned .. " pins!")
+            TriggerEvent("DoLongHudText", ("You downed %s pins!"):format(totalDowned), 1, 12000, { i18n = { "You downed", "pins" } })
 
             Citizen.Wait(1500)
 
@@ -281,12 +206,13 @@ gameState[2] = {
     end
 }
 
-RegisterNetEvent('drp-bowling:client:itemused')
-AddEventHandler('drp-bowling:client:itemused' , function()
+AddEventHandler('drp-inventory:itemUsed', function(pItemId)
+    if (pItemId ~= 'bowlingball') then return end
     if (IsPedInAnyVehicle(PlayerPedId(), true)) then return end
 
     -- Cooldown
     if (not canUseBall()) then return end
+
     startBowling(false, function(ballObject)
         lastBall = GetGameTimer()
         
@@ -316,7 +242,7 @@ AddEventHandler('drp-bowling:client:itemused' , function()
             totalDowned = getPinsDownedCount()
 
             if (timeOut) then
-                drawStatusHUD(true, {"Time's up!"})
+                drawStatusHUD(true, {_L('bowling-ui-timesup', "Time's up!")})
                 timeOut = false
             end
 
@@ -325,7 +251,6 @@ AddEventHandler('drp-bowling:client:itemused' , function()
             end
 
             removeBowlingBall()
-            
         end
     end)
 end)
@@ -340,6 +265,7 @@ end)
 
 AddEventHandler("drp-polyzone:enter", function(zone, data)
     if zone ~= "bowling_alley" then return end
+
     inBowlingZone = true
 end)
 
@@ -347,31 +273,10 @@ AddEventHandler("drp-polyzone:exit", function(zone, data)
     if zone ~= "bowling_alley" then return end
 
     inBowlingZone = false
-    TriggerEvent("drp-bowling:RemoveItem")
-    if (lanes[lastlane] ~= nil) then
-        lanes[lastlane].enabled = true
-    end
+
     if (hasActivePins) then
         resetBowling()
         totalDowned = 0
         totalThrown = 0
     end
 end)
-
-
-RegisterNetEvent("drp-bowling:RemoveItem")
-AddEventHandler("drp-bowling:RemoveItem" , function()
-    if not exports["drp-inventory"]:hasEnoughOfItem("bowlingball",1,false) then return end
-    if exports['drp-inventory']:hasEnoughOfItem('bowlingball', 1) then
-        TriggerEvent("inventory:removeItem", "bowlingball", 1)
-        Citizen.Wait(3000)
-    end
-    if not exports["drp-inventory"]:hasEnoughOfItem("bowlingreceipt",1,false) then return end
-    if exports['drp-inventory']:hasEnoughOfItem('bowlingreceipt', 1) then
-        TriggerEvent("inventory:removeItem", "bowlingreceipt", 1)
-        Citizen.Wait(3000)
-    end
-end)
-
-
-
