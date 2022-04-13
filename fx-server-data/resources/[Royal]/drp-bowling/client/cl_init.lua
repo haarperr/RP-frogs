@@ -71,7 +71,7 @@ Citizen.CreateThread(function()
 
     exports["drp-interact"]:AddPeekEntryByFlag({'isNPC'}, {{
             id = 'buy_bowling_ball',
-            label = _L("bowling-vendor-target", "View Store"),
+            label = "View Store",
             icon = "bowling-ball",
             event = 'drp-bowling:handleVendorPurchase',
     }}, { distance = { radius = 2.5 }, npcIds = { 'bowling_npc_vendor' }})
@@ -121,7 +121,7 @@ AddEventHandler('drp-bowling:handleVendorPurchase', function(pParams)
                 description = "$" .. item.price .. "",
                 key = itemId,
                 children = {
-                    { title = _L("bowling-ui-confirmpurchase", "Confirm Purchase"), action = "drp-ui:bowlingPurchase", key = itemId },
+                    { title = "Confirm Purchase", action = "drp-ui:bowlingPurchase", key = itemId },
                 },
             }
         end
@@ -135,7 +135,7 @@ RegisterUICallback("drp-ui:bowlingPurchase", function(data, cb)
     local success, message = NPX.Procedures.execute("drp-bowling:purchaseItem", data.key, isLane)
     if not success then
         cb({ data = {}, meta = { ok = success, message = message } })
-        TriggerEvent("DoLongHudText", _L(message, "You can't afford that."), 2)
+        TriggerEvent("DoLongHudText", "You can't afford that.", 2)
         return
     end
 
@@ -170,8 +170,8 @@ local gameState = {}
 gameState[1] = {
     onState = function()
         if (totalDowned >= 10) then
-            TriggerEvent("DoLongHudText", _L('bowling-ui-strike', "Strike!"))
-            drawStatusHUD(true, {_L('bowling-ui-strike', "Strike!")})
+            TriggerEvent("DoLongHudText", "Strike!")
+            drawStatusHUD(true, {"Strike!"})
 
             Citizen.Wait(1500)
 
@@ -180,15 +180,15 @@ gameState[1] = {
             totalThrown = 0
         elseif (totalDowned < 10) then
             removeDownedPins()
-            drawStatusHUD(true, {_L('bowling-ui-again', "Throw again!")})
+            drawStatusHUD(true, {"Throw again!"})
         end
     end
 }
 gameState[2] = {
     onState = function()
         if (totalDowned >= 10) then
-            TriggerEvent("DoLongHudText", _L('bowling-ui-spare', "Spare!"))
-            drawStatusHUD(true, {_L('bowling-ui-spare', "Spare!")})
+            TriggerEvent("DoLongHudText", "Spare!")
+            drawStatusHUD(true, {"Spare!"})
 
             Citizen.Wait(500)
 
@@ -242,7 +242,7 @@ AddEventHandler('drp-inventory:itemUsed', function(pItemId)
             totalDowned = getPinsDownedCount()
 
             if (timeOut) then
-                drawStatusHUD(true, {_L('bowling-ui-timesup', "Time's up!")})
+                drawStatusHUD(true, {"Time's up!"})
                 timeOut = false
             end
 
