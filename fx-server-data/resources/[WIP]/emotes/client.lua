@@ -22,6 +22,16 @@ exports("GetAnimSet", function()
   return AnimSet
 end)
 
+RegisterCommand('e', function(source, args, raw) 
+    TriggerEvent('animation:PlayAnimation', args[1]) 
+end)
+RegisterCommand('emote', function(source, args, raw) 
+    TriggerEvent('animation:PlayAnimation', args[1]) 
+end)
+RegisterCommand('emotes', function()
+    TriggerEvent('emotes:OpenMenu')
+end)
+
 -- local isInteractivePlaying = false
 -- local interactiveData = {}
 AddEventHandler('stuckincar',
