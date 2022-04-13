@@ -62,7 +62,7 @@ Citizen.CreateThread(function()
             event = "drp-bowling:setupPins",
             id = "bowling_pins_"..k,
             icon = "bowling-ball",
-            label = _L("bowling-lane-target", "Setup Pins"),
+            label = "Setup Pins",
             parameters = {lane = k}
         }}, { distance = { radius = 3.5 }, isEnabled = function(pEntity, pContext) return (not hasActivePins) and (canUseLane(k)) end })
 
