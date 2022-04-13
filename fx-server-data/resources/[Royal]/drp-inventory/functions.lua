@@ -2134,6 +2134,7 @@ end
       or itemid == "medium_steak"
       or itemid == "medium_well_steak"
       or itemid == "well_done_steak"
+      or itemid == "hardoakssteak"
     ) then
         local success = AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","inv:wellfedNoStress",true,itemid,playerVeh)
         if success then
@@ -2568,7 +2569,7 @@ end
         AttachPropAndPlayAnimation("amb@world_human_drinking@coffee@male@idle_a", "idle_c", 49,15000,"Drink","drp-roostersrest:drinkTea",true,itemid,playerVeh)
     end
  
-    if itemid == "fries" or itemid == "chips" or itemid == "cbfries" or itemid == "cbchickenfries" or itemid == "cbrings" then
+    if itemid == "fries" or itemid == "chips" or itemid == "cbfries" or itemid == "cbchickenfries" or itemid == "cbrings" itemid == "hardoakfries" then
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,15000,"Eating","inv:fed2",true,itemid,playerVeh)
     end
 
