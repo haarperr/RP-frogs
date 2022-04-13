@@ -2134,7 +2134,6 @@ end
       or itemid == "medium_steak"
       or itemid == "medium_well_steak"
       or itemid == "well_done_steak"
-      or itemid == "hardoakssteak"
     ) then
         local success = AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","inv:wellfedNoStress",true,itemid,playerVeh)
         if success then
