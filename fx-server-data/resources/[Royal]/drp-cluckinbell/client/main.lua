@@ -201,7 +201,9 @@ end)
 
 RegisterCommand('cbmusic', function()
     local job = exports["isPed"]:GroupRank('cluckin_bell')
-    if job >= 1 then TriggerEvent("cluckinbell:request:song") end
+    if job >= 1 then
+        TriggerEvent("cluckinbell:request:song")
+    end
 end)
 
 RegisterCommand('cbmusicv', function()
