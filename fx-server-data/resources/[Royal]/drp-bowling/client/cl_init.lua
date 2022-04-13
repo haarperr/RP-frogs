@@ -132,13 +132,24 @@ end)
 RegisterUICallback("drp-ui:bowlingPurchase", function(data, cb)
     local isLane = type(data.key) == "number"
 
-    local success, message = NPX.Procedures.execute("drp-bowling:purchaseItem", data.key, isLane)
-    if not success then
-        cb({ data = {}, meta = { ok = success, message = message } })
-        TriggerEvent("DoLongHudText", "You can't afford that.", 2)
-        return
-    end
+    local response = RPC.execute("drp-bowling:purchaseItem",data.key , isLane)
 
+    if response == true then
+        if(isLane == true) then
+            for k, v in pairs(lanes) do
+
+                if(canUseLane(k) == true) then
+                    sheesh = true
+                    shit(k , v)
+                end
+            end
+            lanes[data.key].enabled = false
+            lastlane = data.key
+            TriggerEvent("DoLongHudText","You've successfuly bought lane access | Lane: "..data.key.."#")
+        else
+            TriggerEvent("DoLongHudText","You've successfuly bought a Bowling Ball")
+        end
+    end
     cb({ data = {}, meta = { ok = true, message = "done" } })
 end)
 
