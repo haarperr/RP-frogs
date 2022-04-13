@@ -3401,7 +3401,7 @@ function buddhaMedalion()
     local dist = 9999
     
     if hasBlade and hasGuard and hasHilt then
-        return TriggerEvent("DoLongHudText", "The medallion is pulling you towards the basement.", 5)
+        --return TriggerEvent("DoLongHudText", "The medallion is pulling you towards the basement.", 5)
         dist = #(playerPos - vector3(-172.54, 319.13, 87.35))
     end
     
@@ -3439,7 +3439,7 @@ end
 
 
 
---(-1911.78, 1388.1, 219.35
+
 
 
 
