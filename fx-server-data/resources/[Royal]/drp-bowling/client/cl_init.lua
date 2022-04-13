@@ -78,11 +78,11 @@ Citizen.CreateThread(function()
 end)
 
 local function drawStatusHUD(state, pValues)
-    local title = _L("bowling-ui-title", "Bowling - Lane #") .. currentLane
+    local title = "Bowling - Lane #" .. currentLane
     local values = {}
   
-    table.insert(values, _L("bowling-ui-throws", "Throws") .. ": " .. totalThrown)
-    table.insert(values, _L("bowling-ui-downed", "Downed") .. ": " .. totalDowned)
+    table.insert(values, "Throws: " .. totalThrown)
+    table.insert(values, "Downed: " .. totalDowned)
 
     if (pValues) then
         for k, v in pairs(pValues) do
