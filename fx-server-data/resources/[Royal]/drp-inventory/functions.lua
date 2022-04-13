@@ -1688,6 +1688,7 @@ end
     if (itemid == "godlockpick") then
         local myJob = exports["isPed"]:isPed("myJob")
         if myJob ~= "news" then
+            TriggerEvent("civilian:alertPolice",12.0,"lockpick",targetVehicle)
             TriggerEvent("inv:lockPick2", false, inventoryName, slot, "godlockpick")
 
         else
@@ -3718,7 +3719,7 @@ AddEventHandler('inv:lockPick', function(isForced,inventoryName,slot)
             SetVehicleIsWanted(targetVehicle, true)
             SetVehRadioStation(targetVehicle, 'OFF')
             
-            --TriggerEvent("civilian:alertPolice",12.0,"lockpick",targetVehicle)
+            TriggerEvent("civilian:alertPolice",12.0,"lockpick",targetVehicle)
            
             TriggerEvent("animation:lockpickinvtest")
             TriggerEvent('InteractSound_CL:PlayOnOne', 'lockpick', 1.0)
@@ -3990,7 +3991,7 @@ AddEventHandler('inv:advlockPick', function(isForced,inventoryName,slot)
             end
 
 
-            --TriggerEvent("civilian:alertPolice",20.0,"lockpick",targetVehicle)
+            TriggerEvent("civilian:alertPolice",20.0,"lockpick",targetVehicle)
            
             TriggerEvent("animation:lockpickinvtestoutside")
             TriggerEvent('InteractSound_CL:PlayOnOne', 'lockpick', 1.0)
@@ -4036,7 +4037,7 @@ AddEventHandler('inv:advlockPick', function(isForced,inventoryName,slot)
             end
 
             SetVehicleHasBeenOwnedByPlayer(targetVehicle,true)
-            --TriggerEvent("civilian:alertPolice",12.0,"lockpick",targetVehicle)
+            TriggerEvent("civilian:alertPolice",12.0,"lockpick",targetVehicle)
            
             TriggerEvent("animation:lockpickinvtest")
             TriggerEvent('InteractSound_CL:PlayOnOne', 'lockpick', 1.0)
