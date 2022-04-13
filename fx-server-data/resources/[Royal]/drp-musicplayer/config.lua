@@ -10,7 +10,7 @@ config.interact_sound_file = "ogg"
 config.interact_sound_enable = false
 
 -- how much close player has to be to the sound before starting updating position ?
-config.distanceBeforeUpdatingPos = 40
+config.distanceBeforeUpdatingPos = 60
 
 -- Message list
 config.Messages = {
