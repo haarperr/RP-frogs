@@ -29657,3 +29657,30 @@ itemList['chickenslammer'] = {
   image: 'chicken-slammer.png',
   information: 'Cluckin Bell Employ Tool',
 };
+
+// mightyoaks SHIELD items
+
+itemList['arcreactor'] = {
+  fullyDegrades: false,
+  decayrate: 0.0,
+  displayname: 'Arc Reactor',
+  price: 50,
+  weight: 0,
+  nonStack: true,
+  image: 'shield-arc.png',
+  information: 'So much power in one small device.',
+  collectible: true,
+};
+
+
+itemList['shieldblueprint'] = {
+  fullyDegrades: false,
+  decayrate: 0.0,
+  displayname: 'S.H.I.E.L.D Blueprint',
+  price: 50,
+  weight: 0,
+  nonStack: true,
+  image: 'shield-usb.png',
+  information: 'TOP SECRET: CODENAME DELOREAN',
+  collectible: true,
+};
