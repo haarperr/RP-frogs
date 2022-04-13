@@ -138,17 +138,6 @@ function addKey(anim,keys)
     TriggerServerEvent("police:setEmoteData",currentKeys)
 end
 
-function removeKey(anim)
-    if anim == "Page:" or anim == "Favorites" or anim == "Back" then return end
-    for i,v in ipairs(currentKeys) do
-        if v.anim == anim then
-            v.anim = ""
-            v.key[2] = nil
-        end
-    end
-    TriggerServerEvent("police:setEmoteData",currentKeys)
-end
-
 local function addFavorite(anim)
     if not anims[anim] then return end
     for k,v in pairs(favorites) do if v == anim then return end end
@@ -220,8 +209,6 @@ Citizen.CreateThread(function()
             DrawText3Ds(plyCoords["x"],plyCoords["y"],plyCoords["z"]+0.4,"~g~Enter~s~ Plays Emote")
             DrawText3Ds(plyCoords["x"],plyCoords["y"],plyCoords["z"]+0.3,"~g~Arrows~s~ Navigate Pages")
             DrawText3Ds(plyCoords["x"],plyCoords["y"],plyCoords["z"]+0.2,"~g~Backspace~s~ Exits")
-            DrawText3Ds(plyCoords["x"],plyCoords["y"],plyCoords["z"]+0.1,"~g~F2-F10~s~ Saves Emote")
-            DrawText3Ds(plyCoords["x"],plyCoords["y"],plyCoords["z"],"~g~Shift~s~ with F keys saves also. (F8 Doesnt Save)")
             DrawText3Ds(plyCoords["x"],plyCoords["y"],plyCoords["z"]-0.1,"You can also type ~g~/e emotename~s~ in chat to perform them")
             if IsControlJustReleased(0, 174) then
                 selected_page = selected_page > 1 and selected_page - 1 or #p_anims
@@ -239,9 +226,6 @@ Citizen.CreateThread(function()
                 if curButton then
                     addFavorite(curButton.text)
                 end
-            elseif IsControlJustPressed(0, 178) then
-                local curButton = WarMenu.GetCurrentButton()
-                removeKey(curButton.text)
             end
 
             for i,v in ipairs(currentKeys) do
@@ -280,6 +264,8 @@ end)
 
 RegisterNetEvent("emotes:OpenMenu")
 AddEventHandler("emotes:OpenMenu", function()
+    TriggerServerEvent("police:getAnimData")
+    TriggerServerEvent("police:getEmoteData")
     WarMenu.OpenMenu("emotes")
 end)
 
@@ -289,48 +275,44 @@ AddEventHandler("emote:setEmotesFromDB", function(emotesResult)
     currentKeys = emotesResult
 end)
 
-RegisterNetEvent("np-admin:currentDevmode")
-AddEventHandler("np-admin:currentDevmode", function(devmode)
+RegisterNetEvent("drp-admin:currentDevmode")
+AddEventHandler("drp-admin:currentDevmode", function(devmode)
     dToggle = devmode
 end)
 
-Citizen.CreateThread(function()
-    local function _animation(pAnimation, pKey)
-        if pAnimation == "Cancel Emote" then
-            ClearPedTasks(PlayerPedId()) playing_emote = false
-        else
-            local isCuffed = exports["isPed"]:isPed("handcuffed")
-            if not isCuffed then
-                if GetEntityModel(PlayerPedId()) == GetHashKey("a_c_chop") then
-                    TriggerEvent("animation:PlayAnimation", dogEmote[pKey])
-                else
-                    TriggerEvent("animation:PlayAnimation", pAnimation)
-                end
-            end
-        end
-    end
-    while true do
-        Citizen.Wait(1)
-        if not dToggle then
-            for i,v in ipairs(currentKeys) do
-                if v.key[2] ~= nil then
-                    if IsControlPressed(0,21) and IsControlJustReleased(0, v.key[1]) then
-                        _animation(v.anim, v.key[1]+21)
-                    end
-                else
-                    if not IsControlPressed(0,21) and IsControlJustReleased(0, v.key[1]) then
-                        _animation(v.anim, v.key[1])
-                    end
-                end
-            end
-        end
-    end
-end)
+-- Citizen.CreateThread(function()
+--     while true do
+--         Citizen.Wait(1)
+--         if not dToggle then
+--             local model = GetEntityModel(PlayerPedId())
 
-RegisterCommand("emotes:unbindall", function()
-    for i,v in ipairs(currentKeys) do
-            v.anim = ""
-            v.key[2] = nil
-    end
-    TriggerServerEvent("police:setEmoteData",currentKeys)
-end, false)
+--             for i,v in ipairs(currentKeys) do
+--                 if v.key[2] ~= nil then
+--                     if IsControlPressed(0,21) and IsControlJustReleased(0, v.key[1]) then
+--                         if v.anim == "Cancel Emote" then
+--                             ClearPedTasks(PlayerPedId()) playing_emote = false
+--                         else
+--                             if model == GetHashKey("a_c_chop") then
+--                                 TriggerEvent("animation:PlayAnimation", dogEmote[v.key[1]+21])
+--                             else
+--                                 TriggerEvent("animation:PlayAnimation", v.anim)
+--                             end
+--                         end
+--                     end
+--                 else
+--                     if not IsControlPressed(0,21) and IsControlJustReleased(0, v.key[1]) then
+--                         if v.anim == "Cancel Emote" then
+--                             ClearPedTasks(PlayerPedId()) playing_emote = false
+--                         else
+--                             if model == GetHashKey("a_c_chop") then
+--                                 TriggerEvent("animation:PlayAnimation", dogEmote[v.key[1]])
+--                             else
+--                                 TriggerEvent("animation:PlayAnimation", v.anim)
+--                             end
+--                         end
+--                     end
+--                 end
+--             end
+--         end
+--     end
+-- end)

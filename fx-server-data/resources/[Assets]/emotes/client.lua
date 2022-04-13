@@ -14,13 +14,7 @@ RegisterNetEvent('animation:Cancel');
 RegisterNetEvent('stuckincar');
 playing_emote = false;
 local smoking = false
-local AnimSet = "default"
 stuckincar = false
-
-
-exports("GetAnimSet", function()
-  return AnimSet
-end)
 
 -- local isInteractivePlaying = false
 -- local interactiveData = {}
@@ -40,12 +34,6 @@ AddEventHandler('animation:c', function() endanims("cancel") end)
 
 -- GetEntityAnimCurrentTime(PlayerPedId(),dict,name) <= 0.95
 local lastanimplayed = "none"
-
-local restrictedEmotes = {
-    ["weights"] = true
-}
-
-local emoteCooldowns = {}
 
 function endanims(curanim)
     if stuckincar then return end
@@ -123,12 +111,15 @@ AddEventHandler("emote:setAnimsFromDB", function(anim)
     AnimSet = anim;
 end)
 
-AddEventHandler("playerSpawned", function()
-    TriggerServerEvent("police:getAnimData")
-    TriggerServerEvent("police:getEmoteData")
-    TriggerServerEvent("stocks:retrieveclientstocks")
-end)
+AnimSet = "default";
 
+local function SwitchAnimSet(animation)
+    RequestAnimSet(animation)
+    while not HasAnimSetLoaded(animation) do Citizen.Wait(1) end
+    SetPedMovementClipset(PlayerPedId(), animation, 0.2)
+    AnimSet = animation;
+    TriggerServerEvent("police:setAnimData", AnimSet)
+end
 
 RegisterNetEvent('AnimSet:default');
 AddEventHandler('AnimSet:default', function()
@@ -137,31 +128,256 @@ AddEventHandler('AnimSet:default', function()
     TriggerServerEvent("police:setAnimData", AnimSet)
 end)
 
-RegisterNetEvent("Animation:Set:Gait")
-AddEventHandler("Animation:Set:Gait", function(pArgs)
-    local setGait = pArgs[1]
-    RequestAnimSet(setGait)
-    while not HasAnimSetLoaded(setGait) do Citizen.Wait(1) end
-    SetPedMovementClipset(PlayerPedId(), setGait, 0.2)
-    AnimSet = setGait
-    TriggerServerEvent("police:setAnimData", AnimSet)
-    if setGait == "move_m@swagger" then
-      if exports["np-inventory"]:hasEnoughOfItem("pimpcane", 1) then
-        TriggerEvent("np-propattach:attach", "prop_cs_walking_stick")
-      end
-    end
+RegisterNetEvent('AnimSet:Hurry');
+AddEventHandler('AnimSet:Hurry', function()
+    SwitchAnimSet("move_m@hurry@a")
 end)
 
-RegisterNetEvent("Animation:Set:Reset")
-AddEventHandler("Animation:Set:Reset", function()
-    TriggerEvent("Animation:Set:Gait",{AnimSet})
+RegisterNetEvent('AnimSet:RoyalRP');
+AddEventHandler('AnimSet:RoyalRP', function()
+    SwitchAnimSet("move_chubby")
 end)
 
+RegisterNetEvent('AnimSet:Business');
+AddEventHandler('AnimSet:Business', function()
+    SwitchAnimSet("move_m@business@a")
+end)
+
+RegisterNetEvent('AnimSet:Brave');
+AddEventHandler('AnimSet:Brave', function()
+    SwitchAnimSet("move_m@brave")
+end)
+
+RegisterNetEvent('AnimSet:Tipsy');
+AddEventHandler('AnimSet:Tipsy', function()
+    SwitchAnimSet("move_m@drunk@slightlydrunk")
+end)
+
+RegisterNetEvent('AnimSet:Injured');
+AddEventHandler('AnimSet:Injured', function()
+    SwitchAnimSet("move_m@injured")
+end)
+
+RegisterNetEvent('AnimSet:ToughGuy');
+AddEventHandler('AnimSet:ToughGuy', function()
+    SwitchAnimSet("move_m@tough_guy@")
+end)
+
+RegisterNetEvent('AnimSet:Sassy');
+AddEventHandler('AnimSet:Sassy', function()
+    SwitchAnimSet("move_m@sassy")
+end)
+
+RegisterNetEvent('AnimSet:Sad');
+AddEventHandler('AnimSet:Sad', function()
+    SwitchAnimSet("move_m@sad@a")
+end)
+
+RegisterNetEvent('AnimSet:Posh');
+AddEventHandler('AnimSet:Posh', function()
+    SwitchAnimSet("move_m@posh@")
+end)
+
+RegisterNetEvent('AnimSet:Alien');
+AddEventHandler('AnimSet:Alien', function()
+    SwitchAnimSet("move_m@alien")
+end)
+
+RegisterNetEvent('AnimSet:NonChalant');
+AddEventHandler('AnimSet:NonChalant', function()
+    SwitchAnimSet("move_m@non_chalant")
+end)
+
+RegisterNetEvent('AnimSet:Hobo');
+AddEventHandler('AnimSet:Hobo', function()
+    SwitchAnimSet("move_m@hobo@a")
+end)
+
+RegisterNetEvent('AnimSet:Money');
+AddEventHandler('AnimSet:Money', function()
+    SwitchAnimSet("move_m@money")
+end)
+
+RegisterNetEvent('AnimSet:Swagger');
+AddEventHandler('AnimSet:Swagger', function()
+    SwitchAnimSet("move_m@swagger")
+end)
+
+RegisterNetEvent('AnimSet:Joy');
+AddEventHandler('AnimSet:Joy', function()
+    SwitchAnimSet("move_m@joy")
+end)
+
+RegisterNetEvent('AnimSet:Moon');
+AddEventHandler('AnimSet:Moon', function()
+
+    SwitchAnimSet("move_m@powerwalk")
+end)
+
+RegisterNetEvent('AnimSet:Shady');
+AddEventHandler('AnimSet:Shady', function()
+    SwitchAnimSet("move_m@shadyped@a")
+end)
+
+RegisterNetEvent('AnimSet:Tired');
+AddEventHandler('AnimSet:Tired', function()
+    SwitchAnimSet("move_m@tired")
+end)
+
+RegisterNetEvent('AnimSet:Sexy');
+AddEventHandler('AnimSet:Sexy', function()
+    SwitchAnimSet("move_f@sexy")
+end)
+
+RegisterNetEvent('AnimSet:ManEater');
+AddEventHandler('AnimSet:ManEater', function()
+    SwitchAnimSet("move_f@maneater")
+end)
+
+RegisterNetEvent('AnimSet:ChiChi');
+AddEventHandler('AnimSet:ChiChi', function()
+    SwitchAnimSet("move_f@chichi")
+end)
+
+RegisterNetEvent('AnimSet:Arrogant');
+AddEventHandler('AnimSet:Arrogant', function()
+    SwitchAnimSet("move_f@arrogant@a")
+end)
+
+RegisterNetEvent('AnimSet:Casual');
+AddEventHandler('AnimSet:Casual', function()
+    SwitchAnimSet("move_m@casual@a")
+end)
+
+RegisterNetEvent('AnimSet:Casual2');
+AddEventHandler('AnimSet:Casual2', function()
+    SwitchAnimSet("move_m@casual@b")
+end)
+
+RegisterNetEvent('AnimSet:Casual3');
+AddEventHandler('AnimSet:Casual3', function()
+    SwitchAnimSet("move_m@casual@c")
+end)
+
+RegisterNetEvent('AnimSet:Casual4');
+AddEventHandler('AnimSet:Casual4', function()
+    SwitchAnimSet("move_m@casual@d")
+end)
+
+RegisterNetEvent('AnimSet:Casual5');
+AddEventHandler('AnimSet:Casual5', function()
+    SwitchAnimSet("move_m@casual@e")
+end)
+
+RegisterNetEvent('AnimSet:Casual6');
+AddEventHandler('AnimSet:Casual6', function()
+    SwitchAnimSet("move_m@casual@f")
+end)
+
+RegisterNetEvent('AnimSet:Confident');
+AddEventHandler('AnimSet:Confident', function()
+    SwitchAnimSet("move_m@confident")
+end)
+
+RegisterNetEvent('AnimSet:Business2');
+AddEventHandler('AnimSet:Business2', function()
+    SwitchAnimSet("move_m@business@b")
+end)
+
+RegisterNetEvent('AnimSet:Business3');
+AddEventHandler('AnimSet:Business3', function()
+    SwitchAnimSet("move_m@business@c")
+end)
+
+RegisterNetEvent('AnimSet:Femme');
+AddEventHandler('AnimSet:Femme', function()
+    SwitchAnimSet("move_f@femme@")
+end)
+
+RegisterNetEvent('AnimSet:Flee');
+AddEventHandler('AnimSet:Flee', function()
+    SwitchAnimSet("move_f@flee@a")
+end)
+
+RegisterNetEvent('AnimSet:Gangster');
+AddEventHandler('AnimSet:Gangster', function()
+    SwitchAnimSet("move_m@gangster@generic")
+end)
+
+RegisterNetEvent('AnimSet:Gangster2');
+AddEventHandler('AnimSet:Gangster2', function()
+    SwitchAnimSet("move_m@gangster@ng")
+end)
+
+RegisterNetEvent('AnimSet:Gangster3');
+AddEventHandler('AnimSet:Gangster3', function()
+    SwitchAnimSet("move_m@gangster@var_e")
+end)
+
+RegisterNetEvent('AnimSet:Gangster4');
+AddEventHandler('AnimSet:Gangster4', function()
+    SwitchAnimSet("move_m@gangster@var_f")
+end)
+
+RegisterNetEvent('AnimSet:Gangster5');
+AddEventHandler('AnimSet:Gangster5', function()
+    SwitchAnimSet("move_m@gangster@var_i")
+end)
+
+RegisterNetEvent('AnimSet:Heels');
+AddEventHandler('AnimSet:Heels', function()
+    SwitchAnimSet("move_f@heels@c")
+end)
+
+RegisterNetEvent('AnimSet:Heels2');
+AddEventHandler('AnimSet:Heels2', function()
+    SwitchAnimSet("move_f@heels@d")
+end)
+
+RegisterNetEvent('AnimSet:Hipster');
+AddEventHandler('AnimSet:Hipster', function()
+    SwitchAnimSet("move_m@hipster@a")
+end)
+
+RegisterNetEvent('AnimSet:Hiking');
+AddEventHandler('AnimSet:Hiking', function()
+    SwitchAnimSet("move_m@hiking")
+end)
+
+RegisterNetEvent('AnimSet:Jog');
+AddEventHandler('AnimSet:Jog', function()
+    SwitchAnimSet("move_m@jog@")
+end)
+
+RegisterNetEvent('AnimSet:Muscle');
+AddEventHandler('AnimSet:Muscle', function()
+    SwitchAnimSet("move_m@muscle@a")
+end)
+
+RegisterNetEvent('AnimSet:Quick');
+AddEventHandler('AnimSet:Quick', function()
+    SwitchAnimSet("move_m@quick")
+end)
+
+RegisterNetEvent('AnimSet:Wide');
+AddEventHandler('AnimSet:Wide', function()
+    SwitchAnimSet("move_m@bag")
+end)
+
+RegisterNetEvent('AnimSet:Scared');
+AddEventHandler('AnimSet:Scared', function()
+    SwitchAnimSet("move_f@scared")
+end)
+
+RegisterNetEvent('AnimSet:Guard');
+AddEventHandler('AnimSet:Guard', function()
+    SwitchAnimSet("move_m@prison_gaurd")
+end)
 
 function loadAnimDict(dict)
     while (not HasAnimDictLoaded(dict)) do
         RequestAnimDict(dict)
-        Citizen.Wait(0)
+        Citizen.Wait(5)
     end
 end
 
@@ -183,6 +399,9 @@ anims = {
     ["kneel"] = "CODE_HUMAN_MEDIC_KNEEL",
     ["medic"] = "CODE_HUMAN_MEDIC_TEND_TO_DEAD",
     ["traffic"] = "WORLD_HUMAN_CAR_PARK_ATTENDANT",
+    --["photo"] = "WORLD_HUMAN_PAPARAZZI", -- add camera!
+    ["clipboard"] = "WORLD_HUMAN_CLIPBOARD",
+    ["coffee"] = "WORLD_HUMAN_AA_COFFEE",
     ["binoculars"] = "WORLD_HUMAN_BINOCULARS",
     ["bum"] = "WORLD_HUMAN_BUM_FREEWAY",
     ["slump"] = "WORLD_HUMAN_BUM_SLUMPED",
@@ -194,6 +413,7 @@ anims = {
     ["filmshocking"] = "WORLD_HUMAN_MOBILE_FILM_SHOCKING",
     ["leafblower"] = "WORLD_HUMAN_GARDENER_LEAF_BLOWER",
     ["gardening"] = "WORLD_HUMAN_GARDENER_PLANT",
+    --[[["Golf"] = "WORLD_HUMAN_GOLF_PLAYER",]]
     ["guardpatrol"] = "WORLD_HUMAN_GUARD_PATROL",
     ["hammering"] = "WORLD_HUMAN_HAMMERING",
     ["hangout"] = "WORLD_HUMAN_HANG_OUT_STREET",
@@ -209,6 +429,8 @@ anims = {
     ["shinetorch"] = "WORLD_HUMAN_SECURITY_SHINE_TORCH",
     ["weed"] = "WORLD_HUMAN_SMOKING_POT",
     ["impatient"] = "WORLD_HUMAN_STAND_IMPATIENT_UPRIGHT",
+    ["stupor"] = "WORLD_HUMAN_STUPOR",
+    ["tennis"] = "WORLD_HUMAN_TENNIS_PLAYER",
     ["map"] = "WORLD_HUMAN_TOURIST_MAP",
     ["mechanic"] = "WORLD_HUMAN_VEHICLE_MECHANIC",
     ["welding"] = "WORLD_HUMAN_WELDING",
@@ -251,16 +473,10 @@ anims = {
     },
 
     ["c"] = function(ped)
-        if exports["np-flags"]:HasPedFlag(PlayerPedId(), 'isSittingOnChair') then
-          TriggerEvent("np-emotes:sitOnChair")
-        elseif exports["np-flags"]:HasPedFlag(PlayerPedId(), 'isPoledancing') then
-          TriggerEvent("poledance:toggle")
-        else
-          ClearPedTasks(ped)
-          playing_emote = false
-          TriggerEvent("fixprone")
-          endanims("cancel")
-        end
+        ClearPedTasks(ped)
+        playing_emote = false
+        TriggerEvent("fixprone")
+        endanims("cancel")
     end,
     ["cancel"] = function(ped)
         ClearPedTasks(ped)
@@ -287,157 +503,41 @@ anims = {
 
     ["notepad"] = function(ped) TriggerEvent("notepad") end,
 
-    ["clipboard"] = function(ped)
-      local testdic = "move_m@clipboard"
-      local testanim = "idle"
-
-      if IsPedArmed(ped, 7) then
-          SetCurrentPedWeapon(ped, 0xA2719263, true)
-      end
-
-      RequestAnimDict(testdic)
-      while not HasAnimDictLoaded(testdic) and not handCuffed do
-          Citizen.Wait(0)
-      end
-
-      if IsEntityPlayingAnim(ped, testdic, testanim, 3) then
-          ClearPedSecondaryTask(ped)
-      else
-          local animLength = GetAnimDuration(testdic, testanim)
-          TaskPlayAnim(ped, testdic, testanim, 1.0, 1.0, animLength, 49, 0, 0,
-                       0, 0)
-          TriggerEvent("destroyProp")
-      end
-      TriggerEvent("attachItem", "clipboard01")
-    end,
-
-    ["coffee"] = function(ped)
-      local testdic = "amb@world_human_drinking@coffee@male@idle_a"
-      local testanim = "idle_c"
-
-      if IsPedArmed(ped, 7) then
-          SetCurrentPedWeapon(ped, 0xA2719263, true)
-      end
-
-      RequestAnimDict(testdic)
-      while not HasAnimDictLoaded(testdic) and not handCuffed do
-          Citizen.Wait(0)
-      end
-
-      if IsEntityPlayingAnim(ped, testdic, testanim, 3) then
-          ClearPedSecondaryTask(ped)
-      else
-          local animLength = GetAnimDuration(testdic, testanim)
-          TaskPlayAnim(ped, testdic, testanim, 1.0, 1.0, animLength, 49, 0, 0,
-                       0, 0)
-          TriggerEvent("destroyProp")
-      end
-      TriggerEvent("attachItem", "coffee")
-    end,
-
-    ["phone"] = function(ped)
-      local testdic = "cellphone@"
-      local testanim = "cellphone_text_read_base"
-
-      if IsPedArmed(ped, 7) then
-          SetCurrentPedWeapon(ped, 0xA2719263, true)
-      end
-
-      RequestAnimDict(testdic)
-      while not HasAnimDictLoaded(testdic) and not handCuffed do
-          Citizen.Wait(0)
-      end
-
-      if IsEntityPlayingAnim(ped, testdic, testanim, 3) then
-          ClearPedSecondaryTask(ped)
-      else
-          local animLength = GetAnimDuration(testdic, testanim)
-          TaskPlayAnim(ped, testdic, testanim, 1.0, 1.0, animLength, 49, 0, 0,
-                       0, 0)
-          TriggerEvent("destroyProp")
-      end
-      TriggerEvent("attachItem", "phone01")
-    end,
-
-    ["tennis"] = function(ped)
-      local testdic = "amb@world_human_tennis_player@male@base"
-      local testanim = "base"
-
-      if IsPedArmed(ped, 7) then
-          SetCurrentPedWeapon(ped, 0xA2719263, true)
-      end
-
-      RequestAnimDict(testdic)
-      while not HasAnimDictLoaded(testdic) and not handCuffed do
-          Citizen.Wait(0)
-      end
-
-      if IsEntityPlayingAnim(ped, testdic, testanim, 3) then
-          ClearPedSecondaryTask(ped)
-      else
-          local animLength = GetAnimDuration(testdic, testanim)
-          TaskPlayAnim(ped, testdic, testanim, 1.0, 1.0, animLength, 49, 0, 0,
-                       0, 0)
-          TriggerEvent("destroyProp")
-      end
-      TriggerEvent("attachItem", "tennis")
-    end,
-    ["stupor"] = function(ped)
-      local testdic = "amb@world_human_stupor@male_looking_right@base"
-      local testanim = "base"
-
-      if IsPedArmed(ped, 7) then
-          SetCurrentPedWeapon(ped, 0xA2719263, true)
-      end
-
-      RequestAnimDict(testdic)
-      while not HasAnimDictLoaded(testdic) and not handCuffed do
-          Citizen.Wait(0)
-      end
-
-      if IsEntityPlayingAnim(ped, testdic, testanim, 3) then
-          ClearPedSecondaryTask(ped)
-      else
-          local animLength = GetAnimDuration(testdic, testanim)
-          TaskPlayAnim(ped, testdic, testanim, 1.0, 1.0, animLength, 1, 0, 0,
-                        0, 0)
-      end
-    end,
     ["piss"] = function(ped)
-      RequestAnimDict("missbigscore1switch_trevor_piss")
-      while not HasAnimDictLoaded("missbigscore1switch_trevor_piss") do
-          Citizen.Wait(0)
-      end
-      if IsEntityPlayingAnim(ped, "missbigscore1switch_trevor_piss",
-                             "piss_loop", 3) then
-          ClearPedTasks(ped)
-      else
-          TaskPlayAnim(ped, "missbigscore1switch_trevor_piss", "piss_loop",
-                       1.0, 1.0, -1, 9, -1, 0, 0, 0)
-      end
+        RequestAnimDict("missbigscore1switch_trevor_piss")
+        while not HasAnimDictLoaded("missbigscore1switch_trevor_piss") do
+            Citizen.Wait(0)
+        end
+        if IsEntityPlayingAnim(ped, "missbigscore1switch_trevor_piss",
+                               "piss_loop", 3) then
+            ClearPedTasks(ped)
+        else
+            TaskPlayAnim(ped, "missbigscore1switch_trevor_piss", "piss_loop",
+                         1.0, 1.0, -1, 9, -1, 0, 0, 0)
+        end
     end,
-
     ["shit"] = function(ped)
-      local testdic = "missfbi3ig_0"
-      local testanim = "shit_loop_trev"
+        local testdic = "missfbi3ig_0"
+        local testanim = "shit_loop_trev"
+  
+        if IsPedArmed(ped, 7) then
+            SetCurrentPedWeapon(ped, 0xA2719263, true)
+        end
+  
+        RequestAnimDict(testdic)
+        while not HasAnimDictLoaded(testdic) and not handCuffed do
+            Citizen.Wait(0)
+        end
+  
+        if IsEntityPlayingAnim(ped, testdic, testanim, 3) then
+            ClearPedSecondaryTask(ped)
+        else
+            local animLength = GetAnimDuration(testdic, testanim)
+            TaskPlayAnim(ped, testdic, testanim, 1.0, 1.0, animLength, 1, 0, 0,
+                         0, 0)
+        end
+      end,
 
-      if IsPedArmed(ped, 7) then
-          SetCurrentPedWeapon(ped, 0xA2719263, true)
-      end
-
-      RequestAnimDict(testdic)
-      while not HasAnimDictLoaded(testdic) and not handCuffed do
-          Citizen.Wait(0)
-      end
-
-      if IsEntityPlayingAnim(ped, testdic, testanim, 3) then
-          ClearPedSecondaryTask(ped)
-      else
-          local animLength = GetAnimDuration(testdic, testanim)
-          TaskPlayAnim(ped, testdic, testanim, 1.0, 1.0, animLength, 1, 0, 0,
-                       0, 0)
-      end
-    end,
     ["shower"] = function(ped)
         RequestAnimDict("mp_safehouseshower@male@")
         while not HasAnimDictLoaded("mp_safehouseshower@male@") do
@@ -591,6 +691,7 @@ anims = {
         end
         playing_emote = false
     end,
+
     ["trunk"] = function(ped)
 
         local testdic = "fin_ext_p1-7"
@@ -761,80 +862,6 @@ anims = {
         local testdic =
             "weapons@first_person@aim_rng@generic@projectile@thermal_charge@"
         local testanim = "plant_floor"
-
-        if IsPedArmed(ped, 7) then
-            SetCurrentPedWeapon(ped, 0xA2719263, true)
-        end
-
-        RequestAnimDict(testdic)
-
-        while not HasAnimDictLoaded(testdic) and not handCuffed do
-            Citizen.Wait(0)
-        end
-
-        if IsEntityPlayingAnim(ped, testdic, testanim, 3) then
-            ClearPedSecondaryTask(ped)
-        else
-            local animLength = GetAnimDuration(testdic, testanim)
-            TaskPlayAnim(ped, testdic, testanim, 1.0, 1.0, -1, 48, -1, 0, 0, 0)
-        end
-        playing_emote = false
-    end,
-
-    ["layspike2"] = function(ped)
-
-        local testdic =
-            "weapons@first_person@aim_rng@generic@projectile@thermal_charge@"
-        local testanim = "plant_floor"
-
-        if IsPedArmed(ped, 7) then
-            SetCurrentPedWeapon(ped, 0xA2719263, true)
-        end
-
-        RequestAnimDict(testdic)
-
-        while not HasAnimDictLoaded(testdic) and not handCuffed do
-            Citizen.Wait(0)
-        end
-
-        if IsEntityPlayingAnim(ped, testdic, testanim, 3) then
-            ClearPedSecondaryTask(ped)
-        else
-            TaskPlayAnim(ped, testdic, testanim, 1.0, 1.0, -1, 0, -1, 0, 0, 0)
-        end
-        playing_emote = false
-    end,
-
-    ["hairtie"] = function(ped)
-
-        local testdic =
-            "amb@code_human_wander_idles@female@idle_a"
-        local testanim = "idle_a_hairtouch"
-
-        if IsPedArmed(ped, 7) then
-            SetCurrentPedWeapon(ped, 0xA2719263, true)
-        end
-
-        RequestAnimDict(testdic)
-
-        while not HasAnimDictLoaded(testdic) and not handCuffed do
-            Citizen.Wait(0)
-        end
-
-        if IsEntityPlayingAnim(ped, testdic, testanim, 3) then
-            ClearPedSecondaryTask(ped)
-        else
-            local animLength = GetAnimDuration(testdic, testanim)
-            TaskPlayAnim(ped, testdic, testanim, 1.0, 1.0, -1, 48, -1, 0, 0, 0)
-        end
-        playing_emote = false
-    end,
-
-    ["veston"] = function(ped)
-
-        local testdic =
-            "clothingtie"
-        local testanim = "try_tie_positive_a"
 
         if IsPedArmed(ped, 7) then
             SetCurrentPedWeapon(ped, 0xA2719263, true)
@@ -1058,7 +1085,7 @@ anims = {
         else
             TriggerEvent("stripclub:stressLoss", true)
             TaskPlayAnim(ped, "amb@code_human_cower_stand@male@base", "base",
-                         1.0, 1.0, -1, 32, -1, 0, 0, 0)
+                         1.0, 1.0, -1, 9, -1, 0, 0, 0)
         end
     end,
 
@@ -1637,27 +1664,6 @@ anims = {
                          0, 0)
         end
     end,
-    ["dance88"] = function(ped)
-        local testdic = "missfbi3_sniping"
-        local testanim = "dance_m_default"
-
-        if IsPedArmed(ped, 7) then
-            SetCurrentPedWeapon(ped, 0xA2719263, true)
-        end
-
-        RequestAnimDict(testdic)
-        while not HasAnimDictLoaded(testdic) and not handCuffed do
-            Citizen.Wait(0)
-        end
-
-        if IsEntityPlayingAnim(ped, testdic, testanim, 3) then
-            ClearPedSecondaryTask(ped)
-        else
-            local animLength = GetAnimDuration(testdic, testanim)
-            TaskPlayAnim(ped, testdic, testanim, 1.0, 1.0, animLength, 49, 0, 0,
-                         0, 0)
-        end
-    end,
     ["dancesilly"] = function(ped)
         local testdic = "special_ped@mountain_dancer@monologue_3@monologue_3a"
         local testanim = "mnt_dnc_buttwag"
@@ -2131,11 +2137,11 @@ anims = {
             ClearPedTasks(ped)
         else
             TriggerEvent("destroyPropPerm")
-            if exports["np-inventory"]:hasEnoughOfItem("umbrella", 1) then
+            if exports["drp-inventory"]:hasEnoughOfItem("umbrella", 1) then
 
                 TriggerEvent("actionbar:setEmptyHanded")
 
-                local finished = exports["np-taskbar"]:taskBar(2500,"Opening Umbrella")
+                local finished = exports["drp-taskbar"]:taskBar(2500,"Opening Umbrella")
                 if finished == 100 then
 
                     loadAnimDict("amb@code_human_wander_drinking@male@base")
@@ -2190,8 +2196,10 @@ anims = {
         playing_emote = false
     end,
 
-    ["chair"] = function(ped)
-        TriggerEvent("animation:chair")
+    ["chair"] = function(ped) TriggerEvent("animation:Chair") end,
+    ["chair2"] = function(ped)
+        TriggerEvent("animation:Chair2")
+        TriggerEvent("stripclub:stressLoss", true)
     end,
 
     ["carry"] = function(ped) TriggerEvent("animation:Carry") end,
@@ -2618,8 +2626,8 @@ anims = {
     end,
 
     ["drink"] = function(ped)
-        local animDict = "mp_player_inteat@pnq"
-        local animation = "loop"
+        local animDict = "amb@world_human_drinking@coffee@male@idle_a"
+        local animation = "idle_c"
         if IsPedArmed(ped, 7) then
             SetCurrentPedWeapon(ped, 0xA2719263, true)
         end
@@ -2630,7 +2638,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 48, 0, 0, 0, 0)
+                         animLength, 49, 0, 0, 0, 0)
         end
     end,
 
@@ -2664,43 +2672,43 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 1, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
 
-    ["cloudgaze"] = function(ped)
-        local animDict = "switch@trevor@annoys_sunbathers"
-        local animation = "trev_annoys_sunbathers_loop_girl"
-        if IsPedArmed(ped, 7) then
-            SetCurrentPedWeapon(ped, 0xA2719263, true)
-        end
+    -- ["cloudgaze"] = function(ped)
+    --     local animDict = "switch@trevor@annoys_sunbathers"
+    --     local animation = "trev_annoys_sunbathers_loop_girl"
+    --     if IsPedArmed(ped, 7) then
+    --         SetCurrentPedWeapon(ped, 0xA2719263, true)
+    --     end
 
-        if IsEntityPlayingAnim(ped, animDict, animation, 3) then
-            ClearPedSecondaryTask(ped)
-        else
-            loadAnimDict(animDict)
-            local animLength = GetAnimDuration(animDict, animation)
-            TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 1, 0, 0, 0, 0)
-        end
-    end,
+    --     if IsEntityPlayingAnim(ped, animDict, animation, 3) then
+    --         ClearPedSecondaryTask(ped)
+    --     else
+    --         loadAnimDict(animDict)
+    --         local animLength = GetAnimDuration(animDict, animation)
+    --         TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
+    --                      animLength, 0, 0, 0, 0, 0)
+    --     end
+    -- end,
 
-    ["cloudgaze2"] = function(ped)
-        local animDict = "switch@trevor@annoys_sunbathers"
-        local animation = "trev_annoys_sunbathers_loop_guy"
-        if IsPedArmed(ped, 7) then
-            SetCurrentPedWeapon(ped, 0xA2719263, true)
-        end
+    -- ["cloudgaze2"] = function(ped)
+    --     local animDict = "switch@trevor@annoys_sunbathers"
+    --     local animation = "trev_annoys_sunbathers_loop_guy"
+    --     if IsPedArmed(ped, 7) then
+    --         SetCurrentPedWeapon(ped, 0xA2719263, true)
+    --     end
 
-        if IsEntityPlayingAnim(ped, animDict, animation, 3) then
-            ClearPedSecondaryTask(ped)
-        else
-            loadAnimDict(animDict)
-            local animLength = GetAnimDuration(animDict, animation)
-            TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 1, 0, 0, 0, 0)
-        end
-    end,
+    --     if IsEntityPlayingAnim(ped, animDict, animation, 3) then
+    --         ClearPedSecondaryTask(ped)
+    --     else
+    --         loadAnimDict(animDict)
+    --         local animLength = GetAnimDuration(animDict, animation)
+    --         TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
+    --                      animLength, 0, 0, 0, 0, 0)
+    --     end
+    -- end,
 
     -- ["prone"] = function(ped)
     --     local animDict = "missfbi3_sniping"
@@ -2749,7 +2757,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 1, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
 
@@ -2766,7 +2774,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 1, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
     ["idle9"] = function(ped)
@@ -2782,7 +2790,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 1, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
 
@@ -2799,7 +2807,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 1, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
 
@@ -2816,7 +2824,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 1, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
 
@@ -2833,7 +2841,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 1, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
 
@@ -2850,7 +2858,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 1, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
 
@@ -2867,7 +2875,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 1, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
 
@@ -2884,7 +2892,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 1, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
 
@@ -2901,7 +2909,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 1, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
 
@@ -2918,7 +2926,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 1, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
 
@@ -2953,7 +2961,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 1, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
 
@@ -2970,7 +2978,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 1, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
 
@@ -2987,7 +2995,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 1, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
 
@@ -3103,7 +3111,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 48, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
     ["curtsy"] = function(ped)
@@ -3409,7 +3417,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 2, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
     ["fallover2"] = function(ped)
@@ -3425,7 +3433,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 2, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
     ["fallover3"] = function(ped)
@@ -3441,7 +3449,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 2, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
     ["fallover4"] = function(ped)
@@ -3457,7 +3465,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 2, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
     ["fallasleep"] = function(ped)
@@ -3473,7 +3481,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 63, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
 
@@ -3544,21 +3552,16 @@ anims = {
     end,
 
     ["smoke"] = function(ped)
-        if IsPedInAnyVehicle(ped, false) then
-            TriggerEvent("DoLongHudText", "You cannot smoke cigarettes inside vehicles!", 2)
-            return
-        end
-        if exports["np-inventory"]:hasEnoughOfItem("ciggy", 1) then
+        if exports["drp-inventory"]:hasEnoughOfItem("ciggy", 1) then
             ClearPedTasks(PlayerPedId())
             TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_SMOKING", 0, true)
             TriggerEvent("inventory:removeItem","ciggy", 1)
-            TriggerEvent("client:newStress", false, 250)
             playing_emote = true
         end
     end,
 
     ["smokemale"] = function(ped)
-        if exports["np-inventory"]:hasEnoughOfItem("ciggy", 1) then
+        if exports["drp-inventory"]:hasEnoughOfItem("ciggy", 1) then
             local animDict = "amb@world_human_smoking@male@male_a@base"
             local animation = "base"
             if IsPedArmed(ped, 7) then
@@ -3580,7 +3583,7 @@ anims = {
     end,
 
     ["smokefemale"] = function(ped)
-        if exports["np-inventory"]:hasEnoughOfItem("ciggy", 1) then
+        if exports["drp-inventory"]:hasEnoughOfItem("ciggy", 1) then
             local animDict = "amb@world_human_smoking@female@idle_a"
             local animation = "idle_b"
             if IsPedArmed(ped, 7) then
@@ -3602,7 +3605,7 @@ anims = {
     end,
 
     ["cigarette"] = function(ped)
-        if exports["np-inventory"]:hasEnoughOfItem("ciggy", 1) then
+        if exports["drp-inventory"]:hasEnoughOfItem("ciggy", 1) then
             local animDict = "amb@world_human_smoking@male@male_a@enter"
             local animation = "enter"
             if IsPedArmed(ped, 7) then
@@ -3624,7 +3627,7 @@ anims = {
     end,
 
     ["cigar"] = function(ped)
-        if exports["np-inventory"]:hasEnoughOfItem("cigar", 1) then
+        if exports["drp-inventory"]:hasEnoughOfItem("cigar", 1) then
             local animDict = "amb@world_human_smoking@male@male_a@enter"
             local animation = "enter"
             if IsPedArmed(ped, 7) then
@@ -3646,7 +3649,7 @@ anims = {
     end,
 
     ["cigar2"] = function(ped)
-        if exports["np-inventory"]:hasEnoughOfItem("cigar", 1) then
+        if exports["drp-inventory"]:hasEnoughOfItem("cigar", 1) then
             local animDict = "amb@world_human_smoking@male@male_a@enter"
             local animation = "enter"
             if IsPedArmed(ped, 7) then
@@ -3668,7 +3671,7 @@ anims = {
     end,
 
     ["cigar3"] = function(ped)
-        if exports["np-inventory"]:hasEnoughOfItem("cigar", 1) then
+        if exports["drp-inventory"]:hasEnoughOfItem("cigar", 1) then
             local animDict = "amb@world_human_smoking@male@male_a@enter"
             local animation = "enter"
             if IsPedArmed(ped, 7) then
@@ -4090,7 +4093,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 1, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
 
@@ -4107,7 +4110,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 1, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
 
@@ -4432,7 +4435,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 1, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
 
@@ -4895,8 +4898,8 @@ anims = {
     end,
 
     ["shot"] = function(ped)
-        local animDict = "random@crash_rescue@wounded@base"
-        local animation = "base"
+        local animDict = "random@dealgonewrong"
+        local animation = "idle_a"
         if IsPedArmed(ped, 7) then
             SetCurrentPedWeapon(ped, 0xA2719263, true)
         end
@@ -4910,8 +4913,6 @@ anims = {
                          animLength, 1, 0, 0, 0, 0)
         end
     end,
-
-    ["injured"] = function(ped) anims["shot"](ped) end,
 
     ["sleep"] = function(ped)
         local animDict = "timetable@tracy@sleep@"
@@ -5416,7 +5417,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 48, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
 
@@ -5434,23 +5435,6 @@ anims = {
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
                          animLength, 1, 0, 0, 0, 0)
-        end
-    end,
-
-    ["stickup2"] = function(ped)
-        local animDict = "random@countryside_gang_fight"
-        local animation = "biker_02_stickup_loop"
-        if IsPedArmed(ped, 7) then
-            SetCurrentPedWeapon(ped, 0xA2719263, true)
-        end
-
-        if IsEntityPlayingAnim(ped, animDict, animation, 3) then
-            ClearPedSecondaryTask(ped)
-        else
-            loadAnimDict(animDict)
-            local animLength = GetAnimDuration(animDict, animation)
-            TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 49, 0, 0, 0, 0)
         end
     end,
 
@@ -5540,8 +5524,8 @@ anims = {
     end,
 
     ["t2"] = function(ped)
-        local animDict = "missfam5_yoga"
-        local animation = "a2_pose"
+        local animDict = "mp_sleep"
+        local animation = "bind_pose_180"
         if IsPedArmed(ped, 7) then
             SetCurrentPedWeapon(ped, 0xA2719263, true)
         end
@@ -5552,7 +5536,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 49, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
 
@@ -6028,7 +6012,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 17, 0, 0, 0, 0)
+                         animLength, 1, 0, 0, 0, 0)
         end
     end,
     ["statue3"] = function(ped)
@@ -6183,22 +6167,22 @@ anims = {
         end
     end,
 
-    ["crawl"] = function(ped)
-        local animDict = "move_injured_ground"
-        local animation = "front_loop"
-        if IsPedArmed(ped, 7) then
-            SetCurrentPedWeapon(ped, 0xA2719263, true)
-        end
+    -- ["crawl"] = function(ped)
+    --     local animDict = "move_injured_ground"
+    --     local animation = "front_loop"
+    --     if IsPedArmed(ped, 7) then
+    --         SetCurrentPedWeapon(ped, 0xA2719263, true)
+    --     end
 
-        if IsEntityPlayingAnim(ped, animDict, animation, 3) then
-            ClearPedSecondaryTask(ped)
-        else
-            loadAnimDict(animDict)
-            local animLength = GetAnimDuration(animDict, animation)
-            TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 33, 0, 0, 0, 0)
-        end
-    end,
+    --     if IsEntityPlayingAnim(ped, animDict, animation, 3) then
+    --         ClearPedSecondaryTask(ped)
+    --     else
+    --         loadAnimDict(animDict)
+    --         local animLength = GetAnimDuration(animDict, animation)
+    --         TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
+    --                      animLength, 0, 0, 0, 0, 0)
+    --     end
+    -- end,
 
     ["flip2"] = function(ped)
         local animDict = "anim@arena@celeb@flat@solo@no_props@"
@@ -6833,7 +6817,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 49, 0, 0, 0, 0)
+                         animLength, 1, 0, 0, 0, 0)
         end
     end,
 
@@ -6868,23 +6852,6 @@ anims = {
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
                          animLength, 1, 0, 0, 0, 0)
-        end
-    end,
-
-    ["mindcontrol3"] = function(ped)
-        local animDict = "rcmbarry"
-        local animation = "bar_1_attack_idle_aln"
-        if IsPedArmed(ped, 7) then
-            SetCurrentPedWeapon(ped, 0xA2719263, true)
-        end
-
-        if IsEntityPlayingAnim(ped, animDict, animation, 3) then
-            ClearPedSecondaryTask(ped)
-        else
-            loadAnimDict(animDict)
-            local animLength = GetAnimDuration(animDict, animation)
-            TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 49, 0, 0, 0, 0)
         end
     end,
 
@@ -7088,7 +7055,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 50, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
 
@@ -7105,7 +7072,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 1, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
 
@@ -7139,7 +7106,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 48, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
 
@@ -7156,7 +7123,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 1, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
 
@@ -7404,7 +7371,7 @@ anims = {
             loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
             TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 49, 0, 0, 0, 0)
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
 
@@ -7424,159 +7391,186 @@ anims = {
                          animLength, 0, 0, 0, 0, 0)
         end
     end,
-
-    ["sweep"] = function(ped)
-        local animDict = "amb@world_human_janitor@male@idle_a"
-        local animation = "idle_a"
-        if IsPedArmed(ped, 7) then
-            SetCurrentPedWeapon(ped, 0xA2719263, true)
-        end
-
-        -- -113902346 broom
-        if IsEntityPlayingAnim(ped, animDict, animation, 3) then
-            ClearPedSecondaryTask(ped)
-        else
-            loadAnimDict(animDict)
-            local animLength = GetAnimDuration(animDict, animation)
-            TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 49, 0, 0, 0, 0)
-            TriggerEvent("destroyProp")
-        end
-        TriggerEvent("attachItem", "broom")
-    end,
     -- Interactive Emotes
-    ["makeitrain"] = function(ped)
-        local animDict = "anim@mp_player_intupperraining_cash"
-        local animation = "idle_a"
-        if IsPedArmed(ped, 7) then
-            SetCurrentPedWeapon(ped, 0xA2719263, true)
-        end
+    -- ["makeitrain"] = function(ped)
+    --     local animDict = "anim@mp_player_intupperraining_cash"
+    --     local animation = "idle_a"
+    --     if IsPedArmed(ped, 7) then
+    --         SetCurrentPedWeapon(ped, 0xA2719263, true)
+    --     end
 
-        if IsEntityPlayingAnim(ped, animDict, animation, 3) then
-            ClearPedSecondaryTask(ped)
-        else
-            loadAnimDict(animDict)
-            local animLength = GetAnimDuration(animDict, animation)
-            TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
-                         animLength, 49, 0, 0, 0, 0)
-            TriggerEvent("destroyProp")
-        end
-        TriggerEvent("attachItem", "wadofbills")
-    end,
+    --     if IsEntityPlayingAnim(ped, animDict, animation, 3) then
+    --         ClearPedSecondaryTask(ped)
+    --     else
+    --         loadAnimDict(animDict)
+    --         local animLength = GetAnimDuration(animDict, animation)
+    --         TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
+    --                      animLength, 49, 0, 0, 0, 0)
+    --         TriggerEvent("destroyProp")
+    --     end
+    --     TriggerEvent("attachItem", "wadofbills")
+    --     isInteractivePlaying = not isInteractivePlaying
+    --     if isInteractivePlaying then
+    --         interactiveData = {
+    --             PtfxAsset = "scr_xs_celebration",
+    --             PtfxName = "scr_xs_money_rain",
+    --             PtfxPlacement = {0.0, 0.0, -0.09, -80.0, 0.0, 0.0, 1.0},
+    --             PtfxWait = 500,
+    --         }
+    --     else
+    --         interactiveData = {}
+    --     end
+    -- end,
 }
 
 animsDog = {
     ["dogsit"] = function(ped)
-        TaskStartScenarioInPlace(ped, "WORLD_DOG_SITTING_ROTTWEILER", -1, true)
-    end,
 
-    ["bark"] = function(ped)
-        local animDict = "creatures@rottweiler@amb@world_dog_barking@idle_a"
-        local animation = "idle_a"
-
-        loadAnimDict(animDict)
-        local animLength = GetAnimDuration(animDict, animation)
-        TaskPlayAnim(ped, animDict, animation, 1.0, 1.0, animLength, 0, 0, 0, 0, 0)
-    end,
-
-    ["bark2"] = function(ped)
-        local animDict = "creatures@rottweiler@melee@streamed_taunts@"
-        local animation = "taunt_02"
-
-        loadAnimDict(animDict)
-        local animLength = GetAnimDuration(animDict, animation)
-        TaskPlayAnim(ped, animDict, animation, 1.0, 1.0, animLength, 0, 0, 0, 0, 0)
-    end,
-
-    ["bark3"] = function(ped)
-        local animDict = "creatures@rottweiler@melee@streamed_taunts@"
-        local animation = "taunt_01"
-
-        loadAnimDict(animDict)
-        local animLength = GetAnimDuration(animDict, animation)
-        TaskPlayAnim(ped, animDict, animation, 1.0, 1.0, animLength, 0, 0, 0, 0, 0)
-    end,
-
-    ["bark4"] = function(ped)
-        TaskStartScenarioInPlace(ped, "WORLD_DOG_BARKING_SHEPHERD", -1, true)
-    end,
-
-    ["bark5"] = function(ped)
-        local animDict = "creatures@rottweiler@melee@streamed_taunts@"
-        local animation = "taunt_01"
-
-        loadAnimDict(animDict)
-        local animLength = GetAnimDuration(animDict, animation)
-        TaskPlayAnim(ped, animDict, animation, 1.0, 1.0, animLength, 48, 0, 0, 0, 0)
-    end,
-
-    ["beg"] = function(ped)
         local animDict = "creatures@rottweiler@tricks@"
+        local animation = "sit_enter"
 
-        loadAnimDict(animDict)
-        local sequenceId = OpenSequenceTask()
-        TaskPlayAnim(0, animDict, "beg_enter", 8.0, -8.0, -1, 4096, 0, false, false, false)
-        TaskPlayAnim(0, animDict, "beg_loop", 8.0, -8.0, -1, 4096, 0, false, false, false)
-        TaskPlayAnim(0, animDict, "beg_loop", 8.0, -8.0, -1, 4096, 0, false, false, false)
-        TaskPlayAnim(0, animDict, "beg_exit", 8.0, -8.0, -1, 4096, 0, false, false, false)
-        CloseSequenceTask(sequenceId)
-        TaskPerformSequence(ped, sequenceId)
-        ClearSequenceTask()
-    end,
-
-    ["paw"] = function(ped)
-        local animDict = "creatures@rottweiler@tricks@"
-
-        loadAnimDict(animDict)
-        local sequenceId = OpenSequenceTask()
-        TaskPlayAnim(0, animDict, "sit_enter", 8.0, -8.0, -1, 4096, 0, false, false, false)
-        TaskPlayAnim(0, animDict, "paw_right_enter", 8.0, -8.0, -1, 4096, 0, false, false, false)
-        TaskPlayAnim(0, animDict, "paw_right_loop", 8.0, -8.0, -1, 4096, 0, false, false, false)
-        TaskPlayAnim(0, animDict, "paw_right_loop", 8.0, -8.0, -1, 4096, 0, false, false, false)
-        TaskPlayAnim(0, animDict, "paw_right_exit", 8.0, -8.0, -1, 4096, 0, false, false, false)
-        TaskPlayAnim(0, animDict, "sit_exit", 8.0, -8.0, -1, 4096, 0, false, false, false)
-        CloseSequenceTask(sequenceId)
-        TaskPerformSequence(ped, sequenceId)
-        ClearSequenceTask()
-    end,
-
-    ["pet"] = function(ped)
-        local animDict = "creatures@rottweiler@tricks@"
-        local animation = "petting_chop"
+        if IsPedArmed(ped, 7) then
+            SetCurrentPedWeapon(ped, 0xA2719263, true)
+        end 
 
         if IsEntityPlayingAnim(ped, animDict, animation, 3) then
             ClearPedSecondaryTask(ped)
         else
             loadAnimDict(animDict)
+            TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, -1, -1, 2, 0, 0, 0, 0)
+        end
+    end,
+
+    ["bark"] = function(ped)
+
+        local animDict = "creatures@rottweiler@amb@world_dog_barking@idle_a"
+        local animation = "idle_a"
+
+        if IsPedArmed(ped, 7) then
+            SetCurrentPedWeapon(ped, 0xA2719263, true)
+        end 
+
+        if IsEntityPlayingAnim(ped, animDict, animation, 3) then
+            ClearPedSecondaryTask(ped)
+        else
+           loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
-            TaskPlayAnim(ped, animDict, animation, 1.0, 4.0, animLength, 0, 0, 0, 0, 0)
+            TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
+                         animLength, 0, 0, 0, 0, 0)
+        end
+    end,
+
+    ["bark2"] = function(ped)
+
+        local animDict = "creatures@rottweiler@melee@streamed_taunts@"
+        local animation = "taunt_02"
+
+        if IsPedArmed(ped, 7) then
+            SetCurrentPedWeapon(ped, 0xA2719263, true)
+        end 
+
+        if IsEntityPlayingAnim(ped, animDict, animation, 3) then
+            ClearPedSecondaryTask(ped)
+        else
+           loadAnimDict(animDict)
+            local animLength = GetAnimDuration(animDict, animation)
+            TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
+                         animLength, 0, 0, 0, 0, 0)
+        end
+    end,
+
+    ["beg"] = function(ped)
+
+        local animDict = "creatures@rottweiler@tricks@"
+        local animation = "beg_loop"
+
+        if IsPedArmed(ped, 7) then
+            SetCurrentPedWeapon(ped, 0xA2719263, true)
+        end 
+
+        if IsEntityPlayingAnim(ped, animDict, animation, 3) then
+            ClearPedSecondaryTask(ped)
+        else
+           loadAnimDict(animDict)
+            TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, -1, -1, 2, 0, 0, 0, 0)
+        end
+    end,
+
+    ["paw"] = function(ped)
+
+        local animDict = "creatures@rottweiler@tricks@"
+        local animation = "paw_right_loop"
+
+        if IsPedArmed(ped, 7) then
+            SetCurrentPedWeapon(ped, 0xA2719263, true)
+        end 
+
+        if IsEntityPlayingAnim(ped, animDict, animation, 3) then
+            ClearPedSecondaryTask(ped)
+        else
+           loadAnimDict(animDict)
+            TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, -1, -1, 2, 0, 0, 0, 0)
+        end
+    end,
+
+    ["pet"] = function(ped)
+
+        local animDict = "creatures@rottweiler@tricks@"
+        local animation = "petting_chop"
+
+        if IsPedArmed(ped, 7) then
+            SetCurrentPedWeapon(ped, 0xA2719263, true)
+        end 
+
+        if IsEntityPlayingAnim(ped, animDict, animation, 3) then
+            ClearPedSecondaryTask(ped)
+        else
+           loadAnimDict(animDict)
+            local animLength = GetAnimDuration(animDict, animation)
+            TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
 
     ["dump"] = function(ped)
-        local animDict = "creatures@rottweiler@move"
 
-        loadAnimDict(animDict)
-        local sequenceId = OpenSequenceTask()
-        TaskPlayAnim(0, animDict, "dump_enter", 8.0, -8.0, -1, 4096, 0, false, false, false)
-        TaskPlayAnim(0, animDict, "dump_loop", 8.0, -8.0, -1, 4096, 0, false, false, false)
-        TaskPlayAnim(0, animDict, "dump_exit", 8.0, -8.0, -1, 4096, 0, false, false, false)
-        CloseSequenceTask(sequenceId)
-        TaskPerformSequence(ped, sequenceId)
-        ClearSequenceTask()
+        local animDict = "creatures@rottweiler@move"
+        local animation = "pee_right_idle"
+
+        if IsPedArmed(ped, 7) then
+            SetCurrentPedWeapon(ped, 0xA2719263, true)
+        end 
+
+        if IsEntityPlayingAnim(ped, animDict, animation, 3) then
+            ClearPedSecondaryTask(ped)
+        else
+           loadAnimDict(animDict)
+            local animLength = GetAnimDuration(animDict, animation)
+            TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
+                         animLength, 0, 0, 0, 0, 0)
+        end
     end,
 
     ["pee"] = function(ped)
-        local animDict = "creatures@rottweiler@move"
 
-        loadAnimDict(animDict)
-        local sequenceId = OpenSequenceTask()
-        TaskPlayAnim(0, animDict, "pee_right_enter", 8.0, -8.0, -1, 4096, 0, false, false, false)
-        TaskPlayAnim(0, animDict, "pee_right_idle", 8.0, -8.0, -1, 4096, 0, false, false, false)
-        TaskPlayAnim(0, animDict, "pee_right_exit", 8.0, -8.0, -1, 4096, 0, false, false, false)
-        CloseSequenceTask(sequenceId)
-        TaskPerformSequence(ped, sequenceId)
-        ClearSequenceTask()
+        local animDict = "creatures@rottweiler@move"
+        local animation = "pee_right_enter"
+
+        if IsPedArmed(ped, 7) then
+            SetCurrentPedWeapon(ped, 0xA2719263, true)
+        end 
+
+        if IsEntityPlayingAnim(ped, animDict, animation, 3) then
+            ClearPedSecondaryTask(ped)
+        else
+           loadAnimDict(animDict)
+            local animLength = GetAnimDuration(animDict, animation)
+            TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, -1, -1, 2, 0, 0, 0, 0)
+            Wait(6200)
+            TaskPlayAnim(PlayerPedId(), animDict, "pee_right_exit", 1.0, 20.0,
+                         animLength, 0, 0, 0, 0, 0)
+
+        end
     end,
 
     ["indicateahead"] = function(ped)
@@ -7584,309 +7578,36 @@ animsDog = {
         local animDict = "creatures@rottweiler@indication@"
         local animation = "indicate_ahead"
 
+        if IsPedArmed(ped, 7) then
+            SetCurrentPedWeapon(ped, 0xA2719263, true)
+        end 
+
         if IsEntityPlayingAnim(ped, animDict, animation, 3) then
             ClearPedSecondaryTask(ped)
         else
            loadAnimDict(animDict)
             local animLength = GetAnimDuration(animDict, animation)
-            TaskPlayAnim(ped, animDict, animation, 1.0, 4.0, animLength, 0, 0, 0, 0, 0)
+            TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,
+                         animLength, 0, 0, 0, 0, 0)
         end
     end,
 
-    ["kennel"] = function(ped)
-        local animDict = "creatures@rottweiler@amb@sleep_in_kennel@"
-
-        loadAnimDict(animDict)
-        TaskPlayAnim(ped, animDict, "sleep_in_kennel", 1000.0, -8.0, -1, 1, 0, false, false, false)
-        Citizen.CreateThread(function()
-            while playing_emote do
-                if IsControlJustReleased(0, 38) then
-                    TaskPlayAnim(ped, animDict, "exit_kennel", 8.0, -8.0, -1, 0, 0, false, false, false)
-                    Wait(8000)
-                    endanims(lastanimplayed)
-                end
-                Wait(0)
-            end
-        end)
-    end,
-
     ["laydown"] = function(ped)
+
         local animDict = "creatures@rottweiler@move"
         local animation = "dying"
+
+        if IsPedArmed(ped, 7) then
+            SetCurrentPedWeapon(ped, 0xA2719263, true)
+        end 
 
         if IsEntityPlayingAnim(ped, animDict, animation, 3) then
             ClearPedSecondaryTask(ped)
         else
-            loadAnimDict(animDict)
-            TaskPlayAnim(ped, animDict, animation, 1.0, -1, -1, 2, 0, 0, 0, 0)
+           loadAnimDict(animDict)
+            TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, -1, -1, 2, 0, 0, 0, 0)
         end
     end,
-
-    ["carsit"] = function(ped)
-        local animDict = "creatures@rottweiler@in_vehicle@std_car"
-        local playerVeh = GetVehiclePedIsIn(PlayerPedId())
-        if playerVeh == 0 then return end
-
-        local vehLayout = GetVehicleLayoutHash(playerVeh);
-        if vehLayout == -1965057835 or vehLayout == 919485892 or vehLayout == -1838563680 or vehLayout == 1768419516
-        or vehLayout == 1576485197 or vehLayout == 929009548 or vehLayout == -497732145
-        or vehLayout == -1659990386 or vehLayout == -662028469 or vehLayout == 1939145032 then
-            animDict = "creatures@rottweiler@in_vehicle@van"
-        end
-        if vehLayout == -2066252141 or vehLayout == 1105669833 or vehLayout == 542797648 or vehLayout == 68566729
-        or vehLayout == -1887744178 or vehLayout == -782720499 or vehLayout == -1150063973 or vehLayout == 1630950849
-        or vehLayout == -463340997 or vehLayout == 2033852426 then
-            animDict = "creatures@rottweiler@in_vehicle@low_car"
-        end
-        if vehLayout == 434478421 or vehLayout == 1816176348 or vehLayout == 1710903184 or vehLayout == 1663892749 then
-            animDict = "creatures@rottweiler@in_vehicle@4x4"
-        end
-
-        loadAnimDict(animDict)
-        TaskPlayAnim(ped, animDict, "sit", 1000.0, -1000.0, -1, 33, 0, false, false, false)
-    end,
-
-    ["carenter"] = function(ped)
-        local animDict = "creatures@rottweiler@in_vehicle@std_car"
-        local seatBone = "seat_pside_f"
-        local currentTarget = exports['np-target']:GetCurrentEntity()
-        local playerVeh = IsModelAVehicle(GetEntityModel(currentTarget)) and currentTarget or 0
-        if playerVeh == 0 then return end
-
-        local vehLayout = GetVehicleLayoutHash(playerVeh)
-        if vehLayout == -1965057835 or vehLayout == 919485892 or vehLayout == -1838563680 or vehLayout == 1768419516
-        or vehLayout == 1576485197 or vehLayout == 929009548 or vehLayout == -497732145
-        or vehLayout == -1659990386 or vehLayout == -662028469 or vehLayout == 1939145032 then
-            animDict = "creatures@rottweiler@in_vehicle@van"
-        end
-        if vehLayout == -2066252141 or vehLayout == 1105669833 or vehLayout == 542797648 or vehLayout == 68566729
-        or vehLayout == -1887744178 or vehLayout == -782720499 or vehLayout == -1150063973 or vehLayout == 1630950849
-        or vehLayout == -463340997 or vehLayout == 2033852426 then
-            animDict = "creatures@rottweiler@in_vehicle@low_car"
-        end
-        if vehLayout == 434478421 or vehLayout == 1816176348 or vehLayout == 1710903184 or vehLayout == 1663892749 then
-            animDict = "creatures@rottweiler@in_vehicle@4x4"
-        end
-
-        loadAnimDict(animDict)
-
-        Sync.SetVehicleDoorOpen(playerVeh, 1, false, false)
-        SetPedCanRagdoll(ped, false)
-        Wait(300)
-        local netScene = NetworkCreateSynchronisedScene(0, 0, 0, 0, 0, 0, 2, false, false, 1065353216, 0, 1.3)
-        NetworkAttachSynchronisedSceneToEntity(netScene, playerVeh, GetEntityBoneIndexByName(playerVeh, seatBone))
-        NetworkAddPedToSynchronisedScene(ped, netScene, animDict, "get_in", 1000.0, -8.0, 4.0, 0, 1000.0, 0)
-        NetworkStartSynchronisedScene(netScene)
-        Wait(2000)
-        TaskWarpPedIntoVehicle(ped, playerVeh, 0)
-        Wait(1000)
-        ForcePedAiAndAnimationUpdate(ped, true, true)
-        TaskPlayAnim(ped, animDict, "sit", 8.0, -8.0, -1, 1, 0, false, false, false)
-        Sync.SetVehicleDoorShut(playerVeh, 1, false)
-        Wait(1000)
-        SetPedCanRagdoll(ped, true)
-    end,
-
-    ["carleave"] = function(ped)
-        local animDict = "creatures@rottweiler@in_vehicle@std_car"
-        local seatBone = "seat_pside_f"
-        local playerVeh = GetVehiclePedIsIn(PlayerPedId())
-        if playerVeh == 0 then return end
-
-        local vehLayout = GetVehicleLayoutHash(playerVeh)
-        if vehLayout == -1965057835 or vehLayout == 919485892 or vehLayout == -1838563680 or vehLayout == 1768419516
-        or vehLayout == 1576485197 or vehLayout == 929009548 or vehLayout == -497732145
-        or vehLayout == -1659990386 or vehLayout == -662028469 or vehLayout == 1939145032 then
-            animDict = "creatures@rottweiler@in_vehicle@van"
-        end
-        if vehLayout == -2066252141 or vehLayout == 1105669833 or vehLayout == 542797648 or vehLayout == 68566729
-        or vehLayout == -1887744178 or vehLayout == -782720499 or vehLayout == -1150063973 or vehLayout == 1630950849
-        or vehLayout == -463340997 or vehLayout == 2033852426 then
-            animDict = "creatures@rottweiler@in_vehicle@low_car"
-        end
-        if vehLayout == 434478421 or vehLayout == 1816176348 or vehLayout == 1710903184 or vehLayout == 1663892749 then
-            animDict = "creatures@rottweiler@in_vehicle@4x4"
-        end
-
-        while not HasAnimDictLoaded(animDict) do
-            RequestAnimDict(animDict)
-            Citizen.Wait(0)
-        end
-
-        SetPedCanRagdoll(ped, false)
-        Sync.SetVehicleDoorOpen(playerVeh, 1, false, false)
-        local netScene = NetworkCreateSynchronisedScene(0, 0, 0, 0, 0, 0, 2, false, false, 1065353216, 0, 1.3)
-        NetworkAttachSynchronisedSceneToEntity(netScene, playerVeh, GetEntityBoneIndexByName(playerVeh, seatBone))
-        NetworkAddPedToSynchronisedScene(ped, netScene, animDict, "get_out", 1000.0, -8.0, 4.0, 0, 1000.0, 0)
-        NetworkStartSynchronisedScene(netScene)
-        TaskLeaveVehicle(ped, playerVeh, 16)
-        ForcePedAiAndAnimationUpdate(ped, true, true)
-        Wait(2000)
-        ForcePedAiAndAnimationUpdate(ped, true, true)
-        Sync.SetVehicleDoorShut(playerVeh, 1, false)
-        ClearPedTasks(ped)
-        Wait(4000)
-        SetPedCanRagdoll(ped, true)
-    end,
-}
-
-animsCat = {
-  ["catsleep"] = function(ped)
-
-      local animDict = "creatures@cat@amb@world_cat_sleeping_ground@enter"
-      local animation = "enter"
-
-      if IsPedArmed(ped, 7) then
-          SetCurrentPedWeapon(ped, 0xA2719263, true)
-      end 
-
-      if IsEntityPlayingAnim(ped, animDict, animation, 3) then
-          ClearPedSecondaryTask(ped)
-      else
-          loadAnimDict(animDict)
-          TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, -1, -1, 2, 0, 0, 0, 0)
-      end
-  end,
-
-  ["catsit"] = function(ped)
-
-      local animDict = "creatures@cat@amb@world_cat_sleeping_ledge@idle_a"
-      local animation = "idle_a"
-
-      if IsPedArmed(ped, 7) then
-          SetCurrentPedWeapon(ped, 0xA2719263, true)
-      end
-
-      if IsEntityPlayingAnim(ped, animDict, animation, 3) then
-          ClearPedSecondaryTask(ped)
-      else
-          loadAnimDict(animDict)
-          TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, -1, -1, 2, 0, 0, 0, 0)
-      end
-  end,
-
-  ["catstretch"] = function(ped)
-
-      local animDict = "creatures@cat@amb@peyote@enter"
-      local animation = "enter"
-
-      if IsPedArmed(ped, 7) then
-          SetCurrentPedWeapon(ped, 0xA2719263, true)
-      end
-
-      if IsEntityPlayingAnim(ped, animDict, animation, 3) then
-          ClearPedSecondaryTask(ped)
-      else
-          loadAnimDict(animDict)
-          TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, -1, -1, 2, 0, 0, 0, 0)
-      end
-  end,
-}
-
-animsBigCat = {
-  ["bigcatpace"] = function(ped)
-
-      local animDict = "anim@scripted@island@hs4_scope_cctv_p1@panther@"
-      local animation = "pace_v2"
-
-      if IsPedArmed(ped, 7) then
-          SetCurrentPedWeapon(ped, 0xA2719263, true)
-      end
-
-      if IsEntityPlayingAnim(ped, animDict, animation, 3) then
-          ClearPedSecondaryTask(ped)
-      else
-          loadAnimDict(animDict)
-          TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, -1, -1, 2, 0, 0, 0, 0)
-      end
-  end,
-
-  ["bigcatrest"] = function(ped)
-
-      local animDict = "anim@scripted@island@hs4_scope_cctv_p1@panther@"
-      local animation = "rest_base"
-
-      if IsPedArmed(ped, 7) then
-          SetCurrentPedWeapon(ped, 0xA2719263, true)
-      end
-
-      if IsEntityPlayingAnim(ped, animDict, animation, 3) then
-          ClearPedSecondaryTask(ped)
-      else
-          loadAnimDict(animDict)
-          TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, -1, -1, 2, 0, 0, 0, 0)
-      end
-  end,
-
-  ["bigcatrest2"] = function(ped)
-
-      local animDict = "anim@scripted@island@hs4_scope_cctv_p1@panther@"
-      local animation = "rest_front"
-
-      if IsPedArmed(ped, 7) then
-          SetCurrentPedWeapon(ped, 0xA2719263, true)
-      end
-
-      if IsEntityPlayingAnim(ped, animDict, animation, 3) then
-          ClearPedSecondaryTask(ped)
-      else
-          loadAnimDict(animDict)
-          TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, -1, -1, 2, 0, 0, 0, 0)
-      end
-  end,
-
-  ["bigcatrest3"] = function(ped)
-
-      local animDict = "anim@scripted@island@hs4_scope_cctv_p1@panther@"
-      local animation = "rest_left"
-
-      if IsPedArmed(ped, 7) then
-          SetCurrentPedWeapon(ped, 0xA2719263, true)
-      end
-
-      if IsEntityPlayingAnim(ped, animDict, animation, 3) then
-          ClearPedSecondaryTask(ped)
-      else
-          loadAnimDict(animDict)
-          TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, -1, -1, 2, 0, 0, 0, 0)
-      end
-  end,
-
-  ["bigcatrest4"] = function(ped)
-
-      local animDict = "creatures@cougar@amb@world_cougar_rest@idle_a"
-      local animation = "idle_a"
-
-      if IsPedArmed(ped, 7) then
-          SetCurrentPedWeapon(ped, 0xA2719263, true)
-      end
-
-      if IsEntityPlayingAnim(ped, animDict, animation, 3) then
-          ClearPedSecondaryTask(ped)
-      else
-          loadAnimDict(animDict)
-          TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, -1, -1, 2, 0, 0, 0, 0)
-      end
-  end,
-
-  ["bigcatattack"] = function(ped)
-
-      local animDict = "creatures@cougar@melee@streamed_core@"
-      local animation = "ground_attack_0"
-
-      if IsPedArmed(ped, 7) then
-          SetCurrentPedWeapon(ped, 0xA2719263, true)
-      end
-
-      if IsEntityPlayingAnim(ped, animDict, animation, 3) then
-          ClearPedSecondaryTask(ped)
-      else
-          loadAnimDict(animDict)
-          TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, -1, -1, 2, 0, 0, 0, 0)
-          Wait(2800)
-          ClearPedTasks(ped)
-      end
-  end,
 }
 
 local function PlayAnim2(ped, anim, dict, exit)
@@ -7916,29 +7637,13 @@ function EndAnim(dict, anim)
                  0, 0)
 end
 
-local dogs = {
-    [`a_c_shepherd`] = true,
-    [`a_c_retriever`] = true,
-    [`a_c_rottweiler`] = true,
-    [`a_c_husky`] = true,
-    [`a_c_chop`] = true,
-    [`a_c_shepherd_np`] = true,
-    [`a_c_husky_np`] = true,
-    [`a_c_chop_np`] = true,
-    [`a_c_pit_np`] = true,
-    [`a_c_retriever_np`] = true,
-}
+RegisterCommand('e', function(source, args, raw) 
+    TriggerEvent('animation:PlayAnimation', args[1]) 
+end)
 
-local cats = {
-    [`a_c_cat_01`] = true,
-    [`a_c_racoon_01`] = true,
-}
-
-local bigcats = {
-  [`a_c_panther`] = true,
-  [`a_c_mtlion`] = true,
-  [`a_c_coyote`] = true
-}
+RegisterCommand('em', function()
+    TriggerEvent('emotes:OpenMenu')
+end)
 
 AddEventHandler("animation:PlayAnimation", function(anim)
     if imdead == 0 and not stuckincar then
@@ -7956,13 +7661,9 @@ AddEventHandler("animation:PlayAnimation", function(anim)
             local animName = string.lower(anim)
             local anim = nil
             local model = GetEntityModel(PlayerPedId())
-
-            if dogs[model] then
+        
+            if model == GetHashKey("a_c_chop") then
                 anim = animsDog[animName]
-            elseif cats[model] then
-                anim = animsCat[animName]
-            elseif bigcats[model] then
-              anim = animsBigCat[animName]
             else
                 anim = anims[animName]
             end
@@ -7972,15 +7673,6 @@ AddEventHandler("animation:PlayAnimation", function(anim)
                 playing_emote = false
                 return
             end
-
-            if restrictedEmotes[animName] then
-                local time = GetGameTimer()
-                if emoteCooldowns[animName] and time - emoteCooldowns[animName] < 5000 then
-                    return
-                end
-                emoteCooldowns[animName] = time
-            end
-
             if type(anim) == "function" then
                 anim(ped);
                 StressTest(animName);
@@ -8019,13 +7711,21 @@ function StressTest(animName)
             #(GetEntityCoords(PlayerPedId()) - vector3(1777.21, 2495.7, 45.83)) <
             10.0) then
         local finished =
-            exports["np-taskbar"]:taskBar(15000, "Relieving Stress")
+            exports["drp-taskbar"]:taskBar(15000, "Relieving Stress")
         if finished == 100 then
-            TriggerEvent("client:newStress", false, math.random(100, 550))
+            TriggerEvent("drp-hud:updateStress", false, math.random(100, 550))
             playing_emote = false
         end
     end
 end
+
+local animlist =
+    "cancel (or c) cheer1 cheer2 high5 hug handslap high5 arsepick ballgrab salute gangsign1 gangsign2 gangsign3 Cop Sit Chair Chair2 Kneel Medic Notepad Traffic Photo Clipboard Lean Smoke Drink Coffee Binoculars BumFreeway BumSlump BumStand BumWash CarParkAttendant Cheer Drill DrugDealer FilmShocking LeafBlower Gardening Golf GuardPatrol Hammering HangOutOnStreet Statue Jog Maid Flex Weights Musician Paparazzi Party Picnic PushUps SitEat ShineTorch Situps Weed Fishing Impatient SunbatheFront SunbatheBack Stupor Tennis Map Mechanic Welding Browse Yoga"
+
+RegisterNetEvent('animation:showtextanim')
+AddEventHandler('animation:showtextanim', function()
+    TriggerEvent('chatMessage', '', 1, animlist)
+end)
 
 RegisterNetEvent('umbrellaLoop')
 AddEventHandler('umbrellaLoop', function()
