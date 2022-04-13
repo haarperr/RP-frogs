@@ -23,9 +23,6 @@
 !*.meta
 !*.py
 !*.bat
-!*.ytd
-!*.yft
-
 
 fx-server-data/cache/*
 fx-server/*
