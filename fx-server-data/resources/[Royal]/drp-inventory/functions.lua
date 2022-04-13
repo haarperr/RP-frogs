@@ -2129,8 +2129,8 @@ end
         local success = AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","inv:wellfedNoStress",true,itemid,playerVeh)
         if success then
           TriggerEvent("DoLongHudText", "Hmmm.. delicious.")
-          TriggerEvent("buffs:triggerBuff", itemid)
-          TriggerServerEvent("buffs:triggerBuff", itemid)
+          SetPedArmour(player, GetPedArmour(player) + 50)
+          TriggerEvent("healed:useOxy", true)
         end
     end
 
@@ -2677,7 +2677,7 @@ end
                         TriggerEvent("inventory:removeItem","buddhaguard", 1)
                         TriggerEvent("inventory:removeItem","buddhahilt", 1)
                         TriggerEvent("inventory:removeItem","buddhamedalion", 1)
-                        TriggerEvent("player:receiveItem","3713923289",1)
+                        TriggerEvent("player:receiveItem","1692590063",1)
                     end
                 else
                     TriggerEvent("DoLongHudText","Voice in your head: The parts are calling to the tunnels",5)
@@ -3401,7 +3401,7 @@ function buddhaMedalion()
     local dist = 9999
     
     if hasBlade and hasGuard and hasHilt then
-        --return TriggerEvent("DoLongHudText", "The medallion is pulling you towards the basement.", 5)
+        return TriggerEvent("DoLongHudText", "The medallion is pulling you towards the basement.", 5)
         dist = #(playerPos - vector3(-172.54, 319.13, 87.35))
     end
     
@@ -3439,7 +3439,7 @@ end
 
 
 
-
+--(-1911.78, 1388.1, 219.35
 
 
 

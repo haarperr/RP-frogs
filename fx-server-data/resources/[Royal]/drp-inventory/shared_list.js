@@ -2275,8 +2275,8 @@ itemList['-1239161099'] = {
 
 itemList['1692590063'] = {
   fullyDegrades: false,
-  decayrate: 5.0,
-  displayname: 'Dragon Blade (J)',
+  decayrate: 1.0,
+  displayname: 'The Forged Blade (P)',
   price: 1,
   craft: [
     [{
@@ -2293,7 +2293,7 @@ itemList['1692590063'] = {
   nonStack: true,
   model: '',
   image: 'np_katana.png',
-  information: 'We are everywhere, we are everyone, fear us for we lurk in the shadows. We are Dojo.',
+  information: 'A blade forged from the hidden 3 blade pieces. This item is not to be seized unless directly used in a crime.',
   weapon: true,
   contraband: true,
 };
