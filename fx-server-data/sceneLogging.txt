@@ -851,3 +851,4 @@ Player: [58] Placed Scene: [goofy ahh] At Coords = vector3(483.9572, -1010.882, 
 Player: [35] Placed Scene: [Keep on coping] At Coords = vector3(483.6274, -1012.384, 26.93456)
 Player: [58] Placed Scene: [Hadfield is a dirty little criminal] At Coords = vector3(483.9626, -1012.21, 26.74446)
 Player: [62] Placed Scene: [soon] At Coords = vector3(-511.6594, -683.8818, 32.99622)
+Player: [94] Placed Scene: [COPEGE] At Coords = vector3(-511.5928, -683.8516, 33.55784)
