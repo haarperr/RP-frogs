@@ -21,6 +21,7 @@ AddEventHandler("drp-ud:elevatorcheck", function()
             end
             TaskGoStraightToCoord(PlayerPedId(), 8.4783, -667.8687, 33.4497, 1.0, -1, 177.2868, 0.0)
             Citizen.Wait(4000)
+            TriggerEvent('inventory:removeItem', 'elevatorhackingdevice', 1)
             exports["blz-memory"]:thermiteminigame(10, 3, 3, 10,
             function()
                 local rotx, roty, rotz = table.unpack(vec3(GetEntityRotation(PlayerPedId())))
@@ -64,8 +65,8 @@ AddEventHandler("drp-ud:elevatorcheck", function()
                     Wait(1)
                 end
                 
-                TriggerServerEvent('drp-doors:change-lock-state', 541, false, true)
                 TriggerServerEvent('drp-doors:change-lock-state', 542, false, true)
+                TriggerServerEvent('drp-doors:change-lock-state', 541, false, true)
 
                 local pedSpawn = vector3(10.2033, -669.5919, 33.4495)
                 local ped = CreatePed(4, hash, pedSpawn.x, pedSpawn.y, pedSpawn.z, 0.0, true, false)
@@ -73,10 +74,9 @@ AddEventHandler("drp-ud:elevatorcheck", function()
                 TaskSmartFleePed(ped, PlayerPedId(), 100.0, -1, false, false)
 
                 
-                TriggerEvent('inventory:removeItem', 'elevatorhackingdevice', 1)
             end,
             function()
-                TriggerEvent('inventory:removeItem', 'elevatorhackingdevice', 1)
+
             end)
         else
             TriggerEvent('DoLongHudText', 'Not enough police on duty.', 2)
