@@ -140,6 +140,43 @@ Citizen.CreateThread(function()
                         -- teleport player to downstairs
                         local downstairs = vector3(-0.3971, -706.9908, 16.1311)
                         SetEntityCoords(PlayerPedId(), downstairs.x, downstairs.y, downstairs.z)
+                        if defenderSpawned == false then
+                            local defender1Pos = vector3(-0.7767, -689.3953, 16.1307)
+                            local defender2Pos = vector3(9.1506, -708.4230, 16.1310)
+                            local defender3Pos = vector3(4.9398, -707.7214, 16.1310)
+                            local defender4Pos = vector3(6.8620, -702.1044, 16.1310)
+                            local defender5Pos = vector3(-13.3691, -695.4658, 16.1410)
+                            local defender6Pos = vector3(-0.0939, -688.5615, 16.1308)
+                            local defender7Pos = vector3(-4.9599, -697.6608, 16.1310)
+
+                            local defender1 = CreatePed(4, GetHashKey("s_m_y_cop_01"), defender1Pos.x, defender1Pos.y, defender1Pos.z, 0.0, true, true)
+                            local defender2 = CreatePed(4, GetHashKey("s_m_y_cop_01"), defender2Pos.x, defender2Pos.y, defender2Pos.z, 0.0, true, true)
+                            local defender3 = CreatePed(4, GetHashKey("s_m_y_cop_01"), defender3Pos.x, defender3Pos.y, defender3Pos.z, 0.0, true, true)
+                            local defender4 = CreatePed(4, GetHashKey("s_m_y_cop_01"), defender4Pos.x, defender4Pos.y, defender4Pos.z, 0.0, true, true)
+                            local defender5 = CreatePed(4, GetHashKey("s_m_y_cop_01"), defender5Pos.x, defender5Pos.y, defender5Pos.z, 0.0, true, true)
+                            local defender6 = CreatePed(4, GetHashKey("s_m_y_cop_01"), defender6Pos.x, defender6Pos.y, defender6Pos.z, 0.0, true, true)
+                            local defender7 = CreatePed(4, GetHashKey("s_m_y_cop_01"), defender7Pos.x, defender7Pos.y, defender7Pos.z, 0.0, true, true)
+
+                            SetPedAsEnemy(defender1, true)
+                            SetPedAsEnemy(defender2, true)
+                            SetPedAsEnemy(defender3, true)
+                            SetPedAsEnemy(defender4, true)
+                            SetPedAsEnemy(defender5, true)
+                            SetPedAsEnemy(defender6, true)
+                            SetPedAsEnemy(defender7, true)
+
+                            GiveWeaponToPed(defender1, GetHashKey("WEAPON_PISTOL"), 1000, false, true)
+                            GiveWeaponToPed(defender2, GetHashKey("WEAPON_PISTOL"), 1000, false, true)
+                            GiveWeaponToPed(defender3, GetHashKey("WEAPON_PISTOL"), 1000, false, true)
+                            GiveWeaponToPed(defender4, GetHashKey("WEAPON_PISTOL"), 1000, false, true)
+                            GiveWeaponToPed(defender5, GetHashKey("WEAPON_PISTOL"), 1000, false, true)
+                            GiveWeaponToPed(defender6, GetHashKey("WEAPON_PISTOL"), 1000, false, true)
+                            GiveWeaponToPed(defender7, GetHashKey("WEAPON_PISTOL"), 1000, false, true)
+
+                            TriggerServerEvent("drp-ud:setDefenderSpawned", true)
+                            
+
+                            
 
                     
                     end
