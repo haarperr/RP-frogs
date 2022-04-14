@@ -1,7 +1,7 @@
 
 RegisterServerEvent("drp-ud:particleserver")
-AddEventHandler("drp-ud:particleserver", function(method, vec3)
-    TriggerClientEvent("drp-ud:particleclient", -1, method, vec3)
+AddEventHandler("drp-ud:particleserver", function(vec3)
+    TriggerClientEvent("drp-ud:particleclient", -1, vec3)
 end)
 
 local s = {}
