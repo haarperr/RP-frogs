@@ -128,7 +128,7 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(1)        
         count = count + 1
-        if count <= 2500 then
+        if count <= 7500 then
             
             TriggerServerEvent("drp-ud:requestVariables")
             count = 0

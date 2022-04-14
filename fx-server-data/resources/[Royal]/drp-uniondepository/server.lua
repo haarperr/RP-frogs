@@ -8,10 +8,6 @@ local ongoingHeist = false
 
 RegisterServerEvent("drp-ud:requestVariables")
 AddEventHandler("drp-ud:requestVariables", function()
-    
-    Citizen.Trace(defenderSpawned)
-    Citizen.Trace(ongoingHeist)
-
     TriggerClientEvent("drp-ud:getVariables", -1, defenderSpawned, ongoingHeist)
 end)
     
