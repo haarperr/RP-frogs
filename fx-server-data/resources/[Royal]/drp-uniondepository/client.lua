@@ -129,9 +129,7 @@ Citizen.CreateThread(function()
         Citizen.Wait(1)        
         count = count + 1
         if count <= 1000 then
-            Citizen.Trace(defenderSpawned)
-            Citizen.Trace(ongoingHeist)
-
+            
             TriggerServerEvent("drp-ud:checkOngoingHeist")
             count = 0
         end
