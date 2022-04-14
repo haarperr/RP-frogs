@@ -4,7 +4,7 @@ AddEventHandler("drp-ud:elevatorcheck", function()
     local coords = GetEntityCoords(player)
     local elevator = vector3(9.9859, -667.3959, 33.4492)
     local distance = GetDistanceBetweenCoords(coords.x, coords.y, coords.z, elevator.x, elevator.y, elevator.z, true)
-    if distance < 1.5 then
+    if distance < 3 then
        -- heist starts
        RequestAnimDict("anim@heists@ornate_bank@thermal_charge")
        RequestModel("hei_p_m_bag_var22_arm_s")
