@@ -90,7 +90,6 @@ AddEventHandler("drp-ud:elevatorcheck", function()
     end
 end)
 
-
 RegisterNetEvent("drp-ud:particleclient")
 AddEventHandler("drp-ud:particleclient", function(method, vec3)
     local ptfx
@@ -149,7 +148,7 @@ Citizen.CreateThread(function()
                         SetEntityCoords(PlayerPedId(), downstairs.x, downstairs.y, downstairs.z)
                         
                         TriggerServerEvent("drp-ud:requestVariables")
-                        Citizen.Trace("Defender Spawned: " .. tostring(defenderSpawned) .. "\n")
+                        Citizen.Trace("Defender Spawned: " .. tostring(s["defenderSpawned"]) .. "\n")
                         if defenderSpawned == false then
                             local defender1Pos = vector3(-0.7767, -689.3953, 16.1307)
                             local defender2Pos = vector3(9.1506, -708.4230, 16.1310)
@@ -208,7 +207,7 @@ Citizen.CreateThread(function()
                             SetPedArmour(defender6, 200)
                             SetPedArmour(defender7, 200)
                             
-                            TriggerServerEvent("drp-ud:setDefenderSpawned", true)
+                            TriggerServerEvent("drp-ud:setVariable", "defenderSpawned", true)
                         end
                     end
                 end
@@ -417,5 +416,5 @@ function spawnWave2()
     SetPedArmour(defender10, 400)
     SetPedArmour(defender11, 400)
     
-    TriggerServerEvent("drp-ud:setDefenderSpawned", true)
+    TriggerServerEvent("drp-ud:setVariable", "defender2Spawned", defender1)
 end

@@ -30,3 +30,10 @@ AddEventHandler("drp-ud:setVariable", function(variable, bool)
     Citizen.Trace("Requesting variables: " .. tostring(whatIsThis) .. "\n")
     TriggerClientEvent("drp-ud:getVariables", -1, whatIsThis)
 end)
+
+RegisterServerEvent("drp-ud:addThermite")
+AddEventHandler("drp-ud:addThermite", function()
+    whatIsThis.totalThermite = whatIsThis.totalThermite + 1
+    Citizen.Trace("Requesting variables: " .. tostring(whatIsThis) .. "\n")
+    TriggerClientEvent("drp-ud:getVariables", -1, whatIsThis)
+end)
