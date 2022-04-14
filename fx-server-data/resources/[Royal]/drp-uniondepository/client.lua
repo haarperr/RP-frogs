@@ -105,6 +105,10 @@ AddEventHandler("drp-ud:particleclient", function(method, vec3)
     StopParticleFxLooped(effect, 0)
 end)
 
+RegisterCommand("debugud", function(source)
+    TriggerServerEvent("drp-ud:requestVariables")
+    Citizen.Trace(tostring(s["ongoingHeist"]) .. " " .. tostring(s["defenderSpawned"]) .. " " .. tostring(s["defender2Spawned"]) .. " " .. tostring(s["totalThermite"]) .. " " .. tostring(s["isElevatorBurned"]) .. " " .. tostring(s["isThermite1Burned"]) .. " " .. tostring(s["isThermite2Burned"]) .. " " .. tostring(s["isThermite3Burned"]) .. " " .. tostring(s["isThermite4Burned"]) .. "\n")
+end)
 
 function Draw3DText(x,y,z, text)
     local onScreen,_x,_y=World3dToScreen2d(x,y,z)
