@@ -125,9 +125,18 @@ Citizen.CreateThread(function()
                     if finished == 100 then
                         -- teleport player to downstairs
                         local downstairs = vector3(-0.3971, -706.9908, 16.1311)
+                        
+                        local hash = GetHashKey("s_m_y_swat_01")
+                        RequestModel(hash)
+                        while not HasModelLoaded(hash) do
+                            Wait(1)
+                        end
+
                         SetEntityCoords(PlayerPedId(), downstairs.x, downstairs.y, downstairs.z)
                         
-                        local defender1Pos = vector3(-0.7767, -689.3953, 16.1307)
+                        TriggerServerEvent("drp-ud:requestVariables")
+                        if defenderSpawned == false then
+                            local defender1Pos = vector3(-0.7767, -689.3953, 16.1307)
                         local defender2Pos = vector3(9.1506, -708.4230, 16.1310)
                         local defender3Pos = vector3(4.9398, -707.7214, 16.1310)
                         local defender4Pos = vector3(6.8620, -702.1044, 16.1310)
@@ -135,11 +144,6 @@ Citizen.CreateThread(function()
                         local defender6Pos = vector3(-0.0939, -688.5615, 16.1308)
                         local defender7Pos = vector3(-4.9599, -697.6608, 16.1310)
 
-                        local hash = GetHashKey("s_m_y_swat_01")
-                        RequestModel(hash)
-                        while not HasModelLoaded(hash) do
-                            Wait(1)
-                        end
 
                         local defender1 = CreatePed(4, hash, defender1Pos.x, defender1Pos.y, defender1Pos.z, 0.0, true, true)
                         local defender2 = CreatePed(4, hash, defender2Pos.x, defender2Pos.y, defender2Pos.z, 0.0, true, true)
@@ -189,9 +193,9 @@ Citizen.CreateThread(function()
                         SetPedArmour(defender6, 200)
                         SetPedArmour(defender7, 200)
 
-
-
                         TriggerServerEvent("drp-ud:setDefenderSpawned", true)
+                        TriggerServerEvent("drp-ud:requestVariables")
+                        end
                     end
                 end
             end
