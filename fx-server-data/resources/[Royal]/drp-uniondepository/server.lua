@@ -23,24 +23,28 @@ end)
 RegisterServerEvent("drp-ud:setDefenderSpawned")
 AddEventHandler("drp-ud:setDefenderSpawned", function(bool)
     defenderSpawned = bool
+    Citizen.Trace("Requesting variables: " .. tostring(defenderSpawned) .. " " .. tostring(defender2Spawned) .. " " .. tostring(ongoingHeist) .. " " .. tostring(totalThermite) .. "\n")
     TriggerClientEvent("drp-ud:getVariables", -1, defenderSpawned, defender2Spawned, ongoingHeist, totalThermite)
 end)
 
 RegisterServerEvent("drp-ud:setDefender2Spawned")
 AddEventHandler("drp-ud:setDefender2Spawned", function(bool)
     defender2Spawned = bool
+    Citizen.Trace("Requesting variables: " .. tostring(defenderSpawned) .. " " .. tostring(defender2Spawned) .. " " .. tostring(ongoingHeist) .. " " .. tostring(totalThermite) .. "\n")
     TriggerClientEvent("drp-ud:getVariables", -1, defenderSpawned, defender2Spawned, ongoingHeist, totalThermite)
 end)
 
 RegisterServerEvent("drp-ud:setOngoingHeist")
 AddEventHandler("drp-ud:setOngoingHeist", function(bool)
     ongoingHeist = bool
+    Citizen.Trace("Requesting variables: " .. tostring(defenderSpawned) .. " " .. tostring(defender2Spawned) .. " " .. tostring(ongoingHeist) .. " " .. tostring(totalThermite) .. "\n")
     TriggerClientEvent("drp-ud:getVariables", -1, defenderSpawned, defender2Spawned, ongoingHeist, totalThermite)
 end)
 
 RegisterServerEvent("drp-ud:addThermite")
 AddEventHandler("drp-ud:addThermite", function()
     totalThermite = totalThermite + 1
+    Citizen.Trace("Requesting variables: " .. tostring(defenderSpawned) .. " " .. tostring(defender2Spawned) .. " " .. tostring(ongoingHeist) .. " " .. tostring(totalThermite) .. "\n")
     TriggerClientEvent("drp-ud:getVariables", -1, defenderSpawned, defender2Spawned, ongoingHeist, totalThermite)
 end)
 
