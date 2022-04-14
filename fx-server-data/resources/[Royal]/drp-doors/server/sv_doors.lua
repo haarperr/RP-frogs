@@ -8965,6 +8965,22 @@ DOOR_CONFIG = {
         cid = { },
       }
     },
+    {
+      info = "Yacht Vault",
+      active = true,
+      id = 544,
+      coords = vector3(-2071.79, -1019.254, 3.306306),
+      model = -2050208642,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = { },
+      }
+    },
 }
   
   
