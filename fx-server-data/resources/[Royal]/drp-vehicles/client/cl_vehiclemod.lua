@@ -1202,9 +1202,9 @@ exports('HarnessDur', HarnessDur)
 
 
 cfg = {
-	deformationMultiplier = -1,					-- How much should the vehicle visually deform from a collision. Range 0.0 to 10.0 Where 0.0 is no deformation and 10.0 is 10x deformation. -1 = Don't touch. Visual damage does not sync well to other players.
+	deformationMultiplier = 5,					-- How much should the vehicle visually deform from a collision. Range 0.0 to 10.0 Where 0.0 is no deformation and 10.0 is 10x deformation. -1 = Don't touch. Visual damage does not sync well to other players.
 	deformationExponent = 0.9,					-- How much should the handling file deformation setting be compressed toward 1.0. (Make cars more similar). A value of 1=no change. Lower values will compress more, values above 1 it will expand. Dont set to zero or negative.
-	collisionDamageExponent = 0.8,				-- How much should the handling file deformation setting be compressed toward 1.0. (Make cars more similar). A value of 1=no change. Lower values will compress more, values above 1 it will expand. Dont set to zero or negative.
+	collisionDamageExponent = 0.75,				-- How much should the handling file deformation setting be compressed toward 1.0. (Make cars more similar). A value of 1=no change. Lower values will compress more, values above 1 it will expand. Dont set to zero or negative.
 
 	damageFactorEngine = 2.5,					-- Sane values are 1 to 100. Higher values means more damage to vehicle. A good starting point is 10
 	damageFactorBody = 2,					-- Sane values are 1 to 100. Higher values means more damage to vehicle. A good starting point is 10
@@ -1225,23 +1225,14 @@ cfg = {
 
 	preventVehicleFlip = true,					-- If true, you can't turn over an upside down vehicle
 
-	sundayDriver = false,						-- If true, the accelerator response is scaled to enable easy slow driving. Will not prevent full throttle. Does not work with binary accelerators like a keyboard. Set to false to disable. The included stop-without-reversing and brake-light-hold feature does also work for keyboards.
+	sundayDriver = true,						-- If true, the accelerator response is scaled to enable easy slow driving. Will not prevent full throttle. Does not work with binary accelerators like a keyboard. Set to false to disable. The included stop-without-reversing and brake-light-hold feature does also work for keyboards.
 	sundayDriverAcceleratorCurve = 7.5,			-- The response curve to apply to the accelerator. Range 0.0 to 10.0. Higher values enables easier slow driving, meaning more pressure on the throttle is required to accelerate forward. Does nothing for keyboard drivers
 	sundayDriverBrakeCurve = 5.0,				-- The response curve to apply to the Brake. Range 0.0 to 10.0. Higher values enables easier braking, meaning more pressure on the throttle is required to brake hard. Does nothing for keyboard drivers
 
-	displayBlips = false,						-- Show blips for mechanics locations
 
 	compatibilityMode = false,					-- prevents other scripts from modifying the fuel tank health to avoid random engine failure with BVA 2.01 (Downside is it disabled explosion prevention)
 
 	randomTireBurstInterval = 0,				-- Number of minutes (statistically, not precisely) to drive above 22 mph before you get a tire puncture. 0=feature is disabled
-
-	chargeForRepairs = true,					-- if true fixing vehicle cost money
-	price = 100.0,									-- you may edit this to your liking. if "chargeForRepairs = false" ignore this one
-	DamageMultiplier = 5.0,						-- you may edit this to your liking. if "chargeForRepairs = false" ignore this one
-
-	-- Class Damagefactor Multiplier
-	-- The damageFactor for engine, body and Petroltank will be multiplied by this value, depending on vehicle class
-	-- Use it to increase or decrease damage for each class
 
 	classDamageMultiplier = {
 		[0] = 	0.8,		--	0: Compacts
