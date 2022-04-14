@@ -28968,19 +28968,19 @@ itemList['elevatorhackingdevice'] = {
   craft: [
     [{
         itemid: 'refinedaluminium',
-        amount: 33
-      },
-      {
-        itemid: 'refinedcopper',
-        amount: 33
+        amount: 25
       },
       {
         itemid: 'refinedrubber',
-        amount: 33
+        amount: 25
       },
       {
-        itemid: 'refinedplastic',
-        amount: 33
+        itemid: 'electronics',
+        amount: 50
+      },
+      {
+        itemid: 'heistusb1',
+        amount: 1
       },
     ]
   ],
@@ -28988,7 +28988,7 @@ itemList['elevatorhackingdevice'] = {
   nonStack: false,
   model: '',
   image: 'np_elevator_hacking_device.png',
-  information: 'Government Issued Equipment',
+  information: 'I mean... Its for elevators right?',
 }
 
 itemList['fishoil'] = {
