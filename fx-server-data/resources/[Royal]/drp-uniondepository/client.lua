@@ -252,22 +252,22 @@ AddEventHandler("drp-ud:checkThermite", function(thermite)
 
     local playerCoords = GetEntityCoords(PlayerPedId())
     -- Door 1 
-    if GetDistanceBetweenCoords(thermite1Spot.x, thermite1Spot.y, thermite1Spot.z, playerCoords.x, playerCoords.y, playerCoords.z, true) < 1.5 then
+    if GetDistanceBetweenCoords(thermite1Spot.x, thermite1Spot.y, thermite1Spot.z, playerCoords.x, playerCoords.y, playerCoords.z, true) < 2.5 then
         TriggerEvent("drp-ud:doThermite", thermite1Spot)
-    end
+    end 
     
     -- Door 2
-    if GetDistanceBetweenCoords(thermite2Spot.x, thermite2Spot.y, thermite2Spot.z, playerCoords.x, playerCoords.y, playerCoords.z, true) < 1.5 then
+    if GetDistanceBetweenCoords(thermite2Spot.x, thermite2Spot.y, thermite2Spot.z, playerCoords.x, playerCoords.y, playerCoords.z, true) < 2.5 then
         TriggerEvent("drp-ud:doThermite", thermite2Spot)
     end
 
     -- Door 3
-    if GetDistanceBetweenCoords(thermite3Spot.x, thermite3Spot.y, thermite3Spot.z, playerCoords.x, playerCoords.y, playerCoords.z, true) < 1.5 then
+    if GetDistanceBetweenCoords(thermite3Spot.x, thermite3Spot.y, thermite3Spot.z, playerCoords.x, playerCoords.y, playerCoords.z, true) < 2.5 then
         TriggerEvent("drp-ud:doThermite", thermite3Spot)
     end
 
     -- Door 4
-    if GetDistanceBetweenCoords(thermite4Spot.x, thermite4Spot.y, thermite4Spot.z, playerCoords.x, playerCoords.y, playerCoords.z, true) < 1.5 then
+    if GetDistanceBetweenCoords(thermite4Spot.x, thermite4Spot.y, thermite4Spot.z, playerCoords.x, playerCoords.y, playerCoords.z, true) < 2.5 then
         TriggerEvent("drp-ud:doThermite", thermite4Spot)
     end
 
