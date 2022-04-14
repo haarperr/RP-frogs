@@ -1,7 +1,14 @@
-local ongoingHeist = false
-local defenderSpawned = false
-local defender2Spawned = false
-local totalThermite = 0
+local s = {
+    "ongoingHeist" = false,
+    "defenderSpawned" = false,
+    "defender2Spawned" = false,
+    "totalThermite" = 0,
+    "isElevatorBurned" = false,
+    "isThermite1Burned" = false,
+    "isThermite2Burned" = false,
+    "isThermite3Burned" = false,
+    "isThermite4Burned" = false
+}
 
 -- config
 local copCount = -1 -- if not testing then -> 3
@@ -15,7 +22,7 @@ AddEventHandler("drp-ud:elevatorcheck", function()
     TriggerServerEvent("drp-ud:requestVariables")
     local distance = GetDistanceBetweenCoords(coords.x, coords.y, coords.z, elevator.x, elevator.y, elevator.z, true)
     if distance < 3 then
-        if ongoingHeist == false then
+        if s["ongoingHeist"] == false then
             if exports["drp-duty"]:LawAmount() >= copCount then
                 -- heist starts
                 RequestAnimDict("anim@heists@ornate_bank@thermal_charge")
@@ -55,7 +62,7 @@ AddEventHandler("drp-ud:elevatorcheck", function()
                     SetPedComponentVariation(ped, 5, 45, 0, 0)
                     DetachEntity(bomba, 1, 1)
                     FreezeEntityPosition(bomba, true)
-                    TriggerServerEvent("drp-ud:particleserver2", method, vector3(x, y, z + 0.3))
+                    TriggerServerEvent("drp-ud:particleserver", method, vector3(x, y, z + 0.3))
                     SetPtfxAssetNextCall("scr_ornate_heist")
                     local effect = StartParticleFxLoopedAtCoord("scr_heist_ornate_thermal_burn", x, y, z + 0.3, 0.0, 0.0, 0.0, 1.0, false, false, false, false)
                     
@@ -69,7 +76,7 @@ AddEventHandler("drp-ud:elevatorcheck", function()
                     StopParticleFxLooped(effect, 0)
                     Citizen.Wait(2000)
                     
-                    TriggerServerEvent("drp-ud:setOngoingHeist", true)
+                    TriggerServerEvent("drp-ud:setVariable", "ongoingHeist" true)
                 end,
                 function()
 
@@ -84,27 +91,8 @@ AddEventHandler("drp-ud:elevatorcheck", function()
 end)
 
 
-
-
 RegisterNetEvent("drp-ud:particleclient")
-AddEventHandler("drp-ud:particleclient", function(method)
-    local ptfx
-
-    RequestNamedPtfxAsset("scr_ornate_heist")
-    while not HasNamedPtfxAssetLoaded("scr_ornate_heist") do
-        Citizen.Wait(1)
-    end
-        ptfx = vector3(8.4105, -667.1199, 33.4497)
-    SetPtfxAssetNextCall("scr_ornate_heist")
-    local effect = StartParticleFxLoopedAtCoord("scr_heist_ornate_thermal_burn", ptfx, 0.0, 0.0, 0.0, 1.0, false, false, false, false)
-    Citizen.Wait(4000)
-    
-    StopParticleFxLooped(effect, 0)
-end)
-
-
-RegisterNetEvent("drp-ud:particleclient2")
-AddEventHandler("drp-ud:particleclient2", function(method, vec3)
+AddEventHandler("drp-ud:particleclient", function(method, vec3)
     local ptfx
 
     RequestNamedPtfxAsset("scr_ornate_heist")
@@ -143,7 +131,7 @@ Citizen.CreateThread(function()
         local exitLocation = vector3(0.6342, -703.1225, 16.1310)
         local playerCoords = GetEntityCoords(PlayerPedId())
         
-        if ongoingHeist then
+        if s["ongoingHeist"] then
             if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, enterLocation.x, enterLocation.y, enterLocation.z, true) < 1.5 then
                 Draw3DText(enterLocation.x, enterLocation.y, enterLocation.z, "Press [E] to enter")
                 if IsControlJustPressed(0, 38) then
@@ -244,11 +232,8 @@ Citizen.CreateThread(function()
 end)
 
 RegisterNetEvent("drp-ud:getVariables")
-AddEventHandler("drp-ud:getVariables", function(defender, defender2, ongoing, totalT)
-    defenderSpawned = defender
-    defender2Spawned = defender2
-    ongoingHeist = ongoing    
-    totalThermite = totalT
+AddEventHandler("drp-ud:getVariables", function(pagMan)
+    s = pagMan
 end)
 
 RegisterNetEvent("drp-ud:checkThermite")
@@ -324,7 +309,7 @@ AddEventHandler("drp-ud:doThermite", function(vec4)
         SetPedComponentVariation(ped, 5, 45, 0, 0)
         DetachEntity(bomba, 1, 1)
         FreezeEntityPosition(bomba, true)
-        TriggerServerEvent("drp-ud:particleserver2", method)
+        TriggerServerEvent("drp-ud:particleserver", method)
         SetPtfxAssetNextCall("scr_ornate_heist")
         local effect = StartParticleFxLoopedAtCoord("scr_heist_ornate_thermal_burn", vec4.x, vec4.y, vec4.z - 0.3, 0.0, 0.0, 0.0, 1.0, false, false, false, false)
         
