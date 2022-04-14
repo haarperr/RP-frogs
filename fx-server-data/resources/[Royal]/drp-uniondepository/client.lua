@@ -123,11 +123,15 @@ function Draw3DText(x,y,z, text)
     DrawRect(_x,_y+0.0125, 0.015+ factor, 0.03, 41, 11, 41, 68)
 end 
 
-
+local count = 0
 Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(0)        
-        TriggerServerEvent("drp-ud:requestVariables")
+        Citizen.Wait(1)        
+        count += 1
+        if count <= 1000 then
+            TriggerServerEvent("drp-ud:checkOngoingHeist")
+            count = 0
+        end
         local enterLocation = vector3(10.4785, -672.4790, 33.4496)
         local exitLocation = vector3(0.6342, -703.1225, 16.1310)
         local playerCoords = GetEntityCoords(PlayerPedId())
