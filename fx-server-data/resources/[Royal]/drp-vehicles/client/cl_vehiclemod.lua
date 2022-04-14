@@ -132,6 +132,7 @@ function ejectionLUL()
     SetEntityCoords(playerPed, coords)
     Citizen.Wait(1)
     SetPedToRagdoll(playerPed, 5511, 5511, 0, 0, 0, 0)
+    veloc = GetEntityVelocity(currentVehicle)
     SetEntityVelocity(playerPed, veloc.x*4,veloc.y*4,veloc.z*4)
     local ejectspeed = math.ceil(GetEntitySpeed(playerPed) * 8)
     if IsPedWearingHelmet(playerPed) and IsThisModelABicycle(GetEntityModel(veh)) then
