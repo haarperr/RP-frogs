@@ -63,21 +63,6 @@ AddEventHandler("drp-ud:elevatorcheck", function()
                 StopParticleFxLooped(effect, 0)
                 Citizen.Wait(2000)
 
-                -- create random ped and spawn him
-                local hash = GetHashKey("cs_barry")
-                RequestModel(hash)
-                while not HasModelLoaded(hash) do
-                    Wait(1)
-                end
-                
-                TriggerServerEvent('drp-doors:change-lock-state', 542, false, true)
-                TriggerServerEvent('drp-doors:change-lock-state', 541, false, true)
-
-                local pedSpawn = vector3(10.2033, -669.5919, 33.4495)
-                local ped = CreatePed(4, hash, pedSpawn.x, pedSpawn.y, pedSpawn.z, 0.0, true, true)
-                SetEntityAsMissionEntity(ped, true, true)
-                TaskSmartFleePed(ped, PlayerPedId(), 100.0, -1, false, false)
-
                 TriggerServerEvent("drp-ud:setOngoingHeist", true)
                 TriggerServerEvent("drp-ud:requestVariables")
             end,
@@ -129,7 +114,7 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(1)        
         
-        local enterLocation = vector3(10.4785, -672.4790, 33.4496)
+        local enterLocation = vector3(10.2297, -668.2030, 33.4493)
         local exitLocation = vector3(0.6342, -703.1225, 16.1310)
         local playerCoords = GetEntityCoords(PlayerPedId())
         if ongoingHeist then
@@ -179,7 +164,7 @@ Citizen.CreateThread(function()
                         SetPedAsEnemy(defender5, true)
                         SetPedAsEnemy(defender6, true)
                         SetPedAsEnemy(defender7, true)
-                        
+
                         SetPedCombatAttributes(defender1, 46, true)
                         SetPedCombatAttributes(defender2, 46, true)
                         SetPedCombatAttributes(defender3, 46, true)
