@@ -98,7 +98,7 @@ AddEventHandler('drp-barriers:barrier', function()
 	end
 	
 	local barrier = CreateObject('prop_barrier_work05', x, y, z-2, true, true, true)
-	local cone = CreateObject('prop_mp_cone_01', x, y, z-2, true, true, true)
+	local cone = CreateObject('prop_mp_cone_01', x, y-1, z-2, true, true, true)
 	PlaceObjectOnGroundProperly(barrier)
 	PlaceObjectOnGroundProperly(cone)
 	SetEntityHeading(barrier, heading)
