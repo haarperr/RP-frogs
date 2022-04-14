@@ -75,7 +75,7 @@ AddEventHandler("drp-ud:elevatorcheck", function()
                     StopParticleFxLooped(effect, 0)
                     Citizen.Wait(2000)
                     
-                    TriggerServerEvent("drp-ud:setVariable", "ongoingHeist" true)
+                    TriggerServerEvent("drp-ud:setVariable", "ongoingHeist", true)
                 end,
                 function()
 
