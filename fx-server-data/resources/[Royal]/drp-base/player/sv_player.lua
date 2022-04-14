@@ -122,7 +122,6 @@ local function AddMethod(player)
 
         DRP.DB:UpdateCharacterMoney(GetUser(self), characterId, cash, function(updatedMoney, err) 
             if updatedMoney then
-                TriggerClientEvent("phone:transaction", GetUser(self).source, 'Transaction', ..amount.. "has been added to your account")
                 TriggerClientEvent("banking:addCash", GetUser(self).source, amt)
                 TriggerClientEvent("banking:updateCash", GetUser(self).source, GetUser(self):getCash(), amt)
                 -- exports["drp-base"]:AddLog("Cash Added", GetUser(self), "Money added to user, amount: " .. tostring(amt))
@@ -143,7 +142,6 @@ local function AddMethod(player)
 
             DRP.DB:UpdateCharacterMoney(GetUser(self), characterId, cash, function(updatedMoney, err) 
                 if updatedMoney then
-                    TriggerClientEvent("phone:transaction", GetUser(self).source, 'Transaction', ..amount.. "has been withdrawn from your account")
                     TriggerClientEvent("banking:removeCash", GetUser(self).source, amt)
                     TriggerClientEvent("banking:updateCash", GetUser(self).source, GetUser(self):getCash(), amt)
                     -- exports["drp-base"]:AddLog("Cash Removed", GetUser(self), "Money removed from user, amount: " .. tostring(amt))
