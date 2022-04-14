@@ -181,7 +181,7 @@ Citizen.CreateThread(function()
                             GiveWeaponToPed(defender7, GetHashKey("WEAPON_PISTOL"), 1000, false, true)
 
                             TriggerServerEvent("drp-ud:setDefenderSpawned", true)
-                            
+                        end
 
                             
 
@@ -203,6 +203,7 @@ Citizen.CreateThread(function()
         end
     end
 end)
+
 
 RegisterNetEvent("drp-ud:getVariables")
 AddEventHandler("drp-ud:getVariables", function(defender, ongoing)
