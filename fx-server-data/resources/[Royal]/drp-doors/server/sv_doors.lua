@@ -8884,6 +8884,42 @@ DOOR_CONFIG = {
           [74] = true
         }
       }
+    },
+    {
+      info = "Other Casino Door 1",
+      active = true,
+      id = 536,
+      coords = vector3(1026.787, 32.43253, 70.01295),
+      model = 680601509,
+      lock = true,
+      keyFob = true,
+      desc = "Other Casino Door 1",
+      access = {
+        job = {
+          ["casino"] = true,
+        },
+        cid = {
+          [74] = true
+        }
+      }
+    },
+    {
+      info = "Other Casino Door 2",
+      active = true,
+      id = 536,
+      coords = vector3(1025.09, 33.49028, 70.01295),
+      model = 680601509,
+      lock = true,
+      keyFob = true,
+      desc = "Other Casino Door 2",
+      access = {
+        job = {
+          ["casino"] = true,
+        },
+        cid = {
+          [74] = true
+        }
+      }
     }
 
 
