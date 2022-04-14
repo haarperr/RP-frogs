@@ -127,7 +127,7 @@ local count = 0
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(1)        
-        count += 1
+        count = count + 1
         if count <= 1000 then
             Citizen.Trace(defenderSpawned)
             Citizen.Trace(ongoingHeist)
