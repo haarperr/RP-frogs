@@ -3,6 +3,9 @@ local defenderSpawned = false
 local defender2Spawned = false
 local totalThermite = 0
 
+-- config
+local copCount = -1 -- if not testing then -> 3
+
 RegisterNetEvent("drp-ud:elevatorcheck")
 AddEventHandler("drp-ud:elevatorcheck", function()
     local player = PlayerPedId()
@@ -11,7 +14,7 @@ AddEventHandler("drp-ud:elevatorcheck", function()
     TriggerServerEvent("drp-ud:requestVariables")
     local distance = GetDistanceBetweenCoords(coords.x, coords.y, coords.z, elevator.x, elevator.y, elevator.z, true)
     if distance < 3 and ongoingHeist == false then
-        if exports["drp-duty"]:LawAmount() >= -1 then -- testing
+        if exports["drp-duty"]:LawAmount() >= copCount then
             -- heist starts
             RequestAnimDict("anim@heists@ornate_bank@thermal_charge")
             RequestModel("hei_p_m_bag_var22_arm_s")
@@ -41,7 +44,7 @@ AddEventHandler("drp-ud:elevatorcheck", function()
                 NetworkStartSynchronisedScene(bagscene)
                 Citizen.Wait(1500)
                 local x, y, z = table.unpack(GetEntityCoords(ped))
-                local bomba = CreateObject(GetHashKey("hei_prop_heist_thermite"), x, y, z + 0.3,  true,  true, true)
+                local bomba = CreateObject(GetHashKey("hei_prop_heist_thermite"), x, y, z + 0.3, true, true, true)
 
                 SetEntityCollision(bomba, false, true)
                 AttachEntityToEntity(bomba, ped, GetPedBoneIndex(ped, 28422), 0, 0, 0, 0, 0, 200.0, true, true, false, true, 1, true)
@@ -57,14 +60,14 @@ AddEventHandler("drp-ud:elevatorcheck", function()
                 NetworkStopSynchronisedScene(bagscene)
                 TaskPlayAnim(ped, "anim@heists@ornate_bank@thermal_charge", "cover_eyes_intro", 8.0, 8.0, 1000, 36, 1, 0, 0, 0)
                 TaskPlayAnim(ped, "anim@heists@ornate_bank@thermal_charge", "cover_eyes_loop", 8.0, 8.0, 3000, 49, 1, 0, 0, 0)
-                Citizen.Wait(10000)
+                Citizen.Wait(8500)
                 ClearPedTasks(ped)
                 DeleteObject(bomba)
                 DeleteObject(bag)
                 StopParticleFxLooped(effect, 0)
                 Citizen.Wait(2000)
                 
-                TriggerServerEvent("drp-ud:requestVariables")
+                TriggerServerEvent("drp-ud:setOngoingHeist", true)
             end,
             function()
 
@@ -212,7 +215,6 @@ Citizen.CreateThread(function()
                             SetPedArmour(defender7, 200)
                             
                             TriggerServerEvent("drp-ud:setDefenderSpawned", true)
-                            TriggerServerEvent("drp-ud:requestVariables")
                         end
                     end
                 end
@@ -425,5 +427,4 @@ function spawnWave2()
     SetPedArmour(defender11, 400)
     
     TriggerServerEvent("drp-ud:setDefenderSpawned", true)
-    TriggerServerEvent("drp-ud:requestVariables")
 end
