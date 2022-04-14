@@ -223,7 +223,7 @@ Citizen.CreateThread(function()
                 end
             end
         end
-        if totalThermite >= 1 then
+        if s["totalThermite"] >= 1 then
             TriggerServerEvent("drp-doors:change-lock-state", 543, true, true)
         end
     end
