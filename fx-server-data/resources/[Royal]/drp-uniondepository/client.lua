@@ -133,7 +133,7 @@ Citizen.CreateThread(function()
             if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, enterLocation.x, enterLocation.y, enterLocation.z, true) < 1.5 then
                 Draw3DText(enterLocation.x, enterLocation.y, enterLocation.z, "Press [E] to enter")
                 if IsControlJustPressed(0, 38) then
-                    local finished = exports['drp-taskbar']:taskBar(15000, 'Using the Elevator')
+                    local finished = exports['drp-taskbar']:taskBar(elevatorTime, 'Using the Elevator')
                     if finished == 100 then
                         -- teleport player to downstairs
                         local downstairs = vector3(-0.3971, -706.9908, 16.1311)
@@ -216,7 +216,7 @@ Citizen.CreateThread(function()
         if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, exitLocation.x, exitLocation.y, exitLocation.z, true) < 1.5 then
             Draw3DText(exitLocation.x, exitLocation.y, exitLocation.z, "Press [E] to exit")
             if IsControlJustPressed(0, 38) then
-                local finished = exports['drp-taskbar']:taskBar(15000, 'Using the Elevator')
+                local finished = exports['drp-taskbar']:taskBar(elevatorTime, 'Using the Elevator')
                 if finished == 100 then
                     -- teleport player to upstairs
                     SetEntityCoords(PlayerPedId(), enterLocation.x, enterLocation.y, enterLocation.z)
@@ -307,7 +307,7 @@ AddEventHandler("drp-ud:doThermite", function(vec4)
         SetPedComponentVariation(ped, 5, 45, 0, 0)
         DetachEntity(bomba, 1, 1)
         FreezeEntityPosition(bomba, true)
-        TriggerServerEvent("drp-ud:particleserver", method)
+        TriggerServerEvent("drp-ud:particleserver", method, vec4.x, vec4.y, vec4.z)
         SetPtfxAssetNextCall("scr_ornate_heist")
         local effect = StartParticleFxLoopedAtCoord("scr_heist_ornate_thermal_burn", vec4.x, vec4.y, vec4.z - 0.3, 0.0, 0.0, 0.0, 1.0, false, false, false, false)
         
