@@ -202,7 +202,7 @@ AddEventHandler('dark-vaultrob:upper:heistlaptop4', function()
 		exports["hacking2"]:hacking2(
 			function() -- success
 				animcancel1()
-				TriggerServerEvent('drp-doors:changeLock-status', 50, false)
+				TriggerServerEvent('drp-doors:change-lock-state', 50, false)
 				secdoorshmm = true
 				local deleternd = math.random(1,100)
 				if deleternd <= 100 and deleternd > 20 then
@@ -333,7 +333,7 @@ elseif #(playercoords - thirddoorvector) < 3.0 then
 			DeleteObject(laptop)
 			SetPedComponentVariation(ped, 5, 45, 0, 0)
 			thirddoor = false
-			TriggerServerEvent('drp-doors:changeLock-status', 52, false)
+			TriggerServerEvent('drp-doors:change-lock-state', 52, false)
 		
 	end)
 else
@@ -407,7 +407,7 @@ AddEventHandler('dark-vaultrob:upper:thermitedoors', function()
 			DeleteObject(bag)
 			StopParticleFxLooped(effect, 0)
 			Citizen.Wait(2000)
-			TriggerServerEvent('drp-doors:changeLock-status', 253, false)
+			TriggerServerEvent('drp-doors:change-lock-state', 253, false)
 			fifthdoor = true
 			local deleternd = math.random(1,100)
 			if deleternd <= 100 and deleternd > 20 then
@@ -456,7 +456,7 @@ AddEventHandler('dark-vaultrob:upper:thermitedoors', function()
 			DeleteObject(bomba)
 			StopParticleFxLooped(effect, 0)
 			Citizen.Wait(2000)
-			TriggerServerEvent('drp-doors:changeLock-status', 48, false)
+			TriggerServerEvent('drp-doors:change-lock-state', 48, false)
 			firstdoorshmm = true
 			local deleternd = math.random(1,100)
 			if deleternd <= 100 and deleternd > 20 then
@@ -517,7 +517,7 @@ elseif  not fourthdoor and #(playercoords3 - fourthdoorvector) < 3.0  then
 		DeleteObject(bomba)
 		StopParticleFxLooped(effect, 0)
 		Citizen.Wait(2000)
-		TriggerServerEvent('drp-doors:changeLock-status', 51, false)
+		TriggerServerEvent('drp-doors:change-lock-state', 51, false)
 		thirddoor = true
 		local deleternd = math.random(1,100)
 		if deleternd <= 100 and deleternd > 20 then
@@ -550,16 +550,16 @@ RegisterNetEvent("dark:VAULTDOOR_REFRESH_GUY")
 AddEventHandler("dark:VAULTDOOR_REFRESH_GUY", function(method)
 if firstdoorshmm then
 	firstdoorshmm = false
-	TriggerServerEvent('drp-doors:changeLock-status', 48, true)
+	TriggerServerEvent('drp-doors:change-lock-state', 48, true)
 end
 if secdoorshmm then
 	secdoorshmm = false
-	TriggerServerEvent('drp-doors:changeLock-status', 50, true)
+	TriggerServerEvent('drp-doors:change-lock-state', 50, true)
 	TriggerServerEvent("dark-vaultrob:upper:openvault", 0)
 end
 if thirddoor then
 	thirddoor = false
-	TriggerServerEvent('drp-doors:changeLock-status', 251, true)
+	TriggerServerEvent('drp-doors:change-lock-state', 251, true)
 	TriggerEvent("dark-vaultrob:upper:uppertrolleydelete")
 	local firsttrolley = false
     local sectrolley = false
@@ -567,10 +567,10 @@ if thirddoor then
 end
 if fourthdoor then
 	fourthdoor = false
-	TriggerServerEvent('drp-doors:changeLock-status', 51, true)
+	TriggerServerEvent('drp-doors:change-lock-state', 51, true)
 end
 if fifthdoor then
 	fifthdoor = false
-	TriggerServerEvent('drp-doors:changeLock-status', 52, true)
+	TriggerServerEvent('drp-doors:change-lock-state', 52, true)
 end
 end)
