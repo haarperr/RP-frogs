@@ -179,16 +179,14 @@ function disableTurning()
     end
 end
 
--- function carCrash()
-    -- endNos()
-    -- local new_health = GetVehicleEngineHealth(currentVehicle) - math.random(50, 150)
-    -- TriggerEvent('DoLongHudText', 'Your vehicle has stalled!', 2)
-    -- SetVehicleEngineOn(currentVehicle, false, true, true)
-    -- SetVehicleEngineHealth(currentVehicle, new_health)
-    -- SetVehicleUndriveable(veh, true)
-    -- lastCurrentVehicleSpeed = 0.0
-    -- lastCurrentVehicleBodyHealth = new_health
--- end
+function carCrash()
+    endNos()
+    TriggerEvent('DoLongHudText', 'Your vehicle has stalled!', 2)
+    SetVehicleEngineOn(currentVehicle, false, true, true)
+    SetVehicleEngineHealth(currentVehicle, new_health)
+    SetVehicleUndriveable(veh, true)
+    lastCurrentVehicleSpeed = 0.0
+end
 
 Citizen.CreateThread(function()
     while true do
