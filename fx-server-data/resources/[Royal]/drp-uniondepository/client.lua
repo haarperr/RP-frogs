@@ -1,6 +1,7 @@
 local ongoingHeist = false
 local defenderSpawned = false
 local defender2Spawned = false
+local totalThermite = 0
 
 RegisterNetEvent("drp-ud:elevatorcheck")
 AddEventHandler("drp-ud:elevatorcheck", function()
@@ -49,9 +50,9 @@ AddEventHandler("drp-ud:elevatorcheck", function()
                 SetPedComponentVariation(ped, 5, 45, 0, 0)
                 DetachEntity(bomba, 1, 1)
                 FreezeEntityPosition(bomba, true)
-                TriggerServerEvent("drp-ud:particleserver", method)
+                TriggerServerEvent("drp-ud:particleserver2", method, vector3(x, y, z + 0.3))
                 SetPtfxAssetNextCall("scr_ornate_heist")
-                local effect = StartParticleFxLoopedAtCoord("scr_heist_ornate_thermal_burn", 8.4783, -667.8687, 33.4497, 0.0, 0.0, 0.0, 1.0, false, false, false, false)
+                local effect = StartParticleFxLoopedAtCoord("scr_heist_ornate_thermal_burn", x, y, z + 0.3, 0.0, 0.0, 0.0, 1.0, false, false, false, false)
                 
                 NetworkStopSynchronisedScene(bagscene)
                 TaskPlayAnim(ped, "anim@heists@ornate_bank@thermal_charge", "cover_eyes_intro", 8.0, 8.0, 1000, 36, 1, 0, 0, 0)
@@ -62,8 +63,7 @@ AddEventHandler("drp-ud:elevatorcheck", function()
                 DeleteObject(bag)
                 StopParticleFxLooped(effect, 0)
                 Citizen.Wait(2000)
-
-                TriggerServerEvent("drp-ud:setOngoingHeist", true)
+                
                 TriggerServerEvent("drp-ud:requestVariables")
             end,
             function()
@@ -87,6 +87,23 @@ AddEventHandler("drp-ud:particleclient", function(method)
         Citizen.Wait(1)
     end
         ptfx = vector3(8.4105, -667.1199, 33.4497)
+    SetPtfxAssetNextCall("scr_ornate_heist")
+    local effect = StartParticleFxLoopedAtCoord("scr_heist_ornate_thermal_burn", ptfx, 0.0, 0.0, 0.0, 1.0, false, false, false, false)
+    Citizen.Wait(4000)
+    
+    StopParticleFxLooped(effect, 0)
+end)
+
+
+RegisterNetEvent("drp-ud:particleclient2")
+AddEventHandler("drp-ud:particleclient2", function(method, vec3)
+    local ptfx
+
+    RequestNamedPtfxAsset("scr_ornate_heist")
+    while not HasNamedPtfxAssetLoaded("scr_ornate_heist") do
+        Citizen.Wait(1)
+    end
+        ptfx = vector3(vec3.x, vec3.y, vec3.z)
     SetPtfxAssetNextCall("scr_ornate_heist")
     local effect = StartParticleFxLoopedAtCoord("scr_heist_ornate_thermal_burn", ptfx, 0.0, 0.0, 0.0, 1.0, false, false, false, false)
     Citizen.Wait(4000)
@@ -212,15 +229,114 @@ Citizen.CreateThread(function()
                 end
             end
         end
+        if totalThermite >= 1 then
+            TriggerServerEvent("drp-doors:change-lock-state", 543, true, true)
+        end
     end
 end)
 
 RegisterNetEvent("drp-ud:getVariables")
-AddEventHandler("drp-ud:getVariables", function(defender, defender2, ongoing)
+AddEventHandler("drp-ud:getVariables", function(defender, defender2, ongoing, totalT)
     defenderSpawned = defender
     defender2Spawned = defender2
     ongoingHeist = ongoing    
+    totalThermite = totalT
 end)
+
+RegisterNetEvent("drp-ud:checkThermite")
+AddEventHandler("drp-ud:checkThermite", function(thermite)
+    local thermite1Spot = vector4(9.6769, -706.9669, 16.1310, 250.4085)
+    local thermite2Spot = vector4(2.2467, -698.3090, 16.1310, 337.7159)
+    local thermite3Spot = vector4(-5.4115, -700.2985, 16.1310, 192.9095)
+    local thermite4Spot = vector4(1.8693, -688.9332, 16.1310, 241.7260)
+
+    local playerCoords = GetEntityCoords(PlayerPedId())
+    -- Door 1 
+    if GetDistanceBetweenCoords(thermite1Spot.x, thermite1Spot.y, thermite1Spot.z, playerCoords.x, playerCoords.y, playerCoords.z, true) < 1.5 then
+        TriggerEvent("drp-ud:doThermite", thermite1Spot)
+    end
+    
+    -- Door 2
+    if GetDistanceBetweenCoords(thermite2Spot.x, thermite2Spot.y, thermite2Spot.z, playerCoords.x, playerCoords.y, playerCoords.z, true) < 1.5 then
+        TriggerEvent("drp-ud:doThermite", thermite2Spot)
+    end
+
+    -- Door 3
+    if GetDistanceBetweenCoords(thermite3Spot.x, thermite3Spot.y, thermite3Spot.z, playerCoords.x, playerCoords.y, playerCoords.z, true) < 1.5 then
+        TriggerEvent("drp-ud:doThermite", thermite3Spot)
+    end
+
+    -- Door 4
+    if GetDistanceBetweenCoords(thermite4Spot.x, thermite4Spot.y, thermite4Spot.z, playerCoords.x, playerCoords.y, playerCoords.z, true) < 1.5 then
+        TriggerEvent("drp-ud:doThermite", thermite4Spot)
+    end
+
+
+end)
+
+
+RegisterNetEvent("drp-ud:doThermite")
+AddEventHandler("drp-ud:doThermite", function(vec4)
+    -- heist starts
+    RequestAnimDict("anim@heists@ornate_bank@thermal_charge")
+    RequestModel("hei_p_m_bag_var22_arm_s")
+    RequestNamedPtfxAsset("scr_ornate_heist")
+    while not HasAnimDictLoaded("anim@heists@ornate_bank@thermal_charge") and not HasModelLoaded("hei_p_m_bag_var22_arm_s") and not HasNamedPtfxAssetLoaded("scr_ornate_heist") do
+    Citizen.Wait(50)
+    end
+    if not HasNamedPtfxAssetLoaded("scr_ornate_heist") then
+        RequestNamedPtfxAsset("scr_ornate_heist")
+        while not HasNamedPtfxAssetLoaded("scr_ornate_heist") do
+            Wait(1)
+        end
+    end
+    
+    TaskGoStraightToCoord(PlayerPedId(), vec4.x, vec4.y, vec4.z, 1.0, -1, vec4.w, 0.0)
+    Citizen.Wait(4000)
+    TriggerEvent('inventory:removeItem', 'thermitecharge', 1)
+    exports["blz-memory"]:thermiteminigame(1, 3, 3, 8,
+    function()
+        local rotx, roty, rotz = table.unpack(vec3(GetEntityRotation(PlayerPedId())))
+        local bagscene = NetworkCreateSynchronisedScene(vec4.x, vec4.y, vec4.z, rotx, roty, rotz, 2, false, false, 1065353216, 0, 1.3)
+        local bag = CreateObject(GetHashKey("hei_p_m_bag_var22_arm_s"), vec4.x, vec4.y, vec4.z, true, true, true)
+
+        SetEntityCollision(bag, false, true)
+        NetworkAddPedToSynchronisedScene(ped, bagscene, "anim@heists@ornate_bank@thermal_charge", "thermal_charge", 1.2, -4.0, 1, 16, 1148846080, 0)
+        NetworkAddEntityToSynchronisedScene(bag, bagscene, "anim@heists@ornate_bank@thermal_charge", "bag_thermal_charge", 4.0, -8.0, 1)
+        SetPedComponentVariation(ped, 5, 0, 0, 0)
+        NetworkStartSynchronisedScene(bagscene)
+        Citizen.Wait(1500)
+        local x, y, z = table.unpack(GetEntityCoords(ped))
+        local bomba = CreateObject(GetHashKey("hei_prop_heist_thermite"), x, y, z + 0.3,  true,  true, true)
+
+        SetEntityCollision(bomba, false, true)
+        AttachEntityToEntity(bomba, ped, GetPedBoneIndex(ped, 28422), 0, 0, 0, 0, 0, 200.0, true, true, false, true, 1, true)
+        Citizen.Wait(2000)
+        DeleteObject(bag)
+        SetPedComponentVariation(ped, 5, 45, 0, 0)
+        DetachEntity(bomba, 1, 1)
+        FreezeEntityPosition(bomba, true)
+        TriggerServerEvent("drp-ud:particleserver2", method)
+        SetPtfxAssetNextCall("scr_ornate_heist")
+        local effect = StartParticleFxLoopedAtCoord("scr_heist_ornate_thermal_burn", vec4.x, vec4.y, vec4.z - 0.3, 0.0, 0.0, 0.0, 1.0, false, false, false, false)
+        
+        NetworkStopSynchronisedScene(bagscene)
+        TaskPlayAnim(ped, "anim@heists@ornate_bank@thermal_charge", "cover_eyes_intro", 8.0, 8.0, 1000, 36, 1, 0, 0, 0)
+        TaskPlayAnim(ped, "anim@heists@ornate_bank@thermal_charge", "cover_eyes_loop", 8.0, 8.0, 3000, 49, 1, 0, 0, 0)
+        Citizen.Wait(10000)
+        ClearPedTasks(ped)
+        DeleteObject(bomba)
+        DeleteObject(bag)
+        StopParticleFxLooped(effect, 0)
+        Citizen.Wait(2000)
+
+        TriggerServerEvent("drp-ud:addThermite")
+    end,
+    function()
+
+    end)
+)
+
 
 function spawnWave2()
     local defender1Pos = vector3(4.0459, -684.6859, 16.1306)

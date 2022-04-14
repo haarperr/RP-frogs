@@ -8932,7 +8932,7 @@ DOOR_CONFIG = {
       desc = "x",
       access = {
         job = { },
-        cid = { },
+        cid = { }
       }
     },
     {
@@ -8946,7 +8946,7 @@ DOOR_CONFIG = {
       desc = "x",
       access = {
         job = { },
-        cid = { },
+        cid = { }
       }
     },
     {
