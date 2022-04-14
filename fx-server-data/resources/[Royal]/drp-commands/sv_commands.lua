@@ -28,7 +28,6 @@ AddEventHandler("commands:player:login",function()
     TriggerClientEvent("chat:addSuggestion", src, "/anchor", "Anchors Boat")
     TriggerClientEvent("chat:addSuggestion", src, "/ooc_toggle", "Use this to toggle OOC")
     TriggerClientEvent("chat:addSuggestion", src, "/transfer", "[platenumber] Transfer your personal vehicle to someone else")
-    TriggerClientEvent("chat:addSuggestion", src, "/givekey", "Hand over the keys for your car!")
     TriggerClientEvent("chat:addSuggestion", src, "/hud", "Customize your hud!")
 
 

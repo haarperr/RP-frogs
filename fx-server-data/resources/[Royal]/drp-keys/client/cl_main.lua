@@ -76,12 +76,17 @@ AddEventHandler('keys:give', function()
   local coordA = GetEntityCoords(PlayerPedId(), 1)
   local coordB = GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0.0, 100.0, 0.0)
   local latestveh = getVehicleInDirection(coordA, coordB)
+   
 
-
+  if latestveh == nil then
+    -- if player is in car 
+    if IsPedInAnyVehicle(PlayerPedId(), false) then
+      latestveh = GetVehiclePedIsIn(PlayerPedId(), true)
+  end
 
 
   if latestveh == nil or not DoesEntityExist(latestveh) then
-    TriggerEvent("DoLongHudText", "Vehicle not found!",2)
+    TriggerEvent("DoLongHudText", "You need to be facing a vehicle to give keys!",2)
     return
   end
 
@@ -210,7 +215,6 @@ function getVehicleInDirection(coordFrom, coordTo)
   local distance = Vdist2(coordFrom, GetEntityCoords(vehicle))
   
   if distance > 25 then vehicle = nil end
-
     return vehicle ~= nil and vehicle or 0
 end
 
