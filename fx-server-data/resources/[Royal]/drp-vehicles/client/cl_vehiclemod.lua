@@ -443,12 +443,12 @@ RegisterNetEvent("carhud:ejection:client")
 AddEventHandler("carhud:ejection:client",function(value)
     veloc = value
     if seatbelt then
-        if math.random(100) >= 90 then -- 10%
-            ejectionLUL()
+        if math.random(100) >= 85 then -- 15%
+            ejectionLUL(value)
         end
     else
-        if math.random(100) >= 60 then -- 40%
-            ejectionLUL()
+        if math.random(100) >= 50 then -- 50%
+            ejectionLUL(value)
         end
     end
 end)
