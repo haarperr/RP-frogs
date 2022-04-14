@@ -138,9 +138,6 @@ Citizen.CreateThread(function()
                         if defenderSpawned == false then
                             spawnWave1()
                             spawnWave2()
-                            TriggerServerEvent("drp-ud:setDefenderSpawned", true)
-                            TriggerServerEvent("drp-ud:setDefender2Spawned", true)
-                            TriggerServerEvent("drp-ud:requestVariables")
                         end
                     end
                 end
@@ -224,6 +221,9 @@ function spawnWave1()
     SetPedArmour(defender5, 200)
     SetPedArmour(defender6, 200)
     SetPedArmour(defender7, 200)
+    
+    TriggerServerEvent("drp-ud:setDefenderSpawned", true)
+    TriggerServerEvent("drp-ud:requestVariables")
 end
 
 function spawnWave2()
@@ -311,4 +311,7 @@ function spawnWave2()
     SetPedArmour(defender9, 350)
     SetPedArmour(defender10, 400)
     SetPedArmour(defender11, 400)
+    
+    TriggerServerEvent("drp-ud:setDefenderSpawned", true)
+    TriggerServerEvent("drp-ud:requestVariables")
 end
