@@ -163,7 +163,7 @@ Citizen.CreateThread(function()
 end)
 
 RegisterNetEvent("drp-ud:getVariables")
-AddEventHandler("drp-ud:getVariables", function(defender, ongoing))
+AddEventHandler("drp-ud:getVariables", function(defender, ongoing)
     defenderSpawned = defender
     ongoingheist = ongoing    
 end)
