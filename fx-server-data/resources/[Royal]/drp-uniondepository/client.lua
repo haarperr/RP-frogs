@@ -139,6 +139,8 @@ Citizen.CreateThread(function()
                         local downstairs = vector3(6.3331, -708.2879, 16.1358)
                         SetEntityCoords(PlayerPedId(), downstairs.x, downstairs.y, downstairs.z)
 
+                    
+                    end
                 end
             end
         end
