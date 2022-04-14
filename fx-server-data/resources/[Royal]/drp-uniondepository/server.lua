@@ -4,17 +4,16 @@ AddEventHandler("drp-ud:particleserver", function(method, vec3)
     TriggerClientEvent("drp-ud:particleclient", -1, method, vec3)
 end)
 
-local whatIsThis = {
-    "ongoingHeist" = false,
-    "defenderSpawned" = false,
-    "defender2Spawned" = false,
-    "totalThermite" = 0,
-    "isElevatorBurned" = false,
-    "isThermite1Burned" = false,
-    "isThermite2Burned" = false,
-    "isThermite3Burned" = false,
-    "isThermite4Burned" = false
-}
+local whatIsThis = {}
+whatIsThis["ongoingHeist"] = false
+whatIsThis["defenderSpawned"] = false
+whatIsThis["defender2Spawned"] = false
+whatIsThis["totalThermite"] = 0
+whatIsThis["isElevatorBurned"] = false
+whatIsThis["isThermite1Burned"] = false
+whatIsThis["isThermite2Burned"] = false
+whatIsThis["isThermite3Burned"] = false
+whatIsThis["isThermite4Burned"] = false
 
 
 

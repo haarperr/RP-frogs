@@ -1,14 +1,13 @@
-local s = {
-    "ongoingHeist" = false,
-    "defenderSpawned" = false,
-    "defender2Spawned" = false,
-    "totalThermite" = 0,
-    "isElevatorBurned" = false,
-    "isThermite1Burned" = false,
-    "isThermite2Burned" = false,
-    "isThermite3Burned" = false,
-    "isThermite4Burned" = false
-}
+local s = {}
+s["ongoingHeist"] = false
+s["defenderSpawned"] = false
+s["defender2Spawned"] = false
+s["totalThermite"] = 0
+s["isElevatorBurned"] = false
+s["isThermite1Burned"] = false
+s["isThermite2Burned"] = false
+s["isThermite3Burned"] = false
+s["isThermite4Burned"] = false
 
 -- config
 local copCount = -1 -- if not testing then -> 3
