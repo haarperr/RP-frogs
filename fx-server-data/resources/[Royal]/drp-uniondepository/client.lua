@@ -58,7 +58,13 @@ AddEventHandler("drp-ud:elevatorcheck", function()
 			Citizen.Wait(2000)
 
             -- create random ped and spawn him
-            local ped = CreateRandomPed(vector3(10.2033, -669.5919, 33.4495))
+            local hash = GetHashKey("cs_barry")
+            RequestModel(hash)
+            while not HasModelLoaded(hash) do
+                Wait(1)
+            end
+            local pedSpawn = vector3(10.2033, -669.5919, 33.4495)
+            local ped = CreatePed(4, hash, pedSpawn.x, pedSpawn.y, pedSpawn.z, 0.0, true, false)
             SetEntityAsMissionEntity(ped, true, true)
             SetPedAsNoLongerNeeded(ped)
             TaskGoStraightToCoord(ped, 1.3921, -670.2488, 32.3381, 1.0, -1, 205.2962, 0.0)
