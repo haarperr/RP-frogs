@@ -179,7 +179,7 @@ AddEventHandler("drp-doors:doorKeyFob", function()
         doorId = bollards[currentZone].doorId
         isBollard = true
     else
-        local entity = exports['drp-targetinteract']:GetEntityPlayerIsLookingAt(12.0, 3.0, 16)
+        local entity = exports['drp-targetinteract']:GetEntityPlayerIsLookingAt(12.0, 2.0, 16, PlayerPed)
 
         if not entity then
             return TriggerEvent("DoLongHudText","Door not found.",2)
