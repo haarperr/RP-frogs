@@ -924,7 +924,6 @@ Citizen.CreateThread(function()
     end
 end)
 
-Collision Thread --
 Citizen.CreateThread(function()
     Citizen.Wait(1000)
     local lastCurrentVehicleBodyHealth = 0
