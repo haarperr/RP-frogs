@@ -335,7 +335,7 @@ AddEventHandler("drp-ud:doThermite", function(vec4)
     function()
 
     end)
-)
+end)
 
 
 function spawnWave2()
