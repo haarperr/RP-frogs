@@ -150,7 +150,7 @@ function ejectionLUL()
     local carPostion = GetEntityCoords(currentVehicle)
     local playerPostion = GetEntityCoords(playerPed)
     Citizen.Wait(1750) -- Apartment protection
-    if GetDistanceBetweenCoords(carPostion.x, carPostion.y, carPostion.z, playerPostion.x, playerPostion.y, playerPostion.z, true) > 50 then
+    if GetDistanceBetweenCoords(carPostion.x, carPostion.y, carPostion.z, playerPostion.x, playerPostion.y, playerPostion.z, true) >= 50 then
         SetPedIntoVehicle(playerPed, currentVehicle, -1)
     end
 
