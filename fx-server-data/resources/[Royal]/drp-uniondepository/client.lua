@@ -130,7 +130,7 @@ Citizen.CreateThread(function()
         count = count + 1
         if count <= 1000 then
             
-            TriggerServerEvent("drp-ud:checkOngoingHeist")
+            TriggerServerEvent("drp-ud:requestVariables")
             count = 0
         end
         local enterLocation = vector3(10.4785, -672.4790, 33.4496)
