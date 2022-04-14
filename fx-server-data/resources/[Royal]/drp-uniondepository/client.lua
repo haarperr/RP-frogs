@@ -8,7 +8,7 @@ AddEventHandler("drp-ud:elevatorcheck", function()
     local coords = GetEntityCoords(player)
     local elevator = vector3(9.9859, -667.3959, 33.4492)
     local distance = GetDistanceBetweenCoords(coords.x, coords.y, coords.z, elevator.x, elevator.y, elevator.z, true)
-    if distance < 3 then
+    if distance < 3 and ongoingHeist == false then
         if exports["drp-duty"]:LawAmount() >= -1 then -- testing
             -- heist starts
             RequestAnimDict("anim@heists@ornate_bank@thermal_charge")
@@ -77,9 +77,7 @@ AddEventHandler("drp-ud:elevatorcheck", function()
                 SetEntityAsMissionEntity(ped, true, true)
                 TaskSmartFleePed(ped, PlayerPedId(), 100.0, -1, false, false)
 
-                ongoingheist = true
-
-                
+                TriggerServerEvent("drp-ud:setOngoingHeist", true)
             end,
             function()
 
@@ -133,7 +131,7 @@ Citizen.CreateThread(function()
         local enterLocation = vector3(10.4785, -672.4790, 33.4496)
         local exitLocation = vector3(0.6342, -703.1225, 16.1310)
         local playerCoords = GetEntityCoords(PlayerPedId())
-        if ongoingheist then
+        if ongoingHeist then
             if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, enterLocation.x, enterLocation.y, enterLocation.z, true) < 1.5 then
                 Draw3DText(enterLocation.x, enterLocation.y, enterLocation.z, "Press [E] to enter")
                 if IsControlJustPressed(0, 38) then
@@ -165,5 +163,5 @@ end)
 RegisterNetEvent("drp-ud:getVariables")
 AddEventHandler("drp-ud:getVariables", function(defender, ongoing)
     defenderSpawned = defender
-    ongoingheist = ongoing    
+    ongoingHeist = ongoing    
 end)

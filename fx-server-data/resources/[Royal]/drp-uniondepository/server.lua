@@ -11,3 +11,15 @@ AddEventHandler("drp-ud:requestVariables", function())
     TriggerClientEvent("drp-ud:getVariables", -1, defenderSpawned, ongoingHeist)
 end)
     
+
+RegisterServerEvent("drp-ud:setDefenderSpawned")
+AddEventHandler("drp-ud:setDefenderSpawned", function(bool)
+    defenderSpawned = bool
+    TriggerClientEvent("drp-ud:getVariables", -1, defenderSpawned, ongoingHeist)
+end)
+
+RegisterServerEvent("drp-ud:setOngoingHeist")
+AddEventHandler("drp-ud:setOngoingHeist", function(bool)
+    ongoingHeist = bool
+    TriggerClientEvent("drp-ud:getVariables", -1, defenderSpawned, ongoingHeist)
+end)
