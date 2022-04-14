@@ -327,6 +327,8 @@ Citizen.CreateThread(function()
                         end
                     end
                 end
+            end
+        end
     end
 end)
 
