@@ -1179,21 +1179,6 @@ AddEventHandler('fakeplate:off', function()
     end
 end)
 
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(0)
-        local veh = GetVehiclePedIsIn(PlayerPedId(), false)
-        if DoesEntityExist(veh) and not IsEntityDead(veh) then
-            local model = GetEntityModel(veh)
-            -- If it's not a boat, plane or helicopter, and the vehilce is off the ground with ALL wheels, then block steering/leaning left/right/up/down.
-            if not IsThisModelABoat(model) and not IsThisModelAHeli(model) and not IsThisModelAPlane(model) and not IsThisModelABike(model) and not IsThisModelABicycle(model) and IsEntityInAir(veh) then
-                DisableControlAction(0, 59) -- leaning left/right
-                DisableControlAction(0, 60) -- leaning up/down
-            end
-        end
-    end
-end)
-
 function HarnessDur(currentVehicle)
    return DecorGetFloat(currentVehicle, "vehicleHarnessDur")
 end
@@ -1225,7 +1210,7 @@ cfg = {
 
 	preventVehicleFlip = true,					-- If true, you can't turn over an upside down vehicle
 
-	sundayDriver = true,						-- If true, the accelerator response is scaled to enable easy slow driving. Will not prevent full throttle. Does not work with binary accelerators like a keyboard. Set to false to disable. The included stop-without-reversing and brake-light-hold feature does also work for keyboards.
+	sundayDriver = false,						-- If true, the accelerator response is scaled to enable easy slow driving. Will not prevent full throttle. Does not work with binary accelerators like a keyboard. Set to false to disable. The included stop-without-reversing and brake-light-hold feature does also work for keyboards.
 	sundayDriverAcceleratorCurve = 7.5,			-- The response curve to apply to the accelerator. Range 0.0 to 10.0. Higher values enables easier slow driving, meaning more pressure on the throttle is required to accelerate forward. Does nothing for keyboard drivers
 	sundayDriverBrakeCurve = 5.0,				-- The response curve to apply to the Brake. Range 0.0 to 10.0. Higher values enables easier braking, meaning more pressure on the throttle is required to brake hard. Does nothing for keyboard drivers
 
@@ -1301,7 +1286,7 @@ local tireBurstMaxNumber = cfg.randomTireBurstInterval * 1200; 												-- th
 if cfg.randomTireBurstInterval ~= 0 then tireBurstLuckyNumber = math.random(tireBurstMaxNumber) end			-- If we hit this number again randomly, a tire will burst.
 
 local function notification(msg)
-	TriggerEvent('DoLongHudText', msg, 1)
+	TriggerEvent("DoLongHudText", msg)
 end
 
 local function isPedDrivingAVehicle()
@@ -1439,13 +1424,13 @@ if cfg.torqueMultiplierEnabled or cfg.preventVehicleFlip or cfg.limpMode then
 								-- Not sliding sideways
 								if isBrakingForward == true then
 									--Stopped or going slightly forward while braking
-									DisableControlAction(2,72,true) -- Disable Brake until user lets go of brake
+									-- DisableControlAction(2,72,true) -- Disable Brake until user lets go of brake
 									SetVehicleForwardSpeed(vehicle,speed*0.98)
 									SetVehicleBrakeLights(vehicle,true)
 								end
 								if isBrakingReverse == true then
 									--Stopped or going slightly in reverse while braking
-									DisableControlAction(2,71,true) -- Disable reverse Brake until user lets go of reverse brake (Accelerator)
+									-- DisableControlAction(2,71,true) -- Disable reverse Brake until user lets go of reverse brake (Accelerator)
 									SetVehicleForwardSpeed(vehicle,speed*0.98)
 									SetVehicleBrakeLights(vehicle,true)
 								end
