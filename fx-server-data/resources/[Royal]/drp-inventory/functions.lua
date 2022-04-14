@@ -728,6 +728,10 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
         TriggerEvent("dark-vaultrob:upper:thermitedoors")
       end
 
+      if (itemid == "elevatorhackingdevice") then
+        TriggerEvent("drp-ud:elevatorcheck")
+      end
+
     if (itemid == "pdbadge") then
         local ItemInfo = GetItemInfo(slot)
         TriggerServerEvent("drp-badge:server:useitem", ItemInfo.information)
