@@ -1201,7 +1201,7 @@ cfg = {
 
 	degradingFailureThreshold = 400.0,			-- Below this value, slow health degradation will set in
 	cascadingFailureThreshold = 200.0,			-- Below this value, health cascading failure will set in
-	engineSafeGuard = 175.0,					-- Final failure value. Set it too high, and the vehicle won't smoke when disabled. Set too low, and the car will catch fire from a single bullet to the engine. At health 100 a typical car can take 3-4 bullets to the engine before catching fire.
+	engineSafeGuard = 160.0,					-- Final failure value. Set it too high, and the vehicle won't smoke when disabled. Set too low, and the car will catch fire from a single bullet to the engine. At health 100 a typical car can take 3-4 bullets to the engine before catching fire.
 
 	torqueMultiplierEnabled = true,				-- Decrease engine torque as engine gets more and more damaged
 
