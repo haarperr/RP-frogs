@@ -139,7 +139,6 @@ Citizen.CreateThread(function()
                         if defenderSpawned == false then
                             spawnWave1()
                             Wait(500)
-                            TriggerServerEvent("drp-ud:requestVariables")
                             spawnWave2()
                             Wait(500)
                             TriggerServerEvent("drp-ud:requestVariables")
