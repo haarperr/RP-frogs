@@ -1217,7 +1217,7 @@ cfg = {
 
 	compatibilityMode = false,					-- prevents other scripts from modifying the fuel tank health to avoid random engine failure with BVA 2.01 (Downside is it disabled explosion prevention)
 
-	randomTireBurstInterval = 120,				-- Number of minutes (statistically, not precisely) to drive above 22 mph before you get a tire puncture. 0=feature is disabled
+	randomTireBurstInterval = 0,				-- Number of minutes (statistically, not precisely) to drive above 22 mph before you get a tire puncture. 0=feature is disabled
 
 	classDamageMultiplier = {
 		[0] = 	0.8,		--	0: Compacts
@@ -1282,7 +1282,7 @@ local repairCost = 0
 
 math.randomseed(GetGameTimer());
 
-local tireBurstMaxNumber = cfg.randomTireBurstInterval * 1150; 												-- the tire burst lottery runs roughly 1200 times per minute
+local tireBurstMaxNumber = cfg.randomTireBurstInterval * 1200; 												-- the tire burst lottery runs roughly 1200 times per minute
 if cfg.randomTireBurstInterval ~= 0 then tireBurstLuckyNumber = math.random(tireBurstMaxNumber) end			-- If we hit this number again randomly, a tire will burst.
 
 local function notification(msg)
