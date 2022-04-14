@@ -180,13 +180,23 @@ Citizen.CreateThread(function()
                         SetPedAsEnemy(defender6, true)
                         SetPedAsEnemy(defender7, true)
 
-                        GiveWeaponToPed(defender1, GetHashKey("WEAPON_PISTOL"), 1000, false, true)
-                        GiveWeaponToPed(defender2, GetHashKey("WEAPON_PISTOL"), 1000, false, true)
-                        GiveWeaponToPed(defender3, GetHashKey("WEAPON_PISTOL"), 1000, false, true)
-                        GiveWeaponToPed(defender4, GetHashKey("WEAPON_PISTOL"), 1000, false, true)
-                        GiveWeaponToPed(defender5, GetHashKey("WEAPON_PISTOL"), 1000, false, true)
-                        GiveWeaponToPed(defender6, GetHashKey("WEAPON_PISTOL"), 1000, false, true)
-                        GiveWeaponToPed(defender7, GetHashKey("WEAPON_PISTOL"), 1000, false, true)
+                        GiveWeaponToPed(defender1, "-1074790547", 1000, false, true)
+                        GiveWeaponToPed(defender2, "-1074790547", 1000, false, true)
+                        GiveWeaponToPed(defender3, "-1074790547", 1000, false, true)
+                        GiveWeaponToPed(defender4, "-1074790547", 1000, false, true)
+                        GiveWeaponToPed(defender5, "-1074790547", 1000, false, true)
+                        GiveWeaponToPed(defender6, "-1074790547", 1000, false, true)
+                        GiveWeaponToPed(defender7, "-1074790547", 1000, false, true)
+
+                        SetPedArmour(defender1, 200)
+                        SetPedArmour(defender2, 200)
+                        SetPedArmour(defender3, 200)
+                        SetPedArmour(defender4, 200)
+                        SetPedArmour(defender5, 200)
+                        SetPedArmour(defender6, 200)
+                        SetPedArmour(defender7, 200)
+
+
 
                         TriggerServerEvent("drp-ud:setDefenderSpawned", true)
                     end
