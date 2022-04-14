@@ -79,8 +79,8 @@ AddEventHandler('drp-barriers:sbarrier', function()
 		Citizen.Wait(1)
 	end
 	
-	local sbarrier = CreateObject('prop_mp_barrier_02b', x, y, z-2, true, true, true)
-	local cone = CreateObject('prop_mp_cone_01', x, y, z-2, true, true, true)
+	local sbarrier = CreateObject('prop_mp_barrier_02b', x+1, y, z-2, true, true, true)
+	local cone = CreateObject('prop_mp_cone_01', x+1, y, z-2, true, true, true)
 	PlaceObjectOnGroundProperly(sbarrier)
 	PlaceObjectOnGroundProperly(cone)
 	SetEntityHeading(sbarrier, heading)
@@ -97,8 +97,8 @@ AddEventHandler('drp-barriers:barrier', function()
 		Citizen.Wait(1)
 	end
 	
-	local barrier = CreateObject('prop_barrier_work05', x, y, z-2, true, true, true)
-	local cone = CreateObject('prop_mp_cone_01', x, y-1, z-2, true, true, true)
+	local barrier = CreateObject('prop_barrier_work05', x+1, y, z-2, true, true, true)
+	local cone = CreateObject('prop_mp_cone_01', x+1, y, z-2, true, true, true)
 	PlaceObjectOnGroundProperly(barrier)
 	PlaceObjectOnGroundProperly(cone)
 	SetEntityHeading(barrier, heading)
