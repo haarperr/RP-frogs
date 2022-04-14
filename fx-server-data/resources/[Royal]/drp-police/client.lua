@@ -1393,6 +1393,7 @@ AddEventHandler('FlipVehicle', function()
 	    local coordA = GetEntityCoords(playerped, 1)
 	    local coordB = GetOffsetFromEntityInWorldCoords(playerped, 0.0, 100.0, 0.0)
 		local targetVehicle = getVehicleInDirection(coordA, coordB)
+		
 		local pPitch, pRoll, pYaw = GetEntityRotation(playerped)
 		local vPitch, vRoll, vYaw = GetEntityRotation(targetVehicle)
 		SetEntityRotation(targetVehicle, pPitch, vRoll, vYaw, 1, true)
@@ -1498,9 +1499,18 @@ function getVehicleInDirection(coordFrom, coordTo)
 		if vehicle ~= 0 then break end
 	end
 	
+	if vehicle == nil then
+		vehicle = GetVehiclePedIsIn(PlayerPedId(), true)
+	end
+
 	local distance = Vdist2(coordFrom, GetEntityCoords(vehicle))
 	
-	if distance > 25 then vehicle = nil end
+	if distance > 25 then
+		vehicle = nil
+	end
+
+	
+
 
     return vehicle ~= nil and vehicle or 0
 end
