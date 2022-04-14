@@ -8968,7 +8968,6 @@ DOOR_CONFIG = {
          },
         cid = {
           [74] = true
-          
         }
       }
     },

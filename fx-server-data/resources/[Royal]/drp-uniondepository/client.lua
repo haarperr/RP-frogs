@@ -1,13 +1,6 @@
 local ongoingHeist = false
 local defenderSpawned = false
-
-local defender1temp = 0
-local defender2temp = 0
-local defender3temp = 0
-local defender4temp = 0
-local defender5temp = 0
-local defender6temp = 0
-local defender7temp = 0
+local defender2Spawned = false
 
 RegisterNetEvent("drp-ud:elevatorcheck")
 AddEventHandler("drp-ud:elevatorcheck", function()
@@ -145,72 +138,10 @@ Citizen.CreateThread(function()
                         
                         TriggerServerEvent("drp-ud:requestVariables")
                         if defenderSpawned == false then
-                            local defender1Pos = vector3(-0.7767, -689.3953, 16.1307)
-                            local defender2Pos = vector3(9.1506, -708.4230, 16.1310)
-                            local defender3Pos = vector3(4.9398, -707.7214, 16.1310)
-                            local defender4Pos = vector3(6.8620, -702.1044, 16.1310)
-                            local defender5Pos = vector3(-13.3691, -695.4658, 16.1410)
-                            local defender6Pos = vector3(-0.0939, -688.5615, 16.1308)
-                            local defender7Pos = vector3(-4.9599, -697.6608, 16.1310)
-
-
-                            local defender1 = CreatePed(4, hash, defender1Pos.x, defender1Pos.y, defender1Pos.z, 0.0, true, true)
-                            local defender2 = CreatePed(4, hash, defender2Pos.x, defender2Pos.y, defender2Pos.z, 0.0, true, true)
-                            local defender3 = CreatePed(4, hash, defender3Pos.x, defender3Pos.y, defender3Pos.z, 0.0, true, true)
-                            local defender4 = CreatePed(4, hash, defender4Pos.x, defender4Pos.y, defender4Pos.z, 0.0, true, true)
-                            local defender5 = CreatePed(4, hash, defender5Pos.x, defender5Pos.y, defender5Pos.z, 0.0, true, true)
-                            local defender6 = CreatePed(4, hash, defender6Pos.x, defender6Pos.y, defender6Pos.z, 0.0, true, true)
-                            local defender7 = CreatePed(4, hash, defender7Pos.x, defender7Pos.y, defender7Pos.z, 0.0, true, true)
-                            
-                            defender1temp = defender1
-                            defender2temp = defender2
-                            defender3temp = defender3
-                            defender4temp = defender4
-                            defender5temp = defender5
-                            defender6temp = defender6
-                            defender7temp = defender7
-
-                            SetEntityAsMissionEntity(defender1, true, true)
-                            SetEntityAsMissionEntity(defender2, true, true)
-                            SetEntityAsMissionEntity(defender3, true, true)
-                            SetEntityAsMissionEntity(defender4, true, true)
-                            SetEntityAsMissionEntity(defender5, true, true)
-                            SetEntityAsMissionEntity(defender6, true, true)
-                            SetEntityAsMissionEntity(defender7, true, true)
-
-                            SetPedAsEnemy(defender1, true)
-                            SetPedAsEnemy(defender2, true)
-                            SetPedAsEnemy(defender3, true)
-                            SetPedAsEnemy(defender4, true)
-                            SetPedAsEnemy(defender5, true)
-                            SetPedAsEnemy(defender6, true)
-                            SetPedAsEnemy(defender7, true)
-
-                            SetPedCombatAttributes(defender1, 46, true)
-                            SetPedCombatAttributes(defender2, 46, true)
-                            SetPedCombatAttributes(defender3, 46, true)
-                            SetPedCombatAttributes(defender4, 46, true)
-                            SetPedCombatAttributes(defender5, 46, true)
-                            SetPedCombatAttributes(defender6, 46, true)
-                            SetPedCombatAttributes(defender7, 46, true)
-
-                            GiveWeaponToPed(defender1, GetHashKey("weapon_pistol"), 1000, false, true)
-                            GiveWeaponToPed(defender2, GetHashKey("weapon_appistol"), 1000, false, true)
-                            GiveWeaponToPed(defender3, GetHashKey("weapon_pistol_mk2"), 1000, false, true)
-                            GiveWeaponToPed(defender4, GetHashKey("weapon_vintagepistol"), 1000, false, true)
-                            GiveWeaponToPed(defender5, GetHashKey("weapon_pistol50"), 1000, false, true)
-                            GiveWeaponToPed(defender6, GetHashKey("weapon_smg"), 1000, false, true)
-                            GiveWeaponToPed(defender7, GetHashKey("weapon_combatpdw"), 1000, false, true)
-
-                            SetPedArmour(defender1, 200)
-                            SetPedArmour(defender2, 200)
-                            SetPedArmour(defender3, 200)
-                            SetPedArmour(defender4, 200)
-                            SetPedArmour(defender5, 200)
-                            SetPedArmour(defender6, 200)
-                            SetPedArmour(defender7, 200)
-
+                            spawnWave1()
+                            spawnWave2()
                             TriggerServerEvent("drp-ud:setDefenderSpawned", true)
+                            TriggerServerEvent("drp-ud:setDefender2Spawned", true)
                             TriggerServerEvent("drp-ud:requestVariables")
                         end
                     end
@@ -228,115 +159,158 @@ Citizen.CreateThread(function()
                 end
             end
         end
-
-        if defenderSpawned then
-            -- check if temp defender is dead
-            if IsPedDeadOrDying(defender1temp) then
-                if IsPedDeadOrDying(defender2temp) then
-                    if IsPedDeadOrDying(defender3temp) then
-                        if IsPedDeadOrDying(defender4temp) then
-                            if IsPedDeadOrDying(defender5temp) then
-                                if IsPedDeadOrDying(defender6temp) then
-                                    if IsPedDeadOrDying(defender7temp) then
-                                        TriggerServerEvent("drp-doors:change-lock-state", 543, true, true)
-                                        
-                                        local defender1Pos = vector3(4.0459, -684.6859, 16.1306)
-                                        local defender2Pos = vector3(-8.2854, -680.3914, 16.1306)
-                                        local defender3Pos = vector3(-0.7415, -675.3206, 16.1306)
-                                        local defender4Pos = vector3(2.1087, -676.3000, 16.1306)
-                                        local defender5Pos = vector3(0.1721, -666.0191, 16.1306)
-                                        local defender6Pos = vector3(10.2273, -668.7737, 16.1306)
-                                        local defender7Pos = vector3(8.3386, -671.1352, 16.1306)
-                                        local defender8Pos = vector3(6.0369, -675.4369, 16.1352)
-                                        local defender9Pos = vector3(0.4780, -660.4468, 16.1312)
-                                        local defender10Pos = vector3(4.1543, -660.3689, 16.1312)
-                                        local defender11Pos = vector3(10.9999, -664.5197, 16.1201)
-            
-            
-                                        local defender1 = CreatePed(4, hash, defender1Pos.x, defender1Pos.y, defender1Pos.z, 0.0, true, true)
-                                        local defender2 = CreatePed(4, hash, defender2Pos.x, defender2Pos.y, defender2Pos.z, 0.0, true, true)
-                                        local defender3 = CreatePed(4, hash, defender3Pos.x, defender3Pos.y, defender3Pos.z, 0.0, true, true)
-                                        local defender4 = CreatePed(4, hash, defender4Pos.x, defender4Pos.y, defender4Pos.z, 0.0, true, true)
-                                        local defender5 = CreatePed(4, hash, defender5Pos.x, defender5Pos.y, defender5Pos.z, 0.0, true, true)
-                                        local defender6 = CreatePed(4, hash, defender6Pos.x, defender6Pos.y, defender6Pos.z, 0.0, true, true)
-                                        local defender7 = CreatePed(4, hash, defender7Pos.x, defender7Pos.y, defender7Pos.z, 0.0, true, true)
-                                        local defender8 = CreatePed(4, hash, defender8Pos.x, defender8Pos.y, defender8Pos.z, 0.0, true, true)
-                                        local defender9 = CreatePed(4, hash, defender9Pos.x, defender9Pos.y, defender9Pos.z, 0.0, true, true)
-                                        local defender10 = CreatePed(4, hash, defender10Pos.x, defender10Pos.y, defender10Pos.z, 0.0, true, true)
-                                        local defender11 = CreatePed(4, hash, defender11Pos.x, defender11Pos.y, defender11Pos.z, 0.0, true, true)
-                                                    
-                                        SetEntityAsMissionEntity(defender1, true, true)
-                                        SetEntityAsMissionEntity(defender2, true, true)
-                                        SetEntityAsMissionEntity(defender3, true, true)
-                                        SetEntityAsMissionEntity(defender4, true, true)
-                                        SetEntityAsMissionEntity(defender5, true, true)
-                                        SetEntityAsMissionEntity(defender6, true, true)
-                                        SetEntityAsMissionEntity(defender7, true, true)
-                                        SetEntityAsMissionEntity(defender8, true, true)
-                                        SetEntityAsMissionEntity(defender9, true, true)
-                                        SetEntityAsMissionEntity(defender10, true, true)
-                                        SetEntityAsMissionEntity(defender11, true, true)
-            
-                                        SetPedAsEnemy(defender1, true)
-                                        SetPedAsEnemy(defender2, true)
-                                        SetPedAsEnemy(defender3, true)
-                                        SetPedAsEnemy(defender4, true)
-                                        SetPedAsEnemy(defender5, true)
-                                        SetPedAsEnemy(defender6, true)
-                                        SetPedAsEnemy(defender7, true)
-                                        SetPedAsEnemy(defender8, true)
-                                        SetPedAsEnemy(defender9, true)
-                                        SetPedAsEnemy(defender10, true)
-                                        SetPedAsEnemy(defender11, true)
-            
-                                        SetPedCombatAttributes(defender1, 46, true)
-                                        SetPedCombatAttributes(defender2, 46, true)
-                                        SetPedCombatAttributes(defender3, 46, true)
-                                        SetPedCombatAttributes(defender4, 46, true)
-                                        SetPedCombatAttributes(defender5, 46, true)
-                                        SetPedCombatAttributes(defender6, 46, true)
-                                        SetPedCombatAttributes(defender7, 46, true)
-                                        SetPedCombatAttributes(defender8, 46, true)
-                                        SetPedCombatAttributes(defender9, 46, true)
-                                        SetPedCombatAttributes(defender10, 46, true)
-                                        SetPedCombatAttributes(defender11, 46, true)
-            
-                                        GiveWeaponToPed(defender1, GetHashKey("weapon_pistol"), 1000, false, true)
-                                        GiveWeaponToPed(defender2, GetHashKey("weapon_appistol"), 1000, false, true)
-                                        GiveWeaponToPed(defender3, GetHashKey("weapon_pistol_mk2"), 1000, false, true)
-                                        GiveWeaponToPed(defender4, GetHashKey("weapon_vintagepistol"), 1000, false, true)
-                                        GiveWeaponToPed(defender5, GetHashKey("weapon_pistol50"), 1000, false, true)
-                                        GiveWeaponToPed(defender6, GetHashKey("weapon_smg"), 1000, false, true)
-                                        GiveWeaponToPed(defender7, GetHashKey("weapon_combatpdw"), 1000, false, true)
-                                        GiveWeaponToPed(defender8, GetHashKey("weapon_microsmg"), 1000, false, true)
-                                        GiveWeaponToPed(defender9, GetHashKey("weapon_smg_mk2"), 1000, false, true)
-                                        GiveWeaponToPed(defender10, GetHashKey("weapon_assaultrifle"), 1000, false, true)
-                                        GiveWeaponToPed(defender11, GetHashKey("weapon_assaultrifle_mk2"), 1000, false, true)
-            
-                                        SetPedArmour(defender1, 350)
-                                        SetPedArmour(defender2, 350)
-                                        SetPedArmour(defender3, 350)
-                                        SetPedArmour(defender4, 350)
-                                        SetPedArmour(defender5, 350)
-                                        SetPedArmour(defender6, 350)
-                                        SetPedArmour(defender7, 350)
-                                        SetPedArmour(defender8, 350)
-                                        SetPedArmour(defender9, 350)
-                                        SetPedArmour(defender10, 400)
-                                        SetPedArmour(defender11, 400)
-                                    end
-                                end
-                            end
-                        end
-                    end
-                end
-            end
-        end
     end
 end)
 
 RegisterNetEvent("drp-ud:getVariables")
-AddEventHandler("drp-ud:getVariables", function(defender, ongoing)
+AddEventHandler("drp-ud:getVariables", function(defender, defender2, ongoing)
     defenderSpawned = defender
+    defender2Spawned = defender2
     ongoingHeist = ongoing    
 end)
+
+function spawnWave1()
+    local defender1Pos = vector3(-0.7767, -689.3953, 16.1307)
+    local defender2Pos = vector3(9.1506, -708.4230, 16.1310)
+    local defender3Pos = vector3(4.9398, -707.7214, 16.1310)
+    local defender4Pos = vector3(6.8620, -702.1044, 16.1310)
+    local defender5Pos = vector3(-13.3691, -695.4658, 16.1410)
+    local defender6Pos = vector3(-0.0939, -688.5615, 16.1308)
+    local defender7Pos = vector3(-4.9599, -697.6608, 16.1310)
+
+
+    local defender1 = CreatePed(4, hash, defender1Pos.x, defender1Pos.y, defender1Pos.z, 0.0, true, true)
+    local defender2 = CreatePed(4, hash, defender2Pos.x, defender2Pos.y, defender2Pos.z, 0.0, true, true)
+    local defender3 = CreatePed(4, hash, defender3Pos.x, defender3Pos.y, defender3Pos.z, 0.0, true, true)
+    local defender4 = CreatePed(4, hash, defender4Pos.x, defender4Pos.y, defender4Pos.z, 0.0, true, true)
+    local defender5 = CreatePed(4, hash, defender5Pos.x, defender5Pos.y, defender5Pos.z, 0.0, true, true)
+    local defender6 = CreatePed(4, hash, defender6Pos.x, defender6Pos.y, defender6Pos.z, 0.0, true, true)
+    local defender7 = CreatePed(4, hash, defender7Pos.x, defender7Pos.y, defender7Pos.z, 0.0, true, true)
+                        
+    SetEntityAsMissionEntity(defender1, true, true)
+    SetEntityAsMissionEntity(defender2, true, true)
+    SetEntityAsMissionEntity(defender3, true, true)
+    SetEntityAsMissionEntity(defender4, true, true)
+    SetEntityAsMissionEntity(defender5, true, true)
+    SetEntityAsMissionEntity(defender6, true, true)
+    SetEntityAsMissionEntity(defender7, true, true)
+
+    SetPedAsEnemy(defender1, true)
+    SetPedAsEnemy(defender2, true)
+    SetPedAsEnemy(defender3, true)
+    SetPedAsEnemy(defender4, true)
+    SetPedAsEnemy(defender5, true)
+    SetPedAsEnemy(defender6, true)
+    SetPedAsEnemy(defender7, true)
+
+    SetPedCombatAttributes(defender1, 46, true)
+    SetPedCombatAttributes(defender2, 46, true)
+    SetPedCombatAttributes(defender3, 46, true)
+    SetPedCombatAttributes(defender4, 46, true)
+    SetPedCombatAttributes(defender5, 46, true)
+    SetPedCombatAttributes(defender6, 46, true)
+    SetPedCombatAttributes(defender7, 46, true)
+
+    GiveWeaponToPed(defender1, GetHashKey("weapon_pistol"), 1000, false, true)
+    GiveWeaponToPed(defender2, GetHashKey("weapon_appistol"), 1000, false, true)
+    GiveWeaponToPed(defender3, GetHashKey("weapon_pistol_mk2"), 1000, false, true)
+    GiveWeaponToPed(defender4, GetHashKey("weapon_vintagepistol"), 1000, false, true)
+    GiveWeaponToPed(defender5, GetHashKey("weapon_pistol50"), 1000, false, true)
+    GiveWeaponToPed(defender6, GetHashKey("weapon_smg"), 1000, false, true)
+    GiveWeaponToPed(defender7, GetHashKey("weapon_combatpdw"), 1000, false, true)
+
+    SetPedArmour(defender1, 200)
+    SetPedArmour(defender2, 200)
+    SetPedArmour(defender3, 200)
+    SetPedArmour(defender4, 200)
+    SetPedArmour(defender5, 200)
+    SetPedArmour(defender6, 200)
+    SetPedArmour(defender7, 200)
+end
+
+function spawnWave2()
+    local defender1Pos = vector3(4.0459, -684.6859, 16.1306)
+    local defender2Pos = vector3(-8.2854, -680.3914, 16.1306)
+    local defender3Pos = vector3(-0.7415, -675.3206, 16.1306)
+    local defender4Pos = vector3(2.1087, -676.3000, 16.1306)
+    local defender5Pos = vector3(0.1721, -666.0191, 16.1306)
+    local defender6Pos = vector3(10.2273, -668.7737, 16.1306)
+    local defender7Pos = vector3(8.3386, -671.1352, 16.1306)
+    local defender8Pos = vector3(6.0369, -675.4369, 16.1352)
+    local defender9Pos = vector3(0.4780, -660.4468, 16.1312)
+    local defender10Pos = vector3(4.1543, -660.3689, 16.1312)
+    local defender11Pos = vector3(10.9999, -664.5197, 16.1201)
+
+
+    local defender1 = CreatePed(4, hash, defender1Pos.x, defender1Pos.y, defender1Pos.z, 0.0, true, true)
+    local defender2 = CreatePed(4, hash, defender2Pos.x, defender2Pos.y, defender2Pos.z, 0.0, true, true)
+    local defender3 = CreatePed(4, hash, defender3Pos.x, defender3Pos.y, defender3Pos.z, 0.0, true, true)
+    local defender4 = CreatePed(4, hash, defender4Pos.x, defender4Pos.y, defender4Pos.z, 0.0, true, true)
+    local defender5 = CreatePed(4, hash, defender5Pos.x, defender5Pos.y, defender5Pos.z, 0.0, true, true)
+    local defender6 = CreatePed(4, hash, defender6Pos.x, defender6Pos.y, defender6Pos.z, 0.0, true, true)
+    local defender7 = CreatePed(4, hash, defender7Pos.x, defender7Pos.y, defender7Pos.z, 0.0, true, true)
+    local defender8 = CreatePed(4, hash, defender8Pos.x, defender8Pos.y, defender8Pos.z, 0.0, true, true)
+    local defender9 = CreatePed(4, hash, defender9Pos.x, defender9Pos.y, defender9Pos.z, 0.0, true, true)
+    local defender10 = CreatePed(4, hash, defender10Pos.x, defender10Pos.y, defender10Pos.z, 0.0, true, true)
+    local defender11 = CreatePed(4, hash, defender11Pos.x, defender11Pos.y, defender11Pos.z, 0.0, true, true)
+                
+    SetEntityAsMissionEntity(defender1, true, true)
+    SetEntityAsMissionEntity(defender2, true, true)
+    SetEntityAsMissionEntity(defender3, true, true)
+    SetEntityAsMissionEntity(defender4, true, true)
+    SetEntityAsMissionEntity(defender5, true, true)
+    SetEntityAsMissionEntity(defender6, true, true)
+    SetEntityAsMissionEntity(defender7, true, true)
+    SetEntityAsMissionEntity(defender8, true, true)
+    SetEntityAsMissionEntity(defender9, true, true)
+    SetEntityAsMissionEntity(defender10, true, true)
+    SetEntityAsMissionEntity(defender11, true, true)
+
+    SetPedAsEnemy(defender1, true)
+    SetPedAsEnemy(defender2, true)
+    SetPedAsEnemy(defender3, true)
+    SetPedAsEnemy(defender4, true)
+    SetPedAsEnemy(defender5, true)
+    SetPedAsEnemy(defender6, true)
+    SetPedAsEnemy(defender7, true)
+    SetPedAsEnemy(defender8, true)
+    SetPedAsEnemy(defender9, true)
+    SetPedAsEnemy(defender10, true)
+    SetPedAsEnemy(defender11, true)
+
+    SetPedCombatAttributes(defender1, 46, true)
+    SetPedCombatAttributes(defender2, 46, true)
+    SetPedCombatAttributes(defender3, 46, true)
+    SetPedCombatAttributes(defender4, 46, true)
+    SetPedCombatAttributes(defender5, 46, true)
+    SetPedCombatAttributes(defender6, 46, true)
+    SetPedCombatAttributes(defender7, 46, true)
+    SetPedCombatAttributes(defender8, 46, true)
+    SetPedCombatAttributes(defender9, 46, true)
+    SetPedCombatAttributes(defender10, 46, true)
+    SetPedCombatAttributes(defender11, 46, true)
+
+    GiveWeaponToPed(defender1, GetHashKey("weapon_pistol"), 1000, false, true)
+    GiveWeaponToPed(defender2, GetHashKey("weapon_appistol"), 1000, false, true)
+    GiveWeaponToPed(defender3, GetHashKey("weapon_pistol_mk2"), 1000, false, true)
+    GiveWeaponToPed(defender4, GetHashKey("weapon_vintagepistol"), 1000, false, true)
+    GiveWeaponToPed(defender5, GetHashKey("weapon_pistol50"), 1000, false, true)
+    GiveWeaponToPed(defender6, GetHashKey("weapon_smg"), 1000, false, true)
+    GiveWeaponToPed(defender7, GetHashKey("weapon_combatpdw"), 1000, false, true)
+    GiveWeaponToPed(defender8, GetHashKey("weapon_microsmg"), 1000, false, true)
+    GiveWeaponToPed(defender9, GetHashKey("weapon_smg_mk2"), 1000, false, true)
+    GiveWeaponToPed(defender10, GetHashKey("weapon_assaultrifle"), 1000, false, true)
+    GiveWeaponToPed(defender11, GetHashKey("weapon_assaultrifle_mk2"), 1000, false, true)
+
+    SetPedArmour(defender1, 350)
+    SetPedArmour(defender2, 350)
+    SetPedArmour(defender3, 350)
+    SetPedArmour(defender4, 350)
+    SetPedArmour(defender5, 350)
+    SetPedArmour(defender6, 350)
+    SetPedArmour(defender7, 350)
+    SetPedArmour(defender8, 350)
+    SetPedArmour(defender9, 350)
+    SetPedArmour(defender10, 400)
+    SetPedArmour(defender11, 400)
+end
