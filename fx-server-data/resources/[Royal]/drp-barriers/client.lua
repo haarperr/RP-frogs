@@ -7,6 +7,7 @@ RegisterCommand("cone", function()
 	local can = (exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' or exports["isPed"]:isPed("myJob") == 'judge' or exports["isPed"]:isPed("myJob") == 'district_attorney' or exports["isPed"]:isPed("myJob") == 'public_defender') and not exports['drp-death']:GetDeathStatus()
     if can then 
 		TriggerEvent('drp-barriers:cone')
+		TriggerServerEvent("drp-barriers:stoptraffic", GetEntityCoords(GetPlayerPed(-1)))")
 	end
 end)
 
@@ -14,6 +15,7 @@ RegisterCommand("sbarrier", function()
 	local can = (exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' or exports["isPed"]:isPed("myJob") == 'judge' or exports["isPed"]:isPed("myJob") == 'district_attorney' or exports["isPed"]:isPed("myJob") == 'public_defender') and not exports['drp-death']:GetDeathStatus()
     if can then 
 		TriggerEvent('drp-barriers:sbarrier')
+		TriggerServerEvent("drp-barriers:stoptraffic", GetEntityCoords(GetPlayerPed(-1)))")
 	end
 end)
 
@@ -21,6 +23,7 @@ RegisterCommand("barrier", function()
 	local can = (exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' or exports["isPed"]:isPed("myJob") == 'judge' or exports["isPed"]:isPed("myJob") == 'district_attorney' or exports["isPed"]:isPed("myJob") == 'public_defender') and not exports['drp-death']:GetDeathStatus()
     if can then 
 		TriggerEvent('drp-barriers:barrier')
+		TriggerServerEvent("drp-barriers:stoptraffic", GetEntityCoords(GetPlayerPed(-1)))")
 	end
 end)
 
