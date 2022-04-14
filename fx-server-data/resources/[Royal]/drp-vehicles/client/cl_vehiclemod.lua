@@ -445,11 +445,11 @@ RegisterNetEvent("carhud:ejection:client")
 AddEventHandler("carhud:ejection:client",function(value)
     veloc = value
     if seatbelt then
-        if math.random(100) > 83 then -- 17%
+        if math.random(100) >= 90 then -- 10%
             ejectionLUL()
         end
     else
-        if math.random(100) > 45 then -- 55%
+        if math.random(100) >= 60 then -- 40%
             ejectionLUL()
         end
     end
@@ -737,7 +737,6 @@ Citizen.CreateThread(function()
                     end
                     airtime = airtime + 1
                 elseif airtime > 0 then
-
                     if airtime > 110 then
                         Citizen.Wait(333)
                         local landingCoords = GetEntityCoords(veh)
@@ -927,107 +926,107 @@ Citizen.CreateThread(function()
     end
 end)
 
--- Collision Thread --
--- Citizen.CreateThread(function()
---     Citizen.Wait(1000)
---     local lastCurrentVehicleBodyHealth = 0
---     local lastCurrentVehicleSpeed = 0
--- 
---     local function eject(percent, speed, trigger)
---         if math.random(math.ceil(speed)) > percent then
---             ejectionLUL()
---             if trigger then
---           --      TriggerEvent("civilian:alertPolice",50.0,"carcrash",0)
---             end
---         end
---     end
--- 
---     while true do
---         Citizen.Wait(1)
---         if currentVehicle ~= nil and currentVehicle ~= false and currentVehicle ~= 0 then
---             SetPedHelmet(playerPed, false)
---             if driverPed == playerPed then
---                 local currentEngineHealth = GetVehicleEngineHealth(currentVehicle)
---                 if currentEngineHealth < 0.0 then
---                     -- Dont blow up
---                     SetVehicleEngineHealth(currentVehicle,0.0)
---                 end
--- 
---                 local collision = HasEntityCollidedWithAnything(currentVehicle)
---                 if collision == false then
---                     lastCurrentVehicleSpeed = GetEntitySpeed(currentVehicle)
---                     lastCurrentVehicleBodyHealth = GetVehicleBodyHealth(currentVehicle)
---                     veloc = GetEntityVelocity(currentVehicle)
---                     if currentEngineHealth > 15.0 and (currentEngineHealth < 200.0 or lastCurrentVehicleBodyHealth < 60.0) then
---                         carCrash()
---                         stalled = true
---                         Citizen.Wait(1000)
---                     end
---                 else
---                     Citizen.Wait(100)
---                     local currentVehicleBodyHealth = GetVehicleBodyHealth(currentVehicle)
---                     local currentVehicleSpeed = GetEntitySpeed(currentVehicle)
---                     if currentEngineHealth > 0.0 and lastCurrentVehicleBodyHealth - currentVehicleBodyHealth > 20 then
---                         if lastCurrentVehicleSpeed > 35.5 and currentVehicleSpeed < (lastCurrentVehicleSpeed * 0.75) then
---                             if not IsThisModelABike(GetEntityModel(currentVehicle)) then
---                                 carCrash()
---                                 stalled = true
---                                 sendServerEventForPassengers("carhud:ejection:server", veloc)
---                                 if harness and harnessDurability > 0.0 then
---                                     harnessDurability = harnessDurability - 0.1                                                                                                       
---                                     TriggerServerEvent("vehicleMod:updateHarness", GetVehicleNumberPlateText(currentVehicle), harnessDurability)
---                                     if DecorExistOn(currentVehicle, "vehicleHarnessDur") then
---                                         DecorSetFloat(currentVehicle, "vehicleHarnessDur", harnessDurability)                                        
---                                     end
---                                     if harnessDurability <= 0.0 then
---                                         harnessDurability = 0.0
---                                         TriggerEvent("event:control:vehicleMod")
---                                         TriggerEvent('DoLongHudText', 'Harness Broken!', 2)
---                                     end
---                                 elseif not seatbelt then
---                                     eject(30.5, lastCurrentVehicleSpeed, true)
---                                 elseif seatbelt and lastCurrentVehicleSpeed > 41.6 then
---                                     eject(33.0, lastCurrentVehicleSpeed, false)
---                                 end
---                                 -- Buffer after crash
---                                 Citizen.Wait(1000)
---                                 lastCurrentVehicleSpeed = 0.0
---                                 lastCurrentVehicleBodyHealth = currentVehicleBodyHealth
---                             else
---                                 -- IsBike
---                                 carCrash()
---                                 local stallchance = math.random(1,3)
---                                 if stallchance == 3 then
---                                     stalled = true
---                                 end -- 1/3 stall chance on bikes maybe?
---                                 Citizen.Wait(1000)
---                                 lastCurrentVehicleSpeed = 0.0
---                                 lastCurrentVehicleBodyHealth = currentVehicleBodyHealth
---                             end
---                         end
---                     else
---                         if currentEngineHealth > 15.0 and (currentEngineHealth < 200.0 or currentVehicleBodyHealth < 60.0) then
---                             carCrash()
---                             stalled = true
---                             Citizen.Wait(1000)
---                         end
---                         lastCurrentVehicleSpeed = currentVehicleSpeed
---                         lastCurrentVehicleBodyHealth = currentVehicleBodyHealth
---                     end
---                 end
---             else
---                 -- Not driver
---                 Citizen.Wait(1000)
---             end
---         else
---             -- Not in veh
---             currentVehicleSpeed = 0
---             lastCurrentVehicleSpeed = 0
---             lastCurrentVehicleBodyHealth = 0
---             Citizen.Wait(4000)
---         end
---     end
--- end)
+Collision Thread --
+Citizen.CreateThread(function()
+    Citizen.Wait(1000)
+    local lastCurrentVehicleBodyHealth = 0
+    local lastCurrentVehicleSpeed = 0
+
+    local function eject(percent, speed, trigger)
+        if math.random(math.ceil(speed)) > percent then
+            ejectionLUL()
+            if trigger then
+          --      TriggerEvent("civilian:alertPolice",50.0,"carcrash",0)
+            end
+        end
+    end
+
+    while true do
+        Citizen.Wait(1)
+        if currentVehicle ~= nil and currentVehicle ~= false and currentVehicle ~= 0 then
+            SetPedHelmet(playerPed, false)
+            if driverPed == playerPed then
+                local currentEngineHealth = GetVehicleEngineHealth(currentVehicle)
+                if currentEngineHealth < 0.0 then
+                    -- Dont blow up
+                    SetVehicleEngineHealth(currentVehicle,0.0)
+                end
+
+                local collision = HasEntityCollidedWithAnything(currentVehicle)
+                if collision == false then
+                    lastCurrentVehicleSpeed = GetEntitySpeed(currentVehicle)
+                    lastCurrentVehicleBodyHealth = GetVehicleBodyHealth(currentVehicle)
+                    veloc = GetEntityVelocity(currentVehicle)
+                    if currentEngineHealth > 15.0 and (currentEngineHealth < 200.0 or lastCurrentVehicleBodyHealth < 60.0) then
+                        carCrash()
+                        -- stalled = true
+                        Citizen.Wait(1000)
+                    end
+                else
+                    Citizen.Wait(100)
+                    local currentVehicleBodyHealth = GetVehicleBodyHealth(currentVehicle)
+                    local currentVehicleSpeed = GetEntitySpeed(currentVehicle)
+                    if currentEngineHealth > 0.0 and lastCurrentVehicleBodyHealth - currentVehicleBodyHealth > 20 then
+                        if lastCurrentVehicleSpeed > 35.5 and currentVehicleSpeed < (lastCurrentVehicleSpeed * 0.75) then
+                            if not IsThisModelABike(GetEntityModel(currentVehicle)) then
+                                carCrash()
+                                -- stalled = true
+                                sendServerEventForPassengers("carhud:ejection:server", veloc)
+                                if harness and harnessDurability > 0.0 then
+                                    harnessDurability = harnessDurability - 0.1                                                                                                       
+                                    TriggerServerEvent("vehicleMod:updateHarness", GetVehicleNumberPlateText(currentVehicle), harnessDurability)
+                                    if DecorExistOn(currentVehicle, "vehicleHarnessDur") then
+                                        DecorSetFloat(currentVehicle, "vehicleHarnessDur", harnessDurability)                                        
+                                    end
+                                    if harnessDurability <= 0.0 then
+                                        harnessDurability = 0.0
+                                        TriggerEvent("event:control:vehicleMod")
+                                        TriggerEvent('DoLongHudText', 'Harness Broken!', 2)
+                                    end
+                                elseif not seatbelt then
+                                    eject(30.5, lastCurrentVehicleSpeed, true)
+                                elseif seatbelt and lastCurrentVehicleSpeed > 41.6 then
+                                    eject(33.0, lastCurrentVehicleSpeed, false)
+                                end
+                                -- Buffer after crash
+                                Citizen.Wait(1000)
+                                lastCurrentVehicleSpeed = 0.0
+                                lastCurrentVehicleBodyHealth = currentVehicleBodyHealth
+                            else
+                                -- IsBike
+                                carCrash()
+                                -- local stallchance = math.random(1,3)
+                                -- if stallchance == 3 then
+                                --     stalled = true
+                                -- end -- 1/3 stall chance on bikes maybe?
+                                Citizen.Wait(1000)
+                                lastCurrentVehicleSpeed = 0.0
+                                lastCurrentVehicleBodyHealth = currentVehicleBodyHealth
+                            end
+                        end
+                    else
+                        if currentEngineHealth > 15.0 and (currentEngineHealth < 200.0 or currentVehicleBodyHealth < 60.0) then
+                            carCrash()
+                            -- stalled = true
+                            Citizen.Wait(1000)
+                        end
+                        lastCurrentVehicleSpeed = currentVehicleSpeed
+                        lastCurrentVehicleBodyHealth = currentVehicleBodyHealth
+                    end
+                end
+            else
+                -- Not driver
+                Citizen.Wait(1000)
+            end
+        else
+            -- Not in veh
+            currentVehicleSpeed = 0
+            lastCurrentVehicleSpeed = 0
+            lastCurrentVehicleBodyHealth = 0
+            Citizen.Wait(4000)
+        end
+    end
+end)
 -- 
 -- -- NOS Thread --
 -- Citizen.CreateThread(function()
