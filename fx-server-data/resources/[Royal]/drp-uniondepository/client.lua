@@ -237,6 +237,7 @@ Citizen.CreateThread(function()
                                 if IsPedDeadOrDying(defender6temp) then
                                     if IsPedDeadOrDying(defender7temp) then
                                         TriggerServerEvent("drp-doors:change-lock-state", 543, true, true)
+                                        
                                         local defender1Pos = vector3(4.0459, -684.6859, 16.1306)
                                         local defender2Pos = vector3(-8.2854, -680.3914, 16.1306)
                                         local defender3Pos = vector3(-0.7415, -675.3206, 16.1306)
