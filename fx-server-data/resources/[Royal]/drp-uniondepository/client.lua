@@ -62,8 +62,6 @@ AddEventHandler("drp-ud:elevatorcheck", function()
                 DeleteObject(bag)
                 StopParticleFxLooped(effect, 0)
                 Citizen.Wait(2000)
-                TriggerServerEvent("drp-doors:change-lock-state", 541, true, true)
-                TriggerServerEvent("drp-doors:change-lock-state", 542, true, true)
 
                 TriggerServerEvent("drp-ud:setOngoingHeist", true)
                 TriggerServerEvent("drp-ud:requestVariables")
