@@ -1,4 +1,6 @@
 local ongoingHeist = false
+local defenderSpawned = false
+
 
 RegisterNetEvent("drp-ud:elevatorcheck")
 AddEventHandler("drp-ud:elevatorcheck", function()
@@ -24,7 +26,7 @@ AddEventHandler("drp-ud:elevatorcheck", function()
             TaskGoStraightToCoord(PlayerPedId(), 8.4783, -667.8687, 33.4497, 1.0, -1, 177.2868, 0.0)
             Citizen.Wait(4000)
             TriggerEvent('inventory:removeItem', 'elevatorhackingdevice', 1)
-            exports["blz-memory"]:thermiteminigame(10, 3, 3, 10,
+            exports["blz-memory"]:thermiteminigame(12, 3, 3, 8,
             function()
                 local rotx, roty, rotz = table.unpack(vec3(GetEntityRotation(PlayerPedId())))
                 local bagscene = NetworkCreateSynchronisedScene(8.4783, -667.8687, 33.4497, rotx, roty, rotz + 1.1, 2, false, false, 1065353216, 0, 1.3)
@@ -71,7 +73,7 @@ AddEventHandler("drp-ud:elevatorcheck", function()
                 TriggerServerEvent('drp-doors:change-lock-state', 541, false, true)
 
                 local pedSpawn = vector3(10.2033, -669.5919, 33.4495)
-                local ped = CreatePed(4, hash, pedSpawn.x, pedSpawn.y, pedSpawn.z, 0.0, true, false)
+                local ped = CreatePed(4, hash, pedSpawn.x, pedSpawn.y, pedSpawn.z, 0.0, true, true)
                 SetEntityAsMissionEntity(ped, true, true)
                 TaskSmartFleePed(ped, PlayerPedId(), 100.0, -1, false, false)
 
@@ -126,7 +128,8 @@ end
 
 Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(0)
+        Citizen.Wait(0)        
+        TriggerServerEvent("drp-ud:requestVariables")
         local enterLocation = vector3(10.4785, -672.4790, 33.4496)
         local exitLocation = vector3(0.6342, -703.1225, 16.1310)
         local playerCoords = GetEntityCoords(PlayerPedId())
@@ -157,4 +160,10 @@ Citizen.CreateThread(function()
             end
         end
     end
+end)
+
+RegisterNetEvent("drp-ud:getVariables")
+AddEventHandler("drp-ud:getVariables", function(defender, ongoing))
+    defenderSpawned = defender
+    ongoingheist = ongoing    
 end)
