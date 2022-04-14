@@ -2411,7 +2411,17 @@ AddEventHandler('phone:robberynotif', function(name, message)
       SendNUIMessage({openSection = "robnotify", pEHandle = 'From The Boss', pEMessages = message})
       SendNUIMessage({openSection = "phonemedio", timeout = "5200", pOpen = exports['drp-phone']:pOpen()}) 
     end
-    curNotifications[#curNotifications+1] = { ["name"] = name, ["message"] = message, ['time'] = time }
+    --curNotifications[#curNotifications+1] = { ["name"] = name, ["message"] = message, ['time'] = time }
+end)
+
+RegisterNetEvent('phone:transaction')
+AddEventHandler('phone:transaction', function(name, message)
+    SendNUIMessage({openSection = "robnotify", pEHandle = 'Bank Transaction', pEMessages = message})
+    if exports['drp-phone']:pOpen() == false then 
+      SendNUIMessage({openSection = "robnotify", pEHandle = 'Bank Transaction', pEMessages = message})
+      SendNUIMessage({openSection = "phonemedio", timeout = "5200", pOpen = exports['drp-phone']:pOpen()}) 
+    end
+    --curNotifications[#curNotifications+1] = { ["name"] = name, ["message"] = message, ['time'] = time }
 end)
 
 RegisterNetEvent('YellowPageArray')

@@ -293,6 +293,7 @@ AddEventHandler('drp-banking:addMoney', function(amount)
     local src = source
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
     user:addMoney(tonumber(amount))
+    TriggerClientEvent("phone:transaction", 'Transaction', ..amount.. "has been added to your account")
 end)
 
 RegisterServerEvent('drp-banking:removeMoney')
@@ -300,4 +301,4 @@ AddEventHandler('drp-banking:removeMoney', function(amount)
     local src = source
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
     user:removeMoney(tonumber(amount))
-end)
+    TriggerClientEvent("phone:transaction", 'Transaction', ..amount.. "has been withdrawn from your account")
