@@ -42,9 +42,9 @@ function PoliceArmory() {
         { item_id: "detcord", id: 0, name: "Shop", information: "{}", slot: 33, amount: 1 },
         { item_id: "-1719357158", id: 0, name: "Shop", information: "{}", slot: 34, amount: 1 },
         { item_id: "dashcamstaticpd", id: 0, name: "Shop", information: "{}", slot: 35, amount: 1 },
-        { item_id: "elevatorhackingdevice", id: 0, name: "Shop", information: "{}", slot: 36, amount: 1 },
-        { item_id: "carpolish_high", id: 0, name: "Shop", information: "{}", slot: 37, amount: 1 },
-        { item_id: "pdevidencebag", id: 0, name: "Shop", information: "{}", slot: 38, amount: 1 },
+        { item_id: "carpolish_high", id: 0, name: "Shop", information: "{}", slot: 36, amount: 1 },
+        { item_id: "pdevidencebag", id: 0, name: "Shop", information: "{}", slot: 37, amount: 1 },
+        { item_id: "elevatorhackingdevice", id: 0, name: "Shop", information: "{}", slot: 38, amount: 1 },
     ];
     return JSON.stringify(shopItems);
 }
@@ -200,17 +200,18 @@ function CivCrafting() {
 
 function WarehouseCrafting() {
     var shopItems = [
-        { item_id: "lockpick", id: 0, name: "Craft", information: "{}", slot: 1, amount: 2 },
-        { item_id: "advlockpick", id: 0, name: "Craft", information: "{}", slot: 2, amount: 2 },
-        { item_id: "repairkit", id: 0, name: "Craft", information: "{}", slot: 3, amount: 2 },
-        { item_id: "advrepairkit", id: 0, name: "Craft", information: "{}", slot: 4, amount: 2 },
-        { item_id: "civradio", id: 0, name: "Craft", information: "{}", slot: 5, amount: 2 },
-        { item_id: "cuffs", id: 0, name: "Craft", information: "{}", slot: 6, amount: 2 },
-        { item_id: "rifleammo", id: 0, name: "craft", information: "{}", slot: 7, amount: 2 },
-        { item_id: "pistolammo", id: 0, name: "craft", information: "{}", slot: 8, amount: 2 },
-        { item_id: "subammo", id: 0, name: "craft", information: "{}", slot: 9, amount: 2 },
-        { item_id: "148457251", id: 0, name: "craft", information: "{}", slot: 10, amount: 2 },
-        { item_id: "-134995899", id: 0, name: "craft", information: "{}", slot: 11, amount: 2 },
+        { item_id: "lockpick", id: 0, name: "Craft", information: "{}", slot: 1, amount: 50 },
+        { item_id: "advlockpick", id: 0, name: "Craft", information: "{}", slot: 2, amount: 50 },
+        { item_id: "repairkit", id: 0, name: "Craft", information: "{}", slot: 3, amount: 50 },
+        { item_id: "advrepairkit", id: 0, name: "Craft", information: "{}", slot: 4, amount: 50 },
+        { item_id: "civradio", id: 0, name: "Craft", information: "{}", slot: 5, amount: 50 },
+        { item_id: "cuffs", id: 0, name: "Craft", information: "{}", slot: 6, amount: 50 },
+        { item_id: "rifleammo", id: 0, name: "craft", information: "{}", slot: 7, amount: 50 },
+        { item_id: "pistolammo", id: 0, name: "craft", information: "{}", slot: 8, amount: 50 },
+        { item_id: "subammo", id: 0, name: "craft", information: "{}", slot: 9, amount: 50 },
+        { item_id: "148457251", id: 0, name: "craft", information: "{}", slot: 10, amount: 50 },
+        { item_id: "-134995899", id: 0, name: "craft", information: "{}", slot: 11, amount: 50 },
+        { item_id: "elevatorhackingdevice", id: 0, name: "craft", information: "{}", slot: 12, amount: 50 },
          ];
     return JSON.stringify(shopItems);
 }
@@ -335,11 +336,13 @@ function GunStore() {
 //crafting
 function CraftRifleStoreGangs() {
     var shopItems = [
-        { item_id: "rifleammo", id: 0, name: "craft", information: "{}", slot: 1, amount: 1 },
-        { item_id: "pistolammo", id: 0, name: "craft", information: "{}", slot: 2, amount: 1 },
-        { item_id: "subammo", id: 0, name: "craft", information: "{}", slot: 3, amount: 1 },
-        { item_id: "148457251", id: 0, name: "craft", information: "{}", slot: 4, amount: 1 },
-        { item_id: "-134995899", id: 0, name: "craft", information: "{}", slot: 5, amount: 1 },
+        { item_id: "rifleammo", id: 0, name: "craft", information: "{}", slot: 1, amount: 50 },
+        { item_id: "pistolammo", id: 0, name: "craft", information: "{}", slot: 2, amount: 50 },
+        { item_id: "subammo", id: 0, name: "craft", information: "{}", slot: 3, amount: 50 },
+        { item_id: "148457251", id: 0, name: "craft", information: "{}", slot: 4, amount: 50 },
+        { item_id: "-134995899", id: 0, name: "craft", information: "{}", slot: 5, amount: 50 },
+        { item_id: "elevatorhackingdevice", id: 0, name: "craft", information: "{}", slot: 6, amount: 50 },
+
     ];
     return JSON.stringify(shopItems);
 }

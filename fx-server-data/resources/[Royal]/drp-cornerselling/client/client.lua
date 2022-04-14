@@ -120,8 +120,8 @@ function sell_items()
     if (finished == 100) then
         if math.random(1, 100) >= 55 then 
             local sellableItems = {
-                [1] = {name = 'oxy', amount = math.random(1,4), price=math.random(100,140)},
-                [2] = {name = 'methlabproduct', amount = math.random(1,3), price=math.random(315, 575)},
+                [1] = {name = 'oxy', amount = math.random(2,5), price=math.random(100,145)},
+                [2] = {name = 'methlabproduct', amount = math.random(1,3), price=math.random(315, 475)},
                 [3] = {name = 'weedq', amount = math.random(1,2), price=math.random(350, 575)}, 
             }
             local pog = false

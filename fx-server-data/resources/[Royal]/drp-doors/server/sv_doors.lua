@@ -8830,9 +8830,147 @@ DOOR_CONFIG = {
         cid = {
         }
       }
-    }
-
-
-    
-
+    },
+    {
+      info = "Casino Restricted Access next to the Casino Cashier",
+      active = true,
+      id = 536,
+      coords = vector3(991.7479, 25.03326, 71.61443),
+      model = 401003935,
+      lock = true,
+      keyFob = true,
+      desc = "Casino Restricted Access",
+      access = {
+        job = {
+          ["casino"] = true,
+        },
+        cid = {
+          [74] = true
+        }
+      }
+    },
+    {
+      info = "Management Office Door Left",
+      active = true,
+      id = 537,
+      coords = vector3(1018.692, 67.17648, 70.01009),
+      model = 680601509,
+      lock = true,
+      keyFob = true,
+      desc = "Management Office Door Left",
+      access = {
+        job = {
+          ["casino"] = true,
+        },
+        cid = {
+          [74] = true
+        }
+      }
+    },
+    {
+      info = "Management Office Door Right",
+      active = true,
+      id = 538,
+      coords = vector3(1017.692, 65.47773, 70.01009),
+      model = 680601509,
+      lock = true,
+      keyFob = true,
+      desc = "Management Office Door Right",
+      access = {
+        job = {
+          ["casino"] = true,
+        },
+        cid = {
+          [74] = true
+        }
+      }
+    },
+    {
+      info = "Other Casino Door 1",
+      active = true,
+      id = 539,
+      coords = vector3(1026.787, 32.43253, 70.01295),
+      model = 680601509,
+      lock = true,
+      keyFob = true,
+      desc = "Other Casino Door 1",
+      access = {
+        job = {
+          ["casino"] = true,
+        },
+        cid = {
+          [74] = true
+        }
+      }
+    },
+    {
+      info = "Other Casino Door 2",
+      active = true,
+      id = 540,
+      coords = vector3(1025.09, 33.49028, 70.01295),
+      model = 680601509,
+      lock = true,
+      keyFob = true,
+      desc = "Other Casino Door 2",
+      access = {
+        job = {
+          ["casino"] = true,
+        },
+        cid = {
+          [74] = true
+        }
+      }
+    },
+    {
+      info = "Union Depository Heist1",
+      active = true,
+      id = 541,
+      coords = vector3(11.66121, -668.4697, 32.44482),
+      model = -726591477,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = { },
+        cid = {
+          [74] = true
+        }
+      }
+    },
+    {
+      info = "Union Depository Heist2",
+      active = true,
+      id = 542,
+      coords = vector3(8.721321, -668.7036, 32.44462),
+      model = -726591477,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = { },
+        cid = {
+          [74] = true
+        }
+      }
+    },
+    {
+      info = "Union Depository Vault",
+      active = true,
+      id = 543,
+      coords = vector3(-1.727947, -686.5417, 16.68913),
+      model = -1932297301,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+          [74] = true
+        }
+      }
+    },
 }
+  
+  

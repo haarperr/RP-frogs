@@ -822,11 +822,11 @@ function DoDropOff(requestMoney)
         end
 
         if OxyRun then
-			local bandprice = math.random(200, 350)
-			local markedbillsprice = math.random(180, 500)
-			local rollcashprice = math.random(50, 100)
-			local cashrollprice = math.random(100, 235)
-			local inkedmoneybagprice = math.random(20000, 30000)
+			local bandprice = math.random(200, 450)
+			local markedbillsprice = math.random(250, 500)
+			local rollcashprice = math.random(50, 235)
+			local cashrollprice = math.random(150, 350)
+			local inkedmoneybagprice = math.random(20000, 32500)
 
             local sellableItems = {
                 [1] = {

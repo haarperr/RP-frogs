@@ -28962,25 +28962,25 @@ itemList['farmhoe'] = {
 
 itemList['elevatorhackingdevice'] = {
   fullyDegrades: true,
-  decayrate: 0.001385,
+  decayrate: 0.15,
   displayname: 'Elevator Hacking Device',
   price: 1000,
   craft: [
     [{
         itemid: 'refinedaluminium',
-        amount: 33
-      },
-      {
-        itemid: 'refinedcopper',
-        amount: 33
+        amount: 25
       },
       {
         itemid: 'refinedrubber',
-        amount: 33
+        amount: 25
       },
       {
-        itemid: 'refinedplastic',
-        amount: 33
+        itemid: 'electronics',
+        amount: 50
+      },
+      {
+        itemid: 'heistusb1',
+        amount: 1
       },
     ]
   ],
@@ -28988,7 +28988,7 @@ itemList['elevatorhackingdevice'] = {
   nonStack: false,
   model: '',
   image: 'np_elevator_hacking_device.png',
-  information: 'Government Issued Equipment',
+  information: 'I mean... Its for elevators right?',
 }
 
 itemList['fishoil'] = {
@@ -29656,4 +29656,31 @@ itemList['chickenslammer'] = {
   ],
   image: 'chicken-slammer.png',
   information: 'Cluckin Bell Employ Tool',
+};
+
+// mightyoaks SHIELD items
+
+itemList['arcreactor'] = {
+  fullyDegrades: false,
+  decayrate: 0.0,
+  displayname: 'Arc Reactor',
+  price: 50,
+  weight: 0,
+  nonStack: true,
+  image: 'shield-arc.png',
+  information: 'So much power in one small device.',
+  collectible: true,
+};
+
+
+itemList['shieldblueprint'] = {
+  fullyDegrades: false,
+  decayrate: 0.0,
+  displayname: 'S.H.I.E.L.D Blueprint',
+  price: 50,
+  weight: 0,
+  nonStack: true,
+  image: 'shield-usb.png',
+  information: 'TOP SECRET: CODENAME DELOREAN',
+  collectible: true,
 };
