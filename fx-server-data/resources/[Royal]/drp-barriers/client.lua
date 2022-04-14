@@ -38,7 +38,7 @@ AddEventHandler('drp-barriers:cone', function()
 	
 	local cone = CreateObject('prop_mp_cone_01', x, y, z-2, true, true, true)
 	PlaceObjectOnGroundProperly(cone)
-	SetEntityHeading(cone, heading)
+	SetEntityHeading(cone, heading+0.5)
 	notification('~g~The cone has been placed!')
 end)
 
