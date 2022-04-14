@@ -124,6 +124,12 @@ AddEventHandler("commands:player:login",function()
     )
     TriggerClientEvent(
         "chat:addSuggestion", src,
+        "/emotes",
+        "Get a list with emotes!",
+        {}
+    )
+    TriggerClientEvent(
+        "chat:addSuggestion", src,
         "/givecash",
         "Give cash to someone",
         {
