@@ -214,6 +214,11 @@ Config.Zones = {
 		  heading=100.5948,
 		}),
 
+		BoxZone:Create(vector3(264.6512, -1123.8561, 29.2180), 5.0, 22.5, {  -- Far right side from sandy pd
+		  name="garagecourt",
+		  heading=266.0793,
+		}),
+
 		BoxZone:Create(vector3(1850.4, 3674.66, 33.77), 5.0, 12.2, {  -- Far right side from sandy pd
 			name="garagesandy",
 			heading=6,
