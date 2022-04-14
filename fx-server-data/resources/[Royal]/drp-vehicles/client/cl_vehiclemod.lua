@@ -179,12 +179,13 @@ function disableTurning()
         end)
     end
 end
+
 local stallSpamCheck = 0
 
 function carCrash()
     if math.random(1, 4) == 1 then
         stallSpamCheck = stallSpamCheck + 1
-        if stallSpamCheck >= 2 then
+        if stallSpamCheck > 1 then
             return
         end
         stalled = true
