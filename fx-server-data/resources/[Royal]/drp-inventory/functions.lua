@@ -726,6 +726,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     if (itemid == "thermitecharge") then
         TriggerEvent("vault:thermitecheck")
         TriggerEvent("dark-vaultrob:upper:thermitedoors")
+        TriggerEvent("drp-ud:checkThermite")
       end
 
       if (itemid == "elevatorhackingdevice") then
