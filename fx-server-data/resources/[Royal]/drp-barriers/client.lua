@@ -3,6 +3,29 @@ RegisterNetEvent('drp-barriers:sbarrier')
 RegisterNetEvent('drp-barriers:barrier')
 RegisterNetEvent('drp-barriers:insuffPerms')
 
+RegisterCommand("cone", function()
+	local can = (exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' or exports["isPed"]:isPed("myJob") == 'judge' or exports["isPed"]:isPed("myJob") == 'district_attorney' or exports["isPed"]:isPed("myJob") == 'public_defender') and not exports['drp-death']:GetDeathStatus()
+    if can then 
+		TriggerEvent('drp-barriers:cone')
+	end
+end)
+
+RegisterCommand("sbarrier", function()
+	local can = (exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' or exports["isPed"]:isPed("myJob") == 'judge' or exports["isPed"]:isPed("myJob") == 'district_attorney' or exports["isPed"]:isPed("myJob") == 'public_defender') and not exports['drp-death']:GetDeathStatus()
+    if can then 
+		TriggerEvent('drp-barriers:sbarrier')
+	end
+end)
+
+RegisterCommand("barrier", function()
+	local can = (exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' or exports["isPed"]:isPed("myJob") == 'judge' or exports["isPed"]:isPed("myJob") == 'district_attorney' or exports["isPed"]:isPed("myJob") == 'public_defender') and not exports['drp-death']:GetDeathStatus()
+    if can then 
+		TriggerEvent('drp-barriers:barrier')
+	end
+end)
+
+
+
 AddEventHandler('drp-barriers:cone', function()
 	local x, y, z = table.unpack(GetEntityCoords(GetPlayerPed(-1), true))
 	local heading = GetEntityHeading(GetPlayerPed(-1))
