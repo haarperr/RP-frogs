@@ -397,11 +397,11 @@ RegisterNetEvent('banking:updateCash')
 AddEventHandler('banking:updateCash', function(balance, show)
   local id = PlayerId()
   TriggerEvent('isPed:UpdateCash', balance)
-	SendNUIMessage({
-		updateCash = true,
-		cash = balance,
-    show = show
-	})
+--	SendNUIMessage({
+--		updateCash = true,
+--		cash = balance,
+--    show = show
+--	})
 end)
 
 RegisterNetEvent("banking:viewBalance")

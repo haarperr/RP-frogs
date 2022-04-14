@@ -199,7 +199,7 @@ AddEventHandler('dark-vaultrob:upper:heistlaptop4', function()
 		Citizen.Wait(6300)
 		NetworkStartSynchronisedScene(netScene2)
 		Citizen.Wait(2000)
-		exports["hacking"]:hacking(
+		exports["hacking2"]:hacking2(
 			function() -- success
 				animcancel1()
 				TriggerServerEvent('drp-doors:change-lock-state', 50, false)
@@ -267,8 +267,8 @@ elseif #(playercoords - thirddoorvector) < 3.0 then
 	Citizen.Wait(6300)
 	NetworkStartSynchronisedScene(netScene2)
 	Citizen.Wait(2000)
-	exports["hacking"]:hacking(
-		function() -- success
+	--exports["hacking2"]:hacking2(
+	--	function() -- success
 			local ped = PlayerPedId()
 			
 			local animDict = "anim@heists@ornate_bank@hack"
@@ -335,7 +335,7 @@ elseif #(playercoords - thirddoorvector) < 3.0 then
 			thirddoor = false
 			TriggerServerEvent('drp-doors:change-lock-state', 52, false)
 		
-	end)
+	end) 
 else
 	TriggerServerEvent("notification","Something is missing!", 2)
 end
