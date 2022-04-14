@@ -183,22 +183,20 @@ end
 local stallSpamCheck = 0
 
 function carCrash()
-    if math.random(1, 4) == 1 then
-        stallSpamCheck = stallSpamCheck + 1
-        if stallSpamCheck > 1 then
-            return
-        end
-        stalled = true
-        endNos()
-        TriggerEvent('DoLongHudText', 'Your vehicle has stalled!', 2)
-        SetVehicleEngineOn(currentVehicle, false, true, true)
-        lastCurrentVehicleSpeed = 0.0
+    stallSpamCheck = stallSpamCheck + 1
+    if stallSpamCheck > 1 then
+        return
     end
+    stalled = true
+    endNos()
+    TriggerEvent('DoLongHudText', 'Your vehicle has stalled!', 2)
+    SetVehicleEngineOn(currentVehicle, false, true, true)
+    lastCurrentVehicleSpeed = 0.0
 end
 
 Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(1500)
+        Citizen.Wait(2000)
         stallSpamCheck = stallSpamCheck - 1
         if stallSpamCheck < 0 then
             stallSpamCheck = 0
