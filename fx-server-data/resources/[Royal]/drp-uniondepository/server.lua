@@ -6,6 +6,7 @@ end)
 local defenderSpawned = false
 local ongoingHeist = false
 
+
 RegisterServerEvent("drp-ud:requestVariables")
 AddEventHandler("drp-ud:requestVariables", function()
     TriggerClientEvent("drp-ud:getVariables", -1, defenderSpawned, ongoingHeist)
