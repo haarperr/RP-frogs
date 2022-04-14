@@ -283,7 +283,7 @@ AddEventHandler('event:control:npkeys', function(useID)
         if useID == 1 then
           Citizen.Wait(1000)
           TriggerEvent('drp-dispatch:carjacking')
-          shutoffenginesearch()
+          -- shutoffenginesearch()
         elseif useID == 2 then
           Citizen.Wait(1000)
           --shutoffenginehotwire()
