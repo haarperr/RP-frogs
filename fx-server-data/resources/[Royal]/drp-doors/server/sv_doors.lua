@@ -8920,7 +8920,40 @@ DOOR_CONFIG = {
           [74] = true
         }
       }
+    },
+    {
+      info = "Union Depository Heist1",
+      active = true,
+      id = 536,
+      coords = vector3(11.66121, -668.4697, 32.44482),
+      model = -726591477,
+      lock = true,
+      keyFob = true,
+      desc = "",
+      access = {
+        job = { },
+        cid = {
+          [74] = true
+        }
+      }
+    },
+    {
+      info = "Union Depository Heist2",
+      active = true,
+      id = 536,
+      coords = vector3(8.721321, -668.7036, 32.44462),
+      model = -726591477,
+      lock = true,
+      keyFob = true,
+      desc = "",
+      access = {
+        job = { },
+        cid = {
+          [74] = true
+        }
+      }
     }
+
 
 
     
