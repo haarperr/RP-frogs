@@ -177,6 +177,115 @@ RegisterCommand("debug", function()
     TriggerEvent('drp-admin:currentDebug', debugmodeToggle)
   end -- HERE TOO LOL
   end)
+
+  function GetVehicle()
+    local playerped = GetPlayerPed(-1)
+    local playerCoords = GetEntityCoords(playerped)
+    local handle, ped = FindFirstVehicle()
+    local success
+    local rped = nil
+    local distanceFrom
+    repeat
+        local pos = GetEntityCoords(ped)
+        local distance = GetDistanceBetweenCoords(playerCoords, pos, true)
+        if canPedBeUsed(ped) and distance < 30.0 and (distanceFrom == nil or distance < distanceFrom) then
+            distanceFrom = distance
+            rped = ped
+           -- FreezeEntityPosition(ped, inFreeze)
+	    	if IsEntityTouchingEntity(GetPlayerPed(-1), ped) then
+	    		DrawText3Ds(pos["x"],pos["y"],pos["z"]+1, "Veh: " .. ped .. " Model: " .. GetEntityModel(ped) .. " IN CONTACT" )
+	    	else
+	    		DrawText3Ds(pos["x"],pos["y"],pos["z"]+1, "Veh: " .. ped .. " Model: " .. GetEntityModel(ped) .. "" )
+	    	end
+            if lowGrav then
+            	SetEntityCoords(ped,pos["x"],pos["y"],pos["z"]+5.0)
+            end
+        end
+        success, ped = FindNextVehicle(handle)
+    until not success
+    EndFindVehicle(handle)
+    return rped
+end
+
+function GetObject()
+    local playerped = GetPlayerPed(-1)
+    local playerCoords = GetEntityCoords(playerped)
+    local handle, ped = FindFirstObject()
+    local success
+    local rped = nil
+    local distanceFrom
+    repeat
+        local pos = GetEntityCoords(ped)
+        local distance = GetDistanceBetweenCoords(playerCoords, pos, true)
+        if distance < 10.0 then
+            distanceFrom = distance
+            rped = ped
+            --FreezeEntityPosition(ped, inFreeze)
+	    	if IsEntityTouchingEntity(GetPlayerPed(-1), ped) then
+	    		DrawText3Ds(pos["x"],pos["y"],pos["z"]+1, "Obj: " .. ped .. " Model: " .. GetEntityModel(ped) .. " IN CONTACT" )
+	    	else
+	    		DrawText3Ds(pos["x"],pos["y"],pos["z"]+1, "Obj: " .. ped .. " Model: " .. GetEntityModel(ped) .. "" )
+	    	end
+
+            if lowGrav then
+            	--ActivatePhysics(ped)
+            	SetEntityCoords(ped,pos["x"],pos["y"],pos["z"]+0.1)
+            	FreezeEntityPosition(ped, false)
+            end
+        end
+
+        success, ped = FindNextObject(handle)
+    until not success
+    EndFindObject(handle)
+    return rped
+end
+
+function getNPC()
+    local playerped = GetPlayerPed(-1)
+    local playerCoords = GetEntityCoords(playerped)
+    local handle, ped = FindFirstPed()
+    local success
+    local rped = nil
+    local distanceFrom
+    repeat
+        local pos = GetEntityCoords(ped)
+        local distance = GetDistanceBetweenCoords(playerCoords, pos, true)
+        if canPedBeUsed(ped) and distance < 30.0 and (distanceFrom == nil or distance < distanceFrom) then
+            distanceFrom = distance
+            rped = ped
+
+	    	if IsEntityTouchingEntity(GetPlayerPed(-1), ped) then
+	    		DrawText3Ds(pos["x"],pos["y"],pos["z"], "Ped: " .. ped .. " Model: " .. GetEntityModel(ped) .. " Relationship HASH: " .. GetPedRelationshipGroupHash(ped) .. " IN CONTACT" )
+	    	else
+	    		DrawText3Ds(pos["x"],pos["y"],pos["z"], "Ped: " .. ped .. " Model: " .. GetEntityModel(ped) .. " Relationship HASH: " .. GetPedRelationshipGroupHash(ped) )
+	    	end
+
+            FreezeEntityPosition(ped, inFreeze)
+            if lowGrav then
+            	SetPedToRagdoll(ped, 511, 511, 0, 0, 0, 0)
+            	SetEntityCoords(ped,pos["x"],pos["y"],pos["z"]+0.1)
+            end
+        end
+        success, ped = FindNextPed(handle)
+    until not success
+    EndFindPed(handle)
+    return rped
+end
+
+function canPedBeUsed(ped)
+    if ped == nil then
+        return false
+    end
+    if ped == GetPlayerPed(-1) then
+        return false
+    end
+    if not DoesEntityExist(ped) then
+        return false
+    end
+    return true
+end
+
+
   
   Citizen.CreateThread( function()
   
@@ -287,7 +396,7 @@ RegisterCommand("debug", function()
     local factor = (string.len(text)) / 370
     DrawRect(_x,_y+0.0125, 0.015+ factor, 0.03, 41, 11, 41, 68)
   end
-  
+
 RegisterNUICallback('reviveplayer', function(data, cb)
   print("Player Id from JS:" ..data.selectedplayer)
   TriggerServerEvent("drp-death:reviveSV", data.selectedplayer)
