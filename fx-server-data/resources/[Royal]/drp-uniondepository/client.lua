@@ -5,6 +5,7 @@ local totalThermite = 0
 
 -- config
 local copCount = -1 -- if not testing then -> 3
+local elevatorTime = 1000 -- if not testing then -> 15000
 
 RegisterNetEvent("drp-ud:elevatorcheck")
 AddEventHandler("drp-ud:elevatorcheck", function()
@@ -136,11 +137,12 @@ end
 
 Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(1)        
+        Citizen.Wait(5)       
         
-        local enterLocation = vector3(10.2297, -668.2030, 33.4493)
+        local enterLocation = vector3(10.2258, -668.2372, 33.4494)
         local exitLocation = vector3(0.6342, -703.1225, 16.1310)
         local playerCoords = GetEntityCoords(PlayerPedId())
+        
         if ongoingHeist then
             if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, enterLocation.x, enterLocation.y, enterLocation.z, true) < 1.5 then
                 Draw3DText(enterLocation.x, enterLocation.y, enterLocation.z, "Press [E] to enter")
@@ -224,14 +226,14 @@ Citizen.CreateThread(function()
                 end
             end
         end
+
         if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, exitLocation.x, exitLocation.y, exitLocation.z, true) < 1.5 then
             Draw3DText(exitLocation.x, exitLocation.y, exitLocation.z, "Press [E] to exit")
             if IsControlJustPressed(0, 38) then
                 local finished = exports['drp-taskbar']:taskBar(15000, 'Using the Elevator')
                 if finished == 100 then
                     -- teleport player to upstairs
-                    local upstairs = vector3(10.1416, -667.7656, 33.4492)
-                    SetEntityCoords(PlayerPedId(), upstairs.x, upstairs.y, upstairs.z)
+                    SetEntityCoords(PlayerPedId(), enterLocation.x, enterLocation.y, enterLocation.z)
                 end
             end
         end
