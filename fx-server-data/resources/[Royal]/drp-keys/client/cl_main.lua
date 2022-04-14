@@ -82,6 +82,7 @@ AddEventHandler('keys:give', function()
     -- if player is in car 
     if IsPedInAnyVehicle(PlayerPedId(), false) then
       latestveh = GetVehiclePedIsIn(PlayerPedId(), true)
+    end
   end
 
 
