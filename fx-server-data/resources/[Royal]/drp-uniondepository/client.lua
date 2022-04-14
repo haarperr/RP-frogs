@@ -88,7 +88,7 @@ AddEventHandler("drp-ud:particleclient", function(method)
     while not HasNamedPtfxAssetLoaded("scr_ornate_heist") do
         Citizen.Wait(1)
     end
-        ptfx = vector3(8.3377, -668.1301, 33.8605)
+        ptfx = vector3(8.3772, -667.7876, 33.4497)
     SetPtfxAssetNextCall("scr_ornate_heist")
     local effect = StartParticleFxLoopedAtCoord("scr_heist_ornate_thermal_burn", ptfx, 0.0, 0.0, 0.0, 1.0, false, false, false, false)
     Citizen.Wait(4000)
