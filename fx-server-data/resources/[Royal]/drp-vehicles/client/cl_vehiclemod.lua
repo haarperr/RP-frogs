@@ -196,7 +196,7 @@ end
 
 Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(2000)
+        Citizen.Wait(2500)
         stallSpamCheck = stallSpamCheck - 1
         if stallSpamCheck < 0 then
             stallSpamCheck = 0
