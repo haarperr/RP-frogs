@@ -56,12 +56,23 @@ AddEventHandler("drp-ud:elevatorcheck", function()
 			DeleteObject(bag)
 			StopParticleFxLooped(effect, 0)
 			Citizen.Wait(2000)
-			-- TriggerServerEvent('drp-doors:changeLock-status', 253, false)
+
+            -- create random ped and spawn him
+            local ped = CreateRandomPed(vector3(10.2033, -669.5919, 33.4495))
+            SetEntityAsMissionEntity(ped, true, true)
+            SetPedAsNoLongerNeeded(ped)
+            TaskGoStraightToCoord(ped, 1.3921, -670.2488, 32.3381, 1.0, -1, 205.2962, 0.0)
+
+			TriggerServerEvent('drp-doors:changeLock-status', 541, false)
+			TriggerServerEvent('drp-doors:changeLock-status', 542, false)
 			
 			TriggerEvent('inventory:removeItem', 'elevatorhackingdevice', 1)
+
+            Citizen.Wait(5000)
+            TaskFleeFromPed(ped, player, -1, 0, 0, 0)
 		end,
 		function()
-			fifthdoor = false
+			TriggerEvent('inventory:removeItem', 'elevatorhackingdevice', 1)
 		end)
     end
 end)
@@ -77,7 +88,7 @@ AddEventHandler("drp-ud:particleclient", function(method)
     while not HasNamedPtfxAssetLoaded("scr_ornate_heist") do
         Citizen.Wait(1)
     end
-        ptfx = vector3(9.9859, -667.3959, 33.4492)
+        ptfx = vector3(8.3377, -668.1301, 33.8605)
     SetPtfxAssetNextCall("scr_ornate_heist")
     local effect = StartParticleFxLoopedAtCoord("scr_heist_ornate_thermal_burn", ptfx, 0.0, 0.0, 0.0, 1.0, false, false, false, false)
     Citizen.Wait(4000)

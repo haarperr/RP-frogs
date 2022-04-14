@@ -8852,7 +8852,7 @@ DOOR_CONFIG = {
     {
       info = "Management Office Door Left",
       active = true,
-      id = 536,
+      id = 537,
       coords = vector3(1018.692, 67.17648, 70.01009),
       model = 680601509,
       lock = true,
@@ -8870,7 +8870,7 @@ DOOR_CONFIG = {
     {
       info = "Management Office Door Right",
       active = true,
-      id = 536,
+      id = 538,
       coords = vector3(1017.692, 65.47773, 70.01009),
       model = 680601509,
       lock = true,
@@ -8888,7 +8888,7 @@ DOOR_CONFIG = {
     {
       info = "Other Casino Door 1",
       active = true,
-      id = 536,
+      id = 539,
       coords = vector3(1026.787, 32.43253, 70.01295),
       model = 680601509,
       lock = true,
@@ -8906,7 +8906,7 @@ DOOR_CONFIG = {
     {
       info = "Other Casino Door 2",
       active = true,
-      id = 536,
+      id = 540,
       coords = vector3(1025.09, 33.49028, 70.01295),
       model = 680601509,
       lock = true,
@@ -8924,7 +8924,7 @@ DOOR_CONFIG = {
     {
       info = "Union Depository Heist1",
       active = true,
-      id = 536,
+      id = 541,
       coords = vector3(11.66121, -668.4697, 32.44482),
       model = -726591477,
       lock = true,
@@ -8940,7 +8940,7 @@ DOOR_CONFIG = {
     {
       info = "Union Depository Heist2",
       active = true,
-      id = 536,
+      id = 542,
       coords = vector3(8.721321, -668.7036, 32.44462),
       model = -726591477,
       lock = true,
