@@ -8953,22 +8953,7 @@ DOOR_CONFIG = {
         }
       }
     },
-    {
-      info = "Union Depository Vault",
-      active = true,
-      id = 543,
-      coords = vector3(-1.727947, -686.5417, 16.68913),
-      model = -1932297301,
-      lock = true,
-      keyFob = true,
-      desc = "x",
-      access = {
-        job = { },
-        cid = {
-          [74] = true
-        }
-      }
-    },
+    
 }
   
   
