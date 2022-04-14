@@ -135,7 +135,7 @@ Citizen.CreateThread(function()
                         SetEntityCoords(PlayerPedId(), downstairs.x, downstairs.y, downstairs.z)
                         
                         TriggerServerEvent("drp-ud:requestVariables")
-                        Trace("Defender Spawned: " .. tostring(defenderSpawned) .. "\n")
+                        Citizen.Trace("Defender Spawned: " .. tostring(defenderSpawned) .. "\n")
                         if defenderSpawned == false then
                             spawnWave1()
                             Wait(500)
