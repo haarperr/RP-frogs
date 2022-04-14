@@ -150,13 +150,19 @@ Citizen.CreateThread(function()
                             local defender6Pos = vector3(-0.0939, -688.5615, 16.1308)
                             local defender7Pos = vector3(-4.9599, -697.6608, 16.1310)
 
-                            local defender1 = CreatePed(4, GetHashKey("s_m_y_cop_01"), defender1Pos.x, defender1Pos.y, defender1Pos.z, 0.0, true, true)
-                            local defender2 = CreatePed(4, GetHashKey("s_m_y_cop_01"), defender2Pos.x, defender2Pos.y, defender2Pos.z, 0.0, true, true)
-                            local defender3 = CreatePed(4, GetHashKey("s_m_y_cop_01"), defender3Pos.x, defender3Pos.y, defender3Pos.z, 0.0, true, true)
-                            local defender4 = CreatePed(4, GetHashKey("s_m_y_cop_01"), defender4Pos.x, defender4Pos.y, defender4Pos.z, 0.0, true, true)
-                            local defender5 = CreatePed(4, GetHashKey("s_m_y_cop_01"), defender5Pos.x, defender5Pos.y, defender5Pos.z, 0.0, true, true)
-                            local defender6 = CreatePed(4, GetHashKey("s_m_y_cop_01"), defender6Pos.x, defender6Pos.y, defender6Pos.z, 0.0, true, true)
-                            local defender7 = CreatePed(4, GetHashKey("s_m_y_cop_01"), defender7Pos.x, defender7Pos.y, defender7Pos.z, 0.0, true, true)
+                            local hash = GetHashKey("s_m_y_swat_01")
+                            RequestModel(hash)
+                            while not HasModelLoaded(hash) do
+                                Wait(1)
+                            end
+
+                            local defender1 = CreatePed(4, hash, defender1Pos.x, defender1Pos.y, defender1Pos.z, 0.0, true, true)
+                            local defender2 = CreatePed(4, hash, defender2Pos.x, defender2Pos.y, defender2Pos.z, 0.0, true, true)
+                            local defender3 = CreatePed(4, hash, defender3Pos.x, defender3Pos.y, defender3Pos.z, 0.0, true, true)
+                            local defender4 = CreatePed(4, hash, defender4Pos.x, defender4Pos.y, defender4Pos.z, 0.0, true, true)
+                            local defender5 = CreatePed(4, hash, defender5Pos.x, defender5Pos.y, defender5Pos.z, 0.0, true, true)
+                            local defender6 = CreatePed(4, hash, defender6Pos.x, defender6Pos.y, defender6Pos.z, 0.0, true, true)
+                            local defender7 = CreatePed(4, hash, defender7Pos.x, defender7Pos.y, defender7Pos.z, 0.0, true, true)
                             
                             SetEntityAsMissionEntity(defender1, true, true)
                             SetEntityAsMissionEntity(defender2, true, true)
