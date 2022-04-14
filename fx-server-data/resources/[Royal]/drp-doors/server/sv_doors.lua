@@ -8848,6 +8848,42 @@ DOOR_CONFIG = {
           [74] = true
         }
       }
+    },
+    {
+      info = "Management Office Door Left",
+      active = true,
+      id = 536,
+      coords = vector3(1018.692, 67.17648, 70.01009),
+      model = 680601509,
+      lock = true,
+      keyFob = true,
+      desc = "Management Office Door Left",
+      access = {
+        job = {
+          ["casino"] = true,
+        },
+        cid = {
+          [74] = true
+        }
+      }
+    },
+    {
+      info = "Management Office Door Right",
+      active = true,
+      id = 536,
+      coords = vector3(1017.692, 65.47773, 70.01009),
+      model = 680601509,
+      lock = true,
+      keyFob = true,
+      desc = "Management Office Door Right",
+      access = {
+        job = {
+          ["casino"] = true,
+        },
+        cid = {
+          [74] = true
+        }
+      }
     }
 
 
