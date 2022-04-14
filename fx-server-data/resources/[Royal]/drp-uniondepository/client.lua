@@ -18,14 +18,13 @@ AddEventHandler("drp-ud:elevatorcheck", function()
                 Wait(1)
             end
         end
-        TaskGoStraightToCoord(PlayerPedId(), elevator.x, elevator.y, elevator.z, 1.0, -1, 179.4743, 0.0)
+        TaskGoStraightToCoord(PlayerPedId(), 8.4783, -667.8687, 33.4497, 1.0, -1, 177.2868, 0.0)
 		Citizen.Wait(4000)
 		exports["blz-memory"]:thermiteminigame(8, 3, 3, 10,
 		function()
-			
 			local rotx, roty, rotz = table.unpack(vec3(GetEntityRotation(PlayerPedId())))
-			local bagscene = NetworkCreateSynchronisedScene(261.600, 215.590, 101.683, rotx, roty, rotz + 1.1, 2, false, false, 1065353216, 0, 1.3)
-			local bag = CreateObject(GetHashKey("hei_p_m_bag_var22_arm_s"), 261.600, 215.590, 101.683,  true,  true, false)
+			local bagscene = NetworkCreateSynchronisedScene(8.4783, -667.8687, 33.4497, rotx, roty, rotz + 1.1, 2, false, false, 1065353216, 0, 1.3)
+			local bag = CreateObject(GetHashKey("hei_p_m_bag_var22_arm_s"), 8.4783, -667.8687, 33.4497,  true,  true, false)
 	
 			SetEntityCollision(bag, false, true)
 			NetworkAddPedToSynchronisedScene(ped, bagscene, "anim@heists@ornate_bank@thermal_charge", "thermal_charge", 1.2, -4.0, 1, 16, 1148846080, 0)
@@ -45,7 +44,7 @@ AddEventHandler("drp-ud:elevatorcheck", function()
 			FreezeEntityPosition(bomba, true)
 			TriggerServerEvent("drp-ud:particleserver", method)
 			SetPtfxAssetNextCall("scr_ornate_heist")
-			local effect = StartParticleFxLoopedAtCoord("scr_heist_ornate_thermal_burn", 261.748, 216.500, 101.683, 0.0, 0.0, 0.0, 1.0, false, false, false, false)
+			local effect = StartParticleFxLoopedAtCoord("scr_heist_ornate_thermal_burn", 8.4783, -667.8687, 33.4497, 0.0, 0.0, 0.0, 1.0, false, false, false, false)
 			
 			NetworkStopSynchronisedScene(bagscene)
 			TaskPlayAnim(ped, "anim@heists@ornate_bank@thermal_charge", "cover_eyes_intro", 8.0, 8.0, 1000, 36, 1, 0, 0, 0)
@@ -94,7 +93,7 @@ AddEventHandler("drp-ud:particleclient", function(method)
     while not HasNamedPtfxAssetLoaded("scr_ornate_heist") do
         Citizen.Wait(1)
     end
-        ptfx = vector3(8.3772, -667.7876, 33.4497)
+        ptfx = vector3(8.4105, -667.1199, 33.4497)
     SetPtfxAssetNextCall("scr_ornate_heist")
     local effect = StartParticleFxLoopedAtCoord("scr_heist_ornate_thermal_burn", ptfx, 0.0, 0.0, 0.0, 1.0, false, false, false, false)
     Citizen.Wait(4000)
