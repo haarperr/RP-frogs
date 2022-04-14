@@ -66,15 +66,12 @@ AddEventHandler("drp-ud:elevatorcheck", function()
             local ped = CreatePed(4, hash, pedSpawn.x, pedSpawn.y, pedSpawn.z, 0.0, true, false)
             SetEntityAsMissionEntity(ped, true, true)
             SetPedAsNoLongerNeeded(ped)
-            TaskGoToCoordAnyMeans(ped, 1.3921, -670.2488, 32.3381, 1.0, 0, 0, 786603, 0xbf800000)
+            TaskFleeFromPed(ped, player, -1, 0, 0, 0)
 
 			TriggerServerEvent('drp-doors:changeLock-status', 541, false)
 			TriggerServerEvent('drp-doors:changeLock-status', 542, false)
 			
 			TriggerEvent('inventory:removeItem', 'elevatorhackingdevice', 1)
-
-            Citizen.Wait(5000)
-            TaskFleeFromPed(ped, player, -1, 0, 0, 0)
 		end,
 		function()
 			TriggerEvent('inventory:removeItem', 'elevatorhackingdevice', 1)
