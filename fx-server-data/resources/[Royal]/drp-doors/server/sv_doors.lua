@@ -8830,6 +8830,24 @@ DOOR_CONFIG = {
         cid = {
         }
       }
+    },
+    {
+      info = "Casino Restricted Access next to the Casino Cashier",
+      active = true,
+      id = 536,
+      coords = vector3(991.7479, 25.03326, 71.61443),
+      model = 401003935,
+      lock = true,
+      keyFob = true,
+      desc = "Casino Restricted Access",
+      access = {
+        job = {
+          ["casino"] = true,
+        },
+        cid = {
+          [74] = true
+        }
+      }
     }
 
 
