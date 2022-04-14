@@ -1253,7 +1253,7 @@ cfg = {
 				0.7,		--	15: Helicopters
 				0.7,		--	16: Planes
 				0.75,		--	17: Service
-				0.85,		--	18: Emergency
+				0.4,		--	18: Emergency
 				0.67,		--	19: Military
 				0.43,		--	20: Commercial
 				1.0			--	21: Trains
