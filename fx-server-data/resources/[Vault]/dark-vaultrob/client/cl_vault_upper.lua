@@ -199,7 +199,7 @@ AddEventHandler('dark-vaultrob:upper:heistlaptop4', function()
 		Citizen.Wait(6300)
 		NetworkStartSynchronisedScene(netScene2)
 		Citizen.Wait(2000)
-		exports["hacking2"]:hacking2(
+		exports["hacking"]:hacking(
 			function() -- success
 				animcancel1()
 				TriggerServerEvent('drp-doors:change-lock-state', 50, false)
@@ -267,7 +267,7 @@ elseif #(playercoords - thirddoorvector) < 3.0 then
 	Citizen.Wait(6300)
 	NetworkStartSynchronisedScene(netScene2)
 	Citizen.Wait(2000)
-	exports["hacking2"]:hacking2(
+	exports["hacking"]:hacking(
 		function() -- success
 			local ped = PlayerPedId()
 			
