@@ -7,6 +7,7 @@ AddEventHandler("drp-ud:elevatorcheck", function()
     local player = PlayerPedId()
     local coords = GetEntityCoords(player)
     local elevator = vector3(9.9859, -667.3959, 33.4492)
+    TriggerServerEvent("drp-ud:requestVariables")
     local distance = GetDistanceBetweenCoords(coords.x, coords.y, coords.z, elevator.x, elevator.y, elevator.z, true)
     if distance < 3 and ongoingHeist == false then
         if exports["drp-duty"]:LawAmount() >= -1 then -- testing
@@ -78,6 +79,7 @@ AddEventHandler("drp-ud:elevatorcheck", function()
                 TaskSmartFleePed(ped, PlayerPedId(), 100.0, -1, false, false)
 
                 TriggerServerEvent("drp-ud:setOngoingHeist", true)
+                TriggerServerEvent("drp-ud:requestVariables")
             end,
             function()
 
@@ -123,16 +125,10 @@ function Draw3DText(x,y,z, text)
     DrawRect(_x,_y+0.0125, 0.015+ factor, 0.03, 41, 11, 41, 68)
 end 
 
-local count = 0
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(1)        
-        count = count + 1
-        if count <= 7500 then
-            
-            TriggerServerEvent("drp-ud:requestVariables")
-            count = 0
-        end
+        
         local enterLocation = vector3(10.4785, -672.4790, 33.4496)
         local exitLocation = vector3(0.6342, -703.1225, 16.1310)
         local playerCoords = GetEntityCoords(PlayerPedId())
