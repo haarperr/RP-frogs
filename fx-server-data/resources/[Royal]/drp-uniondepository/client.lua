@@ -128,19 +128,31 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
         local enterLocation = vector3(10.4785, -672.4790, 33.4496)
+        local exitLocation = vector3(0.6342, -703.1225, 16.1310)
+        local playerCoords = GetEntityCoords(PlayerPedId())
         if ongoingheist then
-            local playerCoords = GetEntityCoords(PlayerPedId())
             if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, enterLocation.x, enterLocation.y, enterLocation.z, true) < 1.5 then
                 Draw3DText(enterLocation.x, enterLocation.y, enterLocation.z, "Press [E] to enter")
                 if IsControlJustPressed(0, 38) then
                     local finished = exports['drp-taskbar']:taskBar(15000, 'Using the Elevator')
                     if finished == 100 then
                         -- teleport player to downstairs
-                        local downstairs = vector3(6.3331, -708.2879, 16.1358)
+                        local downstairs = vector3(-0.3971, -706.9908, 16.1311)
                         SetEntityCoords(PlayerPedId(), downstairs.x, downstairs.y, downstairs.z)
 
                     
                     end
+                end
+            end
+        end
+        if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, exitLocation.x, exitLocation.y, exitLocation.z, true) < 1.5 then
+            Draw3DText(exitLocation.x, exitLocation.y, exitLocation.z, "Press [E] to exit")
+            if IsControlJustPressed(0, 38) then
+                local finished = exports['drp-taskbar']:taskBar(15000, 'Using the Elevator')
+                if finished == 100 then
+                    -- teleport player to upstairs
+                    local upstairs = vector3(10.8864, -672.2345, 33.4495)
+                    SetEntityCoords(PlayerPedId(), upstairs.x, upstairs.y, upstairs.z)
                 end
             end
         end
