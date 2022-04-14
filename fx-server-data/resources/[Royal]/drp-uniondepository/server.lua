@@ -16,7 +16,7 @@ local totalThermite = 0
 
 RegisterServerEvent("drp-ud:requestVariables")
 AddEventHandler("drp-ud:requestVariables", function()
-    Citizen.Trace("Requesting variables: " .. tostring(defenderSpawned) .. " " .. tostring(defender2Spawned) .. " " .. tostring(ongoingHeist) .. "\n")
+    Citizen.Trace("Requesting variables: " .. tostring(defenderSpawned) .. " " .. tostring(defender2Spawned) .. " " .. tostring(ongoingHeist) .. " " .. tostring(totalThermite) .. "\n")
     TriggerClientEvent("drp-ud:getVariables", -1, defenderSpawned, defender2Spawned, ongoingHeist)
 end) 
 
