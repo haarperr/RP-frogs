@@ -18,8 +18,7 @@ AddEventHandler("drp-ud:elevatorcheck", function()
                 Wait(1)
             end
         end
-        
-        TaskGoStraightToCoord(PlayerPedId(), elevator.x, elevator.y, elevator.z, 1.0, -1, 0.0, 0.0)
+        TaskGoStraightToCoord(PlayerPedId(), elevator.x, elevator.y, elevator.z, 1.0, -1, 179.4743, 0.0)
 		Citizen.Wait(4000)
 		exports["blz-memory"]:thermiteminigame(8, 3, 3, 10,
 		function()
