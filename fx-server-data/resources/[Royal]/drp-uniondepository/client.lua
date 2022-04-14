@@ -27,7 +27,7 @@ AddEventHandler("drp-ud:elevatorcheck", function()
             TaskGoStraightToCoord(PlayerPedId(), 8.4783, -667.8687, 33.4497, 1.0, -1, 177.2868, 0.0)
             Citizen.Wait(4000)
             TriggerEvent('inventory:removeItem', 'elevatorhackingdevice', 1)
-            exports["blz-memory"]:thermiteminigame(12, 3, 3, 8,
+            exports["blz-memory"]:thermiteminigame(1, 3, 3, 8,
             function()
                 local rotx, roty, rotz = table.unpack(vec3(GetEntityRotation(PlayerPedId())))
                 local bagscene = NetworkCreateSynchronisedScene(8.4783, -667.8687, 33.4497, rotx, roty, rotz + 1.1, 2, false, false, 1065353216, 0, 1.3)
