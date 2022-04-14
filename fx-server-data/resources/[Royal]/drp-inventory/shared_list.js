@@ -28962,7 +28962,7 @@ itemList['farmhoe'] = {
 
 itemList['elevatorhackingdevice'] = {
   fullyDegrades: true,
-  decayrate: 0.001385,
+  decayrate: 0.15,
   displayname: 'Elevator Hacking Device',
   price: 1000,
   craft: [

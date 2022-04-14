@@ -503,13 +503,13 @@ onNet("server-inventory-open", async(coords, player, secondInventory, targetName
 
             var targetinvname = targetName;
             var shopArray = CraftRifleStoreGangs();
-            var shopAmount = 5;
+            var shopAmount = 6;
             emitNet("inventory-open-target", src, [invArray, arrayCount, playerinvname, shopArray, shopAmount, targetinvname, 500, false]);
 
         } else if (secondInventory == "43000") {
             var targetinvname = targetName;
             var shopArray = WarehouseCrafting();
-            var shopAmount = 11;
+            var shopAmount = 12;
             emitNet("inventory-open-target", src, [invArray, arrayCount, playerinvname, shopArray, shopAmount, targetinvname, 500, false]);
 
         } else if (secondInventory == "44000") {
@@ -566,7 +566,7 @@ onNet("server-inventory-open", async(coords, player, secondInventory, targetName
         } else if (secondInventory == "10") {
             var targetinvname = targetName;
             var shopArray = PoliceArmory();
-            var shopAmount = 38;
+            var shopAmount = 37;
             emitNet("inventory-open-target", src, [invArray, arrayCount, playerinvname, shopArray, shopAmount, targetinvname, 500, false]);
         } else if (secondInventory == "15") {
             var targetinvname = targetName;
