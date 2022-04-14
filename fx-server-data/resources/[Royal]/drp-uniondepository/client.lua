@@ -63,7 +63,7 @@ AddEventHandler("drp-ud:elevatorcheck", function()
                     FreezeEntityPosition(bomba, true)
                     TriggerServerEvent("drp-ud:particleserver", method, currentPos.x, currentPos.y, currentPos.z + 0.3)
                     SetPtfxAssetNextCall("scr_ornate_heist")
-                    local effect = StartParticleFxLoopedAtCoord("scr_heist_ornate_thermal_burn", x, y, z + 0.3, 0.0, 0.0, 0.0, 1.0, false, false, false, false)
+                    local effect = StartParticleFxLoopedAtCoord("scr_heist_ornate_thermal_burn", currentPos.x, currentPos.y, currentPos.z + 0.3, 0.0, 0.0, 0.0, 1.0, false, false, false, false)
                     
                     NetworkStopSynchronisedScene(bagscene)
                     TaskPlayAnim(ped, "anim@heists@ornate_bank@thermal_charge", "cover_eyes_intro", 8.0, 8.0, 1000, 36, 1, 0, 0, 0)
