@@ -2232,7 +2232,7 @@ function receivingCall(callFrom)
       Citizen.Wait(1)
       TriggerEvent("DoLongHudText","Call from: " .. callFrom .. " /answer | /hangup", 1)
       if phoneNotifications then
-      	TriggerEvent('InteractSound_CL:PlayOnOne', 'callcall', 0.4)
+      	TriggerEvent('InteractSound_CL:PlayOnOne', 'phoneincoming', 0.4)
       end
     end
     Citizen.Wait(2500)

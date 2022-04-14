@@ -1,3 +1,5 @@
+local ongoingHeist = false
+
 RegisterNetEvent("drp-ud:elevatorcheck")
 AddEventHandler("drp-ud:elevatorcheck", function()
     local player = PlayerPedId()
@@ -73,6 +75,8 @@ AddEventHandler("drp-ud:elevatorcheck", function()
                 SetEntityAsMissionEntity(ped, true, true)
                 TaskSmartFleePed(ped, PlayerPedId(), 100.0, -1, false, false)
 
+                ongoingheist = true
+
                 
             end,
             function()
@@ -118,3 +122,15 @@ function Draw3DText(x,y,z, text)
     local factor = (string.len(text)) / 370
     DrawRect(_x,_y+0.0125, 0.015+ factor, 0.03, 41, 11, 41, 68)
 end 
+
+
+Citizen.CreateThread(function()
+    while true do
+        Citizen.Wait(0)
+        local enterLocation = vector3(10.4785, -672.4790, 33.4496)
+        if ongoingheist then
+            local playerCoords = 
+            if GetDistanceBetweenCoords()
+        end
+    end
+end)
