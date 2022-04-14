@@ -1,6 +1,6 @@
 local FireRateTypes = {
 	{ label = "Single Fire", name = "SINGLE_FIRE", delay = 30 },
-	{ label = "Burst Fire", name = "BURST_FIRE", delay = 300 },
+	{ label = "Burst Fire", name = "BURST_FIRE", delay = 400 },
 	{ label = "Full Auto", name = "FULL_AUTO_FIRE", delay = 1 }
 }
 
@@ -50,7 +50,14 @@ local AllowedModes = {
 		["SINGLE_FIRE"] = true,
 		["BURST_FIRE"] = true,
 		["FULL_AUTO_FIRE"] = true
-	}
+	},
+
+	-- Airsoft
+	["-2084633992"] = {
+		["SINGLE_FIRE"] = true,
+		["BURST_FIRE"] = true,
+		["FULL_AUTO_FIRE"] = true
+	},
 }
 
 local ForceWeaponMode = {
@@ -63,28 +70,28 @@ local SELECTED_FIRE_RATE = 3
 
 Citizen.CreateThread(function()
 
-	-- Register Keybinds
+    -- Register Keybinds
 	exports["drp-binds"]:registerKeyMapping("", "Weapons", "Switch Weapon Mode", "+switchWeaponMode", "-switchWeaponMode")
-  RegisterCommand("+switchWeaponMode", SwitchWeaponMode, false)
-  RegisterCommand("-switchWeaponMode", function() end, false)
+    RegisterCommand("+switchWeaponMode", SwitchWeaponMode, false)
+    RegisterCommand("-switchWeaponMode", function() end, false)
 end)
 
 local function runWeaponLoop()
-	running = true
-	Citizen.CreateThread(function()
-		while running do
-		if IsDisabledControlPressed(0, 65) then
-			Wait(FireRateTypes[SELECTED_FIRE_RATE].delay)
-			if FireRateTypes[SELECTED_FIRE_RATE].name ~= "FULL_AUTO_FIRE" then
-				while IsDisabledControlPressed(0, 65) do
-					DisablePlayerFiring(PlayerPedId(), true)
-					Wait(1)
-				end
-			end
-		end
-		Wait(0)
-		end
-	end)
+  running = true
+  Citizen.CreateThread(function()
+      while running do
+					if IsDisabledControlPressed(0, 24) then
+						Wait(FireRateTypes[SELECTED_FIRE_RATE].delay)
+						if FireRateTypes[SELECTED_FIRE_RATE].name ~= "FULL_AUTO_FIRE" then
+							while IsDisabledControlPressed(0, 24) do
+								DisablePlayerFiring(PlayerPedId(), true)
+								Wait(0)
+							end
+						end
+					end
+					Wait(0)
+      end
+  end)
 end
 
 function SwitchWeaponMode()

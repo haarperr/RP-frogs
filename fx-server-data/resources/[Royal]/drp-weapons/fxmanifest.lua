@@ -1,19 +1,31 @@
-fx_version 'bodacious'
-game 'gta5'
+games {"gta5"}
 
-resource_manifest_version '05cfa83c-a124-4cfa-a768-c24a5811d8f9'
+fx_version "cerulean"
 
-client_script 'client.lua'
-server_script 'server.lua'
+description "Weapons"
 
+dependencies  {
+  "damage-events"
+}
 
 client_scripts {
-	"@drp-errorlog/client/cl_errorlog.lua",
-	"@drp-lib/client/cl_rpc.lua",
-	"modes.lua",
-	"melee.lua",
-	"pickups.lua"
-  }
+  "@drp-errorlog/client/cl_errorlog.lua",
+  "@drp-lib/client/cl_rpc.lua",
+  
+  "client.lua",
+  "modes.lua",
+  "melee.lua",
+  "pickups.lua"
+}
+
+shared_script {
+  "@drp-lib/shared/sh_util.lua"
+}
+server_scripts {
+  "@drp-lib/server/sv_rpc.lua",
+  "@drp-lib/server/sv_sql.lua",
+  "server.lua"
+}
 
 server_export 'getWeaponMetaData'
 server_export "updateWeaponMetaData"

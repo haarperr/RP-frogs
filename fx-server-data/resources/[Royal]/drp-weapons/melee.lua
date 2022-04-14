@@ -44,6 +44,8 @@ CreateThread(function()
     Wait(5000)
     
     SetWeaponDamageModifier(-1813897027 --[[ Hash ]], 0.001)
+    SetWeaponDamageModifier(CrashHash --[[ Hash ]], 0.01)
+    SetWeaponDamageModifier(RamHash --[[ Hash ]], 0.01)
 
     local ped = PlayerPedId()
     local model = GetEntityModel(GetVehiclePedIsIn(PlayerPedId()))
@@ -53,13 +55,9 @@ CreateThread(function()
     if RecentlyRiding then
       local BikeArmor = exports["drp-inventory"]:hasEnoughOfItem("bikearmor", 1, false,true)
       if BikeArmor then
-        SetWeaponDamageModifier(CrashHash --[[ Hash ]], 0.01)
         SetWeaponDamageModifier(FallHash --[[ Hash ]], 0.01)
-        SetWeaponDamageModifier(RamHash --[[ Hash ]], 0.01)
       else
-        SetWeaponDamageModifier(CrashHash --[[ Hash ]], 1.0)
         SetWeaponDamageModifier(FallHash --[[ Hash ]], 1.0)
-        SetWeaponDamageModifier(RamHash --[[ Hash ]], 1.0)
       end
     end
 
@@ -68,7 +66,7 @@ CreateThread(function()
 end)
 -- WEAPON_RUN_OVER_BY_CAR  -1553120962
 
-
+--133987706
 
 
 
@@ -90,11 +88,11 @@ end
 local DegApplied = false
 AddEventHandler("DamageEvents:EntityDamaged", function(victim, attacker, pWeapon, isMelee)
   local playerPed = PlayerPedId()
-
-  
+  print(pWeapon)
   if victim ~= playerPed then
     return
   end
+  print(pWeapon)
   if ( (pWeapon == CrashHash or pWeapon == RamHash or pWeapon == FallHash) and exports["drp-inventory"]:hasEnoughOfItem("bikearmor", 1, false, true) and not DegApplied and RecentlyRiding) then
     DegApplied = true
     TriggerEvent("inventory:DegenItemType",10,"bikearmor")
