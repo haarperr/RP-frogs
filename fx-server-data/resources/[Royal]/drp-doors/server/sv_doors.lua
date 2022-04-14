@@ -8963,9 +8963,12 @@ DOOR_CONFIG = {
       keyFob = true,
       desc = "x",
       access = {
-        job = { },
+        job = {
+          ["PD"] = true,
+         },
         cid = {
           [74] = true
+          
         }
       }
     },
