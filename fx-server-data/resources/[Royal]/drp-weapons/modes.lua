@@ -77,21 +77,21 @@ Citizen.CreateThread(function()
 end)
 
 local function runWeaponLoop()
-  running = true
-  Citizen.CreateThread(function()
-      while running do
-					if IsDisabledControlPressed(0, 24) then
-						Wait(FireRateTypes[SELECTED_FIRE_RATE].delay)
-						if FireRateTypes[SELECTED_FIRE_RATE].name ~= "FULL_AUTO_FIRE" then
-							while IsDisabledControlPressed(0, 24) do
-								DisablePlayerFiring(PlayerPedId(), true)
-								Wait(0)
-							end
-						end
-					end
+	running = true
+	Citizen.CreateThread(function()
+		while running do
+		if IsControlJustPressed(0, 24) then
+			Wait(FireRateTypes[SELECTED_FIRE_RATE].delay)
+			if FireRateTypes[SELECTED_FIRE_RATE].name ~= "FULL_AUTO_FIRE" then
+				while IsDisabledControlPressed(0, 24) do
+					DisablePlayerFiring(PlayerPedId(), true)
 					Wait(0)
-      end
-  end)
+				end
+			end
+		end
+		Wait(0)
+		end
+	end)
 end
 
 function SwitchWeaponMode()
