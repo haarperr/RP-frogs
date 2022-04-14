@@ -63,9 +63,9 @@ AddEventHandler("drp-ud:elevatorcheck", function()
                 Wait(1)
             end
             
-			TriggerServerEvent('drp-doors:changeLock-status', 541, false)
-			TriggerServerEvent('drp-doors:changeLock-status', 542, false)
-            
+			TriggerServerEvent('drp-doors:change-lock-state', 541, false, true)
+			TriggerServerEvent('drp-doors:change-lock-state', 542, false, true)
+
             local pedSpawn = vector3(10.2033, -669.5919, 33.4495)
             local ped = CreatePed(4, hash, pedSpawn.x, pedSpawn.y, pedSpawn.z, 0.0, true, false)
             SetEntityAsMissionEntity(ped, true, true)
