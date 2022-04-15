@@ -342,6 +342,24 @@ Entries[#Entries + 1] = {
     group = { 'isNPC' },
     data = {
         {
+            id = "fibarmoryguy",
+            label = "Open Armory",
+            icon = "circle",
+            event = "police:general",
+            parameters = {}
+        }
+    },
+    options = {
+        distance = { radius = 3.0 },
+        npcIds = {"fibarmoryguy"}
+    }
+}
+
+Entries[#Entries + 1] = {
+    type = 'flag',
+    group = { 'isNPC' },
+    data = {
+        {
             id = "cuttedchicken3",
             label = "Sell cutted Chicken",
             icon = "circle",
