@@ -371,6 +371,10 @@ Citizen.CreateThread(function()
         -- minZ=30.49,
         -- maxZ=31.24
     })
+    
+    exports["drp-polytarget"]:AddBoxZone("fib2_elv_up", vector3(2506.0056, -433.0655, 99.3493), 10.0, 12.2, {
+
+    })
 
     
     -- PD Air One Garages
@@ -1570,6 +1574,21 @@ Citizen.CreateThread(function()
             return true
         end,
     });
+
+    -- FIB 2 Elevator Up
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("fib2_elv_up", {{
+        event = "drp-fib:elevator:2:up",
+        id = "duty_police",
+        icon = "cog",
+        label = "arrow-alt-circle-up",
+        parameters = {},
+    }}, {
+        distance = { radius = 2.5 },
+        isEnabled = function()
+            return true
+        end,
+    });
+
 
     -- PD Duty2
     exports["drp-interact"]:AddPeekEntryByPolyTarget("duty_police2", {{
