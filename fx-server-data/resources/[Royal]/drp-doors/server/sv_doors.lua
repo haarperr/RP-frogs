@@ -9285,5 +9285,22 @@ DOOR_CONFIG = {
         cid = {},
       }
     },
+    {
+      info = "Rockey",
+      active = true,
+      id = 547,
+      coords = vector3(2405.043, 3089.775, 48.54872),
+      model = -1934898817,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+         },
+        cid = {
+          [114] = true,
+        },
+      }
+    },
 }
   
