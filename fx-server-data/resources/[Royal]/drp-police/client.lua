@@ -2615,11 +2615,72 @@ function fibelevator()
 		while isNearFIBelevator1 do
 			Citizen.Wait(5)
 			if IsControlJustReleased(0, 38) then
-				-- TriggerEvent('police:general')
+				TriggerEvent('fib:elevatorMenu')
 			end
 		end
 	end)
 end
+
+AddEventHandler("fib:elevatorMenu", function()
+	TriggerEvent('drp-context:sendMenu', {
+		{
+            id = 1,
+            header = "Level 1",
+			txt = "Ground Floor",
+			params = {
+                event = "fib:level1",
+            }
+        },
+		{
+            id = 2,
+            header = "Level 2",
+			txt = "Locked",
+			params = {
+                event = "",
+            }
+        },
+		{
+            id = 3,
+            header = "Level 3",
+			txt = "Research & Armory",
+			params = {
+                event = "fib:level3",
+            }
+        },
+		{
+            id = 4,
+            header = "Level 4",
+			txt = "Cell Block",
+			params = {
+                event = "fib:level4",
+            }
+        },
+    })
+
+end)
+
+
+AddEventHandler("fib:level1", function()
+	local finished = exports['drp-taskbar']:taskBar(3333, "Using the Elevator")
+	if finished then
+		SetEntityCoords(GetPlayerPed(-1), 2497.0510, -349.6439, 94.0922)
+	end
+end)
+
+AddEventHandler("fib:level3", function()
+	local finished = exports['drp-taskbar']:taskBar(3333, "Using the Elevator")
+	if finished then
+		SetEntityCoords(GetPlayerPed(-1), 2496.9773, -349.5313, 101.8933)
+	end
+end)
+
+AddEventHandler("fib:level4", function()
+	local finished = exports['drp-taskbar']:taskBar(3333, "Using the Elevator")
+	if finished then
+		SetEntityCoords(GetPlayerPed(-1), 2497.0757, -349.6602, 105.6905)
+	end
+end)
+
   
 
 
