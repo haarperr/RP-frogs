@@ -5,7 +5,7 @@ AddEventHandler("drp-gokart:pay", function()
 
 	if user:getCash() >= 500 then
         user:removeMoney(500)
-		TriggerClientEvent("oxydelivery:startDealing", source)
+		TriggerClientEvent("drp-gokart:recievekart", source)
     else
         TriggerClientEvent('DoLongHudText', source, 'You need 500$', 2)
 	end
