@@ -51,7 +51,7 @@ const EnableBotStatusMessages = true;
 const BotStatusMessages = [
     "{servername}",
     "{playercount}/48 Players",
-    "Amouranth",
+    "xQcOW",
 ];
 
 // ACE PERMISSIONS

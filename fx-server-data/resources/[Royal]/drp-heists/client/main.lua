@@ -216,7 +216,7 @@ AddEventHandler("drp-heists:distcheckpower", function()
         local finished = exports["drp-bar"]:taskBar(4000,math.random(5,15))
         if finished == 100 then
           Citizen.Wait(1000)
-          TriggerServerEvent('drp-doors:change-lock-state', 51, false)             
+          TriggerServerEvent('drp-doors:change-lock-state', 548, false)             
             return
         end   
     end

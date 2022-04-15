@@ -251,7 +251,7 @@ exports.start = function(SETUP) {
   bot.on('ready',() => {
     log(LOG_LEVELS.INFO,'Started...');
     bot.user.setGame('fallguys', 'https://www.twitch.tv/xqcow');
-    bot.user.setActivity('Amouranth',{'url':'https://www.twitch.tv/xqcow','type':'WATCHING'});
+    bot.user.setActivity('xQcOW',{'url':'https://www.twitch.tv/xqcow','type':'WATCHING'});
     bot.generateInvite(['ADMINISTRATOR']).then((link) => {
       log(LOG_LEVELS.INFO,`Invite URL - ${link}`);
     }).catch(null);

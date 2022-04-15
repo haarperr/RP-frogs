@@ -2562,6 +2562,127 @@ end
 
 -- // FIB 
 
+local isNearFIBelevator1 = false
+local isNearFIBelevator2 = false
+
+--Name: fib_1_1 | 2022-04-15T18:56:04Z
+Citizen.CreateThread(function()
+	exports["drp-polyzone"]:AddPolyZone("fib_elevator", {
+		vector2(2506.1201171875, -342.17779541016),
+		vector2(2502.0617675782, -338.1072692871),
+		vector2(2500.3286132812, -339.90768432618),
+		vector2(2504.408203125, -343.92883300782)
+  	}, {
+	name="fib_elevator",
+	minZ = 0,
+	maxZ = 108,
+  	})
+end)
+  
+--Name: fib_elevator_2 | 2022-04-15T18:58:59Z
+Citizen.CreateThread(function()
+	exports["drp-polyzone"]:AddPolyZone("fib_elevator", {
+		vector2(2497.2722167968, -350.96731567382),
+		vector2(2498.9291992188, -349.21697998046),
+		vector2(2494.8630371094, -345.1694946289),
+		vector2(2493.3669433594, -347.08865356446)
+	}, {
+	name="fib_elevator",
+	minZ = 0,
+	maxZ = 108
+	})
+end)
+
+RegisterNetEvent('drp-polyzone:enter')
+AddEventHandler('drp-polyzone:enter', function(name)
+	if name == "fib_elevator" then
+	fibelevator()
+	isNearFIBelevator1 = true
+	exports['drp-textui']:showInteraction('[E] Use Elevator')
+	end
+end)
+
+RegisterNetEvent('drp-polyzone:exit')
+AddEventHandler('drp-polyzone:exit', function(name)
+	if name == "fib_elevator" then
+	isNearFIBelevator1 = false
+	end
+	exports['drp-textui']:hideInteraction()
+end)
+
+function fibelevator()
+	Citizen.CreateThread(function()
+		while isNearFIBelevator1 do
+			Citizen.Wait(5)
+			if IsControlJustReleased(0, 38) then
+				TriggerEvent('fib:elevatorMenu')
+			end
+		end
+	end)
+end
+
+AddEventHandler("fib:elevatorMenu", function()
+	TriggerEvent('drp-context:sendMenu', {
+		{
+            id = 1,
+            header = "Level 1",
+			txt = "Ground Floor",
+			params = {
+                event = "fib:level1",
+            }
+        },
+		{
+            id = 2,
+            header = "Level 2",
+			txt = "Locked 🔒",
+			params = {
+                event = "",
+            }
+        },
+		{
+            id = 3,
+            header = "Level 3",
+			txt = "Research & Armory",
+			params = {
+                event = "fib:level3",
+            }
+        },
+		{
+            id = 4,
+            header = "Level 4",
+			txt = "Cell Block",
+			params = {
+                event = "fib:level4",
+            }
+        },
+    })
+
+end)
+
+
+AddEventHandler("fib:level1", function()
+	local finished = exports['drp-taskbar']:taskBar(3333, "Using the Elevator")
+	if finished then
+		SetEntityCoords(GetPlayerPed(-1), 2497.0510, -349.6439, 94.0922)
+	end
+end)
+
+AddEventHandler("fib:level3", function()
+	local finished = exports['drp-taskbar']:taskBar(3333, "Using the Elevator")
+	if finished then
+		SetEntityCoords(GetPlayerPed(-1), 2496.9773, -349.5313, 101.8933)
+	end
+end)
+
+AddEventHandler("fib:level4", function()
+	local finished = exports['drp-taskbar']:taskBar(3333, "Using the Elevator")
+	if finished then
+		SetEntityCoords(GetPlayerPed(-1), 2497.0757, -349.6602, 105.6905)
+	end
+end)
+
+  
+
 
 RegisterNetEvent("drp-fib:elevator:2:up")
 AddEventHandler("drp-fib:elevator:2:up", function()
@@ -2580,7 +2701,9 @@ Citizen.CreateThread(function()
 	exports["drp-polyzone"]:AddBoxZone("fib_armor", vector3(2528.97, -337.75, 101.89), 3, 3, {
 	name="fib_armor",
 	heading=45,
-	--debugPoly=true
+	minZ=99,
+	maxZ=103,
+	-- debugPoly=true
   })
 end)
   
@@ -2623,7 +2746,9 @@ Citizen.CreateThread(function()
 	exports["drp-polyzone"]:AddBoxZone("fib_clothes", vector3(2515.63, -344.53, 101.89), 3, 3, {
 		name="fibclothes",
 		heading=0,
-		--debugPoly=true
+		minZ=99,
+		maxZ=103,
+		-- debugPoly=true
     }) 
 end)
 
