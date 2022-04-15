@@ -18,11 +18,13 @@ RegisterNetEvent("drp-gokart:recievekart")
 AddEventHandler("drp-gokart:recievekart", function(where)
     local hash = GetHashKey("veto2")
     Citizen.Trace(tostring(where))
+    local cartSpawn = vector4(0,0,0,0)
 
     if where == 1 then
-        local cartSpawn = vector4(5472.5215, 254.6226, 19.0711, 359.8210)
-    else 
-        local cartSpawn = vector4(-1145.7225, -2110.7620, 12.5571, 313.3146)
+        cartSpawn = vector4(5472.5215, 254.6226, 19.0711, 359.8210)
+    end
+    if where == 2 then 
+        cartSpawn = vector4(-1145.7225, -2110.7620, 12.5571, 313.3146)
     end
     
     RequestModel(hash)
