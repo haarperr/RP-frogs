@@ -16,6 +16,8 @@ RegisterNUICallback('callback', function(data, cb)
     cb('ok')
 end)
 
+exports('hacking3', openHack())
+
 function openHack()
     SetNuiFocus(true, true)
     SendNUIMessage({
@@ -32,3 +34,5 @@ end
 function GetHackingStatus()
     return IsHacking
 end
+
+
