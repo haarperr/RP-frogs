@@ -9302,5 +9302,56 @@ DOOR_CONFIG = {
         },
       }
     },
+    {
+      info = "Rockey 1",
+      active = true,
+      id = 547,
+      coords = vector3(2435.263, 3101.823, 46.95869),
+      model = 741314661,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+         },
+        cid = {
+          [114] = true,
+        },
+      }
+    },
+    {
+      info = "Rockey 2",
+      active = true,
+      id = 547,
+      coords = vector3(2387.834, 3131.338, 47.00707),
+      model = 741314661,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+         },
+        cid = {
+          [114] = true,
+        },
+      }
+    },
+    {
+      info = "Rockey 3",
+      active = true,
+      id = 547,
+      coords = vector3(2378.003, 3131.58, 47.00707),
+      model = 741314661,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+         },
+        cid = {
+          [114] = true,
+        },
+      }
+    },
 }
   
