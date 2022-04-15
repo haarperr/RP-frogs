@@ -90,9 +90,9 @@ local w = {
 	-- Duffel Bag
 	[33] = { ["type"] = 6, ["name"] = "Duffel Bag", ["id"] = "heistduffelbag", ["model"] = "hei_p_m_bag_var22_arm_s", ["z"] = 0.51, ["rx"] = 90.0, ["ry"] = 270.0, ["rz"] = 90.0 },
 
-	-- [34] = { ["type"] = 7, ["name"] = "Katana", ["id"] = "-1239161099", ["model"] = 'katana_sheat_empty', ["z"] = 0.51, ["rx"] = 225.0, ["ry"] = 8.0, ["rz"] = 90.0 },
-	-- [35] = { ["type"] = 7, ["name"] = "Katana", ["id"] = "1692590063", ["model"] = 'katana_sheat_empty', ["z"] = 0.51, ["rx"] = 225.0, ["ry"] = 8.0, ["rz"] = 90.0 },
-	-- [36] = { ["type"] = 7, ["name"] = "Katana", ["id"] = "cursedkatanaweapon", ["model"] = 'katana_sheat_empty', ["z"] = 0.51, ["rx"] = 225.0, ["ry"] = 8.0, ["rz"] = 90.0 },
+	[34] = { ["type"] = 7, ["name"] = "Katana", ["id"] = "-1239161099", ["model"] = 'katana_sheat_empty', ["z"] = 0.51, ["rx"] = 225.0, ["ry"] = 8.0, ["rz"] = 90.0 },
+	[35] = { ["type"] = 7, ["name"] = "Katana", ["id"] = "1692590063", ["model"] = 'katana_sheat_empty', ["z"] = 0.51, ["rx"] = 225.0, ["ry"] = 8.0, ["rz"] = 90.0 },
+	[36] = { ["type"] = 7, ["name"] = "Katana", ["id"] = "cursedkatanaweapon", ["model"] = 'katana_sheat_empty', ["z"] = 0.51, ["rx"] = 225.0, ["ry"] = 8.0, ["rz"] = 90.0 },
 }
 
 
