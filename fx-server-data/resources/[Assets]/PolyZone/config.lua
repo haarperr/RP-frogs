@@ -252,7 +252,7 @@ Config.Zones = {
 			name="garagepdpaletoheli",
 			--minZ = 31.306163787842,
 			--maxZ = 31.31202697754
-			})
+			}),
   
   
   
