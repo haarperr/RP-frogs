@@ -2563,6 +2563,15 @@ end
 -- // FIB 
 
 
+RegisterNetEvent("drp-fib:elevator:2:up")
+AddEventHandler("drp-fib:elevator:2:up", function()
+	SetEntityCoords(GetPlayerPed(-1), 2504.8184, -432.9658, 106.9193)
+end)
+
+RegisterNetEvent("drp-fib:elevator:2:down")
+AddEventHandler("drp-fib:elevator:2:down", function()
+	SetEntityCoords(GetPlayerPed(-1), 2504.8184, -432.9569, 99.1067)
+end)
   
 
 

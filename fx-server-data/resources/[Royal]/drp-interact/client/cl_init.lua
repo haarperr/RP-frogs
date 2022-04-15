@@ -373,7 +373,9 @@ Citizen.CreateThread(function()
     })
     
     exports["drp-polytarget"]:AddBoxZone("fib2_elv_up", vector3(2506.0056, -433.0655, 99.3493), 10.0, 12.2, {
+    })
 
+    exports["drp-polytarget"]:AddBoxZone("fib2_elv_up", vector3(2506.0054, -432.9903, 107.2962), 10.0, 12.2, {
     })
 
     
@@ -1579,8 +1581,8 @@ Citizen.CreateThread(function()
     exports["drp-interact"]:AddPeekEntryByPolyTarget("fib2_elv_up", {{
         event = "drp-fib:elevator:2:up",
         id = "fib2_elv_up",
-        icon = "cog",
-        label = "arrow-alt-circle-up",
+        icon = "arrow-alt-circle-up",
+        label = "Elevator Up",
         parameters = {},
     }}, {
         distance = { radius = 2.5 },
@@ -1588,6 +1590,21 @@ Citizen.CreateThread(function()
             return true
         end,
     });
+
+    -- FIB 2 Elevator Down
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("fib2_elv_down", {{
+        event = "drp-fib:elevator:2:down",
+        id = "fib2_elv_down",
+        icon = "arrow-alt-circle-down",
+        label = "Elevator Down",
+        parameters = {},
+    }}, {
+        distance = { radius = 2.5 },
+        isEnabled = function()
+            return true
+        end,
+    });
+
 
 
     -- PD Duty2
