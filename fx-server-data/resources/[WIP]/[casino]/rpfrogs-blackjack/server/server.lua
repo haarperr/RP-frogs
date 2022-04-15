@@ -138,8 +138,36 @@ end
 RegisterServerEvent("blackjack:SetPlayerBet")
 AddEventHandler("blackjack:SetPlayerBet", SetPlayerBet)
 
+function CheckPlayerBet(i, bet)
+    local Player = exports["drp-base"]:getModule("Player"):GetUser(i)
+    local ItemList = {
+        ["casinochips"] = 1,
+    }
 
+    print('checking player bet and chips')
 
+    local playerChips = Player.Functions.GetItemByName("casinochips")
+    local canBet = false
+
+    if playerChips ~= nil then
+        if playerChips.count >= bet then
+            canBet = true
+        end
+    end
+
+    if canBet == true then
+        print('player can bet')
+        TriggerClientEvent("blackjack:BetRecieved", source, canBet)
+    else
+        print('player cant bet')
+        TriggerClientEvent("blackjack:BetRecieved", source, canBet)
+    end
+
+    print('player bet checked')
+end
+
+RegisterServerEvent("blackjack:CheckPlayerBet")
+AddEventHandler("blackjack:CheckPlayerBet", CheckPlayerBet)
 
 
 -- omegalul copilot doing juicer
