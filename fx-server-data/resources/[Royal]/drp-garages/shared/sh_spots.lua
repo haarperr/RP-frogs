@@ -151,6 +151,18 @@ Garages = {
         },
         ShowBlip = false
     },
+    
+    ["garagefib"] = {
+        name = "Garage FIB Heli",
+        blip = {x = 2510.5520, y=  -342.0259, z= 118.1894},
+        spawns = {
+            [1] = { ['x'] = 2510.5520, ['y'] = -342.0259, ['z'] = 118.1894, ['h'] = 39.1068 }
+            
+        },
+        ShowBlip = false
+    },
+
+    
     ["garagecourt"] = {
         name = "Garage Courthouse",
         blip = {x = 264.6512, y= -1123.8561, z= 29.2180},
