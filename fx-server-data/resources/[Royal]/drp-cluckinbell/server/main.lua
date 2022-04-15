@@ -41,7 +41,7 @@ AddEventHandler("cluckinbell:retreive:receipt", function(regID)
                     TriggerClientEvent("player:receiveItem", Registers[regID][i].owner, "burgerReceipt", 1, true, information)
                     TriggerClientEvent("player:receiveItem", src, "receipt", 1, true, {["Comment"] = "Thanks for your order at Cluckin Bell"})
                     TriggerEvent("cluckinbell:update:registers", regID)
-                    TriggerEvent("server:GroupPayment","cluckin_bell", tonumber(amount/100*75))
+                    TriggerEvent("server:GroupPayment","cluckin_bell", tonumber(amount/100*75), src)
                 else
                     TriggerClientEvent("DoLongHudText", src, "You cant afford this payment", 2)
                 end
