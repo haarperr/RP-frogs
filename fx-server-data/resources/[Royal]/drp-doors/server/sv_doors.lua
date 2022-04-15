@@ -9035,6 +9035,24 @@ DOOR_CONFIG = {
         },
       }
     },
+    {
+      info = "FIB Armory",
+      active = true,
+      id = 546,
+      coords = vector3(2524.155, -334.9459, 102.0571),
+      model = -2023754432,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = { 
+          [74] = true
+        },
+      }
+    },
 }
   
   
