@@ -2562,6 +2562,10 @@ end
 
 -- // FIB 
 
+local elevator
+
+
+
 local StateFIBLockerORClothing = false
 --Name: fibclothes | 2022-04-15T08:19:20Z
 Citizen.CreateThread(function()
