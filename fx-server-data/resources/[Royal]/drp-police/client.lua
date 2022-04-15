@@ -574,6 +574,7 @@ AddEventHandler('police:uncuffMenu', function()
 			TriggerServerEvent("falseCuffs", GetPlayerServerId(t))
 			TriggerEvent("DoLongHudText", "You uncuffed a player!",1)
 			TriggerServerEvent('police:setCuffState', GetPlayerServerId(t), false)
+			
 		end
 	else
 		TriggerEvent("DoLongHudText", "No player near you (maybe get closer)!",2)
