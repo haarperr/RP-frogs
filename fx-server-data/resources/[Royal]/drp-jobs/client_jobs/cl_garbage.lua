@@ -91,7 +91,7 @@ if AtGarbageSpot then
             while not HasModelLoaded(car) do
                 Citizen.Wait(0)
             end
-            local garbagewait = exports['drp-taskbar']:taskBar(5000,'Preparing Garbage Truck')
+            local garbagewait = exports['drp-taskbar']:taskBar(12500,'Preparing Garbage Truck')
             if (garbagewait == 100) then
                 TriggerEvent('DoLongHudText', 'Garbage vehicle prepared in bay')
                 vehicle = CreateVehicle(car, -335.65713500977, -1564.6812744141, 24.9326171875, 59.52755355835, true, false)

@@ -388,7 +388,7 @@ function shutoffenginesearch()
           return
         end
         if luck == 69 and finished == 100 then
-          local finished = exports["drp-taskbar"]:taskBar(2000,"Found and Using Keys")
+          local finished = exports["drp-taskbar"]:taskBar(3000,"Found and Using Keys")
           SetVehicleEngineOn(veh,0,1,1)
           SetVehicleUndriveable(veh,false)
           TriggerEvent("keys:addNew",veh,GetVehicleNumberPlateText(veh))
@@ -710,9 +710,9 @@ AddEventHandler('keys:startvehicle', function()
       SetVehicleEngineOn(veh,1,0,1)
       Citizen.Wait(100) 
       
-      if not Citizen.InvokeNative(0xAE31E7DF9B5B132E, veh) then
-        SetVehicleEngineOn(veh,1,1,1)
-      end
+      -- if not Citizen.InvokeNative(0xAE31E7DF9B5B132E, veh) then
+      --   SetVehicleEngineOn(veh,1,1,1)
+      -- end
     else
        SetVehicleEngineOn(veh,0,0,1)
        SetVehicleUndriveable(veh,true)
@@ -721,7 +721,6 @@ end)
 local runningshutoff = false
  RegisterNetEvent('keys:shutoffengine')
  AddEventHandler('keys:shutoffengine', function()
-
       whatthefuckisthisdoing = 1000
       if runningshutoff then
         return
