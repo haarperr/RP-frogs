@@ -2576,7 +2576,7 @@ Citizen.CreateThread(function()
 	name="fib_elevator",
 	minZ = 0,
 	maxZ = 108,
-  	}
+  	})
 end)
   
 --Name: fib_elevator_2 | 2022-04-15T18:58:59Z
