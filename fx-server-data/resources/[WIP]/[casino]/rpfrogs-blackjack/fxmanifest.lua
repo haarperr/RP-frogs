@@ -9,7 +9,7 @@ shared_scripts {
 	'@drp-lib/import.lua'
 }
 
-client_script 'timerbars.lua'
+client_script 'timing.lua'
 client_script 'client.lua'
 server_script 'server.lua'
 
