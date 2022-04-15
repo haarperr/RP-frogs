@@ -2562,7 +2562,88 @@ end
 
 -- // FIB 
 
-local elevator
+local elevatorUp = false 
+local elevatorDown = false
+
+--Name: fbi2_elevatorup | 2022-04-15T08:46:51Z
+Citizen.CreateThread(function()
+	exports["drp-polyzone"]:AddBoxZone("fbi2_elevatorup", vector3(2504.14, -433.36, 99.11), 2, 2, {
+	name="fbi2_elevatorup",
+	heading=315,
+	--debugPoly=true
+  })
+end)
+  
+RegisterNetEvent('drp-polyzone:enter')
+AddEventHandler('drp-polyzone:enter', function(name)
+	if name == "fbi2_elevatorup" then
+		fib2up()
+		elevatorUp = true
+		exports['drp-textui']:showInteraction('[E] Elevator Up')
+	end
+end)
+
+
+RegisterNetEvent('drp-polyzone:exit')
+AddEventHandler('drp-polyzone:exit', function(name)
+    if name == "fbi2_elevatorup" then
+        elevatorUp = false
+    end
+	exports['drp-textui']:hideInteraction()
+end)
+
+function fib2up()
+	Citizen.CreateThread(function()
+        while StateFIBLockerORClothing do
+            Citizen.Wait(5)
+			if IsControlJustReleased(0, 38) then
+				-- tp to 2504.52, -433.14, 106.91
+				SetEntityCoords(GetPlayerPed(-1), 2504.52, -433.14, 106.91)
+			end
+		end
+	end)
+end
+
+
+--Name: fib2_elevatordown | 2022-04-15T08:47:24Z
+Citizen.CreateThread(function()
+	exports["drp-polyzone"]:AddBoxZone("fib2_elevatordown", vector3(2504.52, -433.14, 106.91), 2, 2, {
+	name="fib2_elevatordown",
+	heading=315,
+	--debugPoly=true
+	})
+end)
+
+  
+RegisterNetEvent('drp-polyzone:enter')
+AddEventHandler('drp-polyzone:enter', function(name)
+	if name == "fib2_elevatordown" then
+		fib2down()
+		elevatorDown = true
+		exports['drp-textui']:showInteraction('[E] Elevator Down')
+	end
+end)
+
+
+RegisterNetEvent('drp-polyzone:exit')
+AddEventHandler('drp-polyzone:exit', function(name)
+    if name == "fib2_elevatordown" then
+        elevatorDown = false
+    end
+	exports['drp-textui']:hideInteraction()
+end)
+
+function fib2down()
+	Citizen.CreateThread(function()
+        while StateFIBLockerORClothing do
+            Citizen.Wait(5)
+			if IsControlJustReleased(0, 38) then
+				SetEntityCoords(GetPlayerPed(-1), 2504.14, -433.36, 99.11)
+			end
+		end
+	end)
+end
+  
 
 
 
