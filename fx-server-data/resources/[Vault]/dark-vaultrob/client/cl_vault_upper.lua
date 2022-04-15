@@ -205,7 +205,7 @@ AddEventHandler('dark-vaultrob:upper:heistlaptop4', function()
 				TriggerServerEvent('drp-doors:change-lock-state', 50, false)
 				secdoorshmm = true
 				local deleternd = math.random(1,100)
-				if deleternd <= 100 and deleternd > 20 then
+				if deleternd >= 20 then
 					TriggerEvent('inventory:removeItem', 'heistlaptop4', 1)
 				end
 			end,
@@ -213,7 +213,7 @@ AddEventHandler('dark-vaultrob:upper:heistlaptop4', function()
 				animcancel1()
 				secdoorshmm = false
 				local deleternd = math.random(1,100)
-				if deleternd <= 100 and deleternd > 20 then
+				if deleternd <= 20 then
 					TriggerEvent('inventory:removeItem', 'heistlaptop4', 1)
 				end
 			
