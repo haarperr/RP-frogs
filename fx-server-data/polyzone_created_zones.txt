@@ -5,3 +5,67 @@ BoxZone:Create(vector3(442.64, -1025.73, 28.71), 7.5, 25, {
   --debugPoly=true
 })
 
+--Name: fibclothes | 2022-04-15T08:19:20Z
+BoxZone:Create(vector3(2515.63, -344.53, 101.89), 3, 3, {
+  name="fibclothes",
+  heading=0,
+  --debugPoly=true
+})
+
+--Name: fbi2_elevatorup | 2022-04-15T08:46:51Z
+BoxZone:Create(vector3(2504.14, -433.36, 99.11), 2, 2, {
+  name="fbi2_elevatorup",
+  heading=315,
+  --debugPoly=true
+})
+
+--Name: fib2_elevatordown | 2022-04-15T08:47:24Z
+BoxZone:Create(vector3(2504.52, -433.14, 106.91), 2, 2, {
+  name="fib2_elevatordown",
+  heading=315,
+  --debugPoly=true
+})
+
+--Name: fib_armor | 2022-04-15T09:43:33Z
+BoxZone:Create(vector3(2528.97, -337.75, 101.89), 3, 3, {
+  name="fib_armor",
+  heading=45,
+  --debugPoly=true
+})
+
+--Name: fib_parking | 2022-04-15T09:50:46Z
+PolyZone:Create({
+  vector2(2535.0710449218, -380.25387573242),
+  vector2(2556.6813964844, -380.9454650879),
+  vector2(2559.1909179688, -370.44659423828),
+  vector2(2536.7919921875, -369.65060424804)
+}, {
+  name="fib_parking",
+  --minZ = 92.99341583252,
+  --maxZ = 93.08039855957
+})
+
+--Name: fib_heli | 2022-04-15T09:57:36Z
+PolyZone:Create({
+  vector2(2506.2463378906, -342.2776184082),
+  vector2(2511.0375976562, -347.0443725586),
+  vector2(2515.4782714844, -342.15182495118),
+  vector2(2510.7189941406, -337.78399658204)
+}, {
+  name="fib_heli",
+  --minZ = 118.18542480468,
+  --maxZ = 118.18616485596
+})
+
+--Name: fib_heli2 | 2022-04-15T10:17:36Z
+PolyZone:Create({
+  vector2(2511.5270996094, -422.14904785156),
+  vector2(2506.8491210938, -426.76959228516),
+  vector2(2511.5961914062, -431.6644897461),
+  vector2(2515.9807128906, -426.62158203125)
+}, {
+  name="fib_heli2",
+  --minZ = 118.33304595948,
+  --maxZ = 118.33631134034
+})
+
