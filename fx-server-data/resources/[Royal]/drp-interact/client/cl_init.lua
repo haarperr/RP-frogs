@@ -1578,7 +1578,7 @@ Citizen.CreateThread(function()
     -- FIB 2 Elevator Up
     exports["drp-interact"]:AddPeekEntryByPolyTarget("fib2_elv_up", {{
         event = "drp-fib:elevator:2:up",
-        id = "duty_police",
+        id = "fib2_elv_up",
         icon = "cog",
         label = "arrow-alt-circle-up",
         parameters = {},
