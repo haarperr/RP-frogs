@@ -517,7 +517,7 @@ elseif  not fourthdoor and #(playercoords3 - fourthdoorvector) < 3.0  then
 		DeleteObject(bomba)
 		StopParticleFxLooped(effect, 0)
 		Citizen.Wait(2000)
-		TriggerServerEvent('drp-doors:change-lock-state', 548, false)
+		TriggerServerEvent('drp-doors:change-lock-state', 51, false)
 		thirddoor = true
 		local deleternd = math.random(1,100)
 		if deleternd <= 100 and deleternd > 20 then

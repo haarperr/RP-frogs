@@ -791,11 +791,11 @@ DOOR_CONFIG = {
       business = {},
     },
     desc = "vault door inner bar door 1",
-    model = -1508355822,
     lock = true,
     active = true,
     id = 51,
-    coords = vector3(251.85757446289, 221.06552124023, 101.83238983154),
+    coords = vector3(261.3004, 214.5052, 101.8324),
+    model = -1508355822,
     forceUnlocked = false,
   },
   {
@@ -9359,23 +9359,6 @@ DOOR_CONFIG = {
       id = 547,
       coords = vector3(2506.215, -426.3698, 107.0778),
       model = 1055151324,
-      lock = true,
-      keyFob = true,
-      desc = "x",
-      access = {
-        job = {
-          ["PD"] = true,
-         },
-        cid = {
-        },
-      }
-    },
-    {
-      info = "Upper Vault Last Thermite door",
-      active = true,
-      id = 548,
-      coords = vector3(261.3004, 214.5052, 101.8324),
-      model = -1508355822,
       lock = true,
       keyFob = true,
       desc = "x",
