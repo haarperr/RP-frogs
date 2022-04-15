@@ -214,6 +214,14 @@ Config.Zones = {
 		  heading=100.5948,
 		}),
 
+		
+		--Name: garagerockey | 2022-04-15T11:27:09Z
+		BoxZone:Create(vector3(2415.6, 3098.37, 48.15), 10, 6, {
+			name="garagerockey",
+			heading=0,
+			--debugPoly=true
+		})
+
 		--Name: fib_parking | 2022-04-15T09:50:46Z
 		PolyZone:Create({
 			vector2(2535.0710449218, -380.25387573242),

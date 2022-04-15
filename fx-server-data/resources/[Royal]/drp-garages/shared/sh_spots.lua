@@ -131,6 +131,16 @@ Garages = {
         ShowBlip = false
     },
     
+    ["garagerockey"] = {
+        name = "Garage Rockey",
+        blip = {x = 2415.5410, y = 3098.5051, z = 48.1529},
+        spawns = {
+            [1] = { ['x'] = 2415.5410, ['y'] = 3098.5051, ['z'] = 48.1529, ['h'] = 357.7557},
+        }
+        ShowBlip = false
+    },
+    
+    
     ["garagefib"] = {
         name = "Garage FIB",
         blip = {x = 2545.7598, y=  -375.4193, z= 93.1242},
