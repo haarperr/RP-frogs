@@ -371,6 +371,12 @@ Citizen.CreateThread(function()
         -- minZ=30.49,
         -- maxZ=31.24
     })
+    
+    exports["drp-polytarget"]:AddBoxZone("fib2_elv_up", vector3(2506.0056, -433.0655, 99.3493), 10.0, 12.2, {
+    })
+
+    exports["drp-polytarget"]:AddBoxZone("fib2_elv_down", vector3(2506.0054, -432.9903, 107.2962), 10.0, 12.2, {
+    })
 
     
     -- PD Air One Garages
@@ -386,6 +392,10 @@ Citizen.CreateThread(function()
         heading=0,
         minZ=30.49,
         maxZ=31.24
+    })
+
+    -- PD Clock in FIB
+    exports["drp-polytarget"]:AddBoxZone("duty_fib", vector3(2511.1729, -356.0486, 94.6071), 0.9, 0.5, {
     })
 
        -- PD Clock in locations
@@ -1552,6 +1562,50 @@ Citizen.CreateThread(function()
             return true
         end,
     });
+
+    -- FIB Duty
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("duty_fib", {{
+        event = "drp-duty:PoliceMenu",
+        id = "duty_police",
+        icon = "cog",
+        label = "Sign On/Off Duty",
+        parameters = {},
+    }}, {
+        distance = { radius = 2.5 },
+        isEnabled = function()
+            return true
+        end,
+    });
+
+    -- FIB 2 Elevator Up
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("fib2_elv_up", {{
+        event = "drp-fib:elevator:2:up",
+        id = "fib2_elv_up",
+        icon = "arrow-alt-circle-up",
+        label = "Elevator Up",
+        parameters = {},
+    }}, {
+        distance = { radius = 2.5 },
+        isEnabled = function()
+            return true
+        end,
+    });
+
+    -- FIB 2 Elevator Down
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("fib2_elv_down", {{
+        event = "drp-fib:elevator:2:down",
+        id = "fib2_elv_down",
+        icon = "arrow-alt-circle-down",
+        label = "Elevator Down",
+        parameters = {},
+    }}, {
+        distance = { radius = 2.5 },
+        isEnabled = function()
+            return true
+        end,
+    });
+
+
 
     -- PD Duty2
     exports["drp-interact"]:AddPeekEntryByPolyTarget("duty_police2", {{

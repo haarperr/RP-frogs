@@ -92,7 +92,7 @@ function Login.characterSpawned()
   end
 
   SetPedMaxHealth(PlayerPedId(), 200)
-  SetPlayerMaxArmour(PlayerId(), 100) -- This is setting players armor on relog??
+  SetPlayerMaxArmour(PlayerId(), 100)
 
   DisplayRadar(0)
   SetRadarBigmapEnabled(true, false)
@@ -100,9 +100,6 @@ function Login.characterSpawned()
   SetRadarBigmapEnabled(false, false)
   DisplayRadar(0)
   Citizen.Wait(0) 
-  sendAppEvent("hud", {
-      display = true,
-  })
   
   Spawn.isNew = false
   exports.spawnmanager:setAutoSpawn(false)

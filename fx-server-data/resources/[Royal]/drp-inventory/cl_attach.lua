@@ -125,10 +125,13 @@ AddEventHandler("AttachWeapons", function()
 				local bone = GetPedBoneIndex(ped, 24818)
 				ag[#ag+1] = CreateObject(mdl, 1.0 ,1.0 ,1.0, 1, 1, 0)
 				AttachEntityToEntity(ag[#ag], ped, bone, w[i]["z"], -0.155, 0.21 - (#ag/10), w[i]["rx"], w[i]["ry"], w[i]["rz"], 0, 1, 0, 1, 0, 1)
+				-- remove hitbox of entity ag
+				SetEntityNoCollisionEntity(ped, ag[#ag], true)
 			elseif w[i]["type"] == 2 and #ad < drugLimit and curw ~= tonumber(w[i]["id"]) then
 				local bone = GetPedBoneIndex(ped, 24817)
 				ad[#ad+1] = CreateObject(mdl, 1.0 ,1.0 ,1.0, 1, 1, 0)
 				AttachEntityToEntity(ad[#ad], ped, bone, w[i]["z"]-0.1, -0.11, 0.24 - (#ad/10), w[i]["rx"], w[i]["ry"], w[i]["rz"], 0, 1, 0, 1, 0, 1)
+				SetEntityNoCollisionEntity(ped, ag[#ag], true)
 			elseif w[i]["type"] == 3 and curw ~= tonumber(w[i]["id"]) then
 				local bone = GetPedBoneIndex(ped, 24817) 
 				local bone2 = GetPedBoneIndex(ped, 11816)
@@ -137,25 +140,29 @@ AddEventHandler("AttachWeapons", function()
 				-- also our item id is not the correct hash, so it fucks up atm. :)
 				if w[i]["id"] == "3713923289" and curw ~= -581044007 then
 					AttachEntityToEntity(am[#am], ped, bone2, w[i]["z"]-0.53, -0.125, -0.15, w[i]["rx"], w[i]["ry"], w[i]["rz"], 0, 1, 0, 1, 0, 1)
+					SetEntityNoCollisionEntity(ped, ag[#ag], true)
 				end
 			elseif w[i]["type"] == 4 and not sheathed then
 				sheathed = true
 				local bone = GetPedBoneIndex(ped, 24817)
 				am[#am+1] = CreateObject(katana_model, 1.0 ,1.0 ,1.0, 1, 1, 0)
 				AttachEntityToEntity(am[#am], ped, bone, w[i]["z"]-0.4, -0.135, 0.0, w[i]["rx"], w[i]["ry"], w[i]["rz"], 0, 1, 0, 1, 0, 1)
+				SetEntityNoCollisionEntity(ped, ag[#ag], true)
 			elseif w[i]["type"] == 5 and curw ~= tonumber(w[i]["id"]) then
 				am[#am+1] = CreateObject(mdl, 1.0 ,1.0 ,1.0, 1, 1, 0)
 				local bone = GetPedBoneIndex(ped, 28422)
 				AttachEntityToEntity(am[#am], ped, bone, 0.05, 0.01, -0.01, w[i]["rx"], w[i]["ry"], w[i]["rz"], 0, 1, 0, 1, 0, 1)
+				SetEntityNoCollisionEntity(ped, ag[#ag], true)
 			elseif w[i]["type"] == 6 and curw ~= tonumber(w[i]["id"]) then
 				local bone = GetPedBoneIndex(ped, 24817)
 				ab[#ab+1] = CreateObject(mdl, 1.0 ,1.0 ,1.0, 1, 1, 0)
 				AttachEntityToEntity(ab[#ab], ped, bone, w[i]["z"]-0.7, -0.02, 0.0, w[i]["rx"], w[i]["ry"], w[i]["rz"], 0, 1, 0, 1, 0, 1)
-			-- elseif w[i]["type"] == 7 and sheathed then
-			-- 	sheathed = false
-			-- 	local bone = GetPedBoneIndex(ped, 24817)
-			-- 	am[#am+1] = CreateObject(mdl, 1.0 ,1.0 ,1.0, 1, 1, 0)
-			-- 	AttachEntityToEntity(am[#am], ped, bone, w[i]["z"]-0.4, -0.135, 0.0, w[i]["rx"], w[i]["ry"], w[i]["rz"], 0, 1, 0, 1, 0, 1)
+				SetEntityNoCollisionEntity(ped, ag[#ag], true)
+			elseif w[i]["type"] == 7 and sheathed then
+				sheathed = false
+				local bone = GetPedBoneIndex(ped, 24817)
+				am[#am+1] = CreateObject(mdl, 1.0 ,1.0 ,1.0, 1, 1, 0)
+				AttachEntityToEntity(am[#am], ped, bone, w[i]["z"]-0.4, -0.135, 0.0, w[i]["rx"], w[i]["ry"], w[i]["rz"], 0, 1, 0, 1, 0, 1)
 			end
 		end
 	end

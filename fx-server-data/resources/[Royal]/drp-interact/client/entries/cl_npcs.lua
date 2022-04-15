@@ -342,6 +342,60 @@ Entries[#Entries + 1] = {
     group = { 'isNPC' },
     data = {
         {
+            id = "cartguy",
+            label = "Get a Go Kart ($500)",
+            icon = "circle",
+            event = "drp-gokart:getkart",
+            parameters = {}
+        }
+    },
+    options = {
+        distance = { radius = 3.0 },
+        npcIds = {"cartguy"}
+    }
+}
+
+Entries[#Entries + 1] = {
+    type = 'flag',
+    group = { 'isNPC' },
+    data = {
+        {
+            id = "cartguy2",
+            label = "Get a Go Kart ($500)",
+            icon = "circle",
+            event = "drp-gokart:getkart2",
+            parameters = {}
+        }
+    },
+    options = {
+        distance = { radius = 3.0 },
+        npcIds = {"cartguy2"}
+    }
+}
+
+Entries[#Entries + 1] = {
+    type = 'flag',
+    group = { 'isNPC' },
+    data = {
+        {
+            id = "fibarmoryguy",
+            label = "Open Armory",
+            icon = "circle",
+            event = "police:general",
+            parameters = {}
+        }
+    },
+    options = {
+        distance = { radius = 3.0 },
+        npcIds = {"fibarmoryguy"}
+    }
+}
+
+Entries[#Entries + 1] = {
+    type = 'flag',
+    group = { 'isNPC' },
+    data = {
+        {
             id = "cuttedchicken3",
             label = "Sell cutted Chicken",
             icon = "circle",
@@ -385,7 +439,7 @@ Entries[#Entries + 1] = {
             id = "cluckin3",
             label = "Trade in reciepes",
             icon = "circle",
-            event = "drp-cluckin:tradein",
+            event = "drp-cluckinbell:cash:in",
             parameters = {}
         }
     },

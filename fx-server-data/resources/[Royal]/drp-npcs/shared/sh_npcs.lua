@@ -28,7 +28,8 @@ Generic.ShopKeeperLocations = {
   vector4(-1486.81,-377.38,39.17,143.01), -- ok
   vector4(-3242.3862304688, 1000.4073486328, 11.830640792847, 357.01257324219),
   vector4(-2966.38,391.79,14.05,99.55), --ok
-  vector4(1134.29,-983.39,45.42,292.7) --ok
+  vector4(1134.29,-983.39,45.42,292.7), --ok
+  vector4(2517.4944, -342.0710, 93.0909, 184.4426), -- fib
 }
 
 Generic.SportsShopLocations = {
@@ -56,6 +57,7 @@ Generic.WeaponShopLocations = {
   vector4(-1112.3610839844, 2697.1477050781, 17.554275512695, 162.63261413574),
   vector4(2564.7287597656, 298.96563720703, 107.73498535156, 293.33502197266),
   vector4(-3166.9001464844, 1086.9260253906, 19.838754653931, 187.34577941895),
+  vector4(2488.0313, -376.7964, 81.6940, 222.7847),
 }
 
 Generic.ToolShopLocations = {
@@ -315,6 +317,78 @@ Generic.NPCS[#Generic.NPCS + 1] = {
   flags = {
       ['isNPC'] = true,
       ['isOxyGuy'] = true
+  }
+}
+
+Generic.NPCS[#Generic.NPCS + 1] = {
+  id = "cartguy",
+  name = "Cart Guy",
+  pedType = 4,
+  model = "ig_thornton",
+  networked = false,
+  distance = 200.0,
+  position = {
+    coords = vector3(5472.4731, 251.0496, 19.2208),
+    heading = 358.0276,
+    random = false
+  },
+  appearance = '{"eyebrow":{"params":[2,0,0.0],"mode":"overlay"},"skinproblem":{"params":[6,0,0.0],"mode":"overlay"},"freckles":{"params":[9,0,0.0],"mode":"overlay"},"badges":{"params":[10,0,0,1],"mode":"component"},"arms":{"params":[3,0,0,1],"mode":"component"},"hat":{"params":[0,-1,-1,1],"mode":"prop"},"beard_color":{"params":[2,0,0,0,0],"mode":"overlaycolor"},"kevlar":{"params":[9,0,0,1],"mode":"component"},"bag":{"params":[5,0,0,1],"mode":"component"},"undershirt":{"params":[8,0,0,1],"mode":"component"},"wrinkles":{"params":[3,0,0.0],"mode":"overlay"},"shoes":{"params":[6,0,0,1],"mode":"component"},"legs":{"params":[4,0,0,1],"mode":"component"},"watch":{"params":[6,-1,-1,1],"mode":"prop"},"haircolor":{"params":[-1,-1],"mode":"haircolor"},"bracelet":{"params":[7,-1,-1,1],"mode":"prop"},"torso":{"params":[11,0,0,1],"mode":"component"},"hair":{"params":[2,0,0,1],"mode":"component"},"glasses":{"params":[1,-1,-1,1],"mode":"prop"},"mask":{"params":[1,0,0,1],"mode":"component"},"beard":{"params":[1,0,0.0],"mode":"overlay"},"accesory":{"params":[7,0,0,1],"mode":"component"},"eyecolor":{"params":[-1],"mode":"eyecolor"},"face":{"params":[0,0,0,1],"mode":"component"},"ears":{"params":[2,-1,-1,1],"mode":"prop"}}',
+  settings = {
+      { mode = "invincible", active = true },
+      { mode = "ignore", active = true },
+      { mode = "freeze", active = true }
+  },
+  flags = {
+      ['isNPC'] = true,
+      ['isCartGuy'] = true
+  }
+}
+Generic.NPCS[#Generic.NPCS + 1] = {
+  id = "cartguy2",
+  name = "Cart Guy2",
+  pedType = 4,
+  model = "ig_thornton",
+  networked = false,
+  distance = 200.0,
+  position = {
+    coords = vector3(-1149.9696, -2110.3760, 12.2621),
+    heading = 230.1704,
+    random = false
+  },
+  appearance = '{"eyebrow":{"params":[2,0,0.0],"mode":"overlay"},"skinproblem":{"params":[6,0,0.0],"mode":"overlay"},"freckles":{"params":[9,0,0.0],"mode":"overlay"},"badges":{"params":[10,0,0,1],"mode":"component"},"arms":{"params":[3,0,0,1],"mode":"component"},"hat":{"params":[0,-1,-1,1],"mode":"prop"},"beard_color":{"params":[2,0,0,0,0],"mode":"overlaycolor"},"kevlar":{"params":[9,0,0,1],"mode":"component"},"bag":{"params":[5,0,0,1],"mode":"component"},"undershirt":{"params":[8,0,0,1],"mode":"component"},"wrinkles":{"params":[3,0,0.0],"mode":"overlay"},"shoes":{"params":[6,0,0,1],"mode":"component"},"legs":{"params":[4,0,0,1],"mode":"component"},"watch":{"params":[6,-1,-1,1],"mode":"prop"},"haircolor":{"params":[-1,-1],"mode":"haircolor"},"bracelet":{"params":[7,-1,-1,1],"mode":"prop"},"torso":{"params":[11,0,0,1],"mode":"component"},"hair":{"params":[2,0,0,1],"mode":"component"},"glasses":{"params":[1,-1,-1,1],"mode":"prop"},"mask":{"params":[1,0,0,1],"mode":"component"},"beard":{"params":[1,0,0.0],"mode":"overlay"},"accesory":{"params":[7,0,0,1],"mode":"component"},"eyecolor":{"params":[-1],"mode":"eyecolor"},"face":{"params":[0,0,0,1],"mode":"component"},"ears":{"params":[2,-1,-1,1],"mode":"prop"}}',
+  settings = {
+      { mode = "invincible", active = true },
+      { mode = "ignore", active = true },
+      { mode = "freeze", active = true }
+  },
+  flags = {
+      ['isNPC'] = true,
+      ['isCartGuy2'] = true
+  }
+}
+
+
+Generic.NPCS[#Generic.NPCS + 1] = {
+  id = "fibarmoryguy",
+  name = "fibarmoryguy",
+  pedType = 4,
+  model = "ig_thornton",
+  networked = false,
+  distance = 200.0,
+  position = {
+    coords = vector3(2486.7634, -378.1111, 81.6940),
+    heading = 220.7535,
+    random = false
+  },
+  appearance = '{"eyebrow":{"params":[2,0,0.0],"mode":"overlay"},"skinproblem":{"params":[6,0,0.0],"mode":"overlay"},"freckles":{"params":[9,0,0.0],"mode":"overlay"},"badges":{"params":[10,0,0,1],"mode":"component"},"arms":{"params":[3,0,0,1],"mode":"component"},"hat":{"params":[0,-1,-1,1],"mode":"prop"},"beard_color":{"params":[2,0,0,0,0],"mode":"overlaycolor"},"kevlar":{"params":[9,0,0,1],"mode":"component"},"bag":{"params":[5,0,0,1],"mode":"component"},"undershirt":{"params":[8,0,0,1],"mode":"component"},"wrinkles":{"params":[3,0,0.0],"mode":"overlay"},"shoes":{"params":[6,0,0,1],"mode":"component"},"legs":{"params":[4,0,0,1],"mode":"component"},"watch":{"params":[6,-1,-1,1],"mode":"prop"},"haircolor":{"params":[-1,-1],"mode":"haircolor"},"bracelet":{"params":[7,-1,-1,1],"mode":"prop"},"torso":{"params":[11,0,0,1],"mode":"component"},"hair":{"params":[2,0,0,1],"mode":"component"},"glasses":{"params":[1,-1,-1,1],"mode":"prop"},"mask":{"params":[1,0,0,1],"mode":"component"},"beard":{"params":[1,0,0.0],"mode":"overlay"},"accesory":{"params":[7,0,0,1],"mode":"component"},"eyecolor":{"params":[-1],"mode":"eyecolor"},"face":{"params":[0,0,0,1],"mode":"component"},"ears":{"params":[2,-1,-1,1],"mode":"prop"}}',
+  settings = {
+      { mode = "invincible", active = true },
+      { mode = "ignore", active = true },
+      { mode = "freeze", active = true }
+  },
+  flags = {
+      ['isNPC'] = true,
+      ['isFibGuy'] = true
   }
 }
 

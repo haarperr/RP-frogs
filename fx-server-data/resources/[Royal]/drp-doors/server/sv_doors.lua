@@ -8981,6 +8981,445 @@ DOOR_CONFIG = {
         cid = { },
       }
     },
+    {
+      info = "FIB Door enter",
+      active = true,
+      id = 545,
+      coords = vector3(2569.079, -325.962, 91.91821),
+      model = 1185512375,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {},
+      }
+    },
+    {
+      info = "FIB Door exit",
+      active = true,
+      id = 546,
+      coords = vector3(2560.195, -326.2035, 91.91821),
+      model = 1185512375,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {},
+      }
+    },
+    {
+      info = "FIB Heli door",
+      active = true,
+      id = 546,
+      coords = vector3(2507.461, -335.7412, 115.7478),
+      model = -2023754432,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {},
+      }
+    },
+    {
+      info = "FIB Armory",
+      active = true,
+      id = 546,
+      coords = vector3(2524.155, -334.9459, 102.0571),
+      model = -2023754432,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {},
+      }
+    },
+    {
+      info = "FIB Secret Talking Room",
+      active = true,
+      id = 546,
+      coords = vector3(2477.699, -369.4395, 82.84039),
+      model = 83331511,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {},
+      }
+    },
+    {
+      info = "FIB 2 Entrance",
+      active = true,
+      id = 546,
+      coords = vector3(2511.101, -416.0929, 99.27317),
+      model = 1055151324,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {},
+      }
+    },
+    {
+      info = "FIB 2 334Entrance",
+      active = true,
+      id = 546,
+      coords = vector3(2503.746, -426.3829, 107.0666),
+      model = 203184370,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {},
+      }
+    },
+    {
+      info = "FIB 2 334E4343ntrance",
+      active = true,
+      id = 546,
+      coords = vector3(2510.958, -433.5954, 107.0666),
+      model = 203184370,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {},
+      }
+    },
+    {
+      info = "FIB 1 334E4343ntrance",
+      active = true,
+      id = 546,
+      coords = vector3(2507.153, -347.0513, 93.99664),
+      model = -114880996,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {},
+      }
+    },
+    {
+      info = "FIB 1 334E454343ntrance",
+      active = true,
+      id = 546,
+      coords = vector3(2505.317, -348.8851, 93.99696),
+      model = -2045695986,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {},
+      }
+    },
+    {
+      info = "FIB 1 Cells",
+      active = true,
+      id = 546,
+      coords = vector3(2505.883, -348.6725, 105.8514),
+      model = 395979613,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {},
+      }
+    },
+    {
+      info = "FIB 2 Cells",
+      active = true,
+      id = 546,
+      coords = vector3(2504.244, -350.9377, 105.8514),
+      model = 395979613,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {},
+      }
+    },
+    {
+      info = "FIB 3 Cells",
+      active = true,
+      id = 546,
+      coords = vector3(2507.034, -353.6587, 105.8514),
+      model = 395979613,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {},
+      }
+    },
+    {
+      info = "FIB 4 Cells",
+      active = true,
+      id = 546,
+      coords = vector3(2509.618, -351.0732, 105.8514),
+      model = 395979613,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {},
+      }
+    },
+    {
+      info = "FIB 5 Cells",
+      active = true,
+      id = 546,
+      coords = vector3(2506.877, -348.1537, 105.8514),
+      model = 395979613,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {},
+      }
+    },
+    {
+      info = "FIB Talk Room 1",
+      active = true,
+      id = 546,
+      coords = vector3(2509.871, -330.5997, 105.8652),
+      model = -2051651622,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {},
+      }
+    },
+    {
+      info = "FIB Talk Room 2",
+      active = true,
+      id = 546,
+      coords = vector3(2512.64, -327.8344, 105.8652),
+      model = -2051651622,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {},
+      }
+    },
+    {
+      info = "FIB Taldfsdfsdfsdfsdfsdfk Room 2",
+      active = true,
+      id = 546,
+      coords = vector3(2517.106, -342.7386, 105.8514),
+      model = -2051651622,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {},
+      }
+    },
+    {
+      info = "FIB Tadffsdfk Room 2",
+      active = true,
+      id = 546,
+      coords = vector3(2497.479, -353.3627, 105.8514),
+      model = -2051651622,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {},
+      }
+    },
+    {
+      info = "Rockey",
+      active = true,
+      id = 547,
+      coords = vector3(2405.043, 3089.775, 48.54872),
+      model = -1934898817,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+         },
+        cid = {
+          [114] = true,
+        },
+      }
+    },
+    {
+      info = "Rockey 1",
+      active = true,
+      id = 547,
+      coords = vector3(2435.263, 3101.823, 46.95869),
+      model = 741314661,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+         },
+        cid = {
+          [114] = true,
+        },
+      }
+    },
+    {
+      info = "Rockey 2",
+      active = true,
+      id = 547,
+      coords = vector3(2387.834, 3131.338, 47.00707),
+      model = 741314661,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+         },
+        cid = {
+          [114] = true,
+        },
+      }
+    },
+    {
+      info = "Rockey 3",
+      active = true,
+      id = 547,
+      coords = vector3(2377.996, 3103.582, 47.00708),
+      model = 741314661,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+         },
+        cid = {
+          [114] = true,
+        },
+      }
+    },
+    {
+      info = "PD Academy",
+      active = true,
+      id = 547,
+      coords = vector3(429.7714, -1079.322, 30.20816),
+      model = 711884679,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
+    {
+      info = "PD Academy",
+      active = true,
+      id = 548,
+      coords = vector3(429.7872, -1115.562, 30.21555),
+      model = 711884679,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
+    {
+      info = "PD Academy 2",
+      active = true,
+      id = 548,
+      coords = vector3(429.7872, -1115.562, 30.21555),
+      model = 711884679,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
+    {
+      info = "PD Academy 3",
+      active = true,
+      id = 548,
+      coords = vector3(455.2967, -1104.431, 29.62786),
+      model = -1033001619,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
 }
-  
   

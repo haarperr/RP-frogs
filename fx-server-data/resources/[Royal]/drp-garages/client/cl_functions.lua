@@ -372,17 +372,19 @@ end)
 Citizen.CreateThread(function()
     for _, item in pairs(Garages) do
         if item.blip ~= nil then
-            Garage = AddBlipForCoord(item.blip.x, item.blip.y, item.blip.z)
+            if item.ShowBlip then
+                Garage = AddBlipForCoord(item.blip.x, item.blip.y, item.blip.z)
 
-            SetBlipSprite (Garage, 357)
-            SetBlipDisplay(Garage, 4)
-            SetBlipScale  (Garage, 0.65)
-            SetBlipAsShortRange(Garage, true)
-            SetBlipColour(Garage, 3)
+                SetBlipSprite (Garage, 357)
+                SetBlipDisplay(Garage, 4)
+                SetBlipScale  (Garage, 0.65)
+                SetBlipAsShortRange(Garage, true)
+                SetBlipColour(Garage, 3)
 
-            BeginTextCommandSetBlipName("STRING")
-            AddTextComponentString(item.name)
-            EndTextCommandSetBlipName(Garage)
+                BeginTextCommandSetBlipName("STRING")
+                AddTextComponentString(item.name)
+                EndTextCommandSetBlipName(Garage)
+            end
         end
     end
 end)

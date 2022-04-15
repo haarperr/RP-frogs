@@ -1,7 +1,12 @@
---Name: pdp | 2022-04-04T04:44:55Z
-BoxZone:Create(vector3(442.64, -1025.73, 28.71), 7.5, 25, {
-  name="pdp",
-  heading=0,
-  --debugPoly=true
+--Name: garagepdpaletoheli | 2022-04-15T14:37:29Z
+PolyZone:Create({
+  vector2(-477.5827331543, 6005.0922851562),
+  vector2(-458.5365600586, 5986.3774414062),
+  vector2(-472.7469177246, 5972.177734375),
+  vector2(-491.39459228516, 5991.0893554688)
+}, {
+  name="garagepdpaletoheli",
+  --minZ = 31.306163787842,
+  --maxZ = 31.31202697754
 })
 

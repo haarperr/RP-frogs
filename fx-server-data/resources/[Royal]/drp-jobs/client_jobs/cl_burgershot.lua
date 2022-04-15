@@ -1,6 +1,6 @@
 RegisterNetEvent("drp-burgershot:pay")
 AddEventHandler("drp-burgershot:pay", function(amount)
-    TriggerServerEvent("server:GroupPayment", "burger_shot", amount)
+    TriggerServerEvent("server:GroupPayment", "burger_shot", tonumber(amount/100*75))
 end)
 
 RegisterNetEvent("drp-burgershot:startjob")

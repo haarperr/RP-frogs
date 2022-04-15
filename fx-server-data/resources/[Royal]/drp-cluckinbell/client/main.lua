@@ -152,11 +152,20 @@ AddEventHandler("drp-cluckin:startMinigame", function()
 end)
 
 
+local cooldown = false
 
 RegisterNetEvent("cluckinbell:get:receipt")
 AddEventHandler("cluckinbell:get:receipt", function(registerid)
-    TriggerServerEvent('cluckinbell:retreive:receipt', registerid)
+    if not cooldown then 
+        cooldown = true
+        TriggerServerEvent('cluckinbell:retreive:receipt', registerid)
+        Citizen.Wait(240000)
+        cooldown = false
+    else
+        TriggerEvent('DoLongHudText', 'You have to wait a few seconds before you can pay another meal.', 2)
+    end
 end)
+
 
 
 RegisterNetEvent("cluckinbell:Tray-1")
@@ -208,5 +217,22 @@ end)
 
 RegisterCommand('cbmusicv', function()
     local job = exports["isPed"]:GroupRank('cluckin_bell')
-    if job >= 1 then TriggerEvent("cluckinbell:change:volume") end
+    if job >= 1 then
+        TriggerEvent("cluckinbell:change:volume")
+    end
+end)
+
+RegisterNetEvent('drp-cluckinbell:cash:in')
+AddEventHandler('drp-cluckinbell:cash:in', function()
+    local cid = exports["isPed"]:isPed("cid")
+    local amountOfReciepes = exports["drp-inventory"]:getAmountOfItem("burgerReceipt")
+    local job = exports["isPed"]:GroupRank('cluckin_bell')
+    if job >= 1 then
+        TriggerEvent('inventory:removeItem', 'burgerReceipt', amountOfReciepes)
+        TriggerServerEvent("cluckinbell:update:pay", cid, amountOfReciepes)
+        Wait(1000)
+    else
+        TriggerEvent('DoLongHudText', 'You do not work here !', 2)
+    end
+    
 end)
