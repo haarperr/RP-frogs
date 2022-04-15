@@ -1,5 +1,5 @@
 local blips = {
-    {id = "courthouse", name = "Los Santos Courthouse", scale = 0.7, color = 5, sprite = 58, x=243.36264038086, y= -678.2632, z=33.1775},
+    {id = "courthouse", name = "Los Santos Courthouse", scale = 0.7, color = 5, sprite = 58, x=243.6152, y= -1077.6393, z=29.2941},
     {id = "Cluckin Bell", name = "Cluckin Bell", scale = 0.7, color = 47, sprite = 537, x=-511.6131, y=-696.2816, z=33.1680},
     {id = "Burger Shot", name = "Burger Shot", scale = 0.7, color = 8, sprite = 106, x=-1191.6701660156, y=-889.74584960938, z= 14.508341789246},
     {id = "police1", name = "Police Department HQ", scale = 0.7, color = 3, sprite = 60, x = 425.130, y = -979.558, z = 30.711},
@@ -37,5 +37,3 @@ AddEventHandler("drp-base:playerSessionStarted", function()
         end
     end)
 end)
-
-
