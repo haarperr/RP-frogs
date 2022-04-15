@@ -2582,7 +2582,7 @@ Citizen.CreateThread(function()
 	heading=45,
 	minZ=99,
 	maxZ=103,
-	debugPoly=true
+	-- debugPoly=true
   })
 end)
   
@@ -2627,7 +2627,7 @@ Citizen.CreateThread(function()
 		heading=0,
 		minZ=99,
 		maxZ=103,
-		debugPoly=true
+		-- debugPoly=true
     }) 
 end)
 
