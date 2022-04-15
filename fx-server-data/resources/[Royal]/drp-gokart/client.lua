@@ -11,7 +11,7 @@ AddEventHandler("drp-gokart:getcart", function()
         Wait(1)
     end
 
-    local cart = CreateVehicle(hash, cartSpawn.x, cartSpawn.y, cartSpawn.z, cartSpawn.w, true, true)
+    local cart = CreateVehicle("veto2", cartSpawn.x, cartSpawn.y, cartSpawn.z, cartSpawn.w, true, true)
     SetVehicleOnGroundProperly(cart)
     SetVehicleHasBeenOwnedByPlayer(cart, true)
     SetVehicleNeedsToBeHotwired(cart, false)
