@@ -2567,27 +2567,29 @@ local isNearFIBelevator2 = false
 
 --Name: fib_1_1 | 2022-04-15T18:56:04Z
 Citizen.CreateThread(function()
-	vector2(2506.1201171875, -342.17779541016),
-	vector2(2502.0617675782, -338.1072692871),
-	vector2(2500.3286132812, -339.90768432618),
-	vector2(2504.408203125, -343.92883300782)
-  }, {
+	exports["drp-polyzone"]:AddPolyZone("airport", {
+		vector2(2506.1201171875, -342.17779541016),
+		vector2(2502.0617675782, -338.1072692871),
+		vector2(2500.3286132812, -339.90768432618),
+		vector2(2504.408203125, -343.92883300782)
+  	}, {
 	name="fib_elevator",
 	minZ = 0,
 	maxZ = 108
-  })
+  }))
   
   --Name: fib_elevator_2 | 2022-04-15T18:58:59Z
-PolyZone:Create({
-	vector2(2497.2722167968, -350.96731567382),
-	vector2(2498.9291992188, -349.21697998046),
-	vector2(2494.8630371094, -345.1694946289),
-	vector2(2493.3669433594, -347.08865356446)
-  }, {
+  Citizen.CreateThread(function()
+	exports["drp-polyzone"]:AddPolyZone("airport", {
+		vector2(2497.2722167968, -350.96731567382),
+		vector2(2498.9291992188, -349.21697998046),
+		vector2(2494.8630371094, -345.1694946289),
+		vector2(2493.3669433594, -347.08865356446)
+  	}, {
 	name="fib_elevator",
 	minZ = 0,
  	maxZ = 108
-  })
+  }))
 
   RegisterNetEvent('drp-polyzone:enter')
   AddEventHandler('drp-polyzone:enter', function(name)
