@@ -707,8 +707,8 @@ local ElectricalJob8 = false
         end
     end)
 
-    -- Electrical Job 4 
-    exports["drp-polytarget"]:AddBoxZone("royal_electrical_job_4", vector3(1625.63, 2577.39, 45.56), 2, 2.2, {
+    -- Electrical Job 4 (Needs Fixing)
+    exports["drp-polytarget"]:AddBoxZone("royal_electrical_job_4", vector3(1616.6008, 2527.9087, 45.5528), 2, 2.2, { 
         heading=270,
         minZ=43.36,
         maxZ=47.36
@@ -744,8 +744,8 @@ local ElectricalJob8 = false
         end
     end)
 
-    -- Electrical Job 5 
-    exports["drp-polytarget"]:AddBoxZone("royal_electrical_job_5", vector3(1609.47, 2568.88, 45.57), 1, 1, {
+    -- Electrical Job 5 (Needs Fixing)
+    exports["drp-polytarget"]:AddBoxZone("royal_electrical_job_5", vector3(1618.4098, 2520.8823, 45.5528), 1, 1, {
         heading=315,
         minZ=42.77,
         maxZ=46.77
@@ -781,9 +781,9 @@ local ElectricalJob8 = false
         end
     end)
 
-    -- Electrical Job 6 
-    exports["drp-polytarget"]:AddBoxZone("royal_electrical_job_6", vector3(1609.47, 2568.88, 45.57), 1, 1, {
-        heading=315,
+    -- Electrical Job 6 (Needs Fixing)
+    exports["drp-polytarget"]:AddBoxZone("royal_electrical_job_6", vector3(1790.2467, 2540.5579, 45.5528), 1, 1, {
+        heading=116,
         minZ=42.77,
         maxZ=46.77
     })
@@ -818,9 +818,9 @@ local ElectricalJob8 = false
         end
     end)
 
-    -- Electrical Job 7 
-    exports["drp-polytarget"]:AddBoxZone("royal_electrical_job_7", vector3(1607.99, 2540.13, 45.56), 1, 1, {
-        heading=315,
+    -- Electrical Job 7 (Needs Fixing)
+    exports["drp-polytarget"]:AddBoxZone("royal_electrical_job_7", vector3(1685.8287, 2566.2698, 45.6073), 1, 1, {
+        heading=180,
         minZ=42.76,
         maxZ=46.76
     })
@@ -855,9 +855,9 @@ local ElectricalJob8 = false
         end
     end)
 
-    -- Electrical Job 8 
-    exports["drp-polytarget"]:AddBoxZone("royal_electrical_job_8", vector3(1621.12, 2507.68, 45.56), 2, 2.2, {
-        heading=275,
+    -- Electrical Job 8 (Needs Fixing)
+    exports["drp-polytarget"]:AddBoxZone("royal_electrical_job_8", vector3(1634.8724, 2554.3499, 45.6137), 2, 2.2, {
+        heading=180,
         minZ=43.36,
         maxZ=47.36
     })
@@ -938,7 +938,7 @@ local ElectricalJob8 = false
             ElectricalJobInProgress = true
             TriggerEvent('DoLongHudText', 'Jail Job On GPS', 1)
             ElectricalJob4 = true
-            ElectricalJobBlip4 = AddBlipForCoord(1624.4307861328,2577.5209960938,45.556762695312)
+            ElectricalJobBlip4 = AddBlipForCoord(1616.6008, 2527.9087, 45.5528)
             SetBlipSprite(ElectricalJobBlip4, 1)
             SetBlipSprite(ElectricalJobBlip4, 466)
             SetBlipScale(ElectricalJobBlip4, 1.2)
@@ -950,7 +950,7 @@ local ElectricalJob8 = false
             ElectricalJobInProgress = true
             TriggerEvent('DoLongHudText', 'Jail Job On GPS', 1)
             ElectricalJob5 = true
-            ElectricalJobBlip5 = AddBlipForCoord(1609.5955810547,2568.421875,45.556762695312)
+            ElectricalJobBlip5 = AddBlipForCoord(1618.4098, 2520.8823, 45.5528)
             SetBlipSprite(ElectricalJobBlip5, 1)
             SetBlipSprite(ElectricalJobBlip5, 466)
             SetBlipScale(ElectricalJobBlip5, 1.2)
@@ -962,7 +962,7 @@ local ElectricalJob8 = false
             ElectricalJobInProgress = true
             TriggerEvent('DoLongHudText', 'Jail Job On GPS', 1)
             ElectricalJob6 = true
-            ElectricalJobBlip6 = AddBlipForCoord(1609.47, 2568.88, 45.57)
+            ElectricalJobBlip6 = AddBlipForCoord(1790.2467, 2540.5579, 45.5528)
             SetBlipSprite(ElectricalJobBlip6, 1)
             SetBlipSprite(ElectricalJobBlip6, 466)
             SetBlipScale(ElectricalJobBlip6, 1.2)
@@ -974,7 +974,7 @@ local ElectricalJob8 = false
             ElectricalJobInProgress = true
             TriggerEvent('DoLongHudText', 'Jail Job On GPS', 1)
             ElectricalJob7 = true
-            ElectricalJobBlip7 = AddBlipForCoord(1609.6746826172,2539.8330078125,45.556762695312)
+            ElectricalJobBlip7 = AddBlipForCoord(1685.8287, 2566.2698, 45.6073)
             SetBlipSprite(ElectricalJobBlip7, 1)
             SetBlipSprite(ElectricalJobBlip7, 466)
             SetBlipScale(ElectricalJobBlip7, 1.2)
@@ -986,7 +986,7 @@ local ElectricalJob8 = false
             ElectricalJobInProgress = true
             TriggerEvent('DoLongHudText', 'Jail Job On GPS', 1)
             ElectricalJob8 = true
-            ElectricalJobBlip8 = AddBlipForCoord(1622.5450439453,2507.7231445312,45.556762695312)
+            ElectricalJobBlip8 = AddBlipForCoord(1634.8724, 2554.3499, 45.6137)
             SetBlipSprite(ElectricalJobBlip8, 1)
             SetBlipSprite(ElectricalJobBlip8, 466)
             SetBlipScale(ElectricalJobBlip8, 1.2)
