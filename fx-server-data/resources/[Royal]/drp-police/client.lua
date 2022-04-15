@@ -2577,7 +2577,7 @@ AddEventHandler('drp-polyzone:enter', function(name)
     if name == "fib_clothes" then
         local job = exports["isPed"]:isPed("myjob")
         if job == "police" or job == "sheriff" or job == "state" then
-			RoyalHQPdShit()
+			RoyalFIBPdShit()
             StateFIBLockerORClothing = true
 			exports['drp-textui']:showInteraction('[E] Changing Room')
         end
@@ -2592,7 +2592,7 @@ AddEventHandler('drp-polyzone:exit', function(name)
 	exports['drp-textui']:hideInteraction()
 end)
 
-function RoyalHQPdShit()
+function RoyalFIBPdShit()
 	Citizen.CreateThread(function()
         while StateFIBLockerORClothing do
             Citizen.Wait(5)
