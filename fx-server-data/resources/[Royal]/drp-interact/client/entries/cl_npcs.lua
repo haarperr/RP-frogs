@@ -342,6 +342,24 @@ Entries[#Entries + 1] = {
     group = { 'isNPC' },
     data = {
         {
+            id = "cartguy",
+            label = "Get a Go Cart ($1500)",
+            icon = "circle",
+            event = "drp-gocart:getcart",
+            parameters = {}
+        }
+    },
+    options = {
+        distance = { radius = 3.0 },
+        npcIds = {"cartguy"}
+    }
+}
+
+Entries[#Entries + 1] = {
+    type = 'flag',
+    group = { 'isNPC' },
+    data = {
+        {
             id = "fibarmoryguy",
             label = "Open Armory",
             icon = "circle",
