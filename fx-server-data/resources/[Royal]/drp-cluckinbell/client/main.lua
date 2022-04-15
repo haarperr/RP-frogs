@@ -216,5 +216,14 @@ end)
 RegisterNetEvent('drp-cluckinbell:cash:in')
 AddEventHandler('drp-cluckinbell:cash:in', function()
     local cid = exports["isPed"]:isPed("cid")
-    TriggerServerEvent("cluckinbell:update:pay", cid)
+    local amountOfReciepes = exports["drp-inventory"]:getAmountOfItem("burgerReceipt")
+    local job = exports["isPed"]:GroupRank('cluckin_bell')
+    if job >= 1 then
+        TriggerEvent('inventory:removeItem', 'burgerReceipt', amountOfReciepes)
+        TriggerServerEvent("cluckinbell:update:pay", cid, amountOfReciepes)
+        Wait(1000)
+    else
+        TriggerEvent('DoLongHudText', 'You do not work here !', 2)
+    end
+    
 end)
