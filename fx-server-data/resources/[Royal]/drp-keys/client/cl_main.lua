@@ -701,7 +701,7 @@ end)
 RegisterNetEvent('keys:startvehicle')
 AddEventHandler('keys:startvehicle', function()
   local veh = GetVehiclePedIsUsing(PlayerPedId())
-    if GetVehicleEngineHealth(veh) > 199 then
+    if GetVehicleEngineHealth(veh) > 225 then
       whatthefuckisthisdoing = 0
       SetVehicleEngineOn(veh,0,1,1)
       Citizen.Wait(100)
@@ -710,9 +710,9 @@ AddEventHandler('keys:startvehicle', function()
       SetVehicleEngineOn(veh,1,0,1)
       Citizen.Wait(100) 
       
-      -- if not Citizen.InvokeNative(0xAE31E7DF9B5B132E, veh) then
-      --   SetVehicleEngineOn(veh,1,1,1)
-      -- end
+      if not Citizen.InvokeNative(0xAE31E7DF9B5B132E, veh) then
+        SetVehicleEngineOn(veh,1,1,1)
+      end
     else
        SetVehicleEngineOn(veh,0,0,1)
        SetVehicleUndriveable(veh,true)
