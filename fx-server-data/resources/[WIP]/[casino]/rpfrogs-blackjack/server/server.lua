@@ -100,6 +100,47 @@ function HaveAllPlayersBetted(table)
     end
 end
 
+function ArePlayersStillIn(table)
+    for i,v in pairs(table) do
+        if v.inGame == false then
+            return false
+        end
+    end
+    return true
+end
+
+function PlayDealerAnim(dealer, animDict, anim)
+    TriggerClientEvent("blackjack:PlayDealerAnim", -1, dealer, animDict, anim)
+end
+
+function PlayDealerSpeech(dealer, speech)
+    TriggerClientEvent("blackjack:PlayDealerSpeech", -1, dealer, speech)
+end
+
+function SetPlayerBet(i, seat, bet, betId, double, split)
+    split = split or false
+    double = double or false
+
+    local num = FindPlayerIdx(players[i], source)
+
+    if num ~= nil then
+        if double == false and split == false then
+            TakeMoney(source, bet)
+            players[i][num].bet = tonumber(bet)
+        end
+        
+        TriggerClientEvent("blackjack:PlaceBetChip", -1, i, 5-seat, bet, double, split)
+    else
+        print("error player attempted bet but no longer is being tracked by blackjack")
+    end
+end
+
+RegisterServerEvent("blackjack:SetPlayerBet")
+AddEventHandler("blackjack:SetPlayerBet", SetPlayerBet)
+
+
+
+
 
 -- omegalul copilot doing juicer
 -- to-do:
@@ -109,5 +150,6 @@ end
 -- 5. add a function to check if the player has enough money to bet
 -- 6. add a function to check if the player has membership (?) i need to ask the business man guy
 -- 7. finish serverside logic
+-- 8. abuse gtao animations to our advantage
 
 -- expected finish date (server.lua) = 4/16/2022
