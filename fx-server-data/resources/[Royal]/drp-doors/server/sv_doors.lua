@@ -8994,9 +8994,7 @@ DOOR_CONFIG = {
         job = {
           ["PD"] = true,
          },
-        cid = { 
-          [74] = true
-        },
+        cid = {},
       }
     },
     {
@@ -9012,9 +9010,7 @@ DOOR_CONFIG = {
         job = {
           ["PD"] = true,
          },
-        cid = { 
-          [74] = true
-        },
+        cid = {},
       }
     },
     {
@@ -9030,9 +9026,7 @@ DOOR_CONFIG = {
         job = {
           ["PD"] = true,
          },
-        cid = { 
-          [74] = true
-        },
+        cid = {},
       }
     },
     {
@@ -9048,9 +9042,7 @@ DOOR_CONFIG = {
         job = {
           ["PD"] = true,
          },
-        cid = { 
-          [74] = true
-        },
+        cid = {},
       }
     },
     {
@@ -9066,9 +9058,7 @@ DOOR_CONFIG = {
         job = {
           ["PD"] = true,
          },
-        cid = { 
-          [74] = true
-        },
+        cid = {},
       }
     },
     {
@@ -9084,9 +9074,7 @@ DOOR_CONFIG = {
         job = {
           ["PD"] = true,
          },
-        cid = { 
-          [74] = true
-        },
+        cid = {},
       }
     },
     {
@@ -9102,9 +9090,7 @@ DOOR_CONFIG = {
         job = {
           ["PD"] = true,
          },
-        cid = { 
-          [74] = true
-        },
+        cid = {},
       }
     },
     {
@@ -9120,9 +9106,7 @@ DOOR_CONFIG = {
         job = {
           ["PD"] = true,
          },
-        cid = { 
-          [74] = true
-        },
+        cid = {},
       }
     },
 }
