@@ -9221,5 +9221,37 @@ DOOR_CONFIG = {
         cid = {},
       }
     },
+    {
+      info = "FIB Talk Room 1",
+      active = true,
+      id = 546,
+      coords = vector3(2509.871, -330.5997, 105.8652),
+      model = -2051651622,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {},
+      }
+    },
+    {
+      info = "FIB Talk Room 2",
+      active = true,
+      id = 546,
+      coords = vector3(2512.64, -327.8344, 105.8652),
+      model = -2051651622,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {},
+      }
+    },
 }
   
