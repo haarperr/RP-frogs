@@ -5,7 +5,7 @@ import { getPuzzleSvg } from './svg-factory.js'
 const progressBar = $('.answer-progress-bar')
 const inputElement = $('.answer-input')
 
-let puzzleTime = 9
+let puzzleTime = 10
 let puzzleAmount = 6
 
 // handles generating puzzle and returning result
