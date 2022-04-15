@@ -756,7 +756,7 @@ DOOR_CONFIG = {
   {
     access = {
       job = {
-        -- ["PD"] = true,
+        ["PD"] = true,
       },
       business = {},
     },
@@ -816,7 +816,7 @@ DOOR_CONFIG = {
   {
     access = {
       job = {
-        -- ["PD"] = true,
+        ["PD"] = true,
       },
       business = {},
     },
@@ -1263,57 +1263,57 @@ DOOR_CONFIG = {
     coords = vector3(2122.7348632812, 2928.193359375, -61.752445220947),
     forceUnlocked = false,
   },
-  -- {
-  --   access = {
-  --     job = {
-  --       ["PD"] = true,
-  --     },
-  --     business = {
-  --       ["vanilla_unicorn"] = true,
-  --     },
-  --   },
-  --   desc = "vufront",
-  --   model = -1116041313,
-  --   lock = false,
-  --   active = true,
-  --   id = 81,
-  --   coords = vector3(127.95523834229, -1298.5034179688, 29.419622421265),
-  --   forceUnlocked = false,
-  -- },
-  -- {
-  --   access = {
-  --     job = {
-  --       ["PD"] = true,
-  --     },
-  --     business = {
-  --       ["vanilla_unicorn"] = true,
-  --     },
-  --   },
-  --   desc = "vuback",
-  --   model = 668467214,
-  --   lock = true,
-  --   active = true,
-  --   id = 82,
-  --   coords = vector3(96.091972351074, -1284.8537597656, 29.43878364563),
-  --   forceUnlocked = false,
-  -- },
-  -- {
-  --   access = {
-  --     job = {
-  --       ["PD"] = true,
-  --     },
-  --     business = {
-  --       ["vanilla_unicorn"] = true,
-  --     },
-  --   },
-  --   desc = "vuback",
-  --   model = -495720969,
-  --   lock = true,
-  --   active = true,
-  --   id = 83,
-  --   coords = vector3(113.98224639893, -1297.4304199219, 29.418678283691),
-  --   forceUnlocked = false,
-  -- },
+  {
+    access = {
+      job = {
+        ["PD"] = true,
+      },
+      business = {
+        ["vanilla_unicorn"] = true,
+      },
+    },
+    desc = "vufront",
+    model = -1116041313,
+    lock = false,
+    active = true,
+    id = 81,
+    coords = vector3(127.95523834229, -1298.5034179688, 29.419622421265),
+    forceUnlocked = false,
+  },
+  {
+    access = {
+      job = {
+        ["PD"] = true,
+      },
+      business = {
+        ["vanilla_unicorn"] = true,
+      },
+    },
+    desc = "vuback",
+    model = 668467214,
+    lock = true,
+    active = true,
+    id = 82,
+    coords = vector3(96.091972351074, -1284.8537597656, 29.43878364563),
+    forceUnlocked = false,
+  },
+  {
+    access = {
+      job = {
+        ["PD"] = true,
+      },
+      business = {
+        ["vanilla_unicorn"] = true,
+      },
+    },
+    desc = "vuback",
+    model = -495720969,
+    lock = true,
+    active = true,
+    id = 83,
+    coords = vector3(113.98224639893, -1297.4304199219, 29.418678283691),
+    forceUnlocked = false,
+  },
   {
     access = {
       job = {
@@ -2853,42 +2853,42 @@ DOOR_CONFIG = {
     },
     forceUnlocked = false,
   },
-  -- {
-  --   info = "",
-  --   active = true,
-  --   id = 177,
-  --   coords = vector3(-31.723524093628, -1101.8465576172, 26.572254180908),
-  --   model = -2051651622,
-  --   lock = true,
-  --   desc = "pdm",
-  --   access = {
-  --     job = {
-  --       ["PD"] = true,
-  --     },
-  --     business = {
-  --       ["pdm"] = true,
-  --     },
-  --   },
-  --   forceUnlocked = false,
-  -- },
-  -- {
-  --   info = "",
-  --   active = true,
-  --   id = 178,
-  --   coords = vector3(-33.80989074707, -1107.5787353516, 26.572254180908),
-  --   model = -2051651622,
-  --   lock = true,
-  --   desc = "pdm",
-  --   access = {
-  --     job = {
-  --       ["PD"] = true,
-  --     },
-  --     business = {
-  --       ["pdm"] = true,
-  --     },
-  --   },
-  --   forceUnlocked = false,
-  -- },
+  {
+    info = "",
+    active = true,
+    id = 177,
+    coords = vector3(-31.723524093628, -1101.8465576172, 26.572254180908),
+    model = -2051651622,
+    lock = false,
+    desc = "pdm",
+    access = {
+      job = {
+        ["PD"] = true,
+      },
+      business = {
+        ["pdm"] = true,
+      },
+    },
+    forceUnlocked = false,
+  },
+  {
+    info = "",
+    active = true,
+    id = 178,
+    coords = vector3(-33.80989074707, -1107.5787353516, 26.572254180908),
+    model = -2051651622,
+    lock = false,
+    desc = "pdm",
+    access = {
+      job = {
+        ["PD"] = true,
+      },
+      business = {
+        ["pdm"] = true,
+      },
+    },
+    forceUnlocked = false,
+  },
   {
     info = "",
     active = true,
@@ -3909,38 +3909,38 @@ DOOR_CONFIG = {
     },
     forceUnlocked = false,
   },
-  -- {
-  --   info = "",
-  --   active = true,
-  --   id = 241,
-  --   coords = vector3(471.37530517578, -987.43737792969, 26.40548324585),
-  --   model = -96679321,
-  --   lock = true,
-  --   desc = "MRPDEIIOL_R",
-  --   access = {
-  --     job = {
-  --       ["PD"] = true,
-  --     },
-  --     business = {},
-  --   },
-  --   forceUnlocked = false,
-  -- },
-  -- {
-  --   info = "",
-  --   active = true,
-  --   id = 242,
-  --   coords = vector3(471.37530517578, -985.03192138672, 26.40548324585),
-  --   model = -1406685646,
-  --   lock = true,
-  --   desc = "MRPDEIIOL_L",
-  --   access = {
-  --     job = {
-  --       ["PD"] = true,
-  --     },
-  --     business = {},
-  --   },
-  --   forceUnlocked = false,
-  -- },
+  {
+    info = "",
+    active = true,
+    id = 241,
+    coords = vector3(471.37530517578, -987.43737792969, 26.40548324585),
+    model = -96679321,
+    lock = true,
+    desc = "MRPDEIIOL_R",
+    access = {
+      job = {
+        ["PD"] = true,
+      },
+      business = {},
+    },
+    forceUnlocked = false,
+  },
+  {
+    info = "",
+    active = true,
+    id = 242,
+    coords = vector3(471.37530517578, -985.03192138672, 26.40548324585),
+    model = -1406685646,
+    lock = true,
+    desc = "MRPDEIIOL_L",
+    access = {
+      job = {
+        ["PD"] = true,
+      },
+      business = {},
+    },
+    forceUnlocked = false,
+  },
   {
     info = "",
     active = true,
@@ -4071,38 +4071,38 @@ DOOR_CONFIG = {
     },
     forceUnlocked = false,
   },
-  -- {
-  --   info = "",
-  --   active = true,
-  --   id = 251,
-  --   coords = vector3(469.44061279297, -987.43768310547, 30.823192596436),
-  --   model = -288803980,
-  --   lock = true,
-  --   desc = "MRPDMCD_R",
-  --   access = {
-  --     job = {
-  --       ["PD"] = true,
-  --     },
-  --     business = {},
-  --   },
-  --   forceUnlocked = false,
-  -- },
-  -- {
-  --   info = "",
-  --   active = true,
-  --   id = 252,
-  --   coords = vector3(469.44061279297, -985.03131103516, 30.823192596436),
-  --   model = -288803980,
-  --   lock = true,
-  --   desc = "MRPDMCD_L",
-  --   access = {
-  --     job = {
-  --       ["PD"] = true,
-  --     },
-  --     business = {},
-  --   },
-  --   forceUnlocked = false,
-  -- },
+  {
+    info = "",
+    active = true,
+    id = 251,
+    coords = vector3(469.44061279297, -987.43768310547, 30.823192596436),
+    model = -288803980,
+    lock = true,
+    desc = "MRPDMCD_R",
+    access = {
+      job = {
+        ["PD"] = true,
+      },
+      business = {},
+    },
+    forceUnlocked = false,
+  },
+  {
+    info = "",
+    active = true,
+    id = 252,
+    coords = vector3(469.44061279297, -985.03131103516, 30.823192596436),
+    model = -288803980,
+    lock = true,
+    desc = "MRPDMCD_L",
+    access = {
+      job = {
+        ["PD"] = true,
+      },
+      business = {},
+    },
+    forceUnlocked = false,
+  },
   {
     info = "",
     active = true,
@@ -4503,7 +4503,7 @@ DOOR_CONFIG = {
     desc = "",
     access = {
       job = {
-        -- ["PD"] = true,
+        ["PD"] = true,
       },
       business = {},
     },
@@ -4519,7 +4519,7 @@ DOOR_CONFIG = {
     desc = "",
     access = {
       job = {
-        -- ["PD"] = true,
+        ["PD"] = true,
       },
       business = {},
     },
@@ -4535,7 +4535,7 @@ DOOR_CONFIG = {
     desc = "",
     access = {
       job = {
-        --["PD"] = true,
+        ["PD"] = true,
       },
       business = {},
     },
@@ -4551,7 +4551,7 @@ DOOR_CONFIG = {
     desc = "",
     access = {
       job = {
-        --["PD"] = true,
+        ["PD"] = true,
       },
       business = {},
     },
@@ -4567,7 +4567,7 @@ DOOR_CONFIG = {
     desc = "",
     access = {
       job = {
-        --["PD"] = true,
+        ["PD"] = true,
       },
       business = {},
     },
@@ -9354,62 +9354,11 @@ DOOR_CONFIG = {
       }
     },
     {
-      info = "PD Academy",
+      info = "FIB Other 4545efg",
       active = true,
       id = 547,
-      coords = vector3(429.7714, -1079.322, 30.20816),
-      model = 711884679,
-      lock = true,
-      keyFob = true,
-      desc = "x",
-      access = {
-        job = {
-          ["PD"] = true,
-         },
-        cid = {
-        },
-      }
-    },
-    {
-      info = "PD Academy",
-      active = true,
-      id = 548,
-      coords = vector3(429.7872, -1115.562, 30.21555),
-      model = 711884679,
-      lock = true,
-      keyFob = true,
-      desc = "x",
-      access = {
-        job = {
-          ["PD"] = true,
-         },
-        cid = {
-        },
-      }
-    },
-    {
-      info = "PD Academy 2",
-      active = true,
-      id = 548,
-      coords = vector3(429.7872, -1115.562, 30.21555),
-      model = 711884679,
-      lock = true,
-      keyFob = true,
-      desc = "x",
-      access = {
-        job = {
-          ["PD"] = true,
-         },
-        cid = {
-        },
-      }
-    },
-    {
-      info = "PD Academy 3",
-      active = true,
-      id = 548,
-      coords = vector3(455.2967, -1104.431, 29.62786),
-      model = -1033001619,
+      coords = vector3(2506.215, -426.3698, 107.0778),
+      model = 1055151324,
       lock = true,
       keyFob = true,
       desc = "x",
