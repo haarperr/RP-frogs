@@ -2560,6 +2560,51 @@ end
 --    SetPoliceHeliPed()
 --end)
 
+-- // FIB 
+
+local StateFIBLockerORClothing = false
+--Name: fibclothes | 2022-04-15T08:19:20Z
+Citizen.CreateThread(function()
+	exports["drp-polyzone"]:AddBoxZone("fib_clothes", vector3(2515.63, -344.53, 101.89), 3, 3, {
+		name="fibclothes",
+		heading=0,
+		--debugPoly=true
+    }) 
+end)
+
+RegisterNetEvent('drp-polyzone:enter')
+AddEventHandler('drp-polyzone:enter', function(name)
+    if name == "fib_clothes" then
+        local job = exports["isPed"]:isPed("myjob")
+        if job == "police" or job == "sheriff" or job == "state" then
+			RoyalHQPdShit()
+            StateFIBLockerORClothing = true
+			exports['drp-textui']:showInteraction('[E] Changing Room')
+        end
+    end
+end)
+
+RegisterNetEvent('drp-polyzone:exit')
+AddEventHandler('drp-polyzone:exit', function(name)
+    if name == "fib_clothes" then
+        StateFIBLockerORClothing = false
+    end
+	exports['drp-textui']:hideInteraction()
+end)
+
+function RoyalHQPdShit()
+	Citizen.CreateThread(function()
+        while StateFIBLockerORClothing do
+            Citizen.Wait(5)
+			if IsControlJustReleased(0, 38) then
+				TriggerEvent('drp-pd-options')
+			end
+		end
+	end)
+end
+  
+
+
 -- // State HQ
 
 local StateHQLockerORClothing = false
