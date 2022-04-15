@@ -389,7 +389,7 @@ Citizen.CreateThread(function()
     })
 
     -- PD Clock in FIB
-    exports["drp-polytarget"]:AddBoxZone("duty_fib", vector3(2511.1396, -356.4917, 94.2177), 0.9, 0.5, {
+    exports["drp-polytarget"]:AddBoxZone("duty_fib", vector3(2511.1729, -356.0486, 94.6071), 0.9, 0.5, {
     })
 
        -- PD Clock in locations
