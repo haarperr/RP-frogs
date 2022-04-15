@@ -22,6 +22,8 @@ AddEventHandler("drp-gokart:recievekart", function()
     SetVehicleNeedsToBeHotwired(cart, false)
     SetVehicleEngineOn(cart, true, true)
     SetVehicleUndriveable(cart, false)
+
+    TriggerEvent("keys:received", GetVehicleNumberPlateText(cart))
+
     SetPedIntoVehicle(player, cart, -1)
-    
 end)
