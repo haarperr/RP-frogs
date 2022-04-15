@@ -267,73 +267,73 @@ elseif #(playercoords - thirddoorvector) < 3.0 then
 	Citizen.Wait(6300)
 	NetworkStartSynchronisedScene(netScene2)
 	Citizen.Wait(2000)
-	--exports["hacking2"]:hacking2(
-	--	function() -- success
-			local ped = PlayerPedId()
-			
-			local animDict = "anim@heists@ornate_bank@hack"
-			RequestAnimDict(animDict)
-			RequestModel("hei_prop_hst_laptop")
-			RequestModel("hei_p_m_bag_var22_arm_s")
-			RequestModel("hei_prop_heist_card_hack_02")
-			while not HasAnimDictLoaded(animDict)
-				or not HasModelLoaded("hei_prop_hst_laptop")
-				or not HasModelLoaded("hei_p_m_bag_var22_arm_s")
-				or not HasModelLoaded("hei_prop_heist_card_hack_02") do
-				Citizen.Wait(100)
-			end
-			local ped = PlayerPedId()
-			local targetPosition, targetRotation = (vec3(GetEntityCoords(ped))), vec3(GetEntityRotation(ped))
+	exports["hacking2"]:hacking2(
+	function() -- success
+		local ped = PlayerPedId()
 		
-			local animPos3 = GetAnimInitialOffsetPosition(animDict, "hack_exit", 253.300, 228.336, 101.450, 253.300, 228.336, 101.450, 0, 2)
+		local animDict = "anim@heists@ornate_bank@hack"
+		RequestAnimDict(animDict)
+		RequestModel("hei_prop_hst_laptop")
+		RequestModel("hei_p_m_bag_var22_arm_s")
+		RequestModel("hei_prop_heist_card_hack_02")
+		while not HasAnimDictLoaded(animDict)
+			or not HasModelLoaded("hei_prop_hst_laptop")
+			or not HasModelLoaded("hei_p_m_bag_var22_arm_s")
+			or not HasModelLoaded("hei_prop_heist_card_hack_02") do
+			Citizen.Wait(100)
+		end
+		local ped = PlayerPedId()
+		local targetPosition, targetRotation = (vec3(GetEntityCoords(ped))), vec3(GetEntityRotation(ped))
 		
-			local netScene3 = NetworkCreateSynchronisedScene(animPos3, targetRotation, 2, false, false, 1065353216, 0, 1.3)
-			NetworkAddPedToSynchronisedScene(ped, netScene3, animDict, "hack_exit", 1.5, -4.0, 1, 16, 1148846080, 0)
-			NetworkAddEntityToSynchronisedScene(netScene3, animDict, "hack_exit_bag", 4.0, -8.0, 1)
-			NetworkAddEntityToSynchronisedScene(laptop, netScene3, animDict, "hack_exit_laptop", 4.0, -8.0, 1)
-			NetworkAddEntityToSynchronisedScene(netScene3, animDict, "hack_exit_card", 4.0, -8.0, 1)
-			SetPedComponentVariation(ped, 5, 0, 0, 0)
-			NetworkStartSynchronisedScene(netScene3)
-			Citizen.Wait(4600)
-			NetworkStopSynchronisedScene(netScene3)
-			DeleteObject(laptop)
-			SetPedComponentVariation(ped, 5, 45, 0, 0)
-			TriggerServerEvent("dark-vaultrob:upper:openvault", 1)
-			SpawnTrolleys()
-			thirddoor = true
-		-- end,
-		function() -- failure
-			local ped = PlayerPedId()
-			
-			local animDict = "anim@heists@ornate_bank@hack"
-			RequestAnimDict(animDict)
-			RequestModel("hei_prop_hst_laptop")
-			RequestModel("hei_p_m_bag_var22_arm_s")
-			RequestModel("hei_prop_heist_card_hack_02")
-			while not HasAnimDictLoaded(animDict)
-				or not HasModelLoaded("hei_prop_hst_laptop")
-				or not HasModelLoaded("hei_p_m_bag_var22_arm_s")
-				or not HasModelLoaded("hei_prop_heist_card_hack_02") do
-				Citizen.Wait(100)
-			end
-			local ped = PlayerPedId()
-			local targetPosition, targetRotation = (vec3(GetEntityCoords(ped))), vec3(GetEntityRotation(ped))
+		local animPos3 = GetAnimInitialOffsetPosition(animDict, "hack_exit", 253.300, 228.336, 101.450, 253.300, 228.336, 101.450, 0, 2)
 		
-			local animPos3 = GetAnimInitialOffsetPosition(animDict, "hack_exit", 253.300, 228.336, 101.450, 253.300, 228.336, 101.450, 0, 2)
+		local netScene3 = NetworkCreateSynchronisedScene(animPos3, targetRotation, 2, false, false, 1065353216, 0, 1.3)
+		NetworkAddPedToSynchronisedScene(ped, netScene3, animDict, "hack_exit", 1.5, -4.0, 1, 16, 1148846080, 0)
+		NetworkAddEntityToSynchronisedScene(netScene3, animDict, "hack_exit_bag", 4.0, -8.0, 1)
+		NetworkAddEntityToSynchronisedScene(laptop, netScene3, animDict, "hack_exit_laptop", 4.0, -8.0, 1)
+		NetworkAddEntityToSynchronisedScene(netScene3, animDict, "hack_exit_card", 4.0, -8.0, 1)
+		SetPedComponentVariation(ped, 5, 0, 0, 0)
+		NetworkStartSynchronisedScene(netScene3)
+		Citizen.Wait(4600)
+		NetworkStopSynchronisedScene(netScene3)
+		DeleteObject(laptop)
+		SetPedComponentVariation(ped, 5, 45, 0, 0)
+		TriggerServerEvent("dark-vaultrob:upper:openvault", 1)
+		SpawnTrolleys()
+		thirddoor = true
+	end,
+	function() -- failure
+		local ped = PlayerPedId()
 		
-			local netScene3 = NetworkCreateSynchronisedScene(animPos3, targetRotation, 2, false, false, 1065353216, 0, 1.3)
-			NetworkAddPedToSynchronisedScene(ped, netScene3, animDict, "hack_exit", 1.5, -4.0, 1, 16, 1148846080, 0)
-			NetworkAddEntityToSynchronisedScene(netScene3, animDict, "hack_exit_bag", 4.0, -8.0, 1)
-			NetworkAddEntityToSynchronisedScene(laptop, netScene3, animDict, "hack_exit_laptop", 4.0, -8.0, 1)
-			NetworkAddEntityToSynchronisedScene(netScene3, animDict, "hack_exit_card", 4.0, -8.0, 1)
-			SetPedComponentVariation(ped, 5, 0, 0, 0)
-			NetworkStartSynchronisedScene(netScene3)
-			Citizen.Wait(4600)
-			NetworkStopSynchronisedScene(netScene3)
-			DeleteObject(laptop)
-			SetPedComponentVariation(ped, 5, 45, 0, 0)
-			thirddoor = false
-			TriggerServerEvent('drp-doors:change-lock-state', 52, false)
+		local animDict = "anim@heists@ornate_bank@hack"
+		RequestAnimDict(animDict)
+		RequestModel("hei_prop_hst_laptop")
+		RequestModel("hei_p_m_bag_var22_arm_s")
+		RequestModel("hei_prop_heist_card_hack_02")
+		while not HasAnimDictLoaded(animDict)
+			or not HasModelLoaded("hei_prop_hst_laptop")
+			or not HasModelLoaded("hei_p_m_bag_var22_arm_s")
+			or not HasModelLoaded("hei_prop_heist_card_hack_02") do
+			Citizen.Wait(100)
+		end
+		local ped = PlayerPedId()
+		local targetPosition, targetRotation = (vec3(GetEntityCoords(ped))), vec3(GetEntityRotation(ped))
+	
+		local animPos3 = GetAnimInitialOffsetPosition(animDict, "hack_exit", 253.300, 228.336, 101.450, 253.300, 228.336, 101.450, 0, 2)
+	
+		local netScene3 = NetworkCreateSynchronisedScene(animPos3, targetRotation, 2, false, false, 1065353216, 0, 1.3)
+		NetworkAddPedToSynchronisedScene(ped, netScene3, animDict, "hack_exit", 1.5, -4.0, 1, 16, 1148846080, 0)
+		NetworkAddEntityToSynchronisedScene(netScene3, animDict, "hack_exit_bag", 4.0, -8.0, 1)
+		NetworkAddEntityToSynchronisedScene(laptop, netScene3, animDict, "hack_exit_laptop", 4.0, -8.0, 1)
+		NetworkAddEntityToSynchronisedScene(netScene3, animDict, "hack_exit_card", 4.0, -8.0, 1)
+		SetPedComponentVariation(ped, 5, 0, 0, 0)
+		NetworkStartSynchronisedScene(netScene3)
+		Citizen.Wait(4600)
+		NetworkStopSynchronisedScene(netScene3)
+		DeleteObject(laptop)
+		SetPedComponentVariation(ped, 5, 45, 0, 0)
+		thirddoor = false
+		TriggerServerEvent('drp-doors:change-lock-state', 52, false)
 		
 	end) 
 else
