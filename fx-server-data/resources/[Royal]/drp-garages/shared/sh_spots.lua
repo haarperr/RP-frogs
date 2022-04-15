@@ -162,7 +162,7 @@ Garages = {
         ShowBlip = false
     },
     
-    ["garagefib"] = {
+    ["garagefibheli"] = {
         name = "Garage FIB Heli",
         blip = {x = 2510.5520, y=  -342.0259, z= 118.1894},
         spawns = {
