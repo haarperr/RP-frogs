@@ -1,37 +1,17 @@
-local IsHacking = false
-
-AddEventHandler('open:minigame', function(callback)
-    Callbackk = callback
-    openHack()
-end)
-
-function OpenHackingGame(callback)
-    Callbackk = callback
-    openHack()
-end
+local successCb
+local failCb
+local resultReceived = false
 
 RegisterNUICallback('callback', function(data, cb)
-    closeHack()
-    Callbackk(data.success)
+    SetNuiFocus(false, false)
+    resultReceived = true
+    if data.success then
+        successCb()
+    else
+        failCb()
+    end
     cb('ok')
 end)
-
-function openHack()
-    SetNuiFocus(true, true)
-    SendNUIMessage({
-        action = "open"
-    })
-    IsHacking = true
-end
-
-function closeHack()
-    SetNuiFocus(false, false)
-    IsHacking = false
-end
-
-function GetHackingStatus()
-    return IsHacking
-end
 
 exports('hacking3', function(success, fail)
     resultReceived = false
@@ -42,4 +22,3 @@ exports('hacking3', function(success, fail)
         action = "open"
     })
 end)
-
