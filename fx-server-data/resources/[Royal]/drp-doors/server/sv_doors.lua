@@ -9141,6 +9141,85 @@ DOOR_CONFIG = {
         cid = {},
       }
     },
+    {
+      info = "FIB 1 Cells",
+      active = true,
+      id = 546,
+      coords = vector3(2505.883, -348.6725, 105.8514),
+      model = 395979613,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {},
+      }
+    },
+    {
+      info = "FIB 2 Cells",
+      active = true,
+      id = 546,
+      coords = vector3(2504.244, -350.9377, 105.8514),
+      model = 395979613,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {},
+      }
+    },
+    {
+      info = "FIB 3 Cells",
+      active = true,
+      id = 546,
+      coords = vector3(2507.034, -353.6587, 105.8514),
+      model = 395979613,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {},
+      }
+    },
+    {
+      info = "FIB 4 Cells",
+      active = true,
+      id = 546,
+      coords = vector3(2509.618, -351.0732, 105.8514),
+      model = 395979613,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {},
+      }
+    },
+    {
+      info = "FIB 5 Cells",
+      active = true,
+      id = 546,
+      coords = vector3(2506.877, -348.1537, 105.8514),
+      model = 395979613,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {},
+      }
+    },
 }
-  
   
