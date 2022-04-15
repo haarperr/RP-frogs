@@ -2577,7 +2577,7 @@ Citizen.CreateThread(function()
 	minZ = 0,
 	maxZ = 108,
   	}
-))
+end)
   
 --Name: fib_elevator_2 | 2022-04-15T18:58:59Z
 Citizen.CreateThread(function()
@@ -2590,7 +2590,8 @@ Citizen.CreateThread(function()
 	name="fib_elevator",
 	minZ = 0,
 	maxZ = 108
-}))
+	})
+end)
 
 RegisterNetEvent('drp-polyzone:enter')
 AddEventHandler('drp-polyzone:enter', function(name)
