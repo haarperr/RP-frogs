@@ -217,7 +217,7 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(1)
         if stalled then
-            Citizen.Wait(math.random(3500, 4500))
+            Citizen.Wait(math.random(2750, 4500))
             SetVehicleEngineOn(currentVehicle, true, true, true)
             stalled = false
         end
