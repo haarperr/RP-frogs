@@ -9269,5 +9269,21 @@ DOOR_CONFIG = {
         cid = {},
       }
     },
+    {
+      info = "FIB Tadffsdfk Room 2",
+      active = true,
+      id = 546,
+      coords = vector3(2497.479, -353.3627, 105.8514),
+      model = -2051651622,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {},
+      }
+    },
 }
   

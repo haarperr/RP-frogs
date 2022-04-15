@@ -2574,6 +2574,47 @@ AddEventHandler("drp-fib:elevator:2:down", function()
 end)
   
 
+local fibarmor = false
+--Name: fib_armor | 2022-04-15T09:43:33Z
+Citizen.CreateThread(function()
+	exports["drp-polyzone"]:AddBoxZone("fib_armor", vector3(2528.97, -337.75, 101.89), 3, 3, {
+	name="fib_armor",
+	heading=45,
+	--debugPoly=true
+  })
+end)
+  
+
+RegisterNetEvent('drp-polyzone:enter')
+AddEventHandler('drp-polyzone:enter', function(name)
+    if name == "fib_armor" then
+        local job = exports["isPed"]:isPed("myjob")
+        if job == "police" or job == "sheriff" or job == "state" then
+			FIBArmor()
+            fibarmor = true
+			exports['drp-textui']:showInteraction('[E] Armory')
+        end
+    end
+end)
+
+RegisterNetEvent('drp-polyzone:exit')
+AddEventHandler('drp-polyzone:exit', function(name)
+    if name == "fib_armor" then
+        fibarmor = false
+    end
+	exports['drp-textui']:hideInteraction()
+end)
+
+function FIBArmor()
+	Citizen.CreateThread(function()
+        while fibarmor do
+            Citizen.Wait(5)
+			if IsControlJustReleased(0, 38) then
+				TriggerEvent('police:general')
+			end
+		end
+	end)
+end
 
 
 local StateFIBLockerORClothing = false
