@@ -407,6 +407,7 @@ end)
 RegisterServerEvent('falseCuffs')
 AddEventHandler('falseCuffs', function(t)
 	TriggerClientEvent('falseCuffs',t)
+	TriggerClientEvent('police:currentHandCuffedState',t,false)
 	TriggerClientEvent('menu:setCuffState', t, false)
 end)
 
