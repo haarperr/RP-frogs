@@ -211,8 +211,24 @@ function StartTableThread(i)
 
                         Wait(1500)
 
+                        for x=1,2 do
+                            local card = takeCard(deck)
+                            table.insert(dealerHand, card)
 
+                            TriggerClientEvent("blackjack:GiveCard", -1, index, 0, #dealerHand, card, #dealerHand == 1)
 
+                            if #dealerHand == 1 then
+                                PlayDealerAnim(index, "anim_casino_b@amb@casino@games@blackjack@dealer", "female_deal_card_self")
+                                print('table dealt dealer')
+                            else
+                                PlayDealerAnim(index, "anim_casino_b@amb@casino@games@blackjack@dealer", "female_deal_card_self_second_card")
+                                print('table dealer dealer 2')
+                            end
+                            Wait(2000)
+
+                            if #dealerHand > 1 then
+                                PlayerDealerSpeech(index, "MINIGAME_DEALER_DEALER_"..cardValue(dealerHand[2]))
+-- im burnt out ill finish later and im gonna work on knx now
 
 -- omegalul copilot doing juicer
 -- to-do:
