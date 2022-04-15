@@ -22,8 +22,17 @@ exports("GetAnimSet", function()
   return AnimSet
 end)
 
+local cooldown = false
 RegisterCommand('e', function(source, args, raw) 
-    TriggerEvent('animation:PlayAnimation', args[1]) 
+    if not cooldown then
+        TriggerEvent('animation:PlayAnimation', args[1]) 
+        cooldown = true
+        if args[1] == "slump" then
+            wait(2000)
+        end
+        Wait(1000)
+        cooldown = false
+    end
 end)
 RegisterCommand('emote', function(source, args, raw) 
     TriggerEvent('animation:PlayAnimation', args[1]) 
