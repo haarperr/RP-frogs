@@ -9353,5 +9353,73 @@ DOOR_CONFIG = {
         },
       }
     },
+    {
+      info = "PD Academy",
+      active = true,
+      id = 547,
+      coords = vector3(429.7714, -1079.322, 30.20816),
+      model = 711884679,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
+    {
+      info = "PD Academy",
+      active = true,
+      id = 548,
+      coords = vector3(429.7872, -1115.562, 30.21555),
+      model = 711884679,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
+    {
+      info = "PD Academy 2",
+      active = true,
+      id = 548,
+      coords = vector3(429.7872, -1115.562, 30.21555),
+      model = 711884679,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
+    {
+      info = "PD Academy 3",
+      active = true,
+      id = 548,
+      coords = vector3(455.2967, -1104.431, 29.62786),
+      model = -1033001619,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
 }
   
