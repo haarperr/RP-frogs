@@ -49,6 +49,59 @@ function handValue(hand)
     return value
 end
 
+players = {}
+
+timeTracker = {}
+
+tableTracker = {}
+
+getChipsCallback = nil
+takeChipsCallback = nil
+giveChipsCallback = nil
+
+function FindPlayerIdx(player)
+    for i=1, #players do
+        if players[i] == player then
+            return i
+        end
+    end
+    return nil
+end
+
+function SetGetChipsCallback(callback)
+    getChipsCallback = callback
+end
+
+function SetTakeChipsCallback(callback)
+    takeChipsCallback = callback
+end
+
+function SetGiveChipsCallback(callback)
+    giveChipsCallback = callback
+end
+
+function GiveMoney(player, amount)
+    if giveChipsCallback then
+        giveChipsCallback(player, amount)
+    end
+end
+
+function TakeMoney(player, amount)
+    if takeChipsCallback then
+        takeChipsCallback(player, amount)
+    end
+end
+
+function HaveAllPlayersBetted(table)
+    for i,v in pairs(table) do
+        if v.bet == 0 then
+            return false
+        end
+    end
+end
+
+
+-- omegalul copilot doing juicer
 -- to-do:
 -- 1. add a function to check if the player wins or loses
 -- 2. add a function to check if the player busts
@@ -58,4 +111,3 @@ end
 -- 7. finish serverside logic
 
 -- expected finish date (server.lua) = 4/16/2022
--- from green (nono smells even more)
