@@ -28,9 +28,9 @@ RegisterCommand('e', function(source, args, raw)
         TriggerEvent('animation:PlayAnimation', args[1]) 
         cooldown = true
         if args[1] == "slump" then
-            wait(2000)
+            Citizen.Wait(2000)
         end
-        Wait(1000)
+        Citizen.Wait(1000)
         cooldown = false
     end
 end)
