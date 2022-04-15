@@ -170,6 +170,66 @@ RegisterServerEvent("blackjack:CheckPlayerBet")
 AddEventHandler("blackjack:CheckPlayerBet", CheckPlayerBet)
 
 
+RegisterServerEvent("blackjack:RecievedMove")
+
+function StartTableThread(i)
+    Citizen.CreateThread(function ()
+        local index = i
+        while true do Wait(0)
+            if players[index] and #players[index] ~= 0 then
+                print('waiting for players at table to place bets')
+                PlayDealerAnim(index, "anim_casino_b@amb@casino@games@blackjack@dealer", "female_place_bet_request")
+                PlayDealerSpeech(index, "MINIGAME_DEALER_PLACE_CHIPS")
+                
+                repeat
+                    for i,v in pairs(players[index]) do
+                        TriggerClientEvent("blackjack:SyncTimer", v.player, bettingTime - timeTracker[index])
+                    end -- remove players who didnt bet from stuff
+                    Wait(1000)
+                    timeTracker[index] = timeTracker[index] + 1
+                until HaveAllPlayersBetted(players[index]) or #players[index] == 0 or timeTracker[index] >= bettingTime
+
+                if #players[index] == 0 then
+                    print('betting ended at table, no more player bets')
+                    -- nono smells
+                else
+                    for i,v in pairs(players[index]) do
+                        if v.bet < 1 then
+                            v.player_in = false
+                        end
+                    end -- remove players who didnt bet from stuff
+
+                    if ArePlayersStillIn(players[index]) then
+                        print('betting ended at table, all players still in')
+                        PlayDealerSpeech(index, "MINIGAME_DEALER_CLOSED_BETS")
+
+                        local currentPlayers = {table.unpack(players[i])}
+                        local deck = getDeck()
+                        local dealerHand = {}
+
+                        local gameRunning = true
+
+                        Wait(1500)
+
+                        for x=1,2 do
+                            local card = takeCard(deck)
+                            table.insert(dealerHand, card)
+
+                            TriggerClientEvent("blackjack:GiveCard", -1, index, 0, #dealerHand, card, #dealerHand == 1)
+
+                            if #dealerHand == 1 then
+                                PlayDealerAnim(index, "anim_casino_b@amb@casino@games@blackjack@dealer", "female_deal_card_self")
+                                print('table dealt dealer')
+                            else
+                                PlayDealerAnim(index, "anim_casino_b@amb@casino@games@blackjack@dealer", "female_deal_card_self_second_card")
+                                print('table dealer dealer 2')
+                            end
+                            Wait(2000)
+
+                            if #dealerHand > 1 then
+                                PlayerDealerSpeech(index, "MINIGAME_DEALER_DEALER_"..cardValue(dealerHand[2]))
+-- im burnt out ill finish later and im gonna work on knx now
+
 -- omegalul copilot doing juicer
 -- to-do:
 -- 1. add a function to check if the player wins or loses
