@@ -8981,6 +8981,42 @@ DOOR_CONFIG = {
         cid = { },
       }
     },
+    {
+      info = "FIB Door enter",
+      active = true,
+      id = 545,
+      coords = vector3(2560.195, -326.2035, 91.91821),
+      model = 1185512375,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = { 
+          [74] = true
+        },
+      }
+    },
+    {
+      info = "FIB Door exit",
+      active = true,
+      id = 546,
+      coords = vector3(2574.859, -325.966, 91.91752),
+      model = -1286880215,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = { 
+          [74] = true
+        },
+      }
+    },
 }
   
   
