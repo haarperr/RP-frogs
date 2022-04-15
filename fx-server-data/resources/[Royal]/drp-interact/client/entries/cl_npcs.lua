@@ -343,7 +343,7 @@ Entries[#Entries + 1] = {
     data = {
         {
             id = "cartguy",
-            label = "Get a Go Kart",
+            label = "Get a Go Kart ($500)",
             icon = "circle",
             event = "drp-gokart:getkart",
             parameters = {}
