@@ -9017,6 +9017,24 @@ DOOR_CONFIG = {
         },
       }
     },
+    {
+      info = "FIB Heli door",
+      active = true,
+      id = 546,
+      coords = vector3(2507.461, -335.7412, 115.7478),
+      model = -2023754432,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = { 
+          [74] = true
+        },
+      }
+    },
 }
   
   
