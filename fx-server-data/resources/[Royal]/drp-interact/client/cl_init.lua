@@ -375,7 +375,7 @@ Citizen.CreateThread(function()
     exports["drp-polytarget"]:AddBoxZone("fib2_elv_up", vector3(2506.0056, -433.0655, 99.3493), 10.0, 12.2, {
     })
 
-    exports["drp-polytarget"]:AddBoxZone("fib2_elv_up", vector3(2506.0054, -432.9903, 107.2962), 10.0, 12.2, {
+    exports["drp-polytarget"]:AddBoxZone("fib2_elv_down", vector3(2506.0054, -432.9903, 107.2962), 10.0, 12.2, {
     })
 
     
