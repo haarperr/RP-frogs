@@ -9089,6 +9089,42 @@ DOOR_CONFIG = {
         },
       }
     },
+    {
+      info = "FIB 2 334Entrance",
+      active = true,
+      id = 546,
+      coords = vector3(2503.746, -426.3829, 107.0666),
+      model = 203184370,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = { 
+          [74] = true
+        },
+      }
+    },
+    {
+      info = "FIB 2 334E4343ntrance",
+      active = true,
+      id = 546,
+      coords = vector3(2510.958, -433.5954, 107.0666),
+      model = 203184370,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = { 
+          [74] = true
+        },
+      }
+    },
 }
   
   
