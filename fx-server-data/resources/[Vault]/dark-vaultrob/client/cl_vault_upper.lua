@@ -156,193 +156,192 @@ AddEventHandler('dark-vaultrob:upper:heistlaptop4', function()
 	local seconddoorlocs = vector3(261.943, 223.131, 106.284)
 	local thirddoorvector = vector3(253.257, 228.383, 101.683)
 	if #(playercoords - seconddoorlocs) < 4.0 then
-	if not secdoorshmm then
-		if firstdoorshmm then
-		if exports["drp-inventory"]:hasEnoughOfItem("heistlaptop4", 1) then
-		TaskGoStraightToCoord(PlayerPedId(), 261.609, 223.283, 106.284, 1.0, -1, 248.95, 0.0)
-		Citizen.Wait(2500)
-		local ped = PlayerPedId()
-		SetEntityHeading(ped, -90.00)
-	
-		local animDict = "anim@heists@ornate_bank@hack"
-		RequestAnimDict(animDict)
-		RequestModel("hei_prop_hst_laptop")
-		RequestModel("hei_p_m_bag_var22_arm_s")
-		RequestModel("hei_prop_heist_card_hack_02")
-		while not HasAnimDictLoaded(animDict)
-			or not HasModelLoaded("hei_prop_hst_laptop")
-			or not HasModelLoaded("hei_p_m_bag_var22_arm_s")
-			or not HasModelLoaded("hei_prop_heist_card_hack_02") do
-			Citizen.Wait(100)
+		if not secdoorshmm then
+			if firstdoorshmm then
+				if exports["drp-inventory"]:hasEnoughOfItem("heistlaptop4", 1) then
+					TaskGoStraightToCoord(PlayerPedId(), 261.609, 223.283, 106.284, 1.0, -1, 248.95, 0.0)
+					Citizen.Wait(2500)
+					local ped = PlayerPedId()
+					SetEntityHeading(ped, -90.00)
+
+					local animDict = "anim@heists@ornate_bank@hack"
+					RequestAnimDict(animDict)
+					RequestModel("hei_prop_hst_laptop")
+					RequestModel("hei_p_m_bag_var22_arm_s")
+					RequestModel("hei_prop_heist_card_hack_02")
+					while not HasAnimDictLoaded(animDict)
+						or not HasModelLoaded("hei_prop_hst_laptop")
+						or not HasModelLoaded("hei_p_m_bag_var22_arm_s")
+						or not HasModelLoaded("hei_prop_heist_card_hack_02") do
+						Citizen.Wait(100)
+					end
+					local ped = PlayerPedId()
+					local targetPosition, targetRotation = (vec3(GetEntityCoords(ped))), vec3(GetEntityRotation(ped))
+				
+					local animPos = GetAnimInitialOffsetPosition(animDict, "hack_enter", 262.875, 222.976, 105.980, 262.875, 222.976, 105.980, 0, 2)
+					local animPos2 = GetAnimInitialOffsetPosition(animDict, "hack_loop", 262.875, 222.976, 105.980, 262.875, 222.976, 105.980, 0, 2)
+					local animPos3 = GetAnimInitialOffsetPosition(animDict, "hack_exit", 262.875, 222.976, 105.980, 262.875, 222.976, 105.980, 0, 2)
+				
+					local netScene = NetworkCreateSynchronisedScene(animPos, targetRotation, 2, false, false, 1065353216, 0, 1.3)
+
+					NetworkAddPedToSynchronisedScene(ped, netScene, animDict, "hack_enter", 1.5, -4.0, 1, 16, 1148846080, 0)
+					NetworkAddEntityToSynchronisedScene(netScene, animDict, "hack_enter_bag", 4.0, -8.0, 1)
+					NetworkAddEntityToSynchronisedScene(laptop, netScene, animDict, "hack_enter_laptop", 4.0, -8.0, 1)
+					NetworkAddEntityToSynchronisedScene(netScene, animDict, "hack_enter_card", 4.0, -8.0, 1)
+				
+					local netScene2 = NetworkCreateSynchronisedScene(animPos2, targetRotation, 2, false, true, 1065353216, 0, 1.3)
+					NetworkAddPedToSynchronisedScene(ped, netScene2, animDict, "hack_loop", 1.5, -4.0, 1, 16, 1148846080, 0)
+					NetworkAddEntityToSynchronisedScene(netScene2, animDict, "hack_loop_bag", 4.0, -8.0, 1)
+					NetworkAddEntityToSynchronisedScene(laptop, netScene2, animDict, "hack_loop_laptop", 4.0, -8.0, 1)
+					NetworkAddEntityToSynchronisedScene(netScene2, animDict, "hack_loop_card", 4.0, -8.0, 1)
+					Citizen.Wait(200)
+					NetworkStartSynchronisedScene(netScene)
+					Citizen.Wait(6300)
+					NetworkStartSynchronisedScene(netScene2)
+					Citizen.Wait(2000)
+					exports["hacking2"]:hacking2(
+					function() -- success
+						animcancel1()
+						TriggerServerEvent('drp-doors:change-lock-state', 50, false)
+						secdoorshmm = true
+						local deleternd = math.random(1,100)
+						if deleternd >= 20 then
+							TriggerEvent('inventory:removeItem', 'heistlaptop4', 1)
+						end
+					end,
+					function() -- failure
+						animcancel1()
+						secdoorshmm = false
+						local deleternd = math.random(1,100)
+						if deleternd <= 20 then
+							TriggerEvent('inventory:removeItem', 'heistlaptop4', 1)
+						end
+					end)
+				else
+					TriggerEvent("notification", "Something is missing!", 2)
+				end
+			end
+		else
+			TriggerEvent("notification", "Already opened!", 2)
 		end
-		local ped = PlayerPedId()
-		local targetPosition, targetRotation = (vec3(GetEntityCoords(ped))), vec3(GetEntityRotation(ped))
-	
-		local animPos = GetAnimInitialOffsetPosition(animDict, "hack_enter", 262.875, 222.976, 105.980, 262.875, 222.976, 105.980, 0, 2)
-		local animPos2 = GetAnimInitialOffsetPosition(animDict, "hack_loop", 262.875, 222.976, 105.980, 262.875, 222.976, 105.980, 0, 2)
-		local animPos3 = GetAnimInitialOffsetPosition(animDict, "hack_exit", 262.875, 222.976, 105.980, 262.875, 222.976, 105.980, 0, 2)
-	
-		local netScene = NetworkCreateSynchronisedScene(animPos, targetRotation, 2, false, false, 1065353216, 0, 1.3)
+	elseif #(playercoords - thirddoorvector) < 3.0 then
+		if not thirddoor then
+			if secdoorshmm then
+				TaskGoStraightToCoord(PlayerPedId(), 253.447, 228.289, 101.683, 1.0, -1, 69.15, 0.0)
+				Citizen.Wait(5000)
+				local ped = PlayerPedId()
 
-		NetworkAddPedToSynchronisedScene(ped, netScene, animDict, "hack_enter", 1.5, -4.0, 1, 16, 1148846080, 0)
-		NetworkAddEntityToSynchronisedScene(netScene, animDict, "hack_enter_bag", 4.0, -8.0, 1)
-		NetworkAddEntityToSynchronisedScene(laptop, netScene, animDict, "hack_enter_laptop", 4.0, -8.0, 1)
-		NetworkAddEntityToSynchronisedScene(netScene, animDict, "hack_enter_card", 4.0, -8.0, 1)
-	
-		local netScene2 = NetworkCreateSynchronisedScene(animPos2, targetRotation, 2, false, true, 1065353216, 0, 1.3)
-		NetworkAddPedToSynchronisedScene(ped, netScene2, animDict, "hack_loop", 1.5, -4.0, 1, 16, 1148846080, 0)
-		NetworkAddEntityToSynchronisedScene(netScene2, animDict, "hack_loop_bag", 4.0, -8.0, 1)
-		NetworkAddEntityToSynchronisedScene(laptop, netScene2, animDict, "hack_loop_laptop", 4.0, -8.0, 1)
-		NetworkAddEntityToSynchronisedScene(netScene2, animDict, "hack_loop_card", 4.0, -8.0, 1)
-		Citizen.Wait(200)
-		NetworkStartSynchronisedScene(netScene)
-		Citizen.Wait(6300)
-		NetworkStartSynchronisedScene(netScene2)
-		Citizen.Wait(2000)
-		exports["hacking2"]:hacking2(
-			function() -- success
-				animcancel1()
-				TriggerServerEvent('drp-doors:change-lock-state', 50, false)
-				secdoorshmm = true
-				local deleternd = math.random(1,100)
-				if deleternd <= 100 and deleternd > 20 then
-					TriggerEvent('inventory:removeItem', 'heistlaptop4', 1)
+				local animDict = "anim@heists@ornate_bank@hack"
+				RequestAnimDict(animDict)
+				RequestModel("hei_prop_hst_laptop")
+				RequestModel("hei_p_m_bag_var22_arm_s")
+				RequestModel("hei_prop_heist_card_hack_02")
+				while not HasAnimDictLoaded(animDict)
+					or not HasModelLoaded("hei_prop_hst_laptop")
+					or not HasModelLoaded("hei_p_m_bag_var22_arm_s")
+					or not HasModelLoaded("hei_prop_heist_card_hack_02") do
+					Citizen.Wait(100)
 				end
-			end,
-			function() -- failure
-				animcancel1()
-				secdoorshmm = false
-				local deleternd = math.random(1,100)
-				if deleternd <= 100 and deleternd > 20 then
-					TriggerEvent('inventory:removeItem', 'heistlaptop4', 1)
-				end
+				local ped = PlayerPedId()
+				local targetPosition, targetRotation = (vec3(GetEntityCoords(ped))), vec3(GetEntityRotation(ped))
 			
-			end)
- 	else
- 		TriggerEvent("notification", "Something is missing!", 2)
- 	end
-end
-else
-	TriggerEvent("notification", "Already opened!", 2)
-end
-elseif #(playercoords - thirddoorvector) < 3.0 then
-	if not thirddoor then
-		if secdoorshmm then
-	TaskGoStraightToCoord(PlayerPedId(), 253.447, 228.289, 101.683, 1.0, -1, 69.15, 0.0)
-	Citizen.Wait(5000)
-	local ped = PlayerPedId()
+				local animPos = GetAnimInitialOffsetPosition(animDict, "hack_enter", 253.300, 228.336, 101.450, 253.300, 228.336, 101.450, 0, 2)
+				local animPos2 = GetAnimInitialOffsetPosition(animDict, "hack_loop", 253.300, 228.336, 101.450, 253.300, 228.336, 101.450, 0, 2)
+				local animPos3 = GetAnimInitialOffsetPosition(animDict, "hack_exit", 253.300, 228.336, 101.450, 253.300, 228.336, 101.450, 0, 2)
+			
+				local netScene = NetworkCreateSynchronisedScene(animPos, targetRotation, 2, false, false, 1065353216, 0, 1.3)
+			
+				NetworkAddPedToSynchronisedScene(ped, netScene, animDict, "hack_enter", 1.5, -4.0, 1, 16, 1148846080, 0)
+				NetworkAddEntityToSynchronisedScene(netScene, animDict, "hack_enter_bag", 4.0, -8.0, 1)
+				NetworkAddEntityToSynchronisedScene(laptop, netScene, animDict, "hack_enter_laptop", 4.0, -8.0, 1)
+				NetworkAddEntityToSynchronisedScene(netScene, animDict, "hack_enter_card", 4.0, -8.0, 1)
+			
+				local netScene2 = NetworkCreateSynchronisedScene(animPos2, targetRotation, 2, false, true, 1065353216, 0, 1.3)
+				NetworkAddPedToSynchronisedScene(ped, netScene2, animDict, "hack_loop", 1.5, -4.0, 1, 16, 1148846080, 0)
+				NetworkAddEntityToSynchronisedScene(netScene2, animDict, "hack_loop_bag", 4.0, -8.0, 1)
+				NetworkAddEntityToSynchronisedScene(laptop, netScene2, animDict, "hack_loop_laptop", 4.0, -8.0, 1)
+				NetworkAddEntityToSynchronisedScene(netScene2, animDict, "hack_loop_card", 4.0, -8.0, 1)
+				Citizen.Wait(200)
+				NetworkStartSynchronisedScene(netScene)
+				Citizen.Wait(6300)
+				NetworkStartSynchronisedScene(netScene2)
+				Citizen.Wait(2000)
+				exports["hacking2"]:hacking2(
+				function() -- success
+					local ped = PlayerPedId()
 
-	local animDict = "anim@heists@ornate_bank@hack"
-	RequestAnimDict(animDict)
-	RequestModel("hei_prop_hst_laptop")
-	RequestModel("hei_p_m_bag_var22_arm_s")
-	RequestModel("hei_prop_heist_card_hack_02")
-	while not HasAnimDictLoaded(animDict)
-		or not HasModelLoaded("hei_prop_hst_laptop")
-		or not HasModelLoaded("hei_p_m_bag_var22_arm_s")
-		or not HasModelLoaded("hei_prop_heist_card_hack_02") do
-		Citizen.Wait(100)
+					local animDict = "anim@heists@ornate_bank@hack"
+					RequestAnimDict(animDict)
+					RequestModel("hei_prop_hst_laptop")
+					RequestModel("hei_p_m_bag_var22_arm_s")
+					RequestModel("hei_prop_heist_card_hack_02")
+					while not HasAnimDictLoaded(animDict)
+						or not HasModelLoaded("hei_prop_hst_laptop")
+						or not HasModelLoaded("hei_p_m_bag_var22_arm_s")
+						or not HasModelLoaded("hei_prop_heist_card_hack_02") do
+						Citizen.Wait(100)
+					end
+					local ped = PlayerPedId()
+					local targetPosition, targetRotation = (vec3(GetEntityCoords(ped))), vec3(GetEntityRotation(ped))
+
+					local animPos3 = GetAnimInitialOffsetPosition(animDict, "hack_exit", 253.300, 228.336, 101.450, 253.300, 228.336, 101.450, 0, 2)
+
+					local netScene3 = NetworkCreateSynchronisedScene(animPos3, targetRotation, 2, false, false, 1065353216, 0, 1.3)
+					NetworkAddPedToSynchronisedScene(ped, netScene3, animDict, "hack_exit", 1.5, -4.0, 1, 16, 1148846080, 0)
+					NetworkAddEntityToSynchronisedScene(netScene3, animDict, "hack_exit_bag", 4.0, -8.0, 1)
+					NetworkAddEntityToSynchronisedScene(laptop, netScene3, animDict, "hack_exit_laptop", 4.0, -8.0, 1)
+					NetworkAddEntityToSynchronisedScene(netScene3, animDict, "hack_exit_card", 4.0, -8.0, 1)
+					SetPedComponentVariation(ped, 5, 0, 0, 0)
+					NetworkStartSynchronisedScene(netScene3)
+					Citizen.Wait(4600)
+					NetworkStopSynchronisedScene(netScene3)
+					DeleteObject(laptop)
+					SetPedComponentVariation(ped, 5, 45, 0, 0)
+					TriggerServerEvent("dark-vaultrob:upper:openvault", 1)
+					SpawnTrolleys()
+					thirddoor = true
+				end,
+				function() -- failure
+					local ped = PlayerPedId()
+
+					local animDict = "anim@heists@ornate_bank@hack"
+					RequestAnimDict(animDict)
+					RequestModel("hei_prop_hst_laptop")
+					RequestModel("hei_p_m_bag_var22_arm_s")
+					RequestModel("hei_prop_heist_card_hack_02")
+					while not HasAnimDictLoaded(animDict)
+						or not HasModelLoaded("hei_prop_hst_laptop")
+						or not HasModelLoaded("hei_p_m_bag_var22_arm_s")
+						or not HasModelLoaded("hei_prop_heist_card_hack_02") do
+						Citizen.Wait(100)
+					end
+					local ped = PlayerPedId()
+					local targetPosition, targetRotation = (vec3(GetEntityCoords(ped))), vec3(GetEntityRotation(ped))
+				
+					local animPos3 = GetAnimInitialOffsetPosition(animDict, "hack_exit", 253.300, 228.336, 101.450, 253.300, 228.336, 101.450, 0, 2)
+				
+					local netScene3 = NetworkCreateSynchronisedScene(animPos3, targetRotation, 2, false, false, 1065353216, 0, 1.3)
+					NetworkAddPedToSynchronisedScene(ped, netScene3, animDict, "hack_exit", 1.5, -4.0, 1, 16, 1148846080, 0)
+					NetworkAddEntityToSynchronisedScene(netScene3, animDict, "hack_exit_bag", 4.0, -8.0, 1)
+					NetworkAddEntityToSynchronisedScene(laptop, netScene3, animDict, "hack_exit_laptop", 4.0, -8.0, 1)
+					NetworkAddEntityToSynchronisedScene(netScene3, animDict, "hack_exit_card", 4.0, -8.0, 1)
+					SetPedComponentVariation(ped, 5, 0, 0, 0)
+					NetworkStartSynchronisedScene(netScene3)
+					Citizen.Wait(4600)
+					NetworkStopSynchronisedScene(netScene3)
+					DeleteObject(laptop)
+					SetPedComponentVariation(ped, 5, 45, 0, 0)
+					thirddoor = false
+					TriggerServerEvent('drp-doors:change-lock-state', 52, false)
+
+				end) 
+			else
+				TriggerServerEvent("notification","Something is missing!", 2)
+			end
+		else
+			TriggerServerEvent("notification","Are you blind the door is already open!", 2)
+		end
 	end
-	local ped = PlayerPedId()
-	local targetPosition, targetRotation = (vec3(GetEntityCoords(ped))), vec3(GetEntityRotation(ped))
-
-	local animPos = GetAnimInitialOffsetPosition(animDict, "hack_enter", 253.300, 228.336, 101.450, 253.300, 228.336, 101.450, 0, 2)
-	local animPos2 = GetAnimInitialOffsetPosition(animDict, "hack_loop", 253.300, 228.336, 101.450, 253.300, 228.336, 101.450, 0, 2)
-	local animPos3 = GetAnimInitialOffsetPosition(animDict, "hack_exit", 253.300, 228.336, 101.450, 253.300, 228.336, 101.450, 0, 2)
-
-	local netScene = NetworkCreateSynchronisedScene(animPos, targetRotation, 2, false, false, 1065353216, 0, 1.3)
-
-	NetworkAddPedToSynchronisedScene(ped, netScene, animDict, "hack_enter", 1.5, -4.0, 1, 16, 1148846080, 0)
-	NetworkAddEntityToSynchronisedScene(netScene, animDict, "hack_enter_bag", 4.0, -8.0, 1)
-	NetworkAddEntityToSynchronisedScene(laptop, netScene, animDict, "hack_enter_laptop", 4.0, -8.0, 1)
-	NetworkAddEntityToSynchronisedScene(netScene, animDict, "hack_enter_card", 4.0, -8.0, 1)
-
-	local netScene2 = NetworkCreateSynchronisedScene(animPos2, targetRotation, 2, false, true, 1065353216, 0, 1.3)
-	NetworkAddPedToSynchronisedScene(ped, netScene2, animDict, "hack_loop", 1.5, -4.0, 1, 16, 1148846080, 0)
-	NetworkAddEntityToSynchronisedScene(netScene2, animDict, "hack_loop_bag", 4.0, -8.0, 1)
-	NetworkAddEntityToSynchronisedScene(laptop, netScene2, animDict, "hack_loop_laptop", 4.0, -8.0, 1)
-	NetworkAddEntityToSynchronisedScene(netScene2, animDict, "hack_loop_card", 4.0, -8.0, 1)
-	Citizen.Wait(200)
-	NetworkStartSynchronisedScene(netScene)
-	Citizen.Wait(6300)
-	NetworkStartSynchronisedScene(netScene2)
-	Citizen.Wait(2000)
-	--exports["hacking2"]:hacking2(
-	--	function() -- success
-			local ped = PlayerPedId()
-			
-			local animDict = "anim@heists@ornate_bank@hack"
-			RequestAnimDict(animDict)
-			RequestModel("hei_prop_hst_laptop")
-			RequestModel("hei_p_m_bag_var22_arm_s")
-			RequestModel("hei_prop_heist_card_hack_02")
-			while not HasAnimDictLoaded(animDict)
-				or not HasModelLoaded("hei_prop_hst_laptop")
-				or not HasModelLoaded("hei_p_m_bag_var22_arm_s")
-				or not HasModelLoaded("hei_prop_heist_card_hack_02") do
-				Citizen.Wait(100)
-			end
-			local ped = PlayerPedId()
-			local targetPosition, targetRotation = (vec3(GetEntityCoords(ped))), vec3(GetEntityRotation(ped))
-		
-			local animPos3 = GetAnimInitialOffsetPosition(animDict, "hack_exit", 253.300, 228.336, 101.450, 253.300, 228.336, 101.450, 0, 2)
-		
-			local netScene3 = NetworkCreateSynchronisedScene(animPos3, targetRotation, 2, false, false, 1065353216, 0, 1.3)
-			NetworkAddPedToSynchronisedScene(ped, netScene3, animDict, "hack_exit", 1.5, -4.0, 1, 16, 1148846080, 0)
-			NetworkAddEntityToSynchronisedScene(netScene3, animDict, "hack_exit_bag", 4.0, -8.0, 1)
-			NetworkAddEntityToSynchronisedScene(laptop, netScene3, animDict, "hack_exit_laptop", 4.0, -8.0, 1)
-			NetworkAddEntityToSynchronisedScene(netScene3, animDict, "hack_exit_card", 4.0, -8.0, 1)
-			SetPedComponentVariation(ped, 5, 0, 0, 0)
-			NetworkStartSynchronisedScene(netScene3)
-			Citizen.Wait(4600)
-			NetworkStopSynchronisedScene(netScene3)
-			DeleteObject(laptop)
-			SetPedComponentVariation(ped, 5, 45, 0, 0)
-			TriggerServerEvent("dark-vaultrob:upper:openvault", 1)
-			SpawnTrolleys()
-			thirddoor = true
-		end,
-		function() -- failure
-			local ped = PlayerPedId()
-			
-			local animDict = "anim@heists@ornate_bank@hack"
-			RequestAnimDict(animDict)
-			RequestModel("hei_prop_hst_laptop")
-			RequestModel("hei_p_m_bag_var22_arm_s")
-			RequestModel("hei_prop_heist_card_hack_02")
-			while not HasAnimDictLoaded(animDict)
-				or not HasModelLoaded("hei_prop_hst_laptop")
-				or not HasModelLoaded("hei_p_m_bag_var22_arm_s")
-				or not HasModelLoaded("hei_prop_heist_card_hack_02") do
-				Citizen.Wait(100)
-			end
-			local ped = PlayerPedId()
-			local targetPosition, targetRotation = (vec3(GetEntityCoords(ped))), vec3(GetEntityRotation(ped))
-		
-			local animPos3 = GetAnimInitialOffsetPosition(animDict, "hack_exit", 253.300, 228.336, 101.450, 253.300, 228.336, 101.450, 0, 2)
-		
-			local netScene3 = NetworkCreateSynchronisedScene(animPos3, targetRotation, 2, false, false, 1065353216, 0, 1.3)
-			NetworkAddPedToSynchronisedScene(ped, netScene3, animDict, "hack_exit", 1.5, -4.0, 1, 16, 1148846080, 0)
-			NetworkAddEntityToSynchronisedScene(netScene3, animDict, "hack_exit_bag", 4.0, -8.0, 1)
-			NetworkAddEntityToSynchronisedScene(laptop, netScene3, animDict, "hack_exit_laptop", 4.0, -8.0, 1)
-			NetworkAddEntityToSynchronisedScene(netScene3, animDict, "hack_exit_card", 4.0, -8.0, 1)
-			SetPedComponentVariation(ped, 5, 0, 0, 0)
-			NetworkStartSynchronisedScene(netScene3)
-			Citizen.Wait(4600)
-			NetworkStopSynchronisedScene(netScene3)
-			DeleteObject(laptop)
-			SetPedComponentVariation(ped, 5, 45, 0, 0)
-			thirddoor = false
-			TriggerServerEvent('drp-doors:change-lock-state', 52, false)
-		
-	end) 
-else
-	TriggerServerEvent("notification","Something is missing!", 2)
-end
-else
-	TriggerServerEvent("notification","Are you blind the door is already open!", 2)
-end
-end
 end)
 
 local fifthdoor = false
