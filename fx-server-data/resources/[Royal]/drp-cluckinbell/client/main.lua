@@ -152,11 +152,20 @@ AddEventHandler("drp-cluckin:startMinigame", function()
 end)
 
 
+local cooldown = false
 
 RegisterNetEvent("cluckinbell:get:receipt")
 AddEventHandler("cluckinbell:get:receipt", function(registerid)
-    TriggerServerEvent('cluckinbell:retreive:receipt', registerid)
+    if not cooldown then 
+        cooldown = true
+        TriggerServerEvent('cluckinbell:retreive:receipt', registerid)
+        Citizen.Wait(240000)
+        cooldown = false
+    else
+        TriggerEvent('DoLongHudText', 'You have to wait a few seconds before you can pay another meal.', 2)
+    end
 end)
+
 
 
 RegisterNetEvent("cluckinbell:Tray-1")
