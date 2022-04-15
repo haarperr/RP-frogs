@@ -32,7 +32,3 @@ end
 function GetHackingStatus()
     return IsHacking
 end
-
-RegisterCommand("openhack",function()
-    openHack()
-end)
