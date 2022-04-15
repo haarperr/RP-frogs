@@ -2580,9 +2580,9 @@ Citizen.CreateThread(function()
 	exports["drp-polyzone"]:AddBoxZone("fib_armor", vector3(2528.97, -337.75, 101.89), 3, 3, {
 	name="fib_armor",
 	heading=45,
-	minZ=97,
-	maxZ=103.5,
-	--debugPoly=true
+	minZ=99,
+	maxZ=103,
+	debugPoly=true
   })
 end)
   
@@ -2625,9 +2625,9 @@ Citizen.CreateThread(function()
 	exports["drp-polyzone"]:AddBoxZone("fib_clothes", vector3(2515.63, -344.53, 101.89), 3, 3, {
 		name="fibclothes",
 		heading=0,
-		minZ=97,
-		maxZ=103.5,
-		--debugPoly=true
+		minZ=99,
+		maxZ=103,
+		debugPoly=true
     }) 
 end)
 
