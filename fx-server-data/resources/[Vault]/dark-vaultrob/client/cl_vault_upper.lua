@@ -480,6 +480,7 @@ end
 elseif  not fourthdoor and #(playercoords3 - fourthdoorvector) < 3.0  then
 	TaskGoStraightToCoord(PlayerPedId(), 252.963, 221.078, 101.683, 1.0, -1, 161.91, 0.0)
 	Citizen.Wait(4000)
+
 	exports["blz-memory"]:thermiteminigame(14, 5, 5, 8,
 	function()
 		
