@@ -9370,5 +9370,22 @@ DOOR_CONFIG = {
         },
       }
     },
+    {
+      info = "Upper Vault Last Thermite door",
+      active = true,
+      id = 548,
+      coords = vector3(261.3004, 214.5052, 101.8324),
+      model = -1508355822,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
 }
   
