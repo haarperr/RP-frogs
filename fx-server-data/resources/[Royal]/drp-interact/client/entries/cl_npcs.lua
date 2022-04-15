@@ -360,6 +360,24 @@ Entries[#Entries + 1] = {
     group = { 'isNPC' },
     data = {
         {
+            id = "cartguy2",
+            label = "Get a Go Kart ($500)",
+            icon = "circle",
+            event = "drp-gokart:getkart2",
+            parameters = {}
+        }
+    },
+    options = {
+        distance = { radius = 3.0 },
+        npcIds = {"cartguy2"}
+    }
+}
+
+Entries[#Entries + 1] = {
+    type = 'flag',
+    group = { 'isNPC' },
+    data = {
+        {
             id = "fibarmoryguy",
             label = "Open Armory",
             icon = "circle",

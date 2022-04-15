@@ -3,14 +3,27 @@ AddEventHandler("drp-gokart:getkart", function()
     local player = GetPlayerPed(-1)
 
     -- pay 500$
-    TriggerServerEvent("drp-gokart:pay")
+    TriggerServerEvent("drp-gokart:pay", 1)
+end)
+
+RegisterNetEvent("drp-gokart:getkart2")
+AddEventHandler("drp-gokart:getkart2", function()
+    local player = GetPlayerPed(-1)
+
+    -- pay 500$
+    TriggerServerEvent("drp-gokart:pay", 2)
 end)
 
 RegisterNetEvent("drp-gokart:recievekart")
-AddEventHandler("drp-gokart:recievekart", function()
+AddEventHandler("drp-gokart:recievekart", function(where)
     local hash = GetHashKey("veto2")
-
     local cartSpawn = vector4(5472.5215, 254.6226, 19.0711, 359.8210)
+
+    if where == 1 then
+        local cartSpawn = vector4(5472.5215, 254.6226, 19.0711, 359.8210)
+    else 
+        local cartSpawn = vector4(-1145.7225, -2110.7620, 12.5571, 313.3146)
+    end
     
     RequestModel(hash)
     while not HasModelLoaded(hash) do
