@@ -102,7 +102,7 @@ end
 
 function ArePlayersStillIn(table)
     for i,v in pairs(table) do
-        if v.inGame == false then
+        if v.player_in == false then
             return false
         end
     end
@@ -227,17 +227,90 @@ function StartTableThread(i)
                             Wait(2000)
 
                             if #dealerHand > 1 then
-                                PlayerDealerSpeech(index, "MINIGAME_DEALER_DEALER_"..cardValue(dealerHand[2]))
--- im burnt out ill finish later and im gonna work on knx now
+                                PlayDealerSpeech(index, "MINIGAME_DEALER_DEALER_"..cardValue(dealerHand[2]))
+                            end
+
+                            for i,v in pairs(currentPlayers) do
+                                if v.player_in then
+                                    local card = takeCard(deck)
+                                    TriggerClientEvent("blackjack:GiveCard", -1, index, v.seat, #v.hand+1, card)
+                                    PlayDealerAnim(index, "anim_casino_b@amb@casino@games@blackjack@dealer", "female_deal_card_player_0" .. 5-v.seat)
+                                    table.insert(v.hand, card)
+
+                                    Wait(2000)
+
+                                    print('table dealt')
+
+                                    if handValue(v.hand) == 21 then
+                                        TriggerClientEvent("blackjack:GameEndReaction", v.player, "good")
+                                        print('player got blackjack pausemansit')
+                                        GiveMoney(v.player, v.bet*2.5)
+                                        v.player_in = false
+                                        PlayDealerSpeech(index, "MINIGAME_BJACK_DEALER_BLACKJACK")
+                                    else
+                                        PlayDealerSpeech(index, "MINIGAME_BJACK_DEALER_"..handValue(v.hand))
+                                    end
+                                end
+                            end
+                        end
+
+                        if handValue(dealerHand) == 21 then
+                            print("dealer got blackjack")
+                            PlayDealerAnim(index, "anim_casino_b@amb@casino@games@blackjack@dealer", "female_check_and_turn_card")
+                            Wait(2000)
+                            PlayDealerSpeech(index, "MINIGAME_BJACK_DEALER_BLACKJACK")
+                            TriggerClientEvent("blackjack::DealerTurnOverCard", -1 index)
+
+                            for i,v in pairs(currentPlayers) do
+                                TriggerClientEvent("blackjack:GameEndReaction", v.player, "bad")
+                            end
+
+                            gameRunning = false
+                        elseif cardValue(dealerHand[2]) == 10 or cardValue(dealerHand[2]) == 11 then
+                            print("dealer got a 10 or an ace")
+                            PlayDealerAnim(index, "anim_casino_b@amb@casino@games@blackjack@dealer", "
+                            Wait(2000)
+                        end
+
+                        if gameRunning == true then
+                            for i,v in pairs(currentPlayers) do
+                                if v.player_in then
+                                    if tableTracker[tostring(v.player)] == nil then
+                                        print('table removed due to leaving ')
+                                        v.player_in = false
+                                        TriggerClientEvent('blackjack:RetrieveCards', -1, index, v.seat)
+                                    else
+                                        PlayDealerAnim(index, "anim_casino_b@amb@casino@games@blackjack@dealer", "female_dealer_focus_player_0".. 5-v.seat .."_idle_intro")
+                                        Wait(1500)
+                                        PlayDealerSpeech(index, "MINIGAME_BJACK_DEALER_ANOTHER_CARD")
+                                        while v.player_in == true and #v.hand < 5 do
+                                            timeTracker[index] = 0
+                                            Wait(0)
+                                            -- nono smells
+                                            PlayDealerAnim(index, "anim_casino_b@amb@casino@games@blackjack@dealer", "female_dealer_focus_player_0".. 5-v.seat .."_idle")
+                                            print('waiting move from player')
+                                            TriggerClientEvent('blackjack::RequestMove', v.player, moveTime - timeTracker[index])
+                                            local receivedMove = false
+                                            local move = "stand"
+                                            local eventHandle = AddEventHandler("blackjack::RecievedMove", function(m))
+                                                if source ~= v.player then return end
+                                                move = m
+                                                receivedMove = true
+                                            end)
+
+                                            while receivedMove = false and tableTracker[tostring(v.player)] ~= nil and timeTracker[index] < moveTime do
+                                                for i,v in pairs(currentPlayers) do
+                                                    TriggerClientEvent("blackjack:SyncTimer", v.player, moveTime - timeTracker[index])
+                                                end
+                                                Wait(1000)
+                                                timeTracker[index] = timeTracker[index] + 1
+                                            end
 
 -- omegalul copilot doing juicer
 -- to-do:
 -- 1. add a function to check if the player wins or loses
--- 2. add a function to check if the player busts
--- 3. add a function to check if the player has blackjack
 -- 5. add a function to check if the player has enough money to bet
 -- 6. add a function to check if the player has membership (?) i need to ask the business man guy
 -- 7. finish serverside logic
--- 8. abuse gtao animations to our advantage
 
--- expected finish date (server.lua) = 4/16/2022
+-- expected finish date (server.lua) = 4/17/2022
