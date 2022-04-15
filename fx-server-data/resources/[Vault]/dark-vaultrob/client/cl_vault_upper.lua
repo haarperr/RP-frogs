@@ -266,7 +266,7 @@ AddEventHandler('dark-vaultrob:upper:heistlaptop4', function()
 				Citizen.Wait(6300)
 				NetworkStartSynchronisedScene(netScene2)
 				Citizen.Wait(2000)
-				exports["hacking2"]:hacking2(
+				exports["hacking3"]:hacking3(
 				function() -- success
 					local ped = PlayerPedId()
 
