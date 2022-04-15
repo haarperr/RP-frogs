@@ -33,7 +33,7 @@ function GetHackingStatus()
     return IsHacking
 end
 
-exports('hacking3', openHack()
+exports('hacking3', function(success, fail)
     resultReceived = false
     successCb = success
     failCb = fail
@@ -42,3 +42,4 @@ exports('hacking3', openHack()
         action = "open"
     })
 end)
+
