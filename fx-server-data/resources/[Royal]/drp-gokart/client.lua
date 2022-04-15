@@ -45,6 +45,7 @@ AddEventHandler('drp-polyzone:enter', function(name)
     if name == "gokartexit" then
         goKartExit = true     
         gokartexit()
+        exports['drp-textui']:showInteraction("[E] Exit Arena")
         
     end
 end)
@@ -83,7 +84,7 @@ AddEventHandler('drp-polyzone:enter', function(name)
     if name == "gokartenter" then
         goKartEnter = true     
         gokartenter()
-        
+        exports['drp-textui']:showInteraction("[E] Enter GoKart Arena")
     end
 end)
 
@@ -100,7 +101,7 @@ function gokartenter()
         while goKartEnter do
             Citizen.Wait(5)
             if IsControlJustReleased(0, 38) then
-                SetEntityCoords(GetPlayerPed(-1), 5472.5215, 254.6226, 19.0711)
+                SetEntityCoords(GetPlayerPed(-1), 5468.3887, 260.8097, 20.2208)
             end
         end
     end)
