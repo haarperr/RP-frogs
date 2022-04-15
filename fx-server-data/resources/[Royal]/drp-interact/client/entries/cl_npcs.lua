@@ -345,7 +345,7 @@ Entries[#Entries + 1] = {
             id = "cartguy",
             label = "Get a Go Kart",
             icon = "circle",
-            event = "drp-golart:getcart",
+            event = "drp-gokart:getkart",
             parameters = {}
         }
     },

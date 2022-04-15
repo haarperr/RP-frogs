@@ -1,5 +1,5 @@
-RegisterNetEvent("drp-gokart:getcart")
-AddEventHandler("drp-gokart:getcart", function()
+RegisterNetEvent("drp-gokart:getkart")
+AddEventHandler("drp-gokart:getkart", function()
     Citizen.Trace("debug hello")
     local hash = GetHashKey("veto2")
     local player = GetPlayerPed(-1)
