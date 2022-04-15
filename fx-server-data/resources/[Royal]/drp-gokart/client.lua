@@ -1,7 +1,14 @@
 RegisterNetEvent("drp-gokart:getkart")
 AddEventHandler("drp-gokart:getkart", function()
-    local hash = GetHashKey("veto2")
     local player = GetPlayerPed(-1)
+
+    -- pay 500$
+    TriggerServerEvent("drp-gokart:pay")
+end)
+
+RegisterNetEvent("drp-gokart:recievekart")
+AddEventHandler("drp-gokart:recievekart", function()
+    local hash = GetHashKey("veto2")
 
     local cartSpawn = vector4(5472.5215, 254.6226, 19.0711, 359.8210)
     
@@ -16,4 +23,5 @@ AddEventHandler("drp-gokart:getkart", function()
     SetVehicleEngineOn(cart, true, true)
     SetVehicleUndriveable(cart, false)
     SetPedIntoVehicle(player, cart, -1)
+    
 end)
