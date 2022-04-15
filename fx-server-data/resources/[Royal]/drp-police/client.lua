@@ -2567,7 +2567,7 @@ local isNearFIBelevator2 = false
 
 --Name: fib_1_1 | 2022-04-15T18:56:04Z
 Citizen.CreateThread(function()
-	exports["drp-polyzone"]:AddPolyZone("airport", {
+	exports["drp-polyzone"]:AddPolyZone("fib_elevator", {
 		vector2(2506.1201171875, -342.17779541016),
 		vector2(2502.0617675782, -338.1072692871),
 		vector2(2500.3286132812, -339.90768432618),
@@ -2580,7 +2580,7 @@ Citizen.CreateThread(function()
   
   --Name: fib_elevator_2 | 2022-04-15T18:58:59Z
   Citizen.CreateThread(function()
-	exports["drp-polyzone"]:AddPolyZone("airport", {
+	exports["drp-polyzone"]:AddPolyZone("fib_elevator", {
 		vector2(2497.2722167968, -350.96731567382),
 		vector2(2498.9291992188, -349.21697998046),
 		vector2(2494.8630371094, -345.1694946289),
