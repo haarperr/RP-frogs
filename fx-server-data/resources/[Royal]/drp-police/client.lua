@@ -2634,7 +2634,7 @@ AddEventHandler("fib:elevatorMenu", function()
 		{
             id = 2,
             header = "Level 2",
-			txt = "Locked",
+			txt = "Locked 🔒",
 			params = {
                 event = "",
             }
