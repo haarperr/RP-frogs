@@ -214,6 +214,20 @@ Config.Zones = {
 		  heading=100.5948,
 		}),
 
+		--Name: fib_parking | 2022-04-15T09:50:46Z
+		PolyZone:Create({
+			vector2(2535.0710449218, -380.25387573242),
+			vector2(2556.6813964844, -380.9454650879),
+			vector2(2559.1909179688, -370.44659423828),
+			vector2(2536.7919921875, -369.65060424804)
+		}, {
+			name="garagefib",
+			--minZ = 92.99341583252,
+			--maxZ = 93.08039855957
+		})
+  
+  
+
 		BoxZone:Create(vector3(264.6512, -1123.8561, 29.2180), 20.0, 22.5, {  -- Far right side from sandy pd
 		  name="garagecourt",
 		  heading=266.0793,
