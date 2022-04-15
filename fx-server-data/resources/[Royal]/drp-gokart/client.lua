@@ -114,7 +114,7 @@ end)
 function gokartenter()
     Citizen.CreateThread(function()
         while goKartEnter do
-            Citizen.Wait(5)
+            Citizen.Wait(5000)
             if IsControlJustReleased(0, 38) then
                 SetEntityCoords(GetPlayerPed(-1), 5468.3887, 260.8097, 20.2208)
             end
