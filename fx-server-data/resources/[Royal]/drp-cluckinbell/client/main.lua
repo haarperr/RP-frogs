@@ -208,5 +208,13 @@ end)
 
 RegisterCommand('cbmusicv', function()
     local job = exports["isPed"]:GroupRank('cluckin_bell')
-    if job >= 1 then TriggerEvent("cluckinbell:change:volume") end
+    if job >= 1 then
+        TriggerEvent("cluckinbell:change:volume")
+    end
+end)
+
+RegisterNetEvent('drp-cluckinbell:cash:in')
+AddEventHandler('drp-cluckinbell:cash:in', function()
+    local cid = exports["isPed"]:isPed("cid")
+    TriggerServerEvent("drp-cluckinbell:update:pay", cid)
 end)

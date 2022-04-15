@@ -385,7 +385,7 @@ Entries[#Entries + 1] = {
             id = "cluckin3",
             label = "Trade in reciepes",
             icon = "circle",
-            event = "drp-cluckin:tradein",
+            event = "drp-cluckinbell:cash:in",
             parameters = {}
         }
     },
