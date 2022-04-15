@@ -2573,7 +2573,7 @@ Citizen.CreateThread(function()
 	vector2(2504.408203125, -343.92883300782)
   }, {
 	name="fib_elevator",
-	--minZ = 94.092193603516,
+	minZ = 0,
 	maxZ = 108
   })
   
@@ -2585,14 +2585,13 @@ PolyZone:Create({
 	vector2(2493.3669433594, -347.08865356446)
   }, {
 	name="fib_elevator",
-	--minZ = 94.092208862304,
+	minZ = 0,
  	maxZ = 108
   })
 
   RegisterNetEvent('drp-polyzone:enter')
   AddEventHandler('drp-polyzone:enter', function(name)
 	  if name == "fib_elevator" then
-		local job = exports["isPed"]:isPed("myjob")
 		fibelevator()
 		isNearFIBelevator1 = true
 		exports['drp-textui']:showInteraction('[E] Use Elevator')
@@ -2612,7 +2611,7 @@ PolyZone:Create({
 		  while isNearFIBelevator1 do
 			  Citizen.Wait(5)
 			  if IsControlJustReleased(0, 38) then
-				  TriggerEvent('police:general')
+				  -- TriggerEvent('police:general')
 			  end
 		  end
 	  end)
