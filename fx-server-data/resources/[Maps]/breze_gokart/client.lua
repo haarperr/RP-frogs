@@ -8,6 +8,15 @@ Citizen.CreateThread(function()
     AddTextComponentSubstringPlayerName("Go Kart")
     EndTextCommandSetBlipName(blip)
 
+    local blip2 = AddBlipForCoord(-253.7749, -1991.7795, 30.1457)
+    SetBlipSprite(blip2, 523)
+    SetBlipScale(blip2, 0.5)
+    SetBlipColour(blip2, 2)
+    SetBlipAsShortRange(blip2, true)
+    BeginTextCommandSetBlipName('STRING')
+    AddTextComponentSubstringPlayerName("Go Kart")
+    EndTextCommandSetBlipName(blip2)
+
     RequestIpl("breze_gokart_milo")
     local interiorID = GetInteriorAtCoords(-1123.117,-2108.477,23.23311)
     if IsValidInterior(interiorID) then 
