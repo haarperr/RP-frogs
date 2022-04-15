@@ -199,7 +199,7 @@ AddEventHandler('dark-vaultrob:upper:heistlaptop4', function()
 					Citizen.Wait(6300)
 					NetworkStartSynchronisedScene(netScene2)
 					Citizen.Wait(2000)
-					exports["hacking3"]:hacking2(
+					exports["hacking2"]:hacking2(
 					function() -- success
 						animcancel1()
 						TriggerServerEvent('drp-doors:change-lock-state', 50, false)
