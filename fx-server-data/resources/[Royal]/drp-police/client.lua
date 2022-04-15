@@ -2575,49 +2575,50 @@ Citizen.CreateThread(function()
   	}, {
 	name="fib_elevator",
 	minZ = 0,
-	maxZ = 108
-  }))
+	maxZ = 108,
+  	}
+))
   
-  --Name: fib_elevator_2 | 2022-04-15T18:58:59Z
-  Citizen.CreateThread(function()
+--Name: fib_elevator_2 | 2022-04-15T18:58:59Z
+Citizen.CreateThread(function()
 	exports["drp-polyzone"]:AddPolyZone("fib_elevator", {
 		vector2(2497.2722167968, -350.96731567382),
 		vector2(2498.9291992188, -349.21697998046),
 		vector2(2494.8630371094, -345.1694946289),
 		vector2(2493.3669433594, -347.08865356446)
-  	}, {
+	}, {
 	name="fib_elevator",
 	minZ = 0,
- 	maxZ = 108
-  }))
+	maxZ = 108
+}))
 
-  RegisterNetEvent('drp-polyzone:enter')
-  AddEventHandler('drp-polyzone:enter', function(name)
-	  if name == "fib_elevator" then
-		fibelevator()
-		isNearFIBelevator1 = true
-		exports['drp-textui']:showInteraction('[E] Use Elevator')
-	  end
-  end)
-  
-  RegisterNetEvent('drp-polyzone:exit')
-  AddEventHandler('drp-polyzone:exit', function(name)
-	  if name == "fib_elevator" then
-		isNearFIBelevator1 = false
-	  end
-	  exports['drp-textui']:hideInteraction()
-  end)
-  
-  function fibelevator()
-	  Citizen.CreateThread(function()
-		  while isNearFIBelevator1 do
-			  Citizen.Wait(5)
-			  if IsControlJustReleased(0, 38) then
-				  -- TriggerEvent('police:general')
-			  end
-		  end
-	  end)
-  end
+RegisterNetEvent('drp-polyzone:enter')
+AddEventHandler('drp-polyzone:enter', function(name)
+	if name == "fib_elevator" then
+	fibelevator()
+	isNearFIBelevator1 = true
+	exports['drp-textui']:showInteraction('[E] Use Elevator')
+	end
+end)
+
+RegisterNetEvent('drp-polyzone:exit')
+AddEventHandler('drp-polyzone:exit', function(name)
+	if name == "fib_elevator" then
+	isNearFIBelevator1 = false
+	end
+	exports['drp-textui']:hideInteraction()
+end)
+
+function fibelevator()
+	Citizen.CreateThread(function()
+		while isNearFIBelevator1 do
+			Citizen.Wait(5)
+			if IsControlJustReleased(0, 38) then
+				-- TriggerEvent('police:general')
+			end
+		end
+	end)
+end
   
 
 
