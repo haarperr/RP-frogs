@@ -1798,6 +1798,8 @@ local approvedGarages = {
     "garageoak",
     "garagewinery",
     "garageairport",
+    "garagepdpaleto",
+    "garagepdpaletoheli",
     "garagecluckin",
     "gaaragebs",
     "garagerockey",
