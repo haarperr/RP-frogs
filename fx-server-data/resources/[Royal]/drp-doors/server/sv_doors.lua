@@ -9053,6 +9053,42 @@ DOOR_CONFIG = {
         },
       }
     },
+    {
+      info = "FIB Secret Talking Room",
+      active = true,
+      id = 546,
+      coords = vector3(2477.699, -369.4395, 82.84039),
+      model = 83331511,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = { 
+          [74] = true
+        },
+      }
+    },
+    {
+      info = "FIB 2 Entrance",
+      active = true,
+      id = 546,
+      coords = vector3(2502.143, -421.82, 94.74213),
+      model = -2023754432,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = { 
+          [74] = true
+        },
+      }
+    },
 }
   
   
