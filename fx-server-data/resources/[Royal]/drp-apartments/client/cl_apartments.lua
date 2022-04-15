@@ -395,9 +395,11 @@ local outfitPlaces = {
   vector3(2296.24, 4850.33, 33.91), -- Optimus Prime lab
   vector3(459.4229, -998.9232, 30.6848), -- MRPD
   vector3(-509.9892, -700.2755, 33.1676), -- Cluzckin bell
-  vector3(-1874.85546875, 2068.3393554688, 145.57389831543)  -- Winery Bathroom
+  vector3(-1874.85546875, 2068.3393554688, 145.57389831543),  -- Winery Bathroom
   vector3(458.8368, -999.5469, 30.6896), -- Second MRPD cuz first one is a bit scuffy
+  vector3(1785.4321, 2492.6921, 45.8229), -- prision
 }
+
 function nearClothing()
 
     local isNear = exports["drp-build"]:getModule("func").isNearCurrentInteract(1,5.5)
@@ -405,15 +407,14 @@ function nearClothing()
         return true
     end
 
-    -- wtf is this ? 
-    if #(vector3(1782.86, 2494.95, 50.43) - GetEntityCoords(PlayerPedId())) < 8.5 then
-        return true
-    end
-
     for _, place in pairs(outfitPlaces) do
-      if #(place - GetEntityCoords(PlayerPedId())) < 2.5 then
+      if #(place - GetEntityCoords(PlayerPedId())) < 2.75 then
         return true
       end
+    end
+
+    if exports["drp-base"]:getModule("LocalPlayer"):getVar("rank") == ('dev' or 'admin' or 'superadmin' or 'mod' or 'owner') then
+        return true
     end
 
     local myjob = exports["isPed"]:isPed("myjob")

@@ -343,7 +343,7 @@ Entries[#Entries + 1] = {
     data = {
         {
             id = "cartguy",
-            label = "Get a Go Kart",
+            label = "Get a Go Kart ($500)",
             icon = "circle",
             event = "drp-gokart:getkart",
             parameters = {}
@@ -352,6 +352,24 @@ Entries[#Entries + 1] = {
     options = {
         distance = { radius = 3.0 },
         npcIds = {"cartguy"}
+    }
+}
+
+Entries[#Entries + 1] = {
+    type = 'flag',
+    group = { 'isNPC' },
+    data = {
+        {
+            id = "cartguy2",
+            label = "Get a Go Kart ($500)",
+            icon = "circle",
+            event = "drp-gokart:getkart2",
+            parameters = {}
+        }
+    },
+    options = {
+        distance = { radius = 3.0 },
+        npcIds = {"cartguy2"}
     }
 }
 
