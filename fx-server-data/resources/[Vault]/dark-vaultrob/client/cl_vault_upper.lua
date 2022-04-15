@@ -301,7 +301,7 @@ elseif #(playercoords - thirddoorvector) < 3.0 then
 			TriggerServerEvent("dark-vaultrob:upper:openvault", 1)
 			SpawnTrolleys()
 			thirddoor = true
-		end,
+		-- end,
 		function() -- failure
 			local ped = PlayerPedId()
 			
