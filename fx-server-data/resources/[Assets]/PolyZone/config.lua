@@ -220,7 +220,7 @@ Config.Zones = {
 			name="garagerockey",
 			heading=0,
 			--debugPoly=true
-		})
+		}),
 
 		--Name: fib_parking | 2022-04-15T09:50:46Z
 		PolyZone:Create({
@@ -232,7 +232,7 @@ Config.Zones = {
 			name="garagefib",
 			--minZ = 92.99341583252,
 			--maxZ = 93.08039855957
-		})
+		}),
 
 		--Name: fib_heli | 2022-04-15T09:57:36Z
 		PolyZone:Create({
@@ -240,15 +240,13 @@ Config.Zones = {
 			vector2(2511.0375976562, -347.0443725586),
 			vector2(2515.4782714844, -342.15182495118),
 			vector2(2510.7189941406, -337.78399658204)
-		  }, {
-			name="garagefibheli",
-			--minZ = 118.18542480468,
-			--maxZ = 118.18616485596
-		  })
-  
-  
-  
-  
+			},
+			{
+				name="garagefibheli",
+				--minZ = 118.18542480468,
+				--maxZ = 118.18616485596
+			}
+		),
 
 		BoxZone:Create(vector3(264.6512, -1123.8561, 29.2180), 20.0, 22.5, {  -- Far right side from sandy pd
 		  name="garagecourt",
