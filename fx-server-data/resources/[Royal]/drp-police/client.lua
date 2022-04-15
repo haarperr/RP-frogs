@@ -2562,6 +2562,63 @@ end
 
 -- // FIB 
 
+local isNearFIBelevator1 = false
+local isNearFIBelevator2 = false
+
+--Name: fib_1_1 | 2022-04-15T18:56:04Z
+Citizen.CreateThread(function()
+	vector2(2506.1201171875, -342.17779541016),
+	vector2(2502.0617675782, -338.1072692871),
+	vector2(2500.3286132812, -339.90768432618),
+	vector2(2504.408203125, -343.92883300782)
+  }, {
+	name="fib_elevator",
+	--minZ = 94.092193603516,
+	maxZ = 108
+  })
+  
+  --Name: fib_elevator_2 | 2022-04-15T18:58:59Z
+PolyZone:Create({
+	vector2(2497.2722167968, -350.96731567382),
+	vector2(2498.9291992188, -349.21697998046),
+	vector2(2494.8630371094, -345.1694946289),
+	vector2(2493.3669433594, -347.08865356446)
+  }, {
+	name="fib_elevator",
+	--minZ = 94.092208862304,
+ 	maxZ = 108
+  })
+
+  RegisterNetEvent('drp-polyzone:enter')
+  AddEventHandler('drp-polyzone:enter', function(name)
+	  if name == "fib_elevator" then
+		local job = exports["isPed"]:isPed("myjob")
+		fibelevator()
+		isNearFIBelevator1 = true
+		exports['drp-textui']:showInteraction('[E] Use Elevator')
+	  end
+  end)
+  
+  RegisterNetEvent('drp-polyzone:exit')
+  AddEventHandler('drp-polyzone:exit', function(name)
+	  if name == "fib_elevator" then
+		isNearFIBelevator1 = false
+	  end
+	  exports['drp-textui']:hideInteraction()
+  end)
+  
+  function fibelevator()
+	  Citizen.CreateThread(function()
+		  while isNearFIBelevator1 do
+			  Citizen.Wait(5)
+			  if IsControlJustReleased(0, 38) then
+				  TriggerEvent('police:general')
+			  end
+		  end
+	  end)
+  end
+  
+
 
 RegisterNetEvent("drp-fib:elevator:2:up")
 AddEventHandler("drp-fib:elevator:2:up", function()
