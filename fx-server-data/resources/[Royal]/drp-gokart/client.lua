@@ -1,6 +1,6 @@
 RegisterNetEvent("drp-gokart:getcart")
 AddEventHandler("drp-gokart:getcart", function()
-    
+    Citizen.Trace("debug hello")
     local hash = GetHashKey("veto2")
     local player = GetPlayerPed(-1)
 
@@ -12,7 +12,6 @@ AddEventHandler("drp-gokart:getcart", function()
     end
 
     local cart = CreateVehicle("veto2", cartSpawn.x, cartSpawn.y, cartSpawn.z, cartSpawn.w, true, true)
-    SetVehicleOnGroundProperly(cart)
     SetVehicleHasBeenOwnedByPlayer(cart, true)
     SetVehicleNeedsToBeHotwired(cart, false)
     SetVehicleEngineOn(cart, true, true)
