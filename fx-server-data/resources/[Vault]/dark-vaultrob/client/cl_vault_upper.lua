@@ -370,7 +370,7 @@ AddEventHandler('dark-vaultrob:upper:thermitedoors', function()
 	if not fifthdoor and #(playercoords - fifthdoorvector) < 3.0  then
 		TaskGoStraightToCoord(PlayerPedId(), 261.176, 215.768, 101.683, 1.0, -1, 247.98, 0.0)
 		Citizen.Wait(4000)
-		exports["blz-memory"]:thermiteminigame(8, 3, 3, 10,
+		exports["blz-memory"]:thermiteminigame(10, 5, 5, 8,
 		function()
 			
 			local rotx, roty, rotz = table.unpack(vec3(GetEntityRotation(PlayerPedId())))
