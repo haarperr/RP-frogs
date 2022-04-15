@@ -49,5 +49,13 @@ function handValue(hand)
     return value
 end
 
--- bro im letting copilot do most of the work and its good code too OMEGALUL
+-- to-do:
+-- 1. add a function to check if the player wins or loses
+-- 2. add a function to check if the player busts
+-- 3. add a function to check if the player has blackjack
+-- 5. add a function to check if the player has enough money to bet
+-- 6. add a function to check if the player has membership (?) i need to ask the business man guy
+-- 7. finish serverside logic
 
+-- expected finish date (server.lua) = 4/16/2022
+-- from green (nono smells)
