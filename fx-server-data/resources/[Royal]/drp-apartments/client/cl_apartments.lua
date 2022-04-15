@@ -395,7 +395,7 @@ local outfitPlaces = {
   vector3(2296.24, 4850.33, 33.91), -- Optimus Prime lab
   vector3(459.4229, -998.9232, 30.6848), -- MRPD
   vector3(-509.9892, -700.2755, 33.1676), -- Cluzckin bell
-  vector3(-1874.85546875, 2068.3393554688, 145.57389831543)  -- Winery Bathroom
+  vector3(-1874.85546875, 2068.3393554688, 145.57389831543),  -- Winery Bathroom
   vector3(458.8368, -999.5469, 30.6896), -- Second MRPD cuz first one is a bit scuffy
   vector3(1785.4321, 2492.6921, 45.8229), -- prision
 }
