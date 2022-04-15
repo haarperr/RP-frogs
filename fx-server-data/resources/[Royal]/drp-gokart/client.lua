@@ -3,7 +3,7 @@ AddEventHandler("drp-gokart:getkart", function()
     local hash = GetHashKey("veto2")
     local player = GetPlayerPed(-1)
 
-    local cartSpawn = vector4(5547.5283, 289.1031, 20.1434, 263.5504)
+    local cartSpawn = vector4(5472.5215, 254.6226, 19.0711, 359.8210)
     
     RequestModel(hash)
     while not HasModelLoaded(hash) do
