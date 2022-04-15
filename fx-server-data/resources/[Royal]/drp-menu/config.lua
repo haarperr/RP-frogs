@@ -1798,6 +1798,7 @@ local approvedGarages = {
     "garageoak",
     "garagewinery",
     "garagecluckin",
+    "garagerockey",
     "garagefib",
     "garagefibheli",
     "garagecourt",
