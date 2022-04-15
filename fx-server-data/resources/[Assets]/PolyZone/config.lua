@@ -30,11 +30,11 @@ Config.Zones = {
 	
 	 -- Garage LS --
 	
-			BoxZone:Create(vector3(-685.97894287109, -982.13201904297, 19.871116638184), 8.4, 13.8, {
-				name="garagels",
-				heading=337,
-				--debugPoly=true
-			}),
+		BoxZone:Create(vector3(-685.97894287109, -982.13201904297, 19.871116638184), 8.4, 13.8, {
+			name="garagels",
+			heading=337,
+			--debugPoly=true
+		}),
 	
 			
 			
@@ -112,7 +112,7 @@ Config.Zones = {
 			name="garageg",
 			--minZ = 31.225761413574,
 			--maxZ = 31.375890731812
-		  })
+		  }),
   
   
   
@@ -269,13 +269,6 @@ Config.Zones = {
 			--minZ = 31.340375900268,
 			--maxZ = 31.357749938964
 		  }),
-  
-  
-  
-  
-  
-  
-  
 
 		--Name: garagecluckin | 2022-04-15T14:19:36Z
 		PolyZone:Create({
