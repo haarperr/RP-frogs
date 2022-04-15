@@ -567,10 +567,10 @@ if thirddoor then
 end
 if fourthdoor then
 	fourthdoor = false
-	TriggerServerEvent('drp-doors:change-lock-state', 51, true)
+	TriggerServerEvent('drp-doors:change-lock-state', 548, true)
 end
 if fifthdoor then
 	fifthdoor = false
-	TriggerServerEvent('drp-doors:change-lock-state', 52, true)
+	TriggerServerEvent('drp-doors:change-lock-state', 548, true)
 end
 end)
