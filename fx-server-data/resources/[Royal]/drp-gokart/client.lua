@@ -70,7 +70,7 @@ end
 
 
 Citizen.CreateThread(function()
-    exports["drp-polyzone"]:AddBoxZone("gokartenter", vector3(vector3(-253.76, -1992.06, 30.15), 3, 3, {
+    exports["drp-polyzone"]:AddBoxZone("gokartenter", vector3(-253.76, -1992.06, 30.15), 3, 3, {
         name="gokartenter",
         heading=75,
         --debugPoly=true
