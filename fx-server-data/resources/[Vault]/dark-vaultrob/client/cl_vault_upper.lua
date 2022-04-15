@@ -370,7 +370,7 @@ AddEventHandler('dark-vaultrob:upper:thermitedoors', function()
 	if not fifthdoor and #(playercoords - fifthdoorvector) < 3.0  then
 		TaskGoStraightToCoord(PlayerPedId(), 261.176, 215.768, 101.683, 1.0, -1, 247.98, 0.0)
 		Citizen.Wait(4000)
-		exports["blz-memory"]:thermiteminigame(14, 5, 5, 8,
+		exports["blz-memory"]:thermiteminigame(14, 3, 3, 8,
 		function()
 			
 			local rotx, roty, rotz = table.unpack(vec3(GetEntityRotation(PlayerPedId())))
@@ -421,7 +421,7 @@ AddEventHandler('dark-vaultrob:upper:thermitedoors', function()
 		if exports["drp-inventory"]:hasEnoughOfItem("thermitecharge", 1) then
 		TaskGoStraightToCoord(PlayerPedId(), 257.156, 219.600, 106.286, 1.0, -1, 337.84, 0.0)
 		Citizen.Wait(4500)
-		exports["blz-memory"]:thermiteminigame(14, 5, 5, 8,
+		exports["blz-memory"]:thermiteminigame(14, 3, 3, 8,
 		function()
 			local rotx, roty, rotz = table.unpack(vec3(GetEntityRotation(PlayerPedId())))
 			local bagscene = NetworkCreateSynchronisedScene(257.515, 220.164, 106.284, rotx, roty, rotz + 1.1, 2, false, false, 1065353216, 0, 1.3)
@@ -481,7 +481,7 @@ elseif  not fourthdoor and #(playercoords3 - fourthdoorvector) < 3.0  then
 	TaskGoStraightToCoord(PlayerPedId(), 252.963, 221.078, 101.683, 1.0, -1, 161.91, 0.0)
 	Citizen.Wait(4000)
 
-	exports["blz-memory"]:thermiteminigame(14, 5, 5, 8,
+	exports["blz-memory"]:thermiteminigame(14, 3, 3, 8,
 	function()
 		
 		SetEntityHeading(ped, 180.00)
@@ -517,7 +517,7 @@ elseif  not fourthdoor and #(playercoords3 - fourthdoorvector) < 3.0  then
 		DeleteObject(bomba)
 		StopParticleFxLooped(effect, 0)
 		Citizen.Wait(2000)
-		TriggerServerEvent('drp-doors:change-lock-state', 548, false)
+		TriggerServerEvent('drp-doors:change-lock-state', 51, false)
 		thirddoor = true
 		local deleternd = math.random(1,100)
 		if deleternd <= 100 and deleternd > 20 then
