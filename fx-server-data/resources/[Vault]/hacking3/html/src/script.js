@@ -30,7 +30,7 @@ async function start(){
     let answer
     let result = true
 
-    for (let i = 0; i < 6 && result; i++) {
+    for (let i = 0; i < 5 && result; i++) {
         [submitted, answer] = await doPuzzle()
         result = (submitted?.toLowerCase() == answer)
     }
