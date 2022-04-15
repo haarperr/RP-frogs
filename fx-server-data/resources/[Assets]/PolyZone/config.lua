@@ -218,10 +218,20 @@ Config.Zones = {
 			maxZ=28.7
   		}),
 		  
-		BoxZone:Create(vector3(-1923.7958984375, 2036.509765625, 140.46560668945), 5.0, 12.2, {  -- Far right side from sandy pd
-		  name="garagewinery",
-		  heading=78.278709411621,
-		}),
+		--Name: garagewinery | 2022-04-15T14:23:56Z
+		PolyZone:Create({
+			vector2(-1921.7097167968, 2059.7788085938),
+			vector2(-1914.5228271484, 2058.3664550782),
+			vector2(-1920.3664550782, 2034.2614746094),
+			vector2(-1927.1101074218, 2035.0225830078)
+		  }, {
+			name="garagewinery",
+			--minZ = 140.73403930664,
+			--maxZ = 140.7364654541
+		  }),
+  
+  
+  
 
 		--Name: garagecluckin | 2022-04-15T14:19:36Z
 		PolyZone:Create({
@@ -240,7 +250,7 @@ Config.Zones = {
 			name="garagecluckin",
 			--minZ = 31.176433563232,
 			--maxZ = 32.181911468506
-		  })
+		}),
   
   
 
@@ -255,7 +265,7 @@ Config.Zones = {
 			name="garagebs",
 			--minZ = 12.908666610718,
 			--maxZ = 13.785143852234
-		  })
+		}),
   
 
 		
