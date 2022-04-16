@@ -909,17 +909,17 @@ AddEventHandler("drp-burgershot:giveFoodToCustomer", function()
             if exports["drp-inventory"]:hasEnoughOfItem(item, 1) then
                 -- remove item from inventory
                 TriggerEvent('inventory:removeItem', item, 1)
-                information = {
-                    ["Price"] = math.random(25, 75),
-                }
                 count = count + 1
-                TriggerEvent("player:receiveItem", "burgerReceipt", 1, true, information)
             end
         end
         TriggerEvent("DoLongHudText", "You delivered the food!", 2)
         SetBlipRoute(FoodDeliveryLocation, false)
         SetBlipSprite(FoodDeliveryLocation, 0)
         SetBlipAsShortRange(FoodDeliveryLocation, false)
+
+        -- count / 2.5 , rounded up to int
+        local reciepesAmount = math.ceil(count / 2.5)
+        TriggerEvent("player:receiveItem", "burgerReceipt", reciepesAmount)
 
         -- if 80% of the items are removed
         if count >= maxCount * 0.75 then
