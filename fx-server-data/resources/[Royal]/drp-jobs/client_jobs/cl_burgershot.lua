@@ -827,16 +827,12 @@ AddEventHandler("bsdelivery:getTheJob", function()
     PlaySoundFrontend(-1, "Menu_Accept", "Phone_SoundSet_Default", true)
     TriggerEvent('phone:robberynotif', 'Burgershot - Marty Shanks',
                  "A customer just called me and want these products:\n" .. productString .. ".")
-
     currentMenu = products
     hasJob = true
-    
     enterCoords = Houses()
-
     currentHouse = enterCoords
 
     Citizen.Wait(45000)
-
 
     FoodDeliveryLocation = AddBlipForCoord(enterCoords.x, enterCoords.y,
                                             enterCoords.z)
@@ -846,7 +842,7 @@ AddEventHandler("bsdelivery:getTheJob", function()
     EndTextCommandSetBlipName(FoodDeliveryLocation)
     SetBlipRoute(FoodDeliveryLocation, true)
     SetBlipRouteColour(FoodDeliveryLocation, 29)
-    
+
     PlaySoundFrontend(-1, "Menu_Accept", "Phone_SoundSet_Default", true)
     TriggerEvent('phone:robberynotif', 'Burgershot - Marty Shanks',
                     "Ive updated the location of the delivery house on your GPS.")
