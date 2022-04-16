@@ -2442,7 +2442,11 @@ function PaletoEvidenceR()
         while PaletoEvidence do
             Citizen.Wait(5)
 			if IsControlJustReleased(0, 38) then
-				TriggerEvent("server-inventory-open", "1", "paletoevidence")
+				
+				local job = exports["isPed"]:isPed("myjob")
+				if job == 'police' or job == 'state' or job == 'sheriff' then
+					TriggerEvent("server-inventory-open", "1", "paletoevidence")
+				end
 			end
 		end
 	end)
