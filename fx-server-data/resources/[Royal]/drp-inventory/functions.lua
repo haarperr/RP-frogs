@@ -2838,7 +2838,7 @@ AddEventHandler("drp-inventory:attachPropPlayAnim", function(pType)
             vehicle
         )
     end
-    if pType == "cbfries" or pType == "cbveggy" then
+    if pType == "cbfries" or pType == "cbveggy" or pType == "cbballs" then
         TriggerEvent("healed:useFries")
         success = AttachPropAndPlayAnimation(
             "mp_player_inteat@burger",
