@@ -34,7 +34,6 @@ RegisterNetEvent('chickensell:log')
 AddEventHandler('chickensell:log', function()
     local src = source
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
-    local hexId = user:getVar("hexid")
     local pName = GetPlayerName(source)
     local pDiscord = GetPlayerIdentifiers(src)[3]
     local DISCORD_NAME5 = "Chicken Selling Logs"
@@ -42,7 +41,7 @@ AddEventHandler('chickensell:log', function()
     local DISCORD_IMAGE = "https://i.imgur.com/zviw6oW.png"
     local LogData = {
         {
-           ['description'] = string.format("`%s`\n\n`• Server Id: %s`\n\n━━━━━━━━━━━━━━━━━━\n`• Steam: %s`\n\n`• Discord: %s`\n━━━━━━━━━━━━━━━━━━", "is selling chickens!", src, hexId, pDiscord),
+           ['description'] = string.format("`%s`\n\n`• Server Id: %s`\n\n━━━━━━━━━━━━━━━━━━\n`• Steam: %s`\n\n`• Discord: %s`\n━━━━━━━━━━━━━━━━━━", "is selling chickens!", src, pDiscord),
             ['color'] = 2317994,
             ['author'] = {
                 ['name'] = "Steam Name: "..pName
