@@ -1,3 +1,0 @@
--- to-do:
--- literally everything
--- project scrapped and im remaking it
