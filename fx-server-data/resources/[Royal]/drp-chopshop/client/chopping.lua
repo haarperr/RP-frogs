@@ -406,6 +406,7 @@ AddEventHandler("chop:startChop", function(modelName)
     Citizen.Trace(tostring(vehHash) .. " " .. tostring(x) .. " " .. tostring(y) .. " " .. tostring(z) .. " " .. tostring(h) .. "\n")
     if not IsModelInCdimage(vehHash) then
         Citizen.Trace("Vehicle not in cdimage\n")
+        Citizen.Trace(tostring(modelName) .. "\n")
         TriggerEvent("chop:tryStart")
         return
     end
