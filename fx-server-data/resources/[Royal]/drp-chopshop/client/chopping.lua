@@ -290,8 +290,6 @@ function CreateBlipBoostLoc(x, y, z)
     SetBlipColour(blipBoostLoc, 3)
     SetBlipAlpha (blipBoostLoc, 64)
     SetBlipDisplay(blipBoostLoc, 3)
-    BeginTextCommandSetBlipName("STRING")
-    AddTextComponentString("Chop Chop Location")
 end
 
 function CreateBlipDropOff(x, y ,z)
@@ -406,26 +404,28 @@ AddEventHandler("chop:startChop", function(modelName)
     local pedZ = carSpawns[carSpawnRandom]["pedSpawn"]["z"]
     local pedH = carSpawns[carSpawnRandom]["pedSpawn"]["h"]
     Citizen.Trace(tostring(vehHash) .. " " .. tostring(x) .. " " .. tostring(y) .. " " .. tostring(z) .. " " .. tostring(h) .. "\n")
-    if not IsModelInCdimage(vehHash) then return end
-        RequestModel(vehHash)
-        while not HasModelLoaded(vehHash) do
-            Citizen.Wait(10)
-        end
-        StartedBoost = true
-        local vehicle = CreateVehicle(vehHash, x, y, z, h, true, true)
-        SetVehicleDoorsLocked(vehicle, 2)
-        SetVehicleHasBeenOwnedByPlayer(vehicle, true)
-        SetVehicleIsStolen(vehicle, true)
-        SetVehRadioStation(vehicle, 'OFF')
-        IsEntityAMissionEntity(vehicle)
-        SetVehicleOnGroundProperly(vehicle)
+    if not IsModelInCdimage(vehHash) then
+        Citizen.Trace("Vehicle not in cdimage\n")
+        return
+    end
+    RequestModel(vehHash)
+    while not HasModelLoaded(vehHash) do
+        Citizen.Wait(10)
+    end
+    StartedBoost = true
+    local vehicle = CreateVehicle(vehHash, x, y, z, h, true, true)
+    SetVehicleDoorsLocked(vehicle, 2)
+    SetVehicleHasBeenOwnedByPlayer(vehicle, true)
+    SetVehicleIsStolen(vehicle, true)
+    SetVehRadioStation(vehicle, 'OFF')
+    IsEntityAMissionEntity(vehicle)
+    SetVehicleOnGroundProperly(vehicle)
 
-        spawnedVeh = GetClosestVehicle(x, y, z, 3.5, 0, 70)
+    spawnedVeh = GetClosestVehicle(x, y, z, 3.5, 0, 70)
 
+    CreateBlipBoostLoc(x, y, z)
 
-        CreateBlipBoostLoc(x, y, z)
-
-        function SpawnPedLoc()
+    function SpawnPedLoc()
         if not SpawnedPed then
             local pedSpawnLoc = {["x"] = pedX, ["y"] = pedY, ["z"] = pedZ, ["h"] = pedH}
             SpawnedPed = true
