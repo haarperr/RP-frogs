@@ -10,23 +10,24 @@ AddEventHandler("drp-doors:write-entity", function(coords, model)
 
     -- check if the door is already in the file
     for k, v in pairs(doors) do
-        if v.coords == coords then
+        if tostring(v.coords) == tostring(coords) then
             return
         end
     end
 
-    -- add the door to the file if its not in alreadyInSide
-    if not alreadyInSide[coords] then
-        table.insert(doors, {coords = coords, model = model})
-        alreadyInSide[coords] = true
-    end
-
-    -- if its already in the file dont add it again
-    for k, v in pairs(doors) do
-        if v.coords == coords then
+    -- for i in alreadyInSide do
+    for i = 1, #alreadyInSide do
+        if alreadyInSide[i] == coords then
             return
         end
     end
+    
+
+    -- add the door to alreadyInSide
+    alreadyInSide[coords] = true
+
+
+
     
 
     file = io.open("doors.txt", "a")
