@@ -10016,23 +10016,6 @@ DOOR_CONFIG = {
           },
       }
   },
-  {
-    info = "PD Sandy 3",
-    active = true,
-    id = 550,
-    coords = vector3(vector3(-437.1716, 6012.948, 32.28852)),
-    model = 733214349,
-    lock = true,
-    keyFob = true,
-    desc = "x",
-    access = {
-        job = {
-        ["PD"] = true,
-        },
-        cid = {
-        },
-    }
-},
     {
     info = "PD Sandy 3",
     active = true,
@@ -10379,23 +10362,6 @@ DOOR_CONFIG = {
     id = 550,
     coords = vector3(vector3(-441.6726, 6009.144, 36.99582)),
     model = 1362051455,
-    lock = true,
-    keyFob = true,
-    desc = "x",
-    access = {
-        job = {
-        ["PD"] = true,
-        },
-        cid = {
-        },
-    }
-},
-    {
-    info = "PD Sandy 3",
-    active = true,
-    id = 550,
-    coords = vector3(vector3(-437.1288, 6008.622, 35.99472)),
-    model = -742198632,
     lock = true,
     keyFob = true,
     desc = "x",
