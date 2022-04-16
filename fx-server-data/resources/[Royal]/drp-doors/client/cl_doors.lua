@@ -286,7 +286,6 @@ function GetUserInput(windowTitle, defaultText, maxInputLength)
         Wait(0)
       end
     end
-  end
 end
 
 local doorIndex = 0
