@@ -2572,7 +2572,6 @@ end
         else
             TriggerEvent("attachItem", "cbdrink")
         end
-        remove = true
         AttachPropAndPlayAnimation("amb@world_human_drinking@coffee@male@idle_a", "idle_c", 49,12500,"Drink","changethirst",true,itemid,playerVeh)
     end
 
@@ -2580,11 +2579,10 @@ end
         AttachPropAndPlayAnimation("amb@world_human_drinking@coffee@male@idle_a", "idle_c", 49,15000,"Drink","drp-roostersrest:drinkTea",true,itemid,playerVeh)
     end
  
-    if itemid == "fries" or itemid == "chips" or itemid == "hardoaksfries" or itemid == "cbfries" or itemid == "cbbowl" or itemid == "cbveggy" or itemid == "cbballs" or itemid == "cbbucket" then
-        remove = true
-        if itemid == "cbfries" then
+    if itemid == "fries" or itemid == "chips" or itemid == "hardoaksfries" or itemid == "cbfries" or itemid == "cbrings" or itemid == "cbbowl" or itemid == "cbveggy" or itemid == "cbballs" or itemid == "cbbucket" or itemid == "cbchickenfries" or itemid == "cbrings" then
+        if itemid == "cbfries" or itemid == "cbchickenfries" then
             TriggerEvent("attachItem", "cbfries")
-        elseif itemid == "cbballs" then
+        elseif itemid == "cbballs" or itemid == "cbrings" then
             TriggerEvent("attachItem", "cbnugets")
         elseif itemid == "cbbowl" or itemid == "cbveggy" or itemid == "cbbucket" then
             TriggerEvent("attachItem", "cbbowl")
@@ -2855,8 +2853,22 @@ AddEventHandler("drp-inventory:attachPropPlayAnim", function(pType)
             vehicle
         )
     end
-    if pType == "cbfries" or pType == "cbveggy" or pType == "cbballs" then
+    if pType == "cbfries" or pType == "cbveggy" or pType == "cbballs" or itemid == "cbrings" then
         TriggerEvent("healed:useFries")
+        success = AttachPropAndPlayAnimation(
+            "mp_player_inteat@burger",
+            "mp_player_int_eat_burger",
+            49,
+            12500,
+            "Eating",
+            "",
+            false,
+            "fries",
+            vehicle
+        )
+    end
+    if pType == "cbchickenfries" then
+        TriggerEvent("healed:useOxy")
         success = AttachPropAndPlayAnimation(
             "mp_player_inteat@burger",
             "mp_player_int_eat_burger",
