@@ -520,6 +520,7 @@ AddEventHandler("chop:spawnPed", function(x, y, z, h, weapon)
 
 end)
 
+local triggered = false
 
 RegisterNetEvent("chop:DropOff")
 AddEventHandler("chop:DropOff", function(vehicle)
@@ -528,10 +529,11 @@ AddEventHandler("chop:DropOff", function(vehicle)
     local dropY = dropPoint[dropRand]["y"]
     local dropZ = dropPoint[dropRand]["z"]
 
-    CreateBlipDropOff(dropX, dropY, dropZ)
-    SetNewWaypoint(dropX, dropY)
-
-    TriggerEvent('phone:robberynotif', 'DarkNet', "Bring that car to the chop yard.")
+    if not triggered then
+        CreateBlipDropOff(dropX, dropY, dropZ)
+        SetNewWaypoint(dropX, dropY)
+        TriggerEvent('phone:robberynotif', 'DarkNet', "Bring that car to the chop yard.")
+    end
 
     Citizen.CreateThread(function()
         while true do 
@@ -543,6 +545,7 @@ AddEventHandler("chop:DropOff", function(vehicle)
             local isCarAtDropOff = false
             if dist < 5 and not IsPedInAnyVehicle(PlayerPedId(), false) then
                 isCarAtDropOff = true
+                triggered = false
                 DeleteBlip(blipDropOff)
                 TriggerServerEvent("drp-chopshop:registerCar", vehicle)
                 return
