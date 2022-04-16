@@ -2027,7 +2027,14 @@ itemList['883325847'] = {
   weight: 50,
   nonStack: true,
   model: '',
-  
+  craft: [
+    [
+      {
+        itemid: 'plastic',
+        amount: 15
+      },
+    ]
+  ],
   image: 'np_petrol-can.png',
   weapon: true,
 };
