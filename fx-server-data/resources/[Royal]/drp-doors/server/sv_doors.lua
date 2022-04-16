@@ -9404,5 +9404,107 @@ DOOR_CONFIG = {
         },
       }
     },
+    {
+      info = "PD Sandy",
+      active = true,
+      id = 548,
+      coords = vector3(1850.026, 3688.366, 33.44837),
+      model = 1465830963,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
+    {
+      info = "PD Sandy",
+      active = true,
+      id = 548,
+      coords = vector3(1848.146, 3689.038, 34.38747),
+      model = -712085785,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
+    {
+      info = "PD Sandy",
+      active = true,
+      id = 548,
+      coords = vector3(1845.171, 3690.46, 34.38709),
+      model = -712085785,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
+    {
+      info = "PD Sandy",
+      active = true,
+      id = 548,
+      coords = vector3(1852.891, 3695.594, 34.36824),
+      model = -1491332605,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
+    {
+      info = "PD Sandy",
+      active = true,
+      id = 548,
+      coords = vector3(1852.891, 3695.594, 34.36824),
+      model = -1491332605,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
+    {
+      info = "PD Sandy",
+      active = true,
+      id = 548,
+      coords = vector3(1856.942, 3695.599, 34.36868),
+      model = -1491332605,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
 }
   
