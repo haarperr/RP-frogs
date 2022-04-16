@@ -2698,14 +2698,23 @@ end)
 local fibarmor = false
 --Name: fib_armor | 2022-04-15T09:43:33Z
 Citizen.CreateThread(function()
-	exports["drp-polyzone"]:AddBoxZone("fib_armor", vector3(2528.97, -337.75, 101.89), 3, 3, {
-	name="fib_armor",
-	heading=45,
-	minZ=99,
-	maxZ=103,
-	-- debugPoly=true
-  })
+	exports["drp-polyzone"]:AddPolyZone("fib_armor", {
+		vector2(2531.365234375, -337.46981811524),
+		vector2(2528.3024902344, -334.5863647461),
+		vector2(2527.318359375, -335.78854370118),
+		vector2(2528.9682617188, -337.67422485352),
+		vector2(2525.7941894532, -341.0033569336),
+		vector2(2523.7214355468, -339.01052856446),
+		vector2(2522.5231933594, -340.0705871582),
+		vector2(2525.7587890625, -343.1944885254)
+	  }, {
+		name="fib_armor",
+		minZ = 99.89339447022,
+		maxZ = 102.89339447022
+	  })
 end)
+  
+  
   
 
 RegisterNetEvent('drp-polyzone:enter')
