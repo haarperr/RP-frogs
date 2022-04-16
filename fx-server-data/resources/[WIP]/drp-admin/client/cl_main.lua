@@ -27,16 +27,16 @@ RegisterCommand("lights", function()
 dark = false
 if dark == false then
     dark = true
-    TriggerClientEvent("toggleLights", -1, true)
+    TriggerServerEvent("toggleLights", true)
 else
   dark = false
   
-  TriggerClientEvent("toggleLights", -1, false)
+  TriggerServerEvent("toggleLights", false)
 end
 end
 end)
 
-AddEventHandler("toggleLights", function(current)
+AddEventHandler("toggleLightsC", function(current)
   SetBlackout(current)
 end)
 

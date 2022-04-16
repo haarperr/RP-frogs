@@ -18,6 +18,11 @@ AddEventHandler('getallplayers', function(source)
     end
 end)
 
+RegisterServerEvent("toggleLights")
+AddEventHandler("toggleLights", function(current)
+    TriggerClientEvent("toggleLightsC", -1, current)
+end)
+
 RegisterServerEvent('drp-adminmenu:sendAnnoucement')
 AddEventHandler("drp-adminmenu:sendAnnoucement", function(msg)
     TriggerClientEvent('chatMessage', -1, 'Admin', 1, msg)
