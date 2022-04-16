@@ -2401,7 +2401,7 @@ end
 RegisterCommand("evidence", function(source, args)
 	local job = exports["isPed"]:isPed("myjob")
 	if job == 'police' or job == 'state' or job == 'sheriff' then
-		Citizen.Trace(tostring(FIBEvidence))
+		Citizen.Trace(tostring(FIBEvidenceNear))
 		if FIBEvidenceNear == true or isNearRoyalPDEvidence == true then
 			TriggerEvent("server-inventory-open", "1", "CASE ID: "..args[1])
 		else
@@ -2786,8 +2786,8 @@ end)
 RegisterNetEvent('drp-polyzone:enter')
 AddEventHandler('drp-polyzone:enter', function(name)
     if name == "fibevidence" then
-        FIBEvidencee()
 		FIBEvidenceNear = true
+        FIBEvidencee()
 		exports['drp-textui']:showInteraction('[E] Open Evidence Locker')
 	end
 end)
@@ -2805,7 +2805,6 @@ function FIBEvidencee()
         while FIBEvidenceNear do
             Citizen.Wait(5)
 			if IsControlJustReleased(0, 38) then
-
 				TriggerEvent("server-inventory-open", "1", "fibevidence")
 			end
 		end
