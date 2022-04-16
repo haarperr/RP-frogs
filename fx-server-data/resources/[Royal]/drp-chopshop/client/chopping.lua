@@ -230,7 +230,7 @@ function InteractiveChopping(vehicle)
                         local success, boneType, vehicleModel = ChopVehiclePart(vehicle)
 
                         if success then
-                            RPC.execute("drp-jobs:chopshop:chopVehicle", netId, vehicleModel, boneType)
+                            TriggerServerEvent("drp-chopshop:vehicle_loot", boneType)
 
                             if not exports["drp-flags"]:HasVehicleFlag(vehicle, "isScrapVehicle") then
                                 exports["drp-flags"]:SetVehicleFlag(vehicle, "isScrapVehicle", true)
