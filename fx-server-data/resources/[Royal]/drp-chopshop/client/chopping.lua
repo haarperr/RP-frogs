@@ -440,8 +440,14 @@ AddEventHandler("chop:startChop", function(modelName)
     Citizen.CreateThread(function()
         while true do
             Citizen.Wait(5000)
-            if GetVehiclePedIsIn(PlayerPedId(), false) == spawnedVeh then
+            -- get distance between player and vehicle
+            local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
+            local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, x, y, z)
+            if dist < 5 then
                 TriggerEvent("chop:boostLockPick")
+            end
+
+            if GetVehiclePedIsIn(PlayerPedId(), false) == spawnedVeh then
                 DeleteBlip(blipBoostLoc)
                 blipBoostLoc = nil
                 return
