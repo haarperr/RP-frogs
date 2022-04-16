@@ -114,7 +114,7 @@ function ChopVehicleTyre(vehicle, boneID, tyreIndex)
 
     local task = AnimationTask(vehicle, "bone", boneID, 1.2, "normal", "anim@amb@clubhouse@tutorial@bkr_tut_ig3@", "machinic_loop_mechandplayer", 1)
 
-    local finished = exports["drp-taskbar"]:taskBar(10000, _L("chop-scrapping", "Scrapping Car"))
+    local finished = exports["drp-taskbar"]:taskBar(10000, "Scrapping Car")
 
     local success = finished == 100 and task.active == true
 
@@ -134,7 +134,7 @@ function ChopVehicleDoor(vehicle, boneID, doorIndex)
 
     local task = AnimationTask(vehicle, "bone", boneID, 1.6, "scenario", "WORLD_HUMAN_WELDING")
 
-    local finished = exports["drp-taskbar"]:taskBar(14000, _L("chop-scrapping", "Scrapping Car"))
+    local finished = exports["drp-taskbar"]:taskBar(14000, "Scrapping Car")
     local success = finished == 100 and task.active == true
 
     task.abort()
@@ -149,7 +149,7 @@ end
 function ChopVehicleRemains(vehicle, boneID)
     local task = AnimationTask(vehicle, "bone", boneID, 1.8, "normal", "mp_car_bomb", "car_bomb_mechanic", 17)
 
-    local finished = exports["drp-taskbar"]:taskBar(25000, _L("chop-scrapping", "Scrapping Car"))
+    local finished = exports["drp-taskbar"]:taskBar(25000, "Scrapping Car")
 
     local success = finished == 100 and task.active == true
 
@@ -214,11 +214,11 @@ function InteractiveChopping(vehicle)
                 local inDistance, chopText
 
                 if bone.type == "door" and distance <= 1.6 then
-                    inDistance, chopText = true, _L("chopping-vehicle-door", "Press ~w~~g~[E]~w~ to Chop Vehicle Door")
+                    inDistance, chopText = true, "Press ~w~~g~[E]~w~ to Chop Vehicle Door"
                 elseif bone.type == "tyre" and distance <= 1.6 then
-                    inDistance, chopText = true, _L("chopping-vehicle-tire", "Press ~w~~g~[E]~w~ to Chop Vehicle Tyre")
+                    inDistance, chopText = true, "Press ~w~~g~[E]~w~ to Chop Vehicle Tyre"
                 elseif bone.type == "remains" and distance <= 1.8 then
-                    inDistance, chopText = true, _L("chopping-vehicle-remains", "Press ~w~~g~[E]~w~ to Chop Vehicle Remains")
+                    inDistance, chopText = true, "Press ~w~~g~[E]~w~ to Chop Vehicle Remains"
                 end
 
                 if inDistance then
