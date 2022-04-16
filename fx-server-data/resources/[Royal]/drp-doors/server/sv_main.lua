@@ -5,7 +5,7 @@ local elevators = {}
 local alreadyInSide = {}
 
 RegisterNetEvent("drp-doors:write-entity")
-AddEventHandler("drp-doors:write-entity", function(entity)
+AddEventHandler("drp-doors:write-entity", function(coords, model)
     file = io.open("doors.txt", "a")
     io.output(file)
     if alreadyInSide[entity] ~= nil then
@@ -19,8 +19,8 @@ AddEventHandler("drp-doors:write-entity", function(entity)
             info = "PD Sandy 3",
             active = true,
             id = 550,
-            coords = vector3(]] .. tostring(GetEntityCoords(entity)) .. [[),
-            model = ]] .. tostring(GetEntityModel(entity)) .. [[,
+            coords = vector3(]] .. tostring(coords) .. [[),
+            model = ]] .. tostring(model) .. [[,
             lock = true,
             keyFob = true,
             desc = "x",

@@ -131,7 +131,7 @@ AddEventHandler("drp-target:inFront", function(pEntity, pEntityType, pEntityCoor
     if printEntityDetails then
         print(pEntity, pEntityType, pEntityCoords, GetEntityModel(pEntity), GetEntityCoords(pEntity))
 
-        TriggerServerEvent("drp-doors:write-entity", pEntity)
+        TriggerServerEvent("drp-doors:write-entity", GetEntityCoords(pEntity), GetEntityModel(pEntity))
     end
 
     local doorId = GetTargetDoorId(pEntity)
