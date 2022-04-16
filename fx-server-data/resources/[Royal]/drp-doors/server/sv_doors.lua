@@ -9435,6 +9435,54 @@ DOOR_CONFIG = {
         },
       }
     },
+    {
+      info = "PD Paleto",
+      active = true,
+      id = 551,
+      coords = vector3(-447.4445, 6011.512, 36.99582),
+      model = 1362051455,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+         },
+        cid = {
+        },
+      }
+    },
+    {
+      info = "PD Paleto",
+      active = true,
+      id = 551,
+      coords = vector3(-446.4799, 5996.469, 27.58121),
+      model = 1362051455,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+         },
+        cid = {
+        },
+      }
+    },
+    {
+      info = "PD Paleto",
+      active = true,
+      id = 551,
+      coords = vector3(-446.4799, 5996.469, 27.58121),
+      model = 1362051455,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+         },
+        cid = {
+        },
+      }
+    },
 }
 
   
