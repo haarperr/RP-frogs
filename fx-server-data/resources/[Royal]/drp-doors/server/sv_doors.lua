@@ -9624,6 +9624,75 @@ DOOR_CONFIG = {
         },
       }
     },
+    {
+      info = "little seoul",
+      active = true,
+      id = 584,
+      coords = vector3(-695.9637, -940.0197, 20.16812),
+      model = -1603817716,
+      lock = true,
+      keyFob = false,
+      desc = "",
+      access = {
+        job = {},
+        cid = {
+          [1] = true,
+          [47] = true,
+          [35] = true,
+          [13] = true,
+          [48] = true,
+          [84] = true,
+          [12] = true,
+          [68] = true
+        }
+      }
+    },
+    {
+      info = "little seoul",
+      active = true,
+      id = 585,
+      coords = vector3(-658.155, -919.2055, 23.52435),
+      model = -1603817716,
+      lock = true,
+      keyFob = false,
+      desc = "",
+      access = {
+        job = {},
+        cid = {
+          [1] = true,
+          [47] = true,
+          [35] = true,
+          [13] = true,
+          [48] = true,
+          [84] = true,
+          [12] = true,
+          [68] = true
+        }
+      }
+    },
+    {
+      info = "little seoul",
+      active = true,
+      id = 586,
+      coords = vector3(-661.4157, -921.2383, 23.26481),
+      model = -1603817716,
+      lock = true,
+      keyFob = false,
+      desc = "",
+      access = {
+        job = {},
+        cid = {
+          [1] = true,
+          [47] = true,
+          [35] = true,
+          [13] = true,
+          [48] = true,
+          [84] = true,
+          [12] = true,
+          [68] = true
+        }
+      }
+    },
 }
 
   
