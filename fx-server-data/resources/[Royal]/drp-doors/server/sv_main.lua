@@ -6,13 +6,31 @@ local alreadyInSide = {}
 
 RegisterNetEvent("drp-doors:write-entity")
 AddEventHandler("drp-doors:write-entity", function(coords, model)
-    file = io.open("doors.txt", "a")
-    io.output(file)
-    if alreadyInSide[entity] ~= nil then
-        return
+    
+
+    -- check if the door is already in the file
+    for k, v in pairs(doors) do
+        if v.coords == coords then
+            return
+        end
     end
 
-    alreadyInSide[entity] = true
+    -- add the door to the file if its not in alreadyInSide
+    if not alreadyInSide[coords] then
+        table.insert(doors, {coords = coords, model = model})
+        alreadyInSide[coords] = true
+    end
+
+    -- if its already in the file dont add it again
+    for k, v in pairs(doors) do
+        if v.coords == coords then
+            return
+        end
+    end
+    
+
+    file = io.open("doors.txt", "a")
+    io.output(file)
 
     local output = [[
         {
