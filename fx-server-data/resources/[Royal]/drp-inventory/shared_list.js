@@ -7063,6 +7063,17 @@ itemList['casinosoap'] = {
   information: 'Feeling Lucky? From Clean Getaway Soap Co.',
 };
 
+itemList['casinochips'] = {
+  fullyDegrades: true,
+  decayrate: 0.25,
+  displayname: 'Casino Chips',
+  price: 50,
+  weight: 1,
+  nonStack: false,
+  image: 'gold-chip.png',
+  information: 'Useful for gamba',
+};
+
 itemList['casinogoldcoin'] = {
   fullyDegrades: true,
   decayrate: 0.25,
