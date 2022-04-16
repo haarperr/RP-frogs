@@ -786,11 +786,6 @@ Citizen.CreateThread(function()
         heading=112.7492,
     })
 
-    -- VPN Guy
-    exports["drp-polytarget"]:AddBoxZone("vpnguy", vector3(944.7300, -1697.6277, 30.0850), 1, 1.4, {
-        heading=263.1922,
-    })
-
     
     -- Oxy Guy
     exports["drp-polytarget"]:AddBoxZone("oxyguy", vector3(194.0911, -1843.4448, 27.2103), 1, 1.4, {
@@ -2359,19 +2354,6 @@ Citizen.CreateThread(function()
         id = "fenceguy",
         icon = "arrow-alt-circle-up",
         label = "Sell your Shit",
-        parameters = {},
-    }}, {
-        distance = { radius = 7 },
-    });
-
-    
-    -- Vpn Guy
-    
-    exports["drp-interact"]:AddPeekEntryByPolyTarget("vpnguy", {{
-        event = "heists:buyvpn",
-        id = "vpnguy",
-        icon = "arrow-alt-circle-up",
-        label = "Buy a VPN (5k)",
         parameters = {},
     }}, {
         distance = { radius = 7 },
