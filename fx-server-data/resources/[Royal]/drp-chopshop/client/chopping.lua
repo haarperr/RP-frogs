@@ -470,7 +470,7 @@ AddEventHandler("chop:boostLockPick", function()
   }
 
   pedSpawnAmount = 2
-  weapon = guns[math.random(1, #lowTierGuns)]
+  weapon = guns[math.random(1, #guns)]
   
   
   Citizen.CreateThread(function()
