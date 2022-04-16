@@ -797,7 +797,6 @@ end)
 
 RegisterNetEvent("bsdelivery:getTheJob")
 AddEventHandler("bsdelivery:getTheJob", function()
-    hasJob = true
     local amountOfProducts = math.random(2, 5)
 
     if math.random(1,18) <= 17 then
@@ -818,10 +817,11 @@ AddEventHandler("bsdelivery:getTheJob", function()
     -- make a nice string of products
     local productString = ""
     for i = 1, #products do
-        if i == #products then
-            productString = productString .. menuList[products[i]][1]
+        -- replace double entries with a counter to make it look nice
+        if products[i] == products[i - 1] then
+            productString = productString .. "x" .. i .. " "
         else
-            productString = productString .. menuList[products[i]][1] .. ", "
+            productString = productString .. menuList[products[i]] .. " "
         end
     end   
 
@@ -829,6 +829,7 @@ AddEventHandler("bsdelivery:getTheJob", function()
                  "A customer just called me and want these products:\n" .. productString .. ".")
 
     currentMenu = products
+    hasJob = true
 end)
 
 
