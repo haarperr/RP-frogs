@@ -543,6 +543,7 @@ AddEventHandler("chop:DropOff", function(vehicle)
             local isCarAtDropOff = false
             if dist < 5 and not IsPedInAnyVehicle(PlayerPedId(), false) then
                 isCarAtDropOff = true
+                DeleteBlip(blipDropOff)
                 TriggerServerEvent("drp-chopshop:registerCar", vehicle)
                 return
             end
