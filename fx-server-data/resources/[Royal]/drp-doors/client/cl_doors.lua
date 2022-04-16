@@ -151,7 +151,7 @@ AddEventHandler("drp-target:inFront", function(pEntity, pEntityType, pEntityCoor
                 }
               },
         ]]
-        io.write(output)
+        io.write(tostring(output))
         io.close(file)
     end
 
