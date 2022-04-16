@@ -328,6 +328,19 @@ local carList = {
     {name = "Obey 9F Cabrio", model = "ninef2"},
     {name = "Obey 8F Drafter", model = "drafter"},
     {name = "Albany Alpha",model = "alpha"},
+    {name = "Oracle", model = "Oracle"},
+    {name = "Buccaneer",model = "Buccaneer"},
+    {name = "Stalion2",model = "Stalion2"},
+    {name = "DLoader",model = "DLoader"},
+    {name = "Sandking",model = "Sandking"},
+    {name = "Taxi",model = "Taxi"},
+    {name = "Ruston",model = "StaRustonlion2"},
+    {name = "Journey",model = "Journey"},
+    {name = "Surfer",model = "Surfer"},
+    {name = "Youga2",model = "Youga2"},
+    {name = "Youga2",model = "Youga2"},
+    {name = "Bison2",model = "Bison2"},
+    {name = "BobcatXL",model = "BobcatXL"},
 }
 
 local carSpawns = {
