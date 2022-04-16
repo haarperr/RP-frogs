@@ -549,6 +549,9 @@ AddEventHandler("chop:DropOff", function(vehicle)
                 isCarAtDropOff = true
                 triggered = false
                 DeleteBlip(blipDropOff)
+                if math.random(1, 8) == 1 then
+                    TriggerEvent('civilian:alertPolice', 30.0, 'drugsale', 0)
+                end
                 TriggerServerEvent("drp-chopshop:registerCar", vehicle)
                 return
             end
@@ -570,7 +573,7 @@ AddEventHandler("drp-chopchop:signIn", function()
         TriggerEvent("DoLongHudText", "There are no Jobs available right now.", 2)
     else
         cooldown = true
-        TriggerEvent("DoLongHudText", "You signed in. There will be a Job for you soon.", 2)
+        TriggerEvent("DoLongHudText", "You signed in. There will be a Job for you soon.", 1)
         Citizen.Wait(math.random(120000, 325000))
         TriggerEvent("chop:tryStart")
         
