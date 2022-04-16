@@ -441,7 +441,8 @@ AddEventHandler("chop:startChop", function(modelName)
             Citizen.Wait(5000)
             -- get distance between player and vehicle
             local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
-            local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, x, y, z)
+            local carCoords = GetEntityCoords(vehicle, false)
+            local dist = GetDistanceBetweenCoords(plyCoords.x, plyCoords.y, plyCoords.z, carCoords.x, carCoords.y, carCoords.z, false)
             if dist < 3 then
                 TriggerEvent("chop:boostLockPick")
             end
