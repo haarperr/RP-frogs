@@ -1756,23 +1756,14 @@ itemList['615608432'] = {
   displayname: 'Molly',
   craft: [
     [{
-        itemid: 'aluminium',
-        amount: 75
+        itemid: 'glass',
+        amount: 250
       },
       {
         itemid: 'whiskey',
-        amount: 3
+        amount: 5
       },
     ],
-    [{
-        itemid: 'refinedaluminium',
-        amount: 12
-      },
-      {
-        itemid: 'whiskey',
-        amount: 3
-      },
-    ]
   ],
   price: 250,
   weight: 35,
