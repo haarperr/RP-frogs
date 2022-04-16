@@ -836,6 +836,7 @@ AddEventHandler("bsdelivery:getTheJob", function()
     PlaySoundFrontend(-1, "Menu_Accept", "Phone_SoundSet_Default", true)
     TriggerEvent('phone:robberynotif', 'Burgershot - Marty Shanks',
                  "A customer just called me and want these products:\n" .. productString .. ".")
+
     currentMenu = products
     hasJob = true
     enterCoords = Houses()
@@ -901,9 +902,8 @@ AddEventHandler("drp-burgershot:giveFoodToCustomer", function()
         -- try to remove everything from the inventory which is in the currentMenu
         local count = 0
         local maxCount = #currentMenu
-
-        for i = 1, #currentMenu do
-            local item = currentMenu[i]
+        for i = 1, #products do
+            local item = menuList[products[i]][1]
             Citizen.Trace(item)
             -- has enough item
             if exports["drp-inventory"]:hasEnoughOfItem(item, 1) then
