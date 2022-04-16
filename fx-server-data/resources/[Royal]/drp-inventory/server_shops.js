@@ -211,7 +211,10 @@ function WarehouseCrafting() {
         { item_id: "subammo", id: 0, name: "craft", information: "{}", slot: 9, amount: 50 },
         { item_id: "148457251", id: 0, name: "craft", information: "{}", slot: 10, amount: 50 },
         { item_id: "-134995899", id: 0, name: "craft", information: "{}", slot: 11, amount: 50 },
-        { item_id: "cuffs", id: 0, name: "craft", information: "{}", slot: 12, amount: 50 }, // elevatorhackingdevice
+        { item_id: "1593441988", id: 0, name: "craft", information: "{}", slot: 12, amount: 50 }, 
+        { item_id: "-1075685676", id: 0, name: "craft", information: "{}", slot: 13, amount: 50 }, 
+        { item_id: "453432689", id: 0, name: "craft", information: "{}", slot: 14, amount: 50 }, // elevatorhackingdevice
+
          ];
     return JSON.stringify(shopItems);
 }

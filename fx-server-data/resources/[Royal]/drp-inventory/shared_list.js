@@ -523,17 +523,17 @@ itemList['453432689'] = {
   price: 250,
   craft: [
     [{
-        itemid: 'aluminium',
-        amount: 1
-      },
-      {
-        itemid: 'plastic',
-        amount: 1
-      },
-      {
-        itemid: 'rubber',
-        amount: 1
-      },
+      itemid: 'steel',
+      amount: 45
+    },
+    {
+      itemid: 'plastic',
+      amount: 20
+    },
+    {
+      itemid: 'rubber',
+      amount: 20
+    },
     ]
   ],
   weight: 6,
@@ -551,17 +551,17 @@ itemList['-1075685676'] = {
   price: 250,
   craft: [
     [{
-        itemid: 'aluminium',
-        amount: 1
-      },
-      {
-        itemid: 'plastic',
-        amount: 1
-      },
-      {
-        itemid: 'rubber',
-        amount: 1
-      },
+      itemid: 'steel',
+      amount: 45
+    },
+    {
+      itemid: 'plastic',
+      amount: 20
+    },
+    {
+      itemid: 'rubber',
+      amount: 20
+    },
     ]
   ],
   weight: 5,
@@ -580,15 +580,15 @@ itemList['1593441988'] = {
   craft: [
     [{
         itemid: 'steel',
-        amount: 65
+        amount: 45
       },
       {
         itemid: 'plastic',
-        amount: 1
+        amount: 20
       },
       {
         itemid: 'rubber',
-        amount: 1
+        amount: 20
       },
     ]
   ],
