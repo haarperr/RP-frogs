@@ -2780,7 +2780,7 @@ end)
 RegisterNetEvent('drp-polyzone:enter')
 AddEventHandler('drp-polyzone:enter', function(name)
     if name == "fibevidence" then
-        FIBEvidence()
+        FIBEvidencee()
 		FIBEvidence = true
 		exports['drp-textui']:showInteraction('[E] Open Evidence Locker')
 	end
@@ -2794,7 +2794,7 @@ AddEventHandler('drp-polyzone:exit', function(name)
 	exports['drp-textui']:hideInteraction()
 end)
 
-function FIBEvidence()
+function FIBEvidencee()
 	Citizen.CreateThread(function()
         while FIBEvidence do
             Citizen.Wait(5)
