@@ -341,7 +341,7 @@ end)
             },
         })
     else 
-        TriggerEvent('DoLongHudText', 'You are not Vagos Puto', 2)
+        TriggerEvent('DoLongHudText', 'Why are you here?', 2)
     end
  end)
 
