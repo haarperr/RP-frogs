@@ -1801,6 +1801,7 @@ local approvedGarages = {
     "garagepdpaleto",
     "garagepdpaletoheli",
     "garagecluckin",
+    "garageranger",
     "gaaragebs",
     "garagerockey",
     "garagefib",
