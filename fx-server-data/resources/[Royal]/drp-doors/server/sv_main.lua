@@ -26,6 +26,7 @@ AddEventHandler("drp-doors:write-entity", function(coords, model)
     -- add the door to alreadyInSide
     alreadyInSide[coords] = true
 
+    Citizen.Trace(tostring(alreadyInSide))
 
 
     
