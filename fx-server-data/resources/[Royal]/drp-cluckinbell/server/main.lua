@@ -66,7 +66,7 @@ AddEventHandler("cluckinbell:update:pay", function(cid, amountOfReciepes)
     exports.ghmattimysql:execute("SELECT `paycheck` FROM characters WHERE id = ?", {cid}, function(old)
         local before = old[1].paycheck
         exports.ghmattimysql:execute("UPDATE characters SET `paycheck` = @paycheck WHERE `id` = @id", {
-            ['@paycheck'] = old[1].paycheck + (math.random(125, 275) * amountOfReciepes),
+            ['@paycheck'] = old[1].paycheck + (math.random(225, 300) * amountOfReciepes),
             ['@id'] = cid
         })
         TriggerClientEvent('DoLongHudText', src, 'Your paycheck was updated', 1)
