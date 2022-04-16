@@ -4,9 +4,9 @@ AddEventHandler("drp-chopshop:vehicle_loot", function(string)
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
     local Reward= math.random(1500, 2000)
     if string == "tyre" then
-        TriggerClientEvent("player:receiveItem", src, "recyclablematerial", math.random(3, 6), false)
+        TriggerClientEvent("player:receiveItem", src, "recyclablematerial", math.random(2, 5), false)
     elseif string == "door" then
-        TriggerClientEvent("player:receiveItem", src, "recyclablematerial", math.random(5, 8), false)
+        TriggerClientEvent("player:receiveItem", src, "recyclablematerial", math.random(4, 7), false)
     elseif string == "remains" then
         local roll = math.random(1, 2)
         if roll == 1 then
@@ -14,7 +14,7 @@ AddEventHandler("drp-chopshop:vehicle_loot", function(string)
             TriggerClientEvent('player:receiveItem', src, 'recyclablematerial', math.random(5, 10))
         elseif roll == 2 then
             TriggerClientEvent('DoLongHudText', src, 'Well this was good wasnt it ...', 1)
-            TriggerClientEvent('player:receiveItem', src, 'recyclablematerial', math.random(15, 30))
+            TriggerClientEvent('player:receiveItem', src, 'recyclablematerial', math.random(14, 26))
         end
     end
 end)
