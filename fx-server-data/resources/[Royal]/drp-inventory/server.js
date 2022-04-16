@@ -187,6 +187,13 @@ function GenerateInformation(src, player, itemid, itemdata, returnData = '{}') {
             // console.log(itemdata)
             if (itemList[itemid].weapon === true) {
                 let cartridgeCreated = player + "-" + makeid(3) + "-" + Math.floor(Math.random() * 999 + 1);
+                // cid, cartridgeCreated, first_name, last_name
+                let values = `('${player}', '${cartridgeCreated}', 'First Name', 'Last Name')`;
+                
+                let query = `INSERT INTO weapons_serials (cid, serial, first_name, last_name) VALUES ${values}`;
+                exports.ghmattimysql.execute(query, {}, function() {});
+
+
                 returnInfo = JSON.stringify({
                     cartridge: cartridgeCreated,
                     serial: identifier,
