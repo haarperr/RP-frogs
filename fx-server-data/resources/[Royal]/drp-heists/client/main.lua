@@ -232,15 +232,6 @@ AddEventHandler('vpnitemmenu', function()
             }
           }
         }
-      },
-		{
-            id = 4,
-            header = "< Go Back",
-		      	txt = "",
-		      	params = {
-                event = "vpnmenu"
-            }
-        },
     })
 end)
 
