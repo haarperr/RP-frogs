@@ -1,4 +1,5 @@
 local healing = false
+local healing2 = false
 lasthealth = GetEntityHealth(PlayerPedId())
 lastarmor = GetPedArmour(PlayerPedId())
 lasthealth2 = lasthealth
@@ -53,8 +54,8 @@ function HealSlow()
 end
 
 function HealSuperSlow()
-    if not healing then
-        healing = true
+    if not healing2 then
+        healing2 = true
     else
         return
     end
@@ -66,5 +67,5 @@ function HealSuperSlow()
         count = count - 1
         SetEntityHealth(PlayerPedId(), GetEntityHealth(PlayerPedId()) + 1) 
     end
-	healing = false
+	healing2 = false
 end

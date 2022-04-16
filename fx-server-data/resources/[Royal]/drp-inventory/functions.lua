@@ -2830,7 +2830,7 @@ AddEventHandler("drp-inventory:attachPropPlayAnim", function(pType)
         )
     end
     if pType == "cbfries" then
-        TriggerEvent("healed:useFries", true)
+        TriggerEvent("healed:useFries")
         success = AttachPropAndPlayAnimation(
             "mp_player_inteat@burger",
             "mp_player_int_eat_burger",
