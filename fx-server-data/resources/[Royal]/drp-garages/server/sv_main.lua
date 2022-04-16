@@ -192,7 +192,7 @@ RPC.register("drp-garages:selectSharedGarage", function(pGarage, pJob)
 			})
             for i = 1, #vehicles do
 				if vehicles[i].vehicle_state ~= "Out" then
-					if pGarage ~= "garagepd" or pGarage ~= 'garagefib' or pGarage ~= 'garagepdpaleto'  then
+					if pGarage ~= "garagepd" and pGarage ~= 'garagefib' and pGarage ~= 'garagepdpaleto'  then
 						TriggerClientEvent('drp-context:sendMenu', pSrc, {
 							{
 								id = vehicles[i].id,
