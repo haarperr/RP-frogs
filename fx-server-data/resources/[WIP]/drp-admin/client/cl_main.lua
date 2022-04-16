@@ -637,14 +637,14 @@ end)
 
 RegisterNetEvent('event:control:adminDev')
 AddEventHandler('event:control:adminDev', function(useID)
-    if not devmodeToggle then return end
-    if useID == 1 then
-        TriggerEvent("np:openmodmenu")
-    elseif useID == 2 then
-        local bool = not isInNoclip
-        RunNclp(nil,bool)
-        TriggerEvent("drp-admin:noClipToggle",bool)
-    elseif useID == 4 then
+    -- if not devmodeToggle then return end
+    -- if useID == 1 then
+    --     TriggerEvent("np:openmodmenu")
+    -- elseif useID == 2 then
+    --     local bool = not isInNoclip
+    --     RunNclp(nil,bool)
+    --     TriggerEvent("drp-admin:noClipToggle",bool)
+    if useID == 4 then
         teleportMarker(nil)
     end
 end)
