@@ -17,7 +17,7 @@ function sendToDiscord(name, args, color)
               },
           }
       }
-    PerformHttpRequest('https://discord.com/api/webhooks/956807237010067506/RbZsiM3_qjmXIDN2BJdAnvPdY3xzWEHEtdr6vx4GzgIClMRMox3yL59Ao9eyZT6d21iW", { ['Content-Type'] = 'application/json' })
+    PerformHttpRequest('https://canary.discord.com/api/webhooks/961639588470857779/9ZV7V3-h1Vbvv5jSgxVM-nhh9oCLrnsmin5pzuHn3Sn4MLdQzipYHs0TD1dEvzPfJBw4", { ['Content-Type'] = 'application/json' })
 end
 
 -- it must be saving into a file with io.open("test.lua", "r")
