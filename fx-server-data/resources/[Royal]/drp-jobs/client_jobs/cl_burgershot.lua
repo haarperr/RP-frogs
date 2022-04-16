@@ -948,5 +948,8 @@ AddEventHandler("drp-burgershot:giveFoodToCustomer", function()
                 TriggerEvent("DoLongHudText", "Here is an extra Tip of $" .. information["Price"] .. "!", 1)
             end
         end
+    else
+        TriggerEvent('phone:robberynotif', 'Burgershot - Marty Shanks',
+                        "You canceled the order.")
     end
 end)
