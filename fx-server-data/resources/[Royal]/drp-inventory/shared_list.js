@@ -10617,7 +10617,7 @@ itemList["shortradio"] = {
 itemList["civradio"] = {
   fullyDegrades: true,
   deg: true,
-  decayrate: 0.25,
+  decayrate: 0.2,
   displayname: "Standard Radio",
   craft: [
     [{
@@ -10625,7 +10625,7 @@ itemList["civradio"] = {
       amount: 30
     }, ]
   ],
-  price: 3000,
+  price: 7500,
   weight: 5,
   nonStack: true,
   model: "",
@@ -10635,7 +10635,7 @@ itemList["civradio"] = {
 
 itemList['radio'] = {
   fullyDegrades: false,
-  decayrate: 0.0,
+  decayrate: 0.5,
   displayname: 'Radio',
   craft: [
     [{
