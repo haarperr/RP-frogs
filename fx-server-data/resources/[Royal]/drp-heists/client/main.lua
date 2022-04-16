@@ -55,11 +55,11 @@ end)
 
 RegisterNetEvent('buy:checkIfItem')
 AddEventHandler('buy:checkIfItem', function(itemItRequires, amount, price, item, amount2)
-  Citizen.Trace(tostring(itemItRequires) .. "\n" .. tostring(amount) .. "\n" .. tostring(price))
+  Citizen.Trace(tostring(itemItRequires) .. "\n" .. tostring(amount) .. "\n" .. tostring(price) .. "\n" .. tostring(item) .. "\n" .. tostring(amount2))
   if exports["drp-inventory"]:hasEnoughOfItem(itemItRequires, amount, false) then
     TriggerEvent("inventory:removeItem", itemItRequires, amount) 
     TriggerServerEvent("buy:removeMoney", price)
-    TriggerEvent('inventory:receiveItem', item, amount)
+    TriggerEvent('inventory:receiveItem', item, amount2)
     TriggerEvent('DoLongHudText', 'You sucessfully buyed this Item.', 1)
   else
     TriggerEvent('DoLongHudText', 'You dont seem to have the required Item.', 2)
