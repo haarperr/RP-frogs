@@ -902,8 +902,8 @@ AddEventHandler("drp-burgershot:giveFoodToCustomer", function()
         -- try to remove everything from the inventory which is in the currentMenu
         local count = 0
         local maxCount = #currentMenu
-        for i = 1, #products do
-            local item = menuList[products[i]][1]
+        for i = 1, #currentMenu do
+            local item = menuList[currentMenu[i]][1]
             Citizen.Trace(item)
             -- has enough item
             if exports["drp-inventory"]:hasEnoughOfItem(item, 1) then
