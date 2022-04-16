@@ -120,6 +120,8 @@ RegisterCommand("doors:print-entity", function()
     printEntityDetails = not printEntityDetails
 end)
 
+local file = nil
+
 AddEventHandler("drp-target:inFront", function(pEntity, pEntityType, pEntityCoords)
     if pEntityType == nil or pEntityType ~= 3 then
         listening, currentDoorCoords, currentDoorId, currentDoorLockState = nil
