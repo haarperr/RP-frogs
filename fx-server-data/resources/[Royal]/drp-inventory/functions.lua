@@ -1617,7 +1617,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
     
     if itemid == "Peecup_full" then
-        local success = AttachPropAndPlayAnimation("amb@world_human_drinking@beer@female@idle_a", "idle_e", 49,7500,"Drinking pee.","food:SoftDrink",true,itemid,playerVeh)
+        local success = AttachPropAndPlayAnimation("amb@world_human_drinking@beer@female@idle_a", "idle_e", 49,7500,"Drinking pee.","changethirst",true,itemid,playerVeh)
         if success and math.random() > 0.50 then
             TriggerServerEvent("fx:puke")
             TriggerEvent("animation:PlayAnimation","outofbreath")
@@ -2561,21 +2561,19 @@ end
         end
     end
 
-    if itemid == "softdrink" or itemid == "cbdrink" or itemid == "cbsmoothie" then
+    if itemid == "cbsmoothie" then
+        TriggerEvent("attachItem", "cbdrink")
+        AttachPropAndPlayAnimation("amb@world_human_drinking@coffee@male@idle_a", "idle_c", 49,15000,"Drink","changethirstPlusSpeed",true,itemid,playerVeh)
+    end
+
+    if itemid == "softdrink" or itemid == "cbdrink" then
         if itemid == "softdrink" then
             TriggerEvent("attachItem", "softdrink")
         else
             TriggerEvent("attachItem", "cbdrink")
         end
-
-        if itemid == "cbsmoothie" then
-            SetRunSprintMultiplierForPlayer(PlayerId(),1.5)  
-            Citizen.Wait(3000)
-            SetRunSprintMultiplierForPlayer(PlayerId(),1.2)
-            Citizen.Wait(15000)  
-            SetRunSprintMultiplierForPlayer(PlayerId(),1)
-        end
-        AttachPropAndPlayAnimation("amb@world_human_drinking@coffee@male@idle_a", "idle_c", 49,15000,"Drink","food:SoftDrink",true,itemid,playerVeh)
+        remove = true
+        AttachPropAndPlayAnimation("amb@world_human_drinking@coffee@male@idle_a", "idle_c", 49,12500,"Drink","changethirst",true,itemid,playerVeh)
     end
 
     if itemid == "roostertea" then
@@ -2583,6 +2581,7 @@ end
     end
  
     if itemid == "fries" or itemid == "chips" or itemid == "hardoaksfries" or itemid == "cbfries" or itemid == "cbbowl" or itemid == "cbveggy" or itemid == "cbballs" then
+        remove = true
         if itemid == "cbfries" then
             TriggerEvent("attachItem", "cbfries")
         elseif itemid == "cbballs" then
@@ -3649,6 +3648,18 @@ RegisterNetEvent('changethirst')
 AddEventHandler('changethirst', function()
     TriggerEvent("drp-hud:ChangeThirst", 30)
     burgies5 = 0
+end)
+
+local burgies6 = 0
+RegisterNetEvent('changethirstPlusSpeed')
+AddEventHandler('changethirstPlusSpeed', function()
+    TriggerEvent("drp-hud:ChangeThirst", 50)
+    SetRunSprintMultiplierForPlayer(PlayerId(),1.49)  
+    Citizen.Wait(2500)
+    SetRunSprintMultiplierForPlayer(PlayerId(),1.2)
+    Citizen.Wait(15000) 
+    SetRunSprintMultiplierForPlayer(PlayerId(),1)
+    burgies6 = 0
 end)
 
 RegisterNetEvent('animation:lockpickinvtestoutside')
