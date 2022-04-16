@@ -2586,7 +2586,7 @@ end
             TriggerEvent("attachItem", "cbfries")
         elseif itemid == "cbballs" then
             TriggerEvent("attachItem", "cbnugets")
-        elseif itemid == "cbbowl" or itemid == "cbveggy" then
+        elseif itemid == "cbbowl" or itemid == "cbveggy" or itemid == "cbbucket" then
             TriggerEvent("attachItem", "cbbowl")
         else 
             TriggerEvent("attachItem", "fries")
