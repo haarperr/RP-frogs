@@ -288,42 +288,42 @@ function GetUserInput(windowTitle, defaultText, maxInputLength)
     end
 end
 
-local doorIndex = 0
-local doorsCache = {}
-RegisterCommand("door-next", function()
-    doorIndex = doorIndex + 1
-    local door = doors[doorIndex]
-    doorsCache[doorIndex] = door
-    doorsCache[doorIndex]["id"] = doorIndex
-    doorsCache[doorIndex]["access"] = {
-        job = { "PD" },
-        business = {},
-    }
-    doorsCache[doorIndex]["forceOpened"] = false
-    SetEntityCoords(PlayerPedId(), door.coords)
-    Wait(1000)
-    doorsCache[doorIndex]["desc"] = GetUserInput("Desc")
-    Wait(0)
-    doorsCache[doorIndex]["access"]["job"][#doorsCache[doorIndex]["access"]["job"] + 1] = GetUserInput("Job")
-    Wait(0)
-    doorsCache[doorIndex]["access"]["business"][#doorsCache[doorIndex]["access"]["business"] + 1] = GetUserInput("Business")
-end)
-
-RegisterCommand("door-desc", function(s, args)
-    doorsCache[doorIndex]["desc"] = args[1]
-end)
-RegisterCommand("door-business", function(s, args)
-    doorsCache[doorIndex]["access"]["business"][#doorsCache[doorIndex]["access"]["business"] + 1] = args[1]
-end)
-RegisterCommand("door-job", function(s, args)
-    doorsCache[doorIndex]["access"]["job"][#doorsCache[doorIndex]["access"]["job"] + 1] = args[1]
-end)
-RegisterCommand("door-print", function()
-    print(json.encode(doorsCache, { indent = true }))
-end)
-RegisterCommand("doors-save", function()
-    TriggerServerEvent("drp-doors:save-config", doorsCache)
-end)
+-- local doorIndex = 0
+-- local doorsCache = {}
+-- RegisterCommand("door-next", function()
+--     doorIndex = doorIndex + 1
+--     local door = doors[doorIndex]
+--     doorsCache[doorIndex] = door
+--     doorsCache[doorIndex]["id"] = doorIndex
+--     doorsCache[doorIndex]["access"] = {
+--         job = { "PD" },
+--         business = {},
+--     }
+--     doorsCache[doorIndex]["forceOpened"] = false
+--     SetEntityCoords(PlayerPedId(), door.coords)
+--     Wait(1000)
+--     doorsCache[doorIndex]["desc"] = GetUserInput("Desc")
+--     Wait(0)
+--     doorsCache[doorIndex]["access"]["job"][#doorsCache[doorIndex]["access"]["job"] + 1] = GetUserInput("Job")
+--     Wait(0)
+--     doorsCache[doorIndex]["access"]["business"][#doorsCache[doorIndex]["access"]["business"] + 1] = GetUserInput("Business")
+-- end)
+-- 
+-- RegisterCommand("door-desc", function(s, args)
+--     doorsCache[doorIndex]["desc"] = args[1]
+-- end)
+-- RegisterCommand("door-business", function(s, args)
+--     doorsCache[doorIndex]["access"]["business"][#doorsCache[doorIndex]["access"]["business"] + 1] = args[1]
+-- end)
+-- RegisterCommand("door-job", function(s, args)
+--     doorsCache[doorIndex]["access"]["job"][#doorsCache[doorIndex]["access"]["job"] + 1] = args[1]
+-- end)
+-- RegisterCommand("door-print", function()
+--     print(json.encode(doorsCache, { indent = true }))
+-- end)
+-- RegisterCommand("doors-save", function()
+--     TriggerServerEvent("drp-doors:save-config", doorsCache)
+-- end)
 
 
 
