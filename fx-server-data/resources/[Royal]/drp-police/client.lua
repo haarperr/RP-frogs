@@ -2387,7 +2387,7 @@ function openMRPDEvidence()
         while FIBEvidence do
             Citizen.Wait(5)
 			if IsControlJustReleased(0, 38) then
-				TriggerEvent("server-inventory-open", "1", "mrpdevidence -"..itemid)
+				TriggerEvent("server-inventory-open", "1", "mrpdevidence")
 			end
 		end
 	end)
@@ -2799,7 +2799,8 @@ function FIBEvidencee()
         while FIBEvidence do
             Citizen.Wait(5)
 			if IsControlJustReleased(0, 38) then
-				TriggerEvent("server-inventory-open", "1", "fibevidence -"..itemid)
+
+				TriggerEvent("server-inventory-open", "1", "fibevidence")
 			end
 		end
 	end)
