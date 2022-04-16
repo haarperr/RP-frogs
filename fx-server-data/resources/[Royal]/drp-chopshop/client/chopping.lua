@@ -456,7 +456,7 @@ AddEventHandler("chop:boostLockPick", function()
   local guns = {
     "weapon_bat",
     "weapon_switchblade",
-    "weapon_crowbar"
+    "weapon_crowbar",
     "weapon_combatpistol",
     "weapon_pistol",
     "weapon_switchblade",
