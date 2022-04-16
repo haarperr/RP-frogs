@@ -18,9 +18,9 @@ AddEventHandler('drp-doors:initial-lock-state', function(pDoors)
     doors = pDoors
     setSecuredAccesses(doors, 'door')
     for doorId, door in ipairs(doors) do
-        -- if doorId ~= door.id then
-        --     print("we should not see this message - door id mismatch", doorId, " - id: ", door.id) -- This doesn't even matter i don't think lol
-        -- end
+        if doorId ~= door.id then
+            -- print("we should not see this message - door id mismatch", doorId, " - id: ", door.id) -- This doesn't even matter i don't think lol
+        end
         if door.active and not IsDoorRegisteredWithSystem(doorId) then
             AddDoorToSystem(doorId, door.model, door.coords, false, false, false)
             if door.automatic then
@@ -130,11 +130,10 @@ AddEventHandler("drp-target:inFront", function(pEntity, pEntityType, pEntityCoor
 
     -- check if entity is a door
     local doorId = GetTargetDoorId(pEntity)
-
-    -- if doorId == nil then
-    --     listening, currentDoorCoords, currentDoorId, currentDoorLockState = nil
-    --     return
-    -- end
+    if doorId == nil then
+        listening, currentDoorCoords, currentDoorId, currentDoorLockState = nil
+        return
+    end  
 
     if printEntityDetails then
         print(pEntity, pEntityType, pEntityCoords, GetEntityModel(pEntity), GetEntityCoords(pEntity))
@@ -261,32 +260,33 @@ AddEventHandler("drp-polyzone:exit", function(zone)
 end)
 
 
-function GetUserInput(windowTitle, defaultText, maxInputLength)
-    -- Create the window title string.
-    local resourceName = string.upper(GetCurrentResourceName())
-    local textEntry = resourceName .. "_WINDOW_TITLE"
-    if windowTitle == nil then
-      windowTitle = "Enter:"
-    end
-    AddTextEntry(textEntry, windowTitle)
-
-    -- Display the input box.
-    DisplayOnscreenKeyboard(1, textEntry, "", defaultText or "", "", "", "", maxInputLength or 30)
-    Wait(0)
-    -- Wait for a result.
-    while true do
-      local keyboardStatus = UpdateOnscreenKeyboard();
-      if keyboardStatus == 3 then -- not displaying input field anymore somehow
-        return nil
-      elseif keyboardStatus == 2 then -- cancelled
-        return nil
-      elseif keyboardStatus == 1 then -- finished editing
-        return GetOnscreenKeyboardResult()
-      else
-        Wait(0)
-      end
-    end
-end
+-- GetUserInput function inspired by vMenu (https://github.com/TomGrobbe/vMenu/blob/master/vMenu/CommonFunctions.cs)
+-- function GetUserInput(windowTitle, defaultText, maxInputLength)
+--     -- Create the window title string.
+--     local resourceName = string.upper(GetCurrentResourceName())
+--     local textEntry = resourceName .. "_WINDOW_TITLE"
+--     if windowTitle == nil then
+--       windowTitle = "Enter:"
+--     end
+--     AddTextEntry(textEntry, windowTitle)
+  
+--     -- Display the input box.
+--     DisplayOnscreenKeyboard(1, textEntry, "", defaultText or "", "", "", "", maxInputLength or 30)
+--     Wait(0)
+--     -- Wait for a result.
+--     while true do
+--       local keyboardStatus = UpdateOnscreenKeyboard();
+--       if keyboardStatus == 3 then -- not displaying input field anymore somehow
+--         return nil
+--       elseif keyboardStatus == 2 then -- cancelled
+--         return nil
+--       elseif keyboardStatus == 1 then -- finished editing
+--         return GetOnscreenKeyboardResult()
+--       else
+--         Wait(0)
+--       end
+--     end
+--   end
 
 -- local doorIndex = 0
 -- local doorsCache = {}
@@ -301,6 +301,7 @@ end
 --     }
 --     doorsCache[doorIndex]["forceOpened"] = false
 --     SetEntityCoords(PlayerPedId(), door.coords)
+
 --     Wait(1000)
 --     doorsCache[doorIndex]["desc"] = GetUserInput("Desc")
 --     Wait(0)
@@ -308,16 +309,15 @@ end
 --     Wait(0)
 --     doorsCache[doorIndex]["access"]["business"][#doorsCache[doorIndex]["access"]["business"] + 1] = GetUserInput("Business")
 -- end)
--- 
--- RegisterCommand("door-desc", function(s, args)
---     doorsCache[doorIndex]["desc"] = args[1]
--- end)
--- RegisterCommand("door-business", function(s, args)
---     doorsCache[doorIndex]["access"]["business"][#doorsCache[doorIndex]["access"]["business"] + 1] = args[1]
--- end)
--- RegisterCommand("door-job", function(s, args)
---     doorsCache[doorIndex]["access"]["job"][#doorsCache[doorIndex]["access"]["job"] + 1] = args[1]
--- end)
+-- -- RegisterCommand("door-desc", function(s, args)
+-- --     doorsCache[doorIndex]["desc"] = args[1]
+-- -- end)
+-- -- RegisterCommand("door-business", function(s, args)
+-- --     doorsCache[doorIndex]["access"]["business"][#doorsCache[doorIndex]["access"]["business"] + 1] = args[1]
+-- -- end)
+-- -- RegisterCommand("door-job", function(s, args)
+-- --     doorsCache[doorIndex]["access"]["job"][#doorsCache[doorIndex]["access"]["job"] + 1] = args[1]
+-- -- end)
 -- RegisterCommand("door-print", function()
 --     print(json.encode(doorsCache, { indent = true }))
 -- end)

@@ -15,6 +15,8 @@ AddEventHandler("drp-doors:write-entity", function(coords, model)
         end
     end
 
+
+
     -- if coords is not in alreadyInSide, add it, if it is, return
     for k, v in pairs(alreadyInSide) do
         if tostring(v) == tostring(coords) then
@@ -24,6 +26,8 @@ AddEventHandler("drp-doors:write-entity", function(coords, model)
 
     table.insert(alreadyInSide, coords)
 
+    
+
     file = io.open("doors.txt", "a")
     io.output(file)
 
@@ -32,8 +36,8 @@ AddEventHandler("drp-doors:write-entity", function(coords, model)
             info = "PD Sandy 3",
             active = true,
             id = 550,
-            coords = vector3(]] .. tostring(tostring(coords)) .. [[),
-            model = ]] .. tostring(tostring(model)) .. [[,
+            coords = vector3(]] .. tostring(coords) .. [[),
+            model = ]] .. tostring(model) .. [[,
             lock = true,
             keyFob = true,
             desc = "x",
@@ -90,16 +94,16 @@ Citizen.CreateThread(function()
     end
 end)
 
-RegisterNetEvent("drp-doors:save-config")
-AddEventHandler("drp-doors:save-config", function(pDoorData)
-    if pDoorData ~= nil then
-        local fileHandle = io.open("doorCoords.log", "a")
-        if fileHandle then
-            fileHandle:write(json.encode(pDoorData))
-        end
-        fileHandle:close()
-    end
-end)
+-- RegisterNetEvent("drp-doors:save-config")
+-- AddEventHandler("drp-doors:save-config", function(pDoorData)
+--     if pDoorData ~= nil then
+--         local fileHandle = io.open("doorCoords.log", "a")
+--         if fileHandle then
+--             fileHandle:write(json.encode(pDoorData))
+--         end
+--         fileHandle:close()
+--     end
+-- end)
 
 -- RPC.register("drp-doors:elevators:fetch", function()
 --     return RRP.Elevators or {}
