@@ -2757,7 +2757,7 @@ end
 
 
 local FIBEvidence = false
---Name: fibclothes | 2022-04-15T08:19:20Z
+--Name: fibevidence | 2022-04-15T08:19:20Z
 Citizen.CreateThread(function()
 	exports["drp-polyzone"]:AddPolyZone("fibevidence", {
 		vector2(2520.0314941406, -328.64779663086),
@@ -2771,6 +2771,7 @@ Citizen.CreateThread(function()
 		vector2(2516.4299316406, -324.4839477539)
 	  }, {
 		name="fibevidence",
+		debugPoly=true,
 		minZ = 100.89334869384,
 		maxZ = 102.89334869384
 	  })
@@ -2781,7 +2782,7 @@ AddEventHandler('drp-polyzone:enter', function(name)
     if name == "fibevidence" then
         FIBEvidence()
 		FIBEvidence = true
-		exports['drp-textui']:showInteraction('[E] Open Locker')
+		exports['drp-textui']:showInteraction('[E] Open Evidence Locker')
         end
     end
 end)
