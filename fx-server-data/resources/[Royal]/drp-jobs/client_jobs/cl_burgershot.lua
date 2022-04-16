@@ -650,8 +650,7 @@ RoyalBurgershotTradeInreceipt = false
 
 Citizen.CreateThread(function()
     exports["drp-polyzone"]:AddBoxZone("royal_burgershot_receipt",
-                                       vector3(-1187.76, -904.62, 13.98), 1.5,
-                                       1.6, {
+        vector3(-1187.76, -904.62, 13.98), 1.5, 1.6, {
         name = "royal_burgershot_receipt",
         heading = 305,
         debugPoly = false,
@@ -694,7 +693,7 @@ function BurgerShotReceipts()
     end)
 end
 
-dHouses = { -- Houses entry and model
+dHouses = {
     {x = 31.492990493774, y = 6596.619140625, z = 32.81018447876},
     {x = 11.572845458984, y = 6578.3662109375, z = 33.060623168945},
     {x = -15.09232711792, y = 6557.7416992188, z = 33.240436553955},
@@ -801,8 +800,8 @@ AddEventHandler("bsdelivery:getTheJob", function()
     hasJob = true
     local amountOfProducts = math.random(2, 5)
 
-    if math.random(1,15) <= 14 then
-        if math.random(1, 2) == 1 then
+    if math.random(1,18) <= 17 then
+        if math.random(1, 3) == 1 then
             local amountOfProducts = math.random(2, 10)
         else
             local amountOfProducts = math.random(5, 20) -- Big Delivery Jobs
@@ -824,7 +823,7 @@ AddEventHandler("bsdelivery:getTheJob", function()
         else
             productString = productString .. menuList[products[i]][1] .. ", "
         end
-    end
+    end   
 
     TriggerEvent('phone:robberynotif', 'Burgershot - Marty Shanks',
                  "A customer just called me and want these products:\n" .. productString .. ".")
