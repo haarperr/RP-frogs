@@ -2355,13 +2355,18 @@ end)
 local isNearRoyalPDEvidence = false
 
 Citizen.CreateThread(function()
-    exports["drp-polyzone"]:AddBoxZone("royal_evidence_spot", vector3(473.95, -994.79, 26.27), 6, 4.5, {
+    exports["drp-polyzone"]:AddPolyZone("royal_evidence_spot", {
+		vector2(473.7106628418, -992.21002197266),
+		vector2(471.94668579102, -991.03723144532),
+		vector2(472.0480041504, -997.73699951172),
+		vector2(475.8786315918, -997.87292480468),
+		vector2(476.12368774414, -992.79260253906),
+		vector2(473.22244262696, -992.83972167968)
+	  }, {
 		name="royal_evidence_spot",
-		heading=0,
-		--debugPoly=true,
-		minZ=24.27,
-		maxZ=28.27
-    }) 
+		minZ = 25.273416519166,
+		maxZ = 27.273460388184
+	  })
 end)
 
 
