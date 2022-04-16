@@ -831,40 +831,45 @@ AddEventHandler("bsdelivery:getTheJob", function()
     currentMenu = products
     hasJob = true
     Citizen.Wait(45000)
+    enterCoords = Houses()
+    currentHouse = enterCoords
+
+    FoodDeliveryLocation = AddBlipForCoord(enterCoords.x, enterCoords.y,
+                                            enterCoords.z)
+    SetBlipSprite(FoodDeliveryLocation, 40)
+    BeginTextCommandSetBlipName("STRING")
+    AddTextComponentString("Food Delivery")
+    EndTextCommandSetBlipName(FoodDeliveryLocation)
+    SetBlipRoute(FoodDeliveryLocation, true)
+    SetBlipRouteColour(FoodDeliveryLocation, 29)
+    
     PlaySoundFrontend(-1, "Menu_Accept", "Phone_SoundSet_Default", true)
     TriggerEvent('phone:robberynotif', 'Burgershot - Marty Shanks',
-                 "Get into a Car when you are ready.")
+                    "Ive updated the location of the delivery house on your GPS.")
+    SetBlipAsShortRange(FoodDeliveryLocation, false)
+
+    -- remove blip after 15 Minutes
+    Citizen.CreateThread(function()
+        Citizen.Wait(900000)
+        SetBlipRoute(FoodDeliveryLocation, false)
+        SetBlipSprite(FoodDeliveryLocation, 0)
+        SetBlipAsShortRange(FoodDeliveryLocation, false)
+        hasJob = false        
+    end)
 end)
 
-
 Citizen.CreateThread(function()
-    while True do
-        Citizen.Wait(250)
+    while true do
         if hasJob == true then
-            Citizen.Trace("Has Job")
-            -- if ped is in vehicle and driver seat
-            if IsPedInAnyVehicle(GetPlayerPed(-1), false) then
-                Citizen.Trace("In Vehicle")
-                deliveryVehicle = GetVehiclePedIsIn(GetPlayerPed(-1), false)
-                
-                enterCoords = Houses()
-                currentHouse = enterCoords
-            
-                FoodDeliveryLocation = AddBlipForCoord(enterCoords.x, enterCoords.y,
-                                                       enterCoords.z)
-                SetBlipSprite(FoodDeliveryLocation, 40)
-                BeginTextCommandSetBlipName("STRING")
-                AddTextComponentString("Food Delivery")
-                EndTextCommandSetBlipName(FoodDeliveryLocation)
-                SetBlipRoute(FoodDeliveryLocation, true)
-                SetBlipRouteColour(FoodDeliveryLocation, 29)
-                
-                PlaySoundFrontend(-1, "Menu_Accept", "Phone_SoundSet_Default", true)
-                TriggerEvent('phone:robberynotif', 'Burgershot - Marty Shanks',
-                             "Ive updated the location of the delivery house on your GPS.")
-                SetBlipAsShortRange(FoodDeliveryLocation, false)
+            -- if player is near the delivery location
+            if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), enterCoords.x, enterCoords.y, enterCoords.z, true) < 2 then            
+			    exports['drp-textui']:showInteraction('[E] Changing Room') 
+                if IsControlJustReleased(0, 38) then
+                    TriggerEvent('drp-pd-options')
+                end
+            else
+	            exports['drp-textui']:hideInteraction()              
             end
         end
     end
 end)
-
