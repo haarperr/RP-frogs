@@ -386,7 +386,7 @@ end)
 
 RegisterNetEvent("chop:tryStart")
 AddEventHandler("chop:tryStart", function()
-    TriggerEvent("chop:startChop", carSpawns[math.random(1, #carSpawns)])
+    TriggerEvent("chop:startChop", carList[math.random(1, #carList)])
 end)
 
 RegisterNetEvent("chop:startChop")
