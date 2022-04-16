@@ -209,7 +209,6 @@ end)
 
 
 RegisterCommand('cbmusic', function()
-    Citizen.Trace("xqcL")
     local job = exports["isPed"]:GroupRank('cluckin_bell')
     if job >= 1 then
         TriggerEvent("cluckinbell:request:song")
