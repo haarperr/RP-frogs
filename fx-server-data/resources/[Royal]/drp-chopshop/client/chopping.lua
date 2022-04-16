@@ -439,6 +439,7 @@ AddEventHandler("chop:startChop", function(modelName)
         while true do
             Citizen.Wait(5000)
             if GetVehiclePedIsIn(PlayerPedId(), false) == spawnedVeh then
+                TriggerEvent("chop:boostLockPick")
                 DeleteBlip(blipBoostLoc)
                 blipBoostLoc = nil
                 return
@@ -446,10 +447,6 @@ AddEventHandler("chop:startChop", function(modelName)
         end
     end)
 end)
-
--- post lockpick
-
-local trackerActive = false
 
 RegisterNetEvent("chop:boostLockPick")
 AddEventHandler("chop:boostLockPick", function()
