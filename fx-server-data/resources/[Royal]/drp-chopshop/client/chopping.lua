@@ -388,6 +388,9 @@ AddEventHandler("chop:tryStart", function()
     TriggerEvent("chop:startChop", carList[math.random(1, #carList)])
 end)
 
+
+local currentLocation = nil
+
 RegisterNetEvent("chop:startChop")
 AddEventHandler("chop:startChop", function(modelName)
     local vehHash = GetHashKey(modelName["model"])
@@ -428,13 +431,7 @@ AddEventHandler("chop:startChop", function(modelName)
 
     CreateBlipBoostLoc(x, y, z)
 
-    function SpawnPedLoc()
-        if not SpawnedPed then
-            local pedSpawnLoc = {["x"] = pedX, ["y"] = pedY, ["z"] = pedZ, ["h"] = pedH}
-            SpawnedPed = true
-            return pedSpawnLoc
-        end
-    end
+    currentLocation = pedX, pedY, pedZ, pedH
 
     Citizen.CreateThread(function()
         while true do
@@ -460,7 +457,6 @@ RegisterNetEvent("chop:boostLockPick")
 AddEventHandler("chop:boostLockPick", function(vehicle)
   local plyPos = GetEntityCoords(PlayerPedId())
   local targetVeh = GetClosestVehicle(plyPos.x, plyPos.y, plyPos.z, 2.5, 0, 70)
-  local coords = SpawnPedLoc()
   local pedSpawnAmount = nil 
   local weapon = nil
   local guns = {
@@ -473,7 +469,7 @@ AddEventHandler("chop:boostLockPick", function(vehicle)
     "weapon_combatpistol",
   }
 
-  pedSpawnAmount = 2
+  pedSpawnAmount = math.random(1,2)
   weapon = guns[math.random(1, #guns)]
   
   
@@ -481,8 +477,8 @@ AddEventHandler("chop:boostLockPick", function(vehicle)
     if targetVeh == spawnedVeh then
       if not pedsSpawned then
         for i = pedSpawnAmount, 1, -1 do 
-          TriggerEvent("chop:spawnPed", coords["x"], coords["y"], coords["z"], coords["h"], weapon)
-          pedsSpawned = true
+            TriggerEvent("chop:spawnPed", currentLocation, weapon)
+            pedsSpawned = true
         end
         
         while not IsPedInAnyVehicle(PlayerPedId(), false) do
