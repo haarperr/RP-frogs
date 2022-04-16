@@ -55,6 +55,7 @@ end)
 
 RegisterNetEvent('buy:checkIfItem')
 AddEventHandler('buy:checkIfItem', function(itemItRequires, amount, price)
+  Citizen.Trace(tostring(itemItRequires) .. "\n" .. tostring(amount) .. "\n" .. tostring(price))
   if exports["drp-inventory"]:hasEnoughOfItem(itemItRequires, amount, false, true) then
     TriggerEvent("inventory:removeItem", itemItRequires, amount) 
     TriggerServerEvent("buy:removeMoney", price)
@@ -63,23 +64,6 @@ AddEventHandler('buy:checkIfItem', function(itemItRequires, amount, price)
     TriggerEvent('DoLongHudText', 'You dont seem to have the required Item.', 2)
   end
 end)
-
-RegisterNetEvent('drp-polyzone:enter')
-AddEventHandler('drp-polyzone:enter', function(name)
-    if name == "laptopexchange" then
-       LaptopExchange = true     
-
-    end
-end)
-
-RegisterNetEvent('drp-polyzone:exit')
-AddEventHandler('drp-polyzone:exit', function(name)
-    if name == "laptopexchange" then
-       LaptopExchange = false     
-
-    end
-end)
-
 
 function OpenHackingGame(callback)
     Callbackk = callback
@@ -223,7 +207,7 @@ AddEventHandler('vpnitemmenu', function()
             header = "Purchase Red Laptop",
             txt = "Price: $10000 + Red Dongle",
             params = {
-              event = "",
+              event = "", -- disabled for now
               args = {
                 item = "",
                 price = 10000,
