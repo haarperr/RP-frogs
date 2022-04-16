@@ -55,18 +55,18 @@ AddEventHandler("commands:player:login",function()
     )
     TriggerClientEvent(
         "chat:addSuggestion", src,
-        "/barrier"
+        "/barrier",
         "Place a barrier in the street"
     )
     TriggerClientEvent(
         "chat:addSuggestion", src,
-        "/sbarrier"
-        "Place a barrier in the street"
+        "/sbarrier",
+        "Place a barrier in the street",
     )
     TriggerClientEvent(
         "chat:addSuggestion", src,
-        "/cone"
-        "Place a Cone in the street"
+        "/cone",
+        "Place a Cone in the street",
     )
     TriggerClientEvent(
         "chat:addSuggestion", src,
