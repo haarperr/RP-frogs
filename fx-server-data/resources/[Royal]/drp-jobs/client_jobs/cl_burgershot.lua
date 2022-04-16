@@ -780,15 +780,23 @@ local hasJob = false
 local currentHouse = nil
 local currentMenu = nil
 local deliveryVehicle = nil
+local onCooldown = false
 
 RegisterNetEvent("bsdelivery:getJob")
 AddEventHandler("bsdelivery:getJob", function()
     local rank = exports["isPed"]:GroupRank("burger_shot")
     if rank >= 1 then
-        if hasJob == true then
-            TriggerEvent("DoLongHudText", "You already have a job!", 2)
+        if not onCooldown then
+            if hasJob == true then
+                TriggerEvent("DoLongHudText", "You already have a job!", 2)
+            else
+                TriggerEvent("bsdelivery:getTheJob")
+                onCooldown = true
+                -- wait 15 minutes
+                Citizen.Wait(900000)
+            end
         else
-            TriggerEvent("bsdelivery:getTheJob")
+            TriggerEvent("DoLongHudText", "We dont have any orders right now!", 2)
         end
     else
         TriggerEvent("DoLongHudText", "You dont work here", 2)
@@ -862,7 +870,7 @@ AddEventHandler("bsdelivery:getTheJob", function()
             TriggerEvent('phone:robberynotif', 'Burgershot - Marty Shanks',
                             "You took too long, the customer canceled the order.")
             Citizen.Wait()
-            hasJob = false        
+            hasJob = false
         end
     end)
 end)
@@ -884,20 +892,61 @@ Citizen.CreateThread(function()
     end
 end)
 
-
+RegisterNetEvent("drp-burgershot:giveFoodToCustomer")
 AddEventHandler("drp-burgershot:giveFoodToCustomer", function()
-    if hasJob then 
-        -- try to remove everything from the inventory which is in the currentMenu
-        for i = 1, #currentMenu do
-            local item = currentMenu[i]
-            -- has enough item
-            if exports["drp-inventory"]:hasEnoughOfItem(item, 1) then
-                -- remove item from inventory
-                TriggerEvent('inventory:removeItem', item, 1)
-                information = {
-                    ["Price"] = math.random(25, 75),
-                }
-                TriggerEvent("player:receiveItem", "burgerReceipt", 1, true, information)
+    if hasJob then
+        local finished = exports['drp-taskbar']:taskBar(22500, 'Giving food to customer...')
+        if finished == 100 then
+            hasJob = false
+
+            -- try to remove everything from the inventory which is in the currentMenu
+            local count = 0
+            local maxCount = #currentMenu
+
+            for i = 1, #currentMenu do
+                local item = currentMenu[i]
+                -- has enough item
+                if exports["drp-inventory"]:hasEnoughOfItem(item, 1) then
+                    -- remove item from inventory
+                    TriggerEvent('inventory:removeItem', item, 1)
+                    information = {
+                        ["Price"] = math.random(25, 75),
+                    }
+                    TriggerEvent("player:receiveItem", "burgerReceipt", 1, true, information)
+                end
+            end
+
+            
+            exports['drp-textui']:hideInteraction()
+            TriggerEvent("DoLongHudText", "You delivered the food!", 2)
+            SetBlipRoute(FoodDeliveryLocation, false)
+            SetBlipSprite(FoodDeliveryLocation, 0)
+            SetBlipAsShortRange(FoodDeliveryLocation, false)
+
+            -- if 80% of the items are removed
+            if count >= maxCount * 0.75 then
+                if math.random(1, 111) == 69 then
+                    TriggerEvent("DoLongHudText", "I dont need this, maybe you find it useful?", 1)
+                    TriggerEvent("player:receiveItem", "heistusb4")
+                end
+                if math.random(1, 75) == 69 then
+                    TriggerEvent("player:receiveItem", "safecrackingkit")
+                    TriggerEvent("DoLongHudText", "I dont need this, maybe you find it useful?", 1)
+                end
+                if math.random(1, 75) == 69 then
+                    information = {
+                        ["Price"] = math.random(750, 1250),
+                    }
+                    TriggerEvent("player:receiveItem", "burgerReceipt", 1, true, information)
+                    TriggerEvent("DoLongHudText", "Here is an extra Tip of $" .. information["Price"] .. "!", 1)
+                end
+                if math.random(1, 3) == 1 then
+                    information = {
+                        ["Price"] = math.random(75, 250),
+                    }
+                    TriggerEvent("player:receiveItem", "burgerReceipt", 1, true, information)
+                    TriggerEvent("DoLongHudText", "Here is an extra Tip of $" .. information["Price"] .. "!", 1)
+                end
             end
         end
     end
