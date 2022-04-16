@@ -117,6 +117,12 @@ function gokartenter()
             Citizen.Wait(5)
             if IsControlJustReleased(0, 38) then
                 SetEntityCoords(GetPlayerPed(-1), 5468.3887, 260.8097, 20.2208)
+                FreezeEntityPosition(GetPlayerPed(-1), true)
+                DoScreenFadeOut(250)
+                Wait(1000)
+                DoScreenFadeIn(250)
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+                SetEntityCoords(GetPlayerPed(-1), 5468.3887, 260.8097, 20.2208)
             end
         end
     end)
