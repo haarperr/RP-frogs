@@ -516,7 +516,7 @@ Entries[#Entries + 1] = {
     data = {
         {
             id = "bsguy",
-            label = "Get Delivery Job",
+            label = "Get a Delivery Job",
             icon = "circle",
             event = "bsdelivery:getJob",
             parameters = {}
