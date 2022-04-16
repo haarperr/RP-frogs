@@ -2401,7 +2401,7 @@ end
 RegisterCommand("evidence", function(source, args)
 	local job = exports["isPed"]:isPed("myjob")
 	if job == 'police' or job == 'state' or job == 'sheriff' then
-		if FIBEvidence or isNearRoyalPDEvidence then
+		if FIBEvidenceNear or isNearRoyalPDEvidence then
 			TriggerEvent("server-inventory-open", "1", "CASE ID: "..args[1])
 		else
 			TriggerEvent("DoLongHudText", "You are not near the evidence spot!", 2)
@@ -2761,7 +2761,7 @@ function FIBArmor()
 end
 
 
-local FIBEvidence = false
+local FIBEvidenceNear = false
 --Name: fibevidence | 2022-04-15T08:19:20Z
 Citizen.CreateThread(function()
 	exports["drp-polyzone"]:AddPolyZone("fibevidence", {
@@ -2786,7 +2786,7 @@ RegisterNetEvent('drp-polyzone:enter')
 AddEventHandler('drp-polyzone:enter', function(name)
     if name == "fibevidence" then
         FIBEvidencee()
-		FIBEvidence = true
+		FIBEvidenceNear = true
 		exports['drp-textui']:showInteraction('[E] Open Evidence Locker')
 	end
 end)
@@ -2794,14 +2794,14 @@ end)
 RegisterNetEvent('drp-polyzone:exit')
 AddEventHandler('drp-polyzone:exit', function(name)
     if name == "fibevidence" then
-        FIBEvidence = false
+        FIBEvidenceNear = false
     end
 	exports['drp-textui']:hideInteraction()
 end)
 
 function FIBEvidencee()
 	Citizen.CreateThread(function()
-        while FIBEvidence do
+        while FIBEvidenceNear do
             Citizen.Wait(5)
 			if IsControlJustReleased(0, 38) then
 
