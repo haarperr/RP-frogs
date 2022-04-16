@@ -284,6 +284,7 @@ function DeleteBlip(blip)
 end
 
 function CreateBlipBoostLoc(x, y, z)
+    Citizen.Trace("wow\n")
     blipBoostLoc = AddBlipForRadius(x, y, z, 300.0)
     SetBlipHighDetail(blipBoostLoc, true)
     SetBlipColour(blipBoostLoc, 3)
@@ -404,7 +405,7 @@ AddEventHandler("chop:startChop", function(modelName)
     local pedY = carSpawns[carSpawnRandom]["pedSpawn"]["y"]
     local pedZ = carSpawns[carSpawnRandom]["pedSpawn"]["z"]
     local pedH = carSpawns[carSpawnRandom]["pedSpawn"]["h"]
-
+    Citizen.Trace(tostring(vehHash) .. " " .. tostring(x) .. " " .. tostring(y) .. " " .. tostring(z) .. " " .. tostring(h) .. "\n")
     if not IsModelInCdimage(vehHash) then return end
         RequestModel(vehHash)
         while not HasModelLoaded(vehHash) do
