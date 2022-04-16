@@ -2569,7 +2569,7 @@ end
         end
 
         if itemid == "cbsmoothie" then
-            SetRunSprintMultiplierForPlayer(PlayerId(),1.49)  
+            SetRunSprintMultiplierForPlayer(PlayerId(),1.5)  
             Citizen.Wait(3000)
             SetRunSprintMultiplierForPlayer(PlayerId(),1.2)
             Citizen.Wait(15000)  
