@@ -2752,13 +2752,23 @@ end
 local StateFIBLockerORClothing = false
 --Name: fibclothes | 2022-04-15T08:19:20Z
 Citizen.CreateThread(function()
-	exports["drp-polyzone"]:AddBoxZone("fib_clothes", vector3(2515.63, -344.53, 101.89), 3, 3, {
-		name="fibclothes",
-		heading=0,
-		minZ=99,
-		maxZ=103,
-		-- debugPoly=true
-    }) 
+	exports["drp-polyzone"]:AddPolyZone("fib_clothes", {
+		vector2(2522.2561035156, -328.91961669922),
+		vector2(2518.5419921875, -332.94735717774),
+		vector2(2520.3610839844, -334.99298095704),
+		vector2(2520.6462402344, -334.2940979004),
+		vector2(2519.5622558594, -332.88241577148),
+		vector2(2522.1262207032, -329.83950805664),
+		vector2(2523.083984375, -330.92446899414),
+		vector2(2521.0063476562, -332.74523925782),
+		vector2(2526.2751464844, -338.09149169922),
+		vector2(2528.3771972656, -335.6382446289)
+	  }, {
+		name="fibclothingeg",
+		minZ = 92.09220123291,
+		maxZ = 95.09220123291
+	  })
+	  
 end)
 
 RegisterNetEvent('drp-polyzone:enter')
