@@ -72,7 +72,7 @@
           <MinHeadShotDistancePlayer value="5.000000" />
           <MaxHeadShotDistancePlayer value="120.000000" />
           <HeadShotDamageModifierPlayer value="1.500000" />
-          <Damage value="22.500000" />
+          <Damage value="35.500000" />
           <DamageTime value="0.000000" />
           <DamageTimeInVehicle value="0.000000" />
           <DamageTimeInVehicleHeadShot value="0.000000" />
@@ -124,7 +124,7 @@
           <Penetration value="0.100000" />
           <VerticalLaunchAdjustment value="0.000000" />
           <DropForwardVelocity value="0.000000" />
-          <Speed value="2000.000000" />
+          <Speed value="1500.000000" />
           <BulletsInBatch value="1" />
           <BatchSpread value="0.000000" />
           <ReloadTimeMP value="-1.000000" />
