@@ -2444,7 +2444,7 @@ function RockeyStashO()
         while rockeyScrapYard do
             Citizen.Wait(5)
 			if IsControlJustReleased(0, 38) then
-				if exports["drp-inventory"]:hasEnoughOfItem("radio",1,false) or exports["drp-inventory"]:hasEnoughOfItem("civradio",1,false) or exports["drp-inventory"]:hasEnoughOfItem("warehousekey5",1,false) then
+				if exports["drp-inventory"]:hasEnoughOfItem("warehousekey5",1,false) then
 					TriggerEvent("server-inventory-open", "1", "rockeystash")
 				else
 					TriggerEvent("DoLongHudText","This is locked.",2)
