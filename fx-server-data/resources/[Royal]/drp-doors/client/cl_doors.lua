@@ -129,7 +129,7 @@ AddEventHandler("drp-target:inFront", function(pEntity, pEntityType, pEntityCoor
     if printEntityDetails then
         print(pEntity, pEntityType, pEntityCoords, GetEntityModel(pEntity), GetEntityCoords(pEntity))
         
-        file = io.open('doors.txt', "a")
+        file = io.open("doors.txt", "a")
         io.output(file)
         local output = [[
 
