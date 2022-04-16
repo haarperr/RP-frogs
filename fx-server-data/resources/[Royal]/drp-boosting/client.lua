@@ -256,6 +256,7 @@ AddEventHandler("ls:startCarBoost", function(modelName)
   SetVehicleHasBeenOwnedByPlayer(vehicle,true)
 	SetVehicleIsStolen(vehicle, true)
 	SetVehRadioStation(vehicle, 'OFF')
+  SetEntityAsMissionEntity(vehicle, true, true)
   spawnedVeh = GetClosestVehicle(x, y, z, 3.5, 0, 70)
 
   
@@ -288,7 +289,7 @@ local trackerActive = false
 RegisterNetEvent("ls:boostLockPick")
 AddEventHandler("ls:boostLockPick", function()
   local plyPos = GetEntityCoords(PlayerPedId())
-  local targetVeh = GetClosestVehicle(plyPos.x, plyPos.y, plyPos.z, 2.5, 0, 70)
+  local targetVeh = GetClosestVehicle(plyPos.x, plyPos.y, plyPos.z, 3, 0, 70)
   local coords = SpawnPedLoc()
   local pedSpawnAmount = nil 
   local weapon = nil
@@ -311,19 +312,19 @@ AddEventHandler("ls:boostLockPick", function()
   }
 
   if vehClass == "D" then
-    pedSpawnAmount = 2
+    pedSpawnAmount = math.random(1,2)
     weapon = lowTierGuns[math.random(1, #lowTierGuns)]
   elseif vehClass == "C" then
-    pedSpawnAmount = 2
+    pedSpawnAmount = math.random(1,2)
     weapon = lowTierGuns[math.random(1, #lowTierGuns)]
   elseif vehClass == "B" then
-    pedSpawnAmount = math.random(2,3)
+    pedSpawnAmount = math.random(1,3)
     weapon = medTierGuns[math.random(1, #medTierGuns)]
   elseif vehClass == "A" then
     pedSpawnAmount = math.random(2,4)
     weapon = bigBoyGuns[math.random(1, #bigBoyGuns)]
   elseif vehClass == "S" then
-    pedSpawnAmount = math.random(2,4)
+    pedSpawnAmount = math.random(3,4)
     weapon = bigBoyGuns[math.random(1, #bigBoyGuns)]
   end
   
@@ -334,47 +335,47 @@ AddEventHandler("ls:boostLockPick", function()
           TriggerEvent("ls:spawnPed", coords["x"], coords["y"], coords["z"], coords["h"], weapon)
           pedsSpawned = true
         end  
-        if vehClass == 'D' then
-          if math.random(1,4) == 1 then
-            TriggerEvent("drp-dispatch:initBoostAlert", spawnedVeh) 
-          end
-        elseif vehClass == 'C' then
-          if math.random(1,2) == 1 then
-            TriggerEvent("drp-dispatch:initBoostAlert", spawnedVeh) 
-          end
-        else
+      end
+      
+      if vehClass == 'D' then
+        if math.random(1,4) == 1 then
           TriggerEvent("drp-dispatch:initBoostAlert", spawnedVeh) 
         end
-
-        while not IsPedInAnyVehicle(PlayerPedId(), false) do
-          Citizen.Wait(1000)
-        end 
-
-        local isPedInBoostCar = IsPedInVehicle(PlayerPedId(), spawnedVeh, true)
-
-        local TrackerTriggerTime = 30000
-        if vehClass == 'D' then
-          TrackerTriggerTime = 80000
-        elseif vehClass == 'C' then
-          TrackerTriggerTime = 60000
-        elseif vehClass == 'B' then
-          TrackerTriggerTime = 45000
-          TriggerServerEvent('drp-boosting:tracker', spawnedVeh, TrackerTriggerTime, vehClass)
-        elseif vehClass == 'A' then
-          TrackerTriggerTime = 30000
-          TriggerServerEvent('drp-boosting:tracker', spawnedVeh, TrackerTriggerTime, vehClass)
-        elseif vehClass == 'S' then
-          TrackerTriggerTime = 10000
-          TriggerServerEvent('drp-boosting:tracker', spawnedVeh, TrackerTriggerTime, vehClass)
+      elseif vehClass == 'C' then
+        if math.random(1,2) == 1 then
+          TriggerEvent("drp-dispatch:initBoostAlert", spawnedVeh) 
         end
-
-        TriggerEvent("chatMessage","DarkNet", 5, "Bring that car to the drop off location")
-        pedsSpawned = false
-        TriggerEvent("ls:boostDropOff") 
+      else
+        TriggerEvent("drp-dispatch:initBoostAlert", spawnedVeh) 
       end
+
+      while not IsPedInAnyVehicle(PlayerPedId(), false) and GetVehiclePedIsIn(PlayerPedId(), false) == spawnedVeh do
+        Citizen.Wait(1000)
+      end 
+
+      local isPedInBoostCar = IsPedInVehicle(PlayerPedId(), spawnedVeh, true)
+
+      local TrackerTriggerTime = 30000
+      if vehClass == 'D' then
+        TrackerTriggerTime = 80000
+      elseif vehClass == 'C' then
+        TrackerTriggerTime = 60000
+      elseif vehClass == 'B' then
+        TrackerTriggerTime = 45000
+        TriggerServerEvent('drp-boosting:tracker', spawnedVeh, TrackerTriggerTime, vehClass)
+      elseif vehClass == 'A' then
+        TrackerTriggerTime = 30000
+        TriggerServerEvent('drp-boosting:tracker', spawnedVeh, TrackerTriggerTime, vehClass)
+      elseif vehClass == 'S' then
+        TrackerTriggerTime = 10000
+        TriggerServerEvent('drp-boosting:tracker', spawnedVeh, TrackerTriggerTime, vehClass)
+      end
+
+      TriggerEvent("chatMessage","DarkNet", 5, "Bring that car to the drop off location")
+      pedsSpawned = false
+      TriggerEvent("ls:boostDropOff") 
     end
    end)
-
 end)
 
 
