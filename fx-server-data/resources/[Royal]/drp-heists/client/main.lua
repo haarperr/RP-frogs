@@ -19,27 +19,27 @@ Citizen.CreateThread(function()
 
 end)
 
-Citizen.CreateThread(function()
-  while true do
-    Citizen.Wait(1)
-  if IsControlPressed(0,51) and LaptopExchange == true then
-    
-    if exports["drp-inventory"]:hasEnoughOfItem("heistusb4", 1, false, true) then
-      TriggerEvent("inventory:removeItem", "heistusb4", 1)
-      TriggerEvent( "player:receiveItem", "heistlaptop3", 1 )
-    end
-    if exports["drp-inventory"]:hasEnoughOfItem("heistusb1", 1, false, true) then
-      TriggerEvent("inventory:removeItem", "heistusb1", 1)
-      TriggerEvent( "player:receiveItem", "heistlaptop2", 1 )
-    end
-    if exports["drp-inventory"]:hasEnoughOfItem("heistusb2", 1, false, true) then
-      TriggerEvent("inventory:removeItem", "heistusb2", 1)
-      TriggerEvent( "player:receiveItem", "heistlaptop4", 1 ) -- reverted this, wasnt working
-    end
-    Citizen.Wait(1000)
-  end
-end
-end)
+-- Citizen.CreateThread(function()
+--   while true do
+--     Citizen.Wait(1)
+--   if IsControlPressed(0,51) and LaptopExchange == true then
+--     
+--     if exports["drp-inventory"]:hasEnoughOfItem("heistusb4", 1, false, true) then
+--       TriggerEvent("inventory:removeItem", "heistusb4", 1)
+--       TriggerEvent( "player:receiveItem", "heistlaptop3", 1 )
+--     end
+--     if exports["drp-inventory"]:hasEnoughOfItem("heistusb1", 1, false, true) then
+--       TriggerEvent("inventory:removeItem", "heistusb1", 1)
+--       TriggerEvent( "player:receiveItem", "heistlaptop2", 1 )
+--     end
+--     if exports["drp-inventory"]:hasEnoughOfItem("heistusb2", 1, false, true) then
+--       TriggerEvent("inventory:removeItem", "heistusb2", 1)
+--       TriggerEvent( "player:receiveItem", "heistlaptop4", 1 ) -- reverted this, wasnt working
+--     end
+--     Citizen.Wait(1000)
+--   end
+-- end
+-- end)
 
 
 RegisterNetEvent('heists:buyvpn')
@@ -51,6 +51,17 @@ end)
 RegisterNetEvent('buy:success')
 AddEventHandler('buy:success', function(item, amount)
   TriggerEvent( "player:receiveItem", item, amount )
+end)
+
+RegisterNetEvent('buy:checkIfItem')
+AddEventHandler('buy:checkIfItem', function(itemItRequires, amount, price)
+  if exports["drp-inventory"]:hasEnoughOfItem(itemItRequires, amount, false, true) then
+    TriggerEvent("inventory:removeItem", itemItRequires, amount) 
+    TriggerServerEvent("buy:removeMoney", price)
+    TriggerEvent('DoLongHudText', 'You sucessfully buyed this Item.', 1)
+  else
+    TriggerEvent('DoLongHudText', 'You dont seem to have the required Item.', 2)
+  end
 end)
 
 RegisterNetEvent('drp-polyzone:enter')
@@ -144,7 +155,7 @@ AddEventHandler('vpnmenu', function()
                 event = "vpnitemmenu"
             }
         },
-		{
+		    {
             id = 3,
             header = "Log Off",
 		      	txt = "",
@@ -168,7 +179,7 @@ AddEventHandler('vpnitemmenu', function()
             header = "Purchase Slambook Pro",
 		      	txt = "Price: $7000",
 			      params = {
-                event = "buylaptop"
+                event = "buylaptop",
             }
         },
         {
@@ -176,8 +187,51 @@ AddEventHandler('vpnitemmenu', function()
             header = "Purchase Tracker Disabler",
             txt = "Price: $4000",
             params = {
-                event = "buydisabler"
+              event = "buydisabler"
             }
+        },
+        {
+            id = 4,
+            header = "Purchase Green Laptop",
+            txt = "Price: $2500 + Green Dongle",
+            params = {
+              event = "buyitemwithitemandmoney"
+              args = {
+                item = "heistlaptop3",
+                price = 2500,
+                itemItRequired = "heistusb4",
+                amount = 1,
+              }
+            }
+        },
+        {
+            id = 5,
+            header = "Purchase Blue Laptop",
+            txt = "Price: $5000 + Blue Dongle",
+            params = {
+              event = "buyitemwithitemandmoney"
+              args = {
+                item = "heistlaptop2",
+                price = 5000,
+                itemItRequired = "heistusb1",
+                amount = 1,
+            }
+          }
+        },
+        {
+            id = 6,
+            header = "Purchase Red Laptop",
+            txt = "Price: $10000 + Red Dongle",
+            params = {
+              event = ""
+              args = {
+                item = "",
+                price = 10000,
+                itemItRequired = "heistusb2",
+                amount = 1,
+            }
+          }
+        }
       },
 		{
             id = 4,
@@ -190,16 +244,16 @@ AddEventHandler('vpnitemmenu', function()
     })
 end)
 
-
+RegisterNetEvent("buyitemwithitemandmoney")
+AddEventHandler("buyitemwithitemandmoney", function(item, price, itemItRequired, amount)
+  TriggerServerEvent("buy:buyitemPlusCostOneItem", item, price, itemItRequired, amount)
+end)
 
 
 RegisterNetEvent("buylaptop")
 AddEventHandler("buylaptop", function()
   TriggerServerEvent("shops:buylaptopsv")
 end)
-
-
-
 
 RegisterNetEvent("buydisabler")
 AddEventHandler("buydisabler", function()
