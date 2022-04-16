@@ -252,7 +252,6 @@ function InteractiveChopping(vehicle)
     end)
 end
 
-exports('InteractiveChopping', InteractiveChopping)
 
 -- RegisterCommand('chop', function ()
 --     local vehicle = exports['drp-targetinteract']:GetCurrentEntity()
@@ -491,13 +490,11 @@ AddEventHandler("chop:boostLockPick", function()
 
         local isPedInBoostCar = IsPedInVehicle(PlayerPedId(), spawnedVeh, true)
 
-        TriggerEvent('phone:robberynotif', 'DarkNet', "Bring that car to the chop yard off location")
         pedsSpawned = false
         TriggerEvent("chop:DropOff") 
       end
     end
    end)
-
 end)
 
 
@@ -534,4 +531,34 @@ AddEventHandler("chop:spawnPed", function(x, y, z, h, weapon)
     SetPedDropsWeaponsWhenDead(boostingPed1, false)
   end)
 
+end)
+
+
+RegisterNetEvent("chop:DropOff")
+AddEventHandler("chop:DropOff", function()
+    local dropRand = math.random(1, #dropPoint)
+    local dropX = dropPoint[dropRand]["x"]
+    local dropY = dropPoint[dropRand]["y"]
+    local dropZ = dropPoint[dropRand]["z"]
+
+    CreateBlipDropOff(dropX, dropY, dropZ)
+    SetNewWaypoint(dropX, dropY)
+
+    TriggerEvent('phone:robberynotif', 'DarkNet', "Bring that car to the chop yard.")
+
+    Citizen.CreateThread(function()
+        while true do 
+            Citizen.Wait(2500)
+            plyLoc = GetEntityCoords(PlayerPedId())
+            local boostCarLoc = GetEntityCoords(spawnedVeh)
+            local dist = Vdist(dropX, dropY, dropZ, boostCarLoc.x, boostCarLoc.y, boostCarLoc.z)
+            local plyDistFromDrop = Vdist(dropX, dropY, dropZ, plyLoc.x, plyLoc.y, plyLoc.z)
+            local isCarAtDropOff = false
+            if dist < 2.5 then
+                isCarAtDropOff = true
+                InteractiveChopping(GetVehiclePedIsIn(PlayerPedId(-1), false))
+                return
+            end
+        end
+    end)
 end)
