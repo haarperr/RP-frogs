@@ -54,11 +54,12 @@ AddEventHandler('buy:success', function(item, amount)
 end)
 
 RegisterNetEvent('buy:checkIfItem')
-AddEventHandler('buy:checkIfItem', function(itemItRequires, amount, price)
+AddEventHandler('buy:checkIfItem', function(itemItRequires, amount, price, item, amount2)
   Citizen.Trace(tostring(itemItRequires) .. "\n" .. tostring(amount) .. "\n" .. tostring(price))
   if exports["drp-inventory"]:hasEnoughOfItem(itemItRequires, amount, false) then
     TriggerEvent("inventory:removeItem", itemItRequires, amount) 
     TriggerServerEvent("buy:removeMoney", price)
+    TriggerEvent('inventory:receiveItem', item, amount)
     TriggerEvent('DoLongHudText', 'You sucessfully buyed this Item.', 1)
   else
     TriggerEvent('DoLongHudText', 'You dont seem to have the required Item.', 2)
@@ -185,6 +186,7 @@ AddEventHandler('vpnitemmenu', function()
                 price = 2500,
                 itemItRequired = "heistusb4",
                 amount = 1,
+                amount2 = 1,
               }
             }
         },
@@ -199,6 +201,7 @@ AddEventHandler('vpnitemmenu', function()
                 price = 5000,
                 itemItRequired = "heistusb1",
                 amount = 1,
+                amount2 = 1,
             }
           }
         },
@@ -213,6 +216,7 @@ AddEventHandler('vpnitemmenu', function()
                 price = 10000,
                 itemItRequired = "heistusb2",
                 amount = 1,
+                amount2 = 1,
             }
           }
         }
@@ -221,7 +225,7 @@ end)
 
 RegisterNetEvent("buyitemwithitemandmoney")
 AddEventHandler("buyitemwithitemandmoney", function(args)
-  TriggerServerEvent("buy:buyitemPlusCostOneItem", args.item, args.price, args.itemItRequired, args.amount)
+  TriggerServerEvent("buy:buyitemPlusCostOneItem", args.item, args.price, args.itemItRequired, args.amount, args.amount2)
 end)
 
 

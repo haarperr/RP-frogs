@@ -13,12 +13,12 @@ AddEventHandler('buy:buyitem', function(item, price, amount)
 end)
 
 RegisterServerEvent('buy:buyitemPlusCostOneItem')
-AddEventHandler('buy:buyitemPlusCostOneItem', function(item, price, itemItRequired, amount)
+AddEventHandler('buy:buyitemPlusCostOneItem', function(item, price, itemItRequired, amount, AmountItemsHeGet)
     local src = source
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
     local cash = user:getCash()
     if tonumber(cash) >= price then
-        TriggerClientEvent('buy:checkIfItem', src, itemItRequired, amount, price)
+        TriggerClientEvent('buy:checkIfItem', src, itemItRequired, amount, price, item, AmountItemsHeGet)
     else
     TriggerEvent('DoLongHudText', 'You dont seem to have enough money.', 2)
     end        
