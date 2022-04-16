@@ -2557,7 +2557,6 @@ end
         end
     end
 
-
     if itemid == "softdrink" or itemid == "cbdrink" or itemid == "cbsmoothie" then
         if itemid == "softdrink" then
             TriggerEvent("attachItem", "softdrink")

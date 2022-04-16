@@ -870,7 +870,7 @@ attachPropList = {
   },
   ["cbdrink"] = {
 		["model"] = "prop_food_cb_juice01",
-		["bone"] = 18905,
+		["bone"] = 28422,
 		["x"] = 0.1,
 		["y"] = -0.01,
 		["z"] = 0.05,
@@ -879,8 +879,8 @@ attachPropList = {
 		["zR"] = 60.0
   },
   ["cbcoffee"] = {
-		["model"] = "prop_food_cb_juice01",
-		["bone"] = 18905,
+		["model"] = "prop_food_cb_coffee",
+		["bone"] = 28422,
 		["x"] = 0.1,
 		["y"] = -0.01,
 		["z"] = 0.05,
