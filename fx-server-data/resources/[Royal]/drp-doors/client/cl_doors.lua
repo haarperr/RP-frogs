@@ -128,12 +128,12 @@ AddEventHandler("drp-target:inFront", function(pEntity, pEntityType, pEntityCoor
         return
     end
 
-    -- check if entity is a door
-    local doorId = GetTargetDoorId(pEntity)
-    if doorId == nil then
-        listening, currentDoorCoords, currentDoorId, currentDoorLockState = nil
-        return
-    end  
+    -- -- check if entity is a door
+    -- local doorId = GetTargetDoorId(pEntity)
+    -- if doorId == nil then
+    --     listening, currentDoorCoords, currentDoorId, currentDoorLockState = nil
+    --     return
+    -- end  
 
     if printEntityDetails then
         print(pEntity, pEntityType, pEntityCoords, GetEntityModel(pEntity), GetEntityCoords(pEntity))
