@@ -254,7 +254,7 @@ end
 exports('InteractiveChopping', InteractiveChopping)
 
 RegisterCommand('chop', function ()
-    local vehicle = exports['drp-target']:GetCurrentEntity()
+    local vehicle = exports['drp-targetinteract']:GetCurrentEntity()
 
     if not vehicle then return end
 
