@@ -883,8 +883,8 @@ Citizen.CreateThread(function()
             if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), currentHouse.x, currentHouse.y, currentHouse.z, true) < 2 then            
 			    exports['drp-textui']:showInteraction('[E] Give Food') 
                 if IsControlJustReleased(0, 38) then
-                    exports['drp-textui']:hideInteraction() -- Just in case
                     hasJob = false
+                    exports['drp-textui']:hideInteraction() -- Just in case
                     TriggerEvent('drp-burgershot:giveFoodToCustomer')
                 end
             else
@@ -898,7 +898,6 @@ RegisterNetEvent("drp-burgershot:giveFoodToCustomer")
 AddEventHandler("drp-burgershot:giveFoodToCustomer", function()
     local finished = exports['drp-taskbar']:taskBar(22500, 'Giving food to customer...')
     if finished == 100 then
-
         -- try to remove everything from the inventory which is in the currentMenu
         local count = 0
         local maxCount = #currentMenu
@@ -916,9 +915,6 @@ AddEventHandler("drp-burgershot:giveFoodToCustomer", function()
                 TriggerEvent("player:receiveItem", "burgerReceipt", 1, true, information)
             end
         end
-
-        
-        exports['drp-textui']:hideInteraction()
         TriggerEvent("DoLongHudText", "You delivered the food!", 2)
         SetBlipRoute(FoodDeliveryLocation, false)
         SetBlipSprite(FoodDeliveryLocation, 0)

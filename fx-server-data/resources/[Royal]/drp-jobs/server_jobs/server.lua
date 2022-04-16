@@ -67,7 +67,7 @@ RegisterServerEvent('burgershot:receipt:payment')
 AddEventHandler('burgershot:receipt:payment', function()
     local src = source
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
-    user:addMoney(math.random(200 ,500))
+    user:addMoney(math.random(200, 350))
 end)
 
 
