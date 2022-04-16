@@ -217,7 +217,7 @@ RPC.register("drp-garages:selectSharedGarage", function(pGarage, pJob)
 				end
             end
 
-			if pType == "law" and pGarage == "garagepd" or pGarage == 'garagefib' or pGarage == 'garagepdpaleto'  then
+			if pType == "law" and (pGarage == "garagepd" or pGarage == 'garagefib' or pGarage == 'garagepdpaleto')  then
 				TriggerClientEvent('drp-context:sendMenu', pSrc, {
 					{
 						id = 1,
