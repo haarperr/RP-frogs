@@ -237,6 +237,7 @@ end)
 
 RegisterNetEvent("buyitemwithitemandmoney")
 AddEventHandler("buyitemwithitemandmoney", function(item, price, itemItRequired, amount)
+  Citizen.Trace(price)
   TriggerServerEvent("buy:buyitemPlusCostOneItem", item, price, itemItRequired, amount)
 end)
 
