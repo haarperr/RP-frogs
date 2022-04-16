@@ -794,6 +794,7 @@ AddEventHandler("bsdelivery:getJob", function()
                 onCooldown = true
                 -- wait 15 minutes
                 Citizen.Wait(900000)
+                TriggerEvent('phone:robberynotif', 'Burgershot - Marty Shanks', "New Delivery Jobs are available!")
             end
         else
             TriggerEvent("DoLongHudText", "We dont have any orders right now!", 2)
@@ -905,6 +906,7 @@ AddEventHandler("drp-burgershot:giveFoodToCustomer", function()
 
             for i = 1, #currentMenu do
                 local item = currentMenu[i]
+                Citizen.Trace(item)
                 -- has enough item
                 if exports["drp-inventory"]:hasEnoughOfItem(item, 1) then
                     -- remove item from inventory
