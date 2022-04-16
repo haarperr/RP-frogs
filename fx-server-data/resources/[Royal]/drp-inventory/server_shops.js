@@ -211,7 +211,7 @@ function WarehouseCrafting() {
         { item_id: "subammo", id: 0, name: "craft", information: "{}", slot: 9, amount: 50 },
         { item_id: "148457251", id: 0, name: "craft", information: "{}", slot: 10, amount: 50 },
         { item_id: "-134995899", id: 0, name: "craft", information: "{}", slot: 11, amount: 50 },
-        { item_id: "elevatorhackingdevice", id: 0, name: "craft", information: "{}", slot: 12, amount: 50 },
+        { item_id: "cuffs", id: 0, name: "craft", information: "{}", slot: 12, amount: 50 }, // elevatorhackingdevice
          ];
     return JSON.stringify(shopItems);
 }
@@ -341,7 +341,7 @@ function CraftRifleStoreGangs() {
         { item_id: "subammo", id: 0, name: "craft", information: "{}", slot: 3, amount: 50 },
         { item_id: "148457251", id: 0, name: "craft", information: "{}", slot: 4, amount: 50 },
         { item_id: "-134995899", id: 0, name: "craft", information: "{}", slot: 5, amount: 50 },
-        { item_id: "elevatorhackingdevice", id: 0, name: "craft", information: "{}", slot: 6, amount: 50 },
+        { item_id: "cuffs", id: 0, name: "craft", information: "{}", slot: 6, amount: 50 },// elevatorhackingdevice
 
     ];
     return JSON.stringify(shopItems);
