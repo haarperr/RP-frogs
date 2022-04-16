@@ -33,6 +33,7 @@ function AnimationTask(entity, coordsType, coordsOrigin, coordsDist, animationTy
         end
 
         while self.active do
+            Citizen.Wait(0)
             local idle = 100
 
             playerCoords = GetEntityCoords(playerPed)
@@ -206,6 +207,7 @@ function InteractiveChopping(vehicle)
 
     Citizen.CreateThread(function()
         while state.active do
+            Citizen.Wait(0)
             local idle = 500
 
             local bone, coords, distance = GetClosestBone(vehicle, boneList)
