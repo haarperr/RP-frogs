@@ -771,9 +771,6 @@ local menuList = {
     {"murdermeal"},
     {"moneyshot"},
     {"fries"},
-    {"fries"}, 
-    {"torpedo"}, 
-    {"meatfree"}
 }
 
 local hasJob = false
