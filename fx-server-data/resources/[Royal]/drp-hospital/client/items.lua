@@ -26,6 +26,15 @@ AddEventHandler("healed:useOxy", function()
     lasthealth2 = lasthealth
 end)
 
+RegisterNetEvent("healed:useFries")
+AddEventHandler("healed:useFries", function()
+    ClearPedBloodDamage(PlayerPedId())
+
+    HealSuperSlow()
+    lasthealth = GetEntityHealth(PlayerPedId())
+    lasthealth2 = lasthealth
+end)
+
 function HealSlow()
     if not healing then
         healing = true
@@ -37,6 +46,23 @@ function HealSlow()
     
     while count > 0 do
         Citizen.Wait(1000)
+        count = count - 1
+        SetEntityHealth(PlayerPedId(), GetEntityHealth(PlayerPedId()) + 1) 
+    end
+	healing = false
+end
+
+function HealSuperSlow()
+    if not healing then
+        healing = true
+    else
+        return
+    end
+    
+    local count = 30
+    
+    while count > 0 do
+        Citizen.Wait(2000)
         count = count - 1
         SetEntityHealth(PlayerPedId(), GetEntityHealth(PlayerPedId()) + 1) 
     end
