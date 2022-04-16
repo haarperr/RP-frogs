@@ -473,7 +473,7 @@ AddEventHandler("drp-cluckinbell:giveFoodToCustomer", function()
         SetBlipAsShortRange(FoodDeliveryLocation, false)
 
         -- count / 2.5 , rounded up to int
-        local reciepesAmount = math.ceil(count / 2.5)
+        local reciepesAmount = math.ceil(count / 2)
         TriggerEvent("player:receiveItem", "burgerReceipt", reciepesAmount)
 
         -- if 80% of the items are removed
