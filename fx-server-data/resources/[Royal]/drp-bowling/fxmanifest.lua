@@ -5,8 +5,6 @@ client_script "@drp-errorlog/client/cl_errorlog.lua"
 client_script '@drp-locales/client/lib.lua'
 client_script "@drp-lib/client/cl_ui.lua"
 
-
-
 client_scripts {
   '@drp-rpc/client/cl_main.lua',
   '@drp-lib/client/cl_rpcother.lua',
