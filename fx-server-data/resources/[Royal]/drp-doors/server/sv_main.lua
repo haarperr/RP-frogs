@@ -2,6 +2,33 @@
 local doors = {}
 local elevators = {}
 
+RegisterNetEvent("drp-doors:write-entity")
+AddEventHandler("drp-doors:write-entity", function(entity)
+    file = io.open("doors.txt", "a")
+    io.output(file)
+    local output = [[
+        {
+            info = "PD Sandy 3",
+            active = true,
+            id = 550,
+            coords = vector3(]] .. tostring(GetEntityCoords(pEntity)) .. [[),
+            model = ]] .. tostring(GetEntityModel(pEntity)) .. [[,
+            lock = true,
+            keyFob = true,
+            desc = "x",
+            access = {
+                job = {
+                ["PD"] = true,
+                },
+                cid = {
+                },
+            }
+        },
+    ]]
+    io.write(tostring(output))
+    io.close(file)
+end)
+
 RegisterNetEvent('drp-doors:request-lock-state')
 AddEventHandler('drp-doors:request-lock-state', function()
     local src = source
