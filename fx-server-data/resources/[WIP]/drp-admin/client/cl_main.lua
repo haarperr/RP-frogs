@@ -27,12 +27,17 @@ RegisterCommand("lights", function()
 dark = false
 if dark == false then
     dark = true
-    SetBlackout(true)
+    TriggerClientEvent("toggleLights", -1, true)
 else
   dark = false
-  SetBlackout(false)
+  
+  TriggerClientEvent("toggleLights", -1, false)
 end
 end
+end)
+
+AddEventHandler("toggleLights", function(current)
+  SetBlackout(current)
 end)
 
 RegisterCommand("model", function()
