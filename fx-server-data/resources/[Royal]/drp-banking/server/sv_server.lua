@@ -196,6 +196,7 @@ AddEventHandler("bank:get:money", function(bussiness)
   local char = user:getCurrentCharacter()
   exports.ghmattimysql:execute('SELECT * FROM character_passes WHERE `cid`= ?', {char.id}, function(pre)
     if pre[1] then
+      Citizen.Trace(bussiness)
       exports.ghmattimysql:execute('SELECT * FROM group_banking WHERE `group_type`= ?', {bussiness}, function(data)
         if data[1] then
           TriggerClientEvent("bank:getBussinessCashBal", src, data[1].bank)
