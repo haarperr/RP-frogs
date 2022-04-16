@@ -116,8 +116,15 @@ end)
 RequestScriptAudioBank('dlc_nikez_general/general_general', 0)
 
 RegisterNUICallback('MakeASound', function(data, cb)
-  PlaySoundFrontend(-1, "wet-fart", "dlc_nikez_general", 0, "general_general")
+  TriggerServerEvent("fartsv")
+  
 end)
+
+RegisterNetEvent("dofart")
+AddEventHandler("dofart", function()
+    PlaySoundFrontend(-1, "wet-fart", "dlc_nikez_general", 0, "general_general")
+end)
+
 
 RegisterNUICallback('devmode', function(data, cb)
   TriggerEvent('drp-admin:client:ToggleDevmode', data.returnvalue)

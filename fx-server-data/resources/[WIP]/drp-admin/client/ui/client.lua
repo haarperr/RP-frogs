@@ -70,7 +70,7 @@ end)
 RequestScriptAudioBank('dlc_nikez_general/general_general', 0)
 
 RegisterNUICallback('MakeASound', function(data, cb)
-  PlaySoundFrontend(-1, "wet-fart", "dlc_nikez_general", 0, "general_general")
+  TriggerServerEvent("fartsv")
 end)
 
 RegisterNUICallback('devmode', function(data, cb)

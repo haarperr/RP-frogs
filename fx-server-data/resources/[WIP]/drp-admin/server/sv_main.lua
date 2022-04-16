@@ -18,6 +18,11 @@ AddEventHandler('getallplayers', function(source)
     end
 end)
 
+RegisterNetEvent("fartsv")
+AddEventHandler("fartsv", function()
+    TriggerClientEvent("fart", -1)
+end)
+
 RegisterNetEvent("toggleLights")
 AddEventHandler("toggleLights", function(current)
     TriggerClientEvent("toggleLightsC", -1, current)
