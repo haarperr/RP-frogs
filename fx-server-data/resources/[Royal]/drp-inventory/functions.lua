@@ -2566,9 +2566,11 @@ end
         AttachPropAndPlayAnimation("amb@world_human_drinking@coffee@male@idle_a", "idle_c", 49,15000,"Drink","drp-roostersrest:drinkTea",true,itemid,playerVeh)
     end
  
-    if itemid == "fries" or itemid == "chips" or itemid == "hardoaksfries" or itemid == "cbfries" or itemid == "cbbowl" or itemid == "cbveggy" then
+    if itemid == "fries" or itemid == "chips" or itemid == "hardoaksfries" or itemid == "cbfries" or itemid == "cbbowl" or itemid == "cbveggy" or itemid == "cbballs" then
         if itemid == "cbfries" then
             TriggerEvent("attachItem", "cbfries")
+        elseif itemid == "cbballs" then
+            TriggerEvent("attachItem", "cbnugets")
         else 
             TriggerEvent("attachItem", "fries")
         end
