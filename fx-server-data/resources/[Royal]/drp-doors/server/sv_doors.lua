@@ -9403,6 +9403,38 @@ DOOR_CONFIG = {
         },
       }
     },
+    {
+      info = "PD Palteo",
+      active = true,
+      id = 550,
+      coords = vector3(-450.0098, 6004.835, 32.28851),
+      model = 1857649811,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+         },
+        cid = {
+        },
+      }
+    },
+    {
+      info = "PD Paleto",
+      active = true,
+      id = 551,
+      coords = vector3(-451.4247, 6003.42, 32.28851),
+      model = 1362051455,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+         },
+        cid = {
+        },
+      }
+    },
 }
 
   
