@@ -444,7 +444,7 @@ AddEventHandler("chop:startChop", function(modelName)
             local carCoords = GetEntityCoords(vehicle, false)
             local dist = GetDistanceBetweenCoords(plyCoords.x, plyCoords.y, plyCoords.z, carCoords.x, carCoords.y, carCoords.z, false)
             if dist < 3 then
-                TriggerEvent("chop:boostLockPick")
+                TriggerEvent("chop:boostLockPick", vehicle)
             end
 
             if GetVehiclePedIsIn(PlayerPedId(), false) == spawnedVeh then
@@ -457,7 +457,7 @@ AddEventHandler("chop:startChop", function(modelName)
 end)
 
 RegisterNetEvent("chop:boostLockPick")
-AddEventHandler("chop:boostLockPick", function()
+AddEventHandler("chop:boostLockPick", function(vehicle)
   local plyPos = GetEntityCoords(PlayerPedId())
   local targetVeh = GetClosestVehicle(plyPos.x, plyPos.y, plyPos.z, 2.5, 0, 70)
   local coords = SpawnPedLoc()
@@ -492,7 +492,7 @@ AddEventHandler("chop:boostLockPick", function()
         local isPedInBoostCar = IsPedInVehicle(PlayerPedId(), spawnedVeh, true)
 
         pedsSpawned = false
-        TriggerEvent("chop:DropOff") 
+        TriggerEvent("chop:DropOff", vehicle) 
       end
     end
    end)
@@ -536,7 +536,7 @@ end)
 
 
 RegisterNetEvent("chop:DropOff")
-AddEventHandler("chop:DropOff", function()
+AddEventHandler("chop:DropOff", function(vehicle)
     local dropRand = math.random(1, #dropPoint)
     local dropX = dropPoint[dropRand]["x"]
     local dropY = dropPoint[dropRand]["y"]
@@ -555,11 +555,17 @@ AddEventHandler("chop:DropOff", function()
             local dist = Vdist(dropX, dropY, dropZ, boostCarLoc.x, boostCarLoc.y, boostCarLoc.z)
             local plyDistFromDrop = Vdist(dropX, dropY, dropZ, plyLoc.x, plyLoc.y, plyLoc.z)
             local isCarAtDropOff = false
-            if dist < 2.5 then
+            if dist < 5 and not IsPedInAnyVehicle(PlayerPedId(), false) then
                 isCarAtDropOff = true
-                InteractiveChopping(GetVehiclePedIsIn(PlayerPedId(-1), false))
+                TriggerServerEvent("drp-chopshop:registerCar", vehicle)
                 return
             end
         end
     end)
+end)
+
+
+RegisterNetEvent("drp-chopchop:markCar")
+AddEventHandler("drp-chopchop:markCar", function(vehicle)
+    InteractiveChopping(vehicle)
 end)

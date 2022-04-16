@@ -18,3 +18,8 @@ AddEventHandler("drp-chopshop:vehicle_loot", function(string)
         end
     end
 end)
+
+RegisterServerEvent("drp-chopshop:registerCar")
+AddEventHandler("drp-chopshop:registerCar", function(vehicle)
+    TriggerClientEvent("drp-chopchop:markCar", -1, vehicle)
+end)
