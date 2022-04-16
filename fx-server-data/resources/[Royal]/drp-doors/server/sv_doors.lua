@@ -9387,5 +9387,22 @@ DOOR_CONFIG = {
         },
       }
     },
+    {
+      info = "PD Sandy",
+      active = true,
+      id = 548,
+      coords = vector3(1857.424, 3689.848, 34.38715),
+      model = -2063446532,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
 }
   
