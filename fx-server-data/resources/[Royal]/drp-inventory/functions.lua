@@ -2104,10 +2104,11 @@ end
       or itemid == "pizza"
       or itemid == "pancakes"
       or itemid == "wings"
+      or itemid == "cbjr"
     ) then
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","inv:wellfed",true,itemid,playerVeh)
-        --attachPropsToAnimation(itemid, 6000)
-        --TaskItem("mp_player_inteat@burger", "mp_player_int_eat_burger", 49, 6000, "Eating", "inv:wellfed", true,itemid)
+        -- attachPropsToAnimation(itemid, 6000)
+        -- TaskItem("mp_player_inteat@burger", "mp_player_int_eat_burger", 49, 6000, "Eating", "inv:wellfed", true,itemid)
     end
 
     if (itemid == "sushiplate"
@@ -2565,7 +2566,7 @@ end
         AttachPropAndPlayAnimation("amb@world_human_drinking@coffee@male@idle_a", "idle_c", 49,15000,"Drink","drp-roostersrest:drinkTea",true,itemid,playerVeh)
     end
  
-    if itemid == "fries" or itemid == "chips" or itemid == "hardoaksfries" or itemid == "cbfries" or itemid == "cbbowl" then
+    if itemid == "fries" or itemid == "chips" or itemid == "hardoaksfries" or itemid == "cbfries" or itemid == "cbbowl" or itemid == "cbveggy" then
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,15000,"Eating","inv:fed2",true,itemid,playerVeh)
     end
 
@@ -2761,7 +2762,7 @@ end
 end)
 
 function AttachPropAndPlayAnimation(dictionary,animation,typeAnim,timer,message,func,remove,itemid,vehicle)
-    if itemid == "hamburger" or itemid == "heartstopper" or itemid == "bleederburger" or itemid == "moneyshot" or itemid == "torpedo" or itemid == "questionablemeatburger" then
+    if itemid == "hamburger" or itemid == "heartstopper" or itemid == "bleederburger" or itemid == "moneyshot" or itemid == "torpedo" or itemid == "questionablemeatburger" or itemid == "cbjr" then
         TriggerEvent("attachItem", "hamburger")
     elseif sandwichItems[itemid] then
         TriggerEvent("attachItem", "sandwich")
@@ -2829,7 +2830,7 @@ AddEventHandler("drp-inventory:attachPropPlayAnim", function(pType)
             vehicle
         )
     end
-    if pType == "cbfries" then
+    if pType == "cbfries" or pType == "cbveggy" then
         TriggerEvent("healed:useFries")
         success = AttachPropAndPlayAnimation(
             "mp_player_inteat@burger",
@@ -2845,7 +2846,23 @@ AddEventHandler("drp-inventory:attachPropPlayAnim", function(pType)
     end
     if pType == "cbbowl" then
         SetPedArmour(player, GetPedArmour(player) + 20)
-        TriggerEvent("drp-hud:updateStress",false,50)
+        TriggerEvent("drp-hud:updateStress",false,40)
+        success = AttachPropAndPlayAnimation(
+            "mp_player_inteat@burger",
+            "mp_player_int_eat_burger",
+            49,
+            12500,
+            "Eating",
+            "",
+            false,
+            "fries",
+            vehicle
+        )
+    end
+    if pType == "cbbucket" then
+        SetPedArmour(player, GetPedArmour(player) + 25)
+        TriggerEvent("drp-hud:updateStress",false,100)
+        TriggerEvent("inv:wellfed")
         success = AttachPropAndPlayAnimation(
             "mp_player_inteat@burger",
             "mp_player_int_eat_burger",
