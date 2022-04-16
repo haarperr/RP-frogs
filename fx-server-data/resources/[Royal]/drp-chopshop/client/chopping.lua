@@ -446,10 +446,10 @@ end)
 
 RegisterNetEvent("chop:boostLockPick")
 AddEventHandler("chop:boostLockPick", function(vehicle)
-  local plyPos = GetEntityCoords(PlayerPedId())
-  local pedSpawnAmount = nil 
-  local weapon = nil
-  local guns = {
+    local plyPos = GetEntityCoords(PlayerPedId())
+    local pedSpawnAmount = nil 
+    local weapon = nil
+    local guns = {
     "weapon_bat",
     "weapon_switchblade",
     "weapon_crowbar",
@@ -457,31 +457,31 @@ AddEventHandler("chop:boostLockPick", function(vehicle)
     "weapon_pistol",
     "weapon_switchblade",
     "weapon_combatpistol",
-  }
+    }
 
-  pedSpawnAmount = math.random(1,2)
-  weapon = guns[math.random(1, #guns)]
-  
-  
-  Citizen.CreateThread(function()
-    if vehicle == spawnedVeh then
-      if not pedsSpawned then
-        for i = pedSpawnAmount, 1, -1 do 
-            TriggerEvent("chop:spawnPed", currentLocation, weapon)
-            pedsSpawned = true
+    pedSpawnAmount = math.random(1,2)
+    weapon = guns[math.random(1, #guns)]
+
+    Citizen.CreateThread(function()
+        if not pedsSpawned then
+            for i = pedSpawnAmount, 1, -1 do 
+                TriggerEvent("chop:spawnPed", currentLocation, weapon)
+                pedsSpawned = true
+            end
         end
-        
+
         while not IsPedInAnyVehicle(PlayerPedId(), false) do
-          Citizen.Wait(1000)
+            Citizen.Wait(1000)
         end 
 
-        local isPedInBoostCar = IsPedInVehicle(PlayerPedId(), vehicle, true)
-
+        -- if vehicle ped is in == vehicle then
+        if GetVehiclePedIsIn(PlayerPedId(), false) == vehicle then
+            TriggerEvent("chop:DropOff", vehicle)
+        end
+        
         pedsSpawned = false
-        TriggerEvent("chop:DropOff", vehicle) 
-      end
-    end
-   end)
+        
+    end)
 end)
 
 
