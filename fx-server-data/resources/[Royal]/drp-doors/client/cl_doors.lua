@@ -18,9 +18,9 @@ AddEventHandler('drp-doors:initial-lock-state', function(pDoors)
     doors = pDoors
     setSecuredAccesses(doors, 'door')
     for doorId, door in ipairs(doors) do
-        if doorId ~= door.id then
-            -- print("we should not see this message - door id mismatch", doorId, " - id: ", door.id) -- This doesn't even matter i don't think lol
-        end
+        -- if doorId ~= door.id then
+        --     -- print("we should not see this message - door id mismatch", doorId, " - id: ", door.id) -- This doesn't even matter i don't think lol
+        -- end
         if door.active and not IsDoorRegisteredWithSystem(doorId) then
             AddDoorToSystem(doorId, door.model, door.coords, false, false, false)
             if door.automatic then
