@@ -342,6 +342,24 @@ Entries[#Entries + 1] = {
     group = { 'isNPC' },
     data = {
         {
+            id = "vpnguy",
+            label = "Buy a VPN ($5000)",
+            icon = "circle",
+            event = "heists:buyvpn",
+            parameters = {}
+        }
+    },
+    options = {
+        distance = { radius = 3.0 },
+        npcIds = {"vpnguy"}
+    }
+}
+
+Entries[#Entries + 1] = {
+    type = 'flag',
+    group = { 'isNPC' },
+    data = {
+        {
             id = "cartguy",
             label = "Get a Go Kart ($500)",
             icon = "circle",
