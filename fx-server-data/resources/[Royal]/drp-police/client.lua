@@ -2398,11 +2398,12 @@ function openMRPDEvidence()
 	end)
 end
 
+local FIBEvidenceNear = false -- I FUCKING HATE LUA fjkoldsfjhoiüdfoujpgdiofkjiopöfghbipjuoiphoujbgcfnv
+
 RegisterCommand("evidence", function(source, args)
 	local job = exports["isPed"]:isPed("myjob")
 	if job == 'police' or job == 'state' or job == 'sheriff' then
-		Citizen.Trace(tostring(FIBEvidenceNear))
-		if FIBEvidenceNear == true or isNearRoyalPDEvidence == true then
+		if FIBEvidenceNear or isNearRoyalPDEvidence then
 			TriggerEvent("server-inventory-open", "1", "CASE ID: "..args[1])
 		else
 			TriggerEvent("DoLongHudText", "You are not near the evidence spot!", 2)
@@ -2762,7 +2763,6 @@ function FIBArmor()
 end
 
 
-local FIBEvidenceNear = false
 --Name: fibevidence | 2022-04-15T08:19:20Z
 Citizen.CreateThread(function()
 	exports["drp-polyzone"]:AddPolyZone("fibevidence", {
