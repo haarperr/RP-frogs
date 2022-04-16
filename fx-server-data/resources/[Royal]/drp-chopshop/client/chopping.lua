@@ -1,5 +1,7 @@
 local ActiveChopping = {}
 
+local cooldown = false
+
 local VehicleChopBones = {
     {name = "wheel_lf", index = 0, type = "tyre"},
     {name = "wheel_rf", index = 1, type = "tyre"},
@@ -370,10 +372,6 @@ local dropPoint = {
   [6] = {["x"] = -414.3092, ["y"] = -2182.6360, ["z"] = 10.3182, ["h"] = 0.0},
 }
 
-RegisterCommand("chopchop", function(source)
-  TriggerEvent("chop:tryStart")
-end)
-
 RegisterNetEvent("chop:tryStart")
 AddEventHandler("chop:tryStart", function()
     TriggerEvent("chop:startChop", carList[math.random(1, #carList)])
@@ -417,7 +415,8 @@ AddEventHandler("chop:startChop", function(modelName)
     spawnedVeh = GetClosestVehicle(x, y, z, 3.5, 0, 70)
 
     local plate = GetVehicleNumberPlateText(spawnedVeh)
-
+    
+    PlaySoundFrontend(-1, "Menu_Accept", "Phone_SoundSet_Default", true)
     TriggerEvent('phone:robberynotif', 'DarkNet', "You are looking for a vehicle to steal.\n\n" .. plate .. "\n" .. modelName["name"])
 
     CreateBlipBoostLoc(x, y, z)
@@ -532,6 +531,8 @@ AddEventHandler("chop:DropOff", function(vehicle)
     if not triggered then
         CreateBlipDropOff(dropX, dropY, dropZ)
         SetNewWaypoint(dropX, dropY)
+        
+        PlaySoundFrontend(-1, "Menu_Accept", "Phone_SoundSet_Default", true)
         TriggerEvent('phone:robberynotif', 'DarkNet', "Bring that car to the chop yard.")
         triggered = true
     end
@@ -559,4 +560,23 @@ end)
 RegisterNetEvent("drp-chopchop:markCar")
 AddEventHandler("drp-chopchop:markCar", function(vehicle)
     InteractiveChopping(vehicle)
+end)
+
+
+
+RegisterNetEvent("drp-chopchop:signIn")
+AddEventHandler("drp-chopchop:signIn", function()
+    if cooldown then
+        TriggerEvent("DoLongHudText", "There are no Jobs available right now.", 2)
+    else
+        cooldown = true
+        TriggerEvent("DoLongHudText", "You signed in. There will be a Job for you soon.", 2)
+        Citizen.Wait(math.random(120000, 325000))
+        TriggerEvent("chop:tryStart")
+        
+        Citizen.CreateThread(function()
+            Citizen.Wait(900000)
+            cooldown = false
+        end)
+    end
 end)

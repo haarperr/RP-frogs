@@ -360,17 +360,10 @@ Entries[#Entries + 1] = {
     group = { 'isNPC' },
     data = {
         {
-            event = "drp-chopshop:clock-in",
+            event = "drp-chopchop:signIn",
             id = "royal_chop_location_clock_in",
             icon = "circle",
-            label = "Clock In",
-            parameters = {},
-        },
-        {
-            event = "drp-chopshop:clock-out",
-            id = "royal_chop_location_clock_out",
-            icon = "circle",
-            label = "Clock Out",
+            label = "Looking for a Job?",
             parameters = {},
         }
     },
