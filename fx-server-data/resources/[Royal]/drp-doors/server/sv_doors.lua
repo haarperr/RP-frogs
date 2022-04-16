@@ -10016,5 +10016,872 @@ DOOR_CONFIG = {
           },
       }
   },
+  {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-437.1716, 6012.948, 32.28852)),
+    model = 733214349,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-438.5866, 6014.362, 32.28852)),
+    model = 965382714,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-443.96, 6017.162, 32.28852)),
+    model = 1362051455,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-450.1526, 6007.564, 31.28684)),
+    model = 2129125614,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-448.0712, 6004.868, 32.28852)),
+    model = 1857649811,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-446.6564, 6003.454, 32.28852)),
+    model = 1362051455,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-450.0098, 6004.836, 32.28852)),
+    model = 1857649811,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-451.4248, 6003.42, 32.28852)),
+    model = 1362051455,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-453.6964, 6004.604, 31.28792)),
+    model = 1577885496,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-453.1556, 6004.064, 31.28792)),
+    model = 1577885496,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-452.6232, 6003.53, 31.28792)),
+    model = 1577885496,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-453.4868, 5996.638, 32.28852)),
+    model = 965382714,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-454.9016, 5998.052, 32.28852)),
+    model = 733214349,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-452.1998, 6001.99, 31.2865)),
+    model = -742198632,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-450.0098, 6004.836, 36.99582)),
+    model = 1857649811,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-451.4248, 6003.42, 36.99582)),
+    model = 1362051455,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-446.9224, 6001.234, 37.2966)),
+    model = 899779172,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-443.9524, 6004.204, 37.2966)),
+    model = 899779172,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-445.6456, 6002.512, 37.34018)),
+    model = 1127654798,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-447.4444, 6011.512, 36.99582)),
+    model = 1362051455,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-445.6918, 6015.474, 35.98784)),
+    model = 1816935351,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-441.6726, 6009.144, 36.99582)),
+    model = 1362051455,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-437.1288, 6008.622, 35.99472)),
+    model = -742198632,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-441.3886, 6007.388, 35.9957)),
+    model = 1577885496,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-442.478, 6006.298, 35.9957)),
+    model = 1577885496,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-449.6784, 5999.344, 36.99582)),
+    model = 1362051455,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-453.5218, 5997.084, 36.99582)),
+    model = 965382714,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-451.4248, 6003.42, 27.58122)),
+    model = 1362051455,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-450.0098, 6004.836, 27.58122)),
+    model = 1857649811,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-447.9988, 5999.984, 27.58122)),
+    model = 1857649811,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-446.584, 6001.4, 27.58122)),
+    model = 1362051455,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-446.48, 5996.468, 27.58122)),
+    model = 1362051455,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-449.3062, 5995.226, 26.5862)),
+    model = 1816935351,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-451.412, 5997.228, 26.5789)),
+    model = 1816935351,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-449.4048, 5997.908, 26.59048)),
+    model = 315205724,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-448.1492, 5997.408, 26.5862)),
+    model = 1577885496,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-445.3536, 5995.342, 27.58122)),
+    model = 1362051455,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-443.8146, 5994.53, 26.5767)),
+    model = 1577885496,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-445.118, 5992.146, 26.59142)),
+    model = 1577885496,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-441.9416, 5998.754, 27.58122)),
+    model = 1362051455,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-443.0612, 5999.874, 27.58122)),
+    model = 1362051455,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-444.4908, 6002.826, 26.59048)),
+    model = 315205724,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-444.0574, 6001.504, 26.5862)),
+    model = 1577885496,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-444.8512, 6002.464, 26.59048)),
+    model = -742198632,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-443.6406, 6006.972, 27.731)),
+    model = -594854737,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-442.2434, 6012.62, 27.731)),
+    model = -594854737,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-445.9456, 6012.88, 27.731)),
+    model = -594854737,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-443.39, 6015.436, 27.731)),
+    model = -594854737,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-448.916, 6015.852, 27.731)),
+    model = -594854737,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+},
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-446.3604, 6018.406, 27.731)),
+    model = -594854737,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+  },
+    {
+    info = "PD Sandy 3",
+    active = true,
+    id = 550,
+    coords = vector3(vector3(-450.8068, 6008.146, 26.5779)),
+    model = 2129125614,
+    lock = true,
+    keyFob = true,
+    desc = "x",
+    access = {
+        job = {
+        ["PD"] = true,
+        },
+        cid = {
+        },
+    }
+  }
 }
   
