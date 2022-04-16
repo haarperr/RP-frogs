@@ -814,14 +814,13 @@ AddEventHandler("bsdelivery:getTheJob", function()
         table.insert(products, product)
     end
 
-    -- make a nice string of products
     local productString = ""
     for i = 1, #products do
-        -- replace double entries with a counter to make it look nice
-        if products[i] == products[i - 1] then
-            productString = productString .. "x" .. i .. " "
+        -- make a fancy string
+        if i == #products then
+            productString = productString .. menuList[products[i]][1]
         else
-            productString = productString .. menuList[products[i]] .. " "
+            productString = productString .. menuList[products[i]][1] .. ", "
         end
     end   
 
