@@ -1,10 +1,6 @@
 fx_version 'cerulean'
 games { 'gta5' }
 
-client_script "@npx/client/lib.js"
-server_script "@npx/server/lib.js"
-shared_script "@npx/shared/lib.lua"
-
 client_script "@drp-errorlog/client/cl_errorlog.lua"
 client_script '@drp-locales/client/lib.lua'
 client_script "@drp-lib/client/cl_ui.lua"
