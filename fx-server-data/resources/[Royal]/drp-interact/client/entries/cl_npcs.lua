@@ -360,6 +360,31 @@ Entries[#Entries + 1] = {
     group = { 'isNPC' },
     data = {
         {
+            event = "drp-chopshop:clock-in",
+            id = "royal_chop_location_clock_in",
+            icon = "circle",
+            label = "Clock In",
+            parameters = {},
+        },
+        {
+            event = "drp-chopshop:clock-out",
+            id = "royal_chop_location_clock_out",
+            icon = "circle",
+            label = "Clock Out",
+            parameters = {},
+        }
+    },
+    options = {
+        distance = { radius = 3.0 },
+        npcIds = {"chopguy"}
+    }
+}
+
+Entries[#Entries + 1] = {
+    type = 'flag',
+    group = { 'isNPC' },
+    data = {
+        {
             id = "cartguy",
             label = "Get a Go Kart ($500)",
             icon = "circle",
