@@ -860,6 +860,7 @@ end)
 
 Citizen.CreateThread(function()
     while true do
+        Citizen.Wait(250)
         if hasJob == true then
             -- if player is near the delivery location
             if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), enterCoords.x, enterCoords.y, enterCoords.z, true) < 2 then            
