@@ -4914,9 +4914,10 @@ itemList['cbbowl'] = {
       amount: 2
       },
       {
-        itemid: 'lettuce',
+        itemid: 'cheese',
         amount: 2
-    }]
+      },
+    ]
   ],
   image: 'cluckin-bowl.png',
   information: 'Ooh..Kreygasm. 969Cal',
@@ -5251,8 +5252,12 @@ itemList['cbveggy'] = {
   craft: [
     [  
       {
-      itemid: 'lettuce',
-      amount: 2
+        itemid: 'lettuce',
+        amount: 2
+      },
+      {
+        itemid: 'tomato',
+        amount: 2
       }
     ]
   ],

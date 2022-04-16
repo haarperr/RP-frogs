@@ -858,6 +858,11 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
         end
     end
 
+    if (itemid == "cbbowl") then
+        SetPedArmour(player, GetPedArmour(player) + 20)
+        TriggerEvent("drp-hud:updateStress",false,50)
+    end
+
     if (itemid == "joint" or itemid == "joint2") then
         local finished = exports["drp-taskbar"]:taskBar(2000,"Smoking Joint",false,false,playerVeh)
         if (finished == 100) then
@@ -2565,7 +2570,7 @@ end
         AttachPropAndPlayAnimation("amb@world_human_drinking@coffee@male@idle_a", "idle_c", 49,15000,"Drink","drp-roostersrest:drinkTea",true,itemid,playerVeh)
     end
  
-    if itemid == "fries" or itemid == "chips" or itemid == "hardoaksfries" or itemid == "cbfries" then
+    if itemid == "fries" or itemid == "chips" or itemid == "hardoaksfries" or itemid == "cbfries" or itemid == "cbbowl" then
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,15000,"Eating","inv:fed2",true,itemid,playerVeh)
     end
 
@@ -2831,6 +2836,19 @@ AddEventHandler("drp-inventory:attachPropPlayAnim", function(pType)
     end
     if pType == "cbfries" then
         TriggerEvent("healed:useFries")
+        success = AttachPropAndPlayAnimation(
+            "mp_player_inteat@burger",
+            "mp_player_int_eat_burger",
+            49,
+            12500,
+            "Eating",
+            "",
+            false,
+            "fries",
+            vehicle
+        )
+    end
+    if pType == "cbbowl" then
         success = AttachPropAndPlayAnimation(
             "mp_player_inteat@burger",
             "mp_player_int_eat_burger",
