@@ -792,8 +792,9 @@ AddEventHandler("bsdelivery:getJob", function()
             else
                 TriggerEvent("bsdelivery:getTheJob")
                 onCooldown = true
-                -- wait 15 minutes
-                Citizen.Wait(900000)
+                -- wait 11 minutes
+                Citizen.Wait(600000)
+                onCooldown = false
                 TriggerEvent('phone:robberynotif', 'Burgershot - Marty Shanks', "New Delivery Jobs are available!")
             end
         else
@@ -858,8 +859,8 @@ AddEventHandler("bsdelivery:getTheJob", function()
                     "Ive updated the location of the delivery house on your GPS.")
     SetBlipAsShortRange(FoodDeliveryLocation, false)
 
-    -- remove blip after 15 Minutes
-    Citizen.Wait(900000)
+    -- remove blip after 10 Minutes
+    Citizen.Wait(600000)
     SetBlipRoute(FoodDeliveryLocation, false)
     SetBlipSprite(FoodDeliveryLocation, 0)
     SetBlipAsShortRange(FoodDeliveryLocation, false)
