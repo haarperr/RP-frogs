@@ -896,7 +896,7 @@ end)
 
 RegisterNetEvent("drp-burgershot:giveFoodToCustomer")
 AddEventHandler("drp-burgershot:giveFoodToCustomer", function()
-    local finished = exports['drp-taskbar']:taskBar(22500, 'Giving food to customer...')
+    local finished = exports['drp-taskbar']:taskBar(2500, 'Giving food to customer...')
     if finished == 100 then
 
         -- try to remove everything from the inventory which is in the currentMenu
