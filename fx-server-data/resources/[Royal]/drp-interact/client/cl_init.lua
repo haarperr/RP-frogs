@@ -766,14 +766,6 @@ Citizen.CreateThread(function()
         maxZ=30.04
     })
 
-    -- Chopshop
-
-    exports["drp-polytarget"]:AddBoxZone("royal_chop_location", vector3(830.39, -2171.71, 30.28), 1, 1.4, {
-        heading=270,
-        minZ=27.28,
-        maxZ=31.28
-    })
-
     -- Fence Guy    
     
     exports["drp-polytarget"]:AddBoxZone("fenceguy", vector3(331.1994, 362.1967, 106.6535), 1, 1.4, {
@@ -3750,27 +3742,7 @@ Citizen.CreateThread(function()
         },
     }, {
         distance = { radius = 2.5 },
-    });
-
-    -- Chopshop
-    exports["drp-interact"]:AddPeekEntryByPolyTarget("royal_chop_location", {
-        {
-            event = "drp-chopshop:clock-in",
-            id = "royal_chop_location_clock_in",
-            icon = "circle",
-            label = "Clock In",
-            parameters = {},
-        },
-        {
-            event = "drp-chopshop:clock-out",
-            id = "royal_chop_location_clock_out",
-            icon = "circle",
-            label = "Clock Out",
-            parameters = {},
-        }
-    }, {
-        distance = { radius = 2.5 },
-    });    
+    });   
 
     exports["drp-interact"]:AddPeekEntryByPolyTarget("fib_elevator_up", {{
         event = "fib:47FloorTp",
