@@ -843,7 +843,7 @@ Citizen.CreateThread(function()
         if hasJob == true then
             -- if ped is in vehicle and driver seat
             if IsPedInAnyVehicle(GetPlayerPed(-1), false) then
-                deliveryVehicle = GetVehiclePedIsIn(GetPlayerPed(-1), true)
+                deliveryVehicle = GetVehiclePedIsIn(GetPlayerPed(-1), false)
                 
                 enterCoords = Houses()
                 currentHouse = enterCoords
