@@ -386,12 +386,12 @@ end)
 
 RegisterNetEvent("chop:tryStart")
 AddEventHandler("chop:tryStart", function()
-    TriggerEvent("chop:startChop", carList[math.random(1, #carList)]["model"])
+    TriggerEvent("chop:startChop", carList[math.random(1, #carList)])
 end)
 
 RegisterNetEvent("chop:startChop")
 AddEventHandler("chop:startChop", function(modelName)
-    local vehHash = GetHashKey(modelName)
+    local vehHash = GetHashKey(modelName["model"])
 
     carSpawnRandom = math.random(1,#carSpawns)
     local x = carSpawns[carSpawnRandom]["x"]
@@ -405,8 +405,6 @@ AddEventHandler("chop:startChop", function(modelName)
     local pedH = carSpawns[carSpawnRandom]["pedSpawn"]["h"]
     Citizen.Trace(tostring(vehHash) .. " " .. tostring(x) .. " " .. tostring(y) .. " " .. tostring(z) .. " " .. tostring(h) .. "\n")
     if not IsModelInCdimage(vehHash) then
-        Citizen.Trace("Vehicle not in cdimage\n")
-        Citizen.Trace(tostring(modelName) .. "\n")
         TriggerEvent("chop:tryStart")
         return
     end
@@ -424,6 +422,10 @@ AddEventHandler("chop:startChop", function(modelName)
     SetVehicleOnGroundProperly(vehicle)
 
     spawnedVeh = GetClosestVehicle(x, y, z, 3.5, 0, 70)
+
+    local plate = GetVehicleNumberPlateText(spawnedVeh)
+
+    TriggerEvent('phone:robberynotif', 'DarkNet', "You are looking for a vehicle to steal.\n\n" .. plate .. "\n" .. modelName["name"])
 
     CreateBlipBoostLoc(x, y, z)
 
@@ -487,7 +489,7 @@ AddEventHandler("chop:boostLockPick", function()
 
         local isPedInBoostCar = IsPedInVehicle(PlayerPedId(), spawnedVeh, true)
 
-        TriggerEvent("chatMessage","DarkNet", 5, "Bring that car to the chop yard off location")
+        TriggerEvent('phone:robberynotif', 'DarkNet', "Bring that car to the chop yard off location")
         pedsSpawned = false
         TriggerEvent("chop:DropOff") 
       end
