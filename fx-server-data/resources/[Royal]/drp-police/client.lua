@@ -2771,10 +2771,10 @@ Citizen.CreateThread(function()
 		vector2(2516.4299316406, -324.4839477539)
 	  }, {
 		name="fibevidence",
-		debugPoly=true,
+		-- debugPoly=true,
 		minZ = 100.89334869384,
 		maxZ = 102.89334869384
-	  })
+	  }))
 end)
 
 RegisterNetEvent('drp-polyzone:enter')
@@ -2783,8 +2783,7 @@ AddEventHandler('drp-polyzone:enter', function(name)
         FIBEvidence()
 		FIBEvidence = true
 		exports['drp-textui']:showInteraction('[E] Open Evidence Locker')
-        end
-    end
+	end
 end)
 
 RegisterNetEvent('drp-polyzone:exit')
