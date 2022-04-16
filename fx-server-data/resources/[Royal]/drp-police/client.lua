@@ -2404,6 +2404,57 @@ local SandyEvidence = false
 local PaletoEvidence = false
 
 
+-- idk why I add it here lmao
+local rockeyScrapYard = false
+
+--Name: rockeystash | 2022-04-15T08:19:20Z
+Citizen.CreateThread(function()
+	exports["drp-polyzone"]:AddPolyZone("rockeystash", {
+		vector2(2402.2155761718, 3078.7412109375),
+		vector2(2402.1706542968, 3081.0559082032),
+		vector2(2399.8823242188, 3080.91796875),
+		vector2(2400.0600585938, 3078.7158203125)
+	  }, {
+		name="rockeystash",
+		minZ = 50.81632232666,
+		maxZ = 52.838470458984
+	  })	  
+end)
+
+
+RegisterNetEvent('drp-polyzone:enter')
+AddEventHandler('drp-polyzone:enter', function(name)
+    if name == "rockeystash" then
+		rockeyScrapYard = true
+        RockeyStashO()
+		exports['drp-textui']:showInteraction('[E] Open Stash')
+	end
+end)
+
+RegisterNetEvent('drp-polyzone:exit')
+AddEventHandler('drp-polyzone:exit', function(name)
+    if name == "rockeystash" then
+        rockeyScrapYard = false
+    end
+	exports['drp-textui']:hideInteraction()
+end)
+
+function RockeyStashO()
+	Citizen.CreateThread(function()
+        while rockeyScrapYard do
+            Citizen.Wait(5)
+			if IsControlJustReleased(0, 38) then
+				if exports["drp-inventory"]:hasEnoughOfItem("radio",1,false) or exports["drp-inventory"]:hasEnoughOfItem("civradio",1,false) or exports["drp-inventory"]:hasEnoughOfItem("warehousekey5",1,false) then
+					TriggerEvent("server-inventory-open", "1", "rockeystash")
+				else
+					TriggerEvent("DoLongHudText","This is locked.",2)
+				end
+			end
+		end
+	end)
+end
+
+
 
 --Name: fibevidence | 2022-04-15T08:19:20Z
 Citizen.CreateThread(function()
