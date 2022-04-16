@@ -858,22 +858,20 @@ AddEventHandler("bsdelivery:getTheJob", function()
     SetBlipAsShortRange(FoodDeliveryLocation, false)
 
     -- remove blip after 15 Minutes
-    Citizen.CreateThread(function()
-        Citizen.Wait(900000)
-        SetBlipRoute(FoodDeliveryLocation, false)
-        SetBlipSprite(FoodDeliveryLocation, 0)
-        SetBlipAsShortRange(FoodDeliveryLocation, false)
+    Citizen.Wait(900000)
+    SetBlipRoute(FoodDeliveryLocation, false)
+    SetBlipSprite(FoodDeliveryLocation, 0)
+    SetBlipAsShortRange(FoodDeliveryLocation, false)
 
-        exports['drp-textui']:hideInteraction() -- Just in case
+    exports['drp-textui']:hideInteraction() -- Just in case
 
-        if hasJob == true then
-            PlaySoundFrontend(-1, "Menu_Accept", "Phone_SoundSet_Default", true)
-            TriggerEvent('phone:robberynotif', 'Burgershot - Marty Shanks',
-                            "You took too long, the customer canceled the order.")
-            Citizen.Wait()
-            hasJob = false
-        end
-    end)
+    if hasJob == true then
+        PlaySoundFrontend(-1, "Menu_Accept", "Phone_SoundSet_Default", true)
+        TriggerEvent('phone:robberynotif', 'Burgershot - Marty Shanks',
+                        "You took too long, the customer canceled the order.")
+        Citizen.Wait()
+        hasJob = false
+    end
 end)
 
 Citizen.CreateThread(function()
