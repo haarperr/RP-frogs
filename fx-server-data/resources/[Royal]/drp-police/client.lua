@@ -2414,8 +2414,8 @@ Citizen.CreateThread(function()
 		vector2(-449.90124511718, 5999.0786132812)
 	  }, {
 		name="paletopdevidence",
-		--minZ = 36.995677947998,
-		--maxZ = 37.00838470459
+		minZ = 36.995677947998,
+		maxZ = 37.00838470459
 	  })
 end)
 
@@ -2461,8 +2461,8 @@ Citizen.CreateThread(function()
 		vector2(1859.8682861328, 3690.296875)
 	  }, {
 		name="sandypdevidence",
-		--minZ = 29.818534851074,
-		--maxZ = 29.828960418702
+		minZ = 28.818534851074,
+		maxZ = 30.828960418702
 	  })
 end)
 
