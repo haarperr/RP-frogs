@@ -1760,7 +1760,7 @@ itemList['615608432'] = {
         amount: 250
       },
       {
-        itemid: 'whiskey',
+        itemid: 'hardoakswhisky',
         amount: 5
       },
     ],
