@@ -35,7 +35,7 @@ else
 end
 end
 end)
-
+RegisterNetEvent("toggleLightsC")
 AddEventHandler("toggleLightsC", function(current)
   SetBlackout(current)
 end)

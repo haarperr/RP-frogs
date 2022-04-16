@@ -18,7 +18,7 @@ AddEventHandler('getallplayers', function(source)
     end
 end)
 
-RegisterServerEvent("toggleLights")
+RegisterNetEvent("toggleLights")
 AddEventHandler("toggleLights", function(current)
     TriggerClientEvent("toggleLightsC", -1, current)
 end)
