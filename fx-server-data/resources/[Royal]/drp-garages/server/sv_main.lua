@@ -1,6 +1,6 @@
 RPC.register("drp-garages:selectMenu", function(pGarage, pJob)
 	local pSrc = source
-	if pGarage == 'garagepd' then
+	if pGarage == 'garagepd' or pGarage == 'garagefib' or pGarage == 'garagepdpaleto' then
 		if pJob == 'police' or pJob == 'state' or pJob == 'sheriff' then
 			TriggerClientEvent('drp-context:sendMenu', pSrc, {
 				{
@@ -192,7 +192,7 @@ RPC.register("drp-garages:selectSharedGarage", function(pGarage, pJob)
 			})
             for i = 1, #vehicles do
 				if vehicles[i].vehicle_state ~= "Out" then
-					if pGarage ~= "garagepd" then
+					if pGarage ~= "garagepd" or pGarage ~= 'garagefib' or pGarage ~= 'garagepdpaleto'  then
 						TriggerClientEvent('drp-context:sendMenu', pSrc, {
 							{
 								id = vehicles[i].id,
@@ -217,7 +217,7 @@ RPC.register("drp-garages:selectSharedGarage", function(pGarage, pJob)
 				end
             end
 
-			if pType == "law" and pGarage == "garagepd" then
+			if pType == "law" and pGarage == "garagepd" or pGarage == 'garagefib' or pGarage == 'garagepdpaleto'  then
 				TriggerClientEvent('drp-context:sendMenu', pSrc, {
 					{
 						id = 1,
