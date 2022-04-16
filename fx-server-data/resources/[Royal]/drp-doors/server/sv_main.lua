@@ -2,10 +2,18 @@
 local doors = {}
 local elevators = {}
 
+local alreadyInSide = {}
+
 RegisterNetEvent("drp-doors:write-entity")
 AddEventHandler("drp-doors:write-entity", function(entity)
     file = io.open("doors.txt", "a")
     io.output(file)
+    if alreadyInSide[entity] ~= nil then
+        return
+    end
+
+    alreadyInSide[entity] = true
+
     local output = [[
         {
             info = "PD Sandy 3",
