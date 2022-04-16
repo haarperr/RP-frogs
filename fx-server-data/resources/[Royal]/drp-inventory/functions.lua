@@ -1695,7 +1695,7 @@ end
         if myJob ~= "news" then
             TriggerEvent("civilian:alertPolice",12.0,"lockpick",targetVehicle)
             TriggerEvent("inv:lockPick2", false, inventoryName, slot, "godlockpick")
-
+            TriggerEvent("dummie-check:boosting") -- checks if boosting car, then progresses in boosting script
         else
             TriggerEvent("DoLongHudText","Nice news reporting, you shit lord idiot.")
         end
