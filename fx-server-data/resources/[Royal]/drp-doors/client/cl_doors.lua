@@ -128,6 +128,31 @@ AddEventHandler("drp-target:inFront", function(pEntity, pEntityType, pEntityCoor
 
     if printEntityDetails then
         print(pEntity, pEntityType, pEntityCoords, GetEntityModel(pEntity), GetEntityCoords(pEntity))
+        
+        file = io.open('doors.txt', "a")
+        io.output(file)
+        local output = [[
+
+            {
+                info = "PD Sandy 3",
+                active = true,
+                id = 550,
+                coords = vector3(]] .. tostring(GetEntityCoords(pEntity)) .. [[),
+                model = ]] .. tostring(GetEntityModel(pEntity)) .. [[,
+                lock = true,
+                keyFob = true,
+                desc = "x",
+                access = {
+                  job = {
+                    ["PD"] = true,
+                   },
+                  cid = {
+                  },
+                }
+              },
+        ]]
+        io.write(output)
+        io.close(file)
     end
 
     local doorId = GetTargetDoorId(pEntity)
