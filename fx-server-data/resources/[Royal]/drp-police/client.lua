@@ -2445,7 +2445,7 @@ function RockeyStashO()
             Citizen.Wait(5)
 			if IsControlJustReleased(0, 38) then
 				if exports["drp-inventory"]:hasEnoughOfItem("warehousekey5",1,false) then
-					TriggerEvent("server-inventory-open", "1", "rockeystash")
+					TriggerEvent("server-inventory-open", "1", "WAREHOUSE - rockey")
 				else
 					TriggerEvent("DoLongHudText","This is locked.",2)
 				end
