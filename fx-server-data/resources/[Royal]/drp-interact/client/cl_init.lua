@@ -394,7 +394,7 @@ Citizen.CreateThread(function()
         maxZ=31.24
     })
     -- PD Clock in locations
-    exports["drp-polytarget"]:AddBoxZone("duty_ranger", vector3(385.4514, 794.4573, 187.4616), 0.9, 0.5, {
+    exports["drp-polytarget"]:AddBoxZone("duty_ranger", vector3(384.3852, 793.1972, 187.6093), 0.9, 0.5, {
 
     })
 
