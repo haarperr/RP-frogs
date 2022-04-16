@@ -903,7 +903,7 @@ AddEventHandler("drp-burgershot:giveFoodToCustomer", function()
         local count = 0
         local maxCount = #currentMenu
         for i = 1, #products do
-            local item = menuList[currentMenu[i]][1]
+            local item = menuList[products[i]][1]
             Citizen.Trace(item)
             -- has enough item
             if exports["drp-inventory"]:hasEnoughOfItem(item, 1) then
