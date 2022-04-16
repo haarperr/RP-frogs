@@ -520,11 +520,11 @@ AddEventHandler("chop:spawnPed", function(x, y, z, h, weapon)
     while not HasModelLoaded(pedRand1) do
       Citizen.Wait(10)
     end
-    local boostingPed1 = CreatePed(30, pedRand1, x, y, z, h, true, false)
+    local boostingPed1 = CreatePed(30, pedRand1, x, y, z, h, true, true)
     SetPedArmour(boostingPed1, 100)
     SetPedAsEnemy(boostingPed1, true)
     SetPedRelationshipGroupHash(boostingPed1, 'gangGang')
-    GiveWeaponToPed(boostingPed1, GetHashKey(weapon), 250, false, true)
+    GiveWeaponToPed(boostingPed1, GetHashKey(weapon), 250, true, true)
     TaskCombatPed(boostingPed1, GetPlayerPed(-1))
     SetPedAccuracy(boostingPed1, math.random(25,75))
     SetPedDropsWeaponsWhenDead(boostingPed1, false)
