@@ -2389,7 +2389,7 @@ end)
 
 function openMRPDEvidence()
 	Citizen.CreateThread(function()
-        while FIBEvidence do
+        while isNearRoyalPDEvidence do
             Citizen.Wait(5)
 			if IsControlJustReleased(0, 38) then
 				TriggerEvent("server-inventory-open", "1", "mrpdevidence")
