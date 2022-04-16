@@ -195,7 +195,7 @@ AddEventHandler('vpnitemmenu', function()
             header = "Purchase Green Laptop",
             txt = "Price: $2500 + Green Dongle",
             params = {
-              event = "buyitemwithitemandmoney"
+              event = "buyitemwithitemandmoney",
               args = {
                 item = "heistlaptop3",
                 price = 2500,
@@ -209,7 +209,7 @@ AddEventHandler('vpnitemmenu', function()
             header = "Purchase Blue Laptop",
             txt = "Price: $5000 + Blue Dongle",
             params = {
-              event = "buyitemwithitemandmoney"
+              event = "buyitemwithitemandmoney",
               args = {
                 item = "heistlaptop2",
                 price = 5000,
@@ -223,7 +223,7 @@ AddEventHandler('vpnitemmenu', function()
             header = "Purchase Red Laptop",
             txt = "Price: $10000 + Red Dongle",
             params = {
-              event = ""
+              event = "",
               args = {
                 item = "",
                 price = 10000,
