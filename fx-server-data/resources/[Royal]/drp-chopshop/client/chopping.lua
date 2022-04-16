@@ -223,6 +223,7 @@ function InteractiveChopping(vehicle)
                 end
 
                 if inDistance then
+                    idle = 0
                     Draw3DText(coords.x, coords.y, coords.z, chopText)
 
                     if IsControlJustReleased(0, 38) then
@@ -238,7 +239,6 @@ function InteractiveChopping(vehicle)
                     end
                 end
 
-                idle = 0
             end
 
             if not distance or distance > 10.0 then
