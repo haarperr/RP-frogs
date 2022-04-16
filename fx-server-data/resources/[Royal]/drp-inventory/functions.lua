@@ -3585,7 +3585,7 @@ AddEventHandler('inv:fruitslushy', function()
 
 end)
 
-local burgies = 0
+local burgies0 = 0
 RegisterNetEvent('inv:wellfed')
 AddEventHandler('inv:wellfed', function()
     TriggerEvent("Evidence:StateSet",25,3600)
@@ -3595,12 +3595,22 @@ AddEventHandler('inv:wellfed', function()
     burgies = 0
 end)
 
+local burgies0 = 0
+RegisterNetEvent('inv:wellfedNoStress')
+AddEventHandler('inv:wellfedNoStress', function()
+    TriggerEvent("Evidence:StateSet",25,3600)
+    TriggerEvent("drp-hud:updateStress",false,100)
+    TriggerEvent("drp-hud:ChangeHunger", 100)
+    TriggerEvent("drp-hud:ChangeThirst", 20)
+    burgies0 = 0
+end)
+
 local burgies2 = 0
 RegisterNetEvent('inv:fed')
 AddEventHandler('inv:fed', function()
     TriggerEvent("Evidence:StateSet",25,3600)
      TriggerEvent("drp-hud:updateStress",false,30)
-    TriggerEvent("drp-hud:ChangeHunger", 60)
+    TriggerEvent("drp-hud:ChangeHunger", 55)
     TriggerEvent("drp-hud:ChangeThirst", 30)
     processStressBlock()
     burgies2 = 0
