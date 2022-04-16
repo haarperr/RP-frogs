@@ -443,7 +443,7 @@ AddEventHandler("chop:startChop", function(modelName)
             -- get distance between player and vehicle
             local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
             local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, x, y, z)
-            if dist < 5 then
+            if dist < 3 then
                 TriggerEvent("chop:boostLockPick")
             end
 
