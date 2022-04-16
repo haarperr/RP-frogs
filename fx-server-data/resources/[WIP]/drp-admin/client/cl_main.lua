@@ -22,18 +22,17 @@ AddEventHandler('drp-adminmenu:CloseMouse', function()
   SetNuiFocus(false, false)
 end)
 
+local dark = false
 RegisterCommand("lights", function()
   if exports["drp-base"]:getModule("LocalPlayer"):getVar("rank") == ('dev' or 'admin' or 'superadmin' or 'mod' or 'owner') then
-dark = false
-if dark == false then
-    dark = true
-    TriggerServerEvent("toggleLights", true)
-else
-  dark = false
-  
-  TriggerServerEvent("toggleLights", false)
-end
-end
+    if dark == false then
+      dark = true
+      TriggerServerEvent("toggleLights", true)
+    else
+      dark = false
+      TriggerServerEvent("toggleLights", false)
+    end
+  end
 end)
 RegisterNetEvent("toggleLightsC")
 AddEventHandler("toggleLightsC", function(current)
