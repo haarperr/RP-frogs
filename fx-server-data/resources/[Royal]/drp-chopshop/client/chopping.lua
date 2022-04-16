@@ -533,6 +533,7 @@ AddEventHandler("chop:DropOff", function(vehicle)
         CreateBlipDropOff(dropX, dropY, dropZ)
         SetNewWaypoint(dropX, dropY)
         TriggerEvent('phone:robberynotif', 'DarkNet', "Bring that car to the chop yard.")
+        triggered = true
     end
 
     Citizen.CreateThread(function()
