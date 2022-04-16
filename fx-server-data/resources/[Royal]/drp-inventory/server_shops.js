@@ -216,7 +216,12 @@ function WarehouseCrafting() {
         { item_id: "453432689", id: 0, name: "craft", information: "{}", slot: 14, amount: 50 }, 
         { item_id: "4191993645", id: 0, name: "craft", information: "{}", slot: 15, amount: 50 }, 
         { item_id: "883325847", id: 0, name: "craft", information: "{}", slot: 16, amount: 50 }, 
-        { item_id: "4191993645", id: 0, name: "craft", information: "{}", slot: 17, amount: 50 },
+        { item_id: "3713923289", id: 0, name: "craft", information: "{}", slot: 17, amount: 50 },
+        { item_id: "2578778090", id: 0, name: "craft", information: "{}", slot: 18, amount: 50 },
+        { item_id: "2227010557", id: 0, name: "craft", information: "{}", slot: 19, amount: 50 },
+        { item_id: "615608432", id: 0, name: "craft", information: "{}", slot: 20, amount: 50 },
+        { item_id: "nails", id: 0, name: "craft", information: "{}", slot: 21, amount: 50 },
+        { item_id: "1748076076", id: 0, name: "craft", information: "{}", slot: 22, amount: 50 },
         
         
         // elevatorhackingdevice

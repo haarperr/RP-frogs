@@ -434,11 +434,11 @@ itemList['148457251'] = {
     ],
     [{
         itemid: 'refinedaluminium',
-        amount: 30
+        amount: 20
       },
       {
         itemid: 'refinedsteel',
-        amount: 30
+        amount: 20
       },
     ]
   ],
@@ -1836,15 +1836,15 @@ itemList['1748076076'] = {
   craft: [
     [{
         itemid: 'aluminium',
-        amount: 1
+        amount: 50
       },
       {
         itemid: 'plastic',
-        amount: 1
+        amount: 50
       },
       {
         itemid: 'rubber',
-        amount: 1
+        amount: 50
       },
     ]
   ],
@@ -2485,6 +2485,17 @@ itemList['2578778090'] = {
   weight: 7,
   nonStack: true,
   model: '',
+  craft: [
+    [{
+        itemid: 'aluminium',
+        amount: 25
+      },
+      {
+        itemid: 'rubber',
+        amount: 10
+      },
+    ]
+  ],
   image: 'np_knife.png',
   weapon: true,
 };
@@ -2904,15 +2915,7 @@ itemList['nails'] = {
   craft: [
     [{
         itemid: 'aluminium',
-        amount: 1
-      },
-      {
-        itemid: 'plastic',
-        amount: 1
-      },
-      {
-        itemid: 'rubber',
-        amount: 1
+        amount: 15
       },
     ]
   ],
