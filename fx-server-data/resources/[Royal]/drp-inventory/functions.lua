@@ -2570,9 +2570,9 @@ end
 
         if itemid == "cbsmoothie" then
             SetRunSprintMultiplierForPlayer(PlayerId(),1.49)  
-            Citizen.Wait(10000)
+            Citizen.Wait(3000)
             SetRunSprintMultiplierForPlayer(PlayerId(),1.2)
-            Citizen.Wait(7500)  
+            Citizen.Wait(15000)  
             SetRunSprintMultiplierForPlayer(PlayerId(),1)
         end
         AttachPropAndPlayAnimation("amb@world_human_drinking@coffee@male@idle_a", "idle_c", 49,15000,"Drink","food:SoftDrink",true,itemid,playerVeh)
