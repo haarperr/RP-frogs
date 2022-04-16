@@ -854,22 +854,50 @@ AddEventHandler("bsdelivery:getTheJob", function()
         SetBlipRoute(FoodDeliveryLocation, false)
         SetBlipSprite(FoodDeliveryLocation, 0)
         SetBlipAsShortRange(FoodDeliveryLocation, false)
-        hasJob = false        
+
+        exports['drp-textui']:hideInteraction() -- Just in case
+
+        if hasJob == true then
+            PlaySoundFrontend(-1, "Menu_Accept", "Phone_SoundSet_Default", true)
+            TriggerEvent('phone:robberynotif', 'Burgershot - Marty Shanks',
+                            "You took too long, the customer canceled the order.")
+            Citizen.Wait()
+            hasJob = false        
+        end
     end)
 end)
 
 Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(250)
+        Citizen.Wait(1)
         if hasJob == true and currentHouse ~= nil then
             -- if player is near the delivery location
             if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), currentHouse.x, currentHouse.y, currentHouse.z, true) < 2 then            
-			    exports['drp-textui']:showInteraction('[E] Changing Room') 
+			    exports['drp-textui']:showInteraction('[E] Give Food') 
                 if IsControlJustReleased(0, 38) then
-                    TriggerEvent('drp-pd-options')
+                    TriggerEvent('drp-burgershot:giveFoodToCustomer')
                 end
             else
 	            exports['drp-textui']:hideInteraction()              
+            end
+        end
+    end
+end)
+
+
+AddEventHandler("drp-burgershot:giveFoodToCustomer", function()
+    if hasJob then 
+        -- try to remove everything from the inventory which is in the currentMenu
+        for i = 1, #currentMenu do
+            local item = currentMenu[i]
+            -- has enough item
+            if exports["drp-inventory"]:hasEnoughOfItem(item, 1) then
+                -- remove item from inventory
+                TriggerEvent('inventory:removeItem', item, 1)
+                information = {
+                    ["Price"] = math.random(25, 75),
+                }
+                TriggerEvent("player:receiveItem", "burgerReceipt", 1, true, information)
             end
         end
     end
