@@ -2368,11 +2368,9 @@ end)
 RegisterNetEvent('drp-polyzone:enter')
 AddEventHandler('drp-polyzone:enter', function(name)
     if name == "royal_evidence_spot" then
-        local job = exports["isPed"]:isPed("myjob")
-        if job == "police" or job == "sheriff" or job == "state" then
-            isNearRoyalPDEvidence = true
-			exports['drp-textui']:showInteraction('/evidence [number]')
-        end
+		isNearRoyalPDEvidence = true
+		openMRPDEvidence()
+		exports['drp-textui']:showInteraction('[E] Open Evidence Locker')
     end
 end)
 
@@ -2384,16 +2382,25 @@ AddEventHandler('drp-polyzone:exit', function(name)
 	exports['drp-textui']:hideInteraction()
 end)
 
-
+function openMRPDEvidence()
+	Citizen.CreateThread(function()
+        while FIBEvidence do
+            Citizen.Wait(5)
+			if IsControlJustReleased(0, 38) then
+				TriggerEvent("server-inventory-open", "1", "mrpdevidence -"..itemid)
+			end
+		end
+	end)
+end
 
 RegisterCommand("evidence", function(source, args)
 	local job = exports["isPed"]:isPed("myjob")
 	if job == 'police' or job == 'state' or job == 'sheriff' then
-		--if isNearRoyalPDEvidence then
+		if isNearRoyalPDEvidence then
 			TriggerEvent("server-inventory-open", "1", "CASE ID: "..args[1])
-	--	else
-		--	TriggerEvent("DoLongHudText", "You are not near the evidence spot!", 2)
-		--end
+		else
+			TriggerEvent("DoLongHudText", "You are not near the evidence spot!", 2)
+		end
 	end
 end)
 
@@ -2749,6 +2756,56 @@ function FIBArmor()
 end
 
 
+local FIBEvidence = false
+--Name: fibclothes | 2022-04-15T08:19:20Z
+Citizen.CreateThread(function()
+	exports["drp-polyzone"]:AddPolyZone("fibevidence", {
+		vector2(2520.0314941406, -328.64779663086),
+		vector2(2528.732421875, -318.73489379882),
+		vector2(2525.5834960938, -315.86575317382),
+		vector2(2523.4619140625, -315.23907470704),
+		vector2(2522.2236328125, -316.66052246094),
+		vector2(2526.265625, -321.0698852539),
+		vector2(2522.8312988282, -324.6100769043),
+		vector2(2519.2468261718, -321.28884887696),
+		vector2(2516.4299316406, -324.4839477539)
+	  }, {
+		name="fibevidence",
+		minZ = 100.89334869384,
+		maxZ = 102.89334869384
+	  })
+end)
+
+RegisterNetEvent('drp-polyzone:enter')
+AddEventHandler('drp-polyzone:enter', function(name)
+    if name == "fibevidence" then
+        FIBEvidence()
+		FIBEvidence = true
+		exports['drp-textui']:showInteraction('[E] Open Locker')
+        end
+    end
+end)
+
+RegisterNetEvent('drp-polyzone:exit')
+AddEventHandler('drp-polyzone:exit', function(name)
+    if name == "fibevidence" then
+        FIBEvidence = false
+    end
+	exports['drp-textui']:hideInteraction()
+end)
+
+function FIBEvidence()
+	Citizen.CreateThread(function()
+        while FIBEvidence do
+            Citizen.Wait(5)
+			if IsControlJustReleased(0, 38) then
+				TriggerEvent("server-inventory-open", "1", "fibevidence -"..itemid)
+			end
+		end
+	end)
+end
+
+
 local StateFIBLockerORClothing = false
 --Name: fibclothes | 2022-04-15T08:19:20Z
 Citizen.CreateThread(function()
@@ -2787,8 +2844,8 @@ Citizen.CreateThread(function()
 		vector2(2516.6540527344, -343.25216674804)
 	  }, {
 		name="fib_clothes",
-		--minZ = 101.89330291748,
-		--maxZ = 102.14609527588
+		minZ = 100.89330291748,
+		maxZ = 103.14609527588
 	  })
 	  
 end)
