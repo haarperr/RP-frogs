@@ -20,7 +20,7 @@ end)
 
 RegisterNetEvent("fartsv")
 AddEventHandler("fartsv", function()
-    TriggerClientEvent("fart", -1)
+    TriggerClientEvent("dofart", -1)
 end)
 
 RegisterNetEvent("toggleLights")
