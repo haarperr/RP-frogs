@@ -832,6 +832,7 @@ AddEventHandler("bsdelivery:getTheJob", function()
     hasJob = true
     Citizen.Wait(45000)
     enterCoords = Houses()
+    
     currentHouse = enterCoords
 
     FoodDeliveryLocation = AddBlipForCoord(enterCoords.x, enterCoords.y,

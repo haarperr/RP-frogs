@@ -300,7 +300,7 @@ Config.Zones = {
 			name="garageranger",
 			--minZ = 187.27281188964,
 			--maxZ = 187.62010192872
-		  })
+		  }),
 		  
   
   
