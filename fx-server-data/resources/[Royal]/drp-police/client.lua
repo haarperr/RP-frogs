@@ -2400,6 +2400,50 @@ end
 
 local FIBEvidenceNear = false -- I FUCKING HATE LUA fjkoldsfjhoiüdfoujpgdiofkjiopöfghbipjuoiphoujbgcfnv
 local RangerEvidence = false
+local SandyEvidence = false
+
+--Name: fibevidence | 2022-04-15T08:19:20Z
+Citizen.CreateThread(function()
+	exports["drp-polyzone"]:AddPolyZone("fibevidence", {
+		vector2(1858.1328125, 3692.6838378906),
+		vector2(1854.7012939454, 3690.841796875),
+		vector2(1856.2200927734, 3688.4880371094),
+		vector2(1859.8682861328, 3690.296875)
+	  }, {
+		name="sandypdevidence",
+		--minZ = 29.818534851074,
+		--maxZ = 29.828960418702
+	  })
+end)
+
+
+RegisterNetEvent('drp-polyzone:enter')
+AddEventHandler('drp-polyzone:enter', function(name)
+    if name == "sandypdevidence" then
+		SandyEvidence = true
+        SandyEvidenceR()
+		exports['drp-textui']:showInteraction('[E] Open Evidence Locker')
+	end
+end)
+
+RegisterNetEvent('drp-polyzone:exit')
+AddEventHandler('drp-polyzone:exit', function(name)
+    if name == "sandypdevidence" then
+        SandyEvidence = false
+    end
+	exports['drp-textui']:hideInteraction()
+end)
+
+function SandyEvidenceR()
+	Citizen.CreateThread(function()
+        while SandyEvidence do
+            Citizen.Wait(5)
+			if IsControlJustReleased(0, 38) then
+				TriggerEvent("server-inventory-open", "1", "sandyevidence")
+			end
+		end
+	end)
+end
 
 
 --Name: fibevidence | 2022-04-15T08:19:20Z
@@ -2449,7 +2493,7 @@ end
 RegisterCommand("evidence", function(source, args)
 	local job = exports["isPed"]:isPed("myjob")
 	if job == 'police' or job == 'state' or job == 'sheriff' then
-		if FIBEvidenceNear or isNearRoyalPDEvidence or RangerEvidence then
+		if FIBEvidenceNear or isNearRoyalPDEvidence or RangerEvidence or SandyEvidence then
 			TriggerEvent("server-inventory-open", "1", "CASE ID: "..args[1])
 		else
 			TriggerEvent("DoLongHudText", "You are not near the evidence spot!", 2)
