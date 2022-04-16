@@ -780,7 +780,7 @@ local menuList = {
 local hasJob = false
 local currentHouse = nil
 local currentMenu = nil
-local deliverVehicle = nil
+local deliveryVehicle = nil
 
 RegisterNetEvent("bsdelivery:getJob")
 AddEventHandler("bsdelivery:getJob", function()
