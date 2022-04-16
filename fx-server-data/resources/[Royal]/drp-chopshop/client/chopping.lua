@@ -470,11 +470,7 @@ AddEventHandler("chop:boostLockPick", function()
     "weapon_combatpistol",
     "weapon_pistol",
     "weapon_switchblade",
-    "weapon_musket",
     "weapon_combatpistol",
-    "weapon_vintagepistol",
-    "weapon_dbshotgun",
-    "weapon_musket",
   }
 
   pedSpawnAmount = 2
