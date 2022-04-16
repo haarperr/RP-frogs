@@ -15,20 +15,16 @@ AddEventHandler("drp-doors:write-entity", function(coords, model)
         end
     end
 
-    -- for i in alreadyInSide do
-    for i = 1, #alreadyInSide do
-        Citizen.Trace(tostring(alreadyInSide[i]))
-        if alreadyInSide[i] == coords then
+
+
+    -- if coords is not in alreadyInSide, add it, if it is, return
+    for k, v in pairs(alreadyInSide) do
+        if tostring(v) == tostring(coords) then
             return
         end
     end
-    
 
-    -- add the door to alreadyInSide
-    alreadyInSide[coords] = true
-
-    
-
+    table.insert(alreadyInSide, coords)
 
     
 
