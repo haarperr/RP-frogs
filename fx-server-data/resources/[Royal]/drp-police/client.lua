@@ -2771,6 +2771,28 @@ Citizen.CreateThread(function()
 	  
 end)
 
+--Name: fibclothes | 2022-04-15T08:19:20Z
+Citizen.CreateThread(function()
+	exports["drp-polyzone"]:AddPolyZone("fib_clothes", {
+		vector2(2514.8962402344, -341.27600097656),
+		vector2(2517.1118164062, -338.22024536132),
+		vector2(2519.3515625, -340.63858032226),
+		vector2(2516.2763671875, -343.63650512696),
+		vector2(2519.4326171875, -345.9057006836),
+		vector2(2516.2783203125, -348.81466674804),
+		vector2(2511.7846679688, -343.7023010254),
+		vector2(2512.501953125, -343.28442382812),
+		vector2(2515.0607910156, -345.7599182129),
+		vector2(2514.9396972656, -345.0166015625),
+		vector2(2516.6540527344, -343.25216674804)
+	  }, {
+		name="fib_clothes",
+		--minZ = 101.89330291748,
+		--maxZ = 102.14609527588
+	  })
+	  
+end)
+
 RegisterNetEvent('drp-polyzone:enter')
 AddEventHandler('drp-polyzone:enter', function(name)
     if name == "fib_clothes" then
