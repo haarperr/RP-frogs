@@ -59,7 +59,7 @@ AddEventHandler('buy:checkIfItem', function(itemItRequires, amount, price, item,
   if exports["drp-inventory"]:hasEnoughOfItem(itemItRequires, amount, false) then
     TriggerEvent("inventory:removeItem", itemItRequires, amount) 
     TriggerServerEvent("buy:removeMoney", price)
-    TriggerEvent('inventory:receiveItem', item, amount2)
+    TriggerEvent( "player:receiveItem", item, amount2)
     TriggerEvent('DoLongHudText', 'You sucessfully buyed this Item.', 1)
   else
     TriggerEvent('DoLongHudText', 'You dont seem to have the required Item.', 2)
