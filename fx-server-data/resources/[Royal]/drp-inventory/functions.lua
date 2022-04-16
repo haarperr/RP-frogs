@@ -2567,6 +2567,7 @@ end
     end
  
     if itemid == "fries" or itemid == "chips" or itemid == "hardoaksfries" or itemid == "cbfries" or itemid == "cbbowl" or itemid == "cbveggy" then
+        TriggerEvent("attachItem", "fries")
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,15000,"Eating","inv:fed2",true,itemid,playerVeh)
     end
 
