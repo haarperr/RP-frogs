@@ -12,6 +12,7 @@ client_script "@drp-lib/client/cl_ui.lua"
 client_scripts {
   'client/cl_*.lua',
   '@drp-rpc/client/cl_main.lua',
+  '@drp-lib/client/cl_rpcother.lua',
 }
 
 shared_script {
@@ -21,6 +22,8 @@ shared_script {
 server_scripts {
   'server/sv_*.lua',
   '@drp-rpc/server/sv_main.lua',
+  '@drp-lib/server/sv_rpcother.lua',
+  '@drp-lib/server/sv_sql.lua',
 }
 
 

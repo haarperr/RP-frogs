@@ -1,6 +1,3 @@
-RPC = {}
-
-
 RPC.register("drp-bowling:purchaseItem", function(key, lane)
     local src = source
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
