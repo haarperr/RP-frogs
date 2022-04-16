@@ -2401,6 +2401,7 @@ end
 RegisterCommand("evidence", function(source, args)
 	local job = exports["isPed"]:isPed("myjob")
 	if job == 'police' or job == 'state' or job == 'sheriff' then
+		Citizen.Trace(tostring(FIBEvidence))
 		if FIBEvidenceNear == true or isNearRoyalPDEvidence == true then
 			TriggerEvent("server-inventory-open", "1", "CASE ID: "..args[1])
 		else
