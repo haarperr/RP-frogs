@@ -56,7 +56,7 @@ end)
 RegisterNetEvent('buy:checkIfItem')
 AddEventHandler('buy:checkIfItem', function(itemItRequires, amount, price)
   Citizen.Trace(tostring(itemItRequires) .. "\n" .. tostring(amount) .. "\n" .. tostring(price))
-  if exports["drp-inventory"]:hasEnoughOfItem(itemItRequires, amount, false, true) then
+  if exports["drp-inventory"]:hasEnoughOfItem(itemItRequires, amount, false) then
     TriggerEvent("inventory:removeItem", itemItRequires, amount) 
     TriggerServerEvent("buy:removeMoney", price)
     TriggerEvent('DoLongHudText', 'You sucessfully buyed this Item.', 1)
@@ -221,7 +221,7 @@ end)
 
 RegisterNetEvent("buyitemwithitemandmoney")
 AddEventHandler("buyitemwithitemandmoney", function(args)
-  TriggerServerEvent("buy:buyitemPlusCostOneItem", args.item, args.price, args.amount, args.itemItRequired)
+  TriggerServerEvent("buy:buyitemPlusCostOneItem", args.item, args.price, args.itemItRequired, args.amount)
 end)
 
 
