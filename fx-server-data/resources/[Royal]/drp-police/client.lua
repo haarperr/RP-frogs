@@ -2774,7 +2774,7 @@ Citizen.CreateThread(function()
 		-- debugPoly=true,
 		minZ = 100.89334869384,
 		maxZ = 102.89334869384
-	  }))
+	  })
 end)
 
 RegisterNetEvent('drp-polyzone:enter')
