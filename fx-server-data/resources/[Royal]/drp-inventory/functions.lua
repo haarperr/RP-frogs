@@ -2116,10 +2116,14 @@ end
       or itemid == "beefdish"
       or itemid == "beefdishc"
       or itemid == "ramen"
+      or itemid == "cbzinger"
     ) then
+        if itemid == "cbzinger" then
+            TriggerEvent("attachItem", "burger")
+        end
         local success = AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","inv:wellfedNoStress",true,itemid,playerVeh)
         if success then
-          TriggerEvent("DoLongHudText", "You feel lucky.")
+          -- TriggerEvent("DoLongHudText", "You feel lucky.")
           TriggerEvent("buffs:triggerBuff", itemid)
           TriggerServerEvent("buffs:triggerBuff", itemid)
         end
