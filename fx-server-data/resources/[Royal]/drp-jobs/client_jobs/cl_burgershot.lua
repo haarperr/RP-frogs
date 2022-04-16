@@ -832,7 +832,7 @@ AddEventHandler("bsdelivery:getTheJob", function()
     hasJob = true
     Citizen.Wait(45000)
     enterCoords = Houses()
-    
+
     currentHouse = enterCoords
 
     FoodDeliveryLocation = AddBlipForCoord(enterCoords.x, enterCoords.y,
@@ -864,7 +864,7 @@ Citizen.CreateThread(function()
         Citizen.Wait(250)
         if hasJob == true then
             -- if player is near the delivery location
-            if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), enterCoords.x, enterCoords.y, enterCoords.z, true) < 2 then            
+            if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), currentHouse.x, currentHouse.y, currentHouse.z, true) < 2 then            
 			    exports['drp-textui']:showInteraction('[E] Changing Room') 
                 if IsControlJustReleased(0, 38) then
                     TriggerEvent('drp-pd-options')
