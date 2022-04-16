@@ -393,6 +393,11 @@ Citizen.CreateThread(function()
         minZ=30.49,
         maxZ=31.24
     })
+    -- PD Clock in locations
+    exports["drp-polytarget"]:AddBoxZone("duty_ranger", vector3(385.4514, 794.4573, 187.4616), 0.9, 0.5, {
+
+    })
+
 
     -- PD Clock in FIB
     exports["drp-polytarget"]:AddBoxZone("duty_fib", vector3(2511.1729, -356.0486, 94.6071), 0.9, 0.5, {
@@ -1553,6 +1558,20 @@ Citizen.CreateThread(function()
     exports["drp-interact"]:AddPeekEntryByPolyTarget("duty_police", {{
         event = "drp-duty:PoliceMenu",
         id = "duty_police",
+        icon = "cog",
+        label = "Sign On/Off Duty",
+        parameters = {},
+    }}, {
+        distance = { radius = 2.5 },
+        isEnabled = function()
+            return true
+        end,
+    });
+
+    -- Ranger Duty
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("duty_ranger", {{
+        event = "drp-duty:PoliceMenu",
+        id = "duty_ranger",
         icon = "cog",
         label = "Sign On/Off Duty",
         parameters = {},
