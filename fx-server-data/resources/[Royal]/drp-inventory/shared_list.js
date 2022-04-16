@@ -2027,6 +2027,7 @@ itemList['883325847'] = {
   weight: 50,
   nonStack: true,
   model: '',
+  
   image: 'np_petrol-can.png',
   weapon: true,
 };
@@ -2522,6 +2523,17 @@ itemList['4191993645'] = {
   weight: 17,
   nonStack: true,
   model: '',
+  craft: [
+    [{
+        itemid: 'aluminium',
+        amount: 25
+      },
+      {
+        itemid: 'plastic',
+        amount: 10
+      },
+    ]
+  ],
   image: 'np_hatchet.png',
   weapon: true,
 };
