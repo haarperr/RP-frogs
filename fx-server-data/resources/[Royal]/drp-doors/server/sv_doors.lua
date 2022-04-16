@@ -9373,7 +9373,7 @@ DOOR_CONFIG = {
     {
       info = "PD Sandy",
       active = true,
-      id = 548,
+      id = 569,
       coords = vector3(1857.424, 3689.848, 34.38715),
       model = -2063446532,
       lock = true,
@@ -9390,7 +9390,7 @@ DOOR_CONFIG = {
     {
       info = "CGGG Compound",
       active = true,
-      id = 549,
+      id = 570,
       coords = vector3(-695.9637, -940.0197, 20.16812),
       model = -2063446532,
       lock = true,
@@ -9406,7 +9406,7 @@ DOOR_CONFIG = {
     {
       info = "PD Palteo",
       active = true,
-      id = 550,
+      id = 571,
       coords = vector3(-450.0098, 6004.835, 32.28851),
       model = 1857649811,
       lock = true,
@@ -9414,6 +9414,7 @@ DOOR_CONFIG = {
       desc = "x",
       access = {
         job = {
+          ["PD"] = true,
          },
         cid = {
         },
@@ -9422,7 +9423,7 @@ DOOR_CONFIG = {
     {
       info = "PD Paleto",
       active = true,
-      id = 551,
+      id = 572,
       coords = vector3(-451.4247, 6003.42, 32.28851),
       model = 1362051455,
       lock = true,
@@ -9430,6 +9431,7 @@ DOOR_CONFIG = {
       desc = "x",
       access = {
         job = {
+          ["PD"] = true,
          },
         cid = {
         },
@@ -9438,7 +9440,7 @@ DOOR_CONFIG = {
     {
       info = "PD Paleto",
       active = true,
-      id = 551,
+      id = 573,
       coords = vector3(-447.4445, 6011.512, 36.99582),
       model = 1362051455,
       lock = true,
@@ -9446,6 +9448,7 @@ DOOR_CONFIG = {
       desc = "x",
       access = {
         job = {
+          ["PD"] = true,
          },
         cid = {
         },
@@ -9454,7 +9457,7 @@ DOOR_CONFIG = {
     {
       info = "PD Paleto",
       active = true,
-      id = 551,
+      id = 574,
       coords = vector3(-446.4799, 5996.469, 27.58121),
       model = 1362051455,
       lock = true,
@@ -9462,6 +9465,7 @@ DOOR_CONFIG = {
       desc = "x",
       access = {
         job = {
+          ["PD"] = true,
          },
         cid = {
         },
@@ -9470,7 +9474,7 @@ DOOR_CONFIG = {
     {
       info = "PD Paleto",
       active = true,
-      id = 551,
+      id = 575,
       coords = vector3(-446.4799, 5996.469, 27.58121),
       model = 1362051455,
       lock = true,
@@ -9478,6 +9482,7 @@ DOOR_CONFIG = {
       desc = "x",
       access = {
         job = {
+          ["PD"] = true,
          },
         cid = {
         },
