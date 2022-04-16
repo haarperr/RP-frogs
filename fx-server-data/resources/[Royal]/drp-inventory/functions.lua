@@ -1024,7 +1024,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","food:Condiment",true,itemid,playerVeh)
     end
 
-    if (itemid == "icecream" or itemid == "mshake" or itemid == "winemilkshake" or itemid == "softdrink") then
+    if (itemid == "icecream" or itemid == "mshake" or itemid == "winemilkshake") then
         TaskItem("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","inv:fed2",true,itemid,playerVeh)
     end
 
@@ -2558,7 +2558,12 @@ end
     end
 
 
-    if itemid == "softdrink" then
+    if itemid == "softdrink" or itemid == "cbdrink" or itemid == "cbsmoothie" then
+        if itemid == "softdrink" then
+            TriggerEvent("attachItem", "softdrink")
+        else
+            TriggerEvent("attachItem", "cbdrink")
+        end
         AttachPropAndPlayAnimation("amb@world_human_drinking@coffee@male@idle_a", "idle_c", 49,15000,"Drink","food:SoftDrink",true,itemid,playerVeh)
     end
 
