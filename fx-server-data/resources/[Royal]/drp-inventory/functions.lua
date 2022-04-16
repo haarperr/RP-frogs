@@ -858,11 +858,6 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
         end
     end
 
-    if (itemid == "cbbowl") then
-        SetPedArmour(player, GetPedArmour(player) + 20)
-        TriggerEvent("drp-hud:updateStress",false,50)
-    end
-
     if (itemid == "joint" or itemid == "joint2") then
         local finished = exports["drp-taskbar"]:taskBar(2000,"Smoking Joint",false,false,playerVeh)
         if (finished == 100) then
@@ -2849,6 +2844,8 @@ AddEventHandler("drp-inventory:attachPropPlayAnim", function(pType)
         )
     end
     if pType == "cbbowl" then
+        SetPedArmour(player, GetPedArmour(player) + 20)
+        TriggerEvent("drp-hud:updateStress",false,50)
         success = AttachPropAndPlayAnimation(
             "mp_player_inteat@burger",
             "mp_player_int_eat_burger",
