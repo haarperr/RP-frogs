@@ -2411,8 +2411,8 @@ Citizen.CreateThread(function()
 		vector2(388.16729736328, 800.1937866211)
 	  }, {
 		name="rangerevidence",
-		-minZ = 186,
-		-maxZ = 188
+		minZ = 186,
+		maxZ = 188
 	  })
 end)
 
