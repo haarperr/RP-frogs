@@ -2565,7 +2565,7 @@ end
         AttachPropAndPlayAnimation("amb@world_human_drinking@coffee@male@idle_a", "idle_c", 49,15000,"Drink","drp-roostersrest:drinkTea",true,itemid,playerVeh)
     end
  
-    if itemid == "fries" or itemid == "chips" or itemid == "hardoaksfries" then
+    if itemid == "fries" or itemid == "chips" or itemid == "hardoaksfries" or itemid == "cbfries" then
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,15000,"Eating","inv:fed2",true,itemid,playerVeh)
     end
 
@@ -2822,6 +2822,19 @@ AddEventHandler("drp-inventory:attachPropPlayAnim", function(pType)
             "mp_player_int_eat_burger",
             49,
             15000,
+            "Eating",
+            "",
+            false,
+            "fries",
+            vehicle
+        )
+    end
+    if pType == "cbfries" then
+        success = AttachPropAndPlayAnimation(
+            "mp_player_inteat@burger",
+            "mp_player_int_eat_burger",
+            49,
+            12500,
             "Eating",
             "",
             false,
