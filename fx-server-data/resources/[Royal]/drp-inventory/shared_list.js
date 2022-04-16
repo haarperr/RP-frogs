@@ -2242,6 +2242,17 @@ itemList['2227010557'] = {
   weight: 15,
   nonStack: true,
   model: '',
+  craft: [
+    [{
+        itemid: 'steel',
+        amount: 25
+      },
+      {
+        itemid: 'aluminium',
+        amount: 30
+      },
+    ]
+  ],
   image: 'np_crowbar.png',
   weapon: true,
 };
