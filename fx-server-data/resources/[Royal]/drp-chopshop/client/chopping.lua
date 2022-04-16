@@ -431,7 +431,7 @@ AddEventHandler("chop:startChop", function(modelName)
             local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
             local carCoords = GetEntityCoords(vehicle, false)
             local dist = GetDistanceBetweenCoords(plyCoords.x, plyCoords.y, plyCoords.z, carCoords.x, carCoords.y, carCoords.z, false)
-            if dist < 3 then
+            if dist < 2.5 then
                 TriggerEvent("chop:boostLockPick", vehicle)
             end
 
@@ -447,7 +447,6 @@ end)
 RegisterNetEvent("chop:boostLockPick")
 AddEventHandler("chop:boostLockPick", function(vehicle)
   local plyPos = GetEntityCoords(PlayerPedId())
-  local targetVeh = GetClosestVehicle(plyPos.x, plyPos.y, plyPos.z, 2.5, 0, 70)
   local pedSpawnAmount = nil 
   local weapon = nil
   local guns = {
@@ -465,7 +464,7 @@ AddEventHandler("chop:boostLockPick", function(vehicle)
   
   
   Citizen.CreateThread(function()
-    if targetVeh == spawnedVeh then
+    if vehicle == spawnedVeh then
       if not pedsSpawned then
         for i = pedSpawnAmount, 1, -1 do 
             TriggerEvent("chop:spawnPed", currentLocation, weapon)
@@ -476,7 +475,7 @@ AddEventHandler("chop:boostLockPick", function(vehicle)
           Citizen.Wait(1000)
         end 
 
-        local isPedInBoostCar = IsPedInVehicle(PlayerPedId(), spawnedVeh, true)
+        local isPedInBoostCar = IsPedInVehicle(PlayerPedId(), vehicle, true)
 
         pedsSpawned = false
         TriggerEvent("chop:DropOff", vehicle) 
