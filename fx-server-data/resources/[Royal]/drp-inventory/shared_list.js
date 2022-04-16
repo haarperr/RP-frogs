@@ -5175,23 +5175,23 @@ itemList['cbfowl'] = {
   craft: [
     [  
       {
-      itemid: 'hamburgerpatty',
-      amount: 1
-      },
-      {
         itemid: 'cbpatty',
-        amount: 1
+        amount: 2
       },
       {
         itemid: 'lettuce',
-        amount: 1
+        amount: 2
       },
       {
         itemid: 'cheese',
-        amount: 1
+        amount: 2
       },
       {
         itemid: 'tomato',
+        amount: 1
+      },
+      {
+        itemid: 'hamburgerbuns',
         amount: 1
       }
     ]
