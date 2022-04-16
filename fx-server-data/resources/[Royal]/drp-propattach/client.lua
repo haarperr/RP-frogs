@@ -870,7 +870,7 @@ attachPropList = {
   },
   ["cbdrink"] = {
 		["model"] = "prop_food_cb_juice01",
-		["bone"] = 28422,
+		["bone"] = 18905,
 		["x"] = 0.1,
 		["y"] = -0.01,
 		["z"] = 0.05,
@@ -880,7 +880,7 @@ attachPropList = {
   },
   ["cbcoffee"] = {
 		["model"] = "prop_food_cb_coffee",
-		["bone"] = 28422,
+		["bone"] = 18905,
 		["x"] = 0.1,
 		["y"] = -0.01,
 		["z"] = 0.05,
@@ -890,7 +890,7 @@ attachPropList = {
   },
   ["cbbowl"] = {
 		["model"] = "prop_cs_bowl_01",
-		["bone"] = 28422,
+		["bone"] = 18905,
 		["x"] = 0.1,
 		["y"] = -0.01,
 		["z"] = 0.05,
