@@ -2799,6 +2799,59 @@ AddEventHandler("drp-fib:elevator:2:down", function()
 end)
   
 
+local paletoarmor = false
+--Name: fib_armor | 2022-04-15T09:43:33Z
+Citizen.CreateThread(function()
+	exports["drp-polyzone"]:AddPolyZone("paletopdarmory", {
+		vector2(-448.04263305664, 6012.2802734375),
+		vector2(-450.61328125, 6014.3208007812),
+		vector2(-444.98977661132, 6019.765625),
+		vector2(-442.36618041992, 6017.5229492188),
+		vector2(-443.69580078125, 6016.212890625),
+		vector2(-445.26385498046, 6017.544921875),
+		vector2(-449.28353881836, 6014.1909179688)
+	  }, {
+		name="paletopdarmory",
+		minZ = 35.995677947998,
+		maxZ = 37.995677947998
+	  })
+end)
+
+
+
+RegisterNetEvent('drp-polyzone:enter')
+AddEventHandler('drp-polyzone:enter', function(name)
+    if name == "paletopdarmory" then
+        local job = exports["isPed"]:isPed("myjob")
+        if job == "police" or job == "sheriff" or job == "state" then
+			PaletoArmor()
+            paletoarmor = true
+			exports['drp-textui']:showInteraction('[E] Armory')
+        end
+    end
+end)
+
+RegisterNetEvent('drp-polyzone:exit')
+AddEventHandler('drp-polyzone:exit', function(name)
+    if name == "paletopdarmory" then
+        paletoarmor = false
+    end
+	exports['drp-textui']:hideInteraction()
+end)
+
+function PaletoArmor()
+	Citizen.CreateThread(function()
+        while paletoarmor do
+            Citizen.Wait(5)
+			if IsControlJustReleased(0, 38) then
+				TriggerEvent('police:general')
+			end
+		end
+	end)
+end
+
+
+
 local fibarmor = false
 --Name: fib_armor | 2022-04-15T09:43:33Z
 Citizen.CreateThread(function()
