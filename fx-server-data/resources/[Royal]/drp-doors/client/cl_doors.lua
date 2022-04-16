@@ -1,4 +1,5 @@
 local doors = {}
+local file = nil
 local currentDoorCoords, currentDoorId, currentDoorLockState, currentZone = vector3(0, 0, 0), nil, nil, nil
 local listening = false
 local bollards = {
@@ -120,7 +121,6 @@ RegisterCommand("doors:print-entity", function()
     printEntityDetails = not printEntityDetails
 end)
 
-local file = nil
 
 AddEventHandler("drp-target:inFront", function(pEntity, pEntityType, pEntityCoords)
     if pEntityType == nil or pEntityType ~= 3 then
