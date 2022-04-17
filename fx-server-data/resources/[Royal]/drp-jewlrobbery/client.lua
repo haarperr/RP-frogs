@@ -204,6 +204,7 @@ AddEventHandler('jewel:card', function()
     end
 end)
 
+
 RegisterNetEvent('jewel:disconnect')
 AddEventHandler('jewel:disconnect', function()
 	if exports["isPed"]:isPed("countpolice") >= 0 or exports["isPed"]:isPed("myJob") == 'police' or exports["isPed"]:isPed("myJob") == 'sheriff' or exports["isPed"]:isPed("myJob") == 'state' then
