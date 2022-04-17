@@ -135,16 +135,18 @@ end
 
 function GiveMoney(player, money)
 	if giveChipsCallback ~= nil then
-		giveChipsCallback(player, math.tointeger(money))
+		local user = exports["drp-base"]:getModule("Player"):GetUser(player)
+		user:addMoney(money)
+		print('[RPFrogs-Blackjack] ' .. user:getName() .. ' has ' .. user:getMoney() .. '$')
 	end
-	-- DebugPrint("MONEY: GIVE "..GetPlayerName(player):upper().." "..money)
 end
 
 function TakeMoney(player, money)
-	if takeChipsCallback ~= nil then
-		takeChipsCallback(player, math.tointeger(money))
+	if giveChipsCallback ~= nil then
+		local user = exports["drp-base"]:getModule("Player"):GetUser(player)
+		user:removeMoney(money)
+		print('[RPFrogs-Blackjack] ' .. user:getName() .. ' has ' .. user:getMoney() .. '$')
 	end
-	-- DebugPrint("MONEY: TAKE "..GetPlayerName(player):upper().." "..money)
 end
 
 function HaveAllPlayersBetted(table)
