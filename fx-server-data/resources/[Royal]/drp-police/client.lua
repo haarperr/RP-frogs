@@ -1397,7 +1397,7 @@ AddEventHandler('FlipVehicle', function()
 			local playerCoords = GetEntityCoords(PlayerPedId())
 			local vehCoords = GetEntityCoords(targetVehicle)
 			
-			if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, vehCoords.x, vehCoords.y, vehCoords.z, true) <= 2 then
+			if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, vehCoords.x, vehCoords.y, vehCoords.z, true) <= 3 then
 				
 
 				local playerped = PlayerPedId()
