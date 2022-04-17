@@ -289,7 +289,7 @@ exports("NearVehicle", function(pType)
             vehicle = GetClosestVehicle(coords.x, coords.y, coords.z, 5.0, 0, 71)
             return GetVehicleEngineHealth(vehicle)
         else
-            return 1000
+            return false
         end
     elseif pType == "BodyDamage" then
         local coords = GetEntityCoords(PlayerPedId())
@@ -297,7 +297,7 @@ exports("NearVehicle", function(pType)
             vehicle = GetClosestVehicle(coords.x, coords.y, coords.z, 5.0, 0, 71)
             return GetVehicleBodyHealth(vehicle)
         else
-            return 1000
+            return false
         end
     end
 end)
