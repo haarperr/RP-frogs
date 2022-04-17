@@ -475,12 +475,32 @@ AddEventHandler("chop:boostLockPick", function(vehicle)
     weapon = guns[math.random(1, #guns)]
 
     Citizen.CreateThread(function()
-        if not pedsSpawned then
-            for i = pedSpawnAmount, 1, -1 do 
-                TriggerEvent("chop:spawnPed", currentLocation, weapon)
-                pedsSpawned = true
-            end
+        
+        local pedModels = {
+            "a_m_m_rurmeth_01", 
+            "a_m_m_soucent_01", 
+            "a_m_y_beach_01", 
+            "a_m_y_ktown_02", 
+            "cs_old_man2", 
+            "cs_siemonyetarian",
+            "cs_terry"
+          }
+        
+        AddRelationshipGroup("gangGang")
+        local pedRand1 = GetHashKey(pedModels[math.random(1, #pedModels)])
+        if not IsModelInCdimage(pedRand1) then return end
+        RequestModel(pedRand1)
+        while not HasModelLoaded(pedRand1) do
+            Citizen.Wait(10)
         end
+        local boostingPed1 = CreatePed(30, pedRand1, x, y, z, h, true, true)
+        SetPedArmour(boostingPed1, 100)
+        SetPedAsEnemy(boostingPed1, true)
+        SetPedRelationshipGroupHash(boostingPed1, 'gangGang')
+        GiveWeaponToPed(boostingPed1, GetHashKey(weapon), 250, true, true)
+        TaskCombatPed(boostingPed1, GetPlayerPed(-1))
+        SetPedAccuracy(boostingPed1, math.random(25,75))
+        SetPedDropsWeaponsWhenDead(boostingPed1, false)
 
         while not IsPedInAnyVehicle(PlayerPedId(), false) do
             Citizen.Wait(1000)
@@ -494,42 +514,6 @@ AddEventHandler("chop:boostLockPick", function(vehicle)
         pedsSpawned = false
         
     end)
-end)
-
-
-
-
-RegisterNetEvent("chop:spawnPed")
-AddEventHandler("chop:spawnPed", function(x, y, z, h, weapon)
-  
-  local pedModels = {
-    "a_m_m_rurmeth_01", 
-    "a_m_m_soucent_01", 
-    "a_m_y_beach_01", 
-    "a_m_y_ktown_02", 
-    "cs_old_man2", 
-    "cs_siemonyetarian",
-    "cs_terry"
-  }
-
-  Citizen.CreateThread(function()
-    AddRelationshipGroup("gangGang")
-    local pedRand1 = GetHashKey(pedModels[math.random(1, #pedModels)])
-    if not IsModelInCdimage(pedRand1) then return end
-    RequestModel(pedRand1)
-    while not HasModelLoaded(pedRand1) do
-      Citizen.Wait(10)
-    end
-    local boostingPed1 = CreatePed(30, pedRand1, x, y, z, h, true, true)
-    SetPedArmour(boostingPed1, 100)
-    SetPedAsEnemy(boostingPed1, true)
-    SetPedRelationshipGroupHash(boostingPed1, 'gangGang')
-    GiveWeaponToPed(boostingPed1, GetHashKey(weapon), 250, true, true)
-    TaskCombatPed(boostingPed1, GetPlayerPed(-1))
-    SetPedAccuracy(boostingPed1, math.random(25,75))
-    SetPedDropsWeaponsWhenDead(boostingPed1, false)
-  end)
-
 end)
 
 local triggered = false
@@ -563,7 +547,7 @@ AddEventHandler("chop:DropOff", function(vehicle)
                 triggered = false
                 DeleteBlip(blipDropOff)
                 if math.random(1, 4) == 1 then
-                    TriggerEvent('civilian:alertPolice', 35.0, 'drugsale', 0)
+                    TriggerEvent('civilian:alertPolice', 40.0, 'drugsale', 0)
                 end
                 TriggerServerEvent("drp-chopshop:registerCar", vehicle)
                 return
