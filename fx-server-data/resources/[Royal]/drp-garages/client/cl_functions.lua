@@ -63,11 +63,13 @@ function SpawnVehicle(vehicle, pGarage, Fuel, customized, plate, IsViewing, engi
 
         
         -- Set Enigne Health
+        Citizen.Trace("Engine Damage: " .. engine_damage .. "\n")
         if enginehealth ~= nil then
             SetVehicleEngineHealth(veh, engine_damage)
           end
   
           -- Set Body Health
+          Citizen.Trace("Body Damage: " .. body_damage .. "\n")
           if bodyhealth ~= nil then
             SetVehicleBodyHealth(veh, body_damage)
           end
