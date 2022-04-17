@@ -352,7 +352,7 @@ Entries[#Entries + 1] = {
         isEnabled = function(pEntity, pContext)
             local plate = GetVehicleNumberPlateText(pEntity)
             hasKeys = exports["drp-keys"]:hasKey(plate)
-            return hasKeys(pEntity)
+            return hasKeys(pEntity) or true
         end
     }
 }
