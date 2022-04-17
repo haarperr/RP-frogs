@@ -1016,7 +1016,7 @@ Citizen.CreateThread(function()
         local engine_damage = GetVehicleEngineHealth(veh)
         local body_damage = GetVehicleBodyHealth(veh)
         TriggerServerEvent("vehicle:damage",plateupdate,body_damage,engine_damage)
-        
+
         invehicle = false
         plateupdate = "None"
         vehobj = 0
