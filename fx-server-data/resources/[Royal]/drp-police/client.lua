@@ -1461,7 +1461,7 @@ AddEventHandler('civ:reimpoundscuff', function()
 			model = vehicles[1].model,
 			fuel = vehicles[1].fuel, 
 			customized = vehicles[1].data,
-			plate = vehicles[1].license_plate,,
+			plate = vehicles[1].license_plate,
 			enigine_damage = vehicles[i].engine_damage,
 			body_damage = vehicles[i].body_damage,
 		}
