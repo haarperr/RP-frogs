@@ -339,7 +339,7 @@ local onCooldown = false
 
 RegisterNetEvent("drp-cluckin:getdelivery")
 AddEventHandler("drp-cluckin:getdelivery", function()
-    local rank = exports["isPed"]:GroupRank("burger_shot")
+    local rank = exports["isPed"]:GroupRank("cluckin_bell")
     if rank >= 1 then
         if not onCooldown then
             if hasJob == true then
