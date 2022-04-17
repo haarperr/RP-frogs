@@ -80,7 +80,7 @@ function SpawnVehicle(vehicle, pGarage, Fuel, customized, plate, IsViewing, engi
         SetVehicleProps(veh, customized)
         Citizen.Wait(50)
         SetVehicleNumberPlateText(veh, pPlate)
-        TriggerEvent("keys:addNew",veh, pPlate)
+        TriggerEvent("keys:addNew",  veh, pPlate)
         SetVehicleHasBeenOwnedByPlayer(veh,true)
         local id = NetworkGetNetworkIdFromEntity(veh)
         SetNetworkIdCanMigrate(id, true)
