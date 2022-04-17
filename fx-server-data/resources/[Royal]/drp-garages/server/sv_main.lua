@@ -502,13 +502,13 @@ RPC.register("drp-garages:states", function(pState, plate, garage, fuel, engine_
 
 			Citizen.Trace(engine_damage .. " " .. body_damage .. "\n")
 
-			exports.ghmattimysql:execute("UPDATE characters_cars SET vehicle_state = @state, current_garage = @garage, fuel = @fuel, coords = @coords, engine_damage = @engine_damage, body_damage = @body_damage WHERE license_plate = @plate", {
-				['@state'] = pState,
+			exports.ghmattimysql:execute("UPDATE characters_cars SET current_garage = @garage, fuel = @fuel, engine_damage = @engine_damage, body_damage = @body_damage, vehicle_state = @state, coords = @coords WHERE license_plate = @plate", {
 				['@garage'] = garage,
 				['@fuel'] = fuel,
-				['@coords'] = {x = 0, y = 0, z = 0},
 				['@engine_damage'] = engine_damage,
 				['@body_damage'] = body_damage,
+				['@state'] = pState,
+				['@coords'] = json.encode({x = 0, y = 0, z = 0}),
 				['@plate'] = plate
 			})
 		else
