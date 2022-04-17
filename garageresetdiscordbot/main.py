@@ -447,7 +447,6 @@ async def kick(ctx, user: discord.Member=None, *, reason=None):
 
 
 @bot.command(name='pull')
-@commands.has_permissions(manage_messages = True)
 async def pull(ctx):
     # execute "git pull" in the terminal in /home/RP-Frogs/
     # this will pull the latest changes from the repo
