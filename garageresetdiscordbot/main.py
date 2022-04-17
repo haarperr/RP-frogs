@@ -450,8 +450,8 @@ async def kick(ctx, user: discord.Member=None, *, reason=None):
 async def pull(ctx):
     # execute "git pull" in the terminal in /home/RP-Frogs/
     # this will pull the latest changes from the repo
-    os.system("cd /home/RP-Frogs/ && git pull")
-    await ctx.send("Pulling latest changes from the repo...")
+    stream =os.popen("cd /home/RP-Frogs/ && git pull")
+    await ctx.send(stream.read())
     
     
 
