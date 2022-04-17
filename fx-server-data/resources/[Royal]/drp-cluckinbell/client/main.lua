@@ -487,14 +487,12 @@ AddEventHandler("drp-cluckinbell:giveFoodToCustomer", function()
                 TriggerEvent("DoLongHudText", "I dont need this, maybe you find it useful?", 1)
             end
             if math.random(1, 75) == 69 then
-                information = {
-                    ["Price"] = math.random(750, 1250),
-                }
-                TriggerEvent("player:receiveItem", "burgerReceipt", 1, true, information)
+                TriggerEvent("player:receiveItem", "rollcash", math.random(7,17))
                 TriggerEvent("DoLongHudText", "Here is an extra Tip of $" .. information["Price"] .. "!", 1)
             end
             if math.random(1, 3) == 1 then
-                TriggerEvent("player:receiveItem", "burgerReceipt", 1)
+                TriggerEvent("player:receiveItem", "rollcash", math.random(1,3))
+                TriggerEvent("DoLongHudText", "Here is an extra Tip of $" .. information["Price"] .. "!", 1)
             end
         end
     else
