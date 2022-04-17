@@ -4969,7 +4969,7 @@ itemList['cbpatty'] = {
 itemList['cbfriedchickenpiece'] = {
   fullyDegrades: false,
   decayrate: 0.01,
-  displayname: 'Fried Chicken Stripes',
+  displayname: 'Fried Chicken Strips',
   price: 1,
   weight: 2,
   nonStack: false,
