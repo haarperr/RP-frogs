@@ -74,7 +74,7 @@ end)
 
 RegisterNetEvent("drp-garages:store", function()
     local pos = GetEntityCoords(PlayerPedId())
-    local Stored = RPC.execute("drp-garages:states", "In", exports["drp-vehicles"]:NearVehicle("plate"), exports['drp-menu']:currentGarage(), exports["drp-vehicles"]:NearVehicle("Fuel"))
+    local Stored = RPC.execute("drp-garages:states", "In", exports["drp-vehicles"]:NearVehicle("plate"), exports['drp-menu']:currentGarage(), exports["drp-vehicles"]:NearVehicle("Fuel"), exports["drp-vehicles"]:NearVehicle("EngineDamage"), exports["drp-vehicles"]:NearVehicle("BodyDamage"))
     local coordA = GetEntityCoords(PlayerPedId(), 1)
     local coordB = GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0.0, 100.0, 0.0)
     local curVeh = exports['drp-vehicles']:getVehicleInDirection(coordA, coordB)

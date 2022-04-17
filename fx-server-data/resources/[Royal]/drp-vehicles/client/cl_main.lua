@@ -283,6 +283,22 @@ exports("NearVehicle", function(pType)
         else
             return false
         end
+    elseif pType == "EngineDamage" then
+        local coords = GetEntityCoords(PlayerPedId())
+        if IsAnyVehicleNearPoint(coords.x, coords.y, coords.z, 5.0) then
+            vehicle = GetClosestVehicle(coords.x, coords.y, coords.z, 5.0, 0, 71)
+            return GetVehicleEngineHealth(vehicle)
+        else
+            return 1000
+        end
+    elseif pType == "BodyDamage" then
+        local coords = GetEntityCoords(PlayerPedId())
+        if IsAnyVehicleNearPoint(coords.x, coords.y, coords.z, 5.0) then
+            vehicle = GetClosestVehicle(coords.x, coords.y, coords.z, 5.0, 0, 71)
+            return GetVehicleBodyHealth(vehicle)
+        else
+            return 1000
+        end
     end
 end)
 

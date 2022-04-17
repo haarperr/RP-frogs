@@ -490,17 +490,19 @@ RPC.register("drp-garages:spawned:get", function(pID)
 	end)
 end)
 
-RPC.register("drp-garages:states", function(pState, plate, garage, fuel)
+RPC.register("drp-garages:states", function(pState, plate, garage, fuel, engine_damage, body_damage)
     local pSrc = source
 	exports.ghmattimysql:execute('SELECT * FROM characters_cars WHERE license_plate = ?', {plate}, function(pIsValid)
 		if pIsValid[1] then
 			pExist = true
-			exports.ghmattimysql:execute("UPDATE characters_cars SET vehicle_state = @state, current_garage = @garage, fuel = @fuel, coords = @coords WHERE license_plate = @plate", {
-				['garage'] = garage, 
-				['state'] = pState, 
-				['plate'] = plate,  
-				['fuel'] = fuel, 
-				['coords'] = nil
+			exports.ghmattimysql:execute("UPDATE characters_cars SET vehicle_state = @state, current_garage = @garage, fuel = @fuel, coords = @coords, engine_damage = @engine_damage, body_damage = @body_damage WHERE license_plate = @plate", {
+				['@state'] = pState,
+				['@garage'] = garage,
+				['@fuel'] = fuel,
+				['@coords'] = {x = 0, y = 0, z = 0},
+				['@engine_damage'] = engine_damage or 1000,
+				['@body_damage'] = body_damage or 1000,
+				['@plate'] = plate
 			})
 		else
 			pExist = false
