@@ -75,7 +75,7 @@ const LoggingWebhookName = "Loggies";
 const LoggingAlertPingId = "&000000000000000000";
 // example: "bank": "https://discord.com/webhook/...",
 const LoggingWebhooks = {
-    "example": "https://discord.com/api/webhooks/000000000/sEcRRet-ToK3n_5tUfF_tH8t_YUo-S40u1d-n07-sHar3",
+    "example": "https://canary.discord.com/api/webhooks/965294258431074374/GNn_Rdszv-RRqYt-4QhvYi4Ni3E8BOgeZLumrb8Ohm2ko3hAhRp-lEwKWNKCvvsjYiQn",
 };
 
 

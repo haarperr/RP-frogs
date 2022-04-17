@@ -1,4 +1,4 @@
---local webhook5 = 'https://discord.com/api/webhooks/871328743870844928/L-4aEwcxXxLcoprSfjvTeL_mE0sR_sylC-h-ayEmYHtr1cJQ0YIapGUure9T9x7mXrCw' -- Your Discord webhook for logs
+local webhook5 = 'https://canary.discord.com/api/webhooks/965294258431074374/GNn_Rdszv-RRqYt-4QhvYi4Ni3E8BOgeZLumrb8Ohm2ko3hAhRp-lEwKWNKCvvsjYiQn' -- Your Discord webhook for logs
 
 RegisterNetEvent('paycheck:collect:log')
 AddEventHandler('paycheck:collect:log', function()

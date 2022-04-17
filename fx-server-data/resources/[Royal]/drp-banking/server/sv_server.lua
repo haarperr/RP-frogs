@@ -260,7 +260,7 @@ AddEventHandler("bank:get:balance", function()
   TriggerClientEvent('banking:updateCash', src, char.cash)
   TriggerClientEvent("bank:getbankAccountNumber", src, char.id)
 end)
-local webhook5 = 'https://discord.com/api/webhooks/953469481785651230/txg6toVI0ehnp7moZ-9kkL9CqG0by8XSe5LE6BxYOpSD4ORRuYiOQMcJ6F1WXLClF9cs' -- Your Discord webhook for logs
+local webhook5 = 'https://canary.discord.com/api/webhooks/965294258431074374/GNn_Rdszv-RRqYt-4QhvYi4Ni3E8BOgeZLumrb8Ohm2ko3hAhRp-lEwKWNKCvvsjYiQn' -- Your Discord webhook for logs
 
 function sendToDiscord5(name, message, color)
   local connect = {
