@@ -1463,7 +1463,7 @@ AddEventHandler('civ:reimpoundscuff', function()
 			customized = vehicles[1].data,
 			plate = vehicles[1].license_plate,
 		}
-		local vehicle = SpawnVehicle(data.model, location, data.fuel, data.customized, data.plate, true)
+		local vehicle = SpawnVehicle(data.model, location, data.fuel, data.customized, data.plate, true, engine_health, body_health)
 		SetVehicleNeedsToBeHotwired(vehicle, false)
 		SetVehicleHasBeenOwnedByPlayer(vehicle, true)
 		SetEntityAsMissionEntity(vehicle, true, true)

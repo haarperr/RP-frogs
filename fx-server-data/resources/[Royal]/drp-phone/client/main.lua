@@ -809,7 +809,7 @@ RegisterNetEvent("phone:carspawn", function(data,coords,state)
       if #(vector3(coords[1],coords[2],coords[3]) - GetEntityCoords(PlayerPedId())) < 10.0 then
        -- DeleteBlip()
         trackVehicle = false
-        SpawnVehicle(value.model, coords[1],coords[2],coords[3], value.fuel, value.data, value.license_plate, true,value.engine_damage,value.body_damage)
+        SpawnVehicle(value.model, coords[1],coords[2],coords[3], value.fuel, value.data, value.license_plate, true, value.engine_damage, value.body_damage)
       else
         TriggerEvent("DoLongHudText","Cannot spawn", 2)
       end
@@ -835,6 +835,18 @@ function SpawnVehicle(vehicle, x,y,z, Fuel, customized, plate, IsViewing, engine
         DecorSetBool(veh, "PlayerVehicle", true)
         SetVehicleOnGroundProperly(veh)
         SetVehicleDirtLevel(veh, 0.0)
+        SetVehicleFuelLevel(veh, Fuel)
+
+        -- Set Enigne Health
+        if enginehealth ~= nil then
+          SetVehicleEngineHealth(veh, enginehealth)
+        end
+
+        -- Set Body Health
+        if bodyhealth ~= nil then
+          SetVehicleBodyHealth(veh, bodyhealth)
+        end
+
         SetEntityInvincible(veh, false) 
         SetVehicleNumberPlateText(veh, plate)
         SetVehicleProps(veh, customized)
@@ -978,8 +990,8 @@ function findVehFromPlateAndSpawn(plate)
 end
 
 RegisterNetEvent("phone:SpawnVehicle")
-AddEventHandler('phone:SpawnVehicle', function(vehicle, plate, customized, state, Fuel, coordlocation)
-  TriggerEvent("garages:SpawnVehicle", vehicle, plate, customized, state, Fuel, coordlocation)
+AddEventHandler('phone:SpawnVehicle', function(vehicle, plate, customized, state, Fuel, coordlocation, engine_health, body_health)
+  TriggerEvent("garages:SpawnVehicle", vehicle, plate, customized, state, Fuel, coordlocation, engine_health, body_health)
 end)
 
 

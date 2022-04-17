@@ -1,6 +1,6 @@
 CurrentDisplayVehicle = nil
 
-function SpawnVehicle(vehicle, pGarage, Fuel, customized, plate, IsViewing)
+function SpawnVehicle(vehicle, pGarage, Fuel, customized, plate, IsViewing, engine_damage, body_damage)
     exports['drp-garages']:DeleteViewedCar()
 	local car = GetHashKey(vehicle)
 	local customized = json.decode(customized)
@@ -60,6 +60,17 @@ function SpawnVehicle(vehicle, pGarage, Fuel, customized, plate, IsViewing)
     
         DecorSetInt(veh, "CurrentFuel", Fuel)
         SetEntityAsMissionEntity(veh, true, true)
+
+        
+        -- Set Enigne Health
+        if enginehealth ~= nil then
+            SetVehicleEngineHealth(veh, engine_damage)
+          end
+  
+          -- Set Body Health
+          if bodyhealth ~= nil then
+            SetVehicleBodyHealth(veh, body_damage)
+          end
 
         DecorSetBool(veh, "PlayerVehicle", true)
         SetVehicleOnGroundProperly(veh)
