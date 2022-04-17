@@ -463,7 +463,7 @@ RPC.register("drp-garages:spawned:get", function(pID)
 			fuel = vehicles[1].fuel, 
 			customized = vehicles[1].data,
 			plate = vehicles[1].license_plate,
-			enigine_damage = vehicles[i].engine_damage,
+			engine_damage = vehicles[i].engine_damage,
 			body_damage = vehicles[i].body_damage,
 		}
 	
