@@ -4,7 +4,7 @@ RegisterServerEvent("drp-paleto:startcheck")
 AddEventHandler("drp-paleto:startcheck", function(bank)
     local _source = source
     globalonactionPaleto = true
-    TriggerClientEvent('drp-inv:removeItem', _source, 'bluetablet', 1)
+    -- TriggerClientEvent('drp-inv:removeItem', _source, 'heistlaptop2', 1)
     TriggerClientEvent("drp-paleto:outcome", _source, true, bank)
 end)
 
@@ -49,18 +49,22 @@ RegisterServerEvent("drp-paleto:rewardCash")
 AddEventHandler("drp-paleto:rewardCash", function()
     local src = source
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
-    local cash = math.random(8000, 15000) -- 8-15K Cash Reward
-    TriggerClientEvent('player:receiveItem',src, "markedbills", math.random(30,55))
+    local cash = math.random(4444, 12222) -- 8-15K Cash Reward
+    TriggerClientEvent('player:receiveItem',src, "markedbills", math.random(44, 88))
     user:addMoney(cash)
     if math.random(100) < 20 then -- Red Dongle Chance 20%
         TriggerClientEvent('player:receiveItem',src, "heistusb2", 1)
         end
-    if math.random(100) < 25 then -- Big Bag Chance 25%
-        TriggerClientEvent('player:receiveItem',src, "inkedmoneybag", math.random(1,2))  
+    if math.random(100) < 33 then -- Big Bag Chance 25%
+        TriggerClientEvent('player:receiveItem',src, "inkedmoneybag", math.random(1,3))  
+    end
+
+    if math.random(100) < 33 then -- Extra smol Bags
+        TriggerClientEvent('player:receiveItem',src, "inkedmomarkedbillsneybag", math.random(10,25))  
     end
     
-    if math.random(100) < 5 then -- Big Bag Chance 25%
-        TriggerClientEvent('player:receiveItem',src, "inkedmoneybag", 1)  
+    if math.random(100) < 12 then -- Big Bag Chance 25%
+        TriggerClientEvent('player:receiveItem',src, "inkedmoneybag", 1,2)  
     end
 end)
 
