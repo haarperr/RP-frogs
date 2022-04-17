@@ -562,7 +562,7 @@ AddEventHandler("chop:DropOff", function(vehicle)
                 isCarAtDropOff = true
                 triggered = false
                 DeleteBlip(blipDropOff)
-                if math.random(1, 5) == 1 then
+                if math.random(1, 4) == 1 then
                     TriggerEvent('civilian:alertPolice', 35.0, 'drugsale', 0)
                 end
                 TriggerServerEvent("drp-chopshop:registerCar", vehicle)
