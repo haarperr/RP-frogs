@@ -495,6 +495,7 @@ RPC.register("drp-garages:states", function(pState, plate, garage, fuel, engine_
 	exports.ghmattimysql:execute('SELECT * FROM characters_cars WHERE license_plate = ?', {plate}, function(pIsValid)
 		if pIsValid[1] then
 			pExist = true
+			Citizen.Trace(tostring(engine_damage) .. " " .. tostring(body_damage) .. "\n")
 			exports.ghmattimysql:execute("UPDATE characters_cars SET vehicle_state = @state, current_garage = @garage, fuel = @fuel, coords = @coords, engine_damage = @engine_damage, body_damage = @body_damage WHERE license_plate = @plate", {
 				['@state'] = pState,
 				['@garage'] = garage,
