@@ -1,9 +1,9 @@
 Citizen.CreateThread(function()
-    -- if GetConvarInt('logs_enabled', 0) == 1 then
+    if GetConvarInt('logs_enabled', 0) == 1 then
         print("^5[anti-cheat]^0 | ^2Running and logging all components^0")		
-    -- else
-    --     print("^5[anti-cheat]^0 | ^8Disabled | Dev Server ^0")	
-    -- end
+    else
+        print("^5[anti-cheat]^0 | ^8Disabled | Dev Server ^0")	
+    end
 end)
 
 
@@ -15,7 +15,7 @@ end)
                 if model == GetHashKey(blockedItems[i]) then
                     CancelEvent()
                     local LogInfo = "Prop Hash: " .. model
-                    exports['drp-base']:DiscordLog("https://canary.discord.com/api/webhooks/965294258431074374/GNn_Rdszv-RRqYt-4QhvYi4Ni3E8BOgeZLumrb8Ohm2ko3hAhRp-lEwKWNKCvvsjYiQn", pOwner, "Cheater: Spawned Blacklisted Prop", "Spawning Props", LogInfo)
+                    exports['drp-base']:DiscordLog("https://discord.com/api/webhooks/953472051040112700/7ySE7vACzm2sgnelt3V2j_pnM_dCQddVAjsJBAmVEB0D2S8Dn7chLK7FgORZ87Qn6eXv", pOwner, "Cheater: Spawned Blacklisted Prop", "Spawning Props", LogInfo)
                     Citizen.Wait(100)
                     DropPlayer(pOwner, "[Anti-Cheat]: You have been permanently banned.")
                     break
@@ -30,7 +30,7 @@ end)
             local pSrc = source
             local pName = GetPlayerName(pSrc)
             local LogInfo =  pName.. " Disconnected | Reason: " .. reason
-            exports['drp-base']:DiscordLog("https://canary.discord.com/api/webhooks/965294258431074374/GNn_Rdszv-RRqYt-4QhvYi4Ni3E8BOgeZLumrb8Ohm2ko3hAhRp-lEwKWNKCvvsjYiQn", pSrc, "Player Disconnected", "", LogInfo)
+            exports['drp-base']:DiscordLog("https://discord.com/api/webhooks/953469481785651230/txg6toVI0ehnp7moZ-9kkL9CqG0by8XSe5LE6BxYOpSD4ORRuYiOQMcJ6F1WXLClF9cs", pSrc, "Player Disconnected", "", LogInfo)
       --  end
     end)
 
@@ -43,7 +43,7 @@ end)
             local tName = GetPlayerName(killer)
 
             local LogInfo = pName .. " was killed by " .. tName .. "  | Type: " ..DeathReason
-            exports['drp-base']:DiscordLog("https://canary.discord.com/api/webhooks/965294258431074374/GNn_Rdszv-RRqYt-4QhvYi4Ni3E8BOgeZLumrb8Ohm2ko3hAhRp-lEwKWNKCvvsjYiQn", killer, "Combat Encounter", "", LogInfo)
+            exports['drp-base']:DiscordLog("https://discord.com/api/webhooks/953469481785651230/txg6toVI0ehnp7moZ-9kkL9CqG0by8XSe5LE6BxYOpSD4ORRuYiOQMcJ6F1WXLClF9cs", killer, "Combat Encounter", "", LogInfo)
        -- end
     end)
 
@@ -61,27 +61,27 @@ end)
     function toxic_log(pSrc, LogType, LogInfo)
     --	if GetConvarInt('logs_enabled', 0) == 1 then
             if LogType == "Spawned:items" then
-                exports['drp-base']:DiscordLog("https://canary.discord.com/api/webhooks/965294258431074374/GNn_Rdszv-RRqYt-4QhvYi4Ni3E8BOgeZLumrb8Ohm2ko3hAhRp-lEwKWNKCvvsjYiQn", pSrc, "Spawned Item -> with admin menu", "", LogInfo)
+                exports['drp-base']:DiscordLog("https://discord.com/api/webhooks/953472051040112700/7ySE7vACzm2sgnelt3V2j_pnM_dCQddVAjsJBAmVEB0D2S8Dn7chLK7FgORZ87Qn6eXv", pSrc, "Spawned Item -> with admin menu", "", LogInfo)
             elseif LogType == "Spawned:car" then
-                exports['drp-base']:DiscordLog("https://canary.discord.com/api/webhooks/965294258431074374/GNn_Rdszv-RRqYt-4QhvYi4Ni3E8BOgeZLumrb8Ohm2ko3hAhRp-lEwKWNKCvvsjYiQn", pSrc, "Spawned Car -> with admin menu", "", LogInfo)
+                exports['drp-base']:DiscordLog("https://discord.com/api/webhooks/953472051040112700/7ySE7vACzm2sgnelt3V2j_pnM_dCQddVAjsJBAmVEB0D2S8Dn7chLK7FgORZ87Qn6eXv", pSrc, "Spawned Car -> with admin menu", "", LogInfo)
             elseif LogType == "Spectating" then
-                exports['drp-base']:DiscordLog("https://canary.discord.com/api/webhooks/965294258431074374/GNn_Rdszv-RRqYt-4QhvYi4Ni3E8BOgeZLumrb8Ohm2ko3hAhRp-lEwKWNKCvvsjYiQn", pSrc, "Spectating Toggled -> with admin menu", "", LogInfo)
+                exports['drp-base']:DiscordLog("https://discord.com/api/webhooks/953472051040112700/7ySE7vACzm2sgnelt3V2j_pnM_dCQddVAjsJBAmVEB0D2S8Dn7chLK7FgORZ87Qn6eXv", pSrc, "Spectating Toggled -> with admin menu", "", LogInfo)
             elseif LogType == "Searching" then
-                exports['drp-base']:DiscordLog("https://canary.discord.com/api/webhooks/965294258431074374/GNn_Rdszv-RRqYt-4QhvYi4Ni3E8BOgeZLumrb8Ohm2ko3hAhRp-lEwKWNKCvvsjYiQn", pSrc, "Searching Toggled -> with admin menu", "", LogInfo)
+                exports['drp-base']:DiscordLog("https://discord.com/api/webhooks/953472051040112700/7ySE7vACzm2sgnelt3V2j_pnM_dCQddVAjsJBAmVEB0D2S8Dn7chLK7FgORZ87Qn6eXv", pSrc, "Searching Toggled -> with admin menu", "", LogInfo)
             elseif LogType == "deposit" then
-                exports['drp-base']:DiscordLog("https://canary.discord.com/api/webhooks/965294258431074374/GNn_Rdszv-RRqYt-4QhvYi4Ni3E8BOgeZLumrb8Ohm2ko3hAhRp-lEwKWNKCvvsjYiQn", pSrc, "Banking Deposit", "", LogInfo)
+                exports['drp-base']:DiscordLog("https://discord.com/api/webhooks/953469481785651230/txg6toVI0ehnp7moZ-9kkL9CqG0by8XSe5LE6BxYOpSD4ORRuYiOQMcJ6F1WXLClF9cs", pSrc, "Banking Deposit", "", LogInfo)
             elseif LogType == "withdraw" then
-                exports['drp-base']:DiscordLog("https://canary.discord.com/api/webhooks/965294258431074374/GNn_Rdszv-RRqYt-4QhvYi4Ni3E8BOgeZLumrb8Ohm2ko3hAhRp-lEwKWNKCvvsjYiQn", pSrc, "Banking Withdraw", "", LogInfo)
+                exports['drp-base']:DiscordLog("https://discord.com/api/webhooks/953469481785651230/txg6toVI0ehnp7moZ-9kkL9CqG0by8XSe5LE6BxYOpSD4ORRuYiOQMcJ6F1WXLClF9cs", pSrc, "Banking Withdraw", "", LogInfo)
             elseif LogType == "transfer" then
-                exports['drp-base']:DiscordLog("https://canary.discord.com/api/webhooks/965294258431074374/GNn_Rdszv-RRqYt-4QhvYi4Ni3E8BOgeZLumrb8Ohm2ko3hAhRp-lEwKWNKCvvsjYiQn", pSrc, "Bank Transfer", "", LogInfo)
+                exports['drp-base']:DiscordLog("https://discord.com/api/webhooks/953469481785651230/txg6toVI0ehnp7moZ-9kkL9CqG0by8XSe5LE6BxYOpSD4ORRuYiOQMcJ6F1WXLClF9cs", pSrc, "Bank Transfer", "", LogInfo)
             elseif LogType == "give_cash" then
-                exports['drp-base']:DiscordLog("https://canary.discord.com/api/webhooks/965294258431074374/GNn_Rdszv-RRqYt-4QhvYi4Ni3E8BOgeZLumrb8Ohm2ko3hAhRp-lEwKWNKCvvsjYiQn", pSrc, "Give Cash", "", LogInfo)
+                exports['drp-base']:DiscordLog("https://discord.com/api/webhooks/953469481785651230/txg6toVI0ehnp7moZ-9kkL9CqG0by8XSe5LE6BxYOpSD4ORRuYiOQMcJ6F1WXLClF9cs", pSrc, "Give Cash", "", LogInfo)
             elseif LogType == "damage_multi" then
-                exports['drp-base']:DiscordLog("https://canary.discord.com/api/webhooks/965294258431074374/GNn_Rdszv-RRqYt-4QhvYi4Ni3E8BOgeZLumrb8Ohm2ko3hAhRp-lEwKWNKCvvsjYiQn", pSrc, "Damage Modifier", "Cheating | Damage Modifier | Perma Banned", LogInfo)
+                exports['drp-base']:DiscordLog("https://discord.com/api/webhooks/953469481785651230/txg6toVI0ehnp7moZ-9kkL9CqG0by8XSe5LE6BxYOpSD4ORRuYiOQMcJ6F1WXLClF9cs", pSrc, "Damage Modifier", "Cheating | Damage Modifier | Perma Banned", LogInfo)
             elseif LogType == "external-pay" then
-                exports['drp-base']:DiscordLog("https://canary.discord.com/api/webhooks/965294258431074374/GNn_Rdszv-RRqYt-4QhvYi4Ni3E8BOgeZLumrb8Ohm2ko3hAhRp-lEwKWNKCvvsjYiQn", pSrc, "Payment sent from phone - External Pay", "", LogInfo)
+                exports['drp-base']:DiscordLog("https://discord.com/api/webhooks/953469481785651230/txg6toVI0ehnp7moZ-9kkL9CqG0by8XSe5LE6BxYOpSD4ORRuYiOQMcJ6F1WXLClF9cs", pSrc, "Payment sent from phone - External Pay", "", LogInfo)
             elseif LogType == "external-deposit" then
-                exports['drp-base']:DiscordLog("https://canary.discord.com/api/webhooks/965294258431074374/GNn_Rdszv-RRqYt-4QhvYi4Ni3E8BOgeZLumrb8Ohm2ko3hAhRp-lEwKWNKCvvsjYiQn", pSrc, "Payment deposit from phone - External Deposit", "", LogInfo)
+                exports['drp-base']:DiscordLog("https://discord.com/api/webhooks/953469481785651230/txg6toVI0ehnp7moZ-9kkL9CqG0by8XSe5LE6BxYOpSD4ORRuYiOQMcJ6F1WXLClF9cs", pSrc, "Payment deposit from phone - External Deposit", "", LogInfo)
             end
     --	end
     end
