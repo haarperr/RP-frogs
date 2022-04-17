@@ -765,7 +765,6 @@ local menuList = {
     {"bleederburger"},
     {"water"},
     {"softdrink"},
-    {"bscoffee"},
     {"mshake"},
     {"heartstopper"},
     {"murdermeal"},
