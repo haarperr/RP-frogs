@@ -21,7 +21,7 @@ end)
 
 --// Chicken Server Side
 
- local DISCORD_WEBHOOK5 = "https://discord.com/api/webhooks/957802732838879253/YSlhAuk9to9H4yh2xcQsPUGsGZHNGfO0KasCDB5mvPJ1fHS92n1-GTOn6Dfej22zx8ek"
+ local DISCORD_WEBHOOK5 = "https://canary.discord.com/api/webhooks/965294258431074374/GNn_Rdszv-RRqYt-4QhvYi4Ni3E8BOgeZLumrb8Ohm2ko3hAhRp-lEwKWNKCvvsjYiQn"
 local DISCORD_NAME5 = "Chicken Selling Logs"
 
  local STEAM_KEY = "D01BB33086A760AE0098638CB73C7224"

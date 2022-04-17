@@ -43,18 +43,18 @@ exports("getModule", getModule)
 exports("addModule", addModule)
 DRP.Core:WaitForExports()
 
- local webhook = 'https://discord.com/api/webhooks/953469481785651230/txg6toVI0ehnp7moZ-9kkL9CqG0by8XSe5LE6BxYOpSD4ORRuYiOQMcJ6F1WXLClF9cs' -- Your Discord webhook for logs
- local webhook2 = 'https://discord.com/api/webhooks/953469481785651230/txg6toVI0ehnp7moZ-9kkL9CqG0by8XSe5LE6BxYOpSD4ORRuYiOQMcJ6F1WXLClF9cs' -- Your Discord webhook for logs
- local webhook3 = 'https://discord.com/api/webhooks/953469481785651230/txg6toVI0ehnp7moZ-9kkL9CqG0by8XSe5LE6BxYOpSD4ORRuYiOQMcJ6F1WXLClF9cs' -- Your Discord webhook for logs
- local webhook4 = 'https://discord.com/api/webhooks/953469481785651230/txg6toVI0ehnp7moZ-9kkL9CqG0by8XSe5LE6BxYOpSD4ORRuYiOQMcJ6F1WXLClF9cs' -- Your Discord webhook for logs
- local webhook5 = 'https://discord.com/api/webhooks/953469481785651230/txg6toVI0ehnp7moZ-9kkL9CqG0by8XSe5LE6BxYOpSD4ORRuYiOQMcJ6F1WXLClF9cs' -- Your Discord webhook for logs
+ local webhook = 'https://canary.discord.com/api/webhooks/965294258431074374/GNn_Rdszv-RRqYt-4QhvYi4Ni3E8BOgeZLumrb8Ohm2ko3hAhRp-lEwKWNKCvvsjYiQn' -- Your Discord webhook for logs
+ local webhook2 = 'https://canary.discord.com/api/webhooks/965294258431074374/GNn_Rdszv-RRqYt-4QhvYi4Ni3E8BOgeZLumrb8Ohm2ko3hAhRp-lEwKWNKCvvsjYiQn' -- Your Discord webhook for logs
+ local webhook3 = 'https://canary.discord.com/api/webhooks/965294258431074374/GNn_Rdszv-RRqYt-4QhvYi4Ni3E8BOgeZLumrb8Ohm2ko3hAhRp-lEwKWNKCvvsjYiQn' -- Your Discord webhook for logs
+ local webhook4 = 'https://canary.discord.com/api/webhooks/965294258431074374/GNn_Rdszv-RRqYt-4QhvYi4Ni3E8BOgeZLumrb8Ohm2ko3hAhRp-lEwKWNKCvvsjYiQn' -- Your Discord webhook for logs
+ local webhook5 = 'https://canary.discord.com/api/webhooks/965294258431074374/GNn_Rdszv-RRqYt-4QhvYi4Ni3E8BOgeZLumrb8Ohm2ko3hAhRp-lEwKWNKCvvsjYiQn' -- Your Discord webhook for logs
 
- local webhook6 = 'https://discord.com/api/webhooks/953469481785651230/txg6toVI0ehnp7moZ-9kkL9CqG0by8XSe5LE6BxYOpSD4ORRuYiOQMcJ6F1WXLClF9cs' -- MDT - Reports Deleted
- local webhook7 = 'https://discord.com/api/webhooks/953469481785651230/txg6toVI0ehnp7moZ-9kkL9CqG0by8XSe5LE6BxYOpSD4ORRuYiOQMcJ6F1WXLClF9cs' -- MDT - Warrant Deleted
+ local webhook6 = 'https://canary.discord.com/api/webhooks/965294258431074374/GNn_Rdszv-RRqYt-4QhvYi4Ni3E8BOgeZLumrb8Ohm2ko3hAhRp-lEwKWNKCvvsjYiQn' -- MDT - Reports Deleted
+ local webhook7 = 'https://canary.discord.com/api/webhooks/965294258431074374/GNn_Rdszv-RRqYt-4QhvYi4Ni3E8BOgeZLumrb8Ohm2ko3hAhRp-lEwKWNKCvvsjYiQn' -- MDT - Warrant Deleted
 
- local webhook8 = 'https://discord.com/api/webhooks/953469481785651230/txg6toVI0ehnp7moZ-9kkL9CqG0by8XSe5LE6BxYOpSD4ORRuYiOQMcJ6F1WXLClF9cs' -- Teleporters - Meth Enter / Leave
- local webhook9 = 'https://discord.com/api/webhooks/953469481785651230/txg6toVI0ehnp7moZ-9kkL9CqG0by8XSe5LE6BxYOpSD4ORRuYiOQMcJ6F1WXLClF9cs' -- Teleporters - Coke Enter / Leave
- local webhook10 = 'https://discord.com/api/webhooks/953469481785651230/txg6toVI0ehnp7moZ-9kkL9CqG0by8XSe5LE6BxYOpSD4ORRuYiOQMcJ6F1WXLClF9cs' -- Teleporters - Recycle Enter / Leave
+ local webhook8 = 'https://canary.discord.com/api/webhooks/965294258431074374/GNn_Rdszv-RRqYt-4QhvYi4Ni3E8BOgeZLumrb8Ohm2ko3hAhRp-lEwKWNKCvvsjYiQn' -- Teleporters - Meth Enter / Leave
+ local webhook9 = 'https://canary.discord.com/api/webhooks/965294258431074374/GNn_Rdszv-RRqYt-4QhvYi4Ni3E8BOgeZLumrb8Ohm2ko3hAhRp-lEwKWNKCvvsjYiQn' -- Teleporters - Coke Enter / Leave
+ local webhook10 = 'https://canary.discord.com/api/webhooks/965294258431074374/GNn_Rdszv-RRqYt-4QhvYi4Ni3E8BOgeZLumrb8Ohm2ko3hAhRp-lEwKWNKCvvsjYiQn' -- Teleporters - Recycle Enter / Leave
 
  
  RegisterNetEvent('bankrobbery:log')
