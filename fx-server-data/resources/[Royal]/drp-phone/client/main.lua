@@ -1002,12 +1002,21 @@ Citizen.CreateThread(function()
             local coords = GetEntityCoords(vehobj)
             coords = { coords["x"], coords["y"], coords["z"] }
             TriggerServerEvent("vehicle:coords",plateupdate,coords)
+            
+            local engine_damage = GetVehicleEngineHealth(veh)
+            local body_damage = GetVehicleBodyHealth(veh)
+            TriggerServerEvent("vehicle:damage",plateupdate,body_damage,engine_damage)
           end
       end
       if invehicle and not IsPedInAnyVehicle(PlayerPedId(), false) then
         local coords = GetEntityCoords(vehobj)
         coords = { coords["x"], coords["y"], coords["z"] }
         TriggerServerEvent("vehicle:coords",plateupdate,coords)
+        
+        local engine_damage = GetVehicleEngineHealth(veh)
+        local body_damage = GetVehicleBodyHealth(veh)
+        TriggerServerEvent("vehicle:damage",plateupdate,body_damage,engine_damage)
+        
         invehicle = false
         plateupdate = "None"
         vehobj = 0

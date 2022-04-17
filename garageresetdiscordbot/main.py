@@ -400,7 +400,7 @@ async def resetcid(ctx, cid):
             password = "643gw6543vw",
         )
     cursor = sql.cursor()
-    cursor.execute("UPDATE characters_cars SET vehicle_state = 'In' WHERE cid = %s", (cid,))
+    cursor.execute("UPDATE characters_cars SET vehicle_state = 'In' WHERE cid = %s AND NOT current_garage = %s", (cid,'nomalimpound'))
     sql.commit()
     sql.close()
     await ctx.send("All vehicles have been reset for this character with the State ID of " + cid + "!")

@@ -935,6 +935,13 @@ AddEventHandler("vehicle:coords", function(plate, coords)
   exports.ghmattimysql:execute("UPDATE characters_cars SET `coords` = @coords WHERE `license_plate` = @license_plate", { ['license_plate'] = plate, ['coords'] = updatecoords})
 end)
 
+RegisterNetEvent("vehicle:damage")
+AddEventHandler("vehicle:damage", function(plate, body_damage, engine_damage)
+  local src = source
+  exports.ghmattimysql:execute("UPDATE characters_cars SET `body_damage` = @body_damage, `engine_damage` = @engine_damage WHERE `license_plate` = @license_plate", { ['license_plate'] = plate, ['body_damage'] = body_damage, ['engine_damage'] = engine_damage})
+end)
+
+
 RegisterServerEvent("car:Outstanding")
 AddEventHandler("car:Outstanding", function()
   local src = source
