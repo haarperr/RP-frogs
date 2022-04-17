@@ -29750,7 +29750,7 @@ itemList['chickenslammer'] = {
       },
       {
         itemid: 'refinedaluminium',
-        amount: 25
+        amount: 15
       }, 
     ],
   ],
