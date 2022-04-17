@@ -1008,3 +1008,6 @@ Player: [39] Placed Scene: [🧀] At Coords = vector3(479.6304, -1009.88, 25.273
 Player: [39] Placed Scene: [<font size="32">🧀</font>] At Coords = vector3(479.7576, -1009.962, 25.27322)
 Player: [69] Placed Scene: [yellow flowers] At Coords = vector3(196.5238, -858.9632, 30.6257)
 Player: [6] Placed Scene: [Hostage] At Coords = vector3(29.32968, -1348.6, 28.49696)
+Player: [60] Placed Scene: [leave me alone] At Coords = vector3(2484.96, -351.8568, 94.3161)
+Player: [10] Placed Scene: [HOSTAGE] At Coords = vector3(314.9372, -276.7238, 53.17952)
+Player: [10] Placed Scene: [hostage] At Coords = vector3(-1213.776, -328.577, 36.79576)
