@@ -497,8 +497,8 @@ RPC.register("drp-garages:states", function(pState, plate, garage, fuel, engine_
 			pExist = true
 			 
 			-- round engine and body damage
-			engine_damage = math.floor(engine_damage)
-			body_damage = math.floor(body_damage)
+			engine_damage = math.floor(engine_damage or 1000)
+			body_damage = math.floor(body_damage or 1000)
 
 			Citizen.Trace(engine_damage .. " " .. body_damage .. "\n")
 
