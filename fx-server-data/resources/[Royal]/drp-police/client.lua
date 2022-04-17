@@ -1388,22 +1388,32 @@ end)
 
 RegisterNetEvent('FlipVehicle')
 AddEventHandler('FlipVehicle', function()
-	
 	local targetVehicle = getVehicleInDirection(coordA, coordB)
+	
 	if targetVehicle ~= nil then
 		local finished = exports["drp-taskbar"]:taskBar(math.random(4000, 6000),"Flipping Vehicle Over",false,true)	
 		if finished == 100 then
-			local playerped = PlayerPedId()
-			local coordA = GetEntityCoords(playerped, 1)
-			local coordB = GetOffsetFromEntityInWorldCoords(playerped, 0.0, 100.0, 0.0)
-			local pPitch, pRoll, pYaw = GetEntityRotation(playerped)
-			local vPitch, vRoll, vYaw = GetEntityRotation(targetVehicle)
-			SetEntityRotation(targetVehicle, pPitch, vRoll, vYaw, 1, true)
-			Wait(10)
-			SetVehicleOnGroundProperly(targetVehicle)
+			-- if player is still close to the vehicle, flip it
+			local playerCoords = GetEntityCoords(PlayerPedId())
+			local vehCoords = GetEntityCoords(targetVehicle)
+			
+			if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, vehCoords.x, vehCoords.y, vehCoords.z, true) <= 2 then
+				
+
+				local playerped = PlayerPedId()
+				local coordA = GetEntityCoords(playerped, 1)
+				local coordB = GetOffsetFromEntityInWorldCoords(playerped, 0.0, 100.0, 0.0)
+				local pPitch, pRoll, pYaw = GetEntityRotation(playerped)
+				local vPitch, vRoll, vYaw = GetEntityRotation(targetVehicle)
+				SetEntityRotation(targetVehicle, pPitch, vRoll, vYaw, 1, true)
+				Wait(10)
+				SetVehicleOnGroundProperly(targetVehicle)
+			else
+				TriggerEvent("DoLongHudText","You moved away bozo.", 2)
+			end
 		end
 	else
-		TriggerEvent("DoLongHudText","No Vehicle found.", 2)
+		TriggerEvent("DoLongHudText","No Vehicle found!", 2)
 	end
 end)
 
