@@ -200,6 +200,8 @@ AddEventHandler('scrap:towTake', function(degname,itemname,plate, amount, remove
 end)
 
 
+
+
 function string:split(delimiter)
     local result = { }
     local from  = 1

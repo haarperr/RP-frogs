@@ -98,7 +98,7 @@ mayorTax = 0
 RegisterNetEvent('setTax')
 AddEventHandler('setTax', function(mayortax)
 	mayorTax = mayortax
-	TriggerEvent("DoLongHudText","Tax is currently set to: " .. mayorTax .. "%",1)
+	-- TriggerEvent("DoLongHudText","Tax is currently set to: " .. mayorTax .. "%",1)
 end)
 
 function getTax()

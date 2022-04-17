@@ -495,7 +495,21 @@ let itemListWithTax = async () => {
 let isCuffed = false;
 RegisterNetEvent('police:currentHandCuffedState');
 on('police:currentHandCuffedState', (pIsHandcuffed, pIsHandcuffedAndWalking) => {
-    isCuffed = pIsHandcuffed || pIsHandcuffedAndWalking;
+    if (pIsHandcuffed) {
+        isCuffed = true;
+    }
+    else
+    {
+        isCuffed = false;
+    }
+
+    if (pIsHandcuffedAndWalking) {
+        isCuffed = true;
+    }
+    else
+    {
+        isCuffed = false;
+    }  
 });
 
 RegisterNetEvent('inventory:open_hidden');

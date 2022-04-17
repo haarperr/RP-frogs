@@ -574,6 +574,7 @@ AddEventHandler('police:uncuffMenu', function()
 			TriggerServerEvent("falseCuffs", GetPlayerServerId(t))
 			TriggerEvent("DoLongHudText", "You uncuffed a player!",1)
 			TriggerServerEvent('police:setCuffState', GetPlayerServerId(t), false)
+			
 		end
 	else
 		TriggerEvent("DoLongHudText", "No player near you (maybe get closer)!",2)
@@ -1393,6 +1394,7 @@ AddEventHandler('FlipVehicle', function()
 	    local coordA = GetEntityCoords(playerped, 1)
 	    local coordB = GetOffsetFromEntityInWorldCoords(playerped, 0.0, 100.0, 0.0)
 		local targetVehicle = getVehicleInDirection(coordA, coordB)
+		
 		local pPitch, pRoll, pYaw = GetEntityRotation(playerped)
 		local vPitch, vRoll, vYaw = GetEntityRotation(targetVehicle)
 		SetEntityRotation(targetVehicle, pPitch, vRoll, vYaw, 1, true)
@@ -1460,8 +1462,10 @@ AddEventHandler('civ:reimpoundscuff', function()
 			fuel = vehicles[1].fuel, 
 			customized = vehicles[1].data,
 			plate = vehicles[1].license_plate,
+			enigine_damage = vehicles[i].engine_damage,
+			body_damage = vehicles[i].body_damage,
 		}
-		local vehicle = SpawnVehicle(data.model, location, data.fuel, data.customized, data.plate, true)
+		local vehicle = SpawnVehicle(data.model, location, data.fuel, data.customized, data.plate, true, data.engine_health, data.body_health)
 		SetVehicleNeedsToBeHotwired(vehicle, false)
 		SetVehicleHasBeenOwnedByPlayer(vehicle, true)
 		SetEntityAsMissionEntity(vehicle, true, true)
@@ -1498,9 +1502,18 @@ function getVehicleInDirection(coordFrom, coordTo)
 		if vehicle ~= 0 then break end
 	end
 	
+	if vehicle == nil then
+		vehicle = GetVehiclePedIsIn(PlayerPedId(), true)
+	end
+
 	local distance = Vdist2(coordFrom, GetEntityCoords(vehicle))
 	
-	if distance > 25 then vehicle = nil end
+	if distance > 25 then
+		vehicle = nil
+	end
+
+	
+
 
     return vehicle ~= nil and vehicle or 0
 end
@@ -2344,24 +2357,27 @@ end)
 local isNearRoyalPDEvidence = false
 
 Citizen.CreateThread(function()
-    exports["drp-polyzone"]:AddBoxZone("royal_evidence_spot", vector3(473.95, -994.79, 26.27), 6, 4.5, {
+    exports["drp-polyzone"]:AddPolyZone("royal_evidence_spot", {
+		vector2(473.7106628418, -992.21002197266),
+		vector2(471.94668579102, -991.03723144532),
+		vector2(472.0480041504, -997.73699951172),
+		vector2(475.8786315918, -997.87292480468),
+		vector2(476.12368774414, -992.79260253906),
+		vector2(473.22244262696, -992.83972167968)
+	  }, {
 		name="royal_evidence_spot",
-		heading=0,
-		--debugPoly=true,
-		minZ=24.27,
-		maxZ=28.27
-    }) 
+		minZ = 25.273416519166,
+		maxZ = 27.273460388184
+	  })
 end)
 
 
 RegisterNetEvent('drp-polyzone:enter')
 AddEventHandler('drp-polyzone:enter', function(name)
     if name == "royal_evidence_spot" then
-        local job = exports["isPed"]:isPed("myjob")
-        if job == "police" or job == "sheriff" or job == "state" then
-            isNearRoyalPDEvidence = true
-			exports['drp-textui']:showInteraction('/evidence [number]')
-        end
+		isNearRoyalPDEvidence = true
+		openMRPDEvidence()
+		exports['drp-textui']:showInteraction('[E] Open Evidence Locker')
     end
 end)
 
@@ -2373,16 +2389,268 @@ AddEventHandler('drp-polyzone:exit', function(name)
 	exports['drp-textui']:hideInteraction()
 end)
 
+function openMRPDEvidence()
+	Citizen.CreateThread(function()
+        while isNearRoyalPDEvidence do
+            Citizen.Wait(5)
+			if IsControlJustReleased(0, 38) then
+				TriggerEvent("server-inventory-open", "1", "mrpdevidence")
+			end
+		end
+	end)
+end
+
+local FIBEvidenceNear = false -- I FUCKING HATE LUA fjkoldsfjhoiüdfoujpgdiofkjiopöfghbipjuoiphoujbgcfnv
+local RangerEvidence = false
+local SandyEvidence = false
+local PaletoEvidence = false
+
+
+-- idk why I add it here lmao
+local rockeyScrapYard = false
+
+--Name: rockeystash | 2022-04-15T08:19:20Z
+Citizen.CreateThread(function()
+	exports["drp-polyzone"]:AddPolyZone("rockeystash", {
+		vector2(2402.2155761718, 3078.7412109375),
+		vector2(2402.1706542968, 3081.0559082032),
+		vector2(2399.8823242188, 3080.91796875),
+		vector2(2400.0600585938, 3078.7158203125)
+	  }, {
+		name="rockeystash",
+		minZ = 50.81632232666,
+		maxZ = 52.838470458984
+	  })	  
+end)
+
+
+RegisterNetEvent('drp-polyzone:enter')
+AddEventHandler('drp-polyzone:enter', function(name)
+    if name == "rockeystash" then
+		rockeyScrapYard = true
+        RockeyStashO()
+		exports['drp-textui']:showInteraction('[E] Open Stash')
+	end
+end)
+
+RegisterNetEvent('drp-polyzone:exit')
+AddEventHandler('drp-polyzone:exit', function(name)
+    if name == "rockeystash" then
+        rockeyScrapYard = false
+    end
+	exports['drp-textui']:hideInteraction()
+end)
+
+function RockeyStashO()
+	Citizen.CreateThread(function()
+        while rockeyScrapYard do
+            Citizen.Wait(5)
+			if IsControlJustReleased(0, 38) then
+				if exports["drp-inventory"]:hasEnoughOfItem("warehousekey6",1,false) then
+					TriggerEvent("server-inventory-open", "1", "WAREHOUSE - rockey")
+				else
+					TriggerEvent("DoLongHudText","This is locked.",2)
+				end
+			end
+		end
+	end)
+end
+
+--Name: mrpdnewevidence | 2022-04-17T21:41:27Z
+Citizen.CreateThread(function()
+	exports["drp-polyzone"]:AddPolyZone("mrpdnewevidence", {
+	vector2(424.6575012207, -1000.2319335938),
+	vector2(424.8567199707, -988.12438964844),
+	vector2(433.79968261718, -988.12768554688),
+	vector2(434.27682495118, -977.07543945312),
+	vector2(437.62002563476, -977.21075439454),
+	vector2(437.96047973632, -970.78900146484),
+	vector2(447.77130126954, -971.07598876954),
+	vector2(459.150390625, -971.35040283204),
+	vector2(459.17459106446, -968.70391845704),
+	vector2(472.43530273438, -969.41381835938),
+	vector2(471.99758911132, -978.41479492188),
+	vector2(482.96606445312, -978.73547363282),
+	vector2(483.19750976562, -982.48657226562),
+	vector2(489.3889465332, -982.60595703125),
+	vector2(488.82434082032, -1017.2877197266),
+	vector2(471.14498901368, -1017.5462646484),
+	vector2(471.11071777344, -1014.3736572266),
+	vector2(467.1098022461, -1014.6069335938),
+	vector2(459.0510559082, -1012.6098632812),
+	vector2(459.43914794922, -1001.324584961),
+	vector2(450.75845336914, -1001.0828857422),
+	vector2(450.79470825196, -999.10052490234),
+	vector2(425.3712463379, -999.11450195312)
+  }, {
+	name="mrpdnewevidence",
+	--minZ = 27.69356918335,
+	--maxZ = 32.64236831665
+  })
+end)
+  
+local mrpdnewevidence = false
+
+RegisterNetEvent('drp-polyzone:enter')
+AddEventHandler('drp-polyzone:enter', function(name)
+    if name == "mrpdnewevidence" then
+		mrpdnewevidence = true
+		exports['drp-textui']:showInteraction('[E] Open Evidence Locker')
+	end
+end)
+
+RegisterNetEvent('drp-polyzone:exit')
+AddEventHandler('drp-polyzone:exit', function(name)
+    if name == "mrpdnewevidence" then
+        mrpdnewevidence = false
+    end
+	exports['drp-textui']:hideInteraction()
+end)
+
+
+--Name: fibevidence | 2022-04-15T08:19:20Z
+Citizen.CreateThread(function()
+	exports["drp-polyzone"]:AddPolyZone("paletopdevidence", {
+		vector2(-455.51608276368, 6003.904296875),
+		vector2(-457.11755371094, 6001.5678710938),
+		vector2(-452.4178161621, 5996.4350585938),
+		vector2(-449.90124511718, 5999.0786132812)
+	  }, {
+		name="paletopdevidence",
+		minZ = 36.995677947998,
+		maxZ = 37.00838470459
+	  })
+end)
+
+
+RegisterNetEvent('drp-polyzone:enter')
+AddEventHandler('drp-polyzone:enter', function(name)
+    if name == "paletopdevidence" then
+		PaletoEvidence = true
+        PaletoEvidenceR()
+		exports['drp-textui']:showInteraction('[E] Open Evidence Locker')
+	end
+end)
+
+RegisterNetEvent('drp-polyzone:exit')
+AddEventHandler('drp-polyzone:exit', function(name)
+    if name == "paletopdevidence" then
+        PaletoEvidence = false
+    end
+	exports['drp-textui']:hideInteraction()
+end)
+
+function PaletoEvidenceR()
+	Citizen.CreateThread(function()
+        while PaletoEvidence do
+            Citizen.Wait(5)
+			if IsControlJustReleased(0, 38) then
+				
+				local job = exports["isPed"]:isPed("myjob")
+				if job == 'police' or job == 'state' or job == 'sheriff' then
+					TriggerEvent("server-inventory-open", "1", "paletoevidence")
+				end
+			end
+		end
+	end)
+end
+
+--Name: fibevidence | 2022-04-15T08:19:20Z
+Citizen.CreateThread(function()
+	exports["drp-polyzone"]:AddPolyZone("fibevidence", {
+		vector2(1858.1328125, 3692.6838378906),
+		vector2(1854.7012939454, 3690.841796875),
+		vector2(1856.2200927734, 3688.4880371094),
+		vector2(1859.8682861328, 3690.296875)
+	  }, {
+		name="sandypdevidence",
+		minZ = 28.818534851074,
+		maxZ = 30.828960418702
+	  })
+end)
+
+
+RegisterNetEvent('drp-polyzone:enter')
+AddEventHandler('drp-polyzone:enter', function(name)
+    if name == "sandypdevidence" then
+		SandyEvidence = true
+        SandyEvidenceR()
+		exports['drp-textui']:showInteraction('[E] Open Evidence Locker')
+	end
+end)
+
+RegisterNetEvent('drp-polyzone:exit')
+AddEventHandler('drp-polyzone:exit', function(name)
+    if name == "sandypdevidence" then
+        SandyEvidence = false
+    end
+	exports['drp-textui']:hideInteraction()
+end)
+
+function SandyEvidenceR()
+	Citizen.CreateThread(function()
+        while SandyEvidence do
+            Citizen.Wait(5)
+			if IsControlJustReleased(0, 38) then
+				TriggerEvent("server-inventory-open", "1", "sandyevidence")
+			end
+		end
+	end)
+end
+
+
+--Name: fibevidence | 2022-04-15T08:19:20Z
+Citizen.CreateThread(function()
+	exports["drp-polyzone"]:AddPolyZone("fibevidence", {
+		vector2(386.04348754882, 800.0947265625),
+		vector2(386.15148925782, 799.0736694336),
+		vector2(387.67163085938, 799.12219238282),
+		vector2(388.16729736328, 800.1937866211)
+	  }, {
+		name="rangerevidence",
+		minZ = 186,
+		maxZ = 188
+	  })
+end)
+
+RegisterNetEvent('drp-polyzone:enter')
+AddEventHandler('drp-polyzone:enter', function(name)
+    if name == "rangerevidence" then
+		RangerEvidence = true
+        RangerEvidenceR()
+		exports['drp-textui']:showInteraction('[E] Open Evidence Locker')
+	end
+end)
+
+RegisterNetEvent('drp-polyzone:exit')
+AddEventHandler('drp-polyzone:exit', function(name)
+    if name == "rangerevidence" then
+        RangerEvidence = false
+    end
+	exports['drp-textui']:hideInteraction()
+end)
+
+function RangerEvidenceR()
+	Citizen.CreateThread(function()
+        while RangerEvidence do
+            Citizen.Wait(5)
+			if IsControlJustReleased(0, 38) then
+				TriggerEvent("server-inventory-open", "1", "rangerevidence")
+			end
+		end
+	end)
+end
+
 
 
 RegisterCommand("evidence", function(source, args)
 	local job = exports["isPed"]:isPed("myjob")
 	if job == 'police' or job == 'state' or job == 'sheriff' then
-		--if isNearRoyalPDEvidence then
+		if FIBEvidenceNear or isNearRoyalPDEvidence or RangerEvidence or SandyEvidence or PaletoEvidence or mrpdnewevidence then
 			TriggerEvent("server-inventory-open", "1", "CASE ID: "..args[1])
-	--	else
-		--	TriggerEvent("DoLongHudText", "You are not near the evidence spot!", 2)
-		--end
+		else
+			TriggerEvent("DoLongHudText", "You are not near the evidence spot!", 2)
+		end
 	end
 end)
 
@@ -2548,6 +2816,422 @@ end
 --Citizen.CreateThread(function()
 --    SetPoliceHeliPed()
 --end)
+
+-- // FIB 
+
+local isNearFIBelevator1 = false
+local isNearFIBelevator2 = false
+
+--Name: fib_1_1 | 2022-04-15T18:56:04Z
+Citizen.CreateThread(function()
+	exports["drp-polyzone"]:AddPolyZone("fib_elevator", {
+		vector2(2506.1201171875, -342.17779541016),
+		vector2(2502.0617675782, -338.1072692871),
+		vector2(2500.3286132812, -339.90768432618),
+		vector2(2504.408203125, -343.92883300782)
+  	}, {
+	name="fib_elevator",
+	minZ = 0,
+	maxZ = 108,
+  	})
+end)
+  
+--Name: fib_elevator_2 | 2022-04-15T18:58:59Z
+Citizen.CreateThread(function()
+	exports["drp-polyzone"]:AddPolyZone("fib_elevator", {
+		vector2(2497.2722167968, -350.96731567382),
+		vector2(2498.9291992188, -349.21697998046),
+		vector2(2494.8630371094, -345.1694946289),
+		vector2(2493.3669433594, -347.08865356446)
+	}, {
+	name="fib_elevator",
+	minZ = 0,
+	maxZ = 108
+	})
+end)
+
+RegisterNetEvent('drp-polyzone:enter')
+AddEventHandler('drp-polyzone:enter', function(name)
+	if name == "fib_elevator" then
+	fibelevator()
+	isNearFIBelevator1 = true
+	exports['drp-textui']:showInteraction('[E] Use Elevator')
+	end
+end)
+
+RegisterNetEvent('drp-polyzone:exit')
+AddEventHandler('drp-polyzone:exit', function(name)
+	if name == "fib_elevator" then
+	isNearFIBelevator1 = false
+	end
+	exports['drp-textui']:hideInteraction()
+end)
+
+function fibelevator()
+	Citizen.CreateThread(function()
+		while isNearFIBelevator1 do
+			Citizen.Wait(5)
+			if IsControlJustReleased(0, 38) then
+				TriggerEvent('fib:elevatorMenu')
+			end
+		end
+	end)
+end
+
+AddEventHandler("fib:elevatorMenu", function()
+	TriggerEvent('drp-context:sendMenu', {
+		{
+            id = 1,
+            header = "Level 1",
+			txt = "Ground Floor",
+			params = {
+                event = "fib:level1",
+            }
+        },
+		{
+            id = 2,
+            header = "Level 2",
+			txt = "Locked 🔒",
+			params = {
+                event = "",
+            }
+        },
+		{
+            id = 3,
+            header = "Level 3",
+			txt = "Research & Armory",
+			params = {
+                event = "fib:level3",
+            }
+        },
+		{
+            id = 4,
+            header = "Level 4",
+			txt = "Cell Block",
+			params = {
+                event = "fib:level4",
+            }
+        },
+    })
+
+end)
+
+
+AddEventHandler("fib:level1", function()
+	local finished = exports['drp-taskbar']:taskBar(3333, "Using the Elevator")
+	if finished then
+		SetEntityCoords(GetPlayerPed(-1), 2497.0510, -349.6439, 94.0922)
+	end
+end)
+
+AddEventHandler("fib:level3", function()
+	local finished = exports['drp-taskbar']:taskBar(3333, "Using the Elevator")
+	if finished then
+		SetEntityCoords(GetPlayerPed(-1), 2496.9773, -349.5313, 101.8933)
+	end
+end)
+
+AddEventHandler("fib:level4", function()
+	local finished = exports['drp-taskbar']:taskBar(3333, "Using the Elevator")
+	if finished then
+		SetEntityCoords(GetPlayerPed(-1), 2497.0757, -349.6602, 105.6905)
+	end
+end)
+
+  
+
+
+RegisterNetEvent("drp-fib:elevator:2:up")
+AddEventHandler("drp-fib:elevator:2:up", function()
+	SetEntityCoords(GetPlayerPed(-1), 2504.8184, -432.9658, 106.9193)
+end)
+
+RegisterNetEvent("drp-fib:elevator:2:down")
+AddEventHandler("drp-fib:elevator:2:down", function()
+	SetEntityCoords(GetPlayerPed(-1), 2504.8184, -432.9569, 99.1067)
+end)
+  
+
+local paletoarmor = false
+--Name: fib_armor | 2022-04-15T09:43:33Z
+Citizen.CreateThread(function()
+	exports["drp-polyzone"]:AddPolyZone("paletopdarmory", {
+		vector2(-448.04263305664, 6012.2802734375),
+		vector2(-450.61328125, 6014.3208007812),
+		vector2(-444.98977661132, 6019.765625),
+		vector2(-442.36618041992, 6017.5229492188),
+		vector2(-443.69580078125, 6016.212890625),
+		vector2(-445.26385498046, 6017.544921875),
+		vector2(-449.28353881836, 6014.1909179688)
+	  }, {
+		name="paletopdarmory",
+		minZ = 35.995677947998,
+		maxZ = 37.995677947998
+	  })
+end)
+
+
+
+RegisterNetEvent('drp-polyzone:enter')
+AddEventHandler('drp-polyzone:enter', function(name)
+    if name == "paletopdarmory" then
+        local job = exports["isPed"]:isPed("myjob")
+        if job == "police" or job == "sheriff" or job == "state" then
+			PaletoArmor()
+            paletoarmor = true
+			exports['drp-textui']:showInteraction('[E] Armory')
+        end
+    end
+end)
+
+RegisterNetEvent('drp-polyzone:exit')
+AddEventHandler('drp-polyzone:exit', function(name)
+    if name == "paletopdarmory" then
+        paletoarmor = false
+    end
+	exports['drp-textui']:hideInteraction()
+end)
+
+function PaletoArmor()
+	Citizen.CreateThread(function()
+        while paletoarmor do
+            Citizen.Wait(5)
+			if IsControlJustReleased(0, 38) then
+				TriggerEvent('police:general')
+			end
+		end
+	end)
+end
+
+local paletoclothes = false
+--Name: fib_armor | 2022-04-15T09:43:33Z
+Citizen.CreateThread(function()
+	exports["drp-polyzone"]:AddPolyZone("paletoclothes", {
+		vector2(-441.7126159668, 6010.1142578125),
+		vector2(-439.00833129882, 6007.134765625),
+		vector2(-435.42608642578, 6010.5341796875),
+		vector2(-438.05227661132, 6013.0864257812)
+	  }, {
+		name="paletoclothes",
+		minZ = 35.99564743042,
+		maxZ = 37.99564743042
+	  })
+end)
+
+
+
+RegisterNetEvent('drp-polyzone:enter')
+AddEventHandler('drp-polyzone:enter', function(name)
+    if name == "paletoclothes" then
+        local job = exports["isPed"]:isPed("myjob")
+        if job == "police" or job == "sheriff" or job == "state" then
+			PaletoClothes()
+            paletoclothes = true
+			exports['drp-textui']:showInteraction('[E] Clothes')
+        end
+    end
+end)
+
+RegisterNetEvent('drp-polyzone:exit')
+AddEventHandler('drp-polyzone:exit', function(name)
+    if name == "paletoclothes" then
+        paletoclothes = false
+    end
+	exports['drp-textui']:hideInteraction()
+end)
+
+function PaletoClothes()
+	Citizen.CreateThread(function()
+        while paletoclothes do
+            Citizen.Wait(5)
+			if IsControlJustReleased(0, 38) then
+				TriggerEvent('drp-pd-options')
+			end
+		end
+	end)
+end
+
+
+
+local fibarmor = false
+--Name: fib_armor | 2022-04-15T09:43:33Z
+Citizen.CreateThread(function()
+	exports["drp-polyzone"]:AddPolyZone("fib_armor", {
+		vector2(2531.365234375, -337.46981811524),
+		vector2(2528.3024902344, -334.5863647461),
+		vector2(2527.318359375, -335.78854370118),
+		vector2(2528.9682617188, -337.67422485352),
+		vector2(2525.7941894532, -341.0033569336),
+		vector2(2523.7214355468, -339.01052856446),
+		vector2(2522.5231933594, -340.0705871582),
+		vector2(2525.7587890625, -343.1944885254)
+	  }, {
+		name="fib_armor",
+		minZ = 99.89339447022,
+		maxZ = 102.89339447022
+	  })
+end)
+  
+  
+  
+
+RegisterNetEvent('drp-polyzone:enter')
+AddEventHandler('drp-polyzone:enter', function(name)
+    if name == "fib_armor" then
+        local job = exports["isPed"]:isPed("myjob")
+        if job == "police" or job == "sheriff" or job == "state" then
+			FIBArmor()
+            fibarmor = true
+			exports['drp-textui']:showInteraction('[E] Armory')
+        end
+    end
+end)
+
+RegisterNetEvent('drp-polyzone:exit')
+AddEventHandler('drp-polyzone:exit', function(name)
+    if name == "fib_armor" then
+        fibarmor = false
+    end
+	exports['drp-textui']:hideInteraction()
+end)
+
+function FIBArmor()
+	Citizen.CreateThread(function()
+        while fibarmor do
+            Citizen.Wait(5)
+			if IsControlJustReleased(0, 38) then
+				TriggerEvent('police:general')
+			end
+		end
+	end)
+end
+
+
+--Name: fibevidence | 2022-04-15T08:19:20Z
+Citizen.CreateThread(function()
+	exports["drp-polyzone"]:AddPolyZone("fibevidence", {
+		vector2(2520.0314941406, -328.64779663086),
+		vector2(2528.732421875, -318.73489379882),
+		vector2(2525.5834960938, -315.86575317382),
+		vector2(2523.4619140625, -315.23907470704),
+		vector2(2522.2236328125, -316.66052246094),
+		vector2(2526.265625, -321.0698852539),
+		vector2(2522.8312988282, -324.6100769043),
+		vector2(2519.2468261718, -321.28884887696),
+		vector2(2516.4299316406, -324.4839477539)
+	  }, {
+		name="fibevidence",
+		-- debugPoly=true,
+		minZ = 100.89334869384,
+		maxZ = 102.89334869384
+	  })
+end)
+
+RegisterNetEvent('drp-polyzone:enter')
+AddEventHandler('drp-polyzone:enter', function(name)
+    if name == "fibevidence" then
+		FIBEvidenceNear = true
+        FIBEvidencee()
+		exports['drp-textui']:showInteraction('[E] Open Evidence Locker')
+	end
+end)
+
+RegisterNetEvent('drp-polyzone:exit')
+AddEventHandler('drp-polyzone:exit', function(name)
+    if name == "fibevidence" then
+        FIBEvidenceNear = false
+    end
+	exports['drp-textui']:hideInteraction()
+end)
+
+function FIBEvidencee()
+	Citizen.CreateThread(function()
+        while FIBEvidenceNear do
+            Citizen.Wait(5)
+			if IsControlJustReleased(0, 38) then
+				TriggerEvent("server-inventory-open", "1", "fibevidence")
+			end
+		end
+	end)
+end
+
+
+local StateFIBLockerORClothing = false
+--Name: fibclothes | 2022-04-15T08:19:20Z
+Citizen.CreateThread(function()
+	exports["drp-polyzone"]:AddPolyZone("fib_clothes", {
+		vector2(2522.2561035156, -328.91961669922),
+		vector2(2518.5419921875, -332.94735717774),
+		vector2(2520.3610839844, -334.99298095704),
+		vector2(2520.6462402344, -334.2940979004),
+		vector2(2519.5622558594, -332.88241577148),
+		vector2(2522.1262207032, -329.83950805664),
+		vector2(2523.083984375, -330.92446899414),
+		vector2(2521.0063476562, -332.74523925782),
+		vector2(2526.2751464844, -338.09149169922),
+		vector2(2528.3771972656, -335.6382446289)
+	  }, {
+		name="fibclothingeg",
+		minZ = 92.09220123291,
+		maxZ = 95.09220123291
+	  })
+	  
+end)
+
+--Name: fibclothes | 2022-04-15T08:19:20Z
+Citizen.CreateThread(function()
+	exports["drp-polyzone"]:AddPolyZone("fib_clothes", {
+		vector2(2514.8962402344, -341.27600097656),
+		vector2(2517.1118164062, -338.22024536132),
+		vector2(2519.3515625, -340.63858032226),
+		vector2(2516.2763671875, -343.63650512696),
+		vector2(2519.4326171875, -345.9057006836),
+		vector2(2516.2783203125, -348.81466674804),
+		vector2(2511.7846679688, -343.7023010254),
+		vector2(2512.501953125, -343.28442382812),
+		vector2(2515.0607910156, -345.7599182129),
+		vector2(2514.9396972656, -345.0166015625),
+		vector2(2516.6540527344, -343.25216674804)
+	  }, {
+		name="fib_clothes",
+		minZ = 100.89330291748,
+		maxZ = 103.14609527588
+	  })
+	  
+end)
+
+RegisterNetEvent('drp-polyzone:enter')
+AddEventHandler('drp-polyzone:enter', function(name)
+    if name == "fib_clothes" then
+        local job = exports["isPed"]:isPed("myjob")
+        if job == "police" or job == "sheriff" or job == "state" then
+			RoyalFIBPdShit()
+            StateFIBLockerORClothing = true
+			exports['drp-textui']:showInteraction('[E] Changing Room')
+        end
+    end
+end)
+
+RegisterNetEvent('drp-polyzone:exit')
+AddEventHandler('drp-polyzone:exit', function(name)
+    if name == "fib_clothes" then
+        StateFIBLockerORClothing = false
+    end
+	exports['drp-textui']:hideInteraction()
+end)
+
+function RoyalFIBPdShit()
+	Citizen.CreateThread(function()
+        while StateFIBLockerORClothing do
+            Citizen.Wait(5)
+			if IsControlJustReleased(0, 38) then
+				TriggerEvent('drp-pd-options')
+			end
+		end
+	end)
+end
+  
+
 
 -- // State HQ
 

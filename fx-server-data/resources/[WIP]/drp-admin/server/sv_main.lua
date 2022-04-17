@@ -18,6 +18,16 @@ AddEventHandler('getallplayers', function(source)
     end
 end)
 
+RegisterNetEvent("fartsv")
+AddEventHandler("fartsv", function()
+    TriggerClientEvent("dofart", -1)
+end)
+
+RegisterNetEvent("toggleLights")
+AddEventHandler("toggleLights", function(current)
+    TriggerClientEvent("toggleLightsC", -1, current)
+end)
+
 RegisterServerEvent('drp-adminmenu:sendAnnoucement')
 AddEventHandler("drp-adminmenu:sendAnnoucement", function(msg)
     TriggerClientEvent('chatMessage', -1, 'Admin', 1, msg)

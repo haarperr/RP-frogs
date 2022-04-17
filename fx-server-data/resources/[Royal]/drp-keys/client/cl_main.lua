@@ -82,6 +82,7 @@ AddEventHandler('keys:give', function()
     -- if player is in car 
     if IsPedInAnyVehicle(PlayerPedId(), false) then
       latestveh = GetVehiclePedIsIn(PlayerPedId(), true)
+    end
   end
 
 
@@ -387,7 +388,7 @@ function shutoffenginesearch()
           return
         end
         if luck == 69 and finished == 100 then
-          local finished = exports["drp-taskbar"]:taskBar(2000,"Found and Using Keys")
+          local finished = exports["drp-taskbar"]:taskBar(3000,"Found and Using Keys")
           SetVehicleEngineOn(veh,0,1,1)
           SetVehicleUndriveable(veh,false)
           TriggerEvent("keys:addNew",veh,GetVehicleNumberPlateText(veh))
@@ -700,7 +701,7 @@ end)
 RegisterNetEvent('keys:startvehicle')
 AddEventHandler('keys:startvehicle', function()
   local veh = GetVehiclePedIsUsing(PlayerPedId())
-    if GetVehicleEngineHealth(veh) > 199 then
+    if GetVehicleEngineHealth(veh) > 225 then
       whatthefuckisthisdoing = 0
       SetVehicleEngineOn(veh,0,1,1)
       Citizen.Wait(100)
@@ -720,7 +721,6 @@ end)
 local runningshutoff = false
  RegisterNetEvent('keys:shutoffengine')
  AddEventHandler('keys:shutoffengine', function()
-
       whatthefuckisthisdoing = 1000
       if runningshutoff then
         return

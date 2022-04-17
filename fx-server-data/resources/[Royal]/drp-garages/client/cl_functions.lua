@@ -1,6 +1,6 @@
 CurrentDisplayVehicle = nil
 
-function SpawnVehicle(vehicle, pGarage, Fuel, customized, plate, IsViewing)
+function SpawnVehicle(vehicle, pGarage, Fuel, customized, plate, IsViewing, engine_damage, body_damage)
     exports['drp-garages']:DeleteViewedCar()
 	local car = GetHashKey(vehicle)
 	local customized = json.decode(customized)
@@ -61,6 +61,19 @@ function SpawnVehicle(vehicle, pGarage, Fuel, customized, plate, IsViewing)
         DecorSetInt(veh, "CurrentFuel", Fuel)
         SetEntityAsMissionEntity(veh, true, true)
 
+        
+        -- Set Enigne Health
+        Citizen.Trace("Engine Damage: " .. engine_damage .. "\n")
+        if enginehealth ~= nil then
+            SetVehicleEngineHealth(veh, tonumber(engine_damage))
+        end
+  
+          -- Set Body Health
+        Citizen.Trace("Body Damage: " .. body_damage .. "\n")
+        if bodyhealth ~= nil then
+            SetVehicleBodyHealth(veh, tonumber(body_damage))
+        end
+
         DecorSetBool(veh, "PlayerVehicle", true)
         SetVehicleOnGroundProperly(veh)
         SetEntityInvincible(veh, false) 
@@ -75,7 +88,7 @@ function SpawnVehicle(vehicle, pGarage, Fuel, customized, plate, IsViewing)
         CurrentDisplayVehicle = veh
         if not IsViewing then    
             CurrentDisplayVehicle = nil
-            RPC.execute("drp-garages:states", "Out", plate, exports['drp-menu']:currentGarage())
+            RPC.execute("drp-garages:states",  "Out", plate, exports['drp-menu']:currentGarage(), pUpdatedFuel, enginehealth or 1000, bodyhealth or 1000)
         end
     end)
 end
@@ -372,17 +385,19 @@ end)
 Citizen.CreateThread(function()
     for _, item in pairs(Garages) do
         if item.blip ~= nil then
-            Garage = AddBlipForCoord(item.blip.x, item.blip.y, item.blip.z)
+            if item.ShowBlip then
+                Garage = AddBlipForCoord(item.blip.x, item.blip.y, item.blip.z)
 
-            SetBlipSprite (Garage, 357)
-            SetBlipDisplay(Garage, 4)
-            SetBlipScale  (Garage, 0.65)
-            SetBlipAsShortRange(Garage, true)
-            SetBlipColour(Garage, 3)
+                SetBlipSprite (Garage, 357)
+                SetBlipDisplay(Garage, 4)
+                SetBlipScale  (Garage, 0.65)
+                SetBlipAsShortRange(Garage, true)
+                SetBlipColour(Garage, 3)
 
-            BeginTextCommandSetBlipName("STRING")
-            AddTextComponentString(item.name)
-            EndTextCommandSetBlipName(Garage)
+                BeginTextCommandSetBlipName("STRING")
+                AddTextComponentString(item.name)
+                EndTextCommandSetBlipName(Garage)
+            end
         end
     end
 end)

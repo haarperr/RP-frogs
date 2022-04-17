@@ -1,10 +1,18 @@
-fx_version 'bodacious'
-games { 'rdr3', 'gta5' }
+fx_version 'cerulean'
+games { 'gta5' }
+
+client_script "@drp-sync/client/lib.lua"
+client_script "@drp-lib/client/cl_flags.lua"
+client_script "@drp-lib/client/cl_vehicles.lua"
+client_script "@drp-lib/client/cl_rpc.lua"
 
 client_scripts {
-    'client/cl_*.lua',
+    "client/*.lua",
+    "client/modules/*.lua"
 }
 
 server_scripts {
-    'server/sv_*.lua',
+    "server/classes/*.lua",
+    "server/*.lua",
+    "server/controllers/*.lua",
 }

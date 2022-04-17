@@ -1024,7 +1024,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","food:Condiment",true,itemid,playerVeh)
     end
 
-    if (itemid == "icecream" or itemid == "mshake" or itemid == "winemilkshake" or itemid == "softdrink") then
+    if (itemid == "icecream" or itemid == "mshake" or itemid == "winemilkshake") then
         TaskItem("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","inv:fed2",true,itemid,playerVeh)
     end
 
@@ -1617,7 +1617,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
     
     if itemid == "Peecup_full" then
-        local success = AttachPropAndPlayAnimation("amb@world_human_drinking@beer@female@idle_a", "idle_e", 49,7500,"Drinking pee.","food:SoftDrink",true,itemid,playerVeh)
+        local success = AttachPropAndPlayAnimation("amb@world_human_drinking@beer@female@idle_a", "idle_e", 49,7500,"Drinking pee.","changethirst",true,itemid,playerVeh)
         if success and math.random() > 0.50 then
             TriggerServerEvent("fx:puke")
             TriggerEvent("animation:PlayAnimation","outofbreath")
@@ -1695,7 +1695,7 @@ end
         if myJob ~= "news" then
             TriggerEvent("civilian:alertPolice",12.0,"lockpick",targetVehicle)
             TriggerEvent("inv:lockPick2", false, inventoryName, slot, "godlockpick")
-
+            TriggerEvent("dummie-check:boosting") -- checks if boosting car, then progresses in boosting script
         else
             TriggerEvent("DoLongHudText","Nice news reporting, you shit lord idiot.")
         end
@@ -2104,10 +2104,11 @@ end
       or itemid == "pizza"
       or itemid == "pancakes"
       or itemid == "wings"
+      or itemid == "cbjr"
     ) then
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","inv:wellfed",true,itemid,playerVeh)
-        --attachPropsToAnimation(itemid, 6000)
-        --TaskItem("mp_player_inteat@burger", "mp_player_int_eat_burger", 49, 6000, "Eating", "inv:wellfed", true,itemid)
+        -- attachPropsToAnimation(itemid, 6000)
+        -- TaskItem("mp_player_inteat@burger", "mp_player_int_eat_burger", 49, 6000, "Eating", "inv:wellfed", true,itemid)
     end
 
     if (itemid == "sushiplate"
@@ -2115,10 +2116,14 @@ end
       or itemid == "beefdish"
       or itemid == "beefdishc"
       or itemid == "ramen"
+      or itemid == "cbzinger"
     ) then
+        if itemid == "cbzinger" then
+            TriggerEvent("attachItem", "burger")
+        end
         local success = AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","inv:wellfedNoStress",true,itemid,playerVeh)
         if success then
-          TriggerEvent("DoLongHudText", "You feel lucky.")
+          -- TriggerEvent("DoLongHudText", "You feel lucky.")
           TriggerEvent("buffs:triggerBuff", itemid)
           TriggerServerEvent("buffs:triggerBuff", itemid)
         end
@@ -2556,16 +2561,35 @@ end
         end
     end
 
+    if itemid == "cbsmoothie" then
+        TriggerEvent("attachItem", "cbdrink")
+        AttachPropAndPlayAnimation("amb@world_human_drinking@coffee@male@idle_a", "idle_c", 49,15000,"Drink","changethirstPlusSpeed",true,itemid,playerVeh)
+    end
 
-    if itemid == "softdrink" then
-        AttachPropAndPlayAnimation("amb@world_human_drinking@coffee@male@idle_a", "idle_c", 49,15000,"Drink","food:SoftDrink",true,itemid,playerVeh)
+    if itemid == "softdrink" or itemid == "cbdrink" then
+        if itemid == "softdrink" then
+            TriggerEvent("attachItem", "softdrink")
+        else
+            TriggerEvent("attachItem", "cbdrink")
+        end
+        AttachPropAndPlayAnimation("amb@world_human_drinking@coffee@male@idle_a", "idle_c", 49,12500,"Drink","changethirst",true,itemid,playerVeh)
     end
 
     if itemid == "roostertea" then
         AttachPropAndPlayAnimation("amb@world_human_drinking@coffee@male@idle_a", "idle_c", 49,15000,"Drink","drp-roostersrest:drinkTea",true,itemid,playerVeh)
     end
  
-    if itemid == "fries" or itemid == "chips" or itemid == "hardoaksfries" then
+    if itemid == "fries" or itemid == "chips" or itemid == "hardoaksfries" or itemid == "cbfries" or itemid == "cbrings" or itemid == "cbbowl" or itemid == "cbveggy" or itemid == "cbballs" or itemid == "cbbucket" or itemid == "cbchickenfries" or itemid == "cbrings" then
+        if itemid == "cbfries" or itemid == "cbchickenfries" then
+            TriggerEvent("attachItem", "cbfries")
+        elseif itemid == "cbballs" or itemid == "cbrings" then
+            TriggerEvent("attachItem", "cbnugets")
+        elseif itemid == "cbbowl" or itemid == "cbveggy" or itemid == "cbbucket" then
+            TriggerEvent("attachItem", "cbbowl")
+        else 
+            TriggerEvent("attachItem", "fries")
+        end
+
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,15000,"Eating","inv:fed2",true,itemid,playerVeh)
     end
 
@@ -2761,7 +2785,7 @@ end
 end)
 
 function AttachPropAndPlayAnimation(dictionary,animation,typeAnim,timer,message,func,remove,itemid,vehicle)
-    if itemid == "hamburger" or itemid == "heartstopper" or itemid == "bleederburger" or itemid == "moneyshot" or itemid == "torpedo" or itemid == "questionablemeatburger" then
+    if itemid == "hamburger" or itemid == "heartstopper" or itemid == "bleederburger" or itemid == "moneyshot" or itemid == "torpedo" or itemid == "questionablemeatburger" or itemid == "cbjr" then
         TriggerEvent("attachItem", "hamburger")
     elseif sandwichItems[itemid] then
         TriggerEvent("attachItem", "sandwich")
@@ -2822,6 +2846,65 @@ AddEventHandler("drp-inventory:attachPropPlayAnim", function(pType)
             "mp_player_int_eat_burger",
             49,
             15000,
+            "Eating",
+            "",
+            false,
+            "fries",
+            vehicle
+        )
+    end
+    if pType == "cbfries" or pType == "cbveggy" or pType == "cbballs" or itemid == "cbrings" then
+        TriggerEvent("healed:useFries")
+        success = AttachPropAndPlayAnimation(
+            "mp_player_inteat@burger",
+            "mp_player_int_eat_burger",
+            49,
+            12500,
+            "Eating",
+            "",
+            false,
+            "fries",
+            vehicle
+        )
+    end
+    if pType == "cbchickenfries" then
+        TriggerEvent("healed:useOxy")
+        success = AttachPropAndPlayAnimation(
+            "mp_player_inteat@burger",
+            "mp_player_int_eat_burger",
+            49,
+            14000,
+            "Eating",
+            "",
+            false,
+            "fries",
+            vehicle
+        )
+    end
+    if pType == "cbbowl" then
+        SetPedArmour(player, GetPedArmour(player) + 20)
+        TriggerEvent("drp-hud:updateStress",false,40)
+        success = AttachPropAndPlayAnimation(
+            "mp_player_inteat@burger",
+            "mp_player_int_eat_burger",
+            49,
+            12500,
+            "Eating",
+            "",
+            false,
+            "fries",
+            vehicle
+        )
+    end
+    if pType == "cbbucket" then
+        SetPedArmour(player, GetPedArmour(player) + 25)
+        TriggerEvent("drp-hud:updateStress",false,100)
+        TriggerEvent("inv:wellfed")
+        success = AttachPropAndPlayAnimation(
+            "mp_player_inteat@burger",
+            "mp_player_int_eat_burger",
+            49,
+            12500,
             "Eating",
             "",
             false,
@@ -3521,7 +3604,7 @@ AddEventHandler('inv:fruitslushy', function()
 
 end)
 
-local burgies = 0
+local burgies0 = 0
 RegisterNetEvent('inv:wellfed')
 AddEventHandler('inv:wellfed', function()
     TriggerEvent("Evidence:StateSet",25,3600)
@@ -3531,12 +3614,22 @@ AddEventHandler('inv:wellfed', function()
     burgies = 0
 end)
 
+local burgies0 = 0
+RegisterNetEvent('inv:wellfedNoStress')
+AddEventHandler('inv:wellfedNoStress', function()
+    TriggerEvent("Evidence:StateSet",25,3600)
+    TriggerEvent("drp-hud:updateStress",false,100)
+    TriggerEvent("drp-hud:ChangeHunger", 100)
+    TriggerEvent("drp-hud:ChangeThirst", 20)
+    burgies0 = 0
+end)
+
 local burgies2 = 0
 RegisterNetEvent('inv:fed')
 AddEventHandler('inv:fed', function()
     TriggerEvent("Evidence:StateSet",25,3600)
      TriggerEvent("drp-hud:updateStress",false,30)
-    TriggerEvent("drp-hud:ChangeHunger", 60)
+    TriggerEvent("drp-hud:ChangeHunger", 55)
     TriggerEvent("drp-hud:ChangeThirst", 30)
     processStressBlock()
     burgies2 = 0
@@ -3567,6 +3660,18 @@ RegisterNetEvent('changethirst')
 AddEventHandler('changethirst', function()
     TriggerEvent("drp-hud:ChangeThirst", 30)
     burgies5 = 0
+end)
+
+local burgies6 = 0
+RegisterNetEvent('changethirstPlusSpeed')
+AddEventHandler('changethirstPlusSpeed', function()
+    TriggerEvent("drp-hud:ChangeThirst", 50)
+    SetRunSprintMultiplierForPlayer(PlayerId(),1.49)  
+    Citizen.Wait(2500)
+    SetRunSprintMultiplierForPlayer(PlayerId(),1.2)
+    Citizen.Wait(15000) 
+    SetRunSprintMultiplierForPlayer(PlayerId(),1)
+    burgies6 = 0
 end)
 
 RegisterNetEvent('animation:lockpickinvtestoutside')

@@ -134,6 +134,7 @@ AddEventHandler("drp-vehicles:repo3", function(plate)
                         ['@license_plate'] = plate,
                     })
                     TriggerClientEvent("drp-vehicles:repo:success2", src)
+                end)
             else
                 TriggerClientEvent('DoLongHudText', SrcID, 'You cannot do this.', 2)
             end

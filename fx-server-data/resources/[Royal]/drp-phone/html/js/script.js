@@ -237,11 +237,7 @@ $(document).ready(function () {
                     openRadio();
                     break;
                 case "getCallHistory":
-                    if (callStates[currentCallState] === "isCallInProgress" && currentContainer !== "incoming-call")
-                        openContainer("top-notifications-chamadas");
-                    else
-                        $.post('http://drp-phone/' + action, JSON.stringify({}));
-                    break;
+                    $.post('http://drp-phone/getCallHistory', JSON.stringify({}));
                 case "spotify":
                     openBrowser('http://mysound.ge/index.php');
                     break;

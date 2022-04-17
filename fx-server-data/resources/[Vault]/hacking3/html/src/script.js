@@ -13,39 +13,44 @@ async function start(){
     const dialing = playSound('assets/dialing.mp3', 0.1)
 
     // mock loading screen
-    setInformationText('BAĞLANTI KURULUYOR')
+    setInformationText('ESTABLISHING CONNECTION')
     await delay(0.8)
-    setInformationText('HACK İŞLEMLERİ YAPILIYOR...')
+    setInformationText('DOING SOME HACKERMANS STUFF...')
     await delay(1)
-    setInformationText('ERİŞİM KODU İŞARETLENDİ; DOĞRULAMA İŞLEMİ GEREKLİ..')
+    setInformationText('ACCESS CODE FLAGGED; REQUIRES HUMAN CAPTCHA INPUT..')
     await delay(0.8)
-   
 
     // hide text and show squares
     $('#text-container').classList.toggle('hidden')
     $('#number-container').classList.toggle('hidden')
 
 
-    // activate puzzle 4 times, break on fail
+    // activate puzzle 6 times, break on fail
     let submitted
     let answer
     let result = true
 
-    for (let i = 0; i < 4 && result; i++) {
+    for (let i = 0; i < 6 && result; i++) {
         [submitted, answer] = await doPuzzle()
         result = (submitted?.toLowerCase() == answer)
     }
-   
+
     // hide squares and show text
     $('.answer-section').classList.add('hidden')
     $('.number-container').classList.add('hidden')
     $('#text-container').classList.remove('hidden')
     
     // display result
-    setInformationText((result) ? 'sistem atlandı.' : "Sistem cevabınızı onaylamadı.")
+    setInformationText((result) ? 'the system has been bypassed.' : "The system didn't accept your answers")
     
     if(!result) {
     	$('.spy-icon').src = 'assets/failed.png'
+    	$('#answer-reveal').textContent = answer
+        await delay(5)
+    }
+
+    if(result) {
+    	$('.spy-icon').src = 'assets/spy-icon.png'
     	$('#answer-reveal').textContent = answer
         await delay(5)
     }
@@ -60,7 +65,7 @@ async function start(){
 
     $(".bg").classList.add('hidden');
 
-    $('#submitted-reveal').textContent = (result) ? 'İyi iş başardın, gerçekten..' : ((submitted == null) ?  "Süre bitti," : `You wrote "${submitted || ' '}", the`)
+    $('#submitted-reveal').textContent = (result) ? 'Good job, indeed the' : ((submitted == null) ?  "The time ran out," : `You wrote "${submitted || ' '}", the`)
 }
 
 

@@ -1,6 +1,6 @@
 RPC.register("drp-garages:selectMenu", function(pGarage, pJob)
 	local pSrc = source
-	if pGarage == 'garagepd' then
+	if pGarage == 'garagepd' or pGarage == 'garagefib' or pGarage == 'garagepdpaleto' then
 		if pJob == 'police' or pJob == 'state' or pJob == 'sheriff' then
 			TriggerClientEvent('drp-context:sendMenu', pSrc, {
 				{
@@ -146,7 +146,9 @@ RPC.register("drp-garages:select", function(pGarage)
 									model = vehicles[i].model,
 									fuel = vehicles[i].fuel, 
 									customized = vehicles[i].data,
-									plate = vehicles[i].license_plate
+									plate = vehicles[i].license_plate,
+									enigine_damage = vehicles[i].engine_damage,
+									body_damage = vehicles[i].body_damage,
 								}
 							}
 						},
@@ -192,7 +194,7 @@ RPC.register("drp-garages:selectSharedGarage", function(pGarage, pJob)
 			})
             for i = 1, #vehicles do
 				if vehicles[i].vehicle_state ~= "Out" then
-					if pGarage ~= "garagepd" then
+					if pGarage ~= "garagepd" and pGarage ~= 'garagefib' and pGarage ~= 'garagepdpaleto'  then
 						TriggerClientEvent('drp-context:sendMenu', pSrc, {
 							{
 								id = vehicles[i].id,
@@ -208,7 +210,9 @@ RPC.register("drp-garages:selectSharedGarage", function(pGarage, pJob)
 										model = vehicles[i].model,
 										fuel = vehicles[i].fuel, 
 										customized = vehicles[i].data,
-										plate = vehicles[i].license_plate
+										plate = vehicles[i].license_plate,
+										enigine_damage = vehicles[i].engine_damage,
+										body_damage = vehicles[i].body_damage,
 									}
 								}
 							},
@@ -217,7 +221,7 @@ RPC.register("drp-garages:selectSharedGarage", function(pGarage, pJob)
 				end
             end
 
-			if pType == "law" and pGarage == "garagepd" then
+			if pType == "law" and (pGarage == "garagepd" or pGarage == 'garagefib' or pGarage == 'garagepdpaleto')  then
 				TriggerClientEvent('drp-context:sendMenu', pSrc, {
 					{
 						id = 1,
@@ -362,7 +366,9 @@ RPC.register("drp-garages:open:law", function(pGarage, pJob, type)
 											model = vehicles[i].model,
 											fuel = vehicles[i].fuel, 
 											customized = vehicles[i].data,
-											plate = vehicles[i].license_plate
+											plate = vehicles[i].license_plate,
+											enigine_damage = vehicles[i].engine_damage,
+											body_damage = vehicles[i].body_damage,
 										}
 									}
 								},
@@ -385,7 +391,9 @@ RPC.register("drp-garages:open:law", function(pGarage, pJob, type)
 											model = vehicles[i].model,
 											fuel = vehicles[i].fuel, 
 											customized = vehicles[i].data,
-											plate = vehicles[i].license_plate
+											plate = vehicles[i].license_plate,
+											enigine_damage = vehicles[i].engine_damage,
+											body_damage = vehicles[i].body_damage,
 										}
 									}
 								},
@@ -455,6 +463,8 @@ RPC.register("drp-garages:spawned:get", function(pID)
 			fuel = vehicles[1].fuel, 
 			customized = vehicles[1].data,
 			plate = vehicles[1].license_plate,
+			engine_damage = vehicles[1].engine_damage,
+			body_damage = vehicles[1].body_damage,
 		}
 	
 		if vehicles[1].current_garage == "Impound Lot" and vehicles[1].vehicle_state == 'Normal Impound' then
@@ -480,17 +490,26 @@ RPC.register("drp-garages:spawned:get", function(pID)
 	end)
 end)
 
-RPC.register("drp-garages:states", function(pState, plate, garage, fuel)
+RPC.register("drp-garages:states", function(pState, plate, garage, fuel, engine_damage, body_damage)
     local pSrc = source
 	exports.ghmattimysql:execute('SELECT * FROM characters_cars WHERE license_plate = ?', {plate}, function(pIsValid)
 		if pIsValid[1] then
 			pExist = true
-			exports.ghmattimysql:execute("UPDATE characters_cars SET vehicle_state = @state, current_garage = @garage, fuel = @fuel, coords = @coords WHERE license_plate = @plate", {
-				['garage'] = garage, 
-				['state'] = pState, 
-				['plate'] = plate,  
-				['fuel'] = fuel, 
-				['coords'] = nil
+			 
+			-- round engine and body damage
+			engine_damage = math.floor(engine_damage)
+			body_damage = math.floor(body_damage)
+
+			Citizen.Trace(engine_damage .. " " .. body_damage .. "\n")
+
+			exports.ghmattimysql:execute("UPDATE characters_cars SET vehicle_state = @state, current_garage = @garage, fuel = @fuel, coords = @coords, engine_damage = @engine_damage, body_damage = @body_damage WHERE license_plate = @plate", {
+				['@state'] = pState,
+				['@garage'] = garage,
+				['@fuel'] = fuel,
+				['@coords'] = {x = 0, y = 0, z = 0},
+				['@engine_damage'] = engine_damage,
+				['@body_damage'] = body_damage,
+				['@plate'] = plate
 			})
 		else
 			pExist = false

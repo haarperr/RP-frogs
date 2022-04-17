@@ -371,6 +371,12 @@ Citizen.CreateThread(function()
         -- minZ=30.49,
         -- maxZ=31.24
     })
+    
+    exports["drp-polytarget"]:AddBoxZone("fib2_elv_up", vector3(2506.0056, -433.0655, 99.3493), 10.0, 12.2, {
+    })
+
+    exports["drp-polytarget"]:AddBoxZone("fib2_elv_down", vector3(2506.0054, -432.9903, 107.2962), 10.0, 12.2, {
+    })
 
     
     -- PD Air One Garages
@@ -386,6 +392,15 @@ Citizen.CreateThread(function()
         heading=0,
         minZ=30.49,
         maxZ=31.24
+    })
+    -- PD Clock in locations
+    exports["drp-polytarget"]:AddBoxZone("duty_ranger", vector3(384.3852, 793.1972, 187.6093), 0.9, 0.5, {
+
+    })
+
+
+    -- PD Clock in FIB
+    exports["drp-polytarget"]:AddBoxZone("duty_fib", vector3(2511.1729, -356.0486, 94.6071), 0.9, 0.5, {
     })
 
        -- PD Clock in locations
@@ -751,14 +766,6 @@ Citizen.CreateThread(function()
         maxZ=30.04
     })
 
-    -- Chopshop
-
-    exports["drp-polytarget"]:AddBoxZone("royal_chop_location", vector3(830.39, -2171.71, 30.28), 1, 1.4, {
-        heading=270,
-        minZ=27.28,
-        maxZ=31.28
-    })
-
     -- Fence Guy    
     
     exports["drp-polytarget"]:AddBoxZone("fenceguy", vector3(331.1994, 362.1967, 106.6535), 1, 1.4, {
@@ -769,11 +776,6 @@ Citizen.CreateThread(function()
     
     exports["drp-polytarget"]:AddBoxZone("chickenguy", vector3(-524.7509, -711.4124, 33.8249), 1, 1.4, {
         heading=112.7492,
-    })
-
-    -- VPN Guy
-    exports["drp-polytarget"]:AddBoxZone("vpnguy", vector3(944.7300, -1697.6277, 30.0850), 1, 1.4, {
-        heading=263.1922,
     })
 
     
@@ -1553,6 +1555,64 @@ Citizen.CreateThread(function()
         end,
     });
 
+    -- Ranger Duty
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("duty_ranger", {{
+        event = "drp-duty:PoliceMenu",
+        id = "duty_ranger",
+        icon = "cog",
+        label = "Sign On/Off Duty",
+        parameters = {},
+    }}, {
+        distance = { radius = 2.5 },
+        isEnabled = function()
+            return true
+        end,
+    });
+
+    -- FIB Duty
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("duty_fib", {{
+        event = "drp-duty:PoliceMenu",
+        id = "duty_police",
+        icon = "cog",
+        label = "Sign On/Off Duty",
+        parameters = {},
+    }}, {
+        distance = { radius = 2.5 },
+        isEnabled = function()
+            return true
+        end,
+    });
+
+    -- FIB 2 Elevator Up
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("fib2_elv_up", {{
+        event = "drp-fib:elevator:2:up",
+        id = "fib2_elv_up",
+        icon = "arrow-alt-circle-up",
+        label = "Elevator Up",
+        parameters = {},
+    }}, {
+        distance = { radius = 2.5 },
+        isEnabled = function()
+            return true
+        end,
+    });
+
+    -- FIB 2 Elevator Down
+    exports["drp-interact"]:AddPeekEntryByPolyTarget("fib2_elv_down", {{
+        event = "drp-fib:elevator:2:down",
+        id = "fib2_elv_down",
+        icon = "arrow-alt-circle-down",
+        label = "Elevator Down",
+        parameters = {},
+    }}, {
+        distance = { radius = 2.5 },
+        isEnabled = function()
+            return true
+        end,
+    });
+
+
+
     -- PD Duty2
     exports["drp-interact"]:AddPeekEntryByPolyTarget("duty_police2", {{
         event = "drp-duty:PoliceMenu",
@@ -2286,19 +2346,6 @@ Citizen.CreateThread(function()
         id = "fenceguy",
         icon = "arrow-alt-circle-up",
         label = "Sell your Shit",
-        parameters = {},
-    }}, {
-        distance = { radius = 7 },
-    });
-
-    
-    -- Vpn Guy
-    
-    exports["drp-interact"]:AddPeekEntryByPolyTarget("vpnguy", {{
-        event = "heists:buyvpn",
-        id = "vpnguy",
-        icon = "arrow-alt-circle-up",
-        label = "Buy a VPN (5k)",
         parameters = {},
     }}, {
         distance = { radius = 7 },
@@ -3695,27 +3742,7 @@ Citizen.CreateThread(function()
         },
     }, {
         distance = { radius = 2.5 },
-    });
-
-    -- Chopshop
-    exports["drp-interact"]:AddPeekEntryByPolyTarget("royal_chop_location", {
-        {
-            event = "drp-chopshop:clock-in",
-            id = "royal_chop_location_clock_in",
-            icon = "circle",
-            label = "Clock In",
-            parameters = {},
-        },
-        {
-            event = "drp-chopshop:clock-out",
-            id = "royal_chop_location_clock_out",
-            icon = "circle",
-            label = "Clock Out",
-            parameters = {},
-        }
-    }, {
-        distance = { radius = 2.5 },
-    });    
+    });   
 
     exports["drp-interact"]:AddPeekEntryByPolyTarget("fib_elevator_up", {{
         event = "fib:47FloorTp",

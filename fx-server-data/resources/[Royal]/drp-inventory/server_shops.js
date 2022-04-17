@@ -211,7 +211,21 @@ function WarehouseCrafting() {
         { item_id: "subammo", id: 0, name: "craft", information: "{}", slot: 9, amount: 50 },
         { item_id: "148457251", id: 0, name: "craft", information: "{}", slot: 10, amount: 50 },
         { item_id: "-134995899", id: 0, name: "craft", information: "{}", slot: 11, amount: 50 },
-        { item_id: "elevatorhackingdevice", id: 0, name: "craft", information: "{}", slot: 12, amount: 50 },
+        { item_id: "1593441988", id: 0, name: "craft", information: "{}", slot: 12, amount: 50 }, 
+        { item_id: "-1075685676", id: 0, name: "craft", information: "{}", slot: 13, amount: 50 }, 
+        { item_id: "453432689", id: 0, name: "craft", information: "{}", slot: 14, amount: 50 }, 
+        { item_id: "4191993645", id: 0, name: "craft", information: "{}", slot: 15, amount: 50 }, 
+        { item_id: "883325847", id: 0, name: "craft", information: "{}", slot: 16, amount: 50 }, 
+        { item_id: "3713923289", id: 0, name: "craft", information: "{}", slot: 17, amount: 50 },
+        { item_id: "2578778090", id: 0, name: "craft", information: "{}", slot: 18, amount: 50 },
+        { item_id: "2227010557", id: 0, name: "craft", information: "{}", slot: 19, amount: 50 },
+        { item_id: "615608432", id: 0, name: "craft", information: "{}", slot: 20, amount: 50 },
+        { item_id: "nails", id: 0, name: "craft", information: "{}", slot: 21, amount: 50 },
+        { item_id: "1748076076", id: 0, name: "craft", information: "{}", slot: 22, amount: 50 },
+        
+        
+        // elevatorhackingdevice
+
          ];
     return JSON.stringify(shopItems);
 }
@@ -341,7 +355,7 @@ function CraftRifleStoreGangs() {
         { item_id: "subammo", id: 0, name: "craft", information: "{}", slot: 3, amount: 50 },
         { item_id: "148457251", id: 0, name: "craft", information: "{}", slot: 4, amount: 50 },
         { item_id: "-134995899", id: 0, name: "craft", information: "{}", slot: 5, amount: 50 },
-        { item_id: "elevatorhackingdevice", id: 0, name: "craft", information: "{}", slot: 6, amount: 50 },
+        { item_id: "cuffs", id: 0, name: "craft", information: "{}", slot: 6, amount: 50 },// elevatorhackingdevice
 
     ];
     return JSON.stringify(shopItems);

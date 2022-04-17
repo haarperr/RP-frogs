@@ -231,8 +231,8 @@ Citizen.CreateThread(function()
         name="armory_sandyPD1",
         heading=300,
 		--debugPoly=true,
-		-- minZ=27.67,
-		-- maxZ=31.67
+		minZ=27.67,
+		maxZ=31.67
     })
 end)
 

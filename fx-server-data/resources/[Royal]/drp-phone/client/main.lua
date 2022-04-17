@@ -809,7 +809,7 @@ RegisterNetEvent("phone:carspawn", function(data,coords,state)
       if #(vector3(coords[1],coords[2],coords[3]) - GetEntityCoords(PlayerPedId())) < 10.0 then
        -- DeleteBlip()
         trackVehicle = false
-        SpawnVehicle(value.model, coords[1],coords[2],coords[3], value.fuel, value.data, value.license_plate, true,value.engine_damage,value.body_damage)
+        SpawnVehicle(value.model, coords[1],coords[2],coords[3], value.fuel, value.data, value.license_plate, true, value.engine_damage, value.body_damage)
       else
         TriggerEvent("DoLongHudText","Cannot spawn", 2)
       end
@@ -835,6 +835,18 @@ function SpawnVehicle(vehicle, x,y,z, Fuel, customized, plate, IsViewing, engine
         DecorSetBool(veh, "PlayerVehicle", true)
         SetVehicleOnGroundProperly(veh)
         SetVehicleDirtLevel(veh, 0.0)
+        SetVehicleFuelLevel(veh, Fuel)
+
+        -- Set Enigne Health
+        if enginehealth ~= nil then
+          SetVehicleEngineHealth(veh, enginehealth)
+        end
+
+        -- Set Body Health
+        if bodyhealth ~= nil then
+          SetVehicleBodyHealth(veh, bodyhealth)
+        end
+
         SetEntityInvincible(veh, false) 
         SetVehicleNumberPlateText(veh, plate)
         SetVehicleProps(veh, customized)
@@ -844,7 +856,7 @@ function SpawnVehicle(vehicle, x,y,z, Fuel, customized, plate, IsViewing, engine
         SetNetworkIdCanMigrate(id, true)
         if not IsViewing then    
             CurrentDisplayVehicle = nil
-            RPC.execute("drp-garages:states", "Out", plate, exports['drp-menu']:currentGarage(), pUpdatedFuel)
+            RPC.execute("drp-garages:states", "Out", plate, exports['drp-menu']:currentGarage(), pUpdatedFuel, enginehealth or 1000, bodyhealth or 1000)
         end
     end)
 end
@@ -978,8 +990,8 @@ function findVehFromPlateAndSpawn(plate)
 end
 
 RegisterNetEvent("phone:SpawnVehicle")
-AddEventHandler('phone:SpawnVehicle', function(vehicle, plate, customized, state, Fuel, coordlocation)
-  TriggerEvent("garages:SpawnVehicle", vehicle, plate, customized, state, Fuel, coordlocation)
+AddEventHandler('phone:SpawnVehicle', function(vehicle, plate, customized, state, Fuel, coordlocation, engine_health, body_health)
+  TriggerEvent("garages:SpawnVehicle", vehicle, plate, customized, state, Fuel, coordlocation, engine_health, body_health)
 end)
 
 
@@ -1002,12 +1014,21 @@ Citizen.CreateThread(function()
             local coords = GetEntityCoords(vehobj)
             coords = { coords["x"], coords["y"], coords["z"] }
             TriggerServerEvent("vehicle:coords",plateupdate,coords)
+            
+            local engine_damage = GetVehicleEngineHealth(veh)
+            local body_damage = GetVehicleBodyHealth(veh)
+            TriggerServerEvent("vehicle:damage",plateupdate,body_damage,engine_damage)
           end
       end
       if invehicle and not IsPedInAnyVehicle(PlayerPedId(), false) then
         local coords = GetEntityCoords(vehobj)
         coords = { coords["x"], coords["y"], coords["z"] }
         TriggerServerEvent("vehicle:coords",plateupdate,coords)
+        
+        local engine_damage = GetVehicleEngineHealth(veh)
+        local body_damage = GetVehicleBodyHealth(veh)
+        TriggerServerEvent("vehicle:damage",plateupdate,body_damage,engine_damage)
+
         invehicle = false
         plateupdate = "None"
         vehobj = 0
@@ -2406,12 +2427,12 @@ end)
 
 RegisterNetEvent('phone:robberynotif')
 AddEventHandler('phone:robberynotif', function(name, message)
-    SendNUIMessage({openSection = "robnotify", pEHandle = 'From The Boss', pEMessages = message})
+    SendNUIMessage({openSection = "robnotify", pEHandle = name, pEMessages = message})
     if exports['drp-phone']:pOpen() == false then 
-      SendNUIMessage({openSection = "robnotify", pEHandle = 'From The Boss', pEMessages = message})
+      SendNUIMessage({openSection = "robnotify", pEHandle = name, pEMessages = message})
       SendNUIMessage({openSection = "phonemedio", timeout = "5200", pOpen = exports['drp-phone']:pOpen()}) 
     end
-    --curNotifications[#curNotifications+1] = { ["name"] = name, ["message"] = message, ['time'] = time }
+    curNotifications[#curNotifications+1] = { ["name"] = name, ["message"] = message, ['time'] = time }
 end)
 
 RegisterNetEvent('phone:transaction')

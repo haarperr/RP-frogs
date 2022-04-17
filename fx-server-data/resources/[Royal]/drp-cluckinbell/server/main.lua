@@ -41,6 +41,7 @@ AddEventHandler("cluckinbell:retreive:receipt", function(regID)
                     TriggerClientEvent("player:receiveItem", Registers[regID][i].owner, "burgerReceipt", 1, true, information)
                     TriggerClientEvent("player:receiveItem", src, "receipt", 1, true, {["Comment"] = "Thanks for your order at Cluckin Bell"})
                     TriggerEvent("cluckinbell:update:registers", regID)
+                    TriggerEvent("server:GroupPayment","cluckin_bell", tonumber(amount/100*75), src)
                 else
                     TriggerClientEvent("DoLongHudText", src, "You cant afford this payment", 2)
                 end
@@ -59,27 +60,15 @@ AddEventHandler("cluckinbell:update:registers", function(regID)
 end)
 
 RegisterServerEvent("cluckinbell:update:pay")
-AddEventHandler("cluckinbell:update:pay", function(cid)
+AddEventHandler("cluckinbell:update:pay", function(cid, amountOfReciepes)
     local src = source
     local user = exports["drp-base"]:getModule("Player"):GetUser(src)
-    local characterId = user:getVar("character").id
-    local invname = 'ply-'..characterId
-    exports.ghmattimysql:execute("SELECT `slot`, `information` FROM user_inventory2 WHERE name = ? AND `item_id` = ? ORDER BY slot DESC", {invname, "burgerReceipt"}, function(data)
-        if data[1] then
-            local slot = data[1].slot
-            local jsonparse = json.decode(data[1].information)
-            exports.ghmattimysql:execute("SELECT `paycheck` FROM characters WHERE id = ?", {characterId}, function(old)
-                local before = old[1].paycheck
-                exports.ghmattimysql:execute("UPDATE characters SET `paycheck` = @paycheck WHERE `id` = @id", {
-                    ['@paycheck'] = old[1].paycheck + jsonparse["Price"],
-                    ['@id'] = characterId
-                })
-                TriggerClientEvent('DoLongHudText', src, 'Your paycheck was updated', 1)
-                TriggerClientEvent("Yougotpaid", src, characterId)
-                exports.ghmattimysql:execute('DELETE FROM user_inventory2 WHERE `name`= ? AND `item_id`= ? AND `slot`= ?', {invname, "burgerReceipt", slot})
-            end)
-        else
-            TriggerClientEvent("DoLongHudText", src, "You dont have any work receipts to cash in")
-        end
+    exports.ghmattimysql:execute("SELECT `paycheck` FROM characters WHERE id = ?", {cid}, function(old)
+        local before = old[1].paycheck
+        exports.ghmattimysql:execute("UPDATE characters SET `paycheck` = @paycheck WHERE `id` = @id", {
+            ['@paycheck'] = old[1].paycheck + (math.random(400, 550) * amountOfReciepes),
+            ['@id'] = cid
+        })
+        TriggerClientEvent('DoLongHudText', src, 'Your paycheck was updated', 1)
     end)
 end)

@@ -55,6 +55,21 @@ AddEventHandler("commands:player:login",function()
     )
     TriggerClientEvent(
         "chat:addSuggestion", src,
+        "/barrier",
+        "Place a barrier in the street"
+    )
+    TriggerClientEvent(
+        "chat:addSuggestion", src,
+        "/sbarrier",
+        "Place a barrier in the street",
+    )
+    TriggerClientEvent(
+        "chat:addSuggestion", src,
+        "/cone",
+        "Place a Cone in the street",
+    )
+    TriggerClientEvent(
+        "chat:addSuggestion", src,
         "/serial",
         "Retrieve owner of a weapon",
         {
@@ -206,6 +221,18 @@ AddEventHandler("commands:reset:login",function()
     TriggerClientEvent(
         "chat:removeSuggestion", src,
         "/cctv"
+    )
+    TriggerClientEvent(
+        "chat:removeSuggestion", src,
+        "/barrier"
+    )
+    TriggerClientEvent(
+        "chat:removeSuggestion", src,
+        "/sbarrier"
+    )
+    TriggerClientEvent(
+        "chat:removeSuggestion", src,
+        "/cone"
     )
     TriggerClientEvent(
         "chat:removeSuggestion", src,

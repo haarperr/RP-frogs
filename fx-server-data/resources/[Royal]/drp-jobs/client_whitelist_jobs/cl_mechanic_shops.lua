@@ -332,6 +332,14 @@ end)
                 }
             },
             {
+                id = 6,
+                header = "Open Warehouse Bench",
+                txt = "Whats this",
+                params = {
+                    event = "warehousecrafting"
+                }
+            },
+            {
                 id = 7,
                 header = "Close",
                 txt = "Exit the bench",
@@ -341,9 +349,11 @@ end)
             },
         })
     else 
-        TriggerEvent('DoLongHudText', 'You are not Vagos Puto', 2)
+        TriggerEvent('DoLongHudText', 'Why are you here?', 2)
     end
  end)
+
+
 
  RegisterNetEvent('vagoscrafting-disabled') -- disabled
  AddEventHandler('vagoscrafting-disabled', function()

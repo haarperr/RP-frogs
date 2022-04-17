@@ -9,7 +9,7 @@ Config = {
 	},
 	WhitelistRequired = true, -- If this option is set to true, a player must have a role in Config.Rankings to be allowed into the server
 	Debug = true,
-	Webhook = 'https://discord.com/api/webhooks/956353404878331935/-1rf_W71i6Fmh2-vfN0niVvdTMcD00QjvZe0TYXnbiB22hY1wf6GEkNhamuwEywzIGQL',
+	Webhook = 'https://canary.discord.com/api/webhooks/965294258431074374/GNn_Rdszv-RRqYt-4QhvYi4Ni3E8BOgeZLumrb8Ohm2ko3hAhRp-lEwKWNKCvvsjYiQn',
 	Displays = {
 		Prefix = '[RPFrogsQueue]',
 		ConnectingLoop = { 

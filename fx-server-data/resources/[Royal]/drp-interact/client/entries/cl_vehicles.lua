@@ -292,13 +292,13 @@ Entries[#Entries + 1] = {
             event = "unseatPlayer",
             parameters = {}
         },
-        {
-            id = "Polish",
-            label = "Polish the car!",
-            icon = "fas fa-hand-sparkles",
-            event = "clean:cleanvehicle",
-            parameters = {}
-        },
+        --{
+        --    id = "Polish",
+        --    label = "Polish the car!",
+        --    icon = "fas fa-hand-sparkles",
+        --    event = "clean:cleanvehicle",
+        --    parameters = {}
+        --},
     },
     options = {
         distance = { radius = 4.0 },
@@ -350,7 +350,9 @@ Entries[#Entries + 1] = {
     options = {
         distance = { radius = 1.8 },
         isEnabled = function(pEntity, pContext)
-            return true --hasKeys(pEntity)
+            plate = GetVehicleNumberPlateText(pEntity)
+            hasKeys = exports["drp-keys"]:hasKey(plate)
+            return true hasKeys(pEntity)
         end
     }
 }

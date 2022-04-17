@@ -22,17 +22,21 @@ AddEventHandler('drp-adminmenu:CloseMouse', function()
   SetNuiFocus(false, false)
 end)
 
+local dark = false
 RegisterCommand("lights", function()
   if exports["drp-base"]:getModule("LocalPlayer"):getVar("rank") == ('dev' or 'admin' or 'superadmin' or 'mod' or 'owner') then
-dark = false
-if dark == false then
-    dark = true
-    SetBlackout(true)
-else
-  dark = false
-  SetBlackout(false)
-end
-end
+    if dark == false then
+      dark = true
+      TriggerServerEvent("toggleLights", true)
+    else
+      dark = false
+      TriggerServerEvent("toggleLights", false)
+    end
+  end
+end)
+RegisterNetEvent("toggleLightsC")
+AddEventHandler("toggleLightsC", function(current)
+  SetBlackout(current)
 end)
 
 RegisterCommand("model", function()
@@ -112,8 +116,15 @@ end)
 RequestScriptAudioBank('dlc_nikez_general/general_general', 0)
 
 RegisterNUICallback('MakeASound', function(data, cb)
-  PlaySoundFrontend(-1, "wet-fart", "dlc_nikez_general", 0, "general_general")
+  TriggerServerEvent("fartsv")
+  
 end)
+
+RegisterNetEvent("dofart")
+AddEventHandler("dofart", function()
+    PlaySoundFrontend(-1, "wet-fart", "dlc_nikez_general", 2, "general_general") -- tried to change fart sounds LMAO IDK IF IT WIL WORK
+end)
+
 
 RegisterNUICallback('devmode', function(data, cb)
   TriggerEvent('drp-admin:client:ToggleDevmode', data.returnvalue)
@@ -626,14 +637,14 @@ end)
 
 RegisterNetEvent('event:control:adminDev')
 AddEventHandler('event:control:adminDev', function(useID)
-    if not devmodeToggle then return end
-    if useID == 1 then
-        TriggerEvent("np:openmodmenu")
-    elseif useID == 2 then
-        local bool = not isInNoclip
-        RunNclp(nil,bool)
-        TriggerEvent("drp-admin:noClipToggle",bool)
-    elseif useID == 4 then
+    -- if not devmodeToggle then return end
+    -- if useID == 1 then
+    --     TriggerEvent("np:openmodmenu")
+    -- elseif useID == 2 then
+    --     local bool = not isInNoclip
+    --     RunNclp(nil,bool)
+    --     TriggerEvent("drp-admin:noClipToggle",bool)
+    if useID == 4 then
         teleportMarker(nil)
     end
 end)

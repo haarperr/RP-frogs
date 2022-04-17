@@ -199,7 +199,7 @@ end)
 
 
 RegisterNetEvent("cluckinbell:change:volume", function()
-    local job = exports["isPed"]:GroupRank('burger_shot')
+    local job = exports["isPed"]:GroupRank('cluckin_bell')
     if job >= 1 then
         local url = exports["drp-applications"]:KeyboardInput({
             header = "Settings: 0 - 100",
@@ -220,7 +220,7 @@ end)
 
      
 RegisterNetEvent("cluckinbell:request:song", function()
-    local job = exports["isPed"]:GroupRank('burger_shot')
+    local job = exports["isPed"]:GroupRank('cluckin_bell')
     if job >= 1 then
         local url = exports["drp-applications"]:KeyboardInput({
             header = "Place the song URL below.",

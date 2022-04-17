@@ -14,7 +14,7 @@ AddEventHandler('drp-badge:server:useitem', function(FUCKFEST)
 					img = result[1].mugshot_url
 				end
 				exports.ghmattimysql:execute("SELECT `callsign` FROM jobs_whitelist WHERE cid = @cid", {['cid'] = pData}, function(grade)
-					local badgenumber = grade[1].callsign
+					local badgenumber = grade[1].callsign or 000
 					exports.ghmattimysql:execute("SELECT `department` FROM jobs_whitelist WHERE cid = @cid", {['cid'] = pData}, function(department)
 						local department = department[1].department    
 

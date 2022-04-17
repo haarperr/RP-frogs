@@ -2,6 +2,58 @@
 local doors = {}
 local elevators = {}
 
+local alreadyInSide = {}
+
+RegisterNetEvent("drp-doors:write-entity")
+AddEventHandler("drp-doors:write-entity", function(coords, model)
+    
+
+    -- check if the door is already in the file
+    for k, v in pairs(doors) do
+        if tostring(v.coords) == tostring(coords) then
+            return
+        end
+    end
+
+
+
+    -- if coords is not in alreadyInSide, add it, if it is, return
+    for k, v in pairs(alreadyInSide) do
+        if tostring(v) == tostring(coords) then
+            return
+        end
+    end
+
+    table.insert(alreadyInSide, coords)
+
+    
+
+    file = io.open("doors.txt", "a")
+    io.output(file)
+
+    local output = [[
+        {
+            info = "PD Sandy 3",
+            active = true,
+            id = 550,
+            coords = vector3(]] .. tostring(coords) .. [[),
+            model = ]] .. tostring(model) .. [[,
+            lock = true,
+            keyFob = true,
+            desc = "x",
+            access = {
+                job = {
+                ["PD"] = true,
+                },
+                cid = {
+                },
+            }
+        },
+    ]]
+    io.write(tostring(output))
+    io.close(file)
+end)
+
 RegisterNetEvent('drp-doors:request-lock-state')
 AddEventHandler('drp-doors:request-lock-state', function()
     local src = source

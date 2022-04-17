@@ -308,6 +308,7 @@ function isPDMActive()
 end
 
 function hasSecuredAccess(pId, pType)
+    Citizen.Trace(pId .. " " .. pType .. "\n")
     if accessCheckCacheTimer[pType][pId] ~= nil and accessCheckCacheTimer[pType][pId] + 60000 > GetGameTimer() then -- 1 minute
         return accessCheckCache[pType][pId] == true
     end

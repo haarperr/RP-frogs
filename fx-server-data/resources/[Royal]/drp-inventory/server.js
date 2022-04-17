@@ -187,6 +187,13 @@ function GenerateInformation(src, player, itemid, itemdata, returnData = '{}') {
             // console.log(itemdata)
             if (itemList[itemid].weapon === true) {
                 let cartridgeCreated = player + "-" + makeid(3) + "-" + Math.floor(Math.random() * 999 + 1);
+                // cid, cartridgeCreated, first_name, last_name
+                let values = `('${player}', '${cartridgeCreated}', 'First Name', 'Last Name')`;
+                
+                let query = `INSERT INTO weapons_serials (cid, serial, first_name, last_name) VALUES ${values}`;
+                exports.ghmattimysql.execute(query, {}, function() {});
+
+
                 returnInfo = JSON.stringify({
                     cartridge: cartridgeCreated,
                     serial: identifier,
@@ -509,7 +516,7 @@ onNet("server-inventory-open", async(coords, player, secondInventory, targetName
         } else if (secondInventory == "43000") {
             var targetinvname = targetName;
             var shopArray = WarehouseCrafting();
-            var shopAmount = 12;
+            var shopAmount = 22;
             emitNet("inventory-open-target", src, [invArray, arrayCount, playerinvname, shopArray, shopAmount, targetinvname, 500, false]);
 
         } else if (secondInventory == "44000") {

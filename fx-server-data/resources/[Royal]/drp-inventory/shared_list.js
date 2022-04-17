@@ -434,11 +434,11 @@ itemList['148457251'] = {
     ],
     [{
         itemid: 'refinedaluminium',
-        amount: 30
+        amount: 20
       },
       {
         itemid: 'refinedsteel',
-        amount: 30
+        amount: 20
       },
     ]
   ],
@@ -523,16 +523,21 @@ itemList['453432689'] = {
   price: 250,
   craft: [
     [{
-        itemid: 'aluminium',
-        amount: 1
+        itemid: 'steel',
+        amount: 50
       },
       {
         itemid: 'plastic',
-        amount: 1
+        amount: 50
+      },
+    ],
+    [{
+        itemid: 'refinedsteel',
+        amount: 16
       },
       {
-        itemid: 'rubber',
-        amount: 1
+        itemid: 'refinedplastic',
+        amount: 16
       },
     ]
   ],
@@ -551,16 +556,21 @@ itemList['-1075685676'] = {
   price: 250,
   craft: [
     [{
-        itemid: 'aluminium',
-        amount: 1
+        itemid: 'steel',
+        amount: 50
       },
       {
         itemid: 'plastic',
-        amount: 1
+        amount: 50
+      },
+    ],
+    [{
+        itemid: 'refinedsteel',
+        amount: 16
       },
       {
-        itemid: 'rubber',
-        amount: 1
+        itemid: 'refinedplastic',
+        amount: 16
       },
     ]
   ],
@@ -580,15 +590,20 @@ itemList['1593441988'] = {
   craft: [
     [{
         itemid: 'steel',
-        amount: 65
+        amount: 50
       },
       {
         itemid: 'plastic',
-        amount: 1
+        amount: 50
+      },
+    ],
+    [{
+        itemid: 'refinedsteel',
+        amount: 16
       },
       {
-        itemid: 'rubber',
-        amount: 1
+        itemid: 'refinedplastic',
+        amount: 16
       },
     ]
   ],
@@ -730,21 +745,21 @@ itemList['-134995899'] = {
   craft: [
     [{
         itemid: 'aluminium',
-        amount: 70
+        amount: 80
       },
       {
         itemid: 'steel',
-        amount: 70
+        amount: 80
       },
 
     ],
     [{
         itemid: 'refinedaluminium',
-        amount: 40
+        amount: 25
       },
       {
         itemid: 'refinedsteel',
-        amount: 30
+        amount: 25
       },
 
     ]
@@ -1756,23 +1771,14 @@ itemList['615608432'] = {
   displayname: 'Molly',
   craft: [
     [{
-        itemid: 'aluminium',
-        amount: 75
+        itemid: 'glass',
+        amount: 250
       },
       {
-        itemid: 'whiskey',
-        amount: 3
+        itemid: 'hardoakswhisky',
+        amount: 5
       },
     ],
-    [{
-        itemid: 'refinedaluminium',
-        amount: 12
-      },
-      {
-        itemid: 'whiskey',
-        amount: 3
-      },
-    ]
   ],
   price: 250,
   weight: 35,
@@ -1836,15 +1842,20 @@ itemList['1748076076'] = {
   craft: [
     [{
         itemid: 'aluminium',
-        amount: 1
+        amount: 60
       },
       {
         itemid: 'plastic',
-        amount: 1
+        amount: 90
+      },
+    ],
+    [{
+        itemid: 'refinedaluminium',
+        amount: 20
       },
       {
-        itemid: 'rubber',
-        amount: 1
+        itemid: 'refinedplastic',
+        amount: 30
       },
     ]
   ],
@@ -2027,6 +2038,14 @@ itemList['883325847'] = {
   weight: 50,
   nonStack: true,
   model: '',
+  craft: [
+    [
+      {
+        itemid: 'plastic',
+        amount: 15
+      },
+    ]
+  ],
   image: 'np_petrol-can.png',
   weapon: true,
 };
@@ -2234,6 +2253,26 @@ itemList['2227010557'] = {
   weight: 15,
   nonStack: true,
   model: '',
+  craft: [
+    [{
+        itemid: 'aluminium',
+        amount: 30
+      },
+      {
+        itemid: 'steel',
+        amount: 30
+      },
+    ],
+    [{
+        itemid: 'refinedaluminium',
+        amount: 10
+      },
+      {
+        itemid: 'refinedsteel',
+        amount: 10
+      },
+    ]
+  ],
   image: 'np_crowbar.png',
   weapon: true,
 };
@@ -2477,6 +2516,26 @@ itemList['2578778090'] = {
   weight: 7,
   nonStack: true,
   model: '',
+  craft: [
+    [{
+        itemid: 'aluminium',
+        amount: 24
+      },
+      {
+        itemid: 'rubber',
+        amount: 24
+      },
+    ],
+    [{
+        itemid: 'refinedaluminium',
+        amount: 8
+      },
+      {
+        itemid: 'refinedrubber',
+        amount: 8
+      },
+    ]
+  ],
   image: 'np_knife.png',
   weapon: true,
 };
@@ -2522,6 +2581,26 @@ itemList['4191993645'] = {
   weight: 17,
   nonStack: true,
   model: '',
+  craft: [
+    [{
+        itemid: 'aluminium',
+        amount: 30
+      },
+      {
+        itemid: 'plastic',
+        amount: 30
+      },
+    ],
+    [{
+        itemid: 'refinedaluminium',
+        amount: 10
+      },
+      {
+        itemid: 'refinedplastic',
+        amount: 10
+      },
+    ]
+  ],
   image: 'np_hatchet.png',
   weapon: true,
 };
@@ -2885,15 +2964,20 @@ itemList['nails'] = {
   craft: [
     [{
         itemid: 'aluminium',
-        amount: 1
+        amount: 10
       },
       {
-        itemid: 'plastic',
-        amount: 1
+        itemid: 'steel',
+        amount: 5
+      },
+    ],
+    [{
+        itemid: 'refinedaluminium',
+        amount: 3
       },
       {
-        itemid: 'rubber',
-        amount: 1
+        itemid: 'refinedsteel',
+        amount: 2
       },
     ]
   ],
@@ -4652,7 +4736,7 @@ itemList['hardoaksfries'] = {
 itemList['hardoakswhisky'] = {
   fullyDegrades: false,
   decayrate: 0.0,
-  displayname: 'John Hardoaks Detroit Whiskey',
+  displayname: 'Hardoaks Detroit Whiskey',
   price: 1,
   weight: 5,
   nonStack: false,
@@ -4885,7 +4969,7 @@ itemList['cbpatty'] = {
 itemList['cbfriedchickenpiece'] = {
   fullyDegrades: false,
   decayrate: 0.01,
-  displayname: 'Fried Chicken Stripes',
+  displayname: 'Fried Chicken Strips',
   price: 1,
   weight: 2,
   nonStack: false,
@@ -4914,9 +4998,10 @@ itemList['cbbowl'] = {
       amount: 2
       },
       {
-        itemid: 'lettuce',
+        itemid: 'cheese',
         amount: 2
-    }]
+      },
+    ]
   ],
   image: 'cluckin-bowl.png',
   information: 'Ooh..Kreygasm. 969Cal',
@@ -5175,23 +5260,23 @@ itemList['cbfowl'] = {
   craft: [
     [  
       {
-      itemid: 'hamburgerpatty',
-      amount: 1
-      },
-      {
         itemid: 'cbpatty',
-        amount: 1
+        amount: 2
       },
       {
         itemid: 'lettuce',
-        amount: 1
+        amount: 2
       },
       {
         itemid: 'cheese',
-        amount: 1
+        amount: 2
       },
       {
         itemid: 'tomato',
+        amount: 1
+      },
+      {
+        itemid: 'hamburgerbuns',
         amount: 1
       }
     ]
@@ -5251,8 +5336,12 @@ itemList['cbveggy'] = {
   craft: [
     [  
       {
-      itemid: 'lettuce',
-      amount: 2
+        itemid: 'lettuce',
+        amount: 2
+      },
+      {
+        itemid: 'tomato',
+        amount: 2
       }
     ]
   ],
@@ -6860,7 +6949,7 @@ itemList['advlockpick'] = {
       },
       {
         itemid: 'refinedplastic',
-        amount: 8
+        amount: 10
       },
       {
         itemid: 'refinedrubber',
@@ -7056,6 +7145,17 @@ itemList['casinosoap'] = {
   model: 'prop_ld_health_pack',
   image: 'np_casino_soap.png',
   information: 'Feeling Lucky? From Clean Getaway Soap Co.',
+};
+
+itemList['casinochips'] = {
+  fullyDegrades: true,
+  decayrate: 0.25,
+  displayname: 'Casino Chips',
+  price: 50,
+  weight: 1,
+  nonStack: false,
+  image: 'gold-chip.png',
+  information: 'Useful for gamba',
 };
 
 itemList['casinogoldcoin'] = {
@@ -10577,7 +10677,7 @@ itemList["shortradio"] = {
 itemList["civradio"] = {
   fullyDegrades: true,
   deg: true,
-  decayrate: 0.25,
+  decayrate: 0.2,
   displayname: "Standard Radio",
   craft: [
     [{
@@ -10585,7 +10685,7 @@ itemList["civradio"] = {
       amount: 30
     }, ]
   ],
-  price: 3000,
+  price: 7500,
   weight: 5,
   nonStack: true,
   model: "",
@@ -10595,7 +10695,7 @@ itemList["civradio"] = {
 
 itemList['radio'] = {
   fullyDegrades: false,
-  decayrate: 0.0,
+  decayrate: 0.5,
   displayname: 'Radio',
   craft: [
     [{
@@ -29650,7 +29750,7 @@ itemList['chickenslammer'] = {
       },
       {
         itemid: 'refinedaluminium',
-        amount: 25
+        amount: 15
       }, 
     ],
   ],
@@ -29682,5 +29782,79 @@ itemList['shieldblueprint'] = {
   nonStack: true,
   image: 'shield-usb.png',
   information: 'TOP SECRET: CODENAME DELOREAN',
+  collectible: true,
+};
+
+// CBGGG Cards
+
+itemList['kingkennycard'] = {
+  fullyDegrades: false,
+  decayrate: 0.0,
+  displayname: 'King Kenny',
+  price: 50,
+  weight: 0,
+  nonStack: true,
+  image: 'kingkenny_card.png',
+  information: 'A King Kenny Pokemon Card',
+  collectible: true,
+};
+
+itemList['percyvailcard'] = {
+  fullyDegrades: false,
+  decayrate: 0.0,
+  displayname: 'Percy Vail',
+  price: 50,
+  weight: 0,
+  nonStack: true,
+  image: 'percyvail_card.png',
+  information: 'A Percy Vail Pokemon Card',
+  collectible: true,
+};
+
+itemList['tristantrout'] = {
+  fullyDegrades: false,
+  decayrate: 0.0,
+  displayname: 'Tristan Trout',
+  price: 50,
+  weight: 0,
+  nonStack: true,
+  image: 'tristantrout_card.png',
+  information: 'A Tristan Trout Pokemon Card',
+  collectible: true,
+};
+
+itemList['klarencebiltoncard'] = {
+  fullyDegrades: false,
+  decayrate: 0.0,
+  displayname: 'Klarence Bilton',
+  price: 50,
+  weight: 0,
+  nonStack: true,
+  image: 'klarencebilton_card.png',
+  information: 'A Klarence Bilton Pokemon Card',
+  collectible: true,
+};
+
+itemList['meenaperinskicard'] = {
+  fullyDegrades: false,
+  decayrate: 0.0,
+  displayname: 'Meena Perinski',
+  price: 50,
+  weight: 0,
+  nonStack: true,
+  image: 'meenaperinski_card.png',
+  information: 'A Meena Perinski Pokemon Card',
+  collectible: true,
+};
+
+itemList['batechestercard'] = {
+  fullyDegrades: false,
+  decayrate: 0.0,
+  displayname: 'Bate Chester',
+  price: 50,
+  weight: 0,
+  nonStack: true,
+  image: 'batechester_card.png',
+  information: 'A Bate Chester Pokemon Card',
   collectible: true,
 };

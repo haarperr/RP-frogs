@@ -19,27 +19,27 @@ Citizen.CreateThread(function()
 
 end)
 
-Citizen.CreateThread(function()
-  while true do
-    Citizen.Wait(1)
-  if IsControlPressed(0,51) and LaptopExchange == true then
-    
-    if exports["drp-inventory"]:hasEnoughOfItem("heistusb4", 1, false, true) then
-      TriggerEvent("inventory:removeItem", "heistusb4", 1)
-      TriggerEvent( "player:receiveItem", "heistlaptop3", 1 )
-    end
-    if exports["drp-inventory"]:hasEnoughOfItem("heistusb1", 1, false, true) then
-      TriggerEvent("inventory:removeItem", "heistusb1", 1)
-      TriggerEvent( "player:receiveItem", "heistlaptop2", 1 )
-    end
-    if exports["drp-inventory"]:hasEnoughOfItem("heistusb2", 1, false, true) then
-      TriggerEvent("inventory:removeItem", "heistusb2", 1)
-      TriggerEvent( "player:receiveItem", "heistlaptop4", 1 ) -- reverted this, wasnt working
-    end
-    Citizen.Wait(1000)
-  end
-end
-end)
+-- Citizen.CreateThread(function()
+--   while true do
+--     Citizen.Wait(1)
+--   if IsControlPressed(0,51) and LaptopExchange == true then
+--     
+--     if exports["drp-inventory"]:hasEnoughOfItem("heistusb4", 1, false, true) then
+--       TriggerEvent("inventory:removeItem", "heistusb4", 1)
+--       TriggerEvent( "player:receiveItem", "heistlaptop3", 1 )
+--     end
+--     if exports["drp-inventory"]:hasEnoughOfItem("heistusb1", 1, false, true) then
+--       TriggerEvent("inventory:removeItem", "heistusb1", 1)
+--       TriggerEvent( "player:receiveItem", "heistlaptop2", 1 )
+--     end
+--     if exports["drp-inventory"]:hasEnoughOfItem("heistusb2", 1, false, true) then
+--       TriggerEvent("inventory:removeItem", "heistusb2", 1)
+--       TriggerEvent( "player:receiveItem", "heistlaptop4", 1 ) -- reverted this, wasnt working
+--     end
+--     Citizen.Wait(1000)
+--   end
+-- end
+-- end)
 
 
 RegisterNetEvent('heists:buyvpn')
@@ -53,22 +53,18 @@ AddEventHandler('buy:success', function(item, amount)
   TriggerEvent( "player:receiveItem", item, amount )
 end)
 
-RegisterNetEvent('drp-polyzone:enter')
-AddEventHandler('drp-polyzone:enter', function(name)
-    if name == "laptopexchange" then
-       LaptopExchange = true     
-
-    end
+RegisterNetEvent('buy:checkIfItem')
+AddEventHandler('buy:checkIfItem', function(itemItRequires, amount, price, item, amount2)
+  Citizen.Trace(tostring(itemItRequires) .. "\n" .. tostring(amount) .. "\n" .. tostring(price) .. "\n" .. tostring(item) .. "\n" .. tostring(amount2))
+  if exports["drp-inventory"]:hasEnoughOfItem(itemItRequires, amount, false) then
+    TriggerEvent("inventory:removeItem", itemItRequires, amount) 
+    TriggerServerEvent("buy:removeMoney", price)
+    TriggerEvent( "player:receiveItem", item, amount2)
+    TriggerEvent('DoLongHudText', 'You sucessfully buyed this Item.', 1)
+  else
+    TriggerEvent('DoLongHudText', 'You dont seem to have the required Item.', 2)
+  end
 end)
-
-RegisterNetEvent('drp-polyzone:exit')
-AddEventHandler('drp-polyzone:exit', function(name)
-    if name == "laptopexchange" then
-       LaptopExchange = false     
-
-    end
-end)
-
 
 function OpenHackingGame(callback)
     Callbackk = callback
@@ -144,7 +140,7 @@ AddEventHandler('vpnmenu', function()
                 event = "vpnitemmenu"
             }
         },
-		{
+		    {
             id = 3,
             header = "Log Off",
 		      	txt = "",
@@ -168,7 +164,7 @@ AddEventHandler('vpnitemmenu', function()
             header = "Purchase Slambook Pro",
 		      	txt = "Price: $7000",
 			      params = {
-                event = "buylaptop"
+                event = "buylaptop",
             }
         },
         {
@@ -176,30 +172,67 @@ AddEventHandler('vpnitemmenu', function()
             header = "Purchase Tracker Disabler",
             txt = "Price: $4000",
             params = {
-                event = "buydisabler"
-            }
-      },
-		{
-            id = 4,
-            header = "< Go Back",
-		      	txt = "",
-		      	params = {
-                event = "vpnmenu"
+              event = "buydisabler"
             }
         },
+        {
+            id = 4,
+            header = "Purchase Green Laptop",
+            txt = "Price: $2500 + Green Dongle",
+            params = {
+              event = "buyitemwithitemandmoney",
+              args = {
+                item = "heistlaptop3",
+                price = 2500,
+                itemItRequired = "heistusb4",
+                amount = 1,
+                amount2 = 1,
+              }
+            }
+        },
+        {
+            id = 5,
+            header = "Purchase Blue Laptop",
+            txt = "Price: $5000 + Blue Dongle",
+            params = {
+              event = "buyitemwithitemandmoney",
+              args = {
+                item = "heistlaptop2",
+                price = 5000,
+                itemItRequired = "heistusb1",
+                amount = 1,
+                amount2 = 1,
+            }
+          }
+        },
+        {
+            id = 6,
+            header = "Purchase Red Laptop",
+            txt = "Price: $10000 + Red Dongle",
+            params = {
+              event = "", -- disabled for now
+              args = {
+                item = "",
+                price = 10000,
+                itemItRequired = "heistusb2",
+                amount = 1,
+                amount2 = 1,
+            }
+          }
+        }
     })
 end)
 
-
+RegisterNetEvent("buyitemwithitemandmoney")
+AddEventHandler("buyitemwithitemandmoney", function(args)
+  TriggerServerEvent("buy:buyitemPlusCostOneItem", args.item, args.price, args.itemItRequired, args.amount, args.amount2)
+end)
 
 
 RegisterNetEvent("buylaptop")
 AddEventHandler("buylaptop", function()
   TriggerServerEvent("shops:buylaptopsv")
 end)
-
-
-
 
 RegisterNetEvent("buydisabler")
 AddEventHandler("buydisabler", function()
@@ -216,7 +249,7 @@ AddEventHandler("drp-heists:distcheckpower", function()
         local finished = exports["drp-bar"]:taskBar(4000,math.random(5,15))
         if finished == 100 then
           Citizen.Wait(1000)
-          TriggerServerEvent('drp-doors:change-lock-state', 51, false)             
+          TriggerServerEvent('drp-doors:change-lock-state', 548, false)             
             return
         end   
     end

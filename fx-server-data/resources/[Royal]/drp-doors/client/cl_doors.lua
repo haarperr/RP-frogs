@@ -1,4 +1,5 @@
 local doors = {}
+local file = nil
 local currentDoorCoords, currentDoorId, currentDoorLockState, currentZone = vector3(0, 0, 0), nil, nil, nil
 local listening = false
 local bollards = {
@@ -17,9 +18,9 @@ AddEventHandler('drp-doors:initial-lock-state', function(pDoors)
     doors = pDoors
     setSecuredAccesses(doors, 'door')
     for doorId, door in ipairs(doors) do
-        if doorId ~= door.id then
-            -- print("we should not see this message - door id mismatch", doorId, " - id: ", door.id) -- This doesn't even matter i don't think lol
-        end
+        -- if doorId ~= door.id then
+        --     -- print("we should not see this message - door id mismatch", doorId, " - id: ", door.id) -- This doesn't even matter i don't think lol
+        -- end
         if door.active and not IsDoorRegisteredWithSystem(doorId) then
             AddDoorToSystem(doorId, door.model, door.coords, false, false, false)
             if door.automatic then
@@ -120,14 +121,24 @@ RegisterCommand("doors:print-entity", function()
     printEntityDetails = not printEntityDetails
 end)
 
+
 AddEventHandler("drp-target:inFront", function(pEntity, pEntityType, pEntityCoords)
     if pEntityType == nil or pEntityType ~= 3 then
         listening, currentDoorCoords, currentDoorId, currentDoorLockState = nil
         return
     end
 
+    -- -- check if entity is a door
+    -- local doorId = GetTargetDoorId(pEntity)
+    -- if doorId == nil then
+    --     listening, currentDoorCoords, currentDoorId, currentDoorLockState = nil
+    --     return
+    -- end  
+
     if printEntityDetails then
         print(pEntity, pEntityType, pEntityCoords, GetEntityModel(pEntity), GetEntityCoords(pEntity))
+
+        TriggerServerEvent("drp-doors:write-entity", GetEntityCoords(pEntity), GetEntityModel(pEntity))
     end
 
     local doorId = GetTargetDoorId(pEntity)
@@ -179,7 +190,7 @@ AddEventHandler("drp-doors:doorKeyFob", function()
         doorId = bollards[currentZone].doorId
         isBollard = true
     else
-        local entity = exports['drp-targetinteract']:GetEntityPlayerIsLookingAt(10.0, 2.0, 16)
+        local entity = exports['drp-targetinteract']:GetEntityPlayerIsLookingAt(12.0, 2.0, 16, PlayerPed)
 
         if not entity then
             return TriggerEvent("DoLongHudText","Door not found.",2)

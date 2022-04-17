@@ -400,7 +400,7 @@ async def resetcid(ctx, cid):
             password = "643gw6543vw",
         )
     cursor = sql.cursor()
-    cursor.execute("UPDATE characters_cars SET vehicle_state = 'In' WHERE cid = %s", (cid,))
+    cursor.execute("UPDATE characters_cars SET vehicle_state = 'In' WHERE cid = %s AND NOT current_garage = %s", (cid,'nomalimpound'))
     sql.commit()
     sql.close()
     await ctx.send("All vehicles have been reset for this character with the State ID of " + cid + "!")
@@ -444,6 +444,16 @@ async def kick(ctx, user: discord.Member=None, *, reason=None):
     message = await ctx.send(embed=embed)
     await asyncio.sleep(60)
     await message.delete()
+
+
+@bot.command(name='pull')
+async def pull(ctx):
+    # execute "git pull" in the terminal in /home/RP-Frogs/
+    # this will pull the latest changes from the repo xqcL
+    stream =os.popen("cd /home/RP-Frogs/ && git pull")
+    await ctx.send(stream.read())
+    
+    
 
 @bot.command(name='nuke')
 @commands.has_permissions(manage_messages = True)
