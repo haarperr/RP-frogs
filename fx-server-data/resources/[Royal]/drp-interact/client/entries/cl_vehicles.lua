@@ -349,11 +349,6 @@ Entries[#Entries + 1] = {
     },
     options = {
         distance = { radius = 1.8 },
-        isEnabled = function(pEntity, pContext)
-            local plate = GetVehicleNumberPlateText(pEntity)
-            hasKeys = exports["drp-keys"]:hasKey(plate)
-            return hasKeys(pEntity) or true
-        end
     }
 }
 
