@@ -146,7 +146,9 @@ RPC.register("drp-garages:select", function(pGarage)
 									model = vehicles[i].model,
 									fuel = vehicles[i].fuel, 
 									customized = vehicles[i].data,
-									plate = vehicles[i].license_plate
+									plate = vehicles[i].license_plate,
+									enigine_damage = vehicles[i].engine_damage,
+									body_damage = vehicles[i].body_damage,
 								}
 							}
 						},
@@ -208,7 +210,9 @@ RPC.register("drp-garages:selectSharedGarage", function(pGarage, pJob)
 										model = vehicles[i].model,
 										fuel = vehicles[i].fuel, 
 										customized = vehicles[i].data,
-										plate = vehicles[i].license_plate
+										plate = vehicles[i].license_plate,
+										enigine_damage = vehicles[i].engine_damage,
+										body_damage = vehicles[i].body_damage,
 									}
 								}
 							},
@@ -362,7 +366,9 @@ RPC.register("drp-garages:open:law", function(pGarage, pJob, type)
 											model = vehicles[i].model,
 											fuel = vehicles[i].fuel, 
 											customized = vehicles[i].data,
-											plate = vehicles[i].license_plate
+											plate = vehicles[i].license_plate,
+											enigine_damage = vehicles[i].engine_damage,
+											body_damage = vehicles[i].body_damage,
 										}
 									}
 								},
@@ -385,7 +391,9 @@ RPC.register("drp-garages:open:law", function(pGarage, pJob, type)
 											model = vehicles[i].model,
 											fuel = vehicles[i].fuel, 
 											customized = vehicles[i].data,
-											plate = vehicles[i].license_plate
+											plate = vehicles[i].license_plate,
+											enigine_damage = vehicles[i].engine_damage,
+											body_damage = vehicles[i].body_damage,
 										}
 									}
 								},
