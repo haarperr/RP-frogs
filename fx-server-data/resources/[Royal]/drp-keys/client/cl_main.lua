@@ -102,7 +102,7 @@ AddEventHandler('keys:give', function()
   end
 
   t, distance = GetClosestPlayer()
-  if(distance ~= -1 and distance < 5) then
+  if(distance ~= -1 and distance <= 5) then
     TriggerServerEvent('keys:send', GetPlayerServerId(t), GetVehicleNumberPlateText(latestveh))
 
     TriggerEvent("DoLongHudText", "You just gave keys to your vehicles!",1)
