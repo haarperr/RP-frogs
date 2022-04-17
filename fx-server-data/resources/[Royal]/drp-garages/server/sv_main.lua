@@ -500,8 +500,8 @@ RPC.register("drp-garages:states", function(pState, plate, garage, fuel, engine_
 				['@garage'] = garage,
 				['@fuel'] = fuel,
 				['@coords'] = {x = 0, y = 0, z = 0},
-				['@engine_damage'] = engine_damage or 1000,
-				['@body_damage'] = body_damage or 1000,
+				['@engine_damage'] = engine_damage,
+				['@body_damage'] = body_damage,
 				['@plate'] = plate
 			})
 		else

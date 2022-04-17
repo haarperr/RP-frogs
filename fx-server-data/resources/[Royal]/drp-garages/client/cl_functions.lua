@@ -88,7 +88,7 @@ function SpawnVehicle(vehicle, pGarage, Fuel, customized, plate, IsViewing, engi
         CurrentDisplayVehicle = veh
         if not IsViewing then    
             CurrentDisplayVehicle = nil
-            RPC.execute("drp-garages:states", "Out", plate, exports['drp-menu']:currentGarage())
+            RPC.execute("drp-garages:states",  "Out", plate, exports['drp-menu']:currentGarage(), pUpdatedFuel, enginehealth or 1000, bodyhealth or 1000)
         end
     end)
 end
