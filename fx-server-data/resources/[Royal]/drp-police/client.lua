@@ -2456,6 +2456,55 @@ function RockeyStashO()
 	end)
 end
 
+--Name: mrpdnewevidence | 2022-04-17T21:41:27Z
+Citizen.CreateThread(function()
+	exports["drp-polyzone"]:AddPolyZone("mrpdnewevidence", {
+	vector2(424.6575012207, -1000.2319335938),
+	vector2(424.8567199707, -988.12438964844),
+	vector2(433.79968261718, -988.12768554688),
+	vector2(434.27682495118, -977.07543945312),
+	vector2(437.62002563476, -977.21075439454),
+	vector2(437.96047973632, -970.78900146484),
+	vector2(447.77130126954, -971.07598876954),
+	vector2(459.150390625, -971.35040283204),
+	vector2(459.17459106446, -968.70391845704),
+	vector2(472.43530273438, -969.41381835938),
+	vector2(471.99758911132, -978.41479492188),
+	vector2(482.96606445312, -978.73547363282),
+	vector2(483.19750976562, -982.48657226562),
+	vector2(489.3889465332, -982.60595703125),
+	vector2(488.82434082032, -1017.2877197266),
+	vector2(471.14498901368, -1017.5462646484),
+	vector2(471.11071777344, -1014.3736572266),
+	vector2(467.1098022461, -1014.6069335938),
+	vector2(459.0510559082, -1012.6098632812),
+	vector2(459.43914794922, -1001.324584961),
+	vector2(450.75845336914, -1001.0828857422),
+	vector2(450.79470825196, -999.10052490234),
+	vector2(425.3712463379, -999.11450195312)
+  }, {
+	name="mrpdnewevidence",
+	--minZ = 27.69356918335,
+	--maxZ = 32.64236831665
+  })
+  
+local mrpdnewevidence = false
+
+RegisterNetEvent('drp-polyzone:enter')
+AddEventHandler('drp-polyzone:enter', function(name)
+    if name == "mrpdnewevidence" then
+		mrpdnewevidence = true
+		exports['drp-textui']:showInteraction('[E] Open Evidence Locker')
+	end
+end)
+
+RegisterNetEvent('drp-polyzone:exit')
+AddEventHandler('drp-polyzone:exit', function(name)
+    if name == "mrpdnewevidence" then
+        mrpdnewevidence = false
+    end
+	exports['drp-textui']:hideInteraction()
+end)
 
 
 --Name: fibevidence | 2022-04-15T08:19:20Z
@@ -2596,7 +2645,7 @@ end
 RegisterCommand("evidence", function(source, args)
 	local job = exports["isPed"]:isPed("myjob")
 	if job == 'police' or job == 'state' or job == 'sheriff' then
-		if FIBEvidenceNear or isNearRoyalPDEvidence or RangerEvidence or SandyEvidence or PaletoEvidence then
+		if FIBEvidenceNear or isNearRoyalPDEvidence or RangerEvidence or SandyEvidence or PaletoEvidence or mrpdnewevidence then
 			TriggerEvent("server-inventory-open", "1", "CASE ID: "..args[1])
 		else
 			TriggerEvent("DoLongHudText", "You are not near the evidence spot!", 2)
