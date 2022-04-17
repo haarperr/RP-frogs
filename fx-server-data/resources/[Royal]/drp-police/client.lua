@@ -2487,6 +2487,7 @@ Citizen.CreateThread(function()
 	--minZ = 27.69356918335,
 	--maxZ = 32.64236831665
   })
+end)
   
 local mrpdnewevidence = false
 
