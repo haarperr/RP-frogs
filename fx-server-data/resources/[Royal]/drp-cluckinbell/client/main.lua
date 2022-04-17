@@ -339,7 +339,7 @@ local onCooldown = false
 
 RegisterNetEvent("drp-cluckin:getdelivery")
 AddEventHandler("drp-cluckin:getdelivery", function()
-    local rank = exports["isPed"]:GroupRank("burger_shot")
+    local rank = exports["isPed"]:GroupRank("cluckin_bell")
     if rank >= 1 then
         if not onCooldown then
             if hasJob == true then
@@ -472,8 +472,8 @@ AddEventHandler("drp-cluckinbell:giveFoodToCustomer", function()
         SetBlipSprite(FoodDeliveryLocation, 0)
         SetBlipAsShortRange(FoodDeliveryLocation, false)
 
-        -- count / 2.5 , rounded up to int
-        local reciepesAmount = math.ceil(count / 2)
+        -- count / 3 , rounded up to int
+        local reciepesAmount = math.ceil(count / math.random(2.00, 3.00))
         TriggerEvent("player:receiveItem", "burgerReceipt", reciepesAmount)
 
         -- if 80% of the items are removed
@@ -487,17 +487,11 @@ AddEventHandler("drp-cluckinbell:giveFoodToCustomer", function()
                 TriggerEvent("DoLongHudText", "I dont need this, maybe you find it useful?", 1)
             end
             if math.random(1, 75) == 69 then
-                information = {
-                    ["Price"] = math.random(750, 1250),
-                }
-                TriggerEvent("player:receiveItem", "burgerReceipt", 1, true, information)
+                TriggerEvent("player:receiveItem", "rollcash", math.random(7,17))
                 TriggerEvent("DoLongHudText", "Here is an extra Tip of $" .. information["Price"] .. "!", 1)
             end
             if math.random(1, 3) == 1 then
-                information = {
-                    ["Price"] = math.random(75, 250),
-                }
-                TriggerEvent("player:receiveItem", "burgerReceipt", 1, true, information)
+                TriggerEvent("player:receiveItem", "rollcash", math.random(1,3))
                 TriggerEvent("DoLongHudText", "Here is an extra Tip of $" .. information["Price"] .. "!", 1)
             end
         end
