@@ -523,17 +523,22 @@ itemList['453432689'] = {
   price: 250,
   craft: [
     [{
-      itemid: 'steel',
-      amount: 45
-    },
-    {
-      itemid: 'plastic',
-      amount: 20
-    },
-    {
-      itemid: 'rubber',
-      amount: 20
-    },
+        itemid: 'steel',
+        amount: 50
+      },
+      {
+        itemid: 'plastic',
+        amount: 50
+      },
+    ],
+    [{
+        itemid: 'refinedsteel',
+        amount: 16
+      },
+      {
+        itemid: 'refinedplastic',
+        amount: 16
+      },
     ]
   ],
   weight: 6,
@@ -551,17 +556,22 @@ itemList['-1075685676'] = {
   price: 250,
   craft: [
     [{
-      itemid: 'steel',
-      amount: 45
-    },
-    {
-      itemid: 'plastic',
-      amount: 20
-    },
-    {
-      itemid: 'rubber',
-      amount: 20
-    },
+        itemid: 'steel',
+        amount: 50
+      },
+      {
+        itemid: 'plastic',
+        amount: 50
+      },
+    ],
+    [{
+        itemid: 'refinedsteel',
+        amount: 16
+      },
+      {
+        itemid: 'refinedplastic',
+        amount: 16
+      },
     ]
   ],
   weight: 5,
@@ -580,15 +590,20 @@ itemList['1593441988'] = {
   craft: [
     [{
         itemid: 'steel',
-        amount: 45
+        amount: 50
       },
       {
         itemid: 'plastic',
-        amount: 20
+        amount: 50
+      },
+    ],
+    [{
+        itemid: 'refinedsteel',
+        amount: 16
       },
       {
-        itemid: 'rubber',
-        amount: 20
+        itemid: 'refinedplastic',
+        amount: 16
       },
     ]
   ],
@@ -730,21 +745,21 @@ itemList['-134995899'] = {
   craft: [
     [{
         itemid: 'aluminium',
-        amount: 70
+        amount: 80
       },
       {
         itemid: 'steel',
-        amount: 70
+        amount: 80
       },
 
     ],
     [{
         itemid: 'refinedaluminium',
-        amount: 40
+        amount: 25
       },
       {
         itemid: 'refinedsteel',
-        amount: 30
+        amount: 25
       },
 
     ]
@@ -1827,15 +1842,20 @@ itemList['1748076076'] = {
   craft: [
     [{
         itemid: 'aluminium',
-        amount: 50
+        amount: 60
       },
       {
         itemid: 'plastic',
-        amount: 50
+        amount: 90
+      },
+    ],
+    [{
+        itemid: 'refinedaluminium',
+        amount: 20
       },
       {
-        itemid: 'rubber',
-        amount: 50
+        itemid: 'refinedplastic',
+        amount: 30
       },
     ]
   ],
@@ -2235,12 +2255,21 @@ itemList['2227010557'] = {
   model: '',
   craft: [
     [{
-        itemid: 'steel',
-        amount: 25
-      },
-      {
         itemid: 'aluminium',
         amount: 30
+      },
+      {
+        itemid: 'steel',
+        amount: 30
+      },
+    ],
+    [{
+        itemid: 'refinedaluminium',
+        amount: 10
+      },
+      {
+        itemid: 'refinedsteel',
+        amount: 10
       },
     ]
   ],
@@ -2490,11 +2519,20 @@ itemList['2578778090'] = {
   craft: [
     [{
         itemid: 'aluminium',
-        amount: 25
+        amount: 24
       },
       {
         itemid: 'rubber',
-        amount: 10
+        amount: 24
+      },
+    ],
+    [{
+        itemid: 'refinedaluminium',
+        amount: 8
+      },
+      {
+        itemid: 'refinedrubber',
+        amount: 8
       },
     ]
   ],
@@ -2546,10 +2584,19 @@ itemList['4191993645'] = {
   craft: [
     [{
         itemid: 'aluminium',
-        amount: 25
+        amount: 30
       },
       {
         itemid: 'plastic',
+        amount: 30
+      },
+    ],
+    [{
+        itemid: 'refinedaluminium',
+        amount: 10
+      },
+      {
+        itemid: 'refinedplastic',
         amount: 10
       },
     ]
@@ -2917,7 +2964,20 @@ itemList['nails'] = {
   craft: [
     [{
         itemid: 'aluminium',
-        amount: 15
+        amount: 10
+      },
+      {
+        itemid: 'steel',
+        amount: 5
+      },
+    ],
+    [{
+        itemid: 'refinedaluminium',
+        amount: 3
+      },
+      {
+        itemid: 'refinedsteel',
+        amount: 2
       },
     ]
   ],
@@ -6889,7 +6949,7 @@ itemList['advlockpick'] = {
       },
       {
         itemid: 'refinedplastic',
-        amount: 8
+        amount: 10
       },
       {
         itemid: 'refinedrubber',

@@ -122,7 +122,7 @@ end)
 
 RegisterNetEvent("dofart")
 AddEventHandler("dofart", function()
-    PlaySoundFrontend(-1, "wet-fart", "dlc_nikez_general", 0, "general_general")
+    PlaySoundFrontend(-1, "wet-fart", "dlc_nikez_general", 2, "general_general") -- tried to change fart sounds LMAO IDK IF IT WIL WORK
 end)
 
 
