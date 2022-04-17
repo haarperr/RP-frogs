@@ -29784,3 +29784,77 @@ itemList['shieldblueprint'] = {
   information: 'TOP SECRET: CODENAME DELOREAN',
   collectible: true,
 };
+
+// CBGGG Cards
+
+itemList['kingkennycard'] = {
+  fullyDegrades: false,
+  decayrate: 0.0,
+  displayname: 'King Kenny',
+  price: 50,
+  weight: 0,
+  nonStack: true,
+  image: 'kingkenny_card.png',
+  information: 'A King Kenny Pokemon Card',
+  collectible: true,
+};
+
+itemList['percyvailcard'] = {
+  fullyDegrades: false,
+  decayrate: 0.0,
+  displayname: 'Percy Vail',
+  price: 50,
+  weight: 0,
+  nonStack: true,
+  image: 'percyvail_card.png',
+  information: 'A Percy Vail Pokemon Card',
+  collectible: true,
+};
+
+itemList['tristantrout'] = {
+  fullyDegrades: false,
+  decayrate: 0.0,
+  displayname: 'Tristan Trout',
+  price: 50,
+  weight: 0,
+  nonStack: true,
+  image: 'tristantrout_card.png',
+  information: 'A Tristan Trout Pokemon Card',
+  collectible: true,
+};
+
+itemList['klarencebiltoncard'] = {
+  fullyDegrades: false,
+  decayrate: 0.0,
+  displayname: 'Klarence Bilton',
+  price: 50,
+  weight: 0,
+  nonStack: true,
+  image: 'klarencebilton_card.png',
+  information: 'A Klarence Bilton Pokemon Card',
+  collectible: true,
+};
+
+itemList['meenaperinskicard'] = {
+  fullyDegrades: false,
+  decayrate: 0.0,
+  displayname: 'Meena Perinski',
+  price: 50,
+  weight: 0,
+  nonStack: true,
+  image: 'meenaperinski_card.png',
+  information: 'A Meena Perinski Pokemon Card',
+  collectible: true,
+};
+
+itemList['batechestercard'] = {
+  fullyDegrades: false,
+  decayrate: 0.0,
+  displayname: 'Bate Chester',
+  price: 50,
+  weight: 0,
+  nonStack: true,
+  image: 'batechester_card.png',
+  information: 'A Bate Chester Pokemon Card',
+  collectible: true,
+};
