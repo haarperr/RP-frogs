@@ -9693,6 +9693,74 @@ DOOR_CONFIG = {
         }
       }
     },
+    {
+      info = "PD Sandy Back Door",
+      active = true,
+      id = 587,
+      coords = vector3(1852.817, 3699.379, 34.42271),
+      model = -2002725619,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
+    {
+      info = "PD Sandy Cell 1",
+      active = true,
+      id = 588,
+      coords = vector3(1856.942, 3695.599, 34.36868),
+      model = -1491332605,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
+    {
+      info = "PD Sandy Cell 2",
+      active = true,
+      id = 589,
+      coords = vector3(1852.891, 3695.594, 34.36824),
+      model = -1491332605,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
+    {
+      info = "PD Sandy Cell 3",
+      active = true,
+      id = 590,
+      coords = vector3(1849.962, 3693.903, 34.36824),
+      model = -1491332605,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
 }
 
   

@@ -315,10 +315,10 @@ AddEventHandler("playerDropped", function(reason)
     local char = pUser:getVar("character")
     local userjob = user:getVar("job") or "Unemployed"
     if userjob == "police" then
-        exports['drp-emergencyjobs']:DisconnectJobUpdater(userjob)
-        TriggerEvent("drp-emergencyjobs:log:update", src, "clockoff")
+        -- exports['drp-emergencyjobs']:DisconnectJobUpdater(userjob)
+        -- TriggerEvent("drp-emergencyjobs:log:update", src, "clockoff")
     elseif userjob == "ems" then
-        exports['drp-emergencyjobs']:DisconnectJobUpdater(userjob)
+        -- exports['drp-emergencyjobs']:DisconnectJobUpdater(userjob)
     end
 
     DRP.Users[src] = nil

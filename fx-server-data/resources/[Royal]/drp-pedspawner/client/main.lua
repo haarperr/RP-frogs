@@ -87,6 +87,6 @@ end)
 
 RegisterCommand("trash", function(source)
 	if exports["drp-base"]:getModule("LocalPlayer"):getVar("rank") == ('dev' or 'admin' or 'superadmin' or 'mod' or 'owner') then
-		TriggerEvent ("server-inventory-open", "1", "trash")
+		TriggerEvent ("server-inventory-open", "1", "trash".. math.random(1, 93994))
 	end
 end)
