@@ -463,8 +463,8 @@ RPC.register("drp-garages:spawned:get", function(pID)
 			fuel = vehicles[1].fuel, 
 			customized = vehicles[1].data,
 			plate = vehicles[1].license_plate,
-			engine_damage = vehicles[i].engine_damage,
-			body_damage = vehicles[i].body_damage,
+			engine_damage = vehicles[1].engine_damage,
+			body_damage = vehicles[1].body_damage,
 		}
 	
 		if vehicles[1].current_garage == "Impound Lot" and vehicles[1].vehicle_state == 'Normal Impound' then
