@@ -445,6 +445,17 @@ async def kick(ctx, user: discord.Member=None, *, reason=None):
     await asyncio.sleep(60)
     await message.delete()
 
+
+@bot.command(name='pull')
+@commands.has_permissions(manage_messages = True)
+async def pull(ctx):
+    # execute "git pull" in the terminal in /home/RP-Frogs/
+    # this will pull the latest changes from the repo
+    os.system("cd /home/RP-Frogs/ && git pull")
+    await ctx.send("Pulling latest changes from the repo...")
+    
+    
+
 @bot.command(name='nuke')
 @commands.has_permissions(manage_messages = True)
 async def nuke(ctx, amount:int):
