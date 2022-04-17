@@ -321,7 +321,7 @@ AddEventHandler('drp-civjobs:burgershot-heartstopper', function()
     local ped = PlayerPedId()
     local job = exports["isPed"]:GroupRank('burger_shot')
     if job >= 1 then
-        if exports['drp-inventory']:hasEnoughOfItem('hamburgerpatty', 2) and
+        if exports['drp-inventory']:hasEnoughOfItem('hamburgerpatty', 1) and
             exports['drp-inventory']:hasEnoughOfItem('lettuce', 1) and
             exports['drp-inventory']:hasEnoughOfItem('hamburgerbuns', 1) and
             exports['drp-inventory']:hasEnoughOfItem('tomato', 1) and
@@ -333,7 +333,7 @@ AddEventHandler('drp-civjobs:burgershot-heartstopper', function()
             if (heartstopper == 100) then
                 FreezeEntityPosition(ped, false)
                 TriggerEvent('inventory:removeItem', 'hamburgerbuns', 1)
-                TriggerEvent('inventory:removeItem', 'hamburgerpatty', 2)
+                TriggerEvent('inventory:removeItem', 'hamburgerpatty', 1)
                 TriggerEvent('inventory:removeItem', 'lettuce', 1)
                 TriggerEvent('inventory:removeItem', 'tomato', 1)
                 TriggerEvent('inventory:removeItem', 'cheese', 1)
