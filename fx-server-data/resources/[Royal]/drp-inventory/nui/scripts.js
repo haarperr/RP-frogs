@@ -930,9 +930,9 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
     } else if (targetinvName.indexOf('housing') > -1) {
         secondaryMaxWeight = 1200.0;
         slotLimitTarget = 40;
-    } else if (targetinvName.indexOf('warehouse') > -1) {
-        secondaryMaxWeight = 6500.0;
-        slotLimitTarget = 1000;
+    } else if (targetinvName.indexOf('evidence') > -1) {
+        secondaryMaxWeight = 2000.0;
+        slotLimitTarget = 125;
     } else if (targetinvName.indexOf('motel-1') > -1) {
         secondaryMaxWeight = 300.0;
         slotLimitTarget = 30;
