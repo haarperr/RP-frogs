@@ -250,7 +250,7 @@ function InitiateMenus(isMotorcycle, vehicleHealth)
     local plyVeh = GetVehiclePedIsIn(plyPed, false)
     --#[Repair Menu]#--
     if vehicleHealth < 1000.0 then
-        local repairCost = math.ceil(1350 - vehicleHealth)
+        local repairCost = math.ceil(1075 - vehicleHealth)
 
         TriggerServerEvent("drp-bennys:updateRepairCost", repairCost)
         createMenu("repairMenu", "Welcome to Benny's Original Motorworks", "Repair Vehicle")
