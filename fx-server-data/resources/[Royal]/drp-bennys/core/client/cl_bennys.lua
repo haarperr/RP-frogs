@@ -1374,7 +1374,7 @@ end)
 RegisterNetEvent('enter:benny:civ')
 AddEventHandler('enter:benny:civ', function()
     TriggerEvent("wk:disableRadar")
-    TriggerEvent('event:control:bennys', 1)
+    TriggerEvent('event:control:bennys', 20)
     disabled = true
     disableControls()
 end)
