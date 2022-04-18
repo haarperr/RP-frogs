@@ -19,6 +19,7 @@ local bennyLocationAutoExotic = vector3(547.25, -189.45, 53.88)
 local bennysSandyShoresPD = vector3(1868.44, 3694.16, 33.62)
 local bennysRacingWarehouse = vector3(1032.5406494141,-2528.4790039062,27.679077148438)
 local bennysHarmony2 = vector3(1182.4747314453, 2639.8022460938, 37.148681640625)
+local bennyLocationMRPDHeli = vector3(481.8278, -981.5320, 40.1068)
 
 local RepairDriftSchool = vector3(-167.4725189209,-2460.7648925781,5.9091796875)
 
@@ -651,6 +652,16 @@ rootMenuConfig =  {
         functionName = "enter:benny:mrpd",
         enableMenu = function()
             return (not isDead and IsPedInAnyVehicle(PlayerPedId()) and #(GetEntityCoords(PlayerPedId()) - bennyLocationMRPD) <= 10)
+        end,
+    },
+
+    {
+        id = "benny:enter21",
+        displayName = "Enter Bennys",
+        icon = "#general-check-vehicle",
+        functionName = "enter:benny:mrpdheli",
+        enableMenu = function()
+            return (not isDead and IsPedInAnyVehicle(PlayerPedId()) and #(GetEntityCoords(PlayerPedId()) - bennyLocationMRPDHeli) <= 10)
         end,
     },
 

@@ -43,6 +43,8 @@ local bennyLocationHayes2 = vector3(-1417.7406005859, -445.55603027344, 35.29528
 
 local bennyLocationIllegalShop = vector3(1033.3187255859, -2528.9538574219, 27.712768554688)
 
+local bennyLocationMRPDHeli = vector3(481.8278, -981.5320, 40.1068)
+
 local originalCategory = nil
 local originalMod = nil
 local originalPrimaryColour = nil
@@ -799,6 +801,10 @@ AddEventHandler('event:control:bennys', function(useID)
             bennyHeading = 160.0266
             enterLocation(civrepairbennys)
         end
+        elseif useID == 21 and not isPlyInBennys then -- MRPD Heli
+            bennyHeading = 179.0563
+            enterLocation(bennyLocationMRPDHeli)
+        end
     end
 end)
 
@@ -1285,6 +1291,17 @@ AddEventHandler('enter:benny:mrpd', function()
     end 
 end)
 
+RegisterNetEvent('enter:benny:mrpdheli')
+AddEventHandler('enter:benny:mrpdheli', function()
+    TriggerEvent("wk:disableRadar")
+    local job = exports["isPed"]:isPed("myJob")
+	if (job == "police" or job == "sheriff" or job == "state" or exports["isPed"]:isPed("myJob") == 'ems') then
+    TriggerEvent('event:control:bennys', 21)
+    disabled = true
+      disableControls()
+    end 
+end)
+
 RegisterNetEvent('enter:benny:airport')
 AddEventHandler('enter:benny:airport', function()
     TriggerEvent("wk:disableRadar")
@@ -1508,6 +1525,36 @@ RegisterNetEvent('drp-polyzone:exit')
 AddEventHandler('drp-polyzone:exit', function(name)
     if name == "harmony_bennys_shit_show_ui" then
         OvertimeHarmonyShit = false
+        exports['drp-textui']:hideInteraction()
+    end
+end)
+
+-- MRPD Heli
+
+MRPDHELISHIT = false
+
+Citizen.CreateThread(function()
+    exports["drp-polyzone"]:AddBoxZone("mrpdhelibennys", vector3(481.84, -982.12, 41.01), 10, 10, {
+        name="mrpdhelibennys",
+        heading=0,
+        --debugPoly=true
+        minZ=40,
+        maxZ=50
+      })   
+end)
+
+RegisterNetEvent('drp-polyzone:enter')
+AddEventHandler('drp-polyzone:enter', function(name)
+    if name == "mrpdhelibennys" and IsPedInAnyVehicle(PlayerPedId()) then
+        MRPDHELISHIT = true         
+        exports['drp-textui']:showInteraction("Bennys")
+    end
+end)
+
+RegisterNetEvent('drp-polyzone:exit')
+AddEventHandler('drp-polyzone:exit', function(name)
+    if name == "mrpdhelibennys" then
+        MRPDHELISHIT = false
         exports['drp-textui']:hideInteraction()
     end
 end)
