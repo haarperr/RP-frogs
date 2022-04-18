@@ -4,10 +4,10 @@ Configuration file that contains information regarding the customisation of the 
 ]]
 
 --Set to 0 to have all the upgrades.
-maxVehiclePerformanceUpgrades = 3
+maxVehiclePerformanceUpgrades = 0
 
 vehicleBaseRepairCost = 25
-vehicleRepairCostMultiplier = 0.5
+vehicleRepairCostMultiplier = 0.25
 
 vehicleCustomisationPrices =
 {
@@ -24,32 +24,32 @@ vehicleCustomisationPrices =
         prices = 
         {
             0,
-            2625,
-            5750,
-            7225,
-            10625,
-            15250
+            3000,
+            6000,
+            9000,
+            12000,
+            15000
         }
     },
     turbo = 
     {
-        price = 10000
+        price = 15000
     },
     wheels = 
     {
-        price = 500
+        price = 450
     },
     customwheels = 
     {
-        price = 600
+        price = 750
     },
     wheelsmoke = 
     {
-        price = 500
+        price = 450
     },
     windowtint = 
     {
-        price = 500
+        price = 750
     },
     neonside = 
     {
@@ -57,23 +57,23 @@ vehicleCustomisationPrices =
     },
     neoncolours = 
     {
-        price = 250
+        price = 750
     },
     headlights = 
     {
-        price = 500
+        price = 800
     },
     xenoncolours = 
     {
-        price = 500
+        price = 800
     },
     oldlivery = 
     {
-        price = 500
+        price = 1500
     },
     plateindex = 
     {
-        price = 750
+        price = 500
     }
 }
 
@@ -118,11 +118,11 @@ vehicleCustomisation =
     {
         category = "Right Fender",
         id = 9
+    }
+    {
+        category = "Roof",
+        id = 10
     },
-    -- {
-    --     category = "Roof",
-    --     id = 10
-    -- },
     {
         category = "Vanity Plates",
         id = 25

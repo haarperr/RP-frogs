@@ -1,4 +1,4 @@
-local chicken = vehicleBaseRepairCost / 3
+local chicken = 25
 
 RegisterServerEvent('drp-bennys:attemptPurchase')
 AddEventHandler('drp-bennys:attemptPurchase', function(type, upgradeLevel)
