@@ -1398,12 +1398,7 @@ AddEventHandler('FlipVehicle', function()
 		local finished = exports["drp-taskbar"]:taskBar(math.random(4000, 6000),"Flipping Vehicle Over",false,true)	
 		if finished == 100 then
 			-- if player is still close to the vehicle, flip it
-			local playerCoords = GetEntityCoords(PlayerPedId())
-			local vehCoords = GetEntityCoords(targetVehicle)
-			
 			local playerped = PlayerPedId()
-			local coordA = GetEntityCoords(playerped, 1)
-			local coordB = GetOffsetFromEntityInWorldCoords(playerped, 0.0, 100.0, 0.0)
 			local pPitch, pRoll, pYaw = GetEntityRotation(playerped)
 			local vPitch, vRoll, vYaw = GetEntityRotation(targetVehicle)
 			SetEntityRotation(targetVehicle, pPitch, vRoll, vYaw, 1, true)
