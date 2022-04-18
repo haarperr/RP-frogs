@@ -933,6 +933,7 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
     } else if (targetinvName.indexOf('evidence') > -1) {
         secondaryMaxWeight = 2000.0;
         slotLimitTarget = 125;
+        displayName = 'Evidence';
     } else if (targetinvName.indexOf('motel-1') > -1) {
         secondaryMaxWeight = 300.0;
         slotLimitTarget = 30;
