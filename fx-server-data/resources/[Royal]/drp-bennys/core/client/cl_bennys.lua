@@ -1185,18 +1185,11 @@ RegisterNetEvent("drp-bennys:purchaseSuccessful")
 AddEventHandler("drp-bennys:purchaseSuccessful", function(price, isRepair)
     if isRepair then
         local finished = exports["drp-taskbar"]:taskBar(4000,"Repairing Engine")
-        if (finished == 100) then
-            local finished2 = exports["drp-taskbar"]:taskBar(6000,"Repairing Body")
-            if (finished2 == 100) then
-                isPurchaseSuccessful = true
-                attemptingPurchase = false
-                ExitBennys()
-            end
-        end
-    else    
-        isPurchaseSuccessful = true
-        attemptingPurchase = false
+        ExitBennys()
     end
+    isPurchaseSuccessful = true
+    attemptingPurchase = false
+    
     
 end)
 
