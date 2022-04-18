@@ -1388,6 +1388,10 @@ end)
 
 RegisterNetEvent('FlipVehicle')
 AddEventHandler('FlipVehicle', function()
+	
+	local coordA = GetEntityCoords(playerped, 1)
+	local coordB = GetOffsetFromEntityInWorldCoords(playerped, 0.0, 100.0, 0.0)
+
 	local targetVehicle = getVehicleInDirection(coordA, coordB)
 	
 	if targetVehicle ~= nil then
@@ -1398,8 +1402,6 @@ AddEventHandler('FlipVehicle', function()
 			local vehCoords = GetEntityCoords(targetVehicle)
 			
 			if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, vehCoords.x, vehCoords.y, vehCoords.z, true) <= 3 then
-				
-
 				local playerped = PlayerPedId()
 				local coordA = GetEntityCoords(playerped, 1)
 				local coordB = GetOffsetFromEntityInWorldCoords(playerped, 0.0, 100.0, 0.0)
