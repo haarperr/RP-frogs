@@ -4,6 +4,9 @@ description 'VoidRP Houserobberies'
 version '1.0.0'
 ui_page 'nui/index.html'
 
+dependency "isPed"
+
+
 files {
   "nui/index.html",
   "nui/scripts.js",
