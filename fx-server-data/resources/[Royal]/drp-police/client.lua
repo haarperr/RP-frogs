@@ -1401,18 +1401,14 @@ AddEventHandler('FlipVehicle', function()
 			local playerCoords = GetEntityCoords(PlayerPedId())
 			local vehCoords = GetEntityCoords(targetVehicle)
 			
-			if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, vehCoords.x, vehCoords.y, vehCoords.z, true) <= 3 then
-				local playerped = PlayerPedId()
-				local coordA = GetEntityCoords(playerped, 1)
-				local coordB = GetOffsetFromEntityInWorldCoords(playerped, 0.0, 100.0, 0.0)
-				local pPitch, pRoll, pYaw = GetEntityRotation(playerped)
-				local vPitch, vRoll, vYaw = GetEntityRotation(targetVehicle)
-				SetEntityRotation(targetVehicle, pPitch, vRoll, vYaw, 1, true)
-				Wait(10)
-				SetVehicleOnGroundProperly(targetVehicle)
-			else
-				TriggerEvent("DoLongHudText","You moved away bozo.", 2)
-			end
+			local playerped = PlayerPedId()
+			local coordA = GetEntityCoords(playerped, 1)
+			local coordB = GetOffsetFromEntityInWorldCoords(playerped, 0.0, 100.0, 0.0)
+			local pPitch, pRoll, pYaw = GetEntityRotation(playerped)
+			local vPitch, vRoll, vYaw = GetEntityRotation(targetVehicle)
+			SetEntityRotation(targetVehicle, pPitch, vRoll, vYaw, 1, true)
+			Wait(10)
+			SetVehicleOnGroundProperly(targetVehicle)
 		end
 	else
 		TriggerEvent("DoLongHudText","No Vehicle found!", 2)
