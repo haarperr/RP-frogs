@@ -663,9 +663,7 @@ Citizen.CreateThread(function()
 end)
 
 function CreateOxyVehicle()
-
     if DoesEntityExist(oxyVehicle) then
-
         SetVehicleHasBeenOwnedByPlayer(oxyVehicle, false)
         SetEntityAsNoLongerNeeded(oxyVehicle)
         DeleteEntity(oxyVehicle)
@@ -707,7 +705,6 @@ function CreateOxyVehicle()
 end
 
 function CreateOxyPed()
-
     local hashKey = "a_m_y_stwhi_01"
 
     local pedType = 5

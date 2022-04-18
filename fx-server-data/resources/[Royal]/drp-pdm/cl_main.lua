@@ -127,24 +127,24 @@ local vehshopOwner = {
 				{name = "News Rumpo", costs = 8000, description = {}, model = "rumpo"},
 			}
 		},
-		["s-class"] = {
-			title = "s-class",
-			name = "s-class",
-			buttons = {
-				{name = "Bravado Gauntlet Classic", costs = 650000, description = {}, model = "gauntlet3"},
-				{name = "Bravado Gauntlet Hellfire", costs = 100000, description = {}, model = "gauntlet4"},
-				{name = "Declasse Hotring Sabre", costs = 140000, description = {}, model = "hotring"},
-				{name = "Grotti Cheetah Classic", costs = 160000, description = {}, model = "cheetah2"},
-				{name = "Grotti Furia", costs = 200000, description = {}, model = "furia"},
-				{name = "Grotti Turismo Classic", costs = 170000, description = {}, model = "turismo2"},
-				{name = "Schyster Deviant", costs = 170000, description = {}, model = "deviant"},
-				{name = "Sultan RS", costs = 150000, description = {}, model = "sultanrs"},
-				{name = "Vapid Peyote Gasser", costs = 120000, description = {}, model = "peyote2"},
-				{name = "Vulcar Nebula Turbo", costs = 110000, description = {}, model = "nebula"},
-				{name = "Elegy Retro Custom", costs = 150000, description = {}, model = "elegy"},
-				
-			}
-		},
+		-- ["s-class"] = {
+		-- 	title = "s-class",
+		-- 	name = "s-class",
+		-- 	buttons = {
+		-- 		{name = "Bravado Gauntlet Classic", costs = 650000, description = {}, model = "gauntlet3"},
+		-- 		{name = "Bravado Gauntlet Hellfire", costs = 100000, description = {}, model = "gauntlet4"},
+		-- 		{name = "Declasse Hotring Sabre", costs = 140000, description = {}, model = "hotring"},
+		-- 		{name = "Grotti Cheetah Classic", costs = 160000, description = {}, model = "cheetah2"},
+		-- 		{name = "Grotti Furia", costs = 200000, description = {}, model = "furia"},
+		-- 		{name = "Grotti Turismo Classic", costs = 170000, description = {}, model = "turismo2"},
+		-- 		{name = "Schyster Deviant", costs = 170000, description = {}, model = "deviant"},
+		-- 		{name = "Sultan RS", costs = 150000, description = {}, model = "sultanrs"},
+		-- 		{name = "Vapid Peyote Gasser", costs = 120000, description = {}, model = "peyote2"},
+		-- 		{name = "Vulcar Nebula Turbo", costs = 110000, description = {}, model = "nebula"},
+		-- 		{name = "Elegy Retro Custom", costs = 150000, description = {}, model = "elegy"},
+		-- 		
+		-- 	}
+		-- },
 		["b-class"] = {
 			title = "b-class",
 			name = "b-class",
