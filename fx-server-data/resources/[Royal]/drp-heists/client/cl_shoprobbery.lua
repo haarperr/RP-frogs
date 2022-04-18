@@ -305,7 +305,7 @@ AddEventHandler("robbery:safe", function()
 	Citizen.Wait(100000)
 	local safeCoords = safeLocations[storeid]
 	if #(vector3(safeCoords["x"],safeCoords["y"],safeCoords["z"]) - GetEntityCoords(PlayerPedId())) < 14.0 then
-	if mathfunc < 15 then
+	if mathfunc < 17 then
 		TriggerEvent("player:receiveItem","heistusb4",1)
 	end
 	TriggerEvent("DoLongHudText" ,'Safe Opened!', 1)

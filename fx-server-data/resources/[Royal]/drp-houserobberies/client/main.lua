@@ -605,8 +605,8 @@ AddEventHandler("drp-houserobbery:common_items", function()
 	elseif roll == 17 then
 		TriggerEvent("player:receiveItem", "lockpick", math.random(1))
 	elseif roll == 18 then
-		if math.random(1, 10) == 1 then
-			TriggerEvent("player:receiveItem", "heistusb3", math.random(1))
+		if math.random(1, 8) == 1 then
+			TriggerEvent("player:receiveItem", "heistusb4", math.random(1))
 		else
 			roll = math.random(19, 25)
 		end
