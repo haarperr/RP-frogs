@@ -1182,9 +1182,22 @@ end)
 
 --#[Event Handlers]#--
 RegisterNetEvent("drp-bennys:purchaseSuccessful")
-AddEventHandler("drp-bennys:purchaseSuccessful", function()
-    isPurchaseSuccessful = true
-    attemptingPurchase = false
+AddEventHandler("drp-bennys:purchaseSuccessful", function(price, isRepair)
+    if isRepair then
+        local finished = exports["drp-taskbar"]:taskBar(4000,"Repairing Engine",false,false,playerVeh)
+        if finished == 100 then
+            local finished2 = exports["drp-taskbar"]:taskBar(6000,"Repairing Body",false,false,playerVeh)
+            if finished2 == 100 then
+                isPurchaseSuccessful = true
+                attemptingPurchase = false
+                ExitBennys()
+            end
+        end
+    else    
+        isPurchaseSuccessful = true
+        attemptingPurchase = false
+    end
+    
 end)
 
 RegisterNetEvent("drp-bennys:purchaseFailed")

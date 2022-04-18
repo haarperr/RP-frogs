@@ -8,20 +8,20 @@ AddEventHandler('drp-bennys:attemptPurchase', function(type, upgradeLevel)
     if type == "repair" then
         if user:getCash() >= chicken  then
             user:removeMoney(chicken)
-            TriggerClientEvent('drp-bennys:purchaseSuccessful', src, chicken)
+            TriggerClientEvent('drp-bennys:purchaseSuccessful', src, chicken, true)
         else
             TriggerClientEvent('drp-bennys:purchaseFailed', src)
         end
     elseif type == "performance" then
         if user:getCash() >= vehicleCustomisationPrices[type].prices[upgradeLevel] then
-            TriggerClientEvent('drp-bennys:purchaseSuccessful', src, vehicleCustomisationPrices[type].prices[upgradeLevel])
+            TriggerClientEvent('drp-bennys:purchaseSuccessful', src, vehicleCustomisationPrices[type].prices[upgradeLevel], false)
             user:removeMoney(vehicleCustomisationPrices[type].prices[upgradeLevel])
         else
             TriggerClientEvent('drp-bennys:purchaseFailed', src)
         end
     else
         if user:getCash() >= vehicleCustomisationPrices[type].price then
-            TriggerClientEvent('drp-bennys:purchaseSuccessful', src, vehicleCustomisationPrices[type].price)
+            TriggerClientEvent('drp-bennys:purchaseSuccessful', src, vehicleCustomisationPrices[type].price, false)
             user:removeMoney(vehicleCustomisationPrices[type].price)
         else
             TriggerClientEvent('drp-bennys:purchaseFailed', src)
