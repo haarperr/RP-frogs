@@ -800,7 +800,6 @@ AddEventHandler('event:control:bennys', function(useID)
         elseif useID == 20 and not isPlyInBennys then -- Civ Repair
             bennyHeading = 160.0266
             enterLocation(civrepairbennys)
-        end
         elseif useID == 21 and not isPlyInBennys then -- MRPD Heli
             bennyHeading = 179.0563
             enterLocation(bennyLocationMRPDHeli)
