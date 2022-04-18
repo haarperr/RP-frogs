@@ -118,7 +118,7 @@ vehicleCustomisation =
     {
         category = "Right Fender",
         id = 9
-    }
+    },
     {
         category = "Roof",
         id = 10
