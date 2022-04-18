@@ -2509,7 +2509,6 @@ RegisterNetEvent('drp-polyzone:enter')
 AddEventHandler('drp-polyzone:enter', function(name)
     if name == "mrpdnewevidence" then
 		mrpdnewevidence = true
-		exports['drp-textui']:showInteraction('[E] Open Evidence Locker')
 	end
 end)
 
