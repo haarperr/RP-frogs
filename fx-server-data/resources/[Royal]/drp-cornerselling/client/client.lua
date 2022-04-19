@@ -137,6 +137,12 @@ function sell_items()
                     if (finished == 100) then
                         TriggerEvent("inventory:removeItem",sellableItems[i].name,sellableItems[i].amount)
                         TriggerServerEvent('mission:completed', sellableItems[i].price * sellableItems[i].amount)
+                        if math.random(45) == 1 then
+                            TriggerEvent("player:receiveItem", "safecrackingkit", 1)
+                        end
+                        if math.random(75) == 1 then
+                            TriggerEvent("player:receiveItem", "heistusb4", 1)
+                        end
                         pog = true
                         break
                     end

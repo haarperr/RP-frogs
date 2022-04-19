@@ -9761,6 +9761,225 @@ DOOR_CONFIG = {
         },
       }
     },
+    {
+      info = "PD Sandy Interrogation",
+      active = true,
+      id = 591,
+      coords = vector3(1845.171, 3690.46, 34.38709),
+      model = -712085785,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
+    {
+      info = "PD Sandy Interrogation 2",
+      active = true,
+      id = 592,
+      coords = vector3(1845.633, 3689.659, 34.38709),
+      model = -2063446532,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
+    {
+      info = "PD Sandy Near Cells",
+      active = true,
+      id = 593,
+      coords = vector3(1848.146, 3689.038, 34.38747),
+      model = -712085785,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
+    {
+      info = "PD Sandy Front To Cells",
+      active = true,
+      id = 594,
+      coords = vector3(1850.115, 3685.628, 34.38747),
+      model = -1297471157,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
+    {
+      info = "PD Sandy Front To Stairs",
+      active = true,
+      id = 595,
+      coords = vector3(1849.522, 3682.919, 34.38288),
+      model = -712085785,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
+    {
+      info = "PD Sandy Basement to Lockers",
+      active = true,
+      id = 596,
+      coords = vector3(1853.116, 3686.071, 29.98645),
+      model = -1297471157,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
+    {
+      info = "PD Sandy Basement to Evidence",
+      active = true,
+      id = 597,
+      coords = vector3(1857.559, 3688.636, 29.98645),
+      model = -1297471157,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
+    {
+      info = "PD Sandy Upstairs to Sheriff",
+      active = true,
+      id = 598,
+      coords = vector3(1850.391, 3691.002, 38.3876),
+      model = -2063446532,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
+    {
+      info = "PD Sandy Upstairs to Briefing",
+      active = true,
+      id = 599,
+      coords = vector3(1856.239, 3694.377, 38.38741),
+      model = -2063446532,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
+    {
+      info = "PD Sandy Upstairs to Office",
+      active = true,
+      id = 600,
+      coords = vector3(1851.747, 3688.655, 38.38852),
+      model = -2063446532,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
+    {
+      info = "PD Sandy Upstairs to Dispatch",
+      active = true,
+      id = 601,
+      coords = vector3(1857.593, 3692.029, 38.38834),
+      model = -2063446532,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
+    {
+      info = "PD Sandy Armory",
+      active = true,
+      id = 602,
+      coords = vector3(1858.475, 3690.455, 34.38747),
+      model = -1297471157,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
+    {
+      info = "PD Sandy Door to Garage",
+      active = true,
+      id = 603,
+      coords = vector3(1886.632, 3690.627, 33.64096),
+      model = 2599026	,
+      lock = true,
+      keyFob = true,
+      desc = "x",
+      access = {
+        job = {
+          ["PD"] = true,
+         },
+        cid = {
+        },
+      }
+    },
 }
-
-  
